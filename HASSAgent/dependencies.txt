@@ -1,0 +1,14 @@
+CoreAudio						https://github.com/morphx666/CoreAudio
+Grapevine						https://scottoffen.github.io/grapevine/
+HADotNet						https://github.com/qJake/HADotNet
+
+HotkeyListener						https://github.com/Willy-Kimura/HotkeyListener
+LibreHardwareMonitor					https://github.com/LibreHardwareMonitor/LibreHardwareMonitor
+Microsoft.Toolkit.Uwp.Notifications			https://github.com/CommunityToolkit/WindowsCommunityToolkit
+
+MQTTnet						https://github.com/chkr1011/MQTTnet
+Newtonsoft.Json					https://www.newtonsoft.com/json
+Serilog							https://github.com/serilog/serilog
+
+Syncfusion						https://www.syncfusion.com/
+TaskScheduler						https://github.com/dahall/taskscheduler
