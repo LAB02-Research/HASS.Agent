@@ -65,6 +65,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libraries\CustomGroupBox.dll</HintPath>
     </Reference>
+    <Reference Include="HotkeyListener, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\HotkeyListener.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
@@ -286,6 +290,8 @@
     <Content Include="hassagent.ico" />
     <Content Include="Libraries\CustomGroupBox.dll" />
     <Content Include="Libraries\CustomGroupBox.pdb" />
+    <Content Include="Libraries\HotkeyListener.dll" />
+    <Content Include="Libraries\HotkeyListener.pdb" />
     <Content Include="Resources\gear_48.png" />
     <Content Include="Resources\hass_avatar.png" />
     <Content Include="Resources\logo_128.png" />
@@ -309,6 +315,12 @@
     <Content Include="Resources\workflow_48.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Coderr.Client.Serilog">
+      <Version>1.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Coderr.Client.WinForms">
+      <Version>2.0.2</Version>
+    </PackageReference>
     <PackageReference Include="CoreAudio">
       <Version>1.10.0</Version>
     </PackageReference>
@@ -318,26 +330,23 @@
     <PackageReference Include="HADotNet.Core">
       <Version>1.6.0</Version>
     </PackageReference>
-    <PackageReference Include="HotkeyListener">
-      <Version>1.9.0</Version>
-    </PackageReference>
     <PackageReference Include="LibreHardwareMonitorLib">
-      <Version>0.8.8</Version>
+      <Version>0.8.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
       <Version>7.1.1</Version>
     </PackageReference>
     <PackageReference Include="MQTTnet">
-      <Version>3.0.16</Version>
+      <Version>3.1.0</Version>
     </PackageReference>
     <PackageReference Include="MQTTnet.Extensions.ManagedClient">
-      <Version>3.0.16</Version>
+      <Version>3.1.0</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
     </PackageReference>
     <PackageReference Include="Serilog.Extensions.Logging">
-      <Version>3.0.1</Version>
+      <Version>3.1.0</Version>
     </PackageReference>
     <PackageReference Include="Serilog.Sinks.Async">
       <Version>1.5.0</Version>

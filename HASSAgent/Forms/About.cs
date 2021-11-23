@@ -73,12 +73,12 @@ namespace HASSAgent.Forms
 
         private void LblHassAgentProject_Click(object sender, EventArgs e)
         {
-            HelperFunctions.LaunchUrl("https://github.com/");
+            HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent");
         }
 
         private void PbHassAgentLogo_Click(object sender, EventArgs e)
         {
-            HelperFunctions.LaunchUrl("https://github.com/");
+            HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent");
         }
 
         private void PbHassLogo_Click(object sender, EventArgs e)
@@ -94,6 +94,11 @@ namespace HASSAgent.Forms
         private void LblLab02Research_Click(object sender, EventArgs e)
         {
             HelperFunctions.LaunchUrl("https://lab02-research.org");
+        }
+
+        private void LblCoderr_Click(object sender, EventArgs e)
+        {
+            HelperFunctions.LaunchUrl("https://coderr.io");
         }
     }
 }

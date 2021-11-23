@@ -22,5 +22,23 @@ namespace HASSAgent.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool EnableExtendedLogging {
+            get {
+                return ((bool)(this["EnableExtendedLogging"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool EnableCoderrExceptionReporting {
+            get {
+                return ((bool)(this["EnableCoderrExceptionReporting"]));
+            }
+        }
     }
 }

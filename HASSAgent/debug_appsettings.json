@@ -1,0 +1,13 @@
+{
+  "NotificationsEnabled": true,
+  "NotifierApiPort": 5115,
+  "HassUri": "http://192.168.40.84:8123",
+  "HassToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI5M2IxYTQ2NjRkODY0ODE2OWIzM2E2MjYyZTg1Mzk1ZiIsImlhdCI6MTYzMzM1NTk1MywiZXhwIjoxOTQ4NzE1OTUzfQ.VjHhXHgL_Jti40dbDGXRcN1B_M15YlmEqXsBVq1T1wM",
+  "HotKeyEnabled": true,
+  "HotKey": "Control, Alt + Q",
+  "MqttAddress": "192.168.40.84",
+  "MqttPort": 1883,
+  "MqttUseTls": false,
+  "MqttUsername": "user1",
+  "MqttPassword": "nG4uR1rA9zX6kR5h"
+}

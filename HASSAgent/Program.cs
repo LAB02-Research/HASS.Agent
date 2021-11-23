@@ -1,6 +1,10 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.ExceptionServices;
+using System.Security;
 using System.Windows.Forms;
+using Coderr.Client;
+using Coderr.Client.Serilog;
 using HASSAgent.Forms;
 using HASSAgent.Functions;
 using Serilog;
@@ -9,33 +13,55 @@ namespace HASSAgent
 {
     internal static class Program
     {
+        /// <summary>
+        /// Main entry point
+        /// <para>HandleProcessCorruptedStateExceptions and SecurityCritical make sure we can catch and log PCS exceptions before shutting down:
+        /// https://docs.microsoft.com/en-us/archive/msdn-magazine/2009/february/clr-inside-out-handling-corrupted-state-exceptions#id0070035 </para> 
+        /// </summary>
+        [HandleProcessCorruptedStateExceptions]
+        [SecurityCritical]
         [STAThread]
         private static void Main()
         {
-            // syncfusion license
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(Variables.SyncfusionLicense);
+            try
+            {
+                // syncfusion license
+                Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(Variables.SyncfusionLicense);
 
-            // prepare a serilog logger
-            Log.Logger = new LoggerConfiguration()
-                .WriteTo.Async(a => a.File(Path.Combine(Variables.LogPath, $"[{DateTime.Now:yyyy-MM-dd}] {Variables.ApplicationName}_.log"),
-                    rollingInterval: RollingInterval.Day,
-                    fileSizeLimitBytes: 10000000,
-                    retainedFileCountLimit: 10,
-                    rollOnFileSizeLimit: true,
-                    buffered: true,
-                    flushToDiskInterval: TimeSpan.FromMilliseconds(150)))
-                .CreateLogger();
+                // enable logging and optionally prepare Coderr
+                HelperFunctions.PrepareLogging(Properties.Settings.Default.EnableCoderrExceptionReporting);
 
-            // prepare application
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+                if (Properties.Settings.Default.EnableExtendedLogging)
+                {
+                    // make sure we catch 'm all
+                    AppDomain.CurrentDomain.FirstChanceException += (sender, eventArgs) =>
+                    {
+                        Log.Fatal(eventArgs.Exception, "[PROGRAM] FirstChanceException: {err}", eventArgs.Exception.Message);
+                    };
+                }
+                else Log.Information("[PROGRAM] Extended logging disabled");
 
-            // prepare ui
-            Variables.FrmM = new Main();
-            HelperFunctions.SetMsgBoxStyle();
+                // prepare application
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
 
-            // launch application (hidden)
-            Application.Run(new CustomApplicationContext(Variables.FrmM));
+                // prepare ui
+                Variables.FrmM = new Main();
+                HelperFunctions.SetMsgBoxStyle();
+
+                // launch application (hidden)
+                Application.Run(new CustomApplicationContext(Variables.FrmM));
+            }
+            catch (AccessViolationException ex)
+            {
+                Log.Fatal(ex, "[PROGRAM] AccessViolationException: {err}", ex.Message);
+                Log.CloseAndFlush();
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[PROGRAM] {err}", ex.Message);
+                Log.CloseAndFlush();
+            }
         }
     }
 }

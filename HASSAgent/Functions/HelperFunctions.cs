@@ -9,6 +9,8 @@ using System.Reflection;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Coderr.Client;
+using Coderr.Client.Serilog;
 using HASSAgent.Commands;
 using HASSAgent.Enums;
 using HASSAgent.Models;
@@ -88,6 +90,63 @@ namespace HASSAgent.Functions
                 Log.Fatal(ex, "[DOWNLOADIMAGE] Error downloading image: {uri}", uri);
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Initialises Serilog logger, optionally with coderr
+        /// </summary>
+        /// <param name="enableCoderr"></param>
+        internal static void PrepareLogging(bool enableCoderr)
+        {
+            if (enableCoderr)
+            {
+                PrepareCoderrEnabledLogging();
+                return;
+            }
+
+            // prepare a serilog logger without coderr
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Async(a =>
+                    a.File(Path.Combine(Variables.LogPath, $"[{DateTime.Now:yyyy-MM-dd}] {Variables.ApplicationName}_.log"),
+                        rollingInterval: RollingInterval.Day,
+                        fileSizeLimitBytes: 10000000,
+                        retainedFileCountLimit: 10,
+                        rollOnFileSizeLimit: true,
+                        buffered: true,
+                        flushToDiskInterval: TimeSpan.FromMilliseconds(150)))
+                .CreateLogger();
+
+            Log.Information("[LOG] Coderr exception reporting disabled");
+        }
+
+        private static void PrepareCoderrEnabledLogging()
+        {
+            // initialise coderr
+            Err.Configuration.ThrowExceptions = false;
+
+            var url = new Uri("https://report.coderr.io/");
+            Err.Configuration.Credentials(url,
+                "b8f26633ad354e91ab570f840080816a",
+                "87163340045849d993879be4407d952b");
+
+            Err.Configuration.CatchWinFormsExceptions();
+
+            Err.Configuration.UserInteraction.AskUserForDetails = false;
+            Err.Configuration.UserInteraction.AskUserForPermission = false;
+            Err.Configuration.UserInteraction.AskForEmailAddress = false;
+
+            // prepare a serilog logger including coderr
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Coderr()
+                .WriteTo.Async(a =>
+                    a.File(Path.Combine(Variables.LogPath, $"[{DateTime.Now:yyyy-MM-dd}] {Variables.ApplicationName}_.log"),
+                        rollingInterval: RollingInterval.Day,
+                        fileSizeLimitBytes: 10000000,
+                        retainedFileCountLimit: 10,
+                        rollOnFileSizeLimit: true,
+                        buffered: true,
+                        flushToDiskInterval: TimeSpan.FromMilliseconds(150)))
+                .CreateLogger();
         }
 
         /// <summary>
@@ -236,19 +295,13 @@ namespace HASSAgent.Functions
         /// </summary>
         /// <param name="formname"></param>
         /// <returns></returns>
-        internal static bool CheckIfFormIsOpen(string formname)
-        {
-            return Application.OpenForms.Cast<Form>().Any(form => form?.Name == formname);
-        }
+        internal static bool CheckIfFormIsOpen(string formname) => Application.OpenForms.Cast<Form>().Any(form => form?.Name == formname);
 
         /// <summary>
         /// Launches the system's default browser with the provided url
         /// </summary>
         /// <param name="url"></param>
-        internal static void LaunchUrl(string url)
-        {
-            Process.Start(url);
-        }
+        internal static void LaunchUrl(string url) => Process.Start(url);
     }
 
     public class CamelCaseJsonNamingpolicy : JsonNamingPolicy

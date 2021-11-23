@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using HADotNet.Core;
 using HADotNet.Core.Clients;
@@ -240,15 +241,35 @@ namespace HASSAgent.HomeAssistant
 
                 foreach (var quickAction in Variables.QuickActions)
                 {
-                    var entity = quickAction.ToHassEntity();
+                    try
+                    {
+                        var entity = quickAction.ToHassEntity();
 
-                    var domainVal = entity.Domain.GetDescription();
-                    var entityVal = entity.Entity.ToLower();
-                    var fullEntity = $"{domainVal}.{entityVal}";
+                        var domainVal = entity.Domain.GetDescription();
+                        var entityVal = entity.Entity.ToLower();
+                        var fullEntity = $"{domainVal}.{entityVal}";
 
-                    _ = await _statesClient.GetState(fullEntity);
+                        _ = await _statesClient.GetState(fullEntity);
 
-                    if (Variables.ShuttingDown) return;
+                        if (Variables.ShuttingDown) return;
+                    }
+                    catch (HttpRequestException ex)
+                    {
+                        if (Variables.ShuttingDown) return;
+
+                        if (ex.Message.Contains("404"))
+                        {
+                            Log.Warning("[HASS] Server returned 404 (not found) while getting entity state, this can happen after a server reboot. If the problem persists, please file a ticket on github.\r\nError message: {err}", ex.Message);
+                            return;
+                        }
+
+                        Log.Fatal(ex, "[HASS] HTTP error while sending periodic status update: {err}", ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (Variables.ShuttingDown) return;
+                        Log.Fatal(ex, "[HASS] Error while sending periodic status update: {err}", ex.Message);
+                    }
                 }
             }
         }

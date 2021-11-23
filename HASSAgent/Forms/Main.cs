@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HASSAgent.Commands;
@@ -14,6 +16,7 @@ using HASSAgent.Mqtt;
 using HASSAgent.Notifications;
 using HASSAgent.Sensors;
 using HASSAgent.Settings;
+using Serilog;
 using Syncfusion.Windows.Forms;
 using WK.Libraries.HotkeyListenerNS;
 using QuickActionsConfig = HASSAgent.Forms.QuickActions.QuickActionsConfig;
@@ -30,35 +33,44 @@ namespace HASSAgent.Forms
 
         private void Main_Load(object sender, EventArgs e)
         {
-            // catch all key presses
-            KeyPreview = true;
+            try
+            {
+                if (Properties.Settings.Default.EnableExtendedLogging)
+                {
+                    // exception handlers
+                    Application.ThreadException += Application_ThreadException;
+                    AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+                }
 
-            // prepare configuration form
-            Variables.FrmConfig = new Configuration();
+                // catch all key presses
+                KeyPreview = true;
 
-            // set all statuses to loading
-            SetNotificationApiStatus(ComponentStatus.Loading);
-            SetHassApiStatus(ComponentStatus.Loading);
-            SetQuickActionsStatus(ComponentStatus.Loading);
-            SetSensorsStatus(ComponentStatus.Loading);
-            SetCommandsStatus(ComponentStatus.Loading);
-            SetMqttStatus(ComponentStatus.Loading);
+                // prepare configuration form
+                Variables.FrmConfig = new Configuration();
 
-            // create a hotkey listener
-            Variables.HotKeyListener = new HotkeyListener();
+                // set all statuses to loading
+                SetNotificationApiStatus(ComponentStatus.Loading);
+                SetHassApiStatus(ComponentStatus.Loading);
+                SetQuickActionsStatus(ComponentStatus.Loading);
+                SetSensorsStatus(ComponentStatus.Loading);
+                SetCommandsStatus(ComponentStatus.Loading);
+                SetMqttStatus(ComponentStatus.Loading);
 
-            // load settings
-            SettingsManager.Load();
+                // create a hotkey listener
+                Variables.HotKeyListener = new HotkeyListener();
 
-            // initialise hotkey
-            InitialiseHotkey();
+                // load settings
+                SettingsManager.Load();
 
-            // initialise managers
-            Task.Run(NotifierManager.Initialise);
-            Task.Run(HassApiManager.Initialize);
-            Task.Run(MqttManager.Initialise);
-            Task.Run(SensorsManager.Intialise);
-            Task.Run(CommandsManager.Intialise);
+                // initialise hotkey
+                InitialiseHotkey();
+
+                // initialise managers
+                Task.Run(NotifierManager.Initialise);
+                Task.Run(HassApiManager.Initialize);
+                Task.Run(MqttManager.Initialise);
+                Task.Run(SensorsManager.Intialise);
+                Task.Run(CommandsManager.Intialise);
 
 #if DEBUG
             // show the form while we're debugging
@@ -70,7 +82,28 @@ namespace HASSAgent.Forms
                 Invoke(new MethodInvoker(BringToFront));
             });
 #endif
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[MAIN] Main_Load: {err}", ex.Message);
+                MessageBoxAdv.Show("There was an error launching HASS.Agent.\r\nPlease check the logs and make a bug report on github.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // we're done
+                Application.Exit();
+            }
         }
+
+        private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            Log.Fatal(e.Exception, "[MAIN] ThreadException: {err}", e.Exception.Message);
+        }
+
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            var ex = e.ExceptionObject as Exception;
+            Log.Fatal(ex, "[MAIN] ThreadException: {err}", ex.Message);
+        }
+
 
         /// <summary>
         /// Initialise the hotkey (if any)

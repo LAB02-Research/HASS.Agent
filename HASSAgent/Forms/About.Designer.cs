@@ -54,6 +54,7 @@ namespace HASSAgent.Forms
             this.label5 = new System.Windows.Forms.Label();
             this.LblLab02Research = new System.Windows.Forms.Label();
             this.LblVersion = new System.Windows.Forms.Label();
+            this.LblCoderr = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PbHassAgentLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbHassLogo)).BeginInit();
             this.SuspendLayout();
@@ -298,9 +299,9 @@ namespace HASSAgent.Forms
             this.LblHassAgentProject.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblHassAgentProject.Location = new System.Drawing.Point(173, 435);
             this.LblHassAgentProject.Name = "LblHassAgentProject";
-            this.LblHassAgentProject.Size = new System.Drawing.Size(108, 13);
+            this.LblHassAgentProject.Size = new System.Drawing.Size(253, 13);
             this.LblHassAgentProject.TabIndex = 20;
-            this.LblHassAgentProject.Text = "https://github.com/";
+            this.LblHassAgentProject.Text = "https://github.com/LAB02-Research/HASS.Agent";
             this.LblHassAgentProject.Click += new System.EventHandler(this.LblHassAgentProject_Click);
             // 
             // label5
@@ -333,6 +334,18 @@ namespace HASSAgent.Forms
             this.LblVersion.TabIndex = 24;
             this.LblVersion.Text = "-";
             // 
+            // LblCoderr
+            // 
+            this.LblCoderr.AutoSize = true;
+            this.LblCoderr.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LblCoderr.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCoderr.Location = new System.Drawing.Point(419, 272);
+            this.LblCoderr.Name = "LblCoderr";
+            this.LblCoderr.Size = new System.Drawing.Size(42, 13);
+            this.LblCoderr.TabIndex = 25;
+            this.LblCoderr.Text = "Coderr";
+            this.LblCoderr.Click += new System.EventHandler(this.LblCoderr_Click);
+            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -342,6 +355,7 @@ namespace HASSAgent.Forms
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(642, 519);
+            this.Controls.Add(this.LblCoderr);
             this.Controls.Add(this.LblVersion);
             this.Controls.Add(this.LblLab02Research);
             this.Controls.Add(this.label5);
@@ -410,6 +424,7 @@ namespace HASSAgent.Forms
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label LblLab02Research;
         private System.Windows.Forms.Label LblVersion;
+        private System.Windows.Forms.Label LblCoderr;
     }
 }
 

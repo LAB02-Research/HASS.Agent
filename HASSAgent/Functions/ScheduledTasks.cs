@@ -104,8 +104,7 @@ namespace HASSAgent.Functions
                         taskDefinition.Settings.AllowDemandStart = true;
                         taskDefinition.Settings.RestartCount = 3;
                     }
-
-                    //taskDefinition.Settings.RunOnlyIfLoggedOn = false;
+                    
                     taskDefinition.Settings.MultipleInstances = TaskInstancesPolicy.IgnoreNew;
 
                     taskDefinition.Settings.StopIfGoingOnBatteries = false;
