@@ -13,7 +13,7 @@ Contents
  * [Usage](#usage)
  * [Updating](#updating)
  * [Wishlist](#wishlist)
- * [Error Reporting](#error reporting)
+ * [Error Reporting](#error-reporting)
 
 ### Why?
 ---
