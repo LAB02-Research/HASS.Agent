@@ -25,7 +25,7 @@ namespace HASSAgent
         public static string ApplicationName { get; } = Assembly.GetExecutingAssembly().GetName().Name;
         public static string ApplicationExecutable { get; } = Assembly.GetExecutingAssembly().Location;
         public static string Version { get; } = $"{Assembly.GetExecutingAssembly().GetName().Version.Major}.{Assembly.GetExecutingAssembly().GetName().Version.Minor}.{Assembly.GetExecutingAssembly().GetName().Version.Build}.{Assembly.GetExecutingAssembly().GetName().Version.Revision}";
-        internal static string SyncfusionLicense => "";
+        internal static string SyncfusionLicense => "NTA2NTgzQDMxMzkyZTMyMmUzMEhrMG96Rmx5N3JCTmJYT1o0R0g1ZjVlUVdoSDJvRFNSS0QvcktBSXhsb1U9";
 
         /// <summary>
         /// Internal references
