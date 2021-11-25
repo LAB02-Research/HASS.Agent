@@ -49,9 +49,15 @@ Summary of the current implementation:
 
 * Commands and sensors are automatically added to your Home Assistant instance
 
+Notification examples:
+
 ![Image-based toast notification](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_toast_image.png)  ![Text-based toast notification](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_toast_text.png)
 
+The quickaction window you'll see when using the hotkey. This window automatically resizes according to the amount of actions you've added:
+
 ![Quick Actions](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_quickactions.png)
+
+The sensors configuration screen:
 
 ![Sensors](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_sensors.png)
 
@@ -179,7 +185,7 @@ List of things I want to add somewhere down the road:
  * **Notifications**: add 'critical' type to attract more attention
  * **Quick Actions**: show current state in window
  * **Quick Actions**: ability to change buton size (small/medium/large)
- * **Quick Actions**: ability to define custom mdi icons, or fetch icon from Home Assistant
+ * **Quick Actions**: ability to define custom mdi icons, and/or fetch icon from Home Assistant
  * **Quick Actions**: add pages as tabs intead of one form, ie. one tab with 'lights', one tab with 'switches'
  * **Sensors**: add explanation when adding sensors, currently only name is shown
  * **Sensors**: implement library plugin system for more powerful custom sensors
