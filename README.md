@@ -120,7 +120,7 @@ HASS.Agent resides in the system tray, usually on the bottom right of your taskb
 
 ![Tray icon](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_tray_icon.png)
 
-Make sure it's always visible and not hidden in the overflow. You can drag the icon next to your clock to do so.
+Make sure it's always visible and not hidden in the overflow, otherwise notifications may not get shown. You can drag the icon next to your clock to do so.
 
 There's a right-click menu, but you can also just double-click to open the home screen:
 
