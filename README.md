@@ -1,11 +1,16 @@
+<a href="https://github.com/LAB02-Research/HASS.Agent/">
+    <img src="https://github.com/LAB02-Research/HASS.Agent/raw/main/HASSAgent/Resources/logo_128.png" alt="HASS.Agent logo" title="HASS.Agent" align="right" height="128" />
+</a>
+
 # HASS.Agent
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/lab02research)
 
 HASS.Agent is a Windows-based client application for <a href="https://www.home-assistant.io" target="_blank">Home Assistant</a>, developed in .NET 4.8.
 
-Contents
-========
+----
+
+### Contents
 
  * [Why?](#why)
  * [Functionality](#functionality)
@@ -17,26 +22,42 @@ Contents
  * [Wishlist](#wishlist)
  * [Error Reporting](#error-reporting)
 
-Why?
----
+----
 
-The main reason I built this was that I wanted to receive notifications with images on my PC, and to quickly perform actions (ie. toggle a lamp). There currently weren't any software-based solutions to this, so I set out to built it myself. 
+### Why?
 
-That's also the premise of this project; it's built to solve 'problems' (nuicanses is perhaps a better word) I encountered, and may work for you. 
-In that case, feel free to open a ticket so we can discuss! 
+The main reason I built this was that I wanted to receive notifications with images on my PC, and to quickly perform actions (ie. toggle a lamp). There currently weren't any software-based solutions to this, so I set out to build it myself. 
 
-Functionality
----
+That's also the premise of this project; it's built to solve 'problems' (*nuicanses* is perhaps a better word) I encountered, and may not work for you. 
+If that's the case, feel free to open a ticket so we can discuss! 
+
+----
+
+### Functionality
 
 Summary of the current implementation:
 
-* **Notifications**: receive notifications, show them using Windows builtin toast popups, attach images - this requires the installation of the <a href="https://github.com/LAB02-Research/HASS.Agent-Notifier">HASS.Agent Notifier integration</a>
+* **Notifications**: receive notifications, show them using Windows builtin toast popups, and optionally attach images - this requires the installation of the <a href="https://github.com/LAB02-Research/HASS.Agent-Notifier" target="_blank">HASS.Agent Notifier integration</a>
+
 * **Quick Actions**: use a keyboard shortcut to quickly pull up a command interface, through which you can control Home Assistant entities
+
 * **Commands**: control your device through Home Assistant using custom- or builtin commands
+
 * **Sensors**: send your device's sensors to Home Assistant to monitor cpu, mem, webcame usage, wmi-polled data, etc .. 
 
-Credits
----
+* All entities are dynamically fetched from your Home Assistant instance
+
+* Commands and sensors are automatically added to your Home Assistant instance
+
+![Image-based toast notification](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_toast_image.png)  ![Text-based toast notification](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_toast_text.png)
+
+![Quick Actions](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_quickactions.png)
+
+![Sensors](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_sensors.png)
+
+----
+
+### Credits
 
 I want to put the credits this far up on the readme page, because I'm standing on the shoulders of giants :)
 
@@ -52,64 +73,69 @@ And a big thank you to all other packages:
 
 Please consult their individual licensing if you plan to use any of the code.
 
-Installation
----
+----
+
+### Installation
 
 The agent itself comes as a .zip, that you can place anywhere you want. After launching, you'll see the configuration screen. In there, you get the option to install HASS.Agent as a run-on-boot scheduled task. This way, it'll launch after you login, and you won't have to accept UAC popups. If you're not comfortable with this setup, you can always manually add a shortcut to your startup folder.
 
 If you want to use notifications, you'll need to install the <a href="https://github.com/LAB02-Research/HASS.Agent-Notifier" target="_blank">HASS.Agent Notifier integration</a>. This can be done through <a href="https://hacs.xyz" target="_blank">HACS</a> or manually. You'll also need to open the
-configured port in the firewall of the receiving devices (default **5115**). 
+configured port in the firewall of the receiving devices (default `5115`). 
 
-Configuration
----
+----
+
+### Configuration
+
+![Configuration screen](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_configuration.png)
 
 Configuring HASS.Agent is split into five parts:
 
-### 1. Notifications
+#### 1. Notifications
 
-Make sure the integration has been installed and configured in Home Assistant, and actually works (I use a test automation). In the configuration screen, check the 'accept notifications' box and optionally change the default port:
-
-<todo: image>
+Make sure the integration has been installed and configured in Home Assistant, and actually works (I use a test automation). In the configuration screen, check the '*accept notifications*' box and optionally change the default port.
 
 Afterwards, open the configured port in your firewall. Ideally only allow your Home Assistant IP through.
 
-### 2. Startup
+#### 2. Startup
 
-You can use the 'create launch-on-login scheduled task' to allow HASS.Agent to start when you login to your device. 
+You can use the '*create launch-on-login scheduled task*' to allow HASS.Agent to start when you login to your device. 
 
-### 3. Home Assistant API config
+#### 3. Home Assistant API config
 
-To use quick actions, you have to configure your instance's API. Normally the default URI should work, unless you've changed the port or mdns name. You can get a long-live API token following <a href="https://www.home-assistant.io/docs/authentication/" target="_blank">this doc</a>.
+To use quick actions, you have to configure your instance's API. Normally the default URI should work, unless you've changed the port or mdns name. You can get a long-lived API token following <a href="https://www.home-assistant.io/docs/authentication/" target="_blank">this doc</a>.
 
-### 4. MQTT config
+#### 4. MQTT config
 
-Enter your MQTT broker configuration. Only required if you want to use commands (sent from Home Assistant) or sensors (sent from your device).
+Enter your MQTT broker configuration. Only required if you want to use commands (triggered from Home Assistant) or sensors (sent from your device).
 
-### 5. Hotkey config
+#### 5. Hotkey config
 
-Optionally, can be used to pull up the quick-actions window.
+Optionally, can be used to pull up the quick-actions window at any time.
 
-Usage
----
+----
+
+### Usage
+
+![Main window](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_main_window.png)
 
 From the home screen, you can easily use & configure the various parts of HASS.Agent:
 
-### 1. Configuration
+#### 1. Configuration
 
 Shows the various application configuration options (as discussed above).
 
-### 2. Quick Actions
+#### 2. Quick Actions
 
-Manage your quick action buttons. Use the 'add new' button to create your first action. All entities are dynamically fetched from your Home Aassistant instance. If they won't show up, make sure you've configured 'HASS api' in the configuration screen. Use the 'preview' button to check if it's working for you.
+Manage your quick action buttons. Use the '*add new*' button to create your first action. All entities are dynamically fetched from your Home Aassistant instance. If they won't show up, make sure you've configured 'HASS api' in the configuration screen. Use the 'preview' button to check if it's working for you.
 
-### 3. Local Sensors
+#### 3. Local Sensors
 
 Manage which sensors you want to publish to your Home Assistant instance. There are some ready-to-use sensors available, or you can use your own WMI query.
 Requires MQTT to be configured.
 
 **Note: WMI can be a pain, and make sure you don't update your queries too often. Keep an eye on your CPU load.**
 
-### 4. Commands
+#### 4. Commands
 
 Manage which commands should be accepted from your Home Assistant instance. Aside from the builtin commands, you can use your own custom command (you can test your command by typing it into a console), or a key command which will emulate key presses. Requires MQTT to be configured.
 
@@ -129,13 +155,15 @@ Example configuration of a shutdown command in Home Assistant, used in combinati
       entity_id: switch.test_w10_x64_01_cmd_shutdown
 ```
 
-Updating
----
+----
+
+### Updating
 
 Currently, HASS.Agent doesn't have an updater. It'll be implemented in a coming version. For now, check this page periodically :)
 
-Wishlist
----
+----
+
+### Wishlist
 
 List of things I want to add somewhere down the road:
 
@@ -152,8 +180,9 @@ List of things I want to add somewhere down the road:
 
 If you have any other wishes, feel free to submit a ticket.
 
-Error Reporting
----
+----
+
+### Error Reporting
 
 This type of application is quite error prone (fetching data from WMI, systemwide keybindings, etc). To manage exceptions, I use the excellent Coderr platform. However, this does mean that exception info will be sent to their servers. This is **disabled** by default. 
 
