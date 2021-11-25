@@ -116,9 +116,17 @@ Optionally, can be used to pull up the quick-actions window at any time.
 
 ### Usage
 
+HASS.Agent resides in the system tray, usually on the bottom right of your taskbar, next to the clock:
+
+![Tray icon](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_tray_icon.png)
+
+Make sure it's always visible and not hidden in the overflow. You can drag the icon next to your clock to do so.
+
+There's a right-click menu, but you can also just double-click to open the home screen:
+
 ![Main window](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_main_window.png)
 
-From the home screen, you can easily use & configure the various parts of HASS.Agent:
+From here, you can easily use & configure the various parts of HASS.Agent:
 
 #### 1. Configuration
 
