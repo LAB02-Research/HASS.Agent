@@ -198,8 +198,8 @@ If you have any other wishes, feel free to submit a ticket.
 
 ### Error Reporting
 
-This type of application is quite error prone (fetching data from WMI, systemwide keybindings, etc). To manage exceptions, I use the excellent Coderr platform. However, this does mean that exception info will be sent to their servers. This is **disabled** by default. 
+This type of application is quite error prone (fetching data from WMI, systemwide keybindings, etc). To manage exceptions, I use the excellent <a href="https://coderr.io" target="_blank">Coderr</a> platform. However, this does mean that exception info will be sent to their servers. This is **disabled** by default. 
 
-If you want to help out, please set EnableCoderrExceptionReporting to **True** in HASS.Agent.exe.config. 
+If you want to help out, please set `EnableCoderrExceptionReporting` to `True` in **HASS.Agent.exe.config**. 
 
-If you're experiencing bugs, please set EnableExtendedLogging to **True** in HASS.Agent.exe.config. Restart HASS.Agent and wait for the bug to occur. Afterwards, please attach the relevant logfile from the 'Logs' subfolder in your ticket.
+If you're experiencing bugs, please set `EnableExtendedLogging` to `True` in **HASS.Agent.exe.config**. Restart HASS.Agent and wait for the bug to occur. Afterwards, please attach the relevant logfile from the **Logs** subfolder in your ticket. Note that if you only enable this option, nothing will get sent to Coderr.
