@@ -171,6 +171,7 @@ namespace HASSAgent.Forms
             this.BtnScheduledTaskReadme.TabIndex = 6;
             this.BtnScheduledTaskReadme.Text = "scheduled task readme";
             this.BtnScheduledTaskReadme.UseVisualStyleBackColor = false;
+            this.BtnScheduledTaskReadme.Click += new System.EventHandler(this.BtnScheduledTaskReadme_Click);
             // 
             // BtnCreateLaunchOnBootTask
             // 
@@ -326,6 +327,7 @@ namespace HASSAgent.Forms
             this.BtnNotificationsReadme.TabIndex = 3;
             this.BtnNotificationsReadme.Text = "notifications readme";
             this.BtnNotificationsReadme.UseVisualStyleBackColor = false;
+            this.BtnNotificationsReadme.Click += new System.EventHandler(this.BtnNotificationsReadme_Click);
             // 
             // label1
             // 
@@ -491,6 +493,7 @@ namespace HASSAgent.Forms
             this.BtnHelp.TabIndex = 6;
             this.BtnHelp.Text = "help && documentation";
             this.BtnHelp.UseVisualStyleBackColor = false;
+            this.BtnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
             // 
             // BtnAbout
             // 

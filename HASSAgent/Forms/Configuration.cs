@@ -237,5 +237,20 @@ namespace HASSAgent.Forms
                 about.ShowDialog();
             }
         }
+
+        private void BtnNotificationsReadme_Click(object sender, System.EventArgs e)
+        {
+            HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent#configuration");
+        }
+
+        private void BtnScheduledTaskReadme_Click(object sender, System.EventArgs e)
+        {
+            HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent#installation");
+        }
+
+        private void BtnHelp_Click(object sender, System.EventArgs e)
+        {
+            HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent");
+        }
     }
 }
