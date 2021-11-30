@@ -85,8 +85,11 @@ Please consult their individual licensing if you plan to use any of the code.
 
 The agent itself comes as a .zip, that you can place anywhere you want. After launching, you'll see the configuration screen. In there, you get the option to install HASS.Agent as a run-on-boot scheduled task. This way, it'll launch after you login, and you won't have to accept UAC popups. If you're not comfortable with this setup, you can always manually add a shortcut to your startup folder.
 
-If you want to use notifications, you'll need to install the <a href="https://github.com/LAB02-Research/HASS.Agent-Notifier" target="_blank">HASS.Agent Notifier integration</a>. This can be done through <a href="https://hacs.xyz" target="_blank">HACS</a> or manually. You'll also need to open the
-configured port in the firewall of the receiving devices (default `5115`). 
+If you want to use notifications, you'll need to install the <a href="https://github.com/LAB02-Research/HASS.Agent-Notifier" target="_blank">HASS.Agent Notifier integration</a>. This can be done through <a href="https://hacs.xyz" target="_blank">HACS</a> or manually. 
+
+You'll also need to open the configured port in the firewall of the receiving devices (default `5115`). To do so, you can run this command in an elevated prompt:
+
+`netsh advfirewall firewall add rule name="HASS.Agent Notifier" dir=in action=allow protocol=TCP localport=5115`
 
 ----
 
