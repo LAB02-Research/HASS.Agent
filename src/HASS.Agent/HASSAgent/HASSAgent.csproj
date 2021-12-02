@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{407FFF5A-97EA-429E-BD5E-81D93240A1BD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>HASSAgent</RootNamespace>
+    <AssemblyName>HASS.Agent</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>hassagent.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CustomGroupBox, Version=2021.10.20.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\CustomGroupBox.dll</HintPath>
+    </Reference>
+    <Reference Include="HotkeyListener, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\HotkeyListener.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\CommandsManager.cs" />
+    <Compile Include="Enums\Component.cs" />
+    <Compile Include="Enums\PcUserStatus.cs" />
+    <Compile Include="Enums\UserNotificationState.cs" />
+    <Compile Include="Forms\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Commands\CommandsMod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Commands\CommandsMod.Designer.cs">
+      <DependentUpon>CommandsMod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sensors\SensorsMod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sensors\SensorsMod.Designer.cs">
+      <DependentUpon>SensorsMod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Functions\UpdateManager.cs" />
+    <Compile Include="Models\ComponentStatusUpdate.cs" />
+    <Compile Include="Models\Mqtt\Commands\CustomCommands\LogOffCommand.cs" />
+    <Compile Include="Models\Mqtt\Commands\CustomCommands\RestartCommand.cs" />
+    <Compile Include="Models\Mqtt\Commands\CustomCommands\ShutdownCommand.cs" />
+    <Compile Include="Models\Mqtt\Commands\KeyCommands\MediaMuteCommand.cs" />
+    <Compile Include="Models\Mqtt\Commands\KeyCommands\MediaNextCommand.cs" />
+    <Compile Include="Models\Mqtt\Commands\KeyCommands\MediaPreviousCommand.cs" />
+    <Compile Include="Models\Mqtt\Commands\KeyCommands\MediaVolumeDownCommand.cs" />
+    <Compile Include="Models\Mqtt\Commands\KeyCommands\MediaVolumeUpCommand.cs" />
+    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\ActiveWindowSensor.cs" />
+    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\CurrentVolumeSensor.cs" />
+    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\DummySensor.cs" />
+    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\GpuLoadSensor.cs" />
+    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\GpuTemperatureSensor.cs" />
+    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\LastActiveSensor.cs" />
+    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\LastBootSensor.cs" />
+    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\MicrophoneActiveSensor.cs" />
+    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\SessionStateSensor.cs" />
+    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\UserNotificationStateSensor.cs" />
+    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\WebcamActiveSensor.cs" />
+    <Compile Include="Models\Mqtt\Sensors\WmiSensors\CpuLoadSensor.cs" />
+    <Compile Include="Models\Mqtt\Sensors\WmiSensors\CurrentClockSpeedSensor.cs" />
+    <Compile Include="Models\Mqtt\Sensors\WmiSensors\MemoryUsageSensor.cs" />
+    <Compile Include="Settings\StoredCommands.cs" />
+    <Compile Include="Settings\StoredQuickActions.cs" />
+    <Compile Include="Settings\StoredSensors.cs" />
+    <Compile Include="Controls\QuickActionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\QuickActionControl.Designer.cs">
+      <DependentUpon>QuickActionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\CommandType.cs" />
+    <Compile Include="Enums\ComponentStatus.cs" />
+    <Compile Include="Enums\HassAction.cs" />
+    <Compile Include="Enums\HassDomain.cs" />
+    <Compile Include="Enums\HassManagerStatus.cs" />
+    <Compile Include="Enums\MqttStatus.cs" />
+    <Compile Include="Enums\SensorType.cs" />
+    <Compile Include="Forms\Commands\CommandsConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Commands\CommandsConfig.Designer.cs">
+      <DependentUpon>CommandsConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Configuration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configuration.Designer.cs">
+      <DependentUpon>Configuration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GetUserCredentials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GetUserCredentials.Designer.cs">
+      <DependentUpon>GetUserCredentials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\QuickActions\QuickActions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuickActions\QuickActions.Designer.cs">
+      <DependentUpon>QuickActions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\QuickActions\QuickActionsMod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuickActions\QuickActionsMod.Designer.cs">
+      <DependentUpon>QuickActionsMod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\QuickActions\QuickActionsConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuickActions\QuickActionsConfig.Designer.cs">
+      <DependentUpon>QuickActionsConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\SettingsManager.cs" />
+    <Compile Include="Forms\Sensors\SensorsConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sensors\SensorsConfig.Designer.cs">
+      <DependentUpon>SensorsConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Functions\CustomApplicationContext.cs" />
+    <Compile Include="Functions\HelperFunctions.cs" />
+    <Compile Include="Models\Config\ConfiguredCommand.cs" />
+    <Compile Include="Models\Config\ConfiguredSensor.cs" />
+    <Compile Include="Models\Mqtt\Commands\CustomCommand.cs" />
+    <Compile Include="Models\Mqtt\Commands\KeyCommand.cs" />
+    <Compile Include="Models\Mqtt\Commands\KeyCommands\MediaPlayPauseCommand.cs" />
+    <Compile Include="Models\Mqtt\Sensors\AbstractSensor.cs" />
+    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\NamedWindowSensor.cs" />
+    <Compile Include="Models\Mqtt\Sensors\WmiQuerySensor.cs" />
+    <Compile Include="Mqtt\MqttManager.cs" />
+    <Compile Include="Functions\ScheduledTasks.cs" />
+    <Compile Include="HomeAssistant\HassApiManager.cs" />
+    <Compile Include="Forms\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Action.cs" />
+    <Compile Include="Models\Config\AppSettings.cs" />
+    <Compile Include="Models\HassEntity.cs" />
+    <Compile Include="Models\Mqtt\Commands\AbstractCommand.cs" />
+    <Compile Include="Models\Mqtt\AbstractDiscoverable.cs" />
+    <Compile Include="Models\Mqtt\DiscoveryConfigModel.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\QuickAction.cs" />
+    <Compile Include="Notifications\NotifierConfiguration.cs" />
+    <Compile Include="Notifications\NotifierDeserialization.cs" />
+    <Compile Include="Notifications\NotifierEndpoints.cs" />
+    <Compile Include="Notifications\NotifierManager.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sensors\SensorsManager.cs" />
+    <Compile Include="Variables.cs" />
+    <EmbeddedResource Include="Controls\QuickActionControl.resx">
+      <DependentUpon>QuickActionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Commands\CommandsConfig.resx">
+      <DependentUpon>CommandsConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Commands\CommandsMod.resx">
+      <DependentUpon>CommandsMod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configuration.resx">
+      <DependentUpon>Configuration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GetUserCredentials.resx">
+      <DependentUpon>GetUserCredentials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuickActions\QuickActions.resx">
+      <DependentUpon>QuickActions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuickActions\QuickActionsMod.resx">
+      <DependentUpon>QuickActionsMod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuickActions\QuickActionsConfig.resx">
+      <DependentUpon>QuickActionsConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sensors\SensorsConfig.resx">
+      <DependentUpon>SensorsConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sensors\SensorsMod.resx">
+      <DependentUpon>SensorsMod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="hassagent.ico" />
+    <Content Include="Libraries\CustomGroupBox.dll" />
+    <Content Include="Libraries\CustomGroupBox.pdb" />
+    <Content Include="Libraries\HotkeyListener.dll" />
+    <Content Include="Libraries\HotkeyListener.pdb" />
+    <Content Include="Resources\gear_48.png" />
+    <Content Include="Resources\hass_avatar.png" />
+    <Content Include="Resources\logo_128.png" />
+    <Content Include="Resources\logo_256.png" />
+    <Content Include="Resources\logo_32.png" />
+    <Content Include="Resources\qa_automate_225.png" />
+    <Content Include="Resources\qa_inputboolean_225.png" />
+    <Content Include="Resources\qa_light_225.png" />
+    <Content Include="Resources\qa_scene_225.png" />
+    <Content Include="Resources\qa_script_225.png" />
+    <Content Include="Resources\qa_switch_225.png" />
+    <Content Include="Resources\question_24.png" />
+    <Content Include="Resources\question_32.png" />
+    <Content Include="Resources\radar_48.png" />
+    <Content Include="Resources\remote_48.png" />
+    <Content Include="Resources\ti_exit_32.png" />
+    <Content Include="Resources\ti_gear_32.png" />
+    <Content Include="Resources\ti_radar_32.png" />
+    <Content Include="Resources\ti_remote_32.png" />
+    <Content Include="Resources\ti_update_32.png" />
+    <Content Include="Resources\ti_workflow_32.png" />
+    <Content Include="Resources\workflow_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Coderr.Client.Serilog">
+      <Version>1.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Coderr.Client.WinForms">
+      <Version>2.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="CoreAudio">
+      <Version>1.10.0</Version>
+    </PackageReference>
+    <PackageReference Include="Grapevine">
+      <Version>5.0.0-rc.8</Version>
+    </PackageReference>
+    <PackageReference Include="HADotNet.Core">
+      <Version>1.6.0</Version>
+    </PackageReference>
+    <PackageReference Include="LibreHardwareMonitorLib">
+      <Version>0.8.9</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
+      <Version>7.1.2</Version>
+    </PackageReference>
+    <PackageReference Include="MQTTnet">
+      <Version>3.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="MQTTnet.Extensions.ManagedClient">
+      <Version>3.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Octokit">
+      <Version>0.50.0</Version>
+    </PackageReference>
+    <PackageReference Include="Serilog.Extensions.Logging">
+      <Version>3.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Serilog.Sinks.Async">
+      <Version>1.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="Serilog.Sinks.File">
+      <Version>5.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Core.WinForms">
+      <Version>19.2.0.62</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Licensing">
+      <Version>19.2.0.62</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Shared.Base">
+      <Version>19.2.0.62</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Tools.Windows">
+      <Version>19.2.0.62</Version>
+    </PackageReference>
+    <PackageReference Include="TaskScheduler">
+      <Version>2.9.2</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
