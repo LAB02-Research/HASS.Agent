@@ -1,5 +1,5 @@
 <a href="https://github.com/LAB02-Research/HASS.Agent/">
-    <img src="https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/src/HASSAgent/Resources/logo_128.png" alt="HASS.Agent logo" title="HASS.Agent" align="right" height="128" />
+    <img src="https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/src/HASS.Agent/HASSAgent/Resources/logo_128.png" alt="HASS.Agent logo" title="HASS.Agent" align="right" height="128" />
 </a>
 
 # HASS.Agent
@@ -83,9 +83,11 @@ Please consult their individual licensing if you plan to use any of the code.
 
 ### Installation
 
-The agent itself comes as a .zip, that you can place anywhere you want. After launching, you'll see the configuration screen. In there, you get the option to install HASS.Agent as a run-on-boot scheduled task. This way, it'll launch after you login, and you won't have to accept UAC popups. If you're not comfortable with this setup, you can always manually add a shortcut to your startup folder.
+The agent itself comes as a .zip, that you can place anywhere you want. After launching, you'll see the configuration screen. In there, you get the option to install HASS.Agent as a run-on-boot scheduled task. This way, it'll launch after you login, and you won't have to accept UAC popups. Afterwards, HASS.Agent will offer to restart using the new task.
 
-If you want to use notifications, you'll need to install the <a href="https://github.com/LAB02-Research/HASS.Agent-Notifier" target="_blank">HASS.Agent Notifier integration</a>. This can be done through <a href="https://hacs.xyz" target="_blank">HACS</a> or manually. 
+If you're not comfortable with using scheduled tasks, you can always manually add a shortcut to your startup folder.
+
+To use notifications, you'll need to install the <a href="https://github.com/LAB02-Research/HASS.Agent-Notifier" target="_blank">HASS.Agent Notifier integration</a>. This can be done through <a href="https://hacs.xyz" target="_blank">HACS</a> or manually. 
 
 You'll also need to open the configured port in the firewall of the receiving devices (default `5115`). To do so, you can run this command in an elevated prompt:
 
@@ -176,7 +178,9 @@ Example configuration of a shutdown command in Home Assistant, used in combinati
 
 ### Updating
 
-Currently, HASS.Agent doesn't have an updater. It'll be implemented in a coming version. For now, check this page periodically :)
+You can check for new updates from the main window or rightclicking the systray icon and selecting 'check for updates'. If there's an update, you will be offered to download the .zip package from GitHub.
+
+Tip: if you're using a scheduled task to run HASS.Agent, you can just launch the .exe and HASS.Agent will offer to restart using the task. This way you don't have to open the task scheduler.
 
 ----
 
