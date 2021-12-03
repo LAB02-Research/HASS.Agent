@@ -12,8 +12,9 @@ namespace HASSAgent.Forms
 {
     public partial class Configuration : MetroForm
     {
-        private readonly HotkeySelector _hokHotkeySelector = new HotkeySelector();
+        private readonly HotkeySelector _hotkeySelector = new HotkeySelector();
         private bool _schedTaskPresent = false;
+        private readonly Hotkey _previousHotkey = Variables.QuickActionsHotKey;
 
         public Configuration()
         {
@@ -32,10 +33,9 @@ namespace HASSAgent.Forms
             // load current settings from memory
             LoadSettings();
             
-            // config hotkey selector
-            if (Variables.HotKey != null) _hokHotkeySelector.Enable(TbHotkey, Variables.HotKey);
-            else _hokHotkeySelector.Enable(TbHotkey);
-
+            // config quick actions hotkey selector
+            if (Variables.QuickActionsHotKey != null) _hotkeySelector.Enable(TbQuickActionsHotkey, Variables.QuickActionsHotKey);
+            else _hotkeySelector.Enable(TbQuickActionsHotkey);
         }
         
         private void BtnStore_Click(object sender, System.EventArgs e)
@@ -83,7 +83,7 @@ namespace HASSAgent.Forms
             TbHassApiToken.Text = Variables.AppSettings.HassToken;
 
             // hotkey
-            CbEnableHotkey.CheckState = Variables.AppSettings.HotKeyEnabled ? CheckState.Checked : CheckState.Unchecked;
+            CbEnableQuickActionsHotkey.CheckState = Variables.AppSettings.QuickActionsHotKeyEnabled ? CheckState.Checked : CheckState.Unchecked;
 
             // mqtt
             TbMqttAddress.Text = Variables.AppSettings.MqttAddress;
@@ -107,20 +107,20 @@ namespace HASSAgent.Forms
             Variables.AppSettings.HassToken = TbHassApiToken.Text;
 
             // hotkey config
-            Variables.AppSettings.HotKeyEnabled = CbEnableHotkey.CheckState == CheckState.Checked;
-            if (Variables.AppSettings.HotKeyEnabled)
+            Variables.AppSettings.QuickActionsHotKeyEnabled = CbEnableQuickActionsHotkey.CheckState == CheckState.Checked;
+            if (Variables.AppSettings.QuickActionsHotKeyEnabled)
             {
                 // hotkey enabled, store and activate
-                Variables.HotKey = new Hotkey(TbHotkey.Text);
-                Variables.AppSettings.HotKey = Variables.HotKey.ToString();
-                Variables.FrmM.HotkeyChanged();
+                Variables.QuickActionsHotKey = new Hotkey(TbQuickActionsHotkey.Text);
+                Variables.AppSettings.QuickActionsHotKey = Variables.QuickActionsHotKey.ToString();
+                Variables.HotKeyManager.QuickActionsHotKeyChanged(_previousHotkey);
             }
             else
             {
                 // hotkey disabled, remove and deactivate
-                Variables.HotKey = null;
-                Variables.AppSettings.HotKey = string.Empty;
-                Variables.FrmM.HotkeyChanged(false);
+                Variables.QuickActionsHotKey = null;
+                Variables.AppSettings.QuickActionsHotKey = string.Empty;
+                Variables.HotKeyManager.QuickActionsHotKeyChanged(_previousHotkey, false);
             }
 
             // mqtt
@@ -243,7 +243,8 @@ namespace HASSAgent.Forms
 
         private void Configuration_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _hokHotkeySelector?.Dispose();
+            _hotkeySelector?.Disable(TbQuickActionsHotkey);
+            _hotkeySelector?.Dispose();
         }
 
         private void Configuration_KeyUp(object sender, KeyEventArgs e)

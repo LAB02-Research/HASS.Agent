@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
+using HASSAgent.Functions;
 using HASSAgent.Models;
 using HASSAgent.Settings;
 using Newtonsoft.Json;
+using Serilog;
 using Syncfusion.Windows.Forms;
 using Syncfusion.Windows.Forms.Grid;
 
@@ -14,6 +17,8 @@ namespace HASSAgent.Forms.QuickActions
     {
         private readonly List<QuickAction> _quickActions = new List<QuickAction>();
 
+        private int _heightDiff;
+
         public QuickActionsConfig()
         {
             InitializeComponent();
@@ -21,11 +26,18 @@ namespace HASSAgent.Forms.QuickActions
 
         private void QuickActionsConfig_Load(object sender, EventArgs e)
         {
+            // set the initial height difference for resizing
+            _heightDiff = Height - LcQuickActions.Height;
+
             // catch all key presses
             KeyPreview = true;
 
             // load stored actions
             PrepareQuickActionList();
+
+            // we have to refresh after selecting, otherwise a bunch of rows stay highlighted :\
+            LcQuickActions.Grid.SelectionChanged += (o, args) => LcQuickActions.Grid.Refresh();
+            LcQuickActions.Grid.SelectionChanging += (o, args) => LcQuickActions.Grid.Refresh();
         }
 
         /// <summary>
@@ -44,6 +56,9 @@ namespace HASSAgent.Forms.QuickActions
 
             // force column resize
             LcQuickActions.Grid.ColWidths.ResizeToFit(GridRangeInfo.Table(), GridResizeToFitOptions.IncludeHeaders);
+
+            // set header height
+            LcQuickActions.Grid.RowHeights[0] = 25;
 
             // add extra space
             for (var i = 1; i <= LcQuickActions.Grid.ColCount; i++) LcQuickActions.Grid.ColWidths[i] += 15;
@@ -83,6 +98,12 @@ namespace HASSAgent.Forms.QuickActions
             var selectedRow = selectedRows[0];
             var selectedAction = (QuickAction)LcQuickActions.Items[selectedRow.Top - 1];
 
+            if (selectedAction.Id == Guid.Empty)
+            {
+                LcQuickActions.Refresh();
+                selectedAction = (QuickAction)LcQuickActions.Items[selectedRow.Top - 1];
+            }
+            
             // show modding form
             using (var quickAction = new QuickActionsMod(selectedAction))
             {
@@ -170,6 +191,9 @@ namespace HASSAgent.Forms.QuickActions
             // store to file
             StoredQuickActions.Store();
 
+            // reload hotkey bindings
+            Variables.HotKeyManager.ReloadQuickActionsHotKeys();
+
             // done
             DialogResult = DialogResult.OK;
         }
@@ -196,6 +220,11 @@ namespace HASSAgent.Forms.QuickActions
         {
             if (e.KeyCode != Keys.Escape) return;
             Close();
+        }
+
+        private void QuickActionsConfig_Resize(object sender, EventArgs e)
+        {
+            LcQuickActions.Height = Height - _heightDiff;
         }
     }
 }

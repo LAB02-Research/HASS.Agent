@@ -41,6 +41,7 @@ namespace HASSAgent.Forms.Commands
             // BtnRemove
             // 
             this.BtnRemove.AccessibleName = "Button";
+            this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnRemove.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
             this.BtnRemove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -62,6 +63,7 @@ namespace HASSAgent.Forms.Commands
             // BtnModify
             // 
             this.BtnModify.AccessibleName = "Button";
+            this.BtnModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnModify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnModify.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
             this.BtnModify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -83,6 +85,7 @@ namespace HASSAgent.Forms.Commands
             // BtnAdd
             // 
             this.BtnAdd.AccessibleName = "Button";
+            this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
             this.BtnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -107,12 +110,13 @@ namespace HASSAgent.Forms.Commands
             this.LcCommands.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.LcCommands.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.LcCommands.ColorStyles = Syncfusion.Windows.Forms.ColorStyles.Office2016DarkGray;
+            this.LcCommands.Dock = System.Windows.Forms.DockStyle.Top;
             this.LcCommands.FillLastColumn = true;
             this.LcCommands.GridVisualStyles = Syncfusion.Windows.Forms.GridVisualStyles.Office2016DarkGray;
             this.LcCommands.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.LcCommands.HeaderTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.LcCommands.ItemHeight = 20;
-            this.LcCommands.Location = new System.Drawing.Point(12, 12);
+            this.LcCommands.Location = new System.Drawing.Point(0, 0);
             this.LcCommands.MultiColumn = true;
             this.LcCommands.Name = "LcCommands";
             this.LcCommands.Properties.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -122,7 +126,7 @@ namespace HASSAgent.Forms.Commands
             this.LcCommands.ResizeRowsBehavior = Syncfusion.Windows.Forms.Grid.GridResizeCellsBehavior.ResizeAll;
             this.LcCommands.SelectedIndex = -1;
             this.LcCommands.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.LcCommands.Size = new System.Drawing.Size(603, 449);
+            this.LcCommands.Size = new System.Drawing.Size(628, 449);
             this.LcCommands.TabIndex = 1;
             this.LcCommands.ThemeName = "";
             this.LcCommands.ThemeStyle.HorizontalScrollBarStyle.ArrowButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -200,10 +204,10 @@ namespace HASSAgent.Forms.Commands
             this.Controls.Add(this.BtnStore);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(129)))), ((int)(((byte)(131)))));
+            this.MinimumSize = new System.Drawing.Size(640, 598);
             this.Name = "CommandsConfig";
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
@@ -212,6 +216,7 @@ namespace HASSAgent.Forms.Commands
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CommandsConfig_FormClosing);
             this.Load += new System.EventHandler(this.CommandsConfig_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CommandsConfig_KeyUp);
+            this.Resize += new System.EventHandler(this.CommandsConfig_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.LcCommands)).EndInit();
             this.ResumeLayout(false);
 

@@ -20,7 +20,7 @@ namespace HASSAgent.HomeAssistant
         private static ConfigClient _configClient;
         private static ServiceClient _serviceClient;
         private static EntityClient _entityClient;
-        private static StatesClient _statesClient;
+        private static StatesClient _statesClient = null;
         
         internal static HassManagerStatus ManagerStatus = HassManagerStatus.Initialising;
 
@@ -175,6 +175,9 @@ namespace HASSAgent.HomeAssistant
 
             try
             {
+                // check if the states client is up
+                if (_statesClient == null) return false;
+
                 Log.Information("[HASS_API] [{domain}.{entity}] Performing action: {action}", domainVal, entityVal, actionVal);
 
                 var fullEntity = $"{domainVal}.{entityVal}";

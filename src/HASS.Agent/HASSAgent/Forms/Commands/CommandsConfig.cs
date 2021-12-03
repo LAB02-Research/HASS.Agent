@@ -18,6 +18,8 @@ namespace HASSAgent.Forms.Commands
         private List<ConfiguredCommand> _commands = new List<ConfiguredCommand>();
         private readonly List<ConfiguredCommand> _toBeDeletedCommands = new List<ConfiguredCommand>();
 
+        private int _heightDiff;
+
         public CommandsConfig()
         {
             InitializeComponent();
@@ -25,6 +27,9 @@ namespace HASSAgent.Forms.Commands
 
         private void CommandsConfig_Load(object sender, EventArgs e)
         {
+            // set the initial height difference for resizing
+            _heightDiff = Height - LcCommands.Height;
+
             // pause the commands manager
             CommandsManager.Pause();
 
@@ -33,6 +38,10 @@ namespace HASSAgent.Forms.Commands
 
             // load stored commands
             PrepareCommandsList();
+
+            // we have to refresh after selecting, otherwise a bunch of rows stay highlighted :\
+            LcCommands.Grid.SelectionChanged += (o, args) => LcCommands.Grid.Refresh();
+            LcCommands.Grid.SelectionChanging += (o, args) => LcCommands.Grid.Refresh();
         }
 
         /// <summary>
@@ -57,6 +66,9 @@ namespace HASSAgent.Forms.Commands
 
             // force column resize
             LcCommands.Grid.ColWidths.ResizeToFit(GridRangeInfo.Table(), GridResizeToFitOptions.IncludeHeaders);
+
+            // set header height
+            LcCommands.Grid.RowHeights[0] = 25;
 
             // add extra space
             for (var i = 1; i <= LcCommands.Grid.ColCount; i++) LcCommands.Grid.ColWidths[i] += 15;
@@ -276,6 +288,11 @@ namespace HASSAgent.Forms.Commands
         private void LcCommands_DoubleClick(object sender, EventArgs e)
         {
             ModifySelectedCommand();
+        }
+
+        private void CommandsConfig_Resize(object sender, EventArgs e)
+        {
+            LcCommands.Height = Height - _heightDiff;
         }
     }
 }

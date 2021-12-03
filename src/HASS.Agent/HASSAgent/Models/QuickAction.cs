@@ -32,6 +32,9 @@ namespace HASSAgent.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public HassAction Action { get; set; }
 
+        public bool HotKeyEnabled { get; set; }
+        public string HotKey { get; set; }
+
         public string Description { get; set; }
     }
 }

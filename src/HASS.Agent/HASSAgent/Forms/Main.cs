@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using System.Windows.Threading;
 using HASSAgent.Commands;
 using HASSAgent.Enums;
 using HASSAgent.Forms.Commands;
@@ -36,6 +37,10 @@ namespace HASSAgent.Forms
         {
             try
             {
+                // bind the ui dispatcher
+                Variables.UiDispatcher = Dispatcher.CurrentDispatcher;
+
+                // check if we're enabling extended logging
                 if (Properties.Settings.Default.EnableExtendedLogging)
                 {
                     // exception handlers
@@ -67,7 +72,7 @@ namespace HASSAgent.Forms
                 if (ProcessFirstLaunch(firstLaunch)) return;
 
                 // initialize hotkey
-                InitializeHotkey();
+                InitializeHotkeys();
 
                 // initialize managers
                 Task.Run(NotifierManager.Initialize);
@@ -158,48 +163,33 @@ namespace HASSAgent.Forms
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            var ex = e.ExceptionObject as Exception;
-            Log.Fatal(ex, "[MAIN] ThreadException: {err}", ex.Message);
+            if (e.ExceptionObject is Exception ex) Log.Fatal(ex, "[MAIN] ThreadException: {err}", ex.Message);
         }
-
-
+        
         /// <summary>
-        /// Initialize the hotkey (if any)
+        /// Initialize the hotkeys (if any)
         /// </summary>
-        private void InitializeHotkey()
+        private void InitializeHotkeys()
         {
             // prepare listener
             Variables.HotKeyListener.HotkeyPressed += HotkeyListener_HotkeyPressed;
+
+            // always suspend when configuring
             Variables.HotKeyListener.SuspendOn(Variables.FrmConfig);
 
-            // check if hotkey's active
-            if (!Variables.AppSettings.HotKeyEnabled) return;
-            if (Variables.HotKey == null) return;
-            if (Variables.HotKey.ToString() == "None") return;
-
-            // bind the loaded hotkey
-            Variables.HotKeyListener.Add(Variables.HotKey);
+            // bind quick actions hotkey (if configured)
+            Variables.HotKeyManager.InitializeQuickActionsHotKeys();
         }
 
         /// <summary>
-        /// Process a changed hotkey
-        /// </summary>
-        /// <param name="register"></param>
-        internal void HotkeyChanged(bool register = true)
-        {
-            // process a new hotkey
-            Variables.HotKeyListener.RemoveAll();
-            if (register) Variables.HotKeyListener.Add(Variables.HotKey);
-        }
-
-        /// <summary>
-        /// Fires when the registered hotkey is pressed
+        /// Fires when a registered hotkey is pressed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HotkeyListener_HotkeyPressed(object sender, HotkeyEventArgs e)
         {
-            ShowQuickActions();
+            if (e.Hotkey == Variables.QuickActionsHotKey) ShowQuickActions();
+            else Variables.HotKeyManager.ProcessQuickActionHotKey(e.Hotkey.ToString());
         }
 
         /// <summary>

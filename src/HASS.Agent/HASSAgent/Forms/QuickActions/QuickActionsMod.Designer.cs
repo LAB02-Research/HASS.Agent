@@ -40,6 +40,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.LblLoading = new System.Windows.Forms.Label();
             this.LblEntity = new System.Windows.Forms.Label();
+            this.TbHotkey = new System.Windows.Forms.TextBox();
+            this.CbEnableHotkey = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BtnStore
@@ -49,7 +52,7 @@
             this.BtnStore.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BtnStore.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
             this.BtnStore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnStore.Location = new System.Drawing.Point(0, 371);
+            this.BtnStore.Location = new System.Drawing.Point(0, 440);
             this.BtnStore.Name = "BtnStore";
             this.BtnStore.Size = new System.Drawing.Size(352, 38);
             this.BtnStore.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -150,7 +153,7 @@
             this.LblLoading.AutoSize = true;
             this.LblLoading.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblLoading.ForeColor = System.Drawing.Color.MediumSpringGreen;
-            this.LblLoading.Location = new System.Drawing.Point(20, 332);
+            this.LblLoading.Location = new System.Drawing.Point(20, 402);
             this.LblLoading.Name = "LblLoading";
             this.LblLoading.Size = new System.Drawing.Size(312, 21);
             this.LblLoading.TabIndex = 7;
@@ -166,6 +169,36 @@
             this.LblEntity.Size = new System.Drawing.Size(328, 69);
             this.LblEntity.TabIndex = 15;
             // 
+            // TbHotkey
+            // 
+            this.TbHotkey.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.TbHotkey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbHotkey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.TbHotkey.Location = new System.Drawing.Point(179, 339);
+            this.TbHotkey.Name = "TbHotkey";
+            this.TbHotkey.Size = new System.Drawing.Size(161, 22);
+            this.TbHotkey.TabIndex = 18;
+            this.TbHotkey.TextChanged += new System.EventHandler(this.TbHotkey_TextChanged);
+            // 
+            // CbEnableHotkey
+            // 
+            this.CbEnableHotkey.AutoSize = true;
+            this.CbEnableHotkey.Location = new System.Drawing.Point(179, 367);
+            this.CbEnableHotkey.Name = "CbEnableHotkey";
+            this.CbEnableHotkey.Size = new System.Drawing.Size(99, 17);
+            this.CbEnableHotkey.TabIndex = 17;
+            this.CbEnableHotkey.Text = "enable hotkey";
+            this.CbEnableHotkey.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 341);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(113, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "hotkey combination:";
+            // 
             // QuickActionsMod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -174,7 +207,10 @@
             this.CaptionBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(352, 409);
+            this.ClientSize = new System.Drawing.Size(352, 478);
+            this.Controls.Add(this.TbHotkey);
+            this.Controls.Add(this.CbEnableHotkey);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.LblEntity);
             this.Controls.Add(this.TbDescription);
             this.Controls.Add(this.CbAction);
@@ -197,6 +233,7 @@
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quick Action";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuickActionsMod_FormClosing);
             this.Load += new System.EventHandler(this.QuickActionsMod_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -215,6 +252,9 @@
         private System.Windows.Forms.ComboBox CbAction;
         private System.Windows.Forms.TextBox TbDescription;
         private System.Windows.Forms.Label LblEntity;
+        private System.Windows.Forms.TextBox TbHotkey;
+        private System.Windows.Forms.CheckBox CbEnableHotkey;
+        private System.Windows.Forms.Label label5;
     }
 }
 

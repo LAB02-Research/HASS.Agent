@@ -35,8 +35,8 @@ namespace HASSAgent.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Configuration));
             this.BtnStore = new Syncfusion.WinForms.Controls.SfButton();
             this.customGroupBox1 = new CustomGroupBox.CustomGroupBox();
-            this.TbHotkey = new System.Windows.Forms.TextBox();
-            this.CbEnableHotkey = new System.Windows.Forms.CheckBox();
+            this.TbQuickActionsHotkey = new System.Windows.Forms.TextBox();
+            this.CbEnableQuickActionsHotkey = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.GpStartup = new CustomGroupBox.CustomGroupBox();
             this.BtnScheduledTaskReadme = new Syncfusion.WinForms.Controls.SfButton();
@@ -99,35 +99,35 @@ namespace HASSAgent.Forms
             // customGroupBox1
             // 
             this.customGroupBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.customGroupBox1.Controls.Add(this.TbHotkey);
-            this.customGroupBox1.Controls.Add(this.CbEnableHotkey);
+            this.customGroupBox1.Controls.Add(this.TbQuickActionsHotkey);
+            this.customGroupBox1.Controls.Add(this.CbEnableQuickActionsHotkey);
             this.customGroupBox1.Controls.Add(this.label5);
             this.customGroupBox1.Location = new System.Drawing.Point(284, 401);
             this.customGroupBox1.Name = "customGroupBox1";
             this.customGroupBox1.Size = new System.Drawing.Size(369, 111);
             this.customGroupBox1.TabIndex = 4;
             this.customGroupBox1.TabStop = false;
-            this.customGroupBox1.Text = "hotkey config";
+            this.customGroupBox1.Text = "quick actions hotkey config";
             // 
-            // TbHotkey
+            // TbQuickActionsHotkey
             // 
-            this.TbHotkey.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.TbHotkey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TbHotkey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbHotkey.Location = new System.Drawing.Point(174, 34);
-            this.TbHotkey.Name = "TbHotkey";
-            this.TbHotkey.Size = new System.Drawing.Size(161, 22);
-            this.TbHotkey.TabIndex = 8;
+            this.TbQuickActionsHotkey.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.TbQuickActionsHotkey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbQuickActionsHotkey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.TbQuickActionsHotkey.Location = new System.Drawing.Point(174, 34);
+            this.TbQuickActionsHotkey.Name = "TbQuickActionsHotkey";
+            this.TbQuickActionsHotkey.Size = new System.Drawing.Size(161, 22);
+            this.TbQuickActionsHotkey.TabIndex = 8;
             // 
-            // CbEnableHotkey
+            // CbEnableQuickActionsHotkey
             // 
-            this.CbEnableHotkey.AutoSize = true;
-            this.CbEnableHotkey.Location = new System.Drawing.Point(174, 76);
-            this.CbEnableHotkey.Name = "CbEnableHotkey";
-            this.CbEnableHotkey.Size = new System.Drawing.Size(104, 17);
-            this.CbEnableHotkey.TabIndex = 7;
-            this.CbEnableHotkey.Text = "enable hotkeys";
-            this.CbEnableHotkey.UseVisualStyleBackColor = true;
+            this.CbEnableQuickActionsHotkey.AutoSize = true;
+            this.CbEnableQuickActionsHotkey.Location = new System.Drawing.Point(174, 76);
+            this.CbEnableQuickActionsHotkey.Name = "CbEnableQuickActionsHotkey";
+            this.CbEnableQuickActionsHotkey.Size = new System.Drawing.Size(170, 17);
+            this.CbEnableQuickActionsHotkey.TabIndex = 7;
+            this.CbEnableQuickActionsHotkey.Text = "enable quick actions hotkey";
+            this.CbEnableQuickActionsHotkey.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -579,7 +579,7 @@ namespace HASSAgent.Forms
         private Syncfusion.WinForms.Controls.SfButton BtnScheduledTaskReadme;
         private CustomGroupBox.CustomGroupBox customGroupBox1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox CbEnableHotkey;
+        private System.Windows.Forms.CheckBox CbEnableQuickActionsHotkey;
         private CustomGroupBox.CustomGroupBox customGroupBox2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
@@ -587,7 +587,7 @@ namespace HASSAgent.Forms
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox CbMqttTls;
         private System.Windows.Forms.TextBox TbHassIp;
-        private System.Windows.Forms.TextBox TbHotkey;
+        private System.Windows.Forms.TextBox TbQuickActionsHotkey;
         private System.Windows.Forms.TextBox TbHassApiToken;
         private System.Windows.Forms.TextBox TbMqttPassword;
         private System.Windows.Forms.TextBox TbMqttUsername;

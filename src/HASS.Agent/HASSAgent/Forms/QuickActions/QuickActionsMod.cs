@@ -5,11 +5,13 @@ using HASSAgent.Enums;
 using HASSAgent.HomeAssistant;
 using HASSAgent.Models;
 using Syncfusion.Windows.Forms;
+using WK.Libraries.HotkeyListenerNS;
 
 namespace HASSAgent.Forms.QuickActions
 {
     public partial class QuickActionsMod : MetroForm
     {
+        private readonly HotkeySelector _hotkeySelector = new HotkeySelector();
         internal readonly QuickAction QuickAction;
 
         public QuickActionsMod(QuickAction quickAction)
@@ -32,7 +34,7 @@ namespace HASSAgent.Forms.QuickActions
                 DialogResult = DialogResult.Abort;
                 return;
             }
-
+            
             // load enums
             CbDomain.DataSource = Enum.GetValues(typeof(HassDomain));
             CbAction.DataSource = Enum.GetValues(typeof(HassAction));
@@ -42,6 +44,10 @@ namespace HASSAgent.Forms.QuickActions
             {
                 QuickAction.Id = Guid.NewGuid();
                 Text = "New Quick Action";
+
+                _hotkeySelector.Enable(TbHotkey);
+                TbHotkey.Text = _hotkeySelector.EmptyHotkeyText;
+
                 return;
             }
 
@@ -75,7 +81,7 @@ namespace HASSAgent.Forms.QuickActions
                     {
                         await Task.Delay(150);
                         if (HassApiManager.ManagerStatus != HassManagerStatus.Failed) continue;
-                        MessageBoxAdv.Show("There was an error trying to fetch your entiiies.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBoxAdv.Show("There was an error trying to fetch your entities.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return false;
                     }
                     SetGuiLoading(false);
@@ -123,6 +129,14 @@ namespace HASSAgent.Forms.QuickActions
 
             // set the optional description
             TbDescription.Text = QuickAction.Description;
+
+            // load the hotkey
+            if (!string.IsNullOrEmpty(QuickAction.HotKey)) _hotkeySelector.Enable(TbHotkey, new Hotkey(QuickAction.HotKey));
+            else
+            {
+                _hotkeySelector.Enable(TbHotkey);
+                TbHotkey.Text = _hotkeySelector.EmptyHotkeyText;
+            }
         }
 
         /// <summary>
@@ -159,6 +173,15 @@ namespace HASSAgent.Forms.QuickActions
                 return;
             }
 
+            // get and check hotkey
+            var enableHotkey = CbEnableHotkey.Checked;
+            var hotkey = TbHotkey.Text;
+            if (string.IsNullOrWhiteSpace(hotkey))
+            {
+                hotkey = string.Empty;
+                enableHotkey = false;
+            }
+
             // get description
             var description = TbDescription.Text.Trim();
 
@@ -166,6 +189,8 @@ namespace HASSAgent.Forms.QuickActions
             QuickAction.Entity = entity;
             QuickAction.Domain = domain;
             QuickAction.Action = action;
+            QuickAction.HotKeyEnabled = enableHotkey;
+            QuickAction.HotKey = hotkey;
             QuickAction.Description = description;
 
             // done
@@ -249,6 +274,26 @@ namespace HASSAgent.Forms.QuickActions
             }
 
             LblEntity.Text = CbEntity.Text;
+        }
+
+        private void QuickActionsMod_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // stop and dispose selector
+            _hotkeySelector?.Disable(TbHotkey);
+            _hotkeySelector?.Dispose();
+        }
+
+        private void TbHotkey_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TbHotkey.Text)
+                || TbHotkey.Text == _hotkeySelector?.EmptyHotkeyText
+                || TbHotkey.Text == _hotkeySelector?.InvalidHotkeyText)
+            {
+                CbEnableHotkey.CheckState = CheckState.Unchecked;
+                return;
+            }
+
+            CbEnableHotkey.CheckState = CheckState.Checked;
         }
     }
 }

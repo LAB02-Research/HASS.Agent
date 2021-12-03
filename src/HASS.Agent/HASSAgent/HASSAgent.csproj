@@ -82,6 +82,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\CommandsManager.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Forms\Sensors\SensorsMod.Designer.cs">
       <DependentUpon>SensorsMod.cs</DependentUpon>
     </Compile>
+    <Compile Include="Functions\HotKeyManager.cs" />
     <Compile Include="Functions\UpdateManager.cs" />
     <Compile Include="Models\ComponentStatusUpdate.cs" />
     <Compile Include="Models\Mqtt\Commands\CustomCommands\LogOffCommand.cs" />

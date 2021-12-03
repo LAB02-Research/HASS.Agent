@@ -13,8 +13,8 @@
         public string HassUri { get; set; } = "http://hass.local:8123";
         public string HassToken { get; set; }
 
-        public bool HotKeyEnabled { get; set; } = true;
-        public string HotKey { get; set; } 
+        public bool QuickActionsHotKeyEnabled { get; set; } = true;
+        public string QuickActionsHotKey { get; set; } 
 
         public string MqttAddress { get; set; }
         public int MqttPort { get; set; } = 1883;

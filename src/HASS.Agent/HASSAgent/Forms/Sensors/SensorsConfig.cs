@@ -18,6 +18,8 @@ namespace HASSAgent.Forms.Sensors
         private List<ConfiguredSensor> _sensors = new List<ConfiguredSensor>();
         private readonly List<ConfiguredSensor> _toBeDeletedSensors = new List<ConfiguredSensor>();
 
+        private int _heightDiff;
+
         public SensorsConfig()
         {
             InitializeComponent();
@@ -25,6 +27,9 @@ namespace HASSAgent.Forms.Sensors
 
         private void SensorsConfig_Load(object sender, EventArgs e)
         {
+            // set the initial height difference for resizing
+            _heightDiff = Height - LcSensors.Height;
+
             // pause the sensor manager
             SensorsManager.Pause();
 
@@ -33,6 +38,10 @@ namespace HASSAgent.Forms.Sensors
 
             // load stored sensors
             PrepareSensorsList();
+
+            // we have to refresh after selecting, otherwise a bunch of rows stay highlighted :\
+            LcSensors.Grid.SelectionChanged += (o, args) => LcSensors.Grid.Refresh();
+            LcSensors.Grid.SelectionChanging += (o, args) => LcSensors.Grid.Refresh();
         }
 
         /// <summary>
@@ -60,7 +69,10 @@ namespace HASSAgent.Forms.Sensors
 
             // force column resize
             LcSensors.Grid.ColWidths.ResizeToFit(GridRangeInfo.Table(), GridResizeToFitOptions.IncludeHeaders);
-            
+
+            // set header height
+            LcSensors.Grid.RowHeights[0] = 25;
+
             // add extra space
             for (var i = 1; i <= LcSensors.Grid.ColCount; i++) LcSensors.Grid.ColWidths[i] += 15;
 
@@ -275,6 +287,11 @@ namespace HASSAgent.Forms.Sensors
         private void LcSensors_DoubleClick(object sender, EventArgs e)
         {
             ModifySelectedSensor();
+        }
+
+        private void SensorsConfig_Resize(object sender, EventArgs e)
+        {
+            LcSensors.Height = Height - _heightDiff;
         }
     }
 }

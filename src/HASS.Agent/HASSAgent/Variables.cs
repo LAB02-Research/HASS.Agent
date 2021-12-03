@@ -4,9 +4,11 @@ using System.IO;
 using System.Net;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Windows.Threading;
 using CoreAudio;
 using Grapevine;
 using HASSAgent.Forms;
+using HASSAgent.Functions;
 using HASSAgent.Models;
 using HASSAgent.Models.Mqtt;
 using HASSAgent.Models.Mqtt.Commands;
@@ -31,9 +33,11 @@ namespace HASSAgent
         /// Internal references
         /// </summary>
         internal static Main FrmM { get; set; }
+        internal static Dispatcher UiDispatcher { get; set; }
         internal static Configuration FrmConfig { get; set; }
         internal static WebClient ImageWebClient { get; } = new WebClient();
-        internal static Hotkey HotKey { get; set; } = new Hotkey(Keys.Control | Keys.Alt, Keys.Q);
+        internal static Hotkey QuickActionsHotKey { get; set; } = new Hotkey(Keys.Control | Keys.Alt, Keys.Q);
+        internal static HotKeyManager HotKeyManager { get; } = new HotKeyManager();
         internal static HotkeyListener HotKeyListener { get; set; }
         internal static MMDeviceEnumerator AudioDeviceEnumerator { get; } = new MMDeviceEnumerator();
         internal static Random Rnd { get; } = new Random();

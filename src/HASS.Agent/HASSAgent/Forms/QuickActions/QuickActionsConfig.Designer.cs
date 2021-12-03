@@ -66,6 +66,7 @@ namespace HASSAgent.Forms.QuickActions
             // BtnAdd
             // 
             this.BtnAdd.AccessibleName = "Button";
+            this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
             this.BtnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -87,6 +88,7 @@ namespace HASSAgent.Forms.QuickActions
             // BtnModify
             // 
             this.BtnModify.AccessibleName = "Button";
+            this.BtnModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnModify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnModify.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
             this.BtnModify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -108,6 +110,7 @@ namespace HASSAgent.Forms.QuickActions
             // BtnRemove
             // 
             this.BtnRemove.AccessibleName = "Button";
+            this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnRemove.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
             this.BtnRemove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -129,6 +132,7 @@ namespace HASSAgent.Forms.QuickActions
             // BtnPreview
             // 
             this.BtnPreview.AccessibleName = "Button";
+            this.BtnPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnPreview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnPreview.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
             this.BtnPreview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -153,12 +157,13 @@ namespace HASSAgent.Forms.QuickActions
             this.LcQuickActions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.LcQuickActions.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.LcQuickActions.ColorStyles = Syncfusion.Windows.Forms.ColorStyles.Office2016DarkGray;
+            this.LcQuickActions.Dock = System.Windows.Forms.DockStyle.Top;
             this.LcQuickActions.FillLastColumn = true;
             this.LcQuickActions.GridVisualStyles = Syncfusion.Windows.Forms.GridVisualStyles.Office2016DarkGray;
             this.LcQuickActions.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.LcQuickActions.HeaderTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.LcQuickActions.ItemHeight = 20;
-            this.LcQuickActions.Location = new System.Drawing.Point(12, 12);
+            this.LcQuickActions.Location = new System.Drawing.Point(0, 0);
             this.LcQuickActions.MultiColumn = true;
             this.LcQuickActions.Name = "LcQuickActions";
             this.LcQuickActions.Properties.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -167,8 +172,9 @@ namespace HASSAgent.Forms.QuickActions
             this.LcQuickActions.Properties.ThemedHeader = true;
             this.LcQuickActions.ResizeRowsBehavior = Syncfusion.Windows.Forms.Grid.GridResizeCellsBehavior.ResizeAll;
             this.LcQuickActions.SelectedIndex = -1;
-            this.LcQuickActions.Size = new System.Drawing.Size(908, 455);
-            this.LcQuickActions.TabIndex = 0;
+            this.LcQuickActions.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.LcQuickActions.Size = new System.Drawing.Size(933, 455);
+            this.LcQuickActions.TabIndex = 6;
             this.LcQuickActions.ThemeName = "";
             this.LcQuickActions.ThemeStyle.HorizontalScrollBarStyle.ArrowButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.LcQuickActions.ThemeStyle.HorizontalScrollBarStyle.ArrowButtonBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
@@ -224,10 +230,10 @@ namespace HASSAgent.Forms.QuickActions
             this.Controls.Add(this.BtnStore);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(129)))), ((int)(((byte)(131)))));
+            this.MinimumSize = new System.Drawing.Size(945, 604);
             this.Name = "QuickActionsConfig";
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
@@ -235,6 +241,7 @@ namespace HASSAgent.Forms.QuickActions
             this.Text = "Quick Actions Config";
             this.Load += new System.EventHandler(this.QuickActionsConfig_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.QuickActionsConfig_KeyUp);
+            this.Resize += new System.EventHandler(this.QuickActionsConfig_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.LcQuickActions)).EndInit();
             this.ResumeLayout(false);
 
@@ -245,8 +252,8 @@ namespace HASSAgent.Forms.QuickActions
         private Syncfusion.WinForms.Controls.SfButton BtnAdd;
         private Syncfusion.WinForms.Controls.SfButton BtnModify;
         private Syncfusion.WinForms.Controls.SfButton BtnRemove;
-        private Syncfusion.Windows.Forms.Grid.GridListControl LcQuickActions;
         private Syncfusion.WinForms.Controls.SfButton BtnPreview;
+        private Syncfusion.Windows.Forms.Grid.GridListControl LcQuickActions;
     }
 }
 

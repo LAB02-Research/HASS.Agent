@@ -93,7 +93,7 @@ namespace HASSAgent.Settings
                 }
 
                 // load the hotkey
-                Variables.HotKey = string.IsNullOrEmpty(Variables.AppSettings.HotKey) ? null : HotkeyListener.Convert(Variables.AppSettings.HotKey);
+                Variables.QuickActionsHotKey = string.IsNullOrEmpty(Variables.AppSettings.QuickActionsHotKey) ? null : HotkeyListener.Convert(Variables.AppSettings.QuickActionsHotKey);
 
                 // done
                 Log.Information("[SETTINGS] Configuration loaded");

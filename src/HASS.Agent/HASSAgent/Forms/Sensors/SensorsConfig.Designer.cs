@@ -41,6 +41,7 @@ namespace HASSAgent.Forms.Sensors
             // BtnRemove
             // 
             this.BtnRemove.AccessibleName = "Button";
+            this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnRemove.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
             this.BtnRemove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -62,6 +63,7 @@ namespace HASSAgent.Forms.Sensors
             // BtnModify
             // 
             this.BtnModify.AccessibleName = "Button";
+            this.BtnModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnModify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnModify.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
             this.BtnModify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -83,6 +85,7 @@ namespace HASSAgent.Forms.Sensors
             // BtnAdd
             // 
             this.BtnAdd.AccessibleName = "Button";
+            this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
             this.BtnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -107,12 +110,13 @@ namespace HASSAgent.Forms.Sensors
             this.LcSensors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.LcSensors.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.LcSensors.ColorStyles = Syncfusion.Windows.Forms.ColorStyles.Office2016DarkGray;
+            this.LcSensors.Dock = System.Windows.Forms.DockStyle.Top;
             this.LcSensors.FillLastColumn = true;
             this.LcSensors.GridVisualStyles = Syncfusion.Windows.Forms.GridVisualStyles.Office2016DarkGray;
             this.LcSensors.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.LcSensors.HeaderTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.LcSensors.ItemHeight = 20;
-            this.LcSensors.Location = new System.Drawing.Point(12, 12);
+            this.LcSensors.Location = new System.Drawing.Point(0, 0);
             this.LcSensors.MultiColumn = true;
             this.LcSensors.Name = "LcSensors";
             this.LcSensors.Properties.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -122,7 +126,7 @@ namespace HASSAgent.Forms.Sensors
             this.LcSensors.ResizeRowsBehavior = Syncfusion.Windows.Forms.Grid.GridResizeCellsBehavior.ResizeAll;
             this.LcSensors.SelectedIndex = -1;
             this.LcSensors.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.LcSensors.Size = new System.Drawing.Size(603, 446);
+            this.LcSensors.Size = new System.Drawing.Size(624, 446);
             this.LcSensors.TabIndex = 2;
             this.LcSensors.ThemeName = "";
             this.LcSensors.ThemeStyle.HorizontalScrollBarStyle.ArrowButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -200,10 +204,10 @@ namespace HASSAgent.Forms.Sensors
             this.Controls.Add(this.BtnStore);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(129)))), ((int)(((byte)(131)))));
+            this.MinimumSize = new System.Drawing.Size(636, 598);
             this.Name = "SensorsConfig";
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
@@ -212,6 +216,7 @@ namespace HASSAgent.Forms.Sensors
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SensorsConfig_FormClosing);
             this.Load += new System.EventHandler(this.SensorsConfig_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SensorsConfig_KeyUp);
+            this.Resize += new System.EventHandler(this.SensorsConfig_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.LcSensors)).EndInit();
             this.ResumeLayout(false);
 
