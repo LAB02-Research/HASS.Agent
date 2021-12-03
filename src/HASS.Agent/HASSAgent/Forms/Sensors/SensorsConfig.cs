@@ -39,6 +39,13 @@ namespace HASSAgent.Forms.Sensors
             // load stored sensors
             PrepareSensorsList();
 
+            // set all flags to 'max one row'
+            LcSensors.Grid.AllowDragSelectedCols = false;
+            LcSensors.Grid.AllowSelection = GridSelectionFlags.Row;
+            LcSensors.Grid.AllowDragSelectedRows = false;
+            LcSensors.Grid.ListBoxSelectionMode = SelectionMode.One;
+            LcSensors.SelectionMode = SelectionMode.One;
+
             // we have to refresh after selecting, otherwise a bunch of rows stay highlighted :\
             LcSensors.Grid.SelectionChanged += (o, args) => LcSensors.Grid.Refresh();
             LcSensors.Grid.SelectionChanging += (o, args) => LcSensors.Grid.Refresh();

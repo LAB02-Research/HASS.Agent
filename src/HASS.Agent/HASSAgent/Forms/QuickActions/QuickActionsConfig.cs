@@ -35,6 +35,13 @@ namespace HASSAgent.Forms.QuickActions
             // load stored actions
             PrepareQuickActionList();
 
+            // set all flags to 'max one row'
+            LcQuickActions.Grid.AllowDragSelectedCols = false;
+            LcQuickActions.Grid.AllowSelection = GridSelectionFlags.Row;
+            LcQuickActions.Grid.AllowDragSelectedRows = false;
+            LcQuickActions.Grid.ListBoxSelectionMode = SelectionMode.One;
+            LcQuickActions.SelectionMode = SelectionMode.One;
+
             // we have to refresh after selecting, otherwise a bunch of rows stay highlighted :\
             LcQuickActions.Grid.SelectionChanged += (o, args) => LcQuickActions.Grid.Refresh();
             LcQuickActions.Grid.SelectionChanging += (o, args) => LcQuickActions.Grid.Refresh();

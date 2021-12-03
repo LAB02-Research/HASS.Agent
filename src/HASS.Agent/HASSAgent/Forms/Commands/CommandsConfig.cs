@@ -39,6 +39,13 @@ namespace HASSAgent.Forms.Commands
             // load stored commands
             PrepareCommandsList();
 
+            // set all flags to 'max one row'
+            LcCommands.Grid.AllowDragSelectedCols = false;
+            LcCommands.Grid.AllowSelection = GridSelectionFlags.Row;
+            LcCommands.Grid.AllowDragSelectedRows = false;
+            LcCommands.Grid.ListBoxSelectionMode = SelectionMode.One;
+            LcCommands.SelectionMode = SelectionMode.One;
+
             // we have to refresh after selecting, otherwise a bunch of rows stay highlighted :\
             LcCommands.Grid.SelectionChanged += (o, args) => LcCommands.Grid.Refresh();
             LcCommands.Grid.SelectionChanging += (o, args) => LcCommands.Grid.Refresh();
