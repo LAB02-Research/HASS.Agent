@@ -14,13 +14,13 @@ HASS.Agent is a Windows-based client application for <a href="https://www.home-a
 
  * [Why?](#why)
  * [Functionality](#functionality)
- * [Credits](#credits)
  * [Installation](#installation)
  * [Configuration](#configuration)
  * [Usage](#usage)
  * [Updating](#updating)
  * [Wishlist](#wishlist)
  * [Error Reporting](#error-reporting)
+ * [Credits](#credits)
 
 ----
 
@@ -60,24 +60,6 @@ The quickaction window you'll see when using the hotkey. This window automatical
 The sensors configuration screen:
 
 ![Sensors](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_sensors.png)
-
-----
-
-### Credits
-
-I want to put the credits this far up on the readme page, because I'm standing on the shoulders of giants :)
-
-For starters; thanks to the entire team that's developing <a href="https://www.home-assistant.io" target="_blank">Home Assistant</a> - such an amazing platform!
-
-Second; I learned a lot from sleevezipper's <a href="https://github.com/sleevezipper/hass-workstation-service" target="_blank">HASS Workstation Service</a>. Without it, the commands & sensors wouldn't have been so easy to implement. Thank you for sharing your code & hard work!
-
-Third; thanks to qJake's <a href="https://github.com/qJake/HADotNet" target="_blank">HADotNet</a> library, which made developing the quick actions binding to Home Assistant a breeze.
-
-And a big thank you to all other packages:
-
-<a href="https://github.com/morphx666/CoreAudio" target="_blank">CoreAudio</a>, <a href="https://scottoffen.github.io/grapevine/" target="_blank">Grapevine</a>, <a href="https://github.com/Willy-Kimura/HotkeyListener" target="_blank">HotkeyListener</a>, <a href="https://github.com/LibreHardwareMonitor/LibreHardwareMonitor" target="_blank">LibreHardwareMonitor</a>, <a href="https://github.com/CommunityToolkit/WindowsCommunityToolkit" target="_blank">Microsoft.Toolkit.Uwp.Notifications</a>, <a href="https://github.com/chkr1011/MQTTnet" target="_blank">MQTTnet</a>, <a href="https://www.newtonsoft.com/json" target="_blank">Newtonsoft.Json</a>, <a href="https://github.com/serilog/serilog" target="_blank">Serilog</a>, <a href="https://www.syncfusion.com/" target="_blank">Syncfusion</a>, <a href="https://github.com/dahall/taskscheduler" target="_blank">TaskScheduler</a> and <a href="https://coderr.io" target="_blank">Coderr</a>.
-
-Please consult their individual licensing if you plan to use any of the code.
 
 ----
 
@@ -210,3 +192,17 @@ This type of application is quite error prone (fetching data from WMI, systemwid
 If you want to help out, please set `EnableCoderrExceptionReporting` to `True` in **HASS.Agent.exe.config**. 
 
 If you're experiencing bugs, please set `EnableExtendedLogging` to `True` in **HASS.Agent.exe.config**. Restart HASS.Agent and wait for the bug to occur. Afterwards, please attach the relevant logfile from the **Logs** subfolder in your ticket. Note that if you only enable this option, nothing will get sent to Coderr.
+
+----
+
+### Credits
+
+First; thanks to the entire team that's developing <a href="https://www.home-assistant.io" target="_blank">Home Assistant</a> - such an amazing platform!
+
+Second; I learned a lot from sleevezipper's <a href="https://github.com/sleevezipper/hass-workstation-service" target="_blank">HASS Workstation Service</a>. Without it, the commands & sensors wouldn't have been so easy to implement. Thank you for sharing your code & hard work!
+
+And a big thank you to all other packages:
+
+<a href="https://github.com/qJake/HADotNet" target="_blank">HADotNet</a>, <a href="https://github.com/morphx666/CoreAudio" target="_blank">CoreAudio</a>, <a href="https://scottoffen.github.io/grapevine/" target="_blank">Grapevine</a>, <a href="https://github.com/Willy-Kimura/HotkeyListener" target="_blank">HotkeyListener</a>, <a href="https://github.com/LibreHardwareMonitor/LibreHardwareMonitor" target="_blank">LibreHardwareMonitor</a>, <a href="https://github.com/CommunityToolkit/WindowsCommunityToolkit" target="_blank">Microsoft.Toolkit.Uwp.Notifications</a>, <a href="https://github.com/chkr1011/MQTTnet" target="_blank">MQTTnet</a>, <a href="https://www.newtonsoft.com/json" target="_blank">Newtonsoft.Json</a>, <a href="https://github.com/serilog/serilog" target="_blank">Serilog</a>, <a href="https://www.syncfusion.com/" target="_blank">Syncfusion</a>, <a href="https://github.com/dahall/taskscheduler" target="_blank">TaskScheduler</a>, <a href="https://github.com/octokit/octokit.net" target="_blank">Octokit</a> and <a href="https://coderr.io" target="_blank">Coderr</a>.
+
+Please consult their individual licensing if you plan to use any of the code.
