@@ -20,6 +20,7 @@ HASS.Agent is a Windows-based client application for <a href="https://www.home-a
  * [Updating](#updating)
  * [Wishlist](#wishlist)
  * [Error Reporting](#error-reporting)
+ * [Usage Summary](#usage-summary)
  * [Credits and Licensing](#credits-and-licensing)
 
 ----
@@ -191,6 +192,22 @@ If you'd like to help out, please set `EnableCoderrExceptionReporting` to `True`
 If you're experiencing bugs, please set `EnableExtendedLogging` to `True` in **HASS.Agent.exe.config**. Restart HASS.Agent and wait for the bug to occur. Afterwards, please attach the relevant logfile from the **Logs** subfolder in your ticket. Note that if you only enable this option, nothing will get sent to Coderr.
 
 ----
+
+### Usage Summary
+
+Checklist to start using HASS.Agent:
+
+- Install and configure <a href="https://github.com/LAB02-Research/HASS.Agent-Notifier" target="_blank">HASS.Agent Notifier integration</a> if you want notifications
+- Open port 5115 (*default*) in your pc's firewall
+- Download & extract the <a href="https://github.com/LAB02-Research/HASS.Agent/releases/latest">latest .zip release</a>
+- Launch HASS.Agent.exe
+- Configure the parts you'll be using
+- Optionally set HASS.Agent to run as a scheduled task
+- Start adding Quick Actions, commands & sensors!
+
+Stuck? <a href="https://github.com/LAB02-Research/HASS.Agent/issues" target="_blank">Create a ticket</a>.
+
+---
 
 ### Credits and Licensing
 
