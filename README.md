@@ -20,7 +20,7 @@ HASS.Agent is a Windows-based client application for <a href="https://www.home-a
  * [Updating](#updating)
  * [Wishlist](#wishlist)
  * [Error Reporting](#error-reporting)
- * [Credits](#credits)
+ * [Credits and Licensing](#credits-and-licensing)
 
 ----
 
@@ -192,7 +192,7 @@ If you're experiencing bugs, please set `EnableExtendedLogging` to `True` in **H
 
 ----
 
-### Credits and licensing
+### Credits and Licensing
 
 First: thanks to the entire team that's developing <a href="https://www.home-assistant.io" target="_blank">Home Assistant</a> - such an amazing platform!
 
