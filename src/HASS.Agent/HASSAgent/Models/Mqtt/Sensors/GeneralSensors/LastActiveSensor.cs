@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using HASSAgent.Functions;
 
 namespace HASSAgent.Models.Mqtt.Sensors.GeneralSensors
 {
@@ -21,11 +22,8 @@ namespace HASSAgent.Models.Mqtt.Sensors.GeneralSensors
             });
         }
 
-        public override string GetState()
-        {
-            return GetLastInputTime().ToString("s");
-        }
-
+        public override string GetState() => GetLastInputTime().ToTimeZoneString();
+        
         private static DateTime GetLastInputTime()
         {
             var lastInputInfo = new LASTINPUTINFO();

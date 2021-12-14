@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using HASSAgent.Functions;
 
 namespace HASSAgent.Models.Mqtt.Sensors.GeneralSensors
 {
@@ -21,10 +22,7 @@ namespace HASSAgent.Models.Mqtt.Sensors.GeneralSensors
             });
         }
 
-        public override string GetState()
-        {
-            return (DateTime.Now - TimeSpan.FromMilliseconds(GetTickCount64())).ToString("s");
-        }
+        public override string GetState() => (DateTime.Now - TimeSpan.FromMilliseconds(GetTickCount64())).ToTimeZoneString();
 
         [DllImport("kernel32")]
         private static extern ulong GetTickCount64();

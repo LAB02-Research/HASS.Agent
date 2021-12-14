@@ -23,6 +23,16 @@ using Syncfusion.Windows.Forms;
 
 namespace HASSAgent.Functions
 {
+    internal static class DateTimeExtensions
+    {
+        /// <summary>
+        /// Converts the DateTime object to a timezone-containing string
+        /// </summary>
+        /// <param name="datetime"></param>
+        /// <returns></returns>
+        internal static string ToTimeZoneString(this DateTime datetime) => $"{datetime.ToUniversalTime():u}";
+    }
+
     internal static class HelperFunctions
     {
         /// <summary>
