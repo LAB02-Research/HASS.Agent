@@ -37,7 +37,7 @@ namespace HASSAgent.Forms.QuickActions
             // LblLoading
             // 
             this.LblLoading.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblLoading.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblLoading.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblLoading.ForeColor = System.Drawing.Color.MediumSpringGreen;
             this.LblLoading.Location = new System.Drawing.Point(0, 0);
             this.LblLoading.Name = "LblLoading";
@@ -50,6 +50,7 @@ namespace HASSAgent.Forms.QuickActions
             // PnlActions
             // 
             this.PnlActions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PnlActions.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PnlActions.Location = new System.Drawing.Point(0, 0);
             this.PnlActions.Name = "PnlActions";
             this.PnlActions.Size = new System.Drawing.Size(407, 125);
@@ -61,12 +62,12 @@ namespace HASSAgent.Forms.QuickActions
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.CaptionBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(407, 125);
             this.Controls.Add(this.LblLoading);
             this.Controls.Add(this.PnlActions);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

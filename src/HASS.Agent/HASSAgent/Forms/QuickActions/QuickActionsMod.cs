@@ -29,7 +29,7 @@ namespace HASSAgent.Forms.QuickActions
         private async void QuickActionsMod_Load(object sender, EventArgs e)
         {
             // check hass manager status
-            if (!await CheckHassManager())
+            if (!await CheckHassManagerAsync())
             {
                 DialogResult = DialogResult.Abort;
                 return;
@@ -59,7 +59,7 @@ namespace HASSAgent.Forms.QuickActions
         /// Check whether the HASS manager is ready
         /// </summary>
         /// <returns></returns>
-        private async Task<bool> CheckHassManager()
+        private async Task<bool> CheckHassManagerAsync()
         {
             switch (HassApiManager.ManagerStatus)
             {

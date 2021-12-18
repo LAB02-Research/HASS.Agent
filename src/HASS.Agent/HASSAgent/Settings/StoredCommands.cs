@@ -33,7 +33,7 @@ namespace HASSAgent.Settings
                 {
                     // none yet
                     Log.Information("[SETTINGS_COMMANDS] Config not found, no entities loaded");
-                    Variables.FrmM?.SetCommandsStatus(ComponentStatus.Stopped);
+                    Variables.MainForm?.SetCommandsStatus(ComponentStatus.Stopped);
                     return true;
                 }
 
@@ -42,7 +42,7 @@ namespace HASSAgent.Settings
                 if (string.IsNullOrWhiteSpace(commandsRaw))
                 {
                     Log.Information("[SETTINGS_COMMANDS] Config is empty, no entities loaded");
-                    Variables.FrmM?.SetCommandsStatus(ComponentStatus.Stopped);
+                    Variables.MainForm?.SetCommandsStatus(ComponentStatus.Stopped);
                     return true;
                 }
 
@@ -53,7 +53,7 @@ namespace HASSAgent.Settings
                 if (configuredCommands == null)
                 {
                     Log.Error("[SETTINGS_COMMANDS] Error loading entites: returned null object");
-                    Variables.FrmM?.SetCommandsStatus(ComponentStatus.Failed);
+                    Variables.MainForm?.SetCommandsStatus(ComponentStatus.Failed);
                     return false;
                 }
 
@@ -65,15 +65,15 @@ namespace HASSAgent.Settings
 
                 // all good
                 Log.Information("[SETTINGS_COMMANDS] Loaded {count} entities", Variables.Commands.Count);
-                Variables.FrmM?.SetCommandsStatus(ComponentStatus.Ok);
+                Variables.MainForm?.SetCommandsStatus(ComponentStatus.Ok);
                 return true;
             }
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS_COMMANDS] Error loading entities: {err}", ex.Message);
-                Variables.FrmM?.ShowMessageBox($"Error loading commands:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowMessageBox($"Error loading commands:\r\n\r\n{ex.Message}", true);
 
-                Variables.FrmM?.SetCommandsStatus(ComponentStatus.Failed);
+                Variables.MainForm?.SetCommandsStatus(ComponentStatus.Failed);
                 return false;
             }
         }
@@ -184,15 +184,15 @@ namespace HASSAgent.Settings
 
                 // done
                 Log.Information("[SETTINGS_COMMANDS] Stored {count} entities", Variables.Commands.Count);
-                Variables.FrmM?.SetCommandsStatus(ComponentStatus.Ok);
+                Variables.MainForm?.SetCommandsStatus(ComponentStatus.Ok);
                 return true;
             }
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS_COMMANDS] Error storing entities: {err}", ex.Message);
-                Variables.FrmM?.ShowMessageBox($"Error storing commands:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowMessageBox($"Error storing commands:\r\n\r\n{ex.Message}", true);
 
-                Variables.FrmM?.SetCommandsStatus(ComponentStatus.Failed);
+                Variables.MainForm?.SetCommandsStatus(ComponentStatus.Failed);
                 return false;
             }
         }

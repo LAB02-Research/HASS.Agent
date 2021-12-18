@@ -48,7 +48,7 @@ namespace HASSAgent.Mqtt
                 _mqttClient.UseConnectedHandler(e =>
                 {
                     _status = MqttStatus.Connected;
-                    Variables.FrmM?.SetMqttStatus(ComponentStatus.Ok);
+                    Variables.MainForm?.SetMqttStatus(ComponentStatus.Ok);
                     Log.Information("[MQTT] Connected");
                 });
 
@@ -62,7 +62,11 @@ namespace HASSAgent.Mqtt
                 _mqttClient.UseDisconnectedHandler(e =>
                 {
                     _status = MqttStatus.Disconnected;
-                    Variables.FrmM?.SetMqttStatus(ComponentStatus.Stopped);
+                    Variables.MainForm?.SetMqttStatus(ComponentStatus.Stopped);
+
+                    // log if we're not shutting down
+                    if (Variables.ShuttingDown) return;
+                    Variables.MainForm?.ShowToolTip("mqtt: disconnected", true);
                     Log.Warning("[MQTT] Disconnected: {reason}", e.Reason.ToString());
                 });
 
@@ -73,13 +77,13 @@ namespace HASSAgent.Mqtt
                 if (options == null)
                 {
                     _status = MqttStatus.ConfigMissing;
-                    Variables.FrmM?.SetMqttStatus(ComponentStatus.Stopped);
+                    Variables.MainForm?.SetMqttStatus(ComponentStatus.Stopped);
                     Log.Warning("[MQTT] Configuration missing");
                     return;
                 }
 
                 Log.Information("[MQTT] Connecting ..");
-                Variables.FrmM?.SetMqttStatus(ComponentStatus.Loading);
+                Variables.MainForm?.SetMqttStatus(ComponentStatus.Loading);
                 StartClient(options);
             }
             catch (Exception ex)
@@ -87,9 +91,8 @@ namespace HASSAgent.Mqtt
                 Log.Fatal(ex, "[MQTT] Error while initializing: {err}", ex.Message);
 
                 _status = MqttStatus.Error;
-                Variables.FrmM?.SetMqttStatus(ComponentStatus.Failed);
-
-                Variables.FrmM?.ShowMessageBox($"Error while connecting to MQTT:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.SetMqttStatus(ComponentStatus.Failed);
+                Variables.MainForm?.ShowToolTip("mqtt: error while connecting", true);
             }
         }
 
@@ -130,9 +133,9 @@ namespace HASSAgent.Mqtt
             Log.Fatal(ex.Exception, "[MQTT] Error while connecting: {err}", ex.Exception.Message);
 
             _status = MqttStatus.Error;
-            Variables.FrmM?.SetMqttStatus(ComponentStatus.Failed);
+            Variables.MainForm?.SetMqttStatus(ComponentStatus.Failed);
 
-            Variables.FrmM?.ShowMessageBox($"MQTT failed to connect:\r\n\r\n{ex.Exception.Message}", true);
+            Variables.MainForm?.ShowToolTip("mqtt: failed to connect", true);
         }
 
         /// <summary>
@@ -161,7 +164,7 @@ namespace HASSAgent.Mqtt
             // done
             Log.Information("[MQTT] Initial registration completed");
         }
-
+        
         /// <summary>
         /// Prepares info for the device we're running on
         /// </summary>
@@ -181,7 +184,7 @@ namespace HASSAgent.Mqtt
         /// Publishes the provided message
         /// </summary>
         private static DateTime _lastPublishFailedLogged = DateTime.MinValue;
-        internal static async Task Publish(MqttApplicationMessage message)
+        internal static async Task PublishAsync(MqttApplicationMessage message)
         {
             if (_mqttClient.IsConnected) await _mqttClient.PublishAsync(message);
             else
@@ -202,7 +205,7 @@ namespace HASSAgent.Mqtt
         /// <param name="domain"></param>
         /// <param name="clearConfig"></param>
         /// <returns></returns>
-        public static async Task AnnounceAutoDiscoveryConfig(AbstractDiscoverable discoverable, string domain, bool clearConfig = false)
+        public static async Task AnnounceAutoDiscoveryConfigAsync(AbstractDiscoverable discoverable, string domain, bool clearConfig = false)
         {
             if (_mqttClient.IsConnected)
             {
@@ -219,7 +222,7 @@ namespace HASSAgent.Mqtt
                     .WithRetainFlag()
                     .Build();
 
-                await Publish(message);
+                await PublishAsync(message);
 
                 LastConfigAnnounce = DateTime.UtcNow;
             }

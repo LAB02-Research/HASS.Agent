@@ -38,7 +38,7 @@ namespace HASSAgent.HomeAssistant
         /// Initializes the HASS API manager, establishes a connection and loads the entities
         /// </summary>
         /// <returns></returns>
-        internal static async Task<HassManagerStatus> Initialize()
+        internal static async Task<HassManagerStatus> InitializeAsync()
         {
             try
             {
@@ -46,7 +46,7 @@ namespace HASSAgent.HomeAssistant
                 if (!CheckSettings())
                 {
                     ManagerStatus = HassManagerStatus.ConfigMissing;
-                    Variables.FrmM?.SetHassApiStatus(ComponentStatus.Stopped);
+                    Variables.MainForm?.SetHassApiStatus(ComponentStatus.Stopped);
                     return ManagerStatus;
                 }
                 
@@ -66,14 +66,17 @@ namespace HASSAgent.HomeAssistant
 
                 // load entities
                 ManagerStatus = HassManagerStatus.LoadingData;
-                await LoadEntities();
+                await LoadEntitiesAsync();
 
                 // start periodic state retriever
                 _ = Task.Run(PeriodicStatusUpdates);
 
+                // start periodic entity reloading
+                _ = Task.Run(PeriodicEntityReload);
+
                 // done
                 Log.Information("[HASS_API] System connected with {ip}", Variables.AppSettings.HassUri);
-                Variables.FrmM?.SetHassApiStatus(ComponentStatus.Ok);
+                Variables.MainForm?.SetHassApiStatus(ComponentStatus.Ok);
 
                 ManagerStatus = HassManagerStatus.Ready;
                 return ManagerStatus;
@@ -82,11 +85,51 @@ namespace HASSAgent.HomeAssistant
             {
                 Log.Fatal(ex, "[HASS_API] Error while initializing: {err}", ex.Message);
 
-                Variables.FrmM?.SetHassApiStatus(ComponentStatus.Failed);
+                Variables.MainForm?.SetHassApiStatus(ComponentStatus.Failed);
                 ManagerStatus = HassManagerStatus.Failed;
 
-                Variables.FrmM?.ShowMessageBox($"Error while connecting to Home Assistant API:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowToolTip("hass api: connection failed", true);
                 return ManagerStatus;
+            }
+        }
+
+        /// <summary>
+        /// Checks the provided provided credentials to see if we can connect
+        /// <para>This will disconnect any current connections!</para>
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <param name="apiKey"></param>
+        /// <returns></returns>
+        internal static async Task<(bool success, string message)> CheckHassConfigAsync(string uri, string apiKey)
+        {
+            try
+            {
+                var hassUri = new Uri(Variables.AppSettings.HassUri);
+
+                // initialize hass client
+                if (ClientFactory.IsInitialized) ClientFactory.Reset();
+                ClientFactory.Initialize(uri, apiKey);
+
+                // check if we're initialized
+                if (!ClientFactory.IsInitialized) return (false, "unable to connect, check uri");
+
+                // check if we can fetch config
+                _configClient = ClientFactory.GetClient<ConfigClient>();
+                var config = await _configClient.GetConfiguration();
+                if (config == null) return (false, "unable to fetch config, check api key");
+
+                // looks ok
+                return (true, config.Version);
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[HASS_API] Error while checking config: {err}", ex.Message);
+                return (false, "unable to connect, check uri");
+            }
+            finally
+            {
+                // reset if we're intialised
+                if (ClientFactory.IsInitialized) ClientFactory.Reset();
             }
         }
 
@@ -106,8 +149,19 @@ namespace HASSAgent.HomeAssistant
         /// Fetches all entities from HASS
         /// </summary>
         /// <returns></returns>
-        private static async Task LoadEntities()
+        private static async Task LoadEntitiesAsync(bool clearCurrent = false)
         {
+            if (clearCurrent)
+            {
+                // clear current lists
+                AutomationList.Clear();
+                ScriptList.Clear();
+                InputBooleanList.Clear();
+                SceneList.Clear();
+                SwitchList.Clear();
+                LightList.Clear();
+            }
+
             var domain = "automation";
             var entities = await _entityClient.GetEntities(domain);
             foreach (var automation in entities)
@@ -156,9 +210,9 @@ namespace HASSAgent.HomeAssistant
         /// </summary>
         /// <param name="quickAction"></param>
         /// <returns></returns>
-        internal static async Task ProcessQuickAction(QuickAction quickAction)
+        internal static async Task ProcessQuickActionAsync(QuickAction quickAction)
         {
-            await ProcessAction(quickAction.ToHassEntity(), quickAction.Action);
+            await ProcessActionAsync(quickAction.ToHassEntity(), quickAction.Action);
         }
 
         /// <summary>
@@ -167,7 +221,7 @@ namespace HASSAgent.HomeAssistant
         /// <param name="entity"></param>
         /// <param name="action"></param>
         /// <returns></returns>
-        internal static async Task<bool> ProcessAction(HassEntity entity, HassAction action)
+        internal static async Task<bool> ProcessActionAsync(HassEntity entity, HassAction action)
         {
             var actionVal = action.GetDescription();
             var domainVal = entity.Domain.GetDescription();
@@ -229,6 +283,37 @@ namespace HASSAgent.HomeAssistant
 
                 Log.Fatal(ex, "[HASS_API] [{domain}.{entity}] Error while processing action: {ex}", domainVal, entityVal, ex.Message);
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Periodically fetches all entities
+        /// </summary>
+        private static async void PeriodicEntityReload()
+        {
+            while (!Variables.ShuttingDown)
+            {
+                // wait a while
+                await Task.Delay(TimeSpan.FromMinutes(30));
+
+                // check if we can connect
+                try
+                {
+                    var res = await _configClient.GetConfiguration();
+                    if (res == null)
+                    {
+                        Log.Warning("[HASS_API] Unable to contact API, skipping entity reload");
+                        continue;
+                    }
+                }
+                catch
+                {
+                    Log.Warning("[HASS_API] Unable to contact API, skipping entity reload");
+                    continue;
+                }
+
+                // reload all entities
+                await LoadEntitiesAsync(true);
             }
         }
 

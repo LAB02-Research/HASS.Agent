@@ -52,7 +52,7 @@ namespace HASSAgent.Forms
                 KeyPreview = true;
 
                 // prepare configuration form
-                Variables.FrmConfig = new Configuration();
+                Variables.ConfigForm = new Configuration();
 
                 // set all statuses to loading
                 SetNotificationApiStatus(ComponentStatus.Loading);
@@ -66,23 +66,36 @@ namespace HASSAgent.Forms
                 Variables.HotKeyListener = new HotkeyListener();
 
                 // load settings
-                SettingsManager.Load(out var firstLaunch);
+                var loaded = SettingsManager.Load();
+                if (!loaded)
+                {
+                    MessageBoxAdv.Show("Something went wrong while loading your settings.\r\n\r\nCheck appsettings.json in the 'Config' subfolder, or just delete it to start fresh.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                // check firstlaunch, optionally abort launching if we're restarting
-                if (ProcessFirstLaunch(firstLaunch)) return;
+                    // abort
+                    Variables.ShuttingDown = true;
+                    Log.CloseAndFlush();
+                    Close();
+                    return;
+                }
 
-                // initialize hotkey
+                // process onboarding
+                ProcessOnboarding();
+
+                // if we're shutting down, no point continuing
+                if (Variables.ShuttingDown) return;
+                
+                // initialize hotkeys
                 InitializeHotkeys();
 
                 // initialize managers
                 Task.Run(NotifierManager.Initialize);
-                Task.Run(HassApiManager.Initialize);
+                Task.Run(HassApiManager.InitializeAsync);
                 Task.Run(MqttManager.Initialize);
                 Task.Run(SensorsManager.Initialize);
                 Task.Run(CommandsManager.Initialize);
                 Task.Run(UpdateManager.Initialize);
 
-                // run a check to see if we need to restart through the scheduled task
+                // run a check to see if we could restart through the scheduled task
                 Task.Run(ScheduledTaskCheck);
 
 #if DEBUG
@@ -106,6 +119,9 @@ namespace HASSAgent.Forms
             }
         }
         
+        /// <summary>
+        /// Looks for our Scheduled Task, if it's there but not started, offers to restart using it
+        /// </summary>
         private void ScheduledTaskCheck()
         {
 #if DEBUG
@@ -113,54 +129,57 @@ namespace HASSAgent.Forms
             return;
 #endif
 
-            // check task status
+            // check if there's a task
             var present = ScheduledTasks.IsTaskPresent();
-            var status = present ? ScheduledTasks.TaskStatus() : TaskState.Unknown;
+            if (!present) return;
 
-            // ready means present-but-not-started, so check for that
-            if (status != TaskState.Ready)
-            {
-                // todo: show a one-time message asking the user if they want the task created
-                return;
-            }
+            // get the task status
+            var status = ScheduledTasks.TaskStatus();
+
+            // only relevant if the task's in 'ready' state
+            if (status != TaskState.Ready) return;
 
             Invoke(new MethodInvoker(delegate
             {
                 // ask the user if they want to launch using the task
-                // todo: only ask once
-                var question = MessageBoxAdv.Show("You've launched HASS.Agent manually, but there's a Scheduled Task present (recommended).\r\n\r\nDo you want to restart HASS.Agent using the task?", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                var question = MessageBoxAdv.Show("You've launched HASS.Agent manually, but there's a Scheduled Task present. That's the recommended way to start HASS.Agent.\r\n\r\nDo you want to restart HASS.Agent using the task?", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (question != DialogResult.Yes) return;
 
                 // prepare the restart
-                var restartPrepared = ScheduledTasks.RestartScheduledTask();
-                if (!restartPrepared) MessageBoxAdv.Show("Something went wrong while preparing the scheduled task restart.\r\nPlease restart manually through Windows' Task Scheduler.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else
-                {
-                    Variables.ShuttingDown = true;
-                    Close();
-                }
+                var restartPrepared = HelperFunctions.RestartWithTask();
+                if (!restartPrepared) MessageBoxAdv.Show("Something went wrong while preparing the restart.\r\nPlease restart manually through Windows' Task Scheduler.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }));
         }
 
-        private bool ProcessFirstLaunch(bool firstLaunch)
+        /// <summary>
+        /// Checks to see if we need to launch onboarding, and if so, does that
+        /// </summary>
+        private void ProcessOnboarding()
         {
-            if (!firstLaunch) return false;
-
-            var question = MessageBoxAdv.Show("No configuration found. Do you want to show the configuration screen now?", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (question != DialogResult.Yes) return false;
-
-            // show config screen
-            ShowConfiguration();
-
-            // check if the user wants to restart, no point continueing in that case
-            return Variables.ShuttingDown;
+            if (Variables.AppSettings.OnboardingStatus == OnboardingStatus.Completed || Variables.AppSettings.OnboardingStatus == OnboardingStatus.Aborted) return;
+            
+            // show onboarding
+            using (var onboarding = new Onboarding())
+            {
+                onboarding.ShowDialog();
+            }
         }
 
+        /// <summary>
+        /// Log ThreadExceptions (if enabled)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
             Log.Fatal(e.Exception, "[MAIN] ThreadException: {err}", e.Exception.Message);
         }
 
+        /// <summary>
+        /// Log unhandled exceptions (if enabled)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             if (e.ExceptionObject is Exception ex) Log.Fatal(ex, "[MAIN] ThreadException: {err}", ex.Message);
@@ -175,7 +194,7 @@ namespace HASSAgent.Forms
             Variables.HotKeyListener.HotkeyPressed += HotkeyListener_HotkeyPressed;
 
             // always suspend when configuring
-            Variables.HotKeyListener.SuspendOn(Variables.FrmConfig);
+            Variables.HotKeyListener.SuspendOn(Variables.ConfigForm);
 
             // bind quick actions hotkey (if configured)
             Variables.HotKeyManager.InitializeQuickActionsHotKeys();
@@ -207,7 +226,7 @@ namespace HASSAgent.Forms
                 return;
             }
 
-            await HelperFunctions.Shutdown();
+            await HelperFunctions.ShutdownAsync();
         }
 
         /// <summary>
@@ -281,17 +300,7 @@ namespace HASSAgent.Forms
         /// <summary>
         /// Show the config form
         /// </summary>
-        private void ShowConfiguration()
-        {
-            var result = Variables.FrmConfig.ShowDialog();
-            if (result != DialogResult.OK) return;
-
-            // check to see if we're restarting
-            if (!Variables.ShuttingDown) return;
-
-            // jep, close
-            Close();
-        }
+        private void ShowConfiguration() => Variables.ConfigForm.ShowDialog();
 
         /// <summary>
         /// Show the quickactions manager form
@@ -330,55 +339,37 @@ namespace HASSAgent.Forms
         /// Change the status of the Notification API
         /// </summary>
         /// <param name="status"></param>
-        internal void SetNotificationApiStatus(ComponentStatus status)
-        {
-            SetComponentStatus(new ComponentStatusUpdate(Component.NotificationApi, status));
-        }
+        internal void SetNotificationApiStatus(ComponentStatus status) => SetComponentStatus(new ComponentStatusUpdate(Component.NotificationApi, status));
 
         /// <summary>
         /// Change the status of the HASS API manager
         /// </summary>
         /// <param name="status"></param>
-        internal void SetHassApiStatus(ComponentStatus status)
-        {
-            SetComponentStatus(new ComponentStatusUpdate(Component.HassApi, status));
-        }
+        internal void SetHassApiStatus(ComponentStatus status) => SetComponentStatus(new ComponentStatusUpdate(Component.HassApi, status));
 
         /// <summary>
         /// Change the status of the QuickActions
         /// </summary>
         /// <param name="status"></param>
-        internal void SetQuickActionsStatus(ComponentStatus status)
-        {
-            SetComponentStatus(new ComponentStatusUpdate(Component.QuickActions, status));
-        }
+        internal void SetQuickActionsStatus(ComponentStatus status) => SetComponentStatus(new ComponentStatusUpdate(Component.QuickActions, status));
 
         /// <summary>
         /// Change the status of the sensors manager
         /// </summary>
         /// <param name="status"></param>
-        internal void SetSensorsStatus(ComponentStatus status)
-        {
-            SetComponentStatus(new ComponentStatusUpdate(Component.Sensors, status));
-        }
+        internal void SetSensorsStatus(ComponentStatus status) => SetComponentStatus(new ComponentStatusUpdate(Component.Sensors, status));
 
         /// <summary>
         /// Change the status of the commands manager status
         /// </summary>
         /// <param name="status"></param>
-        internal void SetCommandsStatus(ComponentStatus status)
-        {
-            SetComponentStatus(new ComponentStatusUpdate(Component.Commands, status));
-        }
+        internal void SetCommandsStatus(ComponentStatus status) => SetComponentStatus(new ComponentStatusUpdate(Component.Commands, status));
 
         /// <summary>
         /// Change the status of the MQTT manager status
         /// </summary>
         /// <param name="status"></param>
-        internal void SetMqttStatus(ComponentStatus status)
-        {
-            SetComponentStatus(new ComponentStatusUpdate(Component.Mqtt, status));
-        }
+        internal void SetMqttStatus(ComponentStatus status) => SetComponentStatus(new ComponentStatusUpdate(Component.Mqtt, status));
 
         /// <summary>
         /// Set the status of the component in our UI
@@ -444,40 +435,51 @@ namespace HASSAgent.Forms
             }
         }
 
-        private void NotifyIcon_DoubleClick(object sender, EventArgs e)
+        /// <summary>
+        /// Shows a tray-icon tooltip containing the message, and optionally and error-icon
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="error"></param>
+        internal void ShowToolTip(string message, bool error = false)
         {
-            ShowMain();
+            if (!IsHandleCreated) return;
+            if (IsDisposed) return;
+
+            try
+            {
+                Invoke(new MethodInvoker(delegate
+                {
+                    try
+                    {
+                        NotifyIcon.BalloonTipIcon = error ? ToolTipIcon.Error : ToolTipIcon.Info;
+                        NotifyIcon.BalloonTipText = message;
+                        NotifyIcon.ShowBalloonTip((int)TimeSpan.FromSeconds(5).TotalMilliseconds);
+                    }
+                    catch
+                    {
+                        // best effort
+                    }
+                }));
+            }
+            catch
+            {
+                // best effort
+            }
         }
 
-        private void BtnExit_Click(object sender, EventArgs e)
-        {
-            Exit();
-        }
+        private void NotifyIcon_DoubleClick(object sender, EventArgs e) => ShowMain();
 
-        private void BtnHide_Click(object sender, EventArgs e)
-        {
-            Hide();
-        }
+        private void BtnExit_Click(object sender, EventArgs e) => Exit();
 
-        private void BtnAppSettings_Click(object sender, EventArgs e)
-        {
-            ShowConfiguration();
-        }
+        private void BtnHide_Click(object sender, EventArgs e) => Hide();
 
-        private void BtnActionsManager_Click(object sender, EventArgs e)
-        {
-            ShowQuickActionsManager();
-        }
+        private void BtnAppSettings_Click(object sender, EventArgs e) => ShowConfiguration();
 
-        private void BtnSensorsManager_Click(object sender, EventArgs e)
-        {
-            ShowSensorsManager();
-        }
+        private void BtnActionsManager_Click(object sender, EventArgs e) => ShowQuickActionsManager();
 
-        private void BtnCommandsManager_Click(object sender, EventArgs e)
-        {
-            ShowCommandsManager();
-        }
+        private void BtnSensorsManager_Click(object sender, EventArgs e) => ShowSensorsManager();
+
+        private void BtnCommandsManager_Click(object sender, EventArgs e) => ShowCommandsManager();
 
         private void Main_KeyUp(object sender, KeyEventArgs e)
         {
@@ -485,40 +487,19 @@ namespace HASSAgent.Forms
             Hide();
         }
 
-        private void TsShow_Click(object sender, EventArgs e)
-        {
-            ShowMain();
-        }
+        private void TsShow_Click(object sender, EventArgs e) => ShowMain();
 
-        private void TsShowQuickActions_Click(object sender, EventArgs e)
-        {
-            ShowQuickActions();
-        }
+        private void TsShowQuickActions_Click(object sender, EventArgs e) => ShowQuickActions();
 
-        private void TsConfig_Click(object sender, EventArgs e)
-        {
-            ShowConfiguration();
-        }
+        private void TsConfig_Click(object sender, EventArgs e) => ShowConfiguration();
 
-        private void TsQuickItemsConfig_Click(object sender, EventArgs e)
-        {
-            ShowQuickActionsManager();
-        }
+        private void TsQuickItemsConfig_Click(object sender, EventArgs e) => ShowQuickActionsManager();
 
-        private void TsLocalSensors_Click(object sender, EventArgs e)
-        {
-            ShowSensorsManager();
-        }
+        private void TsLocalSensors_Click(object sender, EventArgs e) => ShowSensorsManager();
 
-        private void TsCommands_Click(object sender, EventArgs e)
-        {
-            ShowCommandsManager();
-        }
+        private void TsCommands_Click(object sender, EventArgs e) => ShowCommandsManager();
 
-        private void TsExit_Click(object sender, EventArgs e)
-        {
-            Exit();
-        }
+        private void TsExit_Click(object sender, EventArgs e) => Exit();
 
         private void TsAbout_Click(object sender, EventArgs e)
         {
@@ -536,16 +517,13 @@ namespace HASSAgent.Forms
             }
         }
 
-        private void BtnCheckForUpdate_Click(object sender, EventArgs e)
-        {
-            CheckForUpdate();
-        }
+        private void BtnCheckForUpdate_Click(object sender, EventArgs e) => CheckForUpdate();
 
-        private void TsCheckForUpdates_Click(object sender, EventArgs e)
-        {
-            CheckForUpdate();
-        }
+        private void TsCheckForUpdates_Click(object sender, EventArgs e) => CheckForUpdate();
 
+        /// <summary>
+        /// Checks GitHub API to see if there's a newer release available
+        /// </summary>
         private async void CheckForUpdate()
         {
             try
@@ -556,25 +534,15 @@ namespace HASSAgent.Forms
                 TsCheckForUpdates.Text = "checking ..";
                 BtnCheckForUpdate.Text = "checking ..";
 
-                var (isAvailable, version) = await UpdateManager.UpdateAvailable();
+                var (isAvailable, version) = await UpdateManager.CheckIsUpdateAvailableAsync();
                 if (!isAvailable)
                 {
                     MessageBoxAdv.Show("You're running the latest version!", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
-                var choice = MessageBoxAdv.Show($"There's a new version available: {version}\r\n\r\nDo you want to open your browser and download the .zip?", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (choice != DialogResult.Yes) return;
-
-                var url = await UpdateManager.GetLatestVersionAssetUrl();
-                if (string.IsNullOrEmpty(url))
-                {
-                    MessageBoxAdv.Show("Unable to fetch the .zip url, opening the github page instead.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent");
-                    return;
-                }
-
-                HelperFunctions.LaunchUrl(url);
+                // new update, show info
+                ShowUpdateInfo(version);
             }
             catch (Exception ex)
             {
@@ -587,6 +555,30 @@ namespace HASSAgent.Forms
 
                 TsCheckForUpdates.Text = "check for updates";
                 BtnCheckForUpdate.Text = "check for updates";
+            }
+        }
+
+        /// <summary>
+        /// Shows a window, informing the user of a pending update
+        /// </summary>
+        /// <param name="version"></param>
+        internal void ShowUpdateInfo(string version)
+        {
+            if (!IsHandleCreated) return;
+            if (IsDisposed) return;
+
+            try
+            {
+                Invoke(new MethodInvoker(delegate
+                {
+                    var updatePending = new UpdatePending(version);
+                    updatePending.FormClosed += delegate { updatePending.Dispose(); };
+                    updatePending.Show();
+                }));
+            }
+            catch
+            {
+                // best effort
             }
         }
     }

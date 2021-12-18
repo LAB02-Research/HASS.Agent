@@ -66,7 +66,7 @@ namespace HASSAgent.Functions
             }
 
             // execute the command (don't wait)
-            Task.Run(() => HassApiManager.ProcessQuickAction(quickAction));
+            Task.Run(() => HassApiManager.ProcessQuickActionAsync(quickAction));
         }
 
         private void InitializeGlobalQuickActionsHotKey()

@@ -56,7 +56,7 @@ namespace HASSAgent.Models.Mqtt.Commands
                     .WithRetainFlag()
                     .Build();
 
-                await MqttManager.Publish(message);
+                await MqttManager.PublishAsync(message);
 
                 PreviousPublishedState = state;
                 LastUpdated = DateTime.UtcNow;
@@ -69,12 +69,12 @@ namespace HASSAgent.Models.Mqtt.Commands
 
         public async Task PublishAutoDiscoveryConfigAsync()
         {
-            await MqttManager.AnnounceAutoDiscoveryConfig(this, Domain);
+            await MqttManager.AnnounceAutoDiscoveryConfigAsync(this, Domain);
         }
 
         public async Task UnPublishAutoDiscoveryConfigAsync()
         {
-            await MqttManager.AnnounceAutoDiscoveryConfig(this, Domain, true);
+            await MqttManager.AnnounceAutoDiscoveryConfigAsync(this, Domain, true);
         }
 
         public abstract void TurnOn();

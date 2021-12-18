@@ -205,15 +205,9 @@ namespace HASSAgent.Forms.QuickActions
             DialogResult = DialogResult.OK;
         }
 
-        private void BtnRemove_Click(object sender, EventArgs e)
-        {
-            DeleteSelectedActions();
-        }
+        private void BtnRemove_Click(object sender, EventArgs e) => DeleteSelectedActions();
 
-        private void LcQuickActions_DoubleClick(object sender, EventArgs e)
-        {
-            ModifySelectedAction();
-        }
+        private void LcQuickActions_DoubleClick(object sender, EventArgs e) => ModifySelectedAction();
 
         private void BtnPreview_Click(object sender, EventArgs e)
         {

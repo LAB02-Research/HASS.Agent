@@ -65,6 +65,8 @@ namespace HASSAgent.Forms
             this.label6 = new System.Windows.Forms.Label();
             this.BtnHelp = new Syncfusion.WinForms.Controls.SfButton();
             this.BtnAbout = new Syncfusion.WinForms.Controls.SfButton();
+            this.customGroupBox3 = new CustomGroupBox.CustomGroupBox();
+            this.CbUpdates = new System.Windows.Forms.CheckBox();
             this.customGroupBox1.SuspendLayout();
             this.GpStartup.SuspendLayout();
             this.GpConfig.SuspendLayout();
@@ -72,6 +74,7 @@ namespace HASSAgent.Forms
             ((System.ComponentModel.ISupportInitialize)(this.TbIntNotifierApiPort)).BeginInit();
             this.customGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TbIntMqttPort)).BeginInit();
+            this.customGroupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnStore
@@ -79,9 +82,9 @@ namespace HASSAgent.Forms
             this.BtnStore.AccessibleName = "Button";
             this.BtnStore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BtnStore.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnStore.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnStore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnStore.Location = new System.Drawing.Point(0, 653);
+            this.BtnStore.Location = new System.Drawing.Point(0, 657);
             this.BtnStore.Name = "BtnStore";
             this.BtnStore.Size = new System.Drawing.Size(674, 37);
             this.BtnStore.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -91,7 +94,7 @@ namespace HASSAgent.Forms
             this.BtnStore.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnStore.TabIndex = 0;
+            this.BtnStore.TabIndex = 8;
             this.BtnStore.Text = "store configuration";
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
@@ -102,6 +105,7 @@ namespace HASSAgent.Forms
             this.customGroupBox1.Controls.Add(this.TbQuickActionsHotkey);
             this.customGroupBox1.Controls.Add(this.CbEnableQuickActionsHotkey);
             this.customGroupBox1.Controls.Add(this.label5);
+            this.customGroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customGroupBox1.Location = new System.Drawing.Point(284, 401);
             this.customGroupBox1.Name = "customGroupBox1";
             this.customGroupBox1.Size = new System.Drawing.Size(369, 111);
@@ -113,18 +117,20 @@ namespace HASSAgent.Forms
             // 
             this.TbQuickActionsHotkey.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbQuickActionsHotkey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbQuickActionsHotkey.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbQuickActionsHotkey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbQuickActionsHotkey.Location = new System.Drawing.Point(174, 34);
+            this.TbQuickActionsHotkey.Location = new System.Drawing.Point(174, 37);
             this.TbQuickActionsHotkey.Name = "TbQuickActionsHotkey";
-            this.TbQuickActionsHotkey.Size = new System.Drawing.Size(161, 22);
+            this.TbQuickActionsHotkey.Size = new System.Drawing.Size(161, 25);
             this.TbQuickActionsHotkey.TabIndex = 8;
             // 
             // CbEnableQuickActionsHotkey
             // 
             this.CbEnableQuickActionsHotkey.AutoSize = true;
-            this.CbEnableQuickActionsHotkey.Location = new System.Drawing.Point(174, 76);
+            this.CbEnableQuickActionsHotkey.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CbEnableQuickActionsHotkey.Location = new System.Drawing.Point(174, 68);
             this.CbEnableQuickActionsHotkey.Name = "CbEnableQuickActionsHotkey";
-            this.CbEnableQuickActionsHotkey.Size = new System.Drawing.Size(170, 17);
+            this.CbEnableQuickActionsHotkey.Size = new System.Drawing.Size(187, 21);
             this.CbEnableQuickActionsHotkey.TabIndex = 7;
             this.CbEnableQuickActionsHotkey.Text = "enable quick actions hotkey";
             this.CbEnableQuickActionsHotkey.UseVisualStyleBackColor = true;
@@ -132,9 +138,10 @@ namespace HASSAgent.Forms
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 37);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(31, 39);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 13);
+            this.label5.Size = new System.Drawing.Size(125, 17);
             this.label5.TabIndex = 5;
             this.label5.Text = "hotkey combination:";
             // 
@@ -145,6 +152,7 @@ namespace HASSAgent.Forms
             this.GpStartup.Controls.Add(this.BtnCreateLaunchOnBootTask);
             this.GpStartup.Controls.Add(this.LblLaunchOnBootActive);
             this.GpStartup.Controls.Add(this.label4);
+            this.GpStartup.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GpStartup.Location = new System.Drawing.Point(284, 21);
             this.GpStartup.Name = "GpStartup";
             this.GpStartup.Size = new System.Drawing.Size(369, 191);
@@ -156,7 +164,7 @@ namespace HASSAgent.Forms
             // 
             this.BtnScheduledTaskReadme.AccessibleName = "Button";
             this.BtnScheduledTaskReadme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnScheduledTaskReadme.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnScheduledTaskReadme.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnScheduledTaskReadme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnScheduledTaskReadme.Location = new System.Drawing.Point(40, 106);
             this.BtnScheduledTaskReadme.Name = "BtnScheduledTaskReadme";
@@ -177,7 +185,7 @@ namespace HASSAgent.Forms
             // 
             this.BtnCreateLaunchOnBootTask.AccessibleName = "Button";
             this.BtnCreateLaunchOnBootTask.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnCreateLaunchOnBootTask.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnCreateLaunchOnBootTask.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCreateLaunchOnBootTask.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnCreateLaunchOnBootTask.Location = new System.Drawing.Point(40, 143);
             this.BtnCreateLaunchOnBootTask.Name = "BtnCreateLaunchOnBootTask";
@@ -197,18 +205,20 @@ namespace HASSAgent.Forms
             // LblLaunchOnBootActive
             // 
             this.LblLaunchOnBootActive.AutoSize = true;
-            this.LblLaunchOnBootActive.Location = new System.Drawing.Point(208, 53);
+            this.LblLaunchOnBootActive.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblLaunchOnBootActive.Location = new System.Drawing.Point(37, 67);
             this.LblLaunchOnBootActive.Name = "LblLaunchOnBootActive";
-            this.LblLaunchOnBootActive.Size = new System.Drawing.Size(11, 13);
+            this.LblLaunchOnBootActive.Size = new System.Drawing.Size(13, 17);
             this.LblLaunchOnBootActive.TabIndex = 3;
             this.LblLaunchOnBootActive.Text = "-";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 53);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(37, 40);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(152, 13);
+            this.label4.Size = new System.Drawing.Size(167, 17);
             this.label4.TabIndex = 2;
             this.label4.Text = "launch-on-login task status:";
             // 
@@ -219,6 +229,7 @@ namespace HASSAgent.Forms
             this.GpConfig.Controls.Add(this.TbHassIp);
             this.GpConfig.Controls.Add(this.label3);
             this.GpConfig.Controls.Add(this.label2);
+            this.GpConfig.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GpConfig.Location = new System.Drawing.Point(24, 233);
             this.GpConfig.Name = "GpConfig";
             this.GpConfig.Size = new System.Drawing.Size(629, 140);
@@ -230,37 +241,41 @@ namespace HASSAgent.Forms
             // 
             this.TbHassApiToken.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbHassApiToken.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbHassApiToken.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbHassApiToken.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TbHassApiToken.Location = new System.Drawing.Point(111, 87);
             this.TbHassApiToken.Name = "TbHassApiToken";
-            this.TbHassApiToken.Size = new System.Drawing.Size(484, 22);
-            this.TbHassApiToken.TabIndex = 8;
+            this.TbHassApiToken.Size = new System.Drawing.Size(484, 25);
+            this.TbHassApiToken.TabIndex = 2;
             // 
             // TbHassIp
             // 
             this.TbHassIp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbHassIp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbHassIp.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbHassIp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TbHassIp.Location = new System.Drawing.Point(111, 41);
             this.TbHassIp.Name = "TbHassIp";
-            this.TbHassIp.Size = new System.Drawing.Size(484, 22);
-            this.TbHassIp.TabIndex = 7;
+            this.TbHassIp.Size = new System.Drawing.Size(484, 25);
+            this.TbHassIp.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(29, 89);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 13);
+            this.label3.Size = new System.Drawing.Size(65, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "api token:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(31, 43);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.Size = new System.Drawing.Size(66, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "server uri:";
             // 
@@ -271,6 +286,7 @@ namespace HASSAgent.Forms
             this.GpNotifications.Controls.Add(this.BtnNotificationsReadme);
             this.GpNotifications.Controls.Add(this.label1);
             this.GpNotifications.Controls.Add(this.CbAcceptNotifications);
+            this.GpNotifications.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GpNotifications.Location = new System.Drawing.Point(24, 21);
             this.GpNotifications.Name = "GpNotifications";
             this.GpNotifications.Size = new System.Drawing.Size(232, 191);
@@ -281,23 +297,24 @@ namespace HASSAgent.Forms
             // TbIntNotifierApiPort
             // 
             this.TbIntNotifierApiPort.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.TbIntNotifierApiPort.BeforeTouchSize = new System.Drawing.Size(92, 22);
+            this.TbIntNotifierApiPort.BeforeTouchSize = new System.Drawing.Size(92, 25);
             this.TbIntNotifierApiPort.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.TbIntNotifierApiPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbIntNotifierApiPort.CurrentCultureRefresh = true;
             this.TbIntNotifierApiPort.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.TbIntNotifierApiPort.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbIntNotifierApiPort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TbIntNotifierApiPort.IntegerValue = ((long)(1883));
-            this.TbIntNotifierApiPort.Location = new System.Drawing.Point(67, 83);
+            this.TbIntNotifierApiPort.Location = new System.Drawing.Point(70, 85);
             this.TbIntNotifierApiPort.MaxValue = ((long)(66000));
             this.TbIntNotifierApiPort.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.TbIntNotifierApiPort.MinValue = ((long)(1));
             this.TbIntNotifierApiPort.Name = "TbIntNotifierApiPort";
             this.TbIntNotifierApiPort.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbIntNotifierApiPort.Size = new System.Drawing.Size(92, 22);
+            this.TbIntNotifierApiPort.Size = new System.Drawing.Size(92, 25);
             this.TbIntNotifierApiPort.SpecialCultureValue = Syncfusion.Windows.Forms.Tools.SpecialCultureValues.UICulture;
             this.TbIntNotifierApiPort.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
-            this.TbIntNotifierApiPort.TabIndex = 18;
+            this.TbIntNotifierApiPort.TabIndex = 0;
             this.TbIntNotifierApiPort.Text = "1,883";
             this.TbIntNotifierApiPort.ThemeName = "Metro";
             this.TbIntNotifierApiPort.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -312,7 +329,7 @@ namespace HASSAgent.Forms
             // 
             this.BtnNotificationsReadme.AccessibleName = "Button";
             this.BtnNotificationsReadme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnNotificationsReadme.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnNotificationsReadme.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnNotificationsReadme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnNotificationsReadme.Location = new System.Drawing.Point(21, 143);
             this.BtnNotificationsReadme.Name = "BtnNotificationsReadme";
@@ -332,18 +349,20 @@ namespace HASSAgent.Forms
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(29, 87);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.Size = new System.Drawing.Size(36, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "port:";
             // 
             // CbAcceptNotifications
             // 
             this.CbAcceptNotifications.AutoSize = true;
+            this.CbAcceptNotifications.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CbAcceptNotifications.Location = new System.Drawing.Point(32, 39);
             this.CbAcceptNotifications.Name = "CbAcceptNotifications";
-            this.CbAcceptNotifications.Size = new System.Drawing.Size(127, 17);
+            this.CbAcceptNotifications.Size = new System.Drawing.Size(139, 21);
             this.CbAcceptNotifications.TabIndex = 0;
             this.CbAcceptNotifications.Text = "accept notifications";
             this.CbAcceptNotifications.UseVisualStyleBackColor = true;
@@ -360,6 +379,7 @@ namespace HASSAgent.Forms
             this.customGroupBox2.Controls.Add(this.label8);
             this.customGroupBox2.Controls.Add(this.label7);
             this.customGroupBox2.Controls.Add(this.label6);
+            this.customGroupBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customGroupBox2.Location = new System.Drawing.Point(24, 401);
             this.customGroupBox2.Name = "customGroupBox2";
             this.customGroupBox2.Size = new System.Drawing.Size(232, 235);
@@ -370,11 +390,12 @@ namespace HASSAgent.Forms
             // TbIntMqttPort
             // 
             this.TbIntMqttPort.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.TbIntMqttPort.BeforeTouchSize = new System.Drawing.Size(92, 22);
+            this.TbIntMqttPort.BeforeTouchSize = new System.Drawing.Size(92, 25);
             this.TbIntMqttPort.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.TbIntMqttPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbIntMqttPort.CurrentCultureRefresh = true;
             this.TbIntMqttPort.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.TbIntMqttPort.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbIntMqttPort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TbIntMqttPort.IntegerValue = ((long)(1883));
             this.TbIntMqttPort.Location = new System.Drawing.Point(54, 88);
@@ -383,10 +404,10 @@ namespace HASSAgent.Forms
             this.TbIntMqttPort.MinValue = ((long)(1));
             this.TbIntMqttPort.Name = "TbIntMqttPort";
             this.TbIntMqttPort.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbIntMqttPort.Size = new System.Drawing.Size(92, 22);
+            this.TbIntMqttPort.Size = new System.Drawing.Size(92, 25);
             this.TbIntMqttPort.SpecialCultureValue = Syncfusion.Windows.Forms.Tools.SpecialCultureValues.UICulture;
             this.TbIntMqttPort.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
-            this.TbIntMqttPort.TabIndex = 17;
+            this.TbIntMqttPort.TabIndex = 4;
             this.TbIntMqttPort.Text = "1,883";
             this.TbIntMqttPort.ThemeName = "Metro";
             this.TbIntMqttPort.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -401,76 +422,84 @@ namespace HASSAgent.Forms
             // 
             this.TbMqttPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbMqttPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbMqttPassword.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbMqttPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbMqttPassword.Location = new System.Drawing.Point(19, 191);
+            this.TbMqttPassword.Location = new System.Drawing.Point(19, 195);
             this.TbMqttPassword.Name = "TbMqttPassword";
-            this.TbMqttPassword.Size = new System.Drawing.Size(191, 22);
-            this.TbMqttPassword.TabIndex = 16;
+            this.TbMqttPassword.Size = new System.Drawing.Size(191, 25);
+            this.TbMqttPassword.TabIndex = 7;
             this.TbMqttPassword.UseSystemPasswordChar = true;
             // 
             // TbMqttUsername
             // 
             this.TbMqttUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbMqttUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbMqttUsername.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbMqttUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbMqttUsername.Location = new System.Drawing.Point(21, 144);
+            this.TbMqttUsername.Location = new System.Drawing.Point(21, 147);
             this.TbMqttUsername.Name = "TbMqttUsername";
-            this.TbMqttUsername.Size = new System.Drawing.Size(191, 22);
-            this.TbMqttUsername.TabIndex = 15;
+            this.TbMqttUsername.Size = new System.Drawing.Size(191, 25);
+            this.TbMqttUsername.TabIndex = 6;
             // 
             // TbMqttAddress
             // 
             this.TbMqttAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbMqttAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbMqttAddress.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbMqttAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbMqttAddress.Location = new System.Drawing.Point(21, 46);
+            this.TbMqttAddress.Location = new System.Drawing.Point(21, 50);
             this.TbMqttAddress.Name = "TbMqttAddress";
-            this.TbMqttAddress.Size = new System.Drawing.Size(191, 22);
-            this.TbMqttAddress.TabIndex = 14;
+            this.TbMqttAddress.Size = new System.Drawing.Size(191, 25);
+            this.TbMqttAddress.TabIndex = 3;
             // 
             // CbMqttTls
             // 
             this.CbMqttTls.AutoSize = true;
+            this.CbMqttTls.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CbMqttTls.Location = new System.Drawing.Point(169, 93);
             this.CbMqttTls.Name = "CbMqttTls";
-            this.CbMqttTls.Size = new System.Drawing.Size(43, 17);
-            this.CbMqttTls.TabIndex = 13;
+            this.CbMqttTls.Size = new System.Drawing.Size(47, 21);
+            this.CbMqttTls.TabIndex = 5;
             this.CbMqttTls.Text = "TLS";
             this.CbMqttTls.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(18, 175);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(57, 13);
+            this.label9.Size = new System.Drawing.Size(65, 17);
             this.label9.TabIndex = 11;
             this.label9.Text = "password";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(18, 128);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 13);
+            this.label8.Size = new System.Drawing.Size(65, 17);
             this.label8.TabIndex = 9;
             this.label8.Text = "username";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(16, 91);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 13);
+            this.label7.Size = new System.Drawing.Size(36, 17);
             this.label7.TabIndex = 7;
             this.label7.Text = "port:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(18, 30);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(128, 13);
+            this.label6.Size = new System.Drawing.Size(148, 17);
             this.label6.TabIndex = 5;
             this.label6.Text = "ip address or hostname";
             // 
@@ -478,7 +507,7 @@ namespace HASSAgent.Forms
             // 
             this.BtnHelp.AccessibleName = "Button";
             this.BtnHelp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnHelp.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnHelp.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnHelp.Location = new System.Drawing.Point(481, 605);
             this.BtnHelp.Name = "BtnHelp";
@@ -499,7 +528,7 @@ namespace HASSAgent.Forms
             // 
             this.BtnAbout.AccessibleName = "Button";
             this.BtnAbout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnAbout.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnAbout.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAbout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnAbout.Location = new System.Drawing.Point(284, 605);
             this.BtnAbout.Name = "BtnAbout";
@@ -516,15 +545,39 @@ namespace HASSAgent.Forms
             this.BtnAbout.UseVisualStyleBackColor = false;
             this.BtnAbout.Click += new System.EventHandler(this.BtnAbout_Click);
             // 
+            // customGroupBox3
+            // 
+            this.customGroupBox3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.customGroupBox3.Controls.Add(this.CbUpdates);
+            this.customGroupBox3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customGroupBox3.Location = new System.Drawing.Point(284, 528);
+            this.customGroupBox3.Name = "customGroupBox3";
+            this.customGroupBox3.Size = new System.Drawing.Size(369, 61);
+            this.customGroupBox3.TabIndex = 8;
+            this.customGroupBox3.TabStop = false;
+            this.customGroupBox3.Text = "updates";
+            // 
+            // CbUpdates
+            // 
+            this.CbUpdates.AutoSize = true;
+            this.CbUpdates.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CbUpdates.Location = new System.Drawing.Point(51, 26);
+            this.CbUpdates.Name = "CbUpdates";
+            this.CbUpdates.Size = new System.Drawing.Size(267, 21);
+            this.CbUpdates.TabIndex = 7;
+            this.CbUpdates.Text = "notify me when a new relaase is available";
+            this.CbUpdates.UseVisualStyleBackColor = true;
+            // 
             // Configuration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.CaptionBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(674, 690);
+            this.ClientSize = new System.Drawing.Size(674, 694);
+            this.Controls.Add(this.customGroupBox3);
             this.Controls.Add(this.BtnAbout);
             this.Controls.Add(this.BtnHelp);
             this.Controls.Add(this.customGroupBox2);
@@ -533,7 +586,7 @@ namespace HASSAgent.Forms
             this.Controls.Add(this.GpConfig);
             this.Controls.Add(this.GpNotifications);
             this.Controls.Add(this.BtnStore);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -559,6 +612,8 @@ namespace HASSAgent.Forms
             this.customGroupBox2.ResumeLayout(false);
             this.customGroupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TbIntMqttPort)).EndInit();
+            this.customGroupBox3.ResumeLayout(false);
+            this.customGroupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -596,6 +651,8 @@ namespace HASSAgent.Forms
         private Syncfusion.Windows.Forms.Tools.IntegerTextBox TbIntNotifierApiPort;
         private Syncfusion.WinForms.Controls.SfButton BtnHelp;
         private Syncfusion.WinForms.Controls.SfButton BtnAbout;
+        private CustomGroupBox.CustomGroupBox customGroupBox3;
+        private System.Windows.Forms.CheckBox CbUpdates;
     }
 }
 

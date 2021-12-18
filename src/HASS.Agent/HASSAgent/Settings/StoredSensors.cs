@@ -33,7 +33,7 @@ namespace HASSAgent.Settings
                 {
                     // none yet
                     Log.Information("[SETTINGS_SENSORS] Config not found, no entities loaded");
-                    Variables.FrmM?.SetSensorsStatus(ComponentStatus.Stopped);
+                    Variables.MainForm?.SetSensorsStatus(ComponentStatus.Stopped);
                     return true;
                 }
 
@@ -42,7 +42,7 @@ namespace HASSAgent.Settings
                 if (string.IsNullOrWhiteSpace(sensorsRaw))
                 {
                     Log.Information("[SETTINGS_SENSORS] Config is empty, no entities loaded");
-                    Variables.FrmM?.SetSensorsStatus(ComponentStatus.Stopped);
+                    Variables.MainForm?.SetSensorsStatus(ComponentStatus.Stopped);
                     return true;
                 }
 
@@ -53,7 +53,7 @@ namespace HASSAgent.Settings
                 if (configuredSensors == null)
                 {
                     Log.Error("[SETTINGS_SENSORS] Error loading entities: returned null object");
-                    Variables.FrmM?.SetSensorsStatus(ComponentStatus.Failed);
+                    Variables.MainForm?.SetSensorsStatus(ComponentStatus.Failed);
                     return false;
                 }
 
@@ -65,15 +65,15 @@ namespace HASSAgent.Settings
 
                 // all good
                 Log.Information("[SETTINGS_SENSORS] Loaded {count} entities", Variables.Sensors.Count);
-                Variables.FrmM?.SetSensorsStatus(ComponentStatus.Ok);
+                Variables.MainForm?.SetSensorsStatus(ComponentStatus.Ok);
                 return true;
             }
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS_SENSORS] Error loading entities: {err}", ex.Message);
-                Variables.FrmM?.ShowMessageBox($"Error loading sensors:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowMessageBox($"Error loading sensors:\r\n\r\n{ex.Message}", true);
 
-                Variables.FrmM?.SetSensorsStatus(ComponentStatus.Failed);
+                Variables.MainForm?.SetSensorsStatus(ComponentStatus.Failed);
                 return false;
             }
         }
@@ -208,15 +208,15 @@ namespace HASSAgent.Settings
 
                 // done
                 Log.Information("[SETTINGS_SENSORS] Stored {count} entities", Variables.Sensors.Count);
-                Variables.FrmM?.SetSensorsStatus(ComponentStatus.Ok);
+                Variables.MainForm?.SetSensorsStatus(ComponentStatus.Ok);
                 return true;
             }
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS_SENSORS] Error storing entities: {err}", ex.Message);
-                Variables.FrmM?.ShowMessageBox($"Error storing sensors:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowMessageBox($"Error storing sensors:\r\n\r\n{ex.Message}", true);
 
-                Variables.FrmM?.SetSensorsStatus(ComponentStatus.Failed);
+                Variables.MainForm?.SetSensorsStatus(ComponentStatus.Failed);
                 return false;
             }
         }

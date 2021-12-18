@@ -29,7 +29,7 @@ namespace HASSAgent.Settings
                 {
                     // none yet
                     Log.Information("[SETTINGS_QUICKACTIONS] Config not found, no entities loaded");
-                    Variables.FrmM?.SetQuickActionsStatus(ComponentStatus.Stopped);
+                    Variables.MainForm?.SetQuickActionsStatus(ComponentStatus.Stopped);
                     return true;
                 }
 
@@ -38,7 +38,7 @@ namespace HASSAgent.Settings
                 if (string.IsNullOrWhiteSpace(quickActionsRaw))
                 {
                     Log.Information("[SETTINGS_QUICKACTIONS] Config empty, no entities loaded");
-                    Variables.FrmM?.SetQuickActionsStatus(ComponentStatus.Stopped);
+                    Variables.MainForm?.SetQuickActionsStatus(ComponentStatus.Stopped);
                     return true;
                 }
 
@@ -49,22 +49,22 @@ namespace HASSAgent.Settings
                 if (Variables.QuickActions == null)
                 {
                     Log.Error("[SETTINGS_QUICKACTIONS] Error loading entities: returned null object");
-                    Variables.FrmM?.SetQuickActionsStatus(ComponentStatus.Failed);
+                    Variables.MainForm?.SetQuickActionsStatus(ComponentStatus.Failed);
                     Variables.QuickActions = new List<QuickAction>();
                     return false;
                 }
 
                 // all good
                 Log.Information("[SETTINGS_QUICKACTIONS] Loaded {count} entities", Variables.QuickActions.Count);
-                Variables.FrmM?.SetQuickActionsStatus(ComponentStatus.Ok);
+                Variables.MainForm?.SetQuickActionsStatus(ComponentStatus.Ok);
                 return true;
             }
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS_QUICKACTIONS] Error loading entities: {err}", ex.Message);
-                Variables.FrmM?.ShowMessageBox($"Error loading quick actions:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowMessageBox($"Error loading quick actions:\r\n\r\n{ex.Message}", true);
 
-                Variables.FrmM?.SetQuickActionsStatus(ComponentStatus.Failed);
+                Variables.MainForm?.SetQuickActionsStatus(ComponentStatus.Failed);
                 return false;
             }
         }
@@ -83,15 +83,15 @@ namespace HASSAgent.Settings
 
                 // done
                 Log.Information("[SETTINGS_QUICKACTIONS] Stored {count} entities", Variables.QuickActions.Count);
-                Variables.FrmM?.SetQuickActionsStatus(ComponentStatus.Ok);
+                Variables.MainForm?.SetQuickActionsStatus(ComponentStatus.Ok);
                 return true;
             }
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS_QUICKACTIONS] Error storing entities: {err}", ex.Message);
-                Variables.FrmM?.ShowMessageBox($"Error storing quick actions:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowMessageBox($"Error storing quick actions:\r\n\r\n{ex.Message}", true);
 
-                Variables.FrmM?.SetQuickActionsStatus(ComponentStatus.Failed);
+                Variables.MainForm?.SetQuickActionsStatus(ComponentStatus.Failed);
                 return false;
             }
         }

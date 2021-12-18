@@ -1,4 +1,6 @@
-﻿namespace HASSAgent.Models.Config
+﻿using HASSAgent.Enums;
+
+namespace HASSAgent.Models.Config
 {
     public class AppSettings
     {
@@ -6,6 +8,11 @@
         {
             //
         }
+
+        public OnboardingStatus OnboardingStatus { get; set; } = OnboardingStatus.NeverDone;
+
+        public bool CheckForUpdates { get; set; } = true;
+        public string LastUpdateNotificationShown { get; set; }
         
         public bool NotificationsEnabled { get; set; } = true;
         public int NotifierApiPort { get; set; } = 5115;

@@ -32,26 +32,17 @@ namespace HASSAgent.Commands
         /// <summary>
         /// Stop processing commands
         /// </summary>
-        internal static void Stop()
-        {
-            _active = false;
-        }
+        internal static void Stop() => _active = false;
 
         /// <summary>
         /// Pause processing commands
         /// </summary>
-        internal static void Pause()
-        {
-            _pause = true;
-        }
+        internal static void Pause() => _pause = true;
 
         /// <summary>
         /// Resume processing commands
         /// </summary>
-        internal static void Unpause()
-        {
-            _pause = false;
-        }
+        internal static void Unpause() => _pause = false;
 
         /// <summary>
         /// Continuously processes commands (autodiscovery, state)

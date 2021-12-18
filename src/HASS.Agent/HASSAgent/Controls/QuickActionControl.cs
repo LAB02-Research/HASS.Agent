@@ -81,31 +81,19 @@ namespace HASSAgent.Controls
         private void ExecuteCommand()
         {
             // execute the command (don't wait)
-            Task.Run(() => HassApiManager.ProcessQuickAction(_quickAction));
+            Task.Run(() => HassApiManager.ProcessQuickActionAsync(_quickAction));
 
             // close our parent window
             _quickActionsForm?.CloseWindow();
         }
 
-        private void QuickActionControl_Click(object sender, EventArgs e)
-        {
-            ExecuteCommand();
-        }
+        private void QuickActionControl_Click(object sender, EventArgs e) => ExecuteCommand();
 
-        private void PbImage_Click(object sender, EventArgs e)
-        {
-            ExecuteCommand();
-        }
+        private void PbImage_Click(object sender, EventArgs e) => ExecuteCommand();
 
-        private void LblAction_Click(object sender, EventArgs e)
-        {
-            ExecuteCommand();
-        }
+        private void LblAction_Click(object sender, EventArgs e) => ExecuteCommand();
 
-        private void LblEntity_Click(object sender, EventArgs e)
-        {
-            ExecuteCommand();
-        }
+        private void LblEntity_Click(object sender, EventArgs e) => ExecuteCommand();
 
         /// <summary>
         /// Set backcolor

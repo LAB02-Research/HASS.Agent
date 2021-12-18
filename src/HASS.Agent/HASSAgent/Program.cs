@@ -46,11 +46,11 @@ namespace HASSAgent
                 Application.SetCompatibleTextRenderingDefault(false);
 
                 // prepare ui
-                Variables.FrmM = new Main();
+                Variables.MainForm = new Main();
                 HelperFunctions.SetMsgBoxStyle();
 
                 // launch application (hidden)
-                Application.Run(new CustomApplicationContext(Variables.FrmM));
+                Application.Run(new CustomApplicationContext(Variables.MainForm));
             }
             catch (AccessViolationException ex)
             {

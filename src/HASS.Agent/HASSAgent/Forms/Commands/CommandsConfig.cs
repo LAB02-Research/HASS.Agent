@@ -262,7 +262,7 @@ namespace HASSAgent.Forms.Commands
                 catch (Exception ex)
                 {
                     Log.Fatal(ex, "[COMMANDS] Error while saving: {err}", ex.Message);
-                    Variables.FrmM?.ShowMessageBox("An error occured while saving the commands, check the logs for more info.", true);
+                    Variables.MainForm?.ShowMessageBox("An error occured while saving the commands, check the logs for more info.", true);
                 }
             });
 
@@ -270,15 +270,9 @@ namespace HASSAgent.Forms.Commands
             DialogResult = DialogResult.OK;
         }
 
-        private void BtnModify_Click(object sender, EventArgs e)
-        {
-            ModifySelectedCommand();
-        }
+        private void BtnModify_Click(object sender, EventArgs e) => ModifySelectedCommand();
 
-        private void BtnRemove_Click(object sender, EventArgs e)
-        {
-            DeleteSelectedCommands();
-        }
+        private void BtnRemove_Click(object sender, EventArgs e) => DeleteSelectedCommands();
 
         private void CommandsConfig_KeyUp(object sender, KeyEventArgs e)
         {
@@ -292,14 +286,8 @@ namespace HASSAgent.Forms.Commands
             CommandsManager.Unpause();
         }
 
-        private void LcCommands_DoubleClick(object sender, EventArgs e)
-        {
-            ModifySelectedCommand();
-        }
+        private void LcCommands_DoubleClick(object sender, EventArgs e) => ModifySelectedCommand();
 
-        private void CommandsConfig_Resize(object sender, EventArgs e)
-        {
-            LcCommands.Height = Height - _heightDiff;
-        }
+        private void CommandsConfig_Resize(object sender, EventArgs e) => LcCommands.Height = Height - _heightDiff;
     }
 }

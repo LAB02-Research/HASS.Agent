@@ -38,7 +38,7 @@ namespace HASSAgent.Notifications
 
                     // done
                     Log.Information("[NOTIFIER] API listening on port {port}", Variables.AppSettings.NotifierApiPort);
-                    Variables.FrmM?.SetNotificationApiStatus(ComponentStatus.Ok);
+                    Variables.MainForm?.SetNotificationApiStatus(ComponentStatus.Ok);
                 };
 
                 // register shutdown event
@@ -47,7 +47,7 @@ namespace HASSAgent.Notifications
                     if (Variables.ShuttingDown) return;
 
                     Log.Information("[NOTIFIER] API stopped");
-                    Variables.FrmM?.SetNotificationApiStatus(ComponentStatus.Stopped);
+                    Variables.MainForm?.SetNotificationApiStatus(ComponentStatus.Stopped);
                 };
 
                 // try to launch server
@@ -58,9 +58,9 @@ namespace HASSAgent.Notifications
                 catch (Exception ex)
                 {
                     Log.Fatal(ex, "[NOTIFIER] Error trying to bind the API to port {port}: {err}", Variables.AppSettings.NotifierApiPort, ex.Message);
-                    Variables.FrmM?.ShowMessageBox($"Error trying to bind the API to port {Variables.AppSettings.NotifierApiPort}.\r\n\r\nMake sure you have administrator rights, no other instance of HASS Agent is running\r\nand the port is available.", true);
+                    Variables.MainForm?.ShowMessageBox($"Error trying to bind the API to port {Variables.AppSettings.NotifierApiPort}.\r\n\r\nMake sure you have administrator rights, no other instance of HASS Agent is running\r\nand the port is available.", true);
 
-                    Variables.FrmM?.SetNotificationApiStatus(ComponentStatus.Failed);
+                    Variables.MainForm?.SetNotificationApiStatus(ComponentStatus.Failed);
                 }
             }
         }

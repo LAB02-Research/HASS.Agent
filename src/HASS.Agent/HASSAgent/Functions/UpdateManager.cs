@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HASSAgent.Settings;
 using Octokit;
 using Serilog;
 
@@ -21,7 +22,7 @@ namespace HASSAgent.Functions
             await Task.Delay(TimeSpan.FromMinutes(1));
 
             // initial check
-            var (isAvailable, version) = await UpdateAvailable();
+            var (isAvailable, version) = await CheckIsUpdateAvailableAsync();
             if (isAvailable) ProcessAvailableUpdate(version);
 
             // start periodic check
@@ -41,8 +42,11 @@ namespace HASSAgent.Functions
                 // check if we're shutting down
                 if (Variables.ShuttingDown) return;
 
+                // disabled by now?
+                if (!Variables.AppSettings.CheckForUpdates) continue;
+
                 // check for new update
-                var (isAvailable, version) = await UpdateAvailable();
+                var (isAvailable, version) = await CheckIsUpdateAvailableAsync();
                 if (!isAvailable) continue;
 
                 // jep! process
@@ -56,14 +60,22 @@ namespace HASSAgent.Functions
         /// <param name="version"></param>
         private static void ProcessAvailableUpdate(string version)
         {
-            // todo
+            // did we show this version already?
+            if (version == Variables.AppSettings.LastUpdateNotificationShown) return;
+
+            // nope, store that we're showing info about this version
+            Variables.AppSettings.LastUpdateNotificationShown = version;
+            SettingsManager.StoreAppSettings();
+
+            // now show the window
+            Variables.MainForm.ShowUpdateInfo(version);
         }
 
         /// <summary>
         /// Queries the GitHub API to determine whether the latest release tag is greater than this version
         /// </summary>
         /// <returns></returns>
-        internal static async Task<(bool isAvailable, string version)> UpdateAvailable()
+        internal static async Task<(bool isAvailable, string version)> CheckIsUpdateAvailableAsync()
         {
             try
             {
@@ -105,10 +117,10 @@ namespace HASSAgent.Functions
         }
 
         /// <summary>
-        /// Returns the .zip asset URL for the latest release tag
+        /// Returns the release's URL and release notes for the latest release tag
         /// </summary>
         /// <returns></returns>
-        internal static async Task<string> GetLatestVersionAssetUrl()
+        internal static async Task<(string releaseUrl, string releaseNotes)> GetLatestVersionInfoAsync()
         {
             try
             {
@@ -119,21 +131,30 @@ namespace HASSAgent.Functions
                 var latestRelease = await client.Repository.Release.GetLatest("LAB02-Research", "HASS.Agent");
 
                 // get the .zip asset
-                var zipAsset = latestRelease.Assets.Select(x => x).FirstOrDefault(y => y.ContentType == "application/x-zip-compressed");
-                if (zipAsset == null)
-                {
-                    // not found ..
-                    Log.Error("[UPDATER] No .zip asset found for release: {v}", latestRelease.TagName);
-                    return string.Empty;
-                }
+                // deprecated: we're using the general page now
+
+                //var zipAssetUri = string.Empty;
+                //var zipAsset = latestRelease.Assets.Select(x => x).FirstOrDefault(y => y.ContentType == "application/x-zip-compressed");
+                //if (zipAsset == null)
+                //{
+                //    // not found ..
+                //    Log.Error("[UPDATER] No .zip asset found for release: {v}", latestRelease.TagName);
+                //}
+                //else zipAssetUri = zipAsset.BrowserDownloadUrl;
+
+                // get the release url
+                var releaseUrl = latestRelease.HtmlUrl;
+
+                // get the release notes
+                var releaseNotes = latestRelease.Body;
 
                 // done
-                return zipAsset.BrowserDownloadUrl;
+                return (releaseUrl, releaseNotes);
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "[UPDATER] Error getting the latest version's asset URL: {err}", ex.Message);
-                return string.Empty;
+                Log.Fatal(ex, "[UPDATER] Error getting the latest version's info: {err}", ex.Message);
+                return (string.Empty, "error fetching info, check the logs");
             }
         }
     }

@@ -13,7 +13,6 @@ namespace HASSAgent.Forms
     public partial class Configuration : MetroForm
     {
         private readonly HotkeySelector _hotkeySelector = new HotkeySelector();
-        private bool _schedTaskPresent = false;
         private readonly Hotkey _previousHotkey = Variables.QuickActionsHotKey;
 
         public Configuration()
@@ -43,23 +42,13 @@ namespace HASSAgent.Forms
             // store settings
             StoreSettings();
 
-            // reload mqtt
-            Task.Run(MqttManager.ReloadMqttSettingsAsync);
-            
-            // inform the user
-            if (!_schedTaskPresent) MessageBoxAdv.Show("Your configuration has been saved.\r\n\r\nSome changes require HASS.Agent to restart before they take effect.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else
+            // ask the user if they want to restart
+            var question = MessageBoxAdv.Show("Your configuration has been saved. Some changes require HASS.Agent to restart before they take effect.\r\n\r\nDo you want to restart now?", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (question == DialogResult.Yes)
             {
-                // we're launched using the scheduled task, which would require the task scheduler to restart
-                // ask the user to do it for them
-                var question = MessageBoxAdv.Show("Your configuration has been saved. Some changes require HASS.Agent to restart before they take effect.\r\n\r\nDo you want to restart now?", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (question == DialogResult.Yes)
-                {
-                    // prepare the restart
-                    var restartPrepared = ScheduledTasks.RestartScheduledTask();
-                    if (!restartPrepared) MessageBoxAdv.Show("Something went wrong while preparing the scheduled task restart.\r\nPlease restart manually through Windows' Task Scheduler.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    else Variables.ShuttingDown = true;
-                }
+                // prepare the restart
+                var restartPrepared = HelperFunctions.Restart();
+                if (!restartPrepared) MessageBoxAdv.Show("Something went wrong while preparing to restart.\r\nPlease restart manually.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             // done
@@ -91,6 +80,9 @@ namespace HASSAgent.Forms
             CbMqttTls.CheckState = Variables.AppSettings.MqttUseTls ? CheckState.Checked : CheckState.Unchecked;
             TbMqttUsername.Text = Variables.AppSettings.MqttUsername;
             TbMqttPassword.Text = Variables.AppSettings.MqttPassword;
+
+            // updates
+            CbUpdates.CheckState = Variables.AppSettings.CheckForUpdates ? CheckState.Checked : CheckState.Unchecked;
         }
 
         /// <summary>
@@ -130,6 +122,9 @@ namespace HASSAgent.Forms
             Variables.AppSettings.MqttUsername = TbMqttUsername.Text;
             Variables.AppSettings.MqttPassword = TbMqttPassword.Text;
 
+            // updates
+            Variables.AppSettings.CheckForUpdates = CbUpdates.CheckState == CheckState.Checked;
+
             // save to file
             SettingsManager.StoreAppSettings();
         }
@@ -156,7 +151,6 @@ namespace HASSAgent.Forms
                     case TaskState.Running:
                         LblLaunchOnBootActive.Text = "active";
                         LblLaunchOnBootActive.ForeColor = Color.LimeGreen;
-                        _schedTaskPresent = true;
                         return;
 
                     case TaskState.Disabled:
@@ -167,7 +161,6 @@ namespace HASSAgent.Forms
                     case TaskState.Ready:
                         LblLaunchOnBootActive.Text = "present, not running";
                         LblLaunchOnBootActive.ForeColor = Color.LawnGreen;
-                        _schedTaskPresent = true;
                         return;
 
                     default:
@@ -223,13 +216,9 @@ namespace HASSAgent.Forms
                     if (question != DialogResult.Yes) return;
 
                     // prepare the restart
-                    var restartPrepared = ScheduledTasks.RestartScheduledTask();
+                    var restartPrepared = HelperFunctions.RestartWithTask();
                     if (!restartPrepared) MessageBoxAdv.Show("Something went wrong while preparing the scheduled task restart.\r\nPlease restart manually through Windows' Task Scheduler.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    else
-                    {
-                        Variables.ShuttingDown = true;
-                        DialogResult = DialogResult.OK;
-                    }
+                    else DialogResult = DialogResult.OK;
                     return;
                 }
             }
@@ -238,7 +227,7 @@ namespace HASSAgent.Forms
             BtnCreateLaunchOnBootTask.Text = "create launch-on-login scheduled task";
             BtnCreateLaunchOnBootTask.Enabled = true;
 
-            MessageBoxAdv.Show("The was an error while creating the task.\r\n\r\nMake sure you have sufficient rights. Check the readme and logs for more info.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBoxAdv.Show("There was an error while creating the task.\r\n\r\nMake sure you have sufficient rights. Check the readme and logs for more info.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void Configuration_FormClosing(object sender, FormClosingEventArgs e)
@@ -266,19 +255,10 @@ namespace HASSAgent.Forms
             }
         }
 
-        private void BtnNotificationsReadme_Click(object sender, System.EventArgs e)
-        {
-            HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent#configuration");
-        }
+        private void BtnNotificationsReadme_Click(object sender, System.EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent#configuration");
 
-        private void BtnScheduledTaskReadme_Click(object sender, System.EventArgs e)
-        {
-            HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent#installation");
-        }
+        private void BtnScheduledTaskReadme_Click(object sender, System.EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent#installation");
 
-        private void BtnHelp_Click(object sender, System.EventArgs e)
-        {
-            HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent");
-        }
+        private void BtnHelp_Click(object sender, System.EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent");
     }
 }

@@ -49,7 +49,7 @@ namespace HASSAgent.Forms.QuickActions
             Activate();
 
             // check hass status
-            var hass = await CheckHassManager();
+            var hass = await CheckHassManagerAsync();
             if (!hass) CloseWindow();
         }
 
@@ -92,6 +92,9 @@ namespace HASSAgent.Forms.QuickActions
             PnlActions.PerformLayout();
         }
 
+        /// <summary>
+        /// Tries to close the window
+        /// </summary>
         internal void CloseWindow()
         {
             if (!IsHandleCreated) return;
@@ -108,7 +111,7 @@ namespace HASSAgent.Forms.QuickActions
         /// Check whether the HASS manager is ready to process our request
         /// </summary>
         /// <returns></returns>
-        private async Task<bool> CheckHassManager()
+        private async Task<bool> CheckHassManagerAsync()
         {
             switch (HassApiManager.ManagerStatus)
             {

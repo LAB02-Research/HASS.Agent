@@ -97,7 +97,7 @@
             this.TsExit});
             this.CmTrayIcon.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(236)))), ((int)(((byte)(249)))));
             this.CmTrayIcon.Name = "CmTrayIcon";
-            this.CmTrayIcon.Size = new System.Drawing.Size(192, 220);
+            this.CmTrayIcon.Size = new System.Drawing.Size(190, 220);
             this.CmTrayIcon.Style = Syncfusion.Windows.Forms.Tools.ContextMenuStripEx.ContextMenuStyle.Default;
             this.CmTrayIcon.ThemeName = "Default";
             // 
@@ -105,7 +105,7 @@
             // 
             this.TsShow.Image = global::HASSAgent.Properties.Resources.logo_32;
             this.TsShow.Name = "TsShow";
-            this.TsShow.Size = new System.Drawing.Size(191, 22);
+            this.TsShow.Size = new System.Drawing.Size(189, 22);
             this.TsShow.Text = "show hass.agent";
             this.TsShow.Click += new System.EventHandler(this.TsShow_Click);
             // 
@@ -113,20 +113,20 @@
             // 
             this.TsShowQuickActions.Image = global::HASSAgent.Properties.Resources.ti_remote_32;
             this.TsShowQuickActions.Name = "TsShowQuickActions";
-            this.TsShowQuickActions.Size = new System.Drawing.Size(191, 22);
+            this.TsShowQuickActions.Size = new System.Drawing.Size(189, 22);
             this.TsShowQuickActions.Text = "show quick actions";
             this.TsShowQuickActions.Click += new System.EventHandler(this.TsShowQuickActions_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(188, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(186, 6);
             // 
             // TsConfig
             // 
             this.TsConfig.Image = global::HASSAgent.Properties.Resources.ti_gear_32;
             this.TsConfig.Name = "TsConfig";
-            this.TsConfig.Size = new System.Drawing.Size(191, 22);
+            this.TsConfig.Size = new System.Drawing.Size(189, 22);
             this.TsConfig.Text = "configuration";
             this.TsConfig.Click += new System.EventHandler(this.TsConfig_Click);
             // 
@@ -134,7 +134,7 @@
             // 
             this.TsQuickItemsConfig.Image = global::HASSAgent.Properties.Resources.ti_remote_32;
             this.TsQuickItemsConfig.Name = "TsQuickItemsConfig";
-            this.TsQuickItemsConfig.Size = new System.Drawing.Size(191, 22);
+            this.TsQuickItemsConfig.Size = new System.Drawing.Size(189, 22);
             this.TsQuickItemsConfig.Text = "manage quick actions";
             this.TsQuickItemsConfig.Click += new System.EventHandler(this.TsQuickItemsConfig_Click);
             // 
@@ -142,7 +142,7 @@
             // 
             this.TsLocalSensors.Image = global::HASSAgent.Properties.Resources.ti_radar_32;
             this.TsLocalSensors.Name = "TsLocalSensors";
-            this.TsLocalSensors.Size = new System.Drawing.Size(191, 22);
+            this.TsLocalSensors.Size = new System.Drawing.Size(189, 22);
             this.TsLocalSensors.Text = "manage local sensors";
             this.TsLocalSensors.Click += new System.EventHandler(this.TsLocalSensors_Click);
             // 
@@ -150,33 +150,33 @@
             // 
             this.TsCommands.Image = global::HASSAgent.Properties.Resources.ti_workflow_32;
             this.TsCommands.Name = "TsCommands";
-            this.TsCommands.Size = new System.Drawing.Size(191, 22);
+            this.TsCommands.Size = new System.Drawing.Size(189, 22);
             this.TsCommands.Text = "manage commands";
             this.TsCommands.Click += new System.EventHandler(this.TsCommands_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(188, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(186, 6);
             // 
             // TsCheckForUpdates
             // 
             this.TsCheckForUpdates.Image = global::HASSAgent.Properties.Resources.ti_update_32;
             this.TsCheckForUpdates.Name = "TsCheckForUpdates";
-            this.TsCheckForUpdates.Size = new System.Drawing.Size(191, 22);
+            this.TsCheckForUpdates.Size = new System.Drawing.Size(189, 22);
             this.TsCheckForUpdates.Text = "check for updates";
             this.TsCheckForUpdates.Click += new System.EventHandler(this.TsCheckForUpdates_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(188, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(186, 6);
             // 
             // TsAbout
             // 
             this.TsAbout.Image = global::HASSAgent.Properties.Resources.question_32;
             this.TsAbout.Name = "TsAbout";
-            this.TsAbout.Size = new System.Drawing.Size(191, 22);
+            this.TsAbout.Size = new System.Drawing.Size(189, 22);
             this.TsAbout.Text = "about";
             this.TsAbout.Click += new System.EventHandler(this.TsAbout_Click);
             // 
@@ -184,7 +184,7 @@
             // 
             this.TsExit.Image = global::HASSAgent.Properties.Resources.ti_exit_32;
             this.TsExit.Name = "TsExit";
-            this.TsExit.Size = new System.Drawing.Size(191, 22);
+            this.TsExit.Size = new System.Drawing.Size(189, 22);
             this.TsExit.Text = "exit";
             this.TsExit.Click += new System.EventHandler(this.TsExit_Click);
             // 
@@ -192,9 +192,9 @@
             // 
             this.BtnExit.AccessibleName = "Button";
             this.BtnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnExit.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnExit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnExit.Location = new System.Drawing.Point(12, 383);
+            this.BtnExit.Location = new System.Drawing.Point(12, 403);
             this.BtnExit.Name = "BtnExit";
             this.BtnExit.Size = new System.Drawing.Size(59, 31);
             this.BtnExit.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -213,11 +213,11 @@
             // 
             this.BtnHide.AccessibleName = "Button";
             this.BtnHide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnHide.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnHide.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnHide.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnHide.Location = new System.Drawing.Point(239, 383);
+            this.BtnHide.Location = new System.Drawing.Point(272, 403);
             this.BtnHide.Name = "BtnHide";
-            this.BtnHide.Size = new System.Drawing.Size(222, 31);
+            this.BtnHide.Size = new System.Drawing.Size(258, 31);
             this.BtnHide.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnHide.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnHide.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -237,9 +237,9 @@
             this.GpControls.Controls.Add(this.BtnActionsManager);
             this.GpControls.Controls.Add(this.BtnCommandsManager);
             this.GpControls.Controls.Add(this.BtnSensorsManager);
-            this.GpControls.Location = new System.Drawing.Point(12, 201);
+            this.GpControls.Location = new System.Drawing.Point(12, 220);
             this.GpControls.Name = "GpControls";
-            this.GpControls.Size = new System.Drawing.Size(449, 165);
+            this.GpControls.Size = new System.Drawing.Size(518, 177);
             this.GpControls.TabIndex = 7;
             this.GpControls.TabStop = false;
             this.GpControls.Text = "controls";
@@ -248,13 +248,13 @@
             // 
             this.BtnAppSettings.AccessibleName = "Button";
             this.BtnAppSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnAppSettings.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnAppSettings.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAppSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnAppSettings.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnAppSettings.ImageSize = new System.Drawing.Size(48, 48);
-            this.BtnAppSettings.Location = new System.Drawing.Point(18, 21);
+            this.BtnAppSettings.Location = new System.Drawing.Point(21, 28);
             this.BtnAppSettings.Name = "BtnAppSettings";
-            this.BtnAppSettings.Size = new System.Drawing.Size(95, 130);
+            this.BtnAppSettings.Size = new System.Drawing.Size(105, 130);
             this.BtnAppSettings.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnAppSettings.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnAppSettings.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -273,13 +273,13 @@
             // 
             this.BtnActionsManager.AccessibleName = "Button";
             this.BtnActionsManager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnActionsManager.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnActionsManager.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnActionsManager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnActionsManager.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnActionsManager.ImageSize = new System.Drawing.Size(48, 48);
-            this.BtnActionsManager.Location = new System.Drawing.Point(123, 21);
+            this.BtnActionsManager.Location = new System.Drawing.Point(146, 28);
             this.BtnActionsManager.Name = "BtnActionsManager";
-            this.BtnActionsManager.Size = new System.Drawing.Size(95, 130);
+            this.BtnActionsManager.Size = new System.Drawing.Size(105, 130);
             this.BtnActionsManager.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnActionsManager.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnActionsManager.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -298,12 +298,12 @@
             // 
             this.BtnCommandsManager.AccessibleName = "Button";
             this.BtnCommandsManager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnCommandsManager.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnCommandsManager.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCommandsManager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnCommandsManager.ImageSize = new System.Drawing.Size(48, 48);
-            this.BtnCommandsManager.Location = new System.Drawing.Point(333, 21);
+            this.BtnCommandsManager.Location = new System.Drawing.Point(396, 28);
             this.BtnCommandsManager.Name = "BtnCommandsManager";
-            this.BtnCommandsManager.Size = new System.Drawing.Size(95, 130);
+            this.BtnCommandsManager.Size = new System.Drawing.Size(105, 130);
             this.BtnCommandsManager.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnCommandsManager.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnCommandsManager.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -323,13 +323,13 @@
             // 
             this.BtnSensorsManager.AccessibleName = "Button";
             this.BtnSensorsManager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnSensorsManager.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnSensorsManager.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSensorsManager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnSensorsManager.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnSensorsManager.ImageSize = new System.Drawing.Size(48, 48);
-            this.BtnSensorsManager.Location = new System.Drawing.Point(228, 21);
+            this.BtnSensorsManager.Location = new System.Drawing.Point(271, 28);
             this.BtnSensorsManager.Name = "BtnSensorsManager";
-            this.BtnSensorsManager.Size = new System.Drawing.Size(95, 130);
+            this.BtnSensorsManager.Size = new System.Drawing.Size(105, 130);
             this.BtnSensorsManager.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnSensorsManager.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnSensorsManager.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -361,7 +361,7 @@
             this.GpStatus.Controls.Add(this.label1);
             this.GpStatus.Location = new System.Drawing.Point(12, 12);
             this.GpStatus.Name = "GpStatus";
-            this.GpStatus.Size = new System.Drawing.Size(449, 170);
+            this.GpStatus.Size = new System.Drawing.Size(518, 194);
             this.GpStatus.TabIndex = 6;
             this.GpStatus.TabStop = false;
             this.GpStatus.Text = "system status";
@@ -369,108 +369,108 @@
             // LblStatusMqtt
             // 
             this.LblStatusMqtt.AutoSize = true;
-            this.LblStatusMqtt.Location = new System.Drawing.Point(134, 124);
+            this.LblStatusMqtt.Location = new System.Drawing.Point(150, 144);
             this.LblStatusMqtt.Name = "LblStatusMqtt";
-            this.LblStatusMqtt.Size = new System.Drawing.Size(11, 13);
+            this.LblStatusMqtt.Size = new System.Drawing.Size(13, 17);
             this.LblStatusMqtt.TabIndex = 11;
             this.LblStatusMqtt.Text = "-";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(94, 124);
+            this.label7.Location = new System.Drawing.Point(110, 144);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 13);
+            this.label7.Size = new System.Drawing.Size(38, 17);
             this.label7.TabIndex = 10;
             this.label7.Text = "mqtt:";
             // 
             // LblStatusCommands
             // 
             this.LblStatusCommands.AutoSize = true;
-            this.LblStatusCommands.Location = new System.Drawing.Point(346, 124);
+            this.LblStatusCommands.Location = new System.Drawing.Point(365, 144);
             this.LblStatusCommands.Name = "LblStatusCommands";
-            this.LblStatusCommands.Size = new System.Drawing.Size(11, 13);
+            this.LblStatusCommands.Size = new System.Drawing.Size(13, 17);
             this.LblStatusCommands.TabIndex = 9;
             this.LblStatusCommands.Text = "-";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(275, 124);
+            this.label6.Location = new System.Drawing.Point(284, 144);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 13);
+            this.label6.Size = new System.Drawing.Size(75, 17);
             this.label6.TabIndex = 8;
             this.label6.Text = "commands:";
             // 
             // LblStatusSensors
             // 
             this.LblStatusSensors.AutoSize = true;
-            this.LblStatusSensors.Location = new System.Drawing.Point(346, 87);
+            this.LblStatusSensors.Location = new System.Drawing.Point(365, 97);
             this.LblStatusSensors.Name = "LblStatusSensors";
-            this.LblStatusSensors.Size = new System.Drawing.Size(11, 13);
+            this.LblStatusSensors.Size = new System.Drawing.Size(13, 17);
             this.LblStatusSensors.TabIndex = 7;
             this.LblStatusSensors.Text = "-";
             // 
             // LblStatusQuickActions
             // 
             this.LblStatusQuickActions.AutoSize = true;
-            this.LblStatusQuickActions.Location = new System.Drawing.Point(346, 50);
+            this.LblStatusQuickActions.Location = new System.Drawing.Point(365, 50);
             this.LblStatusQuickActions.Name = "LblStatusQuickActions";
-            this.LblStatusQuickActions.Size = new System.Drawing.Size(11, 13);
+            this.LblStatusQuickActions.Size = new System.Drawing.Size(13, 17);
             this.LblStatusQuickActions.TabIndex = 6;
             this.LblStatusQuickActions.Text = "-";
             // 
             // LblStatusHassApi
             // 
             this.LblStatusHassApi.AutoSize = true;
-            this.LblStatusHassApi.Location = new System.Drawing.Point(134, 87);
+            this.LblStatusHassApi.Location = new System.Drawing.Point(150, 97);
             this.LblStatusHassApi.Name = "LblStatusHassApi";
-            this.LblStatusHassApi.Size = new System.Drawing.Size(11, 13);
+            this.LblStatusHassApi.Size = new System.Drawing.Size(13, 17);
             this.LblStatusHassApi.TabIndex = 5;
             this.LblStatusHassApi.Text = "-";
             // 
             // LblStatusNotificationApi
             // 
             this.LblStatusNotificationApi.AutoSize = true;
-            this.LblStatusNotificationApi.Location = new System.Drawing.Point(134, 50);
+            this.LblStatusNotificationApi.Location = new System.Drawing.Point(150, 50);
             this.LblStatusNotificationApi.Name = "LblStatusNotificationApi";
-            this.LblStatusNotificationApi.Size = new System.Drawing.Size(11, 13);
+            this.LblStatusNotificationApi.Size = new System.Drawing.Size(13, 17);
             this.LblStatusNotificationApi.TabIndex = 4;
             this.LblStatusNotificationApi.Text = "-";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(291, 87);
+            this.label3.Location = new System.Drawing.Point(303, 97);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.Size = new System.Drawing.Size(56, 17);
             this.label3.TabIndex = 3;
             this.label3.Text = "sensors:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(262, 50);
+            this.label4.Location = new System.Drawing.Point(273, 50);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 13);
+            this.label4.Size = new System.Drawing.Size(86, 17);
             this.label4.TabIndex = 2;
             this.label4.Text = "quick actions:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 87);
+            this.label2.Location = new System.Drawing.Point(28, 97);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 13);
+            this.label2.Size = new System.Drawing.Size(120, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "home assistant api:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 50);
+            this.label1.Location = new System.Drawing.Point(51, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 13);
+            this.label1.Size = new System.Drawing.Size(97, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "notification api:";
             // 
@@ -478,11 +478,11 @@
             // 
             this.BtnCheckForUpdate.AccessibleName = "Button";
             this.BtnCheckForUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnCheckForUpdate.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnCheckForUpdate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCheckForUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnCheckForUpdate.Location = new System.Drawing.Point(113, 383);
+            this.BtnCheckForUpdate.Location = new System.Drawing.Point(113, 403);
             this.BtnCheckForUpdate.Name = "BtnCheckForUpdate";
-            this.BtnCheckForUpdate.Size = new System.Drawing.Size(120, 31);
+            this.BtnCheckForUpdate.Size = new System.Drawing.Size(153, 31);
             this.BtnCheckForUpdate.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnCheckForUpdate.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnCheckForUpdate.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -499,9 +499,9 @@
             // 
             this.BtnAbout.AccessibleName = "Button";
             this.BtnAbout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnAbout.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnAbout.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAbout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnAbout.Location = new System.Drawing.Point(77, 383);
+            this.BtnAbout.Location = new System.Drawing.Point(77, 403);
             this.BtnAbout.Name = "BtnAbout";
             this.BtnAbout.Size = new System.Drawing.Size(30, 31);
             this.BtnAbout.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -522,16 +522,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.CaptionBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(473, 421);
+            this.ClientSize = new System.Drawing.Size(542, 436);
             this.Controls.Add(this.BtnCheckForUpdate);
             this.Controls.Add(this.BtnAbout);
             this.Controls.Add(this.GpControls);
             this.Controls.Add(this.GpStatus);
             this.Controls.Add(this.BtnHide);
             this.Controls.Add(this.BtnExit);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

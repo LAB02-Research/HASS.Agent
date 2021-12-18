@@ -31,10 +31,15 @@ namespace HASSAgent.Forms
         [SuppressMessage("ReSharper", "RedundantAssignment")]
         private void BtnOk_Click(object sender, EventArgs e)
         {
+            Process();
+        }
+
+        private void Process()
+        {
             // check values
             var username = TbUsername.Text.Trim();
             var password = TbPassword.Text.Trim();
-            
+
             if (string.IsNullOrEmpty(username))
             {
                 MessageBoxAdv.Show("Please enter a username.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -59,9 +64,15 @@ namespace HASSAgent.Forms
             // clear our string
             password = null;
 
-
             // done
             DialogResult = DialogResult.OK;
+        }
+
+        private void TbPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Enter) return;
+
+            Process();
         }
     }
 }

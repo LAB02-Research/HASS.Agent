@@ -46,7 +46,7 @@ namespace HASSAgent.Forms.QuickActions
             this.BtnStore.AccessibleName = "Button";
             this.BtnStore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BtnStore.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnStore.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnStore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Location = new System.Drawing.Point(0, 521);
             this.BtnStore.Name = "BtnStore";
@@ -68,9 +68,9 @@ namespace HASSAgent.Forms.QuickActions
             this.BtnAdd.AccessibleName = "Button";
             this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnAdd.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnAdd.Location = new System.Drawing.Point(723, 473);
+            this.BtnAdd.Location = new System.Drawing.Point(736, 473);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(197, 35);
             this.BtnAdd.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -90,9 +90,9 @@ namespace HASSAgent.Forms.QuickActions
             this.BtnModify.AccessibleName = "Button";
             this.BtnModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnModify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnModify.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnModify.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnModify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnModify.Location = new System.Drawing.Point(520, 473);
+            this.BtnModify.Location = new System.Drawing.Point(533, 473);
             this.BtnModify.Name = "BtnModify";
             this.BtnModify.Size = new System.Drawing.Size(197, 35);
             this.BtnModify.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -112,9 +112,9 @@ namespace HASSAgent.Forms.QuickActions
             this.BtnRemove.AccessibleName = "Button";
             this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnRemove.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnRemove.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnRemove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnRemove.Location = new System.Drawing.Point(317, 473);
+            this.BtnRemove.Location = new System.Drawing.Point(330, 473);
             this.BtnRemove.Name = "BtnRemove";
             this.BtnRemove.Size = new System.Drawing.Size(197, 35);
             this.BtnRemove.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -134,9 +134,9 @@ namespace HASSAgent.Forms.QuickActions
             this.BtnPreview.AccessibleName = "Button";
             this.BtnPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnPreview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnPreview.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.BtnPreview.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnPreview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnPreview.Location = new System.Drawing.Point(12, 473);
+            this.BtnPreview.Location = new System.Drawing.Point(0, 473);
             this.BtnPreview.Name = "BtnPreview";
             this.BtnPreview.Size = new System.Drawing.Size(197, 35);
             this.BtnPreview.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -219,7 +219,7 @@ namespace HASSAgent.Forms.QuickActions
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.CaptionBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(933, 568);
             this.Controls.Add(this.LcQuickActions);
@@ -228,7 +228,7 @@ namespace HASSAgent.Forms.QuickActions
             this.Controls.Add(this.BtnModify);
             this.Controls.Add(this.BtnAdd);
             this.Controls.Add(this.BtnStore);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

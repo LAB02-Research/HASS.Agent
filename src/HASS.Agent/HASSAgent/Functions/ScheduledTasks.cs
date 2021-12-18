@@ -14,7 +14,7 @@ namespace HASSAgent.Functions
     /// </summary>
     internal static class ScheduledTasks
     {
-        private const string TaskName = "HASS.Agent";
+        internal const string TaskName = "HASS.Agent";
 
         /// <summary>
         /// Check whether the task is present
@@ -171,47 +171,29 @@ namespace HASSAgent.Functions
         }
 
         /// <summary>
-        /// Launches a .bat that starts the scheduled task after 10 seconds
+        /// Sets the Scheduled Task to enabled
         /// </summary>
         /// <returns></returns>
-        internal static bool RestartScheduledTask()
+        internal static bool Enable()
         {
             try
             {
-                var restartBat = Path.Combine(Variables.StartupPath, "restart_hass_agent.bat");
-                if (File.Exists(restartBat)) File.Delete(restartBat);
+                using (var ts = new TaskService())
+                {
+                    var task = ts.FindTask(TaskName);
+                    if (task == null) return false;
 
-                var restartBatContent = new StringBuilder();
+                    if (task.State != TaskState.Disabled) return true;
 
-                // prepare the .bat content
-                restartBatContent.AppendLine("@echo off");
-                restartBatContent.AppendLine("TITLE HASS.Agent Restarter");
-                restartBatContent.AppendLine("echo.");
-                restartBatContent.AppendLine("echo HASS.Agent Restarter");
-                restartBatContent.AppendLine("echo.");
-                restartBatContent.AppendLine("echo.");
-                restartBatContent.AppendLine("echo Waiting 10 seconds for HASS.Agent to properly close ..");
-                restartBatContent.AppendLine("echo.");
-                restartBatContent.AppendLine("timeout 10 > NUL");
-                restartBatContent.AppendLine("echo.");
-                restartBatContent.AppendLine($"echo Starting scheduled task: {TaskName} ..");
-                restartBatContent.AppendLine($"schtasks /run /TN \"{TaskName}\"");
-                restartBatContent.AppendLine("echo.");
-                restartBatContent.AppendLine("echo Done!");
-                restartBatContent.AppendLine("timeout 1 > NUL");
+                    task.Definition.Settings.Enabled = true;
+                    task.RegisterChanges();
 
-                // create the .bat
-                File.WriteAllText(restartBat, restartBatContent.ToString());
-
-                // launch it
-                Process.Start(restartBat);
-
-                // done
-                return true;
+                    return true;
+                }
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "[SCHEDULEDTASKS] Error while preparing task restart: {err}", ex.Message);
+                Log.Fatal(ex, "[SCHEDULEDTASKS] Error while reenabling task: {err}", ex.Message);
                 return false;
             }
         }

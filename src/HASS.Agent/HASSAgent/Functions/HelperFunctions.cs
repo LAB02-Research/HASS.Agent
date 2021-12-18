@@ -8,7 +8,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Coderr.Client;
 using Coderr.Client.Serilog;
@@ -18,8 +17,10 @@ using HASSAgent.Models;
 using HASSAgent.Mqtt;
 using HASSAgent.Notifications;
 using HASSAgent.Sensors;
+using Microsoft.Win32.TaskScheduler;
 using Serilog;
 using Syncfusion.Windows.Forms;
+using Task = System.Threading.Tasks.Task;
 
 namespace HASSAgent.Functions
 {
@@ -54,10 +55,10 @@ namespace HASSAgent.Functions
             MessageBoxAdv.MetroColorTable = style;
             MessageBoxAdv.MessageBoxStyle = MessageBoxAdv.Style.Metro;
 
-            MessageBoxAdv.CaptionFont = Variables.FrmM.Font;
-            MessageBoxAdv.ButtonFont = Variables.FrmM.Font;
-            MessageBoxAdv.DetailsFont = Variables.FrmM.Font;
-            MessageBoxAdv.MessageFont = Variables.FrmM.Font;
+            MessageBoxAdv.CaptionFont = Variables.MainForm.Font;
+            MessageBoxAdv.ButtonFont = Variables.MainForm.Font;
+            MessageBoxAdv.DetailsFont = Variables.MainForm.Font;
+            MessageBoxAdv.MessageFont = Variables.MainForm.Font;
         }
 
         /// <summary>
@@ -104,7 +105,7 @@ namespace HASSAgent.Functions
         }
 
         /// <summary>
-        /// Initializes Serilog logger, optionally with coderr
+        /// Initializes Serilog logger, optionally with Coderr
         /// </summary>
         /// <param name="enableCoderr"></param>
         internal static void PrepareLogging(bool enableCoderr)
@@ -130,6 +131,9 @@ namespace HASSAgent.Functions
             Log.Information("[LOG] Coderr exception reporting disabled");
         }
 
+        /// <summary>
+        /// Prepare Serilog logger and bind Coderr reporting
+        /// </summary>
         private static void PrepareCoderrEnabledLogging()
         {
             // initialize coderr
@@ -161,16 +165,151 @@ namespace HASSAgent.Functions
         }
 
         /// <summary>
+        /// Determines if HASS.Agent has been launched through Scheduled Task or not, and restarts accordingly
+        /// </summary>
+        /// <returns></returns>
+        internal static bool Restart()
+        {
+            try
+            {
+                // check if there's a task
+                var present = ScheduledTasks.IsTaskPresent();
+                if (!present) return RestartWithoutTask();
+
+                // get task status
+                var status = ScheduledTasks.TaskStatus();
+                
+                // check if it's running or ready
+                if (status != TaskState.Running && status != TaskState.Ready) return RestartWithoutTask();
+
+                // restart using task
+                return RestartWithTask();
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[SYSTEM] Error executing restart: {msg}", ex.Message);
+                return false;
+            }
+        }
+        
+        /// <summary>
+        /// Restart HASS.Agent based on its Scheduled Task
+        /// <para>No checks!</para>
+        /// </summary>
+        /// <returns></returns>
+        internal static bool RestartWithTask()
+        {
+            try
+            {
+                var restartBat = Path.Combine(Variables.StartupPath, "restart_hass_agent.bat");
+                if (File.Exists(restartBat)) File.Delete(restartBat);
+
+                var restartBatContent = new StringBuilder();
+
+                // prepare the .bat content
+                restartBatContent.AppendLine("@echo off");
+                restartBatContent.AppendLine("TITLE HASS.Agent Restarter");
+                restartBatContent.AppendLine("echo.");
+                restartBatContent.AppendLine("echo HASS.Agent Restarter");
+                restartBatContent.AppendLine("echo.");
+                restartBatContent.AppendLine("echo.");
+                restartBatContent.AppendLine("echo Waiting 10 seconds for HASS.Agent to properly close ..");
+                restartBatContent.AppendLine("echo.");
+                restartBatContent.AppendLine("timeout 10 > NUL");
+                restartBatContent.AppendLine("echo.");
+                restartBatContent.AppendLine($"echo Starting scheduled task: {ScheduledTasks.TaskName} ..");
+                restartBatContent.AppendLine($"schtasks /run /TN \"{ScheduledTasks.TaskName}\"");
+                restartBatContent.AppendLine("echo.");
+                restartBatContent.AppendLine("echo Done!");
+                restartBatContent.AppendLine("timeout 1 > NUL");
+
+                // create the .bat
+                File.WriteAllText(restartBat, restartBatContent.ToString());
+
+                // launch it
+                Process.Start(restartBat);
+
+                // close up
+                _ = ShutdownAsync();
+
+                // done
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[SYSTEM] Error executing task restart: {err}", ex.Message);
+                return false;
+            }
+        }
+
+        private static bool RestartWithoutTask()
+        {
+            try
+            {
+                var restartBat = Path.Combine(Variables.StartupPath, "restart_hass_agent.bat");
+                if (File.Exists(restartBat)) File.Delete(restartBat);
+                
+                var restartBatContent = new StringBuilder();
+
+                // prepare the .bat content
+                restartBatContent.AppendLine("@echo off");
+                restartBatContent.AppendLine("TITLE HASS.Agent Restarter");
+                restartBatContent.AppendLine("echo.");
+                restartBatContent.AppendLine("echo HASS.Agent Restarter");
+                restartBatContent.AppendLine("echo.");
+                restartBatContent.AppendLine("echo.");
+                restartBatContent.AppendLine("echo Waiting 10 seconds for HASS.Agent to properly close ..");
+                restartBatContent.AppendLine("echo.");
+                restartBatContent.AppendLine("timeout 10 > NUL");
+                restartBatContent.AppendLine("echo.");
+                restartBatContent.AppendLine("echo Launching HASS.Agent ..");
+                restartBatContent.AppendLine($"start \"\" \"{Variables.ApplicationExecutable}\"");
+                restartBatContent.AppendLine("echo.");
+                restartBatContent.AppendLine("echo Done!");
+                restartBatContent.AppendLine("timeout 1 > NUL");
+
+                // create the .bat
+                File.WriteAllText(restartBat, restartBatContent.ToString());
+
+                // launch it
+                Process.Start(restartBat);
+
+                // close up
+                _ = ShutdownAsync();
+
+                // done
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[SYSTEM] Error executing regular restart: {err}", ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Try to properly close the application with default 500ms waiting time
+        /// </summary>
+        /// <returns></returns>
+        internal static async Task ShutdownAsync()
+        {
+            await ShutdownAsync(TimeSpan.FromMilliseconds(500));
+        }
+
+        /// <summary>
         /// Try to properly close the application
         /// </summary>
-        internal static async Task Shutdown()
+        internal static async Task ShutdownAsync(TimeSpan waitBeforeClosing)
         {
             try
             {
                 // announce we're stopping
                 Variables.ShuttingDown = true;
 
-                // log it
+                // wait a bit
+                await Task.Delay(waitBeforeClosing);
+
+                // log our demise
                 Log.Information("[SYSTEM] Application shutting down");
 
                 // stop hotkey
@@ -195,8 +334,8 @@ namespace HASSAgent.Functions
                 Log.Information("[SYSTEM] Application shutdown complete");
                 Log.CloseAndFlush();
 
-                if (!Variables.FrmM.IsHandleCreated) return;
-                if (Variables.FrmM.IsDisposed) return;
+                if (!Variables.MainForm.IsHandleCreated) return;
+                if (Variables.MainForm.IsDisposed) return;
 
                 // try to close nicely
                 Application.Exit();

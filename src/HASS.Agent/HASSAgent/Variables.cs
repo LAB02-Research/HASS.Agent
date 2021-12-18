@@ -32,9 +32,9 @@ namespace HASSAgent
         /// <summary>
         /// Internal references
         /// </summary>
-        internal static Main FrmM { get; set; }
+        internal static Main MainForm { get; set; }
         internal static Dispatcher UiDispatcher { get; set; }
-        internal static Configuration FrmConfig { get; set; }
+        internal static Configuration ConfigForm { get; set; }
         internal static WebClient ImageWebClient { get; } = new WebClient();
         internal static Hotkey QuickActionsHotKey { get; set; } = new Hotkey(Keys.Control | Keys.Alt, Keys.Q);
         internal static HotKeyManager HotKeyManager { get; } = new HotKeyManager();
@@ -52,6 +52,8 @@ namespace HASSAgent
         /// Internal state
         /// </summary>
         internal static bool ShuttingDown { get; set; } = false;
+        internal static bool OnboardingFirewallRuleCreated { get; set; } = false;
+        internal static bool OnboardingScheduledTaskCreated { get; set; } = false;
 
         /// <summary>
         /// Local IO

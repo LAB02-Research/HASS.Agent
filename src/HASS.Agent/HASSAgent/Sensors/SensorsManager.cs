@@ -32,26 +32,17 @@ namespace HASSAgent.Sensors
         /// <summary>
         /// Stop processing sensor states
         /// </summary>
-        internal static void Stop()
-        {
-            _active = false;
-        }
+        internal static void Stop() => _active = false;
 
         /// <summary>
         /// Pause processing sensor states
         /// </summary>
-        internal static void Pause()
-        {
-            _pause = true;
-        }
+        internal static void Pause() => _pause = true;
 
         /// <summary>
         /// Resume processing sensor states
         /// </summary>
-        internal static void Unpause()
-        {
-            _pause = false;
-        }
+        internal static void Unpause() => _pause = false;
 
         /// <summary>
         /// Continously processes sensors (autodiscovery, states)

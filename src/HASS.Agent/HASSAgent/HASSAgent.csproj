@@ -86,7 +86,62 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\CommandsManager.cs" />
+    <Compile Include="Controls\Onboarding\9-Done.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Onboarding\9-Done.Designer.cs">
+      <DependentUpon>9-Done.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Onboarding\8-Updates.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Onboarding\8-Updates.Designer.cs">
+      <DependentUpon>8-Updates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Onboarding\7-HotKey.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Onboarding\7-HotKey.Designer.cs">
+      <DependentUpon>7-HotKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Onboarding\6-MQTT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Onboarding\6-MQTT.Designer.cs">
+      <DependentUpon>6-MQTT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Onboarding\5-API.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Onboarding\5-API.Designer.cs">
+      <DependentUpon>5-API.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Onboarding\4-Integration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Onboarding\4-Integration.Designer.cs">
+      <DependentUpon>4-Integration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Onboarding\3-Notifications.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Onboarding\3-Notifications.Designer.cs">
+      <DependentUpon>3-Notifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Onboarding\2-ScheduledTask.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Onboarding\2-ScheduledTask.Designer.cs">
+      <DependentUpon>2-ScheduledTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Onboarding\1-Welcome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Onboarding\1-Welcome.Designer.cs">
+      <DependentUpon>1-Welcome.cs</DependentUpon>
+    </Compile>
     <Compile Include="Enums\Component.cs" />
+    <Compile Include="Enums\OnboardingStatus.cs" />
     <Compile Include="Enums\PcUserStatus.cs" />
     <Compile Include="Enums\UserNotificationState.cs" />
     <Compile Include="Forms\About.cs">
@@ -101,15 +156,29 @@
     <Compile Include="Forms\Commands\CommandsMod.Designer.cs">
       <DependentUpon>CommandsMod.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Onboarding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Onboarding.Designer.cs">
+      <DependentUpon>Onboarding.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Sensors\SensorsMod.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Sensors\SensorsMod.Designer.cs">
       <DependentUpon>SensorsMod.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UpdatePending.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UpdatePending.Designer.cs">
+      <DependentUpon>UpdatePending.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Functions\CommandLine.cs" />
     <Compile Include="Functions\HotKeyManager.cs" />
     <Compile Include="Functions\UpdateManager.cs" />
     <Compile Include="Models\ComponentStatusUpdate.cs" />
+    <Compile Include="Models\ConsoleResult.cs" />
     <Compile Include="Models\Mqtt\Commands\CustomCommands\LogOffCommand.cs" />
     <Compile Include="Models\Mqtt\Commands\CustomCommands\RestartCommand.cs" />
     <Compile Include="Models\Mqtt\Commands\CustomCommands\ShutdownCommand.cs" />
@@ -226,6 +295,33 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sensors\SensorsManager.cs" />
     <Compile Include="Variables.cs" />
+    <EmbeddedResource Include="Controls\Onboarding\9-Done.resx">
+      <DependentUpon>9-Done.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Onboarding\8-Updates.resx">
+      <DependentUpon>8-Updates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Onboarding\7-HotKey.resx">
+      <DependentUpon>7-HotKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Onboarding\6-MQTT.resx">
+      <DependentUpon>6-MQTT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Onboarding\5-API.resx">
+      <DependentUpon>5-API.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Onboarding\4-Integration.resx">
+      <DependentUpon>4-Integration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Onboarding\3-Notifications.resx">
+      <DependentUpon>3-Notifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Onboarding\2-ScheduledTask.resx">
+      <DependentUpon>2-ScheduledTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Onboarding\1-Welcome.resx">
+      <DependentUpon>1-Welcome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\QuickActionControl.resx">
       <DependentUpon>QuickActionControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -247,6 +343,9 @@
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Onboarding.resx">
+      <DependentUpon>Onboarding.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\QuickActions\QuickActions.resx">
       <DependentUpon>QuickActions.cs</DependentUpon>
     </EmbeddedResource>
@@ -262,6 +361,9 @@
     <EmbeddedResource Include="Forms\Sensors\SensorsMod.resx">
       <DependentUpon>SensorsMod.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UpdatePending.resx">
+      <DependentUpon>UpdatePending.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -273,6 +375,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.manifest" />
+    <None Include="LICENSE.rtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -313,9 +418,13 @@
     <Content Include="Resources\ti_remote_32.png" />
     <Content Include="Resources\ti_update_32.png" />
     <Content Include="Resources\ti_workflow_32.png" />
+    <Content Include="Resources\update.png" />
     <Content Include="Resources\workflow_48.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="CliWrap">
+      <Version>3.3.3</Version>
+    </PackageReference>
     <PackageReference Include="Coderr.Client.Serilog">
       <Version>1.0.1</Version>
     </PackageReference>
@@ -371,7 +480,7 @@
       <Version>19.2.0.62</Version>
     </PackageReference>
     <PackageReference Include="TaskScheduler">
-      <Version>2.9.2</Version>
+      <Version>2.9.3</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />

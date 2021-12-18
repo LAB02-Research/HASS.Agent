@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using HASSAgent.Enums;
 using HASSAgent.Models;
 using HASSAgent.Models.Config;
 using HASSAgent.Models.Mqtt.Commands;
@@ -20,10 +21,8 @@ namespace HASSAgent.Settings
         /// Load all stored settings and objects
         /// </summary>
         /// <returns></returns>
-        internal static bool Load(out bool firstLaunch)
+        internal static bool Load()
         {
-            firstLaunch = false;
-
             Log.Information("[SETTINGS] Config storage path: {path}", Variables.ConfigPath);
 
             // check config dir
@@ -35,8 +34,8 @@ namespace HASSAgent.Settings
                 // create default config
                 StoreInitialSettings();
 
-                // show firstlaunch screen
-                firstLaunch = true;
+                // set onboarding
+                Variables.AppSettings.OnboardingStatus = OnboardingStatus.NeverDone;
 
                 // done
                 return true;
@@ -77,6 +76,9 @@ namespace HASSAgent.Settings
                     // store default settings
                     StoreInitialSettings();
 
+                    // set onboarding
+                    Variables.AppSettings.OnboardingStatus = OnboardingStatus.NeverDone;
+
                     // done
                     return true;
                 }
@@ -88,8 +90,16 @@ namespace HASSAgent.Settings
                 Variables.AppSettings = JsonConvert.DeserializeObject<AppSettings>(appSettingsRaw);
                 if (Variables.AppSettings == null)
                 {
+                    // something went wrong, but we're not saving new ones, user might want to recover values
                     Log.Error("[SETTINGS] Error loading settings: returned null object");
                     return false;
+                }
+
+                // fix onboarding status for backwards compat.
+                if (Variables.AppSettings.OnboardingStatus == OnboardingStatus.NeverDone)
+                {
+                    Variables.AppSettings.OnboardingStatus = OnboardingStatus.Completed;
+                    StoreAppSettings();
                 }
 
                 // load the hotkey
@@ -102,7 +112,7 @@ namespace HASSAgent.Settings
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS] Error loading app settings: {err}", ex.Message);
-                Variables.FrmM?.ShowMessageBox($"Error loading settings:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowMessageBox($"Error loading settings:\r\n\r\n{ex.Message}", true);
                 return false;
             }
         }
@@ -133,7 +143,7 @@ namespace HASSAgent.Settings
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS] Error storing initial settings: {err}", ex.Message);
-                Variables.FrmM?.ShowMessageBox($"Error storing initial settings:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowMessageBox($"Error storing initial settings:\r\n\r\n{ex.Message}", true);
                 return false;
             }
         }
@@ -193,7 +203,7 @@ namespace HASSAgent.Settings
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS] Error storing app settings: {err}", ex.Message);
-                Variables.FrmM?.ShowMessageBox($"Error storing settings:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowMessageBox($"Error storing settings:\r\n\r\n{ex.Message}", true);
                 return false;
             }
         }
