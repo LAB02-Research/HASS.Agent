@@ -61,7 +61,7 @@ This is the Quick Action window you'll see when using the hotkey. This window au
 
 You can easily configure a new Quick Action, HASS.Agent will fetch your entities for you:
 
-![New_Quick Actions](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_new_quickaction.png)
+![New Quick Actions](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_new_quickaction.png)
 
 The sensors configuration screen looks like this:
 
@@ -73,7 +73,9 @@ The sensors configuration screen looks like this:
 
 You have the option to download an installer or a .zip package - they both contain the same, and the installer doesn't do any configuring. It's just easier, especially for updates. 
 
-HASS.Agent's recommended method of running is through a Scheduled Task (Windows' cron equivalent), specifically one that runs after you log in. During the onboarding process, HASS.Agent will offer to create the task for you. You can of cousrse skip this step. The plus side is that you won't get a UAC notice when HASS.Agent launches.
+HASS.Agent's recommended method of running is through a Scheduled Task (Windows' cron equivalent), specifically one that runs after you log in. During the onboarding process, HASS.Agent will offer to create the task for you. The plus side is that you won't get a UAC notice when HASS.Agent launches. You can of cousrse skip this step.
+
+![Onboarding Task](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_onboarding_task.png)
 
 To use notifications, you'll need to install the <a href="https://github.com/LAB02-Research/HASS.Agent-Notifier" target="_blank">HASS.Agent Notifier integration</a>. This can be done through <a href="https://hacs.xyz" target="_blank">HACS</a> or manually. 
 
