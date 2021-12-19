@@ -87,9 +87,9 @@ You'll also need to open the configured port in the firewall of the receiving de
 
 ### Configuration
 
-When you first launch HASS.Agent, you'll be taken to the onboarding process. You'll be taken through configuring step-by-step, and HASS.Agent will try to perform some tasks for you. 
+When you first launch HASS.Agent, you'll be taken to the onboarding process. This will guide you through configuring step-by-step, and HASS.Agent will offer to perform some tasks for you. 
 
-If you don't want this, or you want to change something later on, you can use the configuration screen: 
+If you don't want this, or if you want to change something later on, you can use the configuration screen: 
 
 ![Configuration screen](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_configuration.png)
 
