@@ -10,6 +10,10 @@ HASS.Agent is a Windows-based client application for <a href="https://www.home-a
 
 ----
 
+Click <a href="https://github.com/LAB02-Research/HASS.Agent/releases/latest/download/HASS.Agent.Installer.exe" target="_blank">here</a> to download the latest installer, or click <a href="https://github.com/LAB02-Research/HASS.Agent/releases/latest/download/HASS.Agent.zip" target="_blank">here</a> to download the latest zip package.
+
+----
+
 ### Contents
 
  * [Why?](#why)
