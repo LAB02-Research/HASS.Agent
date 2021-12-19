@@ -49,8 +49,12 @@ namespace HASSAgent.Controls.Onboarding
             var present = ScheduledTasks.IsTaskPresent();
             if (!present)
             {
-                LblCreateInfo.Text = "Do you want to create one now?";
-                BtnCreateScheduledTask.Enabled = true;
+                Invoke(new MethodInvoker(delegate
+                {
+                    LblCreateInfo.Text = "Do you want to create one now?";
+                    BtnCreateScheduledTask.Enabled = true;
+                }));
+
                 return;
             }
 
