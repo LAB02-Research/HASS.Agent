@@ -36,7 +36,7 @@ If that's the case, feel free to open a ticket so we can discuss!
 
 ### Functionality
 
-Summary of the current implementation:
+Summary of the core functions:
 
 * **Notifications**: receive notifications, show them using Windows builtin toast popups, and optionally attach images. 
   - *This requires the installation of the <a href="https://github.com/LAB02-Research/HASS.Agent-Notifier" target="_blank">HASS.Agent Notifier integration</a>*.
@@ -59,6 +59,10 @@ This is the Quick Action window you'll see when using the hotkey. This window au
 
 ![Quick Actions](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_quickactions.png)
 
+You can easily configure a new Quick Action, HASS.Agent will fetch your entities for you:
+
+![New_Quick Actions](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_new_quickaction.png)
+
 The sensors configuration screen looks like this:
 
 ![Sensors](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_sensors.png)
@@ -67,13 +71,13 @@ The sensors configuration screen looks like this:
 
 ### Installation
 
-The agent itself comes in a .zip, that you can place anywhere you want. After launching, you'll see the configuration screen. In there, you get the option to install HASS.Agent as a run-on-boot scheduled task. This way, it'll launch after you login, and you won't have to accept UAC popups. Afterwards, HASS.Agent will offer to restart using the new task.
+You have the option to download an installer or a .zip package - they both contain the same, and the installer doesn't do any configuring. It's just easier, especially for updates. 
 
-If you're not comfortable with using scheduled tasks, you can always manually add a shortcut to your startup folder.
+HASS.Agent's recommended method of running is through a Scheduled Task (Windows' cron equivalent), specifically one that runs after you log in. During the onboarding process, HASS.Agent will offer to create the task for you. You can of cousrse skip this step. The plus side is that you won't get a UAC notice when HASS.Agent launches.
 
 To use notifications, you'll need to install the <a href="https://github.com/LAB02-Research/HASS.Agent-Notifier" target="_blank">HASS.Agent Notifier integration</a>. This can be done through <a href="https://hacs.xyz" target="_blank">HACS</a> or manually. 
 
-You'll also need to open the configured port in the firewall of the receiving devices (default `5115`). To do so, you can run this command in an elevated prompt:
+You'll also need to open the configured port in the firewall of the receiving devices (default `5115`). During the onboarding process, HASS.Agent will offer to do it for you. If you want to do so manually, you can run this command in an elevated prompt:
 
 `netsh advfirewall firewall add rule name="HASS.Agent Notifier" dir=in action=allow protocol=TCP localport=5115`
 
@@ -81,9 +85,13 @@ You'll also need to open the configured port in the firewall of the receiving de
 
 ### Configuration
 
+When you first launch HASS.Agent, you'll be taken to the onboarding process. You'll be taken through configuring step-by-step, and HASS.Agent will try to perform some tasks for you. 
+
+If you don't want this, or you want to change something later on, you can use the configuration screen: 
+
 ![Configuration screen](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_configuration.png)
 
-Configuring HASS.Agent is split into five parts:
+Configuring HASS.Agent is split into six parts:
 
 #### 1. Notifications
 
@@ -106,6 +114,10 @@ Enter your MQTT broker configuration. This is only required if you want to use c
 #### 5. Hotkey config
 
 This is optional, and can be used to pull up the Quick Actions window at any time.
+
+#### 6. Updates
+
+If you want, HASS.Agent can check for updates in the background. This works by checking the latest release on GitHub. When a new release is found, you'll be notified and given the chance to open the release page.
 
 ----
 
@@ -158,9 +170,11 @@ Example configuration of a shutdown command in Home Assistant, used in combinati
 
 ### Updating
 
-You can check for new updates from the main window or rightclicking the systray icon and selecting 'check for updates'. If there's an update, you will be offered to download the .zip package from GitHub.
+Apart from the automatic update checker, you can check for new updates from the main window or rightclicking the systray icon and selecting 'check for updates'. If there's an update, you will be offered to download the .zip package from GitHub.
 
-Tip: if you're using a scheduled task to run HASS.Agent, you can just launch the .exe and HASS.Agent will offer to restart using the task. That way you don't have to open the task scheduler.
+![Update window](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_update.png)
+
+Tip: if you're using a scheduled task to run HASS.Agent, you can just doubleclick the .exe and HASS.Agent will offer to restart using the task. That way you don't have to open the task scheduler.
 
 ----
 
@@ -177,7 +191,7 @@ List of things I want to add somewhere down the road:
  * **Sensors**: add explanation when adding sensors, currently only name is shown
  * **Sensors**: implement library plugin system for more powerful custom sensors
  * **Commands**: add explanation when adding commands, currently only name is shown
- * **Updater**: give HASS.Agent the option to update itself
+ * **Updater**: give HASS.Agent the option to update itself 100% automatically
 
 If you have any other wishes, feel free to submit a ticket.
 
@@ -198,11 +212,10 @@ If you're experiencing bugs, please set `EnableExtendedLogging` to `True` in **H
 Checklist to start using HASS.Agent:
 
 - Install and configure <a href="https://github.com/LAB02-Research/HASS.Agent-Notifier" target="_blank">HASS.Agent Notifier integration</a> if you want notifications
-- Open port 5115 (*default*) in your pc's firewall
-- Download & extract the <a href="https://github.com/LAB02-Research/HASS.Agent/releases/latest">latest .zip release</a>
-- Launch HASS.Agent.exe
+- Download & run the <a href="https://github.com/LAB02-Research/HASS.Agent/releases/latest">latest release's installer</a>
+- HASS.Agent will launch and show you the onboarding process
 - Configure the parts you'll be using
-- Optionally set HASS.Agent to run as a scheduled task
+- HASS.Agent will restart through the scheduled task
 - Start adding Quick Actions, commands & sensors!
 
 Stuck? <a href="https://github.com/LAB02-Research/HASS.Agent/issues" target="_blank">Create a ticket</a>.
@@ -217,7 +230,7 @@ Second: I learned a lot from sleevezipper's <a href="https://github.com/sleevezi
 
 And a big thank you to all other packages:
 
-<a href="https://github.com/qJake/HADotNet" target="_blank">HADotNet</a>, <a href="https://github.com/morphx666/CoreAudio" target="_blank">CoreAudio</a>, <a href="https://scottoffen.github.io/grapevine/" target="_blank">Grapevine</a>, <a href="https://github.com/Willy-Kimura/HotkeyListener" target="_blank">HotkeyListener</a>, <a href="https://github.com/LibreHardwareMonitor/LibreHardwareMonitor" target="_blank">LibreHardwareMonitor</a>, <a href="https://github.com/CommunityToolkit/WindowsCommunityToolkit" target="_blank">Microsoft.Toolkit.Uwp.Notifications</a>, <a href="https://github.com/chkr1011/MQTTnet" target="_blank">MQTTnet</a>, <a href="https://www.newtonsoft.com/json" target="_blank">Newtonsoft.Json</a>, <a href="https://github.com/serilog/serilog" target="_blank">Serilog</a>, <a href="https://www.syncfusion.com/" target="_blank">Syncfusion</a>, <a href="https://github.com/dahall/taskscheduler" target="_blank">TaskScheduler</a>, <a href="https://github.com/octokit/octokit.net" target="_blank">Octokit</a> and <a href="https://coderr.io" target="_blank">Coderr</a>.
+<a href="https://github.com/qJake/HADotNet" target="_blank">HADotNet</a>, <a href="https://github.com/morphx666/CoreAudio" target="_blank">CoreAudio</a>, <a href="https://scottoffen.github.io/grapevine/" target="_blank">Grapevine</a>, <a href="https://github.com/Willy-Kimura/HotkeyListener" target="_blank">HotkeyListener</a>, <a href="https://github.com/LibreHardwareMonitor/LibreHardwareMonitor" target="_blank">LibreHardwareMonitor</a>, <a href="https://github.com/CommunityToolkit/WindowsCommunityToolkit" target="_blank">Microsoft.Toolkit.Uwp.Notifications</a>, <a href="https://github.com/chkr1011/MQTTnet" target="_blank">MQTTnet</a>, <a href="https://www.newtonsoft.com/json" target="_blank">Newtonsoft.Json</a>, <a href="https://github.com/serilog/serilog" target="_blank">Serilog</a>, <a href="https://www.syncfusion.com/" target="_blank">Syncfusion</a>, <a href="https://github.com/dahall/taskscheduler" target="_blank">TaskScheduler</a>, <a href="https://github.com/octokit/octokit.net" target="_blank">Octokit</a>, <a href="https://github.com/Tyrrrz/CliWrap" target="_blank">CliWrap</a> and <a href="https://coderr.io" target="_blank">Coderr</a>.
 
 Please consult their individual licensing if you plan to use any of their code.
 
