@@ -55,6 +55,12 @@ Summary of the core functions:
 
 * Commands and sensors are automatically added to your Home Assistant instance.
 
+<br/>
+
+<details>
+<summary>Click here to see some examples and screenshots.</summary>
+<br/>
+
 Notification examples:
 
 ![Image-based toast notification](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_toast_image.png)  ![Text-based toast notification](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_toast_text.png)
@@ -70,6 +76,8 @@ You can easily configure a new Quick Action, HASS.Agent will fetch your entities
 The sensors configuration screen looks like this:
 
 ![Sensors](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_sensors.png)
+    
+</details>
 
 ----
 
