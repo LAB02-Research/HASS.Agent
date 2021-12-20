@@ -47,9 +47,9 @@ Summary of the core functions:
 
 * **Quick Actions**: use a keyboard shortcut to quickly pull up a command interface, through which you can control Home Assistant entities.
 
-* **Commands**: control your device through Home Assistant using custom- or built-in commands.
+* **Commands**: control your PC (or other Windows based device) through Home Assistant using custom- or built-in commands.
 
-* **Sensors**: send your device's sensors to Home Assistant to monitor cpu, mem, webcam usage, wmi-polled data, etc.
+* **Sensors**: send your PC's sensors to Home Assistant to monitor cpu, mem, webcam usage, wmi-polled data, etc.
 
 * All entities are dynamically acquired from your Home Assistant instance.
 
@@ -83,7 +83,7 @@ HASS.Agent's recommended method of running is through a Scheduled Task (Windows'
 
 To use notifications, you'll need to install the <a href="https://github.com/LAB02-Research/HASS.Agent-Notifier" target="_blank">HASS.Agent Notifier integration</a>. This can be done through <a href="https://hacs.xyz" target="_blank">HACS</a> or manually. 
 
-You'll also need to open the configured port in the firewall of the receiving devices (default `5115`). During the onboarding process, HASS.Agent will offer to do it for you. If you want to do so manually, you can run this command in an elevated prompt:
+You'll also need to open the configured port in the firewall of the receiving PC (default `5115`). During the onboarding process, HASS.Agent will offer to do it for you. If you want to do so manually, you can run this command in an elevated prompt:
 
 `netsh advfirewall firewall add rule name="HASS.Agent Notifier" dir=in action=allow protocol=TCP localport=5115`
 
@@ -107,7 +107,7 @@ Afterwards, open the configured port in your firewall. Ideally only allow your H
 
 #### 2. Startup
 
-You can use the '*create launch-on-login scheduled task*' to allow HASS.Agent to start when you login to your device. 
+You can use the '*create launch-on-login scheduled task*' to allow HASS.Agent to start when you login to your PC. 
 
 #### 3. Home Assistant API config
 
@@ -115,7 +115,7 @@ To use quick actions, you have to configure your instance's API. Normally the de
 
 #### 4. MQTT config
 
-Enter your MQTT broker configuration. This is only required if you want to use commands (triggered from Home Assistant) or sensors (sent from your device).
+Enter your MQTT broker configuration. This is only required if you want to use commands (triggered from Home Assistant) or sensors (sent from your PC).
 
 #### 5. Hotkey config
 
