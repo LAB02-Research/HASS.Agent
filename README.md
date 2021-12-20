@@ -202,16 +202,23 @@ If you're using the installer, it'll launch HASS.Agent for you when it's done. B
 
 List of things I want to add somewhere down the road:
 
- * **Notifications**: ability to add commands
+ * **Notifications**: ability to add commands (i.e. 'yes/no' or 'activate alarm')
  * **Notifications**: add 'critical' type to attract more attention
+ * **Notifications**: history window
+ * **Notifications**: use our own method of showing instead of Windows toast, for added versatility
  * **Quick Actions**: show current state in window
  * **Quick Actions**: ability to change button size (small/medium/large)
  * **Quick Actions**: ability to define custom mdi icons, and/or fetch icon from Home Assistant
  * **Quick Actions**: add pages as tabs instead of one form, i.e. one tab with 'lights', one tab with 'switches'
  * **Sensors**: add explanation when adding sensors, currently only name is shown
  * **Sensors**: implement library plugin system for more powerful custom sensors
+ * **Sensors**: disk space sensors
+ * **Sensors**: Windows performance counters
  * **Commands**: add explanation when adding commands, currently only name is shown
+ * **Commands**: command to open URL on default browser
  * **Updater**: give HASS.Agent the option to update itself 100% automatically
+ * **General**: a built-in way to show a Home Assistant dashboard, perhaps using CefSharp
+ * **General**: switch to being a 'native app' so mqtt/integrations are no longer needed
 
 If you have any other wishes, feel free to submit a ticket.
 
