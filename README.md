@@ -1,16 +1,21 @@
+
+[![GitHub release](https://img.shields.io/github/release/LAB02-Research/HASS.Agent?include_prereleases=&sort=semver&color=blue)](https://github.com/LAB02-Research/HASS.Agent/releases/)
+[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
+
 <a href="https://github.com/LAB02-Research/HASS.Agent/">
     <img src="https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/src/HASS.Agent/HASSAgent/Resources/logo_128.png" alt="HASS.Agent logo" title="HASS.Agent" align="right" height="128" />
 </a>
 
 # HASS.Agent
 
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/lab02research)
-
 HASS.Agent is a Windows-based client application for <a href="https://www.home-assistant.io" target="_blank">Home Assistant</a>, developed in .NET 4.8.
 
 ----
 
+
 Click <a href="https://github.com/LAB02-Research/HASS.Agent/releases/latest/download/HASS.Agent.Installer.exe" target="_blank">here</a> to download the latest installer, or click <a href="https://github.com/LAB02-Research/HASS.Agent/releases/latest/download/HASS.Agent.zip" target="_blank">here</a> to download the latest zip package.
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/lab02research)
 
 ----
 
