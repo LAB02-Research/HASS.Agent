@@ -180,7 +180,7 @@ Apart from the automatic update checker, you can check for new updates from the 
 
 ![Update window](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_update.png)
 
-If you're using the installer, it'll launch HASS.Agent for you when it's done. But iif you've updated manually, just doubleclick the .exe and you'll be offered to relaunch using the scheduled task (if present). That way, you don't have to open task scheduler.
+If you're using the installer, it'll launch HASS.Agent for you when it's done. But if you've updated manually, just doubleclick the .exe and you'll be offered to relaunch using the scheduled task (if present). That way, you don't have to open task scheduler.
 
 ----
 
