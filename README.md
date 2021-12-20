@@ -45,7 +45,7 @@ Summary of the core functions:
 * **Notifications**: receive notifications, show them using Windows builtin toast popups, and optionally attach images. 
   - *This requires the installation of the <a href="https://github.com/LAB02-Research/HASS.Agent-Notifier" target="_blank">HASS.Agent Notifier integration</a>*.
 
-* **Quick Actions**: use a keyboard shortcut to quickly pull up a command interface, through which you can control Home Assistant entities.
+* **Quick Actions**: use a keyboard shortcut to quickly pull up a command interface, through which you can control Home Assistant entities - or, assign a keyboard shortcut to individual Quick Actions for even faster triggering
 
 * **Commands**: control your PC (or other Windows based device) through Home Assistant using custom- or built-in commands.
 
