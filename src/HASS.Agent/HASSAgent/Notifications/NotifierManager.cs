@@ -102,7 +102,7 @@ namespace HASSAgent.Notifications
                 // prepare title
                 if (string.IsNullOrWhiteSpace(notification.Title)) notification.Title = "Home Assistant";
                 toastBuilder.AddHeader("HASS.Agent", notification.Title, string.Empty);
-
+                
                 // prepare image
                 if (!string.IsNullOrWhiteSpace(notification.Image))
                 {

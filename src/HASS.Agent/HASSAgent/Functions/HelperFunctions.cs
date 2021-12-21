@@ -87,13 +87,20 @@ namespace HASSAgent.Functions
 
                 if (!Directory.Exists(Variables.TempPath)) Directory.CreateDirectory(Variables.TempPath);
 
+                // check for extension
+                // this fails for hass proxy urls, so add an extra length check
                 var ext = Path.GetExtension(uri);
-                if (string.IsNullOrEmpty(ext)) ext = ".png";
+                if (string.IsNullOrEmpty(ext) || ext.Length > 5) ext = ".png";
 
+                // create a random local filename
                 var localFile = $"{DateTime.Now:yyyyMMddHHmmss}_{Guid.NewGuid().ToString().Substring(0, 8)}";
-                localPath = Path.Combine(Variables.TempPath, $"{localFile}.{ext}");
+                localPath = Path.Combine(Variables.TempPath, $"{localFile}{ext}");
 
-                Variables.ImageWebClient.DownloadFile(new Uri(uri), localPath);
+                // make the uri safe
+                var safeUri = Uri.EscapeUriString(uri);
+                
+                // download the file
+                Variables.ImageWebClient.DownloadFile(new Uri(safeUri), localPath);
 
                 return true;
             }
