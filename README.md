@@ -201,12 +201,13 @@ If you're using the installer, it'll launch HASS.Agent for you when it's done. B
 
 ### Wishlist
 
-List of things I want to add somewhere down the road:
+List of things I want to add somewhere down the road (basically a personal to-do notepad):
 
  * **Notifications**: ability to add commands (i.e. 'yes/no' or 'activate alarm')
  * **Notifications**: add 'critical' type to attract more attention
  * **Notifications**: history window
  * **Notifications**: use our own method of showing instead of Windows toast, for added versatility
+ * **Notifications**: show a videostream for x seconds with size y (small/normal/fullscreen) on position z (bottom right, center screen, etc)
  * **Quick Actions**: show current state in window
  * **Quick Actions**: ability to change button size (small/medium/large)
  * **Quick Actions**: ability to define custom mdi icons, and/or fetch icon from Home Assistant
