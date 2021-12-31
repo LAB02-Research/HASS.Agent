@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using HASSAgent.Commands;
 using HASSAgent.Enums;
+using HASSAgent.Functions;
 using HASSAgent.Models.Config;
 
 namespace HASSAgent.Forms.Commands
@@ -99,7 +100,7 @@ namespace HASSAgent.Forms.Commands
             }
 
             // name already used by us?
-            if (Variables.Commands.Any(x => string.Equals(x.Name, name, StringComparison.InvariantCultureIgnoreCase) && x.Id != Command.Id))
+            if (Variables.Commands.Any(x => string.Equals(x.Name, name, StringComparison.InvariantCultureIgnoreCase) && x.Id != Command.Id.ToString()))
             {
                 var confirm = MessageBoxAdv.Show("There's already a command with that name. Are you sure you want to continue?", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (confirm != DialogResult.Yes)
@@ -168,7 +169,11 @@ namespace HASSAgent.Forms.Commands
             var parsed = Enum.TryParse<CommandType>(CbType.SelectedValue.ToString(), out var type);
             if (!parsed) return;
 
-            if (setInfo) TbName.Text = CommandsManager.GetCommandDefaultInfo(type);
+            if (setInfo)
+            {
+                TbName.Text = type.GetCommandName();
+                TbDescription.Text = CommandsManager.GetCommandDefaultInfo(type);
+            }
 
             switch (type)
             {
@@ -222,6 +227,14 @@ namespace HASSAgent.Forms.Commands
                 LblSetting.Visible = false;
                 TbSetting.Visible = false;
             }));
+        }
+
+        private void TbDescription_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(e.LinkText)) return;
+            if (!e.LinkText.ToLower().StartsWith("http")) return;
+
+            HelperFunctions.LaunchUrl(e.LinkText);
         }
     }
 }

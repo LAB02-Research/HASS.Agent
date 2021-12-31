@@ -40,7 +40,11 @@ namespace HASSAgent.Forms.Sensors
             this.TbIntInterval = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.TbDescription = new System.Windows.Forms.RichTextBox();
+            this.PnlDescription = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.TbIntInterval)).BeginInit();
+            this.PnlDescription.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnStore
@@ -50,9 +54,9 @@ namespace HASSAgent.Forms.Sensors
             this.BtnStore.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BtnStore.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnStore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnStore.Location = new System.Drawing.Point(0, 251);
+            this.BtnStore.Location = new System.Drawing.Point(0, 238);
             this.BtnStore.Name = "BtnStore";
-            this.BtnStore.Size = new System.Drawing.Size(354, 38);
+            this.BtnStore.Size = new System.Drawing.Size(765, 38);
             this.BtnStore.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -135,7 +139,7 @@ namespace HASSAgent.Forms.Sensors
             // TbIntInterval
             // 
             this.TbIntInterval.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.TbIntInterval.BeforeTouchSize = new System.Drawing.Size(92, 25);
+            this.TbIntInterval.BeforeTouchSize = new System.Drawing.Size(61, 25);
             this.TbIntInterval.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.TbIntInterval.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbIntInterval.CurrentCultureRefresh = true;
@@ -183,6 +187,40 @@ namespace HASSAgent.Forms.Sensors
             this.label3.TabIndex = 15;
             this.label3.Text = "seconds";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(398, 15);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(116, 17);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "sensor description";
+            // 
+            // TbDescription
+            // 
+            this.TbDescription.AutoWordSelection = true;
+            this.TbDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.TbDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TbDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TbDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.TbDescription.Location = new System.Drawing.Point(0, 0);
+            this.TbDescription.Name = "TbDescription";
+            this.TbDescription.ReadOnly = true;
+            this.TbDescription.Size = new System.Drawing.Size(352, 179);
+            this.TbDescription.TabIndex = 18;
+            this.TbDescription.Text = "";
+            this.TbDescription.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.TbDescription_LinkClicked);
+            // 
+            // PnlDescription
+            // 
+            this.PnlDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PnlDescription.Controls.Add(this.TbDescription);
+            this.PnlDescription.Location = new System.Drawing.Point(401, 35);
+            this.PnlDescription.Name = "PnlDescription";
+            this.PnlDescription.Size = new System.Drawing.Size(354, 181);
+            this.PnlDescription.TabIndex = 19;
+            // 
             // SensorsMod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -191,7 +229,9 @@ namespace HASSAgent.Forms.Sensors
             this.CaptionBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(354, 289);
+            this.ClientSize = new System.Drawing.Size(765, 276);
+            this.Controls.Add(this.PnlDescription);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.LblSetting);
             this.Controls.Add(this.BtnStore);
             this.Controls.Add(this.TbSetting);
@@ -215,6 +255,7 @@ namespace HASSAgent.Forms.Sensors
             this.Text = "Sensor";
             this.Load += new System.EventHandler(this.SensorMod_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TbIntInterval)).EndInit();
+            this.PnlDescription.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,6 +273,9 @@ namespace HASSAgent.Forms.Sensors
         private System.Windows.Forms.Label label3;
         private Syncfusion.Windows.Forms.Tools.IntegerTextBox TbIntInterval;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RichTextBox TbDescription;
+        private System.Windows.Forms.Panel PnlDescription;
     }
 }
 

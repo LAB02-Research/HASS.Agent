@@ -57,7 +57,8 @@ namespace HASSAgent.Forms.Sensors
         private void PrepareSensorsList()
         {
             // make a copy of the current sensors
-            _sensors = Variables.Sensors.Select(StoredSensors.ConvertAbstractToConfigured).Where(configuredSensor => configuredSensor != null).ToList();
+            _sensors = Variables.SingleValueSensors.Select(StoredSensors.ConvertAbstractSingleValueToConfigured).Where(configuredSensor => configuredSensor != null).ToList();
+            _sensors = _sensors.Concat(Variables.MultiValueSensors.Select(StoredSensors.ConvertAbstractMultiValueToConfigured).Where(configuredSensor => configuredSensor != null)).ToList();
 
             // bind to the list
             LcSensors.DataSource = _sensors;
@@ -209,51 +210,104 @@ namespace HASSAgent.Forms.Sensors
                 try
                 {
                     // process the to-be-removed
+                    // todo: code smell
                     if (_toBeDeletedSensors.Any())
                     {
-                        foreach (var abstractSensor in _toBeDeletedSensors.Select(StoredSensors.ConvertConfiguredToAbstract).Where(abstractSensor => abstractSensor != null))
+                        foreach (var sensor in _toBeDeletedSensors)
                         {
-                            // remove and unregister
-                            await abstractSensor.UnPublishAutoDiscoveryConfigAsync();
-                            Variables.Sensors.RemoveAt(Variables.Sensors.FindIndex(x => x.Id == abstractSensor.Id));
+                            if (sensor == null) continue;
+                            if (sensor.IsSingleValue())
+                            {
+                                var abstractSensor = StoredSensors.ConvertConfiguredToAbstractSingleValue(sensor);
 
-                            Log.Information("[SENSORS] Removed sensor: {sensor}", abstractSensor.Name);
+                                // remove and unregister
+                                await abstractSensor.UnPublishAutoDiscoveryConfigAsync();
+                                Variables.SingleValueSensors.RemoveAt(Variables.SingleValueSensors.FindIndex(x => x.Id == abstractSensor.Id));
+
+                                Log.Information("[SENSORS] Removed single-value sensor: {sensor}", abstractSensor.Name);
+                            }
+                            else
+                            {
+                                var abstractSensor = StoredSensors.ConvertConfiguredToAbstractMultiValue(sensor);
+
+                                // remove and unregister
+                                await abstractSensor.UnPublishAutoDiscoveryConfigAsync();
+                                Variables.MultiValueSensors.RemoveAt(Variables.MultiValueSensors.FindIndex(x => x.Id == abstractSensor.Id));
+
+                                Log.Information("[SENSORS] Removed multi-value sensor: {sensor}", abstractSensor.Name);
+                            }
                         }
                     }
 
                     // copy our list to the main one
-                    foreach (var abstractSensor in _sensors.Select(StoredSensors.ConvertConfiguredToAbstract).Where(abstractSensor => abstractSensor != null))
+                    // todo: code smell
+                    foreach (var sensor in _sensors)
                     {
-                        if (Variables.Sensors.All(x => x.Id != abstractSensor.Id))
+                        if (sensor == null) continue;
+                        if (sensor.IsSingleValue())
                         {
-                            // new, add and register
-                            Variables.Sensors.Add(abstractSensor);
+                            var abstractSensor = StoredSensors.ConvertConfiguredToAbstractSingleValue(sensor);
+                            if (Variables.SingleValueSensors.All(x => x.Id != abstractSensor.Id))
+                            {
+                                // new, add and register
+                                Variables.SingleValueSensors.Add(abstractSensor);
+                                await abstractSensor.PublishAutoDiscoveryConfigAsync();
+                                await abstractSensor.PublishStateAsync(false);
+
+                                Log.Information("[SENSORS] Added single-value sensor: {sensor}", abstractSensor.Name);
+                                continue;
+                            }
+
+                            // existing, update and re-register
+                            var currentSensorIndex = Variables.SingleValueSensors.FindIndex(x => x.Id == abstractSensor.Id);
+                            if (Variables.SingleValueSensors[currentSensorIndex].Name != abstractSensor.Name)
+                            {
+                                // name changed, unregister
+                                Log.Information("[SENSORS] Single-value sensor changed name, re-registering as new entity: {old} to {new}", Variables.SingleValueSensors[currentSensorIndex].Name, abstractSensor.Name);
+
+                                await Variables.SingleValueSensors[currentSensorIndex].UnPublishAutoDiscoveryConfigAsync();
+                            }
+
+                            Variables.SingleValueSensors[currentSensorIndex] = abstractSensor;
                             await abstractSensor.PublishAutoDiscoveryConfigAsync();
                             await abstractSensor.PublishStateAsync(false);
 
-                            Log.Information("[SENSORS] Added sensor: {sensor}", abstractSensor.Name);
-                            continue;
+                            Log.Information("[SENSORS] Modified single-value sensor: {sensor}", abstractSensor.Name);
                         }
-
-                        // existing, update and re-register
-                        var currentSensorIndex = Variables.Sensors.FindIndex(x => x.Id == abstractSensor.Id);
-                        if (Variables.Sensors[currentSensorIndex].Name != abstractSensor.Name)
+                        else
                         {
-                            // name changed, unregister
-                            Log.Information("[SENSORS] Sensor changed name, re-registering as new entity: {old} to {new}", Variables.Sensors[currentSensorIndex].Name, abstractSensor.Name);
+                            var abstractSensor = StoredSensors.ConvertConfiguredToAbstractMultiValue(sensor);
+                            if (Variables.MultiValueSensors.All(x => x.Id != abstractSensor.Id))
+                            {
+                                // new, add and register
+                                Variables.MultiValueSensors.Add(abstractSensor);
+                                await abstractSensor.PublishAutoDiscoveryConfigAsync();
+                                await abstractSensor.PublishStatesAsync(false);
 
-                            await Variables.Sensors[currentSensorIndex].UnPublishAutoDiscoveryConfigAsync();
+                                Log.Information("[SENSORS] Added multi-value sensor: {sensor}", abstractSensor.Name);
+                                continue;
+                            }
+
+                            // existing, update and re-register
+                            var currentSensorIndex = Variables.MultiValueSensors.FindIndex(x => x.Id == abstractSensor.Id);
+                            if (Variables.MultiValueSensors[currentSensorIndex].Name != abstractSensor.Name)
+                            {
+                                // name changed, unregister
+                                Log.Information("[SENSORS] Multi-value sensor changed name, re-registering as new entity: {old} to {new}", Variables.MultiValueSensors[currentSensorIndex].Name, abstractSensor.Name);
+
+                                await Variables.MultiValueSensors[currentSensorIndex].UnPublishAutoDiscoveryConfigAsync();
+                            }
+
+                            Variables.MultiValueSensors[currentSensorIndex] = abstractSensor;
+                            await abstractSensor.PublishAutoDiscoveryConfigAsync();
+                            await abstractSensor.PublishStatesAsync(false);
+
+                            Log.Information("[SENSORS] Modified multi-value sensor: {sensor}", abstractSensor.Name);
                         }
-
-                        Variables.Sensors[currentSensorIndex] = abstractSensor;
-                        await abstractSensor.PublishAutoDiscoveryConfigAsync();
-                        await abstractSensor.PublishStateAsync(false);
-
-                        Log.Information("[SENSORS] Modified sensor: {sensor}", abstractSensor.Name);
                     }
 
                     // annouce ourselves
-                    await MqttManager.AnnounceAvailabilityAsync("sensor");
+                    await MqttManager.AnnounceAvailabilityAsync();
 
                     // store to file
                     StoredSensors.Store();

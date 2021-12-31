@@ -129,7 +129,7 @@ namespace HASSAgent.Forms
             // 
             this.LblCoreAudio.AutoSize = true;
             this.LblCoreAudio.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblCoreAudio.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCoreAudio.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblCoreAudio.Location = new System.Drawing.Point(173, 188);
             this.LblCoreAudio.Name = "LblCoreAudio";
             this.LblCoreAudio.Size = new System.Drawing.Size(70, 17);
@@ -141,7 +141,7 @@ namespace HASSAgent.Forms
             // 
             this.LblGrapevine.AutoSize = true;
             this.LblGrapevine.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblGrapevine.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblGrapevine.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblGrapevine.Location = new System.Drawing.Point(291, 188);
             this.LblGrapevine.Name = "LblGrapevine";
             this.LblGrapevine.Size = new System.Drawing.Size(67, 17);
@@ -153,7 +153,7 @@ namespace HASSAgent.Forms
             // 
             this.LblHADotNet.AutoSize = true;
             this.LblHADotNet.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblHADotNet.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblHADotNet.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblHADotNet.Location = new System.Drawing.Point(452, 188);
             this.LblHADotNet.Name = "LblHADotNet";
             this.LblHADotNet.Size = new System.Drawing.Size(67, 17);
@@ -165,7 +165,7 @@ namespace HASSAgent.Forms
             // 
             this.LblMicrosoftToolkitUwpNotifications.AutoSize = true;
             this.LblMicrosoftToolkitUwpNotifications.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblMicrosoftToolkitUwpNotifications.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblMicrosoftToolkitUwpNotifications.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblMicrosoftToolkitUwpNotifications.Location = new System.Drawing.Point(452, 215);
             this.LblMicrosoftToolkitUwpNotifications.Name = "LblMicrosoftToolkitUwpNotifications";
             this.LblMicrosoftToolkitUwpNotifications.Size = new System.Drawing.Size(210, 17);
@@ -177,7 +177,7 @@ namespace HASSAgent.Forms
             // 
             this.LblLibreHardwareMonitor.AutoSize = true;
             this.LblLibreHardwareMonitor.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblLibreHardwareMonitor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblLibreHardwareMonitor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblLibreHardwareMonitor.Location = new System.Drawing.Point(291, 215);
             this.LblLibreHardwareMonitor.Name = "LblLibreHardwareMonitor";
             this.LblLibreHardwareMonitor.Size = new System.Drawing.Size(141, 17);
@@ -189,7 +189,7 @@ namespace HASSAgent.Forms
             // 
             this.LblHotkeyListener.AutoSize = true;
             this.LblHotkeyListener.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblHotkeyListener.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblHotkeyListener.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblHotkeyListener.Location = new System.Drawing.Point(173, 215);
             this.LblHotkeyListener.Name = "LblHotkeyListener";
             this.LblHotkeyListener.Size = new System.Drawing.Size(93, 17);
@@ -201,7 +201,7 @@ namespace HASSAgent.Forms
             // 
             this.LblSerilog.AutoSize = true;
             this.LblSerilog.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblSerilog.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSerilog.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblSerilog.Location = new System.Drawing.Point(452, 244);
             this.LblSerilog.Name = "LblSerilog";
             this.LblSerilog.Size = new System.Drawing.Size(49, 17);
@@ -213,7 +213,7 @@ namespace HASSAgent.Forms
             // 
             this.LblNewtonsoftJson.AutoSize = true;
             this.LblNewtonsoftJson.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblNewtonsoftJson.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblNewtonsoftJson.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblNewtonsoftJson.Location = new System.Drawing.Point(291, 244);
             this.LblNewtonsoftJson.Name = "LblNewtonsoftJson";
             this.LblNewtonsoftJson.Size = new System.Drawing.Size(104, 17);
@@ -225,7 +225,7 @@ namespace HASSAgent.Forms
             // 
             this.LblMQTTnet.AutoSize = true;
             this.LblMQTTnet.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblMQTTnet.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblMQTTnet.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblMQTTnet.Location = new System.Drawing.Point(173, 244);
             this.LblMQTTnet.Name = "LblMQTTnet";
             this.LblMQTTnet.Size = new System.Drawing.Size(60, 17);
@@ -237,7 +237,7 @@ namespace HASSAgent.Forms
             // 
             this.LblTaskScheduler.AutoSize = true;
             this.LblTaskScheduler.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblTaskScheduler.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTaskScheduler.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTaskScheduler.Location = new System.Drawing.Point(291, 272);
             this.LblTaskScheduler.Name = "LblTaskScheduler";
             this.LblTaskScheduler.Size = new System.Drawing.Size(90, 17);
@@ -249,7 +249,7 @@ namespace HASSAgent.Forms
             // 
             this.LblSyncfusion.AutoSize = true;
             this.LblSyncfusion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblSyncfusion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSyncfusion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblSyncfusion.Location = new System.Drawing.Point(173, 272);
             this.LblSyncfusion.Name = "LblSyncfusion";
             this.LblSyncfusion.Size = new System.Drawing.Size(69, 17);
@@ -303,7 +303,7 @@ namespace HASSAgent.Forms
             // 
             this.LblHassAgentProject.AutoSize = true;
             this.LblHassAgentProject.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblHassAgentProject.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblHassAgentProject.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblHassAgentProject.Location = new System.Drawing.Point(173, 472);
             this.LblHassAgentProject.Name = "LblHassAgentProject";
             this.LblHassAgentProject.Size = new System.Drawing.Size(286, 17);
@@ -325,7 +325,7 @@ namespace HASSAgent.Forms
             // 
             this.LblLab02Research.AutoSize = true;
             this.LblLab02Research.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblLab02Research.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblLab02Research.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblLab02Research.Location = new System.Drawing.Point(306, 105);
             this.LblLab02Research.Name = "LblLab02Research";
             this.LblLab02Research.Size = new System.Drawing.Size(100, 17);
@@ -347,7 +347,7 @@ namespace HASSAgent.Forms
             // 
             this.LblCoderr.AutoSize = true;
             this.LblCoderr.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblCoderr.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCoderr.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblCoderr.Location = new System.Drawing.Point(452, 272);
             this.LblCoderr.Name = "LblCoderr";
             this.LblCoderr.Size = new System.Drawing.Size(49, 17);
@@ -359,7 +359,7 @@ namespace HASSAgent.Forms
             // 
             this.LblOctokit.AutoSize = true;
             this.LblOctokit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblOctokit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblOctokit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblOctokit.Location = new System.Drawing.Point(172, 302);
             this.LblOctokit.Name = "LblOctokit";
             this.LblOctokit.Size = new System.Drawing.Size(49, 17);
@@ -371,7 +371,7 @@ namespace HASSAgent.Forms
             // 
             this.LblCliWrap.AutoSize = true;
             this.LblCliWrap.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblCliWrap.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCliWrap.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblCliWrap.Location = new System.Drawing.Point(291, 302);
             this.LblCliWrap.Name = "LblCliWrap";
             this.LblCliWrap.Size = new System.Drawing.Size(54, 17);

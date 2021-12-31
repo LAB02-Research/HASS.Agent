@@ -12,6 +12,7 @@ using HASSAgent.Forms.Sensors;
 using HASSAgent.Functions;
 using HASSAgent.HomeAssistant;
 using HASSAgent.Models;
+using HASSAgent.Models.Internal;
 using HASSAgent.Mqtt;
 using HASSAgent.Notifications;
 using HASSAgent.Sensors;
@@ -28,6 +29,8 @@ namespace HASSAgent.Forms
     [SuppressMessage("ReSharper", "MemberCanBeMadeStatic.Local")]
     public partial class Main : MetroForm
     {
+        private bool _isClosing = false;
+
         public Main()
         {
             InitializeComponent();
@@ -216,17 +219,24 @@ namespace HASSAgent.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void Main_FormClosing(object sender, FormClosingEventArgs e)
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Invoke(new MethodInvoker(Hide));
+            if (_isClosing) return;
 
+            Invoke(new MethodInvoker(Hide));
+            
             if (!Variables.ShuttingDown)
             {
                 e.Cancel = true;
                 return;
             }
 
-            await HelperFunctions.ShutdownAsync();
+            // we're calling the shutdown function, but async won't hold so ignore that
+            Task.Run(HelperFunctions.ShutdownAsync);
+
+            // cancel and let the shutdown function handle it
+            _isClosing = true;
+            e.Cancel = true;
         }
 
         /// <summary>
@@ -289,7 +299,7 @@ namespace HASSAgent.Forms
         {
 #if !DEBUG
             // only ask for confirmation if we're not debugging
-            var q = MessageBoxAdv.Show("Are you sure? You won't be able to receive notifications,\r\nuse quick actions, receive commands or transmit sensor data.", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var q = MessageBoxAdv.Show("Are you sure?\r\n\r\nYou won't be able to receive notifications,\r\nuse quick actions, receive commands or transmit sensor data.", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (q != DialogResult.Yes) return;
 #endif
 

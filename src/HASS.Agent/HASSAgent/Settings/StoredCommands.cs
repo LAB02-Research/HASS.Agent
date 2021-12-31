@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using HASSAgent.Enums;
 using HASSAgent.Models.Config;
-using HASSAgent.Models.Mqtt.Commands;
-using HASSAgent.Models.Mqtt.Commands.CustomCommands;
-using HASSAgent.Models.Mqtt.Commands.KeyCommands;
+using HASSAgent.Models.HomeAssistant.Commands;
+using HASSAgent.Models.HomeAssistant.Commands.CustomCommands;
+using HASSAgent.Models.HomeAssistant.Commands.KeyCommands;
 using Newtonsoft.Json;
 using Serilog;
 
@@ -90,37 +90,37 @@ namespace HASSAgent.Settings
             switch (command.Type)
             {
                 case CommandType.ShutdownCommand:
-                    abstractCommand = new ShutdownCommand(command.Name, command.Id);
+                    abstractCommand = new ShutdownCommand(command.Name, command.Id.ToString());
                     break;
                 case CommandType.RestartCommand:
-                    abstractCommand = new RestartCommand(command.Name, command.Id);
+                    abstractCommand = new RestartCommand(command.Name, command.Id.ToString());
                     break;
                 case CommandType.LogOffCommand:
-                    abstractCommand = new LogOffCommand(command.Name, command.Id);
+                    abstractCommand = new LogOffCommand(command.Name, command.Id.ToString());
                     break;
                 case CommandType.CustomCommand:
-                    abstractCommand = new CustomCommand(command.Command, command.Name, command.Id);
+                    abstractCommand = new CustomCommand(command.Command, command.Name, command.Id.ToString());
                     break;
                 case CommandType.MediaPlayPauseCommand:
-                    abstractCommand = new MediaPlayPauseCommand(command.Name, command.Id);
+                    abstractCommand = new MediaPlayPauseCommand(command.Name, command.Id.ToString());
                     break;
                 case CommandType.MediaNextCommand:
-                    abstractCommand = new MediaNextCommand(command.Name, command.Id);
+                    abstractCommand = new MediaNextCommand(command.Name, command.Id.ToString());
                     break;
                 case CommandType.MediaPreviousCommand:
-                    abstractCommand = new MediaPreviousCommand(command.Name, command.Id);
+                    abstractCommand = new MediaPreviousCommand(command.Name, command.Id.ToString());
                     break;
                 case CommandType.MediaVolumeUpCommand:
-                    abstractCommand = new MediaVolumeUpCommand(command.Name, command.Id);
+                    abstractCommand = new MediaVolumeUpCommand(command.Name, command.Id.ToString());
                     break;
                 case CommandType.MediaVolumeDownCommand:
-                    abstractCommand = new MediaVolumeDownCommand(command.Name, command.Id);
+                    abstractCommand = new MediaVolumeDownCommand(command.Name, command.Id.ToString());
                     break;
                 case CommandType.MediaMuteCommand:
-                    abstractCommand = new MediaMuteCommand(command.Name, command.Id);
+                    abstractCommand = new MediaMuteCommand(command.Name, command.Id.ToString());
                     break;
                 case CommandType.KeyCommand:
-                    abstractCommand = new KeyCommand(command.KeyCode, command.Name, command.Id);
+                    abstractCommand = new KeyCommand(command.KeyCode, command.Name, command.Id.ToString());
                     break;
                 default:
                     Log.Error("[SETTINGS_COMMANDS] [{name}] Unknown configured command type: {type}", command.Name, command.Type.ToString());
@@ -144,7 +144,7 @@ namespace HASSAgent.Settings
                     _ = Enum.TryParse<CommandType>(customCommand.GetType().Name, out var type);
                     return new ConfiguredCommand()
                     {
-                        Id = customCommand.Id, 
+                        Id = Guid.Parse(customCommand.Id), 
                         Name = customCommand.Name, 
                         Type = type, 
                         Command = customCommand.Command
@@ -156,7 +156,7 @@ namespace HASSAgent.Settings
                     _ = Enum.TryParse<CommandType>(customKeyCommand.GetType().Name, out var type);
                     return new ConfiguredCommand()
                     {
-                        Id = customKeyCommand.Id, 
+                        Id = Guid.Parse(customKeyCommand.Id), 
                         Name = customKeyCommand.Name, 
                         Type = type,
                         KeyCode = customKeyCommand.KeyCode

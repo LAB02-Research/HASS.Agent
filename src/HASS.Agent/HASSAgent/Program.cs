@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Security;
 using System.Windows.Forms;
@@ -40,6 +41,18 @@ namespace HASSAgent
                     };
                 }
                 else Log.Information("[PROGRAM] Extended logging disabled");
+
+                // check to see if we're launched by the updater
+                if (Environment.GetCommandLineArgs().Any(x => x == "update"))
+                {
+                    var restartTask = HelperFunctions.RestartWithTask(true);
+                    if (restartTask)
+                    {
+                        Log.Information("[SYSTEM] Scheduled Task found and ready, restarting post-update");
+                        Log.CloseAndFlush();
+                        return;
+                    }
+                }
 
                 // prepare application
                 Application.EnableVisualStyles();

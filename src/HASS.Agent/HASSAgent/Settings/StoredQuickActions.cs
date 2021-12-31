@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using HASSAgent.Enums;
 using HASSAgent.Models;
+using HASSAgent.Models.Internal;
 using Newtonsoft.Json;
 using Serilog;
 

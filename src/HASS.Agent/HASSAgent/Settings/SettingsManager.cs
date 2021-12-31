@@ -4,8 +4,9 @@ using System.IO;
 using HASSAgent.Enums;
 using HASSAgent.Models;
 using HASSAgent.Models.Config;
-using HASSAgent.Models.Mqtt.Commands;
-using HASSAgent.Models.Mqtt.Sensors;
+using HASSAgent.Models.HomeAssistant.Commands;
+using HASSAgent.Models.HomeAssistant.Sensors;
+using HASSAgent.Models.Internal;
 using Newtonsoft.Json;
 using Serilog;
 using WK.Libraries.HotkeyListenerNS;
@@ -130,7 +131,7 @@ namespace HASSAgent.Settings
                 // empty collections
                 Variables.QuickActions = new List<QuickAction>();
                 Variables.Commands = new List<AbstractCommand>();
-                Variables.Sensors = new List<AbstractSensor>();
+                Variables.SingleValueSensors = new List<AbstractSingleValueSensor>();
 
                 // default settings
                 Variables.AppSettings = new AppSettings();

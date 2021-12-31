@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
 using System.Windows.Forms;
@@ -14,6 +15,7 @@ using Coderr.Client.Serilog;
 using HASSAgent.Commands;
 using HASSAgent.Enums;
 using HASSAgent.Models;
+using HASSAgent.Models.Internal;
 using HASSAgent.Mqtt;
 using HASSAgent.Notifications;
 using HASSAgent.Sensors;
@@ -36,6 +38,23 @@ namespace HASSAgent.Functions
 
     internal static class HelperFunctions
     {
+        private delegate bool EnumWindowsProc(IntPtr hWnd, int lParam);
+
+        [DllImport("USER32.DLL")]
+        private static extern bool EnumWindows(EnumWindowsProc enumFunc, int lParam);
+
+        [DllImport("USER32.DLL")]
+        private static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
+
+        [DllImport("USER32.DLL")]
+        private static extern int GetWindowTextLength(IntPtr hWnd);
+
+        [DllImport("USER32.DLL")]
+        private static extern bool IsWindowVisible(IntPtr hWnd);
+
+        [DllImport("USER32.DLL")]
+        private static extern IntPtr GetShellWindow();
+
         /// <summary>
         /// Initializes Syncfusion's messagebox style
         /// Todo: incomplete, button color etc need to be done
@@ -198,16 +217,30 @@ namespace HASSAgent.Functions
                 return false;
             }
         }
-        
+
         /// <summary>
         /// Restart HASS.Agent based on its Scheduled Task
-        /// <para>No checks!</para>
+        /// <para>Optionally check for existence/status by enabling the 'performCheck' bool</para>
         /// </summary>
+        /// <param name="performCheck"></param>
         /// <returns></returns>
-        internal static bool RestartWithTask()
+        internal static bool RestartWithTask(bool performCheck = false)
         {
             try
             {
+                if (performCheck)
+                {
+                    // check if there's a task
+                    var present = ScheduledTasks.IsTaskPresent();
+                    if (!present) return false;
+
+                    // get task status
+                    var status = ScheduledTasks.TaskStatus();
+
+                    // check if it's running or ready
+                    if (status != TaskState.Running && status != TaskState.Ready) return false;
+                }
+
                 var restartBat = Path.Combine(Variables.StartupPath, "restart_hass_agent.bat");
                 if (File.Exists(restartBat)) File.Delete(restartBat);
 
@@ -319,23 +352,26 @@ namespace HASSAgent.Functions
                 // log our demise
                 Log.Information("[SYSTEM] Application shutting down");
 
+                // stop mqtt
+                await MqttManager.AnnounceAvailabilityAsync(true);
+                MqttManager.Disconnect();
+
                 // stop hotkey
-                Variables.HotKeyListener?.RemoveAll();
+                Variables.UiDispatcher.Invoke(new MethodInvoker(delegate
+                {
+                    Variables.HotKeyListener?.RemoveAll();
+                    Variables.HotKeyListener?.Dispose();
+                }));
 
                 // stop notifier api
                 NotifierManager.Stop();
 
                 // process disposables
                 Variables.ImageWebClient?.Dispose();
-                Variables.HotKeyListener?.Dispose();
 
                 // stop entity managers
                 CommandsManager.Stop();
                 SensorsManager.Stop();
-
-                // stop mqtt
-                await MqttManager.AnnounceAvailabilityAsync("sensor", true);
-                MqttManager.Disconnect();
 
                 // flush the log
                 Log.Information("[SYSTEM] Application shutdown complete");
@@ -347,8 +383,11 @@ namespace HASSAgent.Functions
                 // try to close nicely
                 Application.Exit();
             }
-            catch
+            catch (Exception ex)
             {
+                Log.Error("[SYSTEM] Error shutting down nicely: {msg}", ex.Message);
+                Log.CloseAndFlush();
+
                 // screw it
                 Environment.Exit(1);
             }
@@ -459,6 +498,34 @@ namespace HASSAgent.Functions
         /// </summary>
         /// <param name="url"></param>
         internal static void LaunchUrl(string url) => Process.Start(url);
+
+        /// <summary>
+        /// Provides a dictionary containing the pointers and titles of all open windows
+        /// </summary>
+        /// <returns></returns>
+        internal static IDictionary<IntPtr, string> GetOpenWindows()
+        {
+            var shellWindow = GetShellWindow();
+            var windows = new Dictionary<IntPtr, string>();
+
+            EnumWindows(delegate (IntPtr hWnd, int lParam)
+            {
+                if (hWnd == shellWindow) return true;
+                if (!IsWindowVisible(hWnd)) return true;
+
+                var length = GetWindowTextLength(hWnd);
+                if (length == 0) return true;
+
+                var builder = new StringBuilder(length);
+                GetWindowText(hWnd, builder, length + 1);
+
+                windows[hWnd] = builder.ToString();
+                return true;
+
+            }, 0);
+
+            return windows;
+        }
     }
 
     public class CamelCaseJsonNamingpolicy : JsonNamingPolicy

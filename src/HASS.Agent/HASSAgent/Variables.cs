@@ -10,9 +10,10 @@ using Grapevine;
 using HASSAgent.Forms;
 using HASSAgent.Functions;
 using HASSAgent.Models;
-using HASSAgent.Models.Mqtt;
-using HASSAgent.Models.Mqtt.Commands;
-using HASSAgent.Models.Mqtt.Sensors;
+using HASSAgent.Models.HomeAssistant;
+using HASSAgent.Models.HomeAssistant.Commands;
+using HASSAgent.Models.HomeAssistant.Sensors;
+using HASSAgent.Models.Internal;
 using MQTTnet;
 using WK.Libraries.HotkeyListenerNS;
 using AppSettings = HASSAgent.Models.Config.AppSettings;
@@ -78,6 +79,7 @@ namespace HASSAgent
         internal static AppSettings AppSettings { get; set; }
         internal static List<QuickAction> QuickActions { get; set; }
         internal static List<AbstractCommand> Commands { get; set; }
-        internal static List<AbstractSensor> Sensors { get; set; }
+        internal static List<AbstractSingleValueSensor> SingleValueSensors { get; set; }
+        internal static List<AbstractMultiValueSensor> MultiValueSensors { get; set; }
     }
 }

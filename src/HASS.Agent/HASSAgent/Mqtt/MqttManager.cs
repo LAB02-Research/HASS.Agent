@@ -1,18 +1,20 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using HASSAgent.Enums;
 using HASSAgent.Functions;
-using HASSAgent.Models.Mqtt;
-using HASSAgent.Models.Mqtt.Commands;
+using HASSAgent.Models.HomeAssistant;
+using HASSAgent.Models.HomeAssistant.Commands;
 using MQTTnet;
 using MQTTnet.Adapter;
 using MQTTnet.Client;
 using MQTTnet.Client.Options;
 using MQTTnet.Exceptions;
 using MQTTnet.Extensions.ManagedClient;
+using Newtonsoft.Json;
 using Serilog;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
@@ -24,6 +26,9 @@ namespace HASSAgent.Mqtt
     internal static class MqttManager
     {
         private static IManagedMqttClient _mqttClient;
+
+        private static bool _disconnectionNotified = false;
+        private static bool _connectingFailureNotified = false;
 
         internal static DateTime LastConfigAnnounce { get; private set; }
         internal static DateTime LastAvailabilityAnnounce { get; private set; }
@@ -50,6 +55,10 @@ namespace HASSAgent.Mqtt
                     _status = MqttStatus.Connected;
                     Variables.MainForm?.SetMqttStatus(ComponentStatus.Ok);
                     Log.Information("[MQTT] Connected");
+
+                    // reset error notifications 
+                    _disconnectionNotified = false;
+                    _connectingFailureNotified = false;
                 });
 
                 // bind 'connecting failed' handler
@@ -66,6 +75,11 @@ namespace HASSAgent.Mqtt
 
                     // log if we're not shutting down
                     if (Variables.ShuttingDown) return;
+
+                    // only once
+                    if (_disconnectionNotified) return;
+                    _disconnectionNotified = true;
+
                     Variables.MainForm?.ShowToolTip("mqtt: disconnected", true);
                     Log.Warning("[MQTT] Disconnected: {reason}", e.Reason.ToString());
                 });
@@ -127,13 +141,16 @@ namespace HASSAgent.Mqtt
         /// <summary>
         /// Fires when connecting to the broker failed
         /// </summary>
-        /// <param name="ex"></param>
         private static void ConnectingFailedHandler(ManagedProcessFailedEventArgs ex)
         {
-            Log.Fatal(ex.Exception, "[MQTT] Error while connecting: {err}", ex.Exception.Message);
-
             _status = MqttStatus.Error;
             Variables.MainForm?.SetMqttStatus(ComponentStatus.Failed);
+
+            // log only once
+            if (_connectingFailureNotified) return;
+            _connectingFailureNotified = true;
+
+            Log.Fatal(ex.Exception, "[MQTT] Error while connecting: {err}", ex.Exception.Message);
 
             Variables.MainForm?.ShowToolTip("mqtt: failed to connect", true);
         }
@@ -153,13 +170,13 @@ namespace HASSAgent.Mqtt
             }
 
             // register sensors
-            foreach (var sensor in Variables.Sensors)
+            foreach (var sensor in Variables.SingleValueSensors)
             {
                 await sensor.PublishStateAsync(false);
             }
 
             // let hass know we're here
-            await AnnounceAvailabilityAsync("sensor");
+            await AnnounceAvailabilityAsync();
 
             // done
             Log.Information("[MQTT] Initial registration completed");
@@ -207,7 +224,9 @@ namespace HASSAgent.Mqtt
         /// <returns></returns>
         public static async Task AnnounceAutoDiscoveryConfigAsync(AbstractDiscoverable discoverable, string domain, bool clearConfig = false)
         {
-            if (_mqttClient.IsConnected)
+            if (!_mqttClient.IsConnected) return;
+
+            try
             {
                 var options = new JsonSerializerOptions
                 {
@@ -215,17 +234,25 @@ namespace HASSAgent.Mqtt
                     IgnoreNullValues = true,
                     PropertyNameCaseInsensitive = true,
                 };
+
+                var topic = string.IsNullOrEmpty(discoverable.TopicName)
+                    ? $"homeassistant/{domain}/{Variables.DeviceConfig.Name}/{discoverable.ObjectId}/config"
+                    : $"homeassistant/{domain}/{Variables.DeviceConfig.Name}/{discoverable.TopicName}/{discoverable.ObjectId}/config";
                 
                 var message = new MqttApplicationMessageBuilder()
-                    .WithTopic($"homeassistant/{domain}/{Variables.DeviceConfig.Name}/{discoverable.ObjectId}/config")
+                    .WithTopic(topic)
                     .WithPayload(clearConfig ? "" : JsonSerializer.Serialize(discoverable.GetAutoDiscoveryConfig(), discoverable.GetAutoDiscoveryConfig().GetType(), options))
                     .WithRetainFlag()
                     .Build();
 
                 await PublishAsync(message);
-
-                LastConfigAnnounce = DateTime.UtcNow;
             }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[MQTT] Error while announcing autodiscovery: {err}", ex.Message);
+            }
+
+            LastConfigAnnounce = DateTime.UtcNow;
         }
 
         /// <summary>
@@ -242,7 +269,7 @@ namespace HASSAgent.Mqtt
         /// </summary>
         private static DateTime _lastAvailableAnnouncement = DateTime.MinValue;
         private static DateTime _lastAvailableAnnouncementFailedLogged = DateTime.MinValue;
-        internal static async Task AnnounceAvailabilityAsync(string domain, bool offline = false)
+        internal static async Task AnnounceAvailabilityAsync(bool offline = false)
         {
             // offline msgs always need to be sent, the rest once every 30 secs
             if (!offline)
@@ -257,7 +284,7 @@ namespace HASSAgent.Mqtt
             {
                 await _mqttClient.PublishAsync(
                     new MqttApplicationMessageBuilder()
-                        .WithTopic($"homeassistant/{domain}/{Variables.DeviceConfig.Name}/availability")
+                        .WithTopic($"homeassistant/sensor/{Variables.DeviceConfig.Name}/availability")
                         .WithPayload(offline ? "offline" : "online")
                         .Build()
                 );
@@ -353,7 +380,7 @@ namespace HASSAgent.Mqtt
         }
 
         /// <summary>
-        /// Reload new settings (and build a new client)
+        /// Deprecated - Reload new settings (and build a new client)
         /// </summary>
         /// <returns></returns>
         internal static async Task ReloadMqttSettingsAsync()

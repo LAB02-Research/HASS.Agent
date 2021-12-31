@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Grapevine;
 using HASSAgent.Models;
+using HASSAgent.Models.HomeAssistant;
 using Serilog;
 
 namespace HASSAgent.Notifications

@@ -254,7 +254,7 @@ namespace HASSAgent.Forms.Commands
                     }
 
                     // annouce ourselves
-                    await MqttManager.AnnounceAvailabilityAsync("sensor");
+                    await MqttManager.AnnounceAvailabilityAsync();
 
                     // store to file
                     StoredCommands.Store();

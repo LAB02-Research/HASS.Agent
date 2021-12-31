@@ -3,6 +3,7 @@ using Grapevine;
 using HASSAgent.Enums;
 using HASSAgent.Functions;
 using HASSAgent.Models;
+using HASSAgent.Models.HomeAssistant;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Newtonsoft.Json;
 using Serilog;

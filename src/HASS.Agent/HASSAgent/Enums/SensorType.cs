@@ -34,7 +34,13 @@ namespace HASSAgent.Enums
         CurrentVolumeSensor,
         [EnumMember(Value = "GpuLoadSensor")]
         GpuLoadSensor,
+        [EnumMember(Value = "GpuTemperatureSensor")]
+        GpuTemperatureSensor,
         [EnumMember(Value = "WmiQuerySensor")]
-        WmiQuerySensor
+        WmiQuerySensor,
+        [EnumMember(Value = "StorageSensors")]
+        StorageSensors,
+        [EnumMember(Value = "NetworkSensors")]
+        NetworkSensors
     }
 }

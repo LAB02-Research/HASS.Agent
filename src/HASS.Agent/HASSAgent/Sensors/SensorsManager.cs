@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using HASSAgent.Enums;
-using HASSAgent.Models.Mqtt.Sensors;
-using HASSAgent.Models.Mqtt.Sensors.GeneralSensors;
-using HASSAgent.Models.Mqtt.Sensors.WmiSensors;
+using HASSAgent.Models.HomeAssistant.Sensors;
+using HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue;
+using HASSAgent.Models.HomeAssistant.Sensors.WmiSensors.SingleValue;
 using HASSAgent.Mqtt;
 using Serilog;
 
@@ -14,14 +15,21 @@ namespace HASSAgent.Sensors
     /// </summary>
     internal static class SensorsManager
     {
+        private static readonly Dictionary<SensorType, (string description, int interval)> SensorInfo = new Dictionary<SensorType, (string description, int interval)>();
+
         private static bool _active = true;
         private static bool _pause;
+
+        private static DateTime _lastAutoDiscoPublish = DateTime.MinValue;
 
         /// <summary>
         /// Initializes the sensor manager
         /// </summary>
         internal static async void Initialize()
         {
+            // load sensor descriptions
+            LoadSensorInfo();
+
             // wait while mqtt's connecting
             while (MqttManager.GetStatus() == MqttStatus.Connecting) await Task.Delay(250);
 
@@ -64,15 +72,24 @@ namespace HASSAgent.Sensors
                         // nothing to do
                         continue;
                     }
+                    
+                    // publish availability & sensor autodisco's every 30 sec
+                    if ((DateTime.Now - _lastAutoDiscoPublish).TotalSeconds > 30)
+                    {
+                        // let hass know we're still here
+                        await MqttManager.AnnounceAvailabilityAsync();
 
-                    // let hass know we're still here
-                    await MqttManager.AnnounceAvailabilityAsync("sensor");
+                        // publish the autodisco's
+                        foreach (var sensor in Variables.SingleValueSensors) await sensor.PublishAutoDiscoveryConfigAsync();
+                        foreach (var sensor in Variables.MultiValueSensors) await sensor.PublishAutoDiscoveryConfigAsync();
 
-                    // publish sensor autodisco's
-                    foreach (var sensor in Variables.Sensors) await sensor.PublishAutoDiscoveryConfigAsync();
+                        // log moment
+                        _lastAutoDiscoPublish = DateTime.Now;
+                    }
 
-                    // publish sensor states
-                    foreach (var sensor in Variables.Sensors) await sensor.PublishStateAsync();
+                    // publish sensor states (they have their own time-based scheduling)
+                    foreach (var sensor in Variables.SingleValueSensors) await sensor.PublishStateAsync();
+                    foreach (var sensor in Variables.MultiValueSensors) await sensor.PublishStatesAsync();
                 }
                 catch (Exception ex)
                 {
@@ -88,41 +105,32 @@ namespace HASSAgent.Sensors
         /// <returns></returns>
         internal static (string name, int interval) GetSensorDefaultInfo(SensorType type)
         {
-            switch (type)
-            {
-                case SensorType.UserNotificationStateSensor:
-                    return new UserNotificationStateSensor().GetInfo();
-                case SensorType.DummySensor:
-                    return new DummySensor().GetInfo();
-                case SensorType.CurrentClockSpeedSensor:
-                    return new CurrentClockSpeedSensor().GetInfo();
-                case SensorType.CpuLoadSensor:
-                    return new CpuLoadSensor().GetInfo();
-                case SensorType.MemoryUsageSensor:
-                    return new MemoryUsageSensor().GetInfo();
-                case SensorType.ActiveWindowSensor:
-                    return new ActiveWindowSensor().GetInfo();
-                case SensorType.NamedWindowSensor:
-                    return new NamedWindowSensor("").GetInfo();
-                case SensorType.LastActiveSensor:
-                    return new LastActiveSensor().GetInfo();
-                case SensorType.LastBootSensor:
-                    return new LastBootSensor().GetInfo();
-                case SensorType.WebcamActiveSensor:
-                    return new WebcamActiveSensor().GetInfo();
-                case SensorType.MicrophoneActiveSensor:
-                    return new MicrophoneActiveSensor().GetInfo();
-                case SensorType.SessionStateSensor:
-                    return new SessionStateSensor().GetInfo();
-                case SensorType.CurrentVolumeSensor:
-                    return new CurrentVolumeSensor().GetInfo();
-                case SensorType.GpuLoadSensor:
-                    return new GpuLoadSensor().GetInfo();
-                case SensorType.WmiQuerySensor:
-                    return new WmiQuerySensor("").GetInfo();
-                default:
-                    return ("", 10);
-            }
+            return !SensorInfo.ContainsKey(type) ? ("unknown sensor", 0) : SensorInfo[type];
+        }
+
+        /// <summary>
+        /// Loads info regarding the various sensor types
+        /// </summary>
+        private static void LoadSensorInfo()
+        {
+            SensorInfo.Add(SensorType.UserNotificationStateSensor, ("Provides the current user state:\r\n\r\nNotPresent, Busy, RunningDirect3dFullScreen, PresentationMode, AcceptsNotifications, QuietTime or RunningWindowsStoreApp.\r\n\r\nCan for instance be used to determine whether to send notifications or TTS messages.", 10));
+            SensorInfo.Add(SensorType.DummySensor, ("Dummy sensor for testing purposes, sends a random integer value between 0 and 100.", 5));
+            SensorInfo.Add(SensorType.CurrentClockSpeedSensor, ("Provides the current clockspeed of the first CPU.", 300));
+            SensorInfo.Add(SensorType.CpuLoadSensor, ("Provides the current load of the first CPU as a percentage.", 30));
+            SensorInfo.Add(SensorType.MemoryUsageSensor, ("Provides the amount of used memory as a percentage.", 30));
+            SensorInfo.Add(SensorType.ActiveWindowSensor, ("Provides the title of the current active window.", 15));
+            SensorInfo.Add(SensorType.NamedWindowSensor, ("Provides an ON/OFF value based on whether the window is currently open (doesn't have to be active).", 30));
+            SensorInfo.Add(SensorType.LastActiveSensor, ("Provides a datetime value containing the last moment the user provided any input.", 10));
+            SensorInfo.Add(SensorType.LastBootSensor, ("Provides a datetime value containing the last moment the system (re)booted.\r\n\r\nImportant: Windows' FastBoot option can throw this value off, because that's a form of hibernation. You can disable it through Power Options -> 'Choose what the power buttons do' -> uncheck 'Turn on fast start-up'. It doesn't make much difference for modern machines with SSDs, but disabling makes sure you get a clean state after rebooting.", 10));
+            SensorInfo.Add(SensorType.WebcamActiveSensor, ("Provides a bool value based on whether the webcam is currently being used.", 10));
+            SensorInfo.Add(SensorType.MicrophoneActiveSensor, ("Provides a bool value based on whether the microphone is currently being used.", 10));
+            SensorInfo.Add(SensorType.SessionStateSensor, ("Provides the current session state:\r\n\r\nLocked, LoggedOff, InUse or Unknown.", 10));
+            SensorInfo.Add(SensorType.CurrentVolumeSensor, ("Provides the current volume level as a percentage.\r\n\r\nCurrently takes the volume of your default device.", 15));
+            SensorInfo.Add(SensorType.GpuLoadSensor, ("Provides the current load of the first GPU as a percentage.", 30));
+            SensorInfo.Add(SensorType.GpuTemperatureSensor, ("Provides the current temperature of the first GPU.", 30));
+            SensorInfo.Add(SensorType.WmiQuerySensor, ("Provides the result of the provided WMI query.", 10));
+            SensorInfo.Add(SensorType.StorageSensors, ("Provides the labels, total size (MB), available space (MB), used space (MB) and file system of all present non-removable disks.\r\n\r\nThis is a multi-value sensor.", 30));
+            SensorInfo.Add(SensorType.NetworkSensors, ("Provides card info, configuration, transfer- & package statistics and addresses (ip, mac, dhcp, dns) of all present network cards.\r\n\r\nThis is a multi-value sensor.", 30));
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using CliWrap;
 using CliWrap.Buffered;
 using HASSAgent.Models;
+using HASSAgent.Models.Internal;
 using Serilog;
 
 namespace HASSAgent.Functions

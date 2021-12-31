@@ -31,7 +31,7 @@ namespace HASSAgent.Forms.QuickActions
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuickActions));
             this.LblLoading = new System.Windows.Forms.Label();
-            this.PnlActions = new System.Windows.Forms.Panel();
+            this.PnlActions = new System.Windows.Forms.TableLayoutPanel();
             this.SuspendLayout();
             // 
             // LblLoading
@@ -49,10 +49,15 @@ namespace HASSAgent.Forms.QuickActions
             // 
             // PnlActions
             // 
+            this.PnlActions.ColumnCount = 2;
+            this.PnlActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.PnlActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.PnlActions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PnlActions.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PnlActions.Location = new System.Drawing.Point(0, 0);
             this.PnlActions.Name = "PnlActions";
+            this.PnlActions.RowCount = 2;
+            this.PnlActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.PnlActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.PnlActions.Size = new System.Drawing.Size(407, 125);
             this.PnlActions.TabIndex = 9;
             // 
@@ -80,6 +85,7 @@ namespace HASSAgent.Forms.QuickActions
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quick Actions";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuickActions_FormClosing);
             this.Load += new System.EventHandler(this.QuickActions_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.QuickActions_KeyUp);
             this.ResumeLayout(false);
@@ -89,7 +95,7 @@ namespace HASSAgent.Forms.QuickActions
         #endregion
 
         private System.Windows.Forms.Label LblLoading;
-        private System.Windows.Forms.Panel PnlActions;
+        private System.Windows.Forms.TableLayoutPanel PnlActions;
     }
 }
 

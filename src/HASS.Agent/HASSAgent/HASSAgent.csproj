@@ -177,30 +177,38 @@
     <Compile Include="Functions\CommandLine.cs" />
     <Compile Include="Functions\HotKeyManager.cs" />
     <Compile Include="Functions\UpdateManager.cs" />
-    <Compile Include="Models\ComponentStatusUpdate.cs" />
-    <Compile Include="Models\ConsoleResult.cs" />
-    <Compile Include="Models\Mqtt\Commands\CustomCommands\LogOffCommand.cs" />
-    <Compile Include="Models\Mqtt\Commands\CustomCommands\RestartCommand.cs" />
-    <Compile Include="Models\Mqtt\Commands\CustomCommands\ShutdownCommand.cs" />
-    <Compile Include="Models\Mqtt\Commands\KeyCommands\MediaMuteCommand.cs" />
-    <Compile Include="Models\Mqtt\Commands\KeyCommands\MediaNextCommand.cs" />
-    <Compile Include="Models\Mqtt\Commands\KeyCommands\MediaPreviousCommand.cs" />
-    <Compile Include="Models\Mqtt\Commands\KeyCommands\MediaVolumeDownCommand.cs" />
-    <Compile Include="Models\Mqtt\Commands\KeyCommands\MediaVolumeUpCommand.cs" />
-    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\ActiveWindowSensor.cs" />
-    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\CurrentVolumeSensor.cs" />
-    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\DummySensor.cs" />
-    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\GpuLoadSensor.cs" />
-    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\GpuTemperatureSensor.cs" />
-    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\LastActiveSensor.cs" />
-    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\LastBootSensor.cs" />
-    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\MicrophoneActiveSensor.cs" />
-    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\SessionStateSensor.cs" />
-    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\UserNotificationStateSensor.cs" />
-    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\WebcamActiveSensor.cs" />
-    <Compile Include="Models\Mqtt\Sensors\WmiSensors\CpuLoadSensor.cs" />
-    <Compile Include="Models\Mqtt\Sensors\WmiSensors\CurrentClockSpeedSensor.cs" />
-    <Compile Include="Models\Mqtt\Sensors\WmiSensors\MemoryUsageSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Commands\CustomCommands\LockCommand.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\MultiValue\NetworkSensors.cs" />
+    <Compile Include="Models\Internal\ComponentStatusUpdate.cs" />
+    <Compile Include="Models\Internal\ConsoleResult.cs" />
+    <Compile Include="Models\HomeAssistant\Commands\CustomCommands\LogOffCommand.cs" />
+    <Compile Include="Models\HomeAssistant\Commands\CustomCommands\RestartCommand.cs" />
+    <Compile Include="Models\HomeAssistant\Commands\CustomCommands\ShutdownCommand.cs" />
+    <Compile Include="Models\HomeAssistant\Commands\KeyCommands\MediaMuteCommand.cs" />
+    <Compile Include="Models\HomeAssistant\Commands\KeyCommands\MediaNextCommand.cs" />
+    <Compile Include="Models\HomeAssistant\Commands\KeyCommands\MediaPreviousCommand.cs" />
+    <Compile Include="Models\HomeAssistant\Commands\KeyCommands\MediaVolumeDownCommand.cs" />
+    <Compile Include="Models\HomeAssistant\Commands\KeyCommands\MediaVolumeUpCommand.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\AbstractMultiValueSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\MultiValue\DataTypes\DataTypeIntSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\MultiValue\DataTypes\DataTypeDoubleSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\MultiValue\DataTypes\DataTypeStringSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\MultiValue\StorageSensors.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\ActiveWindowSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\CurrentVolumeSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\DummySensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\GpuLoadSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\GpuTemperatureSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\LastActiveSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\LastBootSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\MicrophoneActiveSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\SessionStateSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\UserNotificationStateSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\WebcamActiveSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\WmiSensors\SingleValue\CpuLoadSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\WmiSensors\SingleValue\CurrentClockSpeedSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\WmiSensors\SingleValue\MemoryUsageSensor.cs" />
+    <Compile Include="Models\Internal\QuickActionPanelControl.cs" />
     <Compile Include="Settings\StoredCommands.cs" />
     <Compile Include="Settings\StoredQuickActions.cs" />
     <Compile Include="Settings\StoredSensors.cs" />
@@ -264,12 +272,12 @@
     <Compile Include="Functions\HelperFunctions.cs" />
     <Compile Include="Models\Config\ConfiguredCommand.cs" />
     <Compile Include="Models\Config\ConfiguredSensor.cs" />
-    <Compile Include="Models\Mqtt\Commands\CustomCommand.cs" />
-    <Compile Include="Models\Mqtt\Commands\KeyCommand.cs" />
-    <Compile Include="Models\Mqtt\Commands\KeyCommands\MediaPlayPauseCommand.cs" />
-    <Compile Include="Models\Mqtt\Sensors\AbstractSensor.cs" />
-    <Compile Include="Models\Mqtt\Sensors\GeneralSensors\NamedWindowSensor.cs" />
-    <Compile Include="Models\Mqtt\Sensors\WmiQuerySensor.cs" />
+    <Compile Include="Models\HomeAssistant\Commands\CustomCommand.cs" />
+    <Compile Include="Models\HomeAssistant\Commands\KeyCommand.cs" />
+    <Compile Include="Models\HomeAssistant\Commands\KeyCommands\MediaPlayPauseCommand.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\AbstractSingleValueSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\NamedWindowSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\WmiQuerySensor.cs" />
     <Compile Include="Mqtt\MqttManager.cs" />
     <Compile Include="Functions\ScheduledTasks.cs" />
     <Compile Include="HomeAssistant\HassApiManager.cs" />
@@ -279,14 +287,14 @@
     <Compile Include="Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Action.cs" />
+    <Compile Include="Models\Internal\Action.cs" />
     <Compile Include="Models\Config\AppSettings.cs" />
-    <Compile Include="Models\HassEntity.cs" />
-    <Compile Include="Models\Mqtt\Commands\AbstractCommand.cs" />
-    <Compile Include="Models\Mqtt\AbstractDiscoverable.cs" />
-    <Compile Include="Models\Mqtt\DiscoveryConfigModel.cs" />
-    <Compile Include="Models\Notification.cs" />
-    <Compile Include="Models\QuickAction.cs" />
+    <Compile Include="Models\HomeAssistant\HassEntity.cs" />
+    <Compile Include="Models\HomeAssistant\Commands\AbstractCommand.cs" />
+    <Compile Include="Models\HomeAssistant\AbstractDiscoverable.cs" />
+    <Compile Include="Models\HomeAssistant\DiscoveryConfigModel.cs" />
+    <Compile Include="Models\HomeAssistant\Notification.cs" />
+    <Compile Include="Models\Internal\QuickAction.cs" />
     <Compile Include="Notifications\NotifierConfiguration.cs" />
     <Compile Include="Notifications\NotifierDeserialization.cs" />
     <Compile Include="Notifications\NotifierEndpoints.cs" />
@@ -422,6 +430,9 @@
     <Content Include="Resources\workflow_48.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="ByteSize">
+      <Version>2.1.1</Version>
+    </PackageReference>
     <PackageReference Include="CliWrap">
       <Version>3.3.3</Version>
     </PackageReference>
@@ -483,6 +494,8 @@
       <Version>2.9.3</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\HomeAssistant\Sensors\WmiSensors\MultiValue\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

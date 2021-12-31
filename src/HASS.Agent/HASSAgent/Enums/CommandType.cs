@@ -10,6 +10,8 @@ namespace HASSAgent.Enums
         RestartCommand,
         [EnumMember(Value = "LogOffCommand")]
         LogOffCommand,
+        [EnumMember(Value = "LockCommand")]
+        LockCommand,
         [EnumMember(Value = "CustomCommand")]
         CustomCommand,
         [EnumMember(Value = "MediaPlayPauseCommand")]

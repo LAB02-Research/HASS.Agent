@@ -89,6 +89,7 @@ namespace HASSAgent.Controls
             this.Size = new System.Drawing.Size(152, 255);
             this.Load += new System.EventHandler(this.QuickActionControl_Load);
             this.Click += new System.EventHandler(this.QuickActionControl_Click);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.QuickActionControl_KeyUp);
             this.MouseEnter += new System.EventHandler(this.QuickActionControl_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.QuickActionControl_MouseLeave);
             ((System.ComponentModel.ISupportInitialize)(this.PbImage)).EndInit();

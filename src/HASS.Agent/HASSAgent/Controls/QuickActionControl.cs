@@ -6,7 +6,9 @@ using HASSAgent.Enums;
 using HASSAgent.Forms.QuickActions;
 using HASSAgent.HomeAssistant;
 using HASSAgent.Models;
+using HASSAgent.Models.Internal;
 using HASSAgent.Properties;
+using Serilog;
 
 namespace HASSAgent.Controls
 {
@@ -27,6 +29,12 @@ namespace HASSAgent.Controls
         {
             _quickAction = quickAction;
             _quickActionsForm = quickActionsForm;
+
+            // bind to unfocus event
+            quickActionsForm.ClearFocus += delegate
+            {
+                FocusLost();
+            };
 
             InitializeComponent();
         }
@@ -94,27 +102,56 @@ namespace HASSAgent.Controls
         private void LblAction_Click(object sender, EventArgs e) => ExecuteCommand();
 
         private void LblEntity_Click(object sender, EventArgs e) => ExecuteCommand();
+        
+        private void QuickActionControl_MouseEnter(object sender, EventArgs e) => OnFocus();
+
+        private void QuickActionControl_MouseLeave(object sender, EventArgs e) => FocusLost();
 
         /// <summary>
         /// Set backcolor
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void QuickActionControl_MouseEnter(object sender, EventArgs e)
+        public void OnFocus()
         {
-            BackColor = Color.FromArgb(241, 241, 241);
-            LblEntity.ForeColor = Color.FromArgb(45, 45, 48);
+            try
+            {
+                _quickActionsForm.ClearAllFocus();
+
+                Focus();
+
+                BackColor = Color.FromArgb(241, 241, 241);
+                LblEntity.ForeColor = Color.FromArgb(45, 45, 48);
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, ex.Message);
+            }
         }
 
         /// <summary>
         /// Reset backcolor
         /// </summary>
+        public void FocusLost()
+        {
+            try
+            {
+                BackColor = Color.FromArgb(45, 45, 48);
+                LblEntity.ForeColor = Color.FromArgb(241, 241, 241);
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Triggers the command when ENTER or SPACE are pressed
+        /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void QuickActionControl_MouseLeave(object sender, EventArgs e)
+        private void QuickActionControl_KeyUp(object sender, KeyEventArgs e)
         {
-            BackColor = Color.FromArgb(45, 45, 48);
-            LblEntity.ForeColor = Color.FromArgb(241, 241, 241);
+            if (e.KeyCode != Keys.Enter && e.KeyCode != Keys.Space) return;
+            ExecuteCommand();
         }
     }
 }

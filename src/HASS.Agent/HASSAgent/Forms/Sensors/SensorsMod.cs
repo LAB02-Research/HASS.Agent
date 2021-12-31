@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using HASSAgent.Enums;
+using HASSAgent.Functions;
 using HASSAgent.Models.Config;
 using HASSAgent.Sensors;
 
@@ -88,7 +89,8 @@ namespace HASSAgent.Forms.Sensors
             {
                 var (name, interval) = SensorsManager.GetSensorDefaultInfo(type);
                 TbIntInterval.Text = interval.ToString();
-                TbName.Text = name;
+                TbDescription.Text = name;
+                TbName.Text = type.GetSensorName();
             }
 
             switch (type)
@@ -169,6 +171,14 @@ namespace HASSAgent.Forms.Sensors
                 return;
             }
 
+            var parsed = Enum.TryParse<SensorType>(CbType.SelectedValue.ToString(), out var type);
+            if (!parsed)
+            {
+                MessageBox.Show("Select a valid type first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ActiveControl = CbType;
+                return;
+            }
+
             // get and check name
             var name = TbName.Text.Trim();
             if (string.IsNullOrEmpty(name))
@@ -178,10 +188,20 @@ namespace HASSAgent.Forms.Sensors
                 return;
             }
 
-            // name already used by us?
-            if (Variables.Sensors.Any(x => string.Equals(x.Name, name, StringComparison.InvariantCultureIgnoreCase) && x.Id != Sensor.Id))
+            // name already used?
+            if (Variables.SingleValueSensors.Any(x => string.Equals(x.Name, name, StringComparison.InvariantCultureIgnoreCase) && x.Id != Sensor.Id.ToString()))
             {
-                var confirm = MessageBoxAdv.Show("There's already a sensor with that name. Are you sure you want to continue?", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var confirm = MessageBoxAdv.Show("There's already a single-value sensor with that name. Are you sure you want to continue?", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirm != DialogResult.Yes)
+                {
+                    ActiveControl = TbName;
+                    return;
+                }
+            }
+
+            if (Variables.MultiValueSensors.Any(x => string.Equals(x.Name, name, StringComparison.InvariantCultureIgnoreCase) && x.Id != Sensor.Id.ToString()))
+            {
+                var confirm = MessageBoxAdv.Show("There's already a multi-value sensor with that name. Are you sure you want to continue?", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (confirm != DialogResult.Yes)
                 {
                     ActiveControl = TbName;
@@ -199,14 +219,6 @@ namespace HASSAgent.Forms.Sensors
             }
 
             // check and set optional settings
-            var parsed = Enum.TryParse<SensorType>(CbType.SelectedValue.ToString(), out var type);
-            if (!parsed)
-            {
-                MessageBox.Show("Select a valid type first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ActiveControl = CbType;
-                return;
-            }
-
             switch (type)
             {
                 case SensorType.NamedWindowSensor:
@@ -239,6 +251,14 @@ namespace HASSAgent.Forms.Sensors
 
             // done
             DialogResult = DialogResult.OK;
+        }
+
+        private void TbDescription_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(e.LinkText)) return;
+            if (!e.LinkText.ToLower().StartsWith("http")) return;
+
+            HelperFunctions.LaunchUrl(e.LinkText);
         }
     }
 }

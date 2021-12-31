@@ -8,6 +8,8 @@ using HADotNet.Core.Clients;
 using HASSAgent.Enums;
 using HASSAgent.Functions;
 using HASSAgent.Models;
+using HASSAgent.Models.HomeAssistant;
+using HASSAgent.Models.Internal;
 using Serilog;
 
 namespace HASSAgent.HomeAssistant
