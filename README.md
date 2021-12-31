@@ -212,11 +212,8 @@ List of things I want to add somewhere down the road (basically a personal to-do
  * **Quick Actions**: ability to change button size (small/medium/large)
  * **Quick Actions**: ability to define custom mdi icons, and/or fetch icon from Home Assistant
  * **Quick Actions**: add pages as tabs instead of one form, i.e. one tab with 'lights', one tab with 'switches'
- * **Sensors**: add explanation when adding sensors, currently only name is shown
  * **Sensors**: implement library plugin system for more powerful custom sensors
- * **Sensors**: disk space sensors
  * **Sensors**: Windows performance counters
- * **Commands**: add explanation when adding commands, currently only name is shown
  * **Commands**: command to open URL on default browser
  * **Updater**: give HASS.Agent the option to update itself 100% automatically
  * **General**: a built-in way to show a Home Assistant dashboard, perhaps using CefSharp
