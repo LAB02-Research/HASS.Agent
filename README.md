@@ -252,7 +252,7 @@ Stuck? <a href="https://github.com/LAB02-Research/HASS.Agent/issues" target="_bl
 
 First: thanks to the entire team that's developing <a href="https://www.home-assistant.io" target="_blank">Home Assistant</a> - such an amazing platform!
 
-Second: I learned a lot from sleevezipper's <a href="https://github.com/sleevezipper/hass-workstation-service" target="_blank">HASS Workstation Service</a>. Without it, the commands & sensors wouldn't have been so easy to implement. Thank you for sharing your code & hard work!
+Second: I learned a lot from sleevezipper's <a href="https://github.com/sleevezipper/hass-workstation-service" target="_blank">HASS Workstation Service</a>. Thank you for sharing your code & hard work!
 
 And a big thank you to all other packages:
 
