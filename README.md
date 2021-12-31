@@ -165,6 +165,8 @@ Manage your quick action buttons. Use the '*add new*' button to create your firs
 Manage which sensors you want to publish to your Home Assistant instance. There are some ready-to-use sensors available, but you can also use your own WMI query.
 *This requires MQTT to be configured*.
 
+Most sensors are single value, but some are **multi-value sensors**. These sensors are configured as one entity, but will create multiple entities in Home Assistant. For instance, the `storage` multi-value sensor will create label, total size (MB), available space (MB), used space (MB) and file system entities for all present non-removable disks. When adding a new sensor, the information panel on the right will tell you if the selected type is multi-value.
+
 **Note: WMI can be a pain, and also make sure you don't update your queries too often. Keep an eye on your CPU load.**
 
 #### 4. Commands
