@@ -25,6 +25,7 @@ Click <a href="https://github.com/LAB02-Research/HASS.Agent/releases/latest/down
 
  * [Why?](#why)
  * [Functionality](#functionality)
+ * [Screenshots](#screenshots)
  * [Installation](#installation)
  * [Configuration](#configuration)
  * [Usage](#usage)
@@ -62,11 +63,9 @@ Summary of the core functions:
 
 * Commands and sensors are automatically added to your Home Assistant instance.
 
-<br/>
+----
 
-<details>
-<summary>Click here to see some examples and screenshots.</summary>
-<br/>
+### Screenshots
 
 Notification examples:
 
@@ -84,8 +83,10 @@ The sensors configuration screen looks like this:
 
 ![Sensors](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_sensors.png)
     
-</details>
+Adding a new sensor is just as easy, with an information panel on the right:
 
+![Sensors](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_new_sensor.png)
+    
 ----
 
 ### Installation
