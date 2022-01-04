@@ -526,6 +526,50 @@ namespace HASSAgent.Functions
 
             return windows;
         }
+
+        private static readonly Dictionary<IntPtr, string> KnownOkInputLanguages = new Dictionary<IntPtr, string>
+        {
+            {new IntPtr(-268367863), "United States-International"},
+            {new IntPtr(-268368877), "United States-International"}
+        };
+
+        private static readonly Dictionary<IntPtr, string> KnownNotOkInputLanguages = new Dictionary<IntPtr, string>
+        {
+            {new IntPtr(67568647), "German"}
+        };
+
+        /// <summary>
+        /// Checks to see if the system's input language works with the default hotkey
+        /// </summary>
+        /// <param name="knownToCollide"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        internal static bool InputLanguageCheckDiffers(out bool knownToCollide, out string message)
+        {
+            message = string.Empty;
+            knownToCollide = true;
+
+            var inputLanguage = InputLanguage.CurrentInputLanguage.Handle;
+
+            // check for known OK languages
+            if (KnownOkInputLanguages.ContainsKey(inputLanguage)) return false;
+
+            // check for known NOT OK languages
+            if (KnownNotOkInputLanguages.ContainsKey(inputLanguage))
+            {
+                // get human-readable name
+                var langName = KnownNotOkInputLanguages[inputLanguage];
+
+                message = $"Your input language '{langName}' is known to collide with the default CTRL-ALT-Q hotkey. Please set your own.";
+                return true;
+            }
+
+            // unknown
+            knownToCollide = false;
+            var layoutName = $"{InputLanguage.CurrentInputLanguage.Culture.DisplayName} - {InputLanguage.CurrentInputLanguage.LayoutName}";
+            message = $"Your input language '{layoutName}' is unknown, and might collide with the default CTRL-ALT-Q hotkey. Please check to be sure. If it does, consider opening a ticket on GitHub so it can be added to the list.";
+            return true;
+        }
     }
 
     public class CamelCaseJsonNamingpolicy : JsonNamingPolicy

@@ -80,6 +80,7 @@ namespace HASSAgent.Forms.QuickActions
             this.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(129)))), ((int)(((byte)(131)))));
             this.Name = "QuickActions";
             this.Opacity = 0D;
+            this.ShowIcon = false;
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

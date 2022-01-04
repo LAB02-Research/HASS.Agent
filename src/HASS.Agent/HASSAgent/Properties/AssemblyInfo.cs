@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("LAB02 Research")]
 [assembly: AssemblyProduct("HASS.Agent")]
-[assembly: AssemblyCopyright("Copyright © LAB02 Research 2021")]
+[assembly: AssemblyCopyright("Copyright © LAB02 Research 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2021.12.31.0")]
-[assembly: AssemblyFileVersion("2021.12.31.0")]
+[assembly: AssemblyVersion("2022.1.4.0")]
+[assembly: AssemblyFileVersion("2022.1.4.0")]

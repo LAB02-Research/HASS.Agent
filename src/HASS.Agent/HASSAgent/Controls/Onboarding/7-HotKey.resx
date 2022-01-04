@@ -117,13 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label1.Text" xml:space="preserve">
-    <value>An easy way to pull up your quick actions is to use a global hotkey.
-
-This way, whatever you're doing on your machine, you can always interact with Home Assistant.
-
-The default hotkey has been set. To set something else, simply click on the field below and press the desired combination. 
-
-Or just click 'clear' to disable.</value>
-  </data>
 </root>

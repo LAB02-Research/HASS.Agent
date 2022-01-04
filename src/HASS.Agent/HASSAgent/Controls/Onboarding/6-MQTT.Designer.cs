@@ -66,7 +66,7 @@
             this.TbIntMqttPort.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbIntMqttPort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TbIntMqttPort.IntegerValue = ((long)(1883));
-            this.TbIntMqttPort.Location = new System.Drawing.Point(220, 195);
+            this.TbIntMqttPort.Location = new System.Drawing.Point(220, 194);
             this.TbIntMqttPort.MaxValue = ((long)(66000));
             this.TbIntMqttPort.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.TbIntMqttPort.MinValue = ((long)(1));
@@ -92,7 +92,7 @@
             this.TbMqttPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbMqttPassword.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbMqttPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbMqttPassword.Location = new System.Drawing.Point(181, 301);
+            this.TbMqttPassword.Location = new System.Drawing.Point(181, 300);
             this.TbMqttPassword.Name = "TbMqttPassword";
             this.TbMqttPassword.Size = new System.Drawing.Size(266, 25);
             this.TbMqttPassword.TabIndex = 4;
@@ -104,7 +104,7 @@
             this.TbMqttUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbMqttUsername.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbMqttUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbMqttUsername.Location = new System.Drawing.Point(183, 254);
+            this.TbMqttUsername.Location = new System.Drawing.Point(183, 253);
             this.TbMqttUsername.Name = "TbMqttUsername";
             this.TbMqttUsername.Size = new System.Drawing.Size(264, 25);
             this.TbMqttUsername.TabIndex = 3;
@@ -115,7 +115,7 @@
             this.TbMqttAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbMqttAddress.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbMqttAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbMqttAddress.Location = new System.Drawing.Point(183, 152);
+            this.TbMqttAddress.Location = new System.Drawing.Point(183, 151);
             this.TbMqttAddress.Name = "TbMqttAddress";
             this.TbMqttAddress.Size = new System.Drawing.Size(396, 25);
             this.TbMqttAddress.TabIndex = 0;
@@ -124,7 +124,7 @@
             // 
             this.CbMqttTls.AutoSize = true;
             this.CbMqttTls.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CbMqttTls.Location = new System.Drawing.Point(330, 197);
+            this.CbMqttTls.Location = new System.Drawing.Point(330, 196);
             this.CbMqttTls.Name = "CbMqttTls";
             this.CbMqttTls.Size = new System.Drawing.Size(47, 21);
             this.CbMqttTls.TabIndex = 2;
@@ -135,7 +135,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(178, 281);
+            this.label9.Location = new System.Drawing.Point(178, 280);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 17);
             this.label9.TabIndex = 31;
@@ -145,7 +145,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(180, 234);
+            this.label8.Location = new System.Drawing.Point(180, 233);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 17);
             this.label8.TabIndex = 30;
@@ -155,7 +155,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(178, 197);
+            this.label7.Location = new System.Drawing.Point(178, 196);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(36, 17);
             this.label7.TabIndex = 29;
@@ -165,7 +165,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(180, 132);
+            this.label6.Location = new System.Drawing.Point(180, 131);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(148, 17);
             this.label6.TabIndex = 28;
@@ -176,7 +176,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(180, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(399, 97);
+            this.label1.Size = new System.Drawing.Size(399, 100);
             this.label1.TabIndex = 27;
             this.label1.Text = resources.GetString("label1.Text");
             // 

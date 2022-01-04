@@ -118,8 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
-    <value>Commands and sensors are sent through MQTT. Please provide credentials for your server. This could be the Home Assistant addon, in that case enter your HA address.
+    <value>Commands and sensors are sent through MQTT. Please provide credentials for your server. If you're using the HA addon, you can probably use the preset address.
 
-Leave empty if you're not going to use them.</value>
+Leave empty if you're not going to use commands and sensors.</value>
   </data>
 </root>

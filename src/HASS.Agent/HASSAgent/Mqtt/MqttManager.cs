@@ -25,7 +25,7 @@ namespace HASSAgent.Mqtt
     /// </summary>
     internal static class MqttManager
     {
-        private static IManagedMqttClient _mqttClient;
+        private static IManagedMqttClient _mqttClient = null;
 
         private static bool _disconnectionNotified = false;
         private static bool _connectingFailureNotified = false;
@@ -116,6 +116,8 @@ namespace HASSAgent.Mqtt
         /// <param name="options"></param>
         private static async void StartClient(IManagedMqttClientOptions options)
         {
+            if (_mqttClient == null) return;
+
             try
             {
                 // start the client
@@ -160,6 +162,7 @@ namespace HASSAgent.Mqtt
         /// </summary>
         private static async void InitialRegistration()
         {
+            if (_mqttClient == null) return;
             while (!_mqttClient.IsConnected) await Task.Delay(2000);
 
             // register commands
@@ -224,6 +227,7 @@ namespace HASSAgent.Mqtt
         /// <returns></returns>
         public static async Task AnnounceAutoDiscoveryConfigAsync(AbstractDiscoverable discoverable, string domain, bool clearConfig = false)
         {
+            if (_mqttClient == null) return;
             if (!_mqttClient.IsConnected) return;
 
             try
@@ -271,34 +275,44 @@ namespace HASSAgent.Mqtt
         private static DateTime _lastAvailableAnnouncementFailedLogged = DateTime.MinValue;
         internal static async Task AnnounceAvailabilityAsync(bool offline = false)
         {
-            // offline msgs always need to be sent, the rest once every 30 secs
-            if (!offline)
-            {
-                var diff = DateTime.Now - _lastAvailableAnnouncement;
-                if (diff.TotalSeconds < 30) return;
+            if (_mqttClient == null) return;
+            if (!_mqttClient.IsConnected) return;
 
-                _lastAvailableAnnouncement = DateTime.Now;
+            try
+            {
+                // offline msgs always need to be sent, the rest once every 30 secs
+                if (!offline)
+                {
+                    var diff = DateTime.Now - _lastAvailableAnnouncement;
+                    if (diff.TotalSeconds < 30) return;
+
+                    _lastAvailableAnnouncement = DateTime.Now;
+                }
+
+                if (_mqttClient.IsConnected)
+                {
+                    await _mqttClient.PublishAsync(
+                        new MqttApplicationMessageBuilder()
+                            .WithTopic($"homeassistant/sensor/{Variables.DeviceConfig.Name}/availability")
+                            .WithPayload(offline ? "offline" : "online")
+                            .Build()
+                    );
+
+                    LastAvailabilityAnnounce = DateTime.UtcNow;
+                }
+                else
+                {
+                    // only log failures once every 5 minutes to minimize log growth
+                    var diff = DateTime.Now - _lastAvailableAnnouncementFailedLogged;
+                    if (diff.TotalMinutes < 5) return;
+
+                    _lastAvailableAnnouncementFailedLogged = DateTime.Now;
+                    Log.Warning("[MQTT] Not connected, availability announcement dropped");
+                }
             }
-
-            if (_mqttClient.IsConnected)
+            catch (Exception ex)
             {
-                await _mqttClient.PublishAsync(
-                    new MqttApplicationMessageBuilder()
-                        .WithTopic($"homeassistant/sensor/{Variables.DeviceConfig.Name}/availability")
-                        .WithPayload(offline ? "offline" : "online")
-                        .Build()
-                );
-
-                LastAvailabilityAnnounce = DateTime.UtcNow;
-            }
-            else
-            {
-                // only log failures once every 5 minutes to minimize log growth
-                var diff = DateTime.Now - _lastAvailableAnnouncementFailedLogged;
-                if (diff.TotalMinutes < 5) return;
-
-                _lastAvailableAnnouncementFailedLogged = DateTime.Now;
-                Log.Warning("[MQTT] Not connected, availability announcement dropped");
+                Log.Fatal(ex, "[MQTT] Error while announcing availability: {err}", ex.Message);
             }
         }
 
@@ -307,6 +321,7 @@ namespace HASSAgent.Mqtt
         /// </summary>
         internal static void Disconnect()
         {
+            if (_mqttClient == null) return;
             if (_mqttClient.IsConnected)
             {
                 _mqttClient.InternalClient.DisconnectAsync();
@@ -323,6 +338,7 @@ namespace HASSAgent.Mqtt
         /// <returns></returns>
         internal static async Task SubscribeAsync(AbstractCommand command)
         {
+            if (_mqttClient == null) return;
             if (IsConnected) await _mqttClient.SubscribeAsync(((CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig()).Command_topic);
             else
             {
@@ -338,6 +354,7 @@ namespace HASSAgent.Mqtt
         /// <returns></returns>
         internal static async Task UnubscribeAsync(AbstractCommand command)
         {
+            if (_mqttClient == null) return;
             if (IsConnected) await _mqttClient.UnsubscribeAsync(((CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig()).Command_topic);
             else
             {
@@ -385,6 +402,7 @@ namespace HASSAgent.Mqtt
         /// <returns></returns>
         internal static async Task ReloadMqttSettingsAsync()
         {
+            if (_mqttClient == null) return;
             Log.Information("[MQTT] Reloading config");
             
             // stop our client

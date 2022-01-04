@@ -17,13 +17,13 @@ namespace HASSAgent.Models.Config
         public bool NotificationsEnabled { get; set; } = true;
         public int NotifierApiPort { get; set; } = 5115;
 
-        public string HassUri { get; set; } = "http://hass.local:8123";
+        public string HassUri { get; set; } = "http://homeassistant.local:8123";
         public string HassToken { get; set; }
 
         public bool QuickActionsHotKeyEnabled { get; set; } = true;
-        public string QuickActionsHotKey { get; set; } 
+        public string QuickActionsHotKey { get; set; }
 
-        public string MqttAddress { get; set; }
+        public string MqttAddress { get; set; } = "homeassistant.local";
         public int MqttPort { get; set; } = 1883;
         public bool MqttUseTls { get; set; }
         public string MqttUsername { get; set; }

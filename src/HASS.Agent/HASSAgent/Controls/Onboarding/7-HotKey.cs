@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HASSAgent.Functions;
 using WK.Libraries.HotkeyListenerNS;
 
 namespace HASSAgent.Controls.Onboarding
@@ -26,11 +27,46 @@ namespace HASSAgent.Controls.Onboarding
             _hotkeySelector.Enable(TbQuickActionsHotkey);
 
             // if nothing set, load default
-            if (string.IsNullOrEmpty(Variables.AppSettings.QuickActionsHotKey)) TbQuickActionsHotkey.Text = "Control, Alt + Q";
+            if (string.IsNullOrEmpty(Variables.AppSettings.QuickActionsHotKey)) LoadDefault();
             // if set to empty, show empty
             else if (Variables.AppSettings.QuickActionsHotKey == _hotkeySelector.EmptyHotkeyText) TbQuickActionsHotkey.Text = _hotkeySelector.EmptyHotkeyText;
             // show set value
-            else TbQuickActionsHotkey.Text = Variables.AppSettings.QuickActionsHotKey;
+            else LoadSetValue();
+        }
+
+        private void LoadDefault()
+        {
+            if (!HelperFunctions.InputLanguageCheckDiffers(out var knownToCollide, out var warning))
+            {
+                TbQuickActionsHotkey.Text = "Control, Alt + Q";
+                return;
+            }
+
+            if (knownToCollide)
+            {
+                // the system's input language collides with our hotkey, let the user know and set empty key
+                LblLanguageWarning.Text = warning;
+                TbQuickActionsHotkey.Text = _hotkeySelector.EmptyHotkeyText;
+                return;
+            }
+
+            // the system's input language is unknown, we're presetting the default but warn the user
+            TbQuickActionsHotkey.Text = "Control, Alt + Q";
+            LblLanguageWarning.ForeColor = Color.DarkOrange;
+            LblLanguageWarning.Text = warning;
+        }
+
+        private void LoadSetValue()
+        {
+            TbQuickActionsHotkey.Text = Variables.AppSettings.QuickActionsHotKey;
+
+            if (!HelperFunctions.InputLanguageCheckDiffers(out var knownToCollide, out var warning)) return;
+
+            // the system's input language is unknown or collides with our hotkey, let the user know if it's set to default
+            if (Variables.AppSettings.QuickActionsHotKey != "Control, Alt + Q") return;
+
+            if (!knownToCollide) LblLanguageWarning.ForeColor = Color.DarkOrange;
+            LblLanguageWarning.Text = warning;
         }
 
         internal bool Store()

@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HotKey));
             this.PbHassAgentLogo = new System.Windows.Forms.PictureBox();
             this.TbQuickActionsHotkey = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnClear = new Syncfusion.WinForms.Controls.SfButton();
+            this.LblLanguageWarning = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PbHassAgentLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +54,7 @@
             this.TbQuickActionsHotkey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbQuickActionsHotkey.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbQuickActionsHotkey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbQuickActionsHotkey.Location = new System.Drawing.Point(183, 245);
+            this.TbQuickActionsHotkey.Location = new System.Drawing.Point(183, 180);
             this.TbQuickActionsHotkey.Name = "TbQuickActionsHotkey";
             this.TbQuickActionsHotkey.Size = new System.Drawing.Size(248, 25);
             this.TbQuickActionsHotkey.TabIndex = 0;
@@ -63,7 +63,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(180, 225);
+            this.label5.Location = new System.Drawing.Point(180, 160);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(122, 17);
             this.label5.TabIndex = 12;
@@ -74,9 +74,11 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(180, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(401, 158);
+            this.label1.Size = new System.Drawing.Size(401, 119);
             this.label1.TabIndex = 11;
-            this.label1.Text = resources.GetString("label1.Text");
+            this.label1.Text = "An easy way to pull up your quick actions is to use a global hotkey.\r\n\r\nThis way," +
+    " whatever you\'re doing on your machine, you can always interact with Home Assist" +
+    "ant.\r\n";
             // 
             // BtnClear
             // 
@@ -84,7 +86,7 @@
             this.BtnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnClear.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnClear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnClear.Location = new System.Drawing.Point(437, 245);
+            this.BtnClear.Location = new System.Drawing.Point(437, 180);
             this.BtnClear.Name = "BtnClear";
             this.BtnClear.Size = new System.Drawing.Size(102, 25);
             this.BtnClear.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -99,11 +101,21 @@
             this.BtnClear.UseVisualStyleBackColor = false;
             this.BtnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
+            // LblLanguageWarning
+            // 
+            this.LblLanguageWarning.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblLanguageWarning.ForeColor = System.Drawing.Color.OrangeRed;
+            this.LblLanguageWarning.Location = new System.Drawing.Point(180, 231);
+            this.LblLanguageWarning.Name = "LblLanguageWarning";
+            this.LblLanguageWarning.Size = new System.Drawing.Size(401, 89);
+            this.LblLanguageWarning.TabIndex = 13;
+            // 
             // HotKey
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.Controls.Add(this.LblLanguageWarning);
             this.Controls.Add(this.BtnClear);
             this.Controls.Add(this.TbQuickActionsHotkey);
             this.Controls.Add(this.label5);
@@ -127,5 +139,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private Syncfusion.WinForms.Controls.SfButton BtnClear;
+        private System.Windows.Forms.Label LblLanguageWarning;
     }
 }
