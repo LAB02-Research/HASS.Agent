@@ -240,9 +240,11 @@ If you have any other wishes, feel free to submit a ticket.
 
 This type of application is prone to errors (due to fetching data from WMI, systemwide keybindings, etc). To manage exceptions, I use the excellent <a href="https://coderr.io" target="_blank">Coderr</a> platform. However, this does mean that exception information will be sent to their servers. This is **disabled** by default. 
 
-If you'd like to help out, please set `EnableCoderrExceptionReporting` to `True` in **HASS.Agent.exe.config**. 
+If you'd like to help out, please enable `exception reporting` from the configuration window. No telemetry or periodic info will get sent. 
 
-If you're experiencing bugs, please set `EnableExtendedLogging` to `True` in **HASS.Agent.exe.config**. Restart HASS.Agent and wait for the bug to occur. Afterwards, please attach the relevant logfile from the **Logs** subfolder in your ticket. Note that if you only enable this option, nothing will get sent to Coderr.
+If you're experiencing bugs, please enable `extended logging` from the configuration window. Restart HASS.Agent and wait for the bug to occur. Afterwards, please attach the relevant logfile from the **Logs** subfolder in your ticket. 
+
+Remember to disable afterwards to prevent your logs from growing too large. Note that if you only enable this option, **nothing** will get sent to Coderr.
 
 ----
 
