@@ -113,33 +113,43 @@ If you don't want this, or if you want to change something later on, you can use
 
 ![Configuration screen](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_configuration.png)
 
-Configuring HASS.Agent is split into six parts:
+Configuring HASS.Agent is split into different pages:
 
-#### 1. Notifications
-
-Make sure the integration has been installed and configured in Home Assistant, and actually works (I used a test automation). In the configuration screen, check the '*accept notifications*' box and change the default port if needed.
-
-Afterwards, open the configured port in your firewall. Ideally only allow your Home Assistant IP.
-
-#### 2. Startup
-
-You can use the '*create launch-on-login scheduled task*' to allow HASS.Agent to start when you login to your PC. 
-
-#### 3. Home Assistant API config
+#### 1. Home Assistant API config
 
 To use quick actions, you have to configure your instance's API. Normally the default URI should work, unless you've changed the port or mdns name. You can get a long-lived API token following <a href="https://www.home-assistant.io/docs/authentication/" target="_blank">this doc</a>.
 
-#### 4. MQTT config
+#### 2. Notifications
+
+Make sure the integration has been installed and configured in Home Assistant, and actually works (I used a test automation). In the configuration screen, check the '*accept notifications*' box and change the default port if needed.
+
+Offers the option to open the required local firewall port.
+
+#### 3. MQTT config
 
 Enter your MQTT broker configuration. This is only required if you want to use commands (triggered from Home Assistant) or sensors (sent from your PC).
 
-#### 5. Hotkey config
+#### 4. Startup
+
+You can use the '*create launch-on-login scheduled task*' to allow HASS.Agent to start when you login to your PC. 
+
+#### 5. HotKey
 
 This is optional, and can be used to pull up the Quick Actions window at any time.
 
 #### 6. Updates
 
 If you want, HASS.Agent can check for updates in the background. This works by checking the latest release on GitHub. When a new release is found, you'll be notified and given the chance to open the release page.
+
+#### 7. Local Storage
+
+Enables you to manage how local storage is handled.
+
+#### 8. Logging and Reporting
+
+HASS.Agent provides extended logging options (see [Error Reporting](#error-reporting)), you can easily manage them from this page.
+
+Remember you need to restart HASS.Agent before they become active.
 
 ----
 
