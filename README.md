@@ -57,7 +57,7 @@ Summary of the core functions:
 
 * **Commands**: control your PC (or other Windows based device) through Home Assistant using custom- or built-in commands.
 
-* **Sensors**: send your PC's sensors to Home Assistant to monitor cpu, mem, webcam usage, wmi-polled data, etc.
+* **Sensors**: send your PC's sensors to Home Assistant to monitor cpu, mem, webcam usage, wmi- and performance counter data, etc.
 
 * All entities are dynamically acquired from your Home Assistant instance.
 
