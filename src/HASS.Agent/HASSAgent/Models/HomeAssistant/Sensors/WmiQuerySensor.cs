@@ -24,8 +24,8 @@ namespace HASSAgent.Models.HomeAssistant.Sensors
                 Name = Name,
                 Unique_id = Id,
                 Device = Variables.DeviceConfig,
-                State_topic = $"homeassistant/{Domain}/{Variables.DeviceConfig.Name}/{Name}/state",
-                Availability_topic = $"homeassistant/{Domain}/{Variables.DeviceConfig.Name}/availability"
+                State_topic = $"{Variables.AppSettings.MqttDiscoveryPrefix}/{Domain}/{Variables.DeviceConfig.Name}/{Name}/state",
+                Availability_topic = $"{Variables.AppSettings.MqttDiscoveryPrefix}/{Domain}/{Variables.DeviceConfig.Name}/availability"
             });
         }
 

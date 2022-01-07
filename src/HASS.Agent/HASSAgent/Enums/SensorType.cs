@@ -22,6 +22,8 @@ namespace HASSAgent.Enums
         NamedWindowSensor,
         [EnumMember(Value = "LastActiveSensor")]
         LastActiveSensor,
+        [EnumMember(Value = "LastSystemStateChangeSensor")]
+        LastSystemStateChangeSensor,
         [EnumMember(Value = "LastBootSensor")]
         LastBootSensor,
         [EnumMember(Value = "WebcamActiveSensor")]

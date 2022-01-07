@@ -7,6 +7,8 @@ using HASSAgent.Models.Config;
 using HASSAgent.Models.HomeAssistant.Sensors;
 using HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue;
 using HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue;
+using HASSAgent.Models.HomeAssistant.Sensors.PerfCounterSensors;
+using HASSAgent.Models.HomeAssistant.Sensors.PerfCounterSensors.SingleValue;
 using HASSAgent.Models.HomeAssistant.Sensors.WmiSensors.SingleValue;
 using Newtonsoft.Json;
 using Serilog;
@@ -115,6 +117,9 @@ namespace HASSAgent.Settings
                     break;
                 case SensorType.LastActiveSensor:
                     abstractSensor = new LastActiveSensor(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    break;
+                case SensorType.LastSystemStateChangeSensor:
+                    abstractSensor = new LastSystemStateChangeSensor(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
                     break;
                 case SensorType.LastBootSensor:
                     abstractSensor = new LastBootSensor(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());

@@ -121,10 +121,11 @@ namespace HASSAgent.Sensors
             SensorInfo.Add(SensorType.ActiveWindowSensor, ("Provides the title of the current active window.", 15));
             SensorInfo.Add(SensorType.NamedWindowSensor, ("Provides an ON/OFF value based on whether the window is currently open (doesn't have to be active).", 30));
             SensorInfo.Add(SensorType.LastActiveSensor, ("Provides a datetime value containing the last moment the user provided any input.", 10));
+            SensorInfo.Add(SensorType.LastSystemStateChangeSensor, ("Provides the last system state change:\r\n\r\nHassAgentStarted, Logoff, SystemShutdown, Resume, Suspend, ConsoleConnect, ConsoleDisconnect, RemoteConnect, RemoteDisconnect, SessionLock, SessionLogoff, SessionLogon, SessionRemoteControl and SessionUnlock.", 10));
             SensorInfo.Add(SensorType.LastBootSensor, ("Provides a datetime value containing the last moment the system (re)booted.\r\n\r\nImportant: Windows' FastBoot option can throw this value off, because that's a form of hibernation. You can disable it through Power Options -> 'Choose what the power buttons do' -> uncheck 'Turn on fast start-up'. It doesn't make much difference for modern machines with SSDs, but disabling makes sure you get a clean state after rebooting.", 10));
             SensorInfo.Add(SensorType.WebcamActiveSensor, ("Provides a bool value based on whether the webcam is currently being used.", 10));
             SensorInfo.Add(SensorType.MicrophoneActiveSensor, ("Provides a bool value based on whether the microphone is currently being used.", 10));
-            SensorInfo.Add(SensorType.SessionStateSensor, ("Provides the current session state:\r\n\r\nLocked, LoggedOff, InUse or Unknown.", 10));
+            SensorInfo.Add(SensorType.SessionStateSensor, ("Provides the current session state:\r\n\r\nLocked, Unlocked or Unknown.\r\n\r\nUse a LastSystemStateChangeSensor to monitor session state changes.", 10));
             SensorInfo.Add(SensorType.CurrentVolumeSensor, ("Provides the current volume level as a percentage.\r\n\r\nCurrently takes the volume of your default device.", 15));
             SensorInfo.Add(SensorType.GpuLoadSensor, ("Provides the current load of the first GPU as a percentage.", 30));
             SensorInfo.Add(SensorType.GpuTemperatureSensor, ("Provides the current temperature of the first GPU.", 30));

@@ -46,6 +46,7 @@ namespace HASSAgent.Controls.Onboarding
             CbMqttTls.Checked = Variables.AppSettings.MqttUseTls;
             TbMqttUsername.Text = Variables.AppSettings.MqttUsername;
             TbMqttPassword.Text = Variables.AppSettings.MqttPassword;
+            TbMqttDiscoveryPrefix.Text = Variables.AppSettings.MqttDiscoveryPrefix;
 
             ActiveControl = !string.IsNullOrEmpty(TbMqttAddress.Text) ? TbMqttUsername : TbMqttAddress;
         }
@@ -57,6 +58,7 @@ namespace HASSAgent.Controls.Onboarding
             Variables.AppSettings.MqttUseTls = CbMqttTls.Checked;
             Variables.AppSettings.MqttUsername = TbMqttUsername.Text;
             Variables.AppSettings.MqttPassword = TbMqttPassword.Text;
+            Variables.AppSettings.MqttDiscoveryPrefix = TbMqttDiscoveryPrefix.Text;
             return true;
         }
     }

@@ -1,10 +1,15 @@
-﻿using System.Drawing;
+﻿using Syncfusion.Windows.Forms;
+using System;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using HASSAgent.Functions;
-using HASSAgent.Mqtt;
+using HASSAgent.HomeAssistant;
 using HASSAgent.Settings;
 using Microsoft.Win32.TaskScheduler;
-using Syncfusion.Windows.Forms;
+using Newtonsoft.Json;
+using Serilog;
 using WK.Libraries.HotkeyListenerNS;
 using Task = System.Threading.Tasks.Task;
 
@@ -24,20 +29,20 @@ namespace HASSAgent.Forms
             TbIntMqttPort.NumberGroupSeparator = ".";
         }
 
-        private void AppSettings_Load(object sender, System.EventArgs e)
+        private void Configuration_Load(object sender, EventArgs e)
         {
             // catch all key presses
             KeyPreview = true;
 
             // load current settings from memory
             LoadSettings();
-            
+
             // config quick actions hotkey selector
             if (Variables.QuickActionsHotKey != null) _hotkeySelector.Enable(TbQuickActionsHotkey, Variables.QuickActionsHotKey);
             else _hotkeySelector.Enable(TbQuickActionsHotkey);
         }
-        
-        private void BtnStore_Click(object sender, System.EventArgs e)
+
+        private void BtnStore_Click(object sender, EventArgs e)
         {
             // store settings
             StoreSettings();
@@ -66,7 +71,7 @@ namespace HASSAgent.Forms
             // notifications
             CbAcceptNotifications.CheckState = Variables.AppSettings.NotificationsEnabled ? CheckState.Checked : CheckState.Unchecked;
             TbIntNotifierApiPort.IntegerValue = Variables.AppSettings.NotifierApiPort;
-            
+
             // hass settings
             TbHassIp.Text = Variables.AppSettings.HassUri;
             TbHassApiToken.Text = Variables.AppSettings.HassToken;
@@ -80,9 +85,18 @@ namespace HASSAgent.Forms
             CbMqttTls.CheckState = Variables.AppSettings.MqttUseTls ? CheckState.Checked : CheckState.Unchecked;
             TbMqttUsername.Text = Variables.AppSettings.MqttUsername;
             TbMqttPassword.Text = Variables.AppSettings.MqttPassword;
+            TbMqttDiscoveryPrefix.Text = Variables.AppSettings.MqttDiscoveryPrefix;
 
             // updates
             CbUpdates.CheckState = Variables.AppSettings.CheckForUpdates ? CheckState.Checked : CheckState.Unchecked;
+
+            // cache
+            TbImageCacheLocation.Text = Variables.ImageCachePath;
+            TbIntImageRetention.IntegerValue = Variables.AppSettings.ImageCacheRetentionDays;
+
+            // logging
+            CbExtendedLogging.CheckState = SettingsManager.GetExtendedLoggingSetting() ? CheckState.Checked : CheckState.Unchecked;
+            CbExceptionReporting.CheckState = SettingsManager.GetExceptionReportingSetting() ? CheckState.Checked : CheckState.Unchecked;
         }
 
         /// <summary>
@@ -121,9 +135,17 @@ namespace HASSAgent.Forms
             Variables.AppSettings.MqttUseTls = CbMqttTls.CheckState == CheckState.Checked;
             Variables.AppSettings.MqttUsername = TbMqttUsername.Text;
             Variables.AppSettings.MqttPassword = TbMqttPassword.Text;
+            Variables.AppSettings.MqttDiscoveryPrefix = TbMqttDiscoveryPrefix.Text;
 
             // updates
             Variables.AppSettings.CheckForUpdates = CbUpdates.CheckState == CheckState.Checked;
+
+            // cache
+            Variables.AppSettings.ImageCacheRetentionDays = (int)TbIntImageRetention.IntegerValue;
+
+            // logging
+            SettingsManager.SetExtendedLoggingSetting(CbExtendedLogging.CheckState == CheckState.Checked);
+            SettingsManager.SetExceptionReportingSetting(CbExceptionReporting.CheckState == CheckState.Checked);
 
             // save to file
             SettingsManager.StoreAppSettings();
@@ -172,11 +194,30 @@ namespace HASSAgent.Forms
         }
 
         /// <summary>
+        /// Show our very entertaining 'about' form, always the center of attention of every application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAbout_Click(object sender, EventArgs e)
+        {
+            using (var about = new About())
+            {
+                about.ShowDialog();
+            }
+        }
+
+        private void BtnNotificationsReadme_Click(object sender, System.EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent#configuration");
+
+        private void BtnScheduledTaskReadme_Click(object sender, System.EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent#installation");
+
+        private void BtnHelp_Click(object sender, System.EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent");
+
+        /// <summary>
         /// Try to create a run-on-login scheduled task
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void BtnCreateLaunchOnBootTask_Click(object sender, System.EventArgs e)
+        private async void BtnCreateLaunchOnBootTask_Click(object sender, EventArgs e)
         {
             // check the current status
             var present = ScheduledTasks.IsTaskPresent();
@@ -242,23 +283,126 @@ namespace HASSAgent.Forms
             Close();
         }
 
-        /// <summary>
-        /// Show our very entertaining 'about' form, always the center of attention of every application
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnAbout_Click(object sender, System.EventArgs e)
+        private async void BtnTestApi_Click(object sender, EventArgs e)
         {
-            using (var about = new About())
+            // test entered values
+            var apiKey = TbHassApiToken.Text.Trim();
+            var hassUri = TbHassIp.Text.Trim();
+
+            if (string.IsNullOrEmpty(apiKey))
             {
-                about.ShowDialog();
+                MessageBoxAdv.Show("Please enter a valid API key.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                ActiveControl = TbHassApiToken;
+                return;
             }
+
+            if (string.IsNullOrEmpty(hassUri))
+            {
+                MessageBoxAdv.Show("Please enter your Home Assistant's URI.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                ActiveControl = TbHassIp;
+                return;
+            }
+
+            // lock gui
+            TbHassIp.Enabled = false;
+            TbHassApiToken.Enabled = false;
+            BtnTestApi.Enabled = false;
+            BtnTestApi.Text = "testing ..";
+
+            // perform test
+            var (success, message) = await HassApiManager.CheckHassConfigAsync(hassUri, apiKey);
+            if (!success) MessageBoxAdv.Show($"Unable to connect, the following error was returned:\r\n\r\n{message}", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else MessageBoxAdv.Show($"Connection OK!\r\n\r\nHome Assistant version: {message}", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // unlock gui
+            TbHassIp.Enabled = true;
+            TbHassApiToken.Enabled = true;
+            BtnTestApi.Enabled = true;
+            BtnTestApi.Text = "test connection";
         }
 
-        private void BtnNotificationsReadme_Click(object sender, System.EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent#configuration");
+        private async void BtnOpenFirewallPort_Click(object sender, EventArgs e)
+        {
+            // check the entered port value
+            var port = (int)TbIntNotifierApiPort.IntegerValue;
 
-        private void BtnScheduledTaskReadme_Click(object sender, System.EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent#installation");
+            if (port < 1 || port > 65535)
+            {
+                MessageBoxAdv.Show("Please enter a port value between 1 and 65535.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                ActiveControl = TbIntNotifierApiPort;
+                return;
+            }
 
-        private void BtnHelp_Click(object sender, System.EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent");
+            // lock interface
+            BtnOpenFirewallPort.Text = "creating rule, hold on ..";
+            BtnOpenFirewallPort.Enabled = false;
+
+            // add the rule
+            var consoleResult = await CommandLine.ExecuteCommandAsync("netsh", $"advfirewall firewall add rule name=\"HASS.Agent Notifier\" dir=in action=allow protocol=TCP localport={port}");
+
+            // check the outcome
+            if (consoleResult.Error)
+            {
+                // write the result to the logs
+                Log.Error("[ONBOARDING] Error creating firewall rule, console output:\r\n{output}", JsonConvert.SerializeObject(consoleResult, Formatting.Indented));
+
+                // notify user
+                MessageBoxAdv.Show("Something went wrong while creating the rule for you.\r\n\r\nPlease check the logs for more info, and resort to the GitHub\r\npage for more info, or to create a ticket.",
+                    "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // enable gui, incase they want to try again
+                BtnOpenFirewallPort.Text = "yes, open the firewall port";
+                BtnOpenFirewallPort.Enabled = true;
+
+                return;
+            }
+
+            // all good
+            LblFirewallInfo.Text = "Firewall rule succesfully created!";
+            LblFirewallInfo.ForeColor = Color.LimeGreen;
+
+            BtnOpenFirewallPort.Visible = false;
+
+            // volatile setting, lazy way to remember we did this
+            Variables.OnboardingFirewallRuleCreated = true;
+        }
+
+        private void BtnMqttClearConfig_Click(object sender, EventArgs e)
+        {
+            TbMqttAddress.Text = string.Empty;
+            TbIntMqttPort.IntegerValue = 1883;
+            CbMqttTls.CheckState = CheckState.Unchecked;
+            TbMqttUsername.Text = string.Empty;
+            TbMqttPassword.Text = string.Empty;
+            TbMqttDiscoveryPrefix.Text = "homeassistant";
+        }
+
+        private void LblCoderr_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://coderr.io");
+
+        private void BtnClear_Click(object sender, EventArgs e)
+        {
+            TbQuickActionsHotkey.Text = _hotkeySelector.EmptyHotkeyText;
+        }
+
+        private async void BtnClearImageCache_Click(object sender, EventArgs e)
+        {
+            BtnClearImageCache.Enabled = false;
+            BtnClearImageCache.Text = "cleaning ..";
+
+            await CacheManager.ClearImageCacheAsync();
+
+            MessageBoxAdv.Show("Image cache has been cleared!", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            BtnClearImageCache.Enabled = true;
+            BtnClearImageCache.Text = "clear image cache";
+        }
+
+        private void BtnOpenImageCache_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Variables.ImageCachePath)) return;
+            if (!Directory.Exists(Variables.ImageCachePath)) Directory.CreateDirectory(Variables.ImageCachePath);
+
+            Process.Start("explorer.exe", Variables.ImageCachePath);
+        }
     }
 }

@@ -7,6 +7,7 @@ using HASSAgent.Models.Config;
 using HASSAgent.Models.HomeAssistant.Commands;
 using HASSAgent.Models.HomeAssistant.Sensors;
 using HASSAgent.Models.Internal;
+using Microsoft.Win32;
 using Newtonsoft.Json;
 using Serilog;
 using WK.Libraries.HotkeyListenerNS;
@@ -206,6 +207,78 @@ namespace HASSAgent.Settings
                 Log.Fatal(ex, "[SETTINGS] Error storing app settings: {err}", ex.Message);
                 Variables.MainForm?.ShowMessageBox($"Error storing settings:\r\n\r\n{ex.Message}", true);
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Gets the 'extended logging' setting from registry
+        /// </summary>
+        /// <returns></returns>
+        internal static bool GetExtendedLoggingSetting()
+        {
+            try
+            {
+                var setting = (string)Registry.GetValue(Variables.RootRegKey, "ExtendedLogging", "0");
+                if (string.IsNullOrEmpty(setting)) return false;
+
+                return setting == "1";
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[SETTINGS] Error retrieving extended logging setting: {err}", ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Stores the 'extended logging' setting in registry
+        /// </summary>
+        /// <param name="enabled"></param>
+        internal static void SetExtendedLoggingSetting(bool enabled)
+        {
+            try
+            {
+                Registry.SetValue(Variables.RootRegKey, "ExtendedLogging", enabled ? "1" : "0", RegistryValueKind.String);
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[SETTINGS] Error storing extended logging setting: {err}", ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Gets the 'exception reporting' setting from registry
+        /// </summary>
+        /// <returns></returns>
+        internal static bool GetExceptionReportingSetting()
+        {
+            try
+            {
+                var setting = (string)Registry.GetValue(Variables.RootRegKey, "ExceptionReporting", "0");
+                if (string.IsNullOrEmpty(setting)) return false;
+
+                return setting == "1";
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[SETTINGS] Error retrieving exception reporting setting: {err}", ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Stores the 'exception reporting' setting in registry
+        /// </summary>
+        /// <param name="enabled"></param>
+        internal static void SetExceptionReportingSetting(bool enabled)
+        {
+            try
+            {
+                Registry.SetValue(Variables.RootRegKey, "ExceptionReporting", enabled ? "1" : "0", RegistryValueKind.String);
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[SETTINGS] Error storing exception reporting setting: {err}", ex.Message);
             }
         }
     }

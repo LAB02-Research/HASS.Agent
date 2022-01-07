@@ -1,9 +1,9 @@
-﻿namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
+﻿namespace HASSAgent.Models.HomeAssistant.Sensors.PerfCounterSensors.SingleValue
 {
-    public class DummySensor : AbstractSingleValueSensor
+    public class CpuLoadSensor : PerformanceCounterSensor
     {
-        public DummySensor(int? updateInterval = null, string name = "Dummy", string id = default) : base(name ?? "Dummy", updateInterval ?? 5, id) { }
-
+        public CpuLoadSensor(int? updateInterval = null, string name = "CpuLoadSensor", string id = default) : base("Processor", "% Processor Time", "_Total", updateInterval ?? 30, name ?? "CpuLoadSensor", id) {}
+        
         public override DiscoveryConfigModel GetAutoDiscoveryConfig()
         {
             return AutoDiscoveryConfigModel ?? SetAutoDiscoveryConfigModel(new SensorDiscoveryConfigModel()
@@ -12,13 +12,10 @@
                 Unique_id = Id,
                 Device = Variables.DeviceConfig,
                 State_topic = $"{Variables.AppSettings.MqttDiscoveryPrefix}/{Domain}/{Variables.DeviceConfig.Name}/{ObjectId}/state",
+                Icon = "mdi:chart-areaspline",
+                Unit_of_measurement = "%",
                 Availability_topic = $"{Variables.AppSettings.MqttDiscoveryPrefix}/{Domain}/{Variables.DeviceConfig.Name}/availability"
             });
-        }
-
-        public override string GetState()
-        {
-            return Variables.Rnd.Next(0, 100).ToString();
         }
     }
 }

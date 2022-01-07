@@ -141,8 +141,9 @@
       <DependentUpon>1-Welcome.cs</DependentUpon>
     </Compile>
     <Compile Include="Enums\Component.cs" />
+    <Compile Include="Enums\LockState.cs" />
     <Compile Include="Enums\OnboardingStatus.cs" />
-    <Compile Include="Enums\PcUserStatus.cs" />
+    <Compile Include="Enums\SystemStateEvent.cs" />
     <Compile Include="Enums\UserNotificationState.cs" />
     <Compile Include="Forms\About.cs">
       <SubType>Form</SubType>
@@ -155,6 +156,12 @@
     </Compile>
     <Compile Include="Forms\Commands\CommandsMod.Designer.cs">
       <DependentUpon>CommandsMod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Configuration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configuration.Designer.cs">
+      <DependentUpon>Configuration.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Onboarding.cs">
       <SubType>Form</SubType>
@@ -174,11 +181,17 @@
     <Compile Include="Forms\UpdatePending.Designer.cs">
       <DependentUpon>UpdatePending.cs</DependentUpon>
     </Compile>
+    <Compile Include="Functions\CacheManager.cs" />
     <Compile Include="Functions\CommandLine.cs" />
     <Compile Include="Functions\HotKeyManager.cs" />
+    <Compile Include="Functions\PerformanceCounters.cs" />
+    <Compile Include="Functions\SessionInfo.cs" />
+    <Compile Include="Functions\SystemStateManager.cs" />
     <Compile Include="Functions\UpdateManager.cs" />
     <Compile Include="Models\HomeAssistant\Commands\CustomCommands\LockCommand.cs" />
     <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\MultiValue\NetworkSensors.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\LastSystemStateChangeSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\PerformanceCounterSensor.cs" />
     <Compile Include="Models\Internal\ComponentStatusUpdate.cs" />
     <Compile Include="Models\Internal\ConsoleResult.cs" />
     <Compile Include="Models\HomeAssistant\Commands\CustomCommands\LogOffCommand.cs" />
@@ -205,7 +218,7 @@
     <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\SessionStateSensor.cs" />
     <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\UserNotificationStateSensor.cs" />
     <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\WebcamActiveSensor.cs" />
-    <Compile Include="Models\HomeAssistant\Sensors\WmiSensors\SingleValue\CpuLoadSensor.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\PerfCounterSensors\SingleValue\CpuLoadSensor.cs" />
     <Compile Include="Models\HomeAssistant\Sensors\WmiSensors\SingleValue\CurrentClockSpeedSensor.cs" />
     <Compile Include="Models\HomeAssistant\Sensors\WmiSensors\SingleValue\MemoryUsageSensor.cs" />
     <Compile Include="Models\Internal\QuickActionPanelControl.cs" />
@@ -230,12 +243,6 @@
     </Compile>
     <Compile Include="Forms\Commands\CommandsConfig.Designer.cs">
       <DependentUpon>CommandsConfig.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Configuration.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Configuration.Designer.cs">
-      <DependentUpon>Configuration.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\GetUserCredentials.cs">
       <SubType>Form</SubType>
@@ -494,8 +501,6 @@
       <Version>2.9.3</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\HomeAssistant\Sensors\WmiSensors\MultiValue\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

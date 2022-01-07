@@ -98,6 +98,9 @@ namespace HASSAgent.Settings
                 case CommandType.LogOffCommand:
                     abstractCommand = new LogOffCommand(command.Name, command.Id.ToString());
                     break;
+                case CommandType.LockCommand:
+                    abstractCommand = new LockCommand(command.Name, command.Id.ToString());
+                    break;
                 case CommandType.CustomCommand:
                     abstractCommand = new CustomCommand(command.Command, command.Name, command.Id.ToString());
                     break;

@@ -51,7 +51,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(180, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(401, 158);
+            this.label1.Size = new System.Drawing.Size(401, 128);
             this.label1.TabIndex = 12;
             this.label1.Text = resources.GetString("label1.Text");
             // 

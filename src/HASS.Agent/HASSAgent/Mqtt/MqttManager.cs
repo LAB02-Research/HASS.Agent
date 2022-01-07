@@ -239,9 +239,11 @@ namespace HASSAgent.Mqtt
                     PropertyNameCaseInsensitive = true,
                 };
 
+                if (string.IsNullOrEmpty(Variables.AppSettings.MqttDiscoveryPrefix)) Variables.AppSettings.MqttDiscoveryPrefix = "homeassistant";
+
                 var topic = string.IsNullOrEmpty(discoverable.TopicName)
-                    ? $"homeassistant/{domain}/{Variables.DeviceConfig.Name}/{discoverable.ObjectId}/config"
-                    : $"homeassistant/{domain}/{Variables.DeviceConfig.Name}/{discoverable.TopicName}/{discoverable.ObjectId}/config";
+                    ? $"{Variables.AppSettings.MqttDiscoveryPrefix}/{domain}/{Variables.DeviceConfig.Name}/{discoverable.ObjectId}/config"
+                    : $"{Variables.AppSettings.MqttDiscoveryPrefix}/{domain}/{Variables.DeviceConfig.Name}/{discoverable.TopicName}/{discoverable.ObjectId}/config";
                 
                 var message = new MqttApplicationMessageBuilder()
                     .WithTopic(topic)
@@ -291,9 +293,11 @@ namespace HASSAgent.Mqtt
 
                 if (_mqttClient.IsConnected)
                 {
+                    if (string.IsNullOrEmpty(Variables.AppSettings.MqttDiscoveryPrefix)) Variables.AppSettings.MqttDiscoveryPrefix = "homeassistant";
+
                     await _mqttClient.PublishAsync(
                         new MqttApplicationMessageBuilder()
-                            .WithTopic($"homeassistant/sensor/{Variables.DeviceConfig.Name}/availability")
+                            .WithTopic($"{Variables.AppSettings.MqttDiscoveryPrefix}/sensor/{Variables.DeviceConfig.Name}/availability")
                             .WithPayload(offline ? "offline" : "online")
                             .Build()
                     );

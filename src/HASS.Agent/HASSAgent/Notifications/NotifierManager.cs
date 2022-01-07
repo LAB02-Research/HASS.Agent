@@ -3,6 +3,7 @@ using Grapevine;
 using HASSAgent.Enums;
 using HASSAgent.Functions;
 using HASSAgent.Models;
+using HASSAgent.Models.Config;
 using HASSAgent.Models.HomeAssistant;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Newtonsoft.Json;
@@ -20,6 +21,13 @@ namespace HASSAgent.Notifications
         /// </summary>
         internal static void Initialize()
         {
+            if (!Variables.AppSettings.NotificationsEnabled)
+            {
+                Log.Information("[NOTIFIER] Disabled, skipping local API");
+                Variables.MainForm?.SetNotificationApiStatus(ComponentStatus.Stopped);
+                return;
+            }
+
             Log.Information("[NOTIFIER] Initializing local API ..");
 
             // prepare and use a new server
@@ -59,7 +67,7 @@ namespace HASSAgent.Notifications
                 catch (Exception ex)
                 {
                     Log.Fatal(ex, "[NOTIFIER] Error trying to bind the API to port {port}: {err}", Variables.AppSettings.NotifierApiPort, ex.Message);
-                    Variables.MainForm?.ShowMessageBox($"Error trying to bind the API to port {Variables.AppSettings.NotifierApiPort}.\r\n\r\nMake sure you have administrator rights, no other instance of HASS Agent is running\r\nand the port is available.", true);
+                    Variables.MainForm?.ShowMessageBox($"Error trying to bind the API to port {Variables.AppSettings.NotifierApiPort}.\r\n\r\nMake sure you have administrator rights, no other instance of HASS.Agent is running and the port is available.", true);
 
                     Variables.MainForm?.SetNotificationApiStatus(ComponentStatus.Failed);
                 }

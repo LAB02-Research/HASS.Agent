@@ -29,6 +29,7 @@ namespace HASSAgent
         public static string ApplicationExecutable { get; } = Assembly.GetExecutingAssembly().Location;
         public static string Version { get; } = $"{Assembly.GetExecutingAssembly().GetName().Version.Major}.{Assembly.GetExecutingAssembly().GetName().Version.Minor}.{Assembly.GetExecutingAssembly().GetName().Version.Build}.{Assembly.GetExecutingAssembly().GetName().Version.Revision}";
         internal static string SyncfusionLicense => "NTA2NTgzQDMxMzkyZTMyMmUzMEhrMG96Rmx5N3JCTmJYT1o0R0g1ZjVlUVdoSDJvRFNSS0QvcktBSXhsb1U9";
+        internal static string RootRegKey => @"HKEY_CURRENT_USER\SOFTWARE\LAB02Research\HASSAgent";
 
         /// <summary>
         /// Internal references
@@ -60,9 +61,10 @@ namespace HASSAgent
         /// Local IO
         /// </summary>
         internal static string StartupPath { get; } = Path.GetDirectoryName(Application.ExecutablePath);
-        internal static string TempPath { get; } = Path.Combine(StartupPath, "Temp");
-        internal static string LogPath { get; } = Path.Combine(StartupPath, "Logs");
-        internal static string ConfigPath { get; } = Path.Combine(StartupPath, "Config");
+        internal static string CachePath { get; } = Path.Combine(StartupPath, "cache");
+        internal static string ImageCachePath { get; } = Path.Combine(CachePath, "images");
+        internal static string LogPath { get; } = Path.Combine(StartupPath, "logs");
+        internal static string ConfigPath { get; } = Path.Combine(StartupPath, "config");
         internal static string AppSettingsFile { get; } = Path.Combine(ConfigPath, "appsettings.json");
         internal static string QuickActionsFile { get; } = Path.Combine(ConfigPath, "quickactions.json");
         internal static string CommandsFile { get; } = Path.Combine(ConfigPath, "commands.json");

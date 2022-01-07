@@ -14,10 +14,10 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.WmiSensors.SingleValue
                 Name = Name,
                 Unique_id = Id,
                 Device = Variables.DeviceConfig,
-                State_topic = $"homeassistant/{Domain}/{Variables.DeviceConfig.Name}/{ObjectId}/state",
+                State_topic = $"{Variables.AppSettings.MqttDiscoveryPrefix}/{Domain}/{Variables.DeviceConfig.Name}/{ObjectId}/state",
                 Icon = "mdi:memory",
                 Unit_of_measurement = "%",
-                Availability_topic = $"homeassistant/{Domain}/{Variables.DeviceConfig.Name}/availability"
+                Availability_topic = $"{Variables.AppSettings.MqttDiscoveryPrefix}/{Domain}/{Variables.DeviceConfig.Name}/availability"
             });
         }
 

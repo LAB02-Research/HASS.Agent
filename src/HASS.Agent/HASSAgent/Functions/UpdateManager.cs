@@ -84,7 +84,16 @@ namespace HASSAgent.Functions
 
                 // fetch the latest release
                 var latestRelease = await client.Repository.Release.GetLatest("LAB02-Research", "HASS.Agent");
-                
+
+                // ignore if it's a draft
+                if (latestRelease.Draft) return (false, string.Empty);
+
+                // ignore prereleases
+                if (latestRelease.Prerelease) return (false, string.Empty);
+
+                // ignore beta's (starting with a b)
+                if (latestRelease.TagName.StartsWith("b")) return (false, string.Empty);
+
                 // remove the 'v' if it's there
                 var tagName = latestRelease.TagName.StartsWith("v")
                     ? latestRelease.TagName.Remove(0, 1)

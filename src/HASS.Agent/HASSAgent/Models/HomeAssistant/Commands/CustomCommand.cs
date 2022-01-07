@@ -58,9 +58,9 @@ namespace HASSAgent.Models.HomeAssistant.Commands
             {
                 Name = Name,
                 Unique_id = Id,
-                Availability_topic = $"homeassistant/sensor/{Variables.DeviceConfig.Name}/availability",
-                Command_topic = $"homeassistant/{Domain}/{Variables.DeviceConfig.Name}/{ObjectId}/set",
-                State_topic = $"homeassistant/{Domain}/{Variables.DeviceConfig.Name}/{ObjectId}/state",
+                Availability_topic = $"{Variables.AppSettings.MqttDiscoveryPrefix}/sensor/{Variables.DeviceConfig.Name}/availability",
+                Command_topic = $"{Variables.AppSettings.MqttDiscoveryPrefix}/{Domain}/{Variables.DeviceConfig.Name}/{ObjectId}/set",
+                State_topic = $"{Variables.AppSettings.MqttDiscoveryPrefix}/{Domain}/{Variables.DeviceConfig.Name}/{ObjectId}/state",
                 Device = Variables.DeviceConfig,
             };
         }

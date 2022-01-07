@@ -30,8 +30,8 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue.DataT
                 Name = Name,
                 Unique_id = Id,
                 Device = Variables.DeviceConfig,
-                State_topic = $"homeassistant/{Domain}/{Variables.DeviceConfig.Name}/{TopicName}/{ObjectId}/state",
-                Availability_topic = $"homeassistant/{Domain}/{Variables.DeviceConfig.Name}/{TopicName}/availability"
+                State_topic = $"{Variables.AppSettings.MqttDiscoveryPrefix}/{Domain}/{Variables.DeviceConfig.Name}/{TopicName}/{ObjectId}/state",
+                Availability_topic = $"{Variables.AppSettings.MqttDiscoveryPrefix}/{Domain}/{Variables.DeviceConfig.Name}/{TopicName}/availability"
             };
 
             if (!string.IsNullOrWhiteSpace(_deviceClass)) model.Device_class = _deviceClass;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -29,10 +30,14 @@ namespace HASSAgent.Forms
     [SuppressMessage("ReSharper", "MemberCanBeMadeStatic.Local")]
     public partial class Main : MetroForm
     {
+        private static int WM_QUERYENDSESSION = 0x11;
         private bool _isClosing = false;
 
-        public Main()
+        private readonly bool _extendedLogging;
+
+        public Main(bool extendedLogging)
         {
+            _extendedLogging = extendedLogging;
             InitializeComponent();
         }
 
@@ -44,7 +49,7 @@ namespace HASSAgent.Forms
                 Variables.UiDispatcher = Dispatcher.CurrentDispatcher;
 
                 // check if we're enabling extended logging
-                if (Properties.Settings.Default.EnableExtendedLogging)
+                if (_extendedLogging)
                 {
                     // exception handlers
                     Application.ThreadException += Application_ThreadException;
@@ -97,6 +102,8 @@ namespace HASSAgent.Forms
                 Task.Run(SensorsManager.Initialize);
                 Task.Run(CommandsManager.Initialize);
                 Task.Run(UpdateManager.Initialize);
+                Task.Run(SystemStateManager.Initialize);
+                Task.Run(CacheManager.Initialize);
 
                 // run a check to see if we could restart through the scheduled task
                 Task.Run(ScheduledTaskCheck);
@@ -121,7 +128,17 @@ namespace HASSAgent.Forms
                 Application.Exit();
             }
         }
-        
+
+        /// <summary>
+        /// Listen to Windows messages to detect session endings
+        /// </summary>
+        /// <param name="m"></param>
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_QUERYENDSESSION) SystemStateManager.ProcessSessionEnd();
+            base.WndProc(ref m);
+        }
+
         /// <summary>
         /// Looks for our Scheduled Task, if it's there but not started, offers to restart using it
         /// </summary>
@@ -237,6 +254,20 @@ namespace HASSAgent.Forms
             // cancel and let the shutdown function handle it
             _isClosing = true;
             e.Cancel = true;
+        }
+
+        /// <summary>
+        /// Hides the tray icon
+        /// </summary>
+        internal void HideTrayIcon()
+        {
+            if (!IsHandleCreated) return;
+            if (IsDisposed) return;
+
+            Invoke(new MethodInvoker(delegate
+            {
+                NotifyIcon.Visible = false;
+            }));
         }
 
         /// <summary>

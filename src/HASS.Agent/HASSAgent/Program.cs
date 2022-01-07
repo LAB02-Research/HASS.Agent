@@ -8,6 +8,7 @@ using Coderr.Client;
 using Coderr.Client.Serilog;
 using HASSAgent.Forms;
 using HASSAgent.Functions;
+using HASSAgent.Settings;
 using Serilog;
 
 namespace HASSAgent
@@ -29,10 +30,14 @@ namespace HASSAgent
                 // syncfusion license
                 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(Variables.SyncfusionLicense);
 
-                // enable logging and optionally prepare Coderr
-                HelperFunctions.PrepareLogging(Properties.Settings.Default.EnableCoderrExceptionReporting);
+                // get logging settings
+                var enableExtendedLogging = SettingsManager.GetExtendedLoggingSetting();
+                var exceptionLogging = SettingsManager.GetExceptionReportingSetting();
 
-                if (Properties.Settings.Default.EnableExtendedLogging)
+                // enable logging and optionally prepare Coderr
+                HelperFunctions.PrepareLogging(exceptionLogging);
+
+                if (enableExtendedLogging)
                 {
                     // make sure we catch 'm all
                     AppDomain.CurrentDomain.FirstChanceException += (sender, eventArgs) =>
@@ -59,7 +64,7 @@ namespace HASSAgent
                 Application.SetCompatibleTextRenderingDefault(false);
 
                 // prepare ui
-                Variables.MainForm = new Main();
+                Variables.MainForm = new Main(enableExtendedLogging);
                 HelperFunctions.SetMsgBoxStyle();
 
                 // launch application (hidden)

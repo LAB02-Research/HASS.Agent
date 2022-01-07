@@ -40,6 +40,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.TbMqttDiscoveryPrefix = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PbHassAgentLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TbIntMqttPort)).BeginInit();
             this.SuspendLayout();
@@ -92,9 +95,9 @@
             this.TbMqttPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbMqttPassword.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbMqttPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbMqttPassword.Location = new System.Drawing.Point(181, 300);
+            this.TbMqttPassword.Location = new System.Drawing.Point(373, 253);
             this.TbMqttPassword.Name = "TbMqttPassword";
-            this.TbMqttPassword.Size = new System.Drawing.Size(266, 25);
+            this.TbMqttPassword.Size = new System.Drawing.Size(162, 25);
             this.TbMqttPassword.TabIndex = 4;
             this.TbMqttPassword.UseSystemPasswordChar = true;
             // 
@@ -106,7 +109,7 @@
             this.TbMqttUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TbMqttUsername.Location = new System.Drawing.Point(183, 253);
             this.TbMqttUsername.Name = "TbMqttUsername";
-            this.TbMqttUsername.Size = new System.Drawing.Size(264, 25);
+            this.TbMqttUsername.Size = new System.Drawing.Size(160, 25);
             this.TbMqttUsername.TabIndex = 3;
             // 
             // TbMqttAddress
@@ -117,14 +120,14 @@
             this.TbMqttAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TbMqttAddress.Location = new System.Drawing.Point(183, 151);
             this.TbMqttAddress.Name = "TbMqttAddress";
-            this.TbMqttAddress.Size = new System.Drawing.Size(396, 25);
+            this.TbMqttAddress.Size = new System.Drawing.Size(352, 25);
             this.TbMqttAddress.TabIndex = 0;
             // 
             // CbMqttTls
             // 
             this.CbMqttTls.AutoSize = true;
             this.CbMqttTls.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CbMqttTls.Location = new System.Drawing.Point(330, 196);
+            this.CbMqttTls.Location = new System.Drawing.Point(373, 196);
             this.CbMqttTls.Name = "CbMqttTls";
             this.CbMqttTls.Size = new System.Drawing.Size(47, 21);
             this.CbMqttTls.TabIndex = 2;
@@ -135,7 +138,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(178, 280);
+            this.label9.Location = new System.Drawing.Point(370, 233);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 17);
             this.label9.TabIndex = 31;
@@ -157,9 +160,9 @@
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(178, 196);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 17);
+            this.label7.Size = new System.Drawing.Size(33, 17);
             this.label7.TabIndex = 29;
-            this.label7.Text = "port:";
+            this.label7.Text = "port";
             // 
             // label6
             // 
@@ -180,11 +183,45 @@
             this.label1.TabIndex = 27;
             this.label1.Text = resources.GetString("label1.Text");
             // 
+            // TbMqttDiscoveryPrefix
+            // 
+            this.TbMqttDiscoveryPrefix.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.TbMqttDiscoveryPrefix.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbMqttDiscoveryPrefix.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbMqttDiscoveryPrefix.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.TbMqttDiscoveryPrefix.Location = new System.Drawing.Point(181, 315);
+            this.TbMqttDiscoveryPrefix.Name = "TbMqttDiscoveryPrefix";
+            this.TbMqttDiscoveryPrefix.Size = new System.Drawing.Size(162, 25);
+            this.TbMqttDiscoveryPrefix.TabIndex = 5;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(180, 295);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(100, 17);
+            this.label10.TabIndex = 33;
+            this.label10.Text = "discovery prefix";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(349, 320);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(135, 13);
+            this.label2.TabIndex = 34;
+            this.label2.Text = "(leave default if not sure)";
+            // 
             // MQTT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.TbMqttDiscoveryPrefix);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.TbIntMqttPort);
             this.Controls.Add(this.TbMqttPassword);
             this.Controls.Add(this.TbMqttUsername);
@@ -221,5 +258,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox TbMqttDiscoveryPrefix;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label2;
     }
 }

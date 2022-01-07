@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Management;
-using System.Text.RegularExpressions;
-using HASSAgent.Enums;
+using System.Runtime.InteropServices;
 using HASSAgent.Functions;
-using Serilog;
 
 namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
 {
-    public class SessionStateSensor : AbstractSingleValueSensor
+    public class LastSystemStateChangeSensor : AbstractSingleValueSensor
     {
-        public SessionStateSensor(int? updateInterval = null, string name = "SessionState", string id = default) : base(name ?? "SessionState", updateInterval ?? 10, id) { }
+        public LastSystemStateChangeSensor(int? updateInterval = 10, string name = "LastSystemStateChange", string id = default) : base(name ?? "LastSystemStateChange", updateInterval ?? 10, id) { }
 
         public override DiscoveryConfigModel GetAutoDiscoveryConfig()
         {
@@ -22,11 +16,11 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
                 Unique_id = Id,
                 Device = Variables.DeviceConfig,
                 State_topic = $"{Variables.AppSettings.MqttDiscoveryPrefix}/{Domain}/{Variables.DeviceConfig.Name}/{ObjectId}/state",
-                Icon = "mdi:lock",
+                Icon = "mdi:cog",
                 Availability_topic = $"{Variables.AppSettings.MqttDiscoveryPrefix}/{Domain}/{Variables.DeviceConfig.Name}/availability"
             });
         }
 
-        public override string GetState() => SessionInfo.GetActiveSessionLockState().ToString();
+        public override string GetState() => SystemStateManager.LastSystemStateEvent.ToString();
     }
 }

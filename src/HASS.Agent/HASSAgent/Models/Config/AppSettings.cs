@@ -13,6 +13,8 @@ namespace HASSAgent.Models.Config
 
         public bool CheckForUpdates { get; set; } = true;
         public string LastUpdateNotificationShown { get; set; }
+
+        public int ImageCacheRetentionDays { get; set; } = 7;
         
         public bool NotificationsEnabled { get; set; } = true;
         public int NotifierApiPort { get; set; } = 5115;
@@ -28,5 +30,6 @@ namespace HASSAgent.Models.Config
         public bool MqttUseTls { get; set; }
         public string MqttUsername { get; set; }
         public string MqttPassword { get; set; }
+        public string MqttDiscoveryPrefix { get; set; } = "homeassistant";
     }
 }

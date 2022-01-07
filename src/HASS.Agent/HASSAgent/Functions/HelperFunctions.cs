@@ -9,6 +9,8 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Coderr.Client;
 using Coderr.Client.Serilog;
@@ -54,6 +56,8 @@ namespace HASSAgent.Functions
 
         [DllImport("USER32.DLL")]
         private static extern IntPtr GetShellWindow();
+
+        private static bool _shutdownCalled = false;
 
         /// <summary>
         /// Initializes Syncfusion's messagebox style
@@ -103,8 +107,8 @@ namespace HASSAgent.Functions
                     Log.Error("[DOWNLOADIMAGE] Only HTTP uri's are allowed, received: {uri}", uri);
                     return false;
                 }
-
-                if (!Directory.Exists(Variables.TempPath)) Directory.CreateDirectory(Variables.TempPath);
+                
+                if (!Directory.Exists(Variables.ImageCachePath)) Directory.CreateDirectory(Variables.ImageCachePath);
 
                 // check for extension
                 // this fails for hass proxy urls, so add an extra length check
@@ -113,7 +117,7 @@ namespace HASSAgent.Functions
 
                 // create a random local filename
                 var localFile = $"{DateTime.Now:yyyyMMddHHmmss}_{Guid.NewGuid().ToString().Substring(0, 8)}";
-                localPath = Path.Combine(Variables.TempPath, $"{localFile}{ext}");
+                localPath = Path.Combine(Variables.ImageCachePath, $"{localFile}{ext}");
 
                 // make the uri safe
                 var safeUri = Uri.EscapeUriString(uri);
@@ -188,6 +192,8 @@ namespace HASSAgent.Functions
                         buffered: true,
                         flushToDiskInterval: TimeSpan.FromMilliseconds(150)))
                 .CreateLogger();
+
+            Log.Information("[LOG] Coderr exception reporting enabled");
         }
 
         /// <summary>
@@ -341,8 +347,14 @@ namespace HASSAgent.Functions
         /// </summary>
         internal static async Task ShutdownAsync(TimeSpan waitBeforeClosing)
         {
+            var logClosed = false;
+
             try
             {
+                // process only once
+                if (_shutdownCalled) return;
+                _shutdownCalled = true;
+
                 // announce we're stopping
                 Variables.ShuttingDown = true;
 
@@ -355,6 +367,9 @@ namespace HASSAgent.Functions
                 // stop mqtt
                 await MqttManager.AnnounceAvailabilityAsync(true);
                 MqttManager.Disconnect();
+
+                // remove tray icon
+                Variables.MainForm?.HideTrayIcon();
 
                 // stop hotkey
                 Variables.UiDispatcher.Invoke(new MethodInvoker(delegate
@@ -376,17 +391,18 @@ namespace HASSAgent.Functions
                 // flush the log
                 Log.Information("[SYSTEM] Application shutdown complete");
                 Log.CloseAndFlush();
+                logClosed = true;
 
-                if (!Variables.MainForm.IsHandleCreated) return;
-                if (Variables.MainForm.IsDisposed) return;
-
-                // try to close nicely
-                Application.Exit();
+                // shutdown
+                Environment.Exit(1);
             }
             catch (Exception ex)
             {
-                Log.Error("[SYSTEM] Error shutting down nicely: {msg}", ex.Message);
-                Log.CloseAndFlush();
+                if (!logClosed)
+                {
+                    Log.Error("[SYSTEM] Error shutting down nicely: {msg}", ex.Message);
+                    Log.CloseAndFlush();
+                }
 
                 // screw it
                 Environment.Exit(1);
@@ -569,6 +585,150 @@ namespace HASSAgent.Functions
             var layoutName = $"{InputLanguage.CurrentInputLanguage.Culture.DisplayName} - {InputLanguage.CurrentInputLanguage.LayoutName}";
             message = $"Your input language '{layoutName}' is unknown, and might collide with the default CTRL-ALT-Q hotkey. Please check to be sure. If it does, consider opening a ticket on GitHub so it can be added to the list.";
             return true;
+        }
+
+        /// <summary>
+        /// Deletes the provided directory and its containing files, optionally recursively
+        /// </summary>
+        /// <param name="directory"></param>
+        /// <param name="recursive"></param>
+        /// <returns></returns>
+        internal static async Task<bool> DeleteDirectoryAsync(string directory, bool recursive = true)
+        {
+            try
+            {
+                if (!Directory.Exists(directory)) return true;
+
+                // get dir info
+                var dirInfo = new DirectoryInfo(directory);
+
+                if (recursive) await Task.Run(async () => await DeleteDirectoryRecursively(dirInfo));
+                else
+                {
+                    await Task.Run(async delegate
+                    {
+                        var files = dirInfo.GetFiles();
+
+                        // remove readonly from files and remove them
+                        foreach (var file in files)
+                        {
+                            file.IsReadOnly = false;
+                            file.Delete();
+                        }
+
+                        // give io time to catchup
+                        await Task.Delay(250);
+
+                        // delete the directory
+                        Directory.Delete(directory, false);
+                    });
+                }
+                
+                // done
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal("[STORAGE] Error while deleting directory '{dir}': {err}", directory, ex.Message);
+                return false;
+            }
+        }
+
+        private static async Task DeleteDirectoryRecursively(DirectoryInfo baseDir)
+        {
+            try
+            {
+                if (!baseDir.Exists) return;
+
+                foreach (var dir in baseDir.EnumerateDirectories()) await DeleteDirectoryRecursively(dir);
+
+                var files = baseDir.GetFiles();
+
+                foreach (var file in files)
+                {
+                    file.IsReadOnly = false;
+                    file.Delete();
+                }
+
+                var errMsg = string.Empty;
+                for (var attempt = 0; attempt < 3; attempt++)
+                {
+                    try
+                    {
+                        baseDir.Delete(true);
+                        return;
+                    }
+                    catch (Exception ex)
+                    {
+                        errMsg = ex.Message;
+
+                        // give io time to catchup and try again
+                        await Task.Delay(250);
+                    }
+                }
+
+                Log.Error("[STORAGE] Error while deleting sub-directory '{dir}': {err}", baseDir.FullName, errMsg);
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal("[STORAGE] Error while cleaning sub-directory '{dir}': {err}", baseDir.FullName, ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Deletes the provided file, by default three attempts
+        /// </summary>
+        /// <param name="file"></param>
+        /// <param name="threeAttempts"></param>
+        /// <returns></returns>
+        internal static async Task<bool> DeleteFileAsync(string file, bool threeAttempts = true)
+        {
+            try
+            {
+                if (!File.Exists(file)) return true;
+
+                // remove readonly if set
+                try
+                {
+                    var fileInfo = new FileInfo(file);
+                    if (fileInfo.IsReadOnly) fileInfo.IsReadOnly = false;
+                }
+                catch
+                {
+                    // best effort
+                }
+
+                if (!threeAttempts)
+                {
+                    // just once
+                    File.Delete(file);
+                    return true;
+                }
+
+                // three attempts
+                var errMsg = string.Empty;
+                for (var i = 0; i < 3; i++)
+                {
+                    try
+                    {
+                        File.Delete(file);
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        errMsg = ex.Message;
+                        await Task.Delay(TimeSpan.FromSeconds(3));
+                    }
+                }
+
+                Log.Error("[STORAGE] Errors during three attempts to delete file '{file}': {err}", file, errMsg);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal("[STORAGE] Error while deleting file '{file}': {err}", file, ex.Message);
+                return false;
+            }
         }
     }
 

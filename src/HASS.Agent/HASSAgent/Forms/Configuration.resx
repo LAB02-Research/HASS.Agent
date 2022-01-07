@@ -117,6 +117,42 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label11.Text" xml:space="preserve">
+    <value>To learn which entities you have configured, and to send quick actions, HASS.Agent uses Home Assistant's API.
+
+Please provide a long-lived access token, and the address of your Home Assistant instance.
+
+You can get a token through your profile page. Scroll to the bottom and click 'CREATE TOKEN'.</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>If something's not working, make sure you followed these steps:
+
+- Install HASS.Agent-Notifier integration
+- Restart Home Assistant
+- Configure a notifier entity
+- Restart Home Assistant
+
+Afterwards, you should be able to add the notifier entity in your automations &amp;&amp; scripts.</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Commands and sensors are sent through MQTT. Please provide credentials for your server. If you're using the HA addon, you can probably use the preset address.
+
+Leave empty if you're not going to use commands and sensors.</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>The recommended way to start HASS.Agent is through a Scheduled Task. This is a component of Windows, which lets you (you guessed it) schedule tasks.
+
+The upside of this is that we can create a task which launches HASS.Agent when you login to Windows, with elevated privileges. This way, you don't have to click UAC notices.</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>HASS.Agent can use the excellent Coderr platform to gather error reports. This way, it becomes easier to catch and fix bugs. However, there is a chance that machine-specific info gets sent as well (like machinename, or username).
+
+Only enable if you're aware of this and don't mind. 
+Note: only exceptions are logged, nothing else, no telemetry, no periodic information, nothing.</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Extended logging provides more verbose and in-depth logging, in case the default logging isn't sufficient. Please note that enabling this can cause the logfiles to grow large, and should only be used when you suspect something's wrong with HASS.Agent itself or when asked by the developers.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
