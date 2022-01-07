@@ -226,10 +226,9 @@ List of things I want to add somewhere down the road (basically a personal to-do
  * **Quick Actions**: ability to define custom mdi icons, and/or fetch icon from Home Assistant
  * **Quick Actions**: add pages as tabs instead of one form, i.e. one tab with 'lights', one tab with 'switches'
  * **Sensors**: implement library plugin system for more powerful custom sensors
- * **Sensors**: Windows performance counters
  * **Commands**: command to open URL on default browser
  * **Updater**: give HASS.Agent the option to update itself 100% automatically
- * **General**: a built-in way to show a Home Assistant dashboard, perhaps using CefSharp
+ * **General**: a built-in way to show a Home Assistant dashboard
  * **General**: switch to being a 'native app' so mqtt/integrations are no longer needed
 
 If you have any other wishes, feel free to submit a ticket.
