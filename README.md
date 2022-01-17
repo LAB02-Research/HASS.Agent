@@ -12,10 +12,12 @@
 
 HASS.Agent is a Windows-based client application for <a href="https://www.home-assistant.io" target="_blank">Home Assistant</a>, developed in .NET 4.8.
 
+Click <a href="https://github.com/LAB02-Research/HASS.Agent/releases/latest/download/HASS.Agent.Installer.exe" target="_blank">here</a> to download the latest installer, or click <a href="https://github.com/LAB02-Research/HASS.Agent/releases/latest/download/HASS.Agent.zip" target="_blank">here</a> to download the latest zip package.
+
 ----
 
-
-Click <a href="https://github.com/LAB02-Research/HASS.Agent/releases/latest/download/HASS.Agent.Installer.exe" target="_blank">here</a> to download the latest installer, or click <a href="https://github.com/LAB02-Research/HASS.Agent/releases/latest/download/HASS.Agent.zip" target="_blank">here</a> to download the latest zip package.
+Developing this tool takes up quite a bit of time. It's completely free, and it'll stay that way without restrictions.<br/>
+However, like most developers, I run on caffeïne - so a cup of coffee is always very much appreciated! 
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/lab02research)
 
