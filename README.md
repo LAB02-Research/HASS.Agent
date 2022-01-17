@@ -93,15 +93,23 @@ Adding a new sensor is just as easy, with an information panel on the right:
 
 You have the option to download an installer or a .zip package - they both contain the same, and the installer doesn't do any configuring. It's just easier, especially for updates. 
 
-HASS.Agent's recommended method of running is through a Scheduled Task (Windows' cron equivalent), specifically one that runs after you log in. During the onboarding process, HASS.Agent will offer to create the task for you. The plus side is that you won't get a UAC notice when HASS.Agent launches. You can of cousrse skip this step.
+HASS.Agent uses an entry in your user account's registry to launch on login. You'll be offered to enable this during onboarding, but you can always disable/enabled using the Configuration window.
 
-![Onboarding Task](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_onboarding_task.png)
+![Onboarding Task](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_onboarding_startup.png)
 
 To use notifications, you'll need to install the <a href="https://github.com/LAB02-Research/HASS.Agent-Notifier" target="_blank">HASS.Agent Notifier integration</a>. This can be done through <a href="https://hacs.xyz" target="_blank">HACS</a> or manually. 
 
-You'll also need to open the configured port in the firewall of the receiving PC (default `5115`). During the onboarding process, HASS.Agent will offer to do it for you. If you want to do so manually, you can run this command in an elevated prompt:
+You'll also need to open the configured port in the firewall of the receiving PC (default `5115`). During the onboarding process (or when using the Configuration window), HASS.Agent will offer to do it for you. If you want to do so manually, you can run this command in an elevated prompt:
 
 `netsh advfirewall firewall add rule name="HASS.Agent Notifier" dir=in action=allow protocol=TCP localport=5115`
+
+Optionally change `5115`.
+
+The port has to be reserved in order for HASS.Agent to use it. Again, this'll be done for you by the onboarding process (or when using the Configuration window), but if you want to do it manually, run this command in an elevated prompt:
+
+`netsh http add urlacl url=http://+:5115/ user=%USERDOMAIN%\%USERNAME%`
+
+Optionally change `5115`.
 
 ----
 
@@ -123,7 +131,7 @@ To use quick actions, you have to configure your instance's API. Normally the de
 
 Make sure the integration has been installed and configured in Home Assistant, and actually works (I used a test automation). In the configuration screen, check the '*accept notifications*' box and change the default port if needed.
 
-Offers the option to open the required local firewall port.
+After changing the port (or enabling/disabling), HASS.Agent will perform the port binding and create/modify the firewall rule as soon as you save your changes. This requires elevation, so you'll be shown an UAC prompt. 
 
 #### 3. MQTT config
 
@@ -131,7 +139,7 @@ Enter your MQTT broker configuration. This is only required if you want to use c
 
 #### 4. Startup
 
-You can use the '*create launch-on-login scheduled task*' to allow HASS.Agent to start when you login to your PC. 
+Gives the option to enable/disable running HASS.Agent when you login. 
 
 #### 5. HotKey
 
@@ -184,8 +192,6 @@ Most sensors are single value, but some are **multi-value sensors**. These senso
 
 Manage which commands should be accepted from your Home Assistant instance. Aside from the builtin commands, you can use your own custom command (you can test your command by typing it into a console), or a key command which will emulate key presses. *This requires MQTT to be configured.*
 
-**Note: your commands will be run with elevated privileges!**
-
 Example configuration of a shutdown command in Home Assistant, used in combination with <a href="https://www.home-assistant.io/integrations/wake_on_lan/" target="_blank">wake-on-lan</a>:
 
 ```yaml
@@ -208,7 +214,7 @@ Apart from the automatic update checker, you can check for new updates from the 
 
 ![Update window](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_update.png)
 
-If you're using the installer, it'll launch HASS.Agent for you when it's done. But if you've updated manually, just doubleclick the .exe and you'll be offered to relaunch using the scheduled task (if present). That way, you don't have to open task scheduler.
+If you're using the installer, it'll launch HASS.Agent for you when it's done. But if you've updated manually, just doubleclick `HASS.Agent.exe`.
 
 ----
 
