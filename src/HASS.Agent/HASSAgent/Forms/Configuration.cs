@@ -44,6 +44,13 @@ namespace HASSAgent.Forms
             // config quick actions hotkey selector
             if (Variables.QuickActionsHotKey != null) _hotkeySelector.Enable(TbQuickActionsHotkey, Variables.QuickActionsHotKey);
             else _hotkeySelector.Enable(TbQuickActionsHotkey);
+
+            // remove topmost
+            Task.Run(async delegate
+            {
+                await Task.Delay(150);
+                Invoke(new MethodInvoker(delegate { TopMost = false; }));
+            });
         }
 
         private void BtnStore_Click(object sender, EventArgs e)
