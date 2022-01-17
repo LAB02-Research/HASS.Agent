@@ -128,11 +128,11 @@
     <Compile Include="Controls\Onboarding\3-Notifications.Designer.cs">
       <DependentUpon>3-Notifications.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Onboarding\2-ScheduledTask.cs">
+    <Compile Include="Controls\Onboarding\2-Startup.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\Onboarding\2-ScheduledTask.Designer.cs">
-      <DependentUpon>2-ScheduledTask.cs</DependentUpon>
+    <Compile Include="Controls\Onboarding\2-Startup.Designer.cs">
+      <DependentUpon>2-Startup.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Onboarding\1-Welcome.cs">
       <SubType>UserControl</SubType>
@@ -169,11 +169,23 @@
     <Compile Include="Forms\Onboarding.Designer.cs">
       <DependentUpon>Onboarding.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ChildApplications\PortReservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChildApplications\PortReservation.Designer.cs">
+      <DependentUpon>PortReservation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Sensors\SensorsMod.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Sensors\SensorsMod.Designer.cs">
       <DependentUpon>SensorsMod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChildApplications\PostUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChildApplications\PostUpdate.Designer.cs">
+      <DependentUpon>PostUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\UpdatePending.cs">
       <SubType>Form</SubType>
@@ -183,8 +195,11 @@
     </Compile>
     <Compile Include="Functions\CacheManager.cs" />
     <Compile Include="Functions\CommandLine.cs" />
+    <Compile Include="Functions\FirewallManager.cs" />
     <Compile Include="Functions\HotKeyManager.cs" />
+    <Compile Include="Functions\OnboardingManager.cs" />
     <Compile Include="Functions\PerformanceCounters.cs" />
+    <Compile Include="Functions\Reg.cs" />
     <Compile Include="Functions\SessionInfo.cs" />
     <Compile Include="Functions\SystemStateManager.cs" />
     <Compile Include="Functions\UpdateManager.cs" />
@@ -243,12 +258,6 @@
     </Compile>
     <Compile Include="Forms\Commands\CommandsConfig.Designer.cs">
       <DependentUpon>CommandsConfig.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\GetUserCredentials.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\GetUserCredentials.Designer.cs">
-      <DependentUpon>GetUserCredentials.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\QuickActions\QuickActions.cs">
       <SubType>Form</SubType>
@@ -331,8 +340,8 @@
     <EmbeddedResource Include="Controls\Onboarding\3-Notifications.resx">
       <DependentUpon>3-Notifications.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Onboarding\2-ScheduledTask.resx">
-      <DependentUpon>2-ScheduledTask.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\Onboarding\2-Startup.resx">
+      <DependentUpon>2-Startup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Onboarding\1-Welcome.resx">
       <DependentUpon>1-Welcome.cs</DependentUpon>
@@ -351,15 +360,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configuration.resx">
       <DependentUpon>Configuration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GetUserCredentials.resx">
-      <DependentUpon>GetUserCredentials.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Onboarding.resx">
       <DependentUpon>Onboarding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChildApplications\PortReservation.resx">
+      <DependentUpon>PortReservation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\QuickActions\QuickActions.resx">
       <DependentUpon>QuickActions.cs</DependentUpon>
@@ -375,6 +385,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Sensors\SensorsMod.resx">
       <DependentUpon>SensorsMod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChildApplications\PostUpdate.resx">
+      <DependentUpon>PostUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UpdatePending.resx">
       <DependentUpon>UpdatePending.cs</DependentUpon>
@@ -412,6 +425,8 @@
     <Content Include="Libraries\CustomGroupBox.pdb" />
     <Content Include="Libraries\HotkeyListener.dll" />
     <Content Include="Libraries\HotkeyListener.pdb" />
+    <Content Include="Resources\done_32.png" />
+    <Content Include="Resources\failed_32.png" />
     <Content Include="Resources\gear_48.png" />
     <Content Include="Resources\hass_avatar.png" />
     <Content Include="Resources\logo_128.png" />
@@ -427,12 +442,14 @@
     <Content Include="Resources\question_32.png" />
     <Content Include="Resources\radar_48.png" />
     <Content Include="Resources\remote_48.png" />
+    <Content Include="Resources\small_loader_32.gif" />
     <Content Include="Resources\ti_exit_32.png" />
     <Content Include="Resources\ti_gear_32.png" />
     <Content Include="Resources\ti_radar_32.png" />
     <Content Include="Resources\ti_remote_32.png" />
     <Content Include="Resources\ti_update_32.png" />
     <Content Include="Resources\ti_workflow_32.png" />
+    <Content Include="Resources\todo_32.png" />
     <Content Include="Resources\update.png" />
     <Content Include="Resources\workflow_48.png" />
   </ItemGroup>
@@ -441,7 +458,7 @@
       <Version>2.1.1</Version>
     </PackageReference>
     <PackageReference Include="CliWrap">
-      <Version>3.3.3</Version>
+      <Version>3.4.0</Version>
     </PackageReference>
     <PackageReference Include="Coderr.Client.Serilog">
       <Version>1.0.1</Version>

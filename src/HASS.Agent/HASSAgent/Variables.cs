@@ -9,7 +9,6 @@ using CoreAudio;
 using Grapevine;
 using HASSAgent.Forms;
 using HASSAgent.Functions;
-using HASSAgent.Models;
 using HASSAgent.Models.HomeAssistant;
 using HASSAgent.Models.HomeAssistant.Commands;
 using HASSAgent.Models.HomeAssistant.Sensors;
@@ -36,7 +35,6 @@ namespace HASSAgent
         /// </summary>
         internal static Main MainForm { get; set; }
         internal static Dispatcher UiDispatcher { get; set; }
-        internal static Configuration ConfigForm { get; set; }
         internal static WebClient ImageWebClient { get; } = new WebClient();
         internal static Hotkey QuickActionsHotKey { get; set; } = new Hotkey(Keys.Control | Keys.Alt, Keys.Q);
         internal static HotKeyManager HotKeyManager { get; } = new HotKeyManager();
@@ -53,9 +51,9 @@ namespace HASSAgent
         /// <summary>
         /// Internal state
         /// </summary>
+        internal static bool ChildApplicationMode { get; set; } = false;
         internal static bool ShuttingDown { get; set; } = false;
-        internal static bool OnboardingFirewallRuleCreated { get; set; } = false;
-        internal static bool OnboardingScheduledTaskCreated { get; set; } = false;
+        internal static bool OnboardingLaunchOnLoginKeyCreated { get; set; } = false;
 
         /// <summary>
         /// Local IO

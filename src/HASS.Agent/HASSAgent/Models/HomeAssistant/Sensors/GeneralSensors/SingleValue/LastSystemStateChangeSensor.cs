@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using HASSAgent.Functions;
+﻿using HASSAgent.Functions;
 
 namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
 {

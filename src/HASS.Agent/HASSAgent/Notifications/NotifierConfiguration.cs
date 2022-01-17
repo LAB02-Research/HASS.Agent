@@ -31,7 +31,7 @@ namespace HASSAgent.Notifications
 
         public void ConfigureServer(IRestServer server)
         {
-            server.Prefixes.Add($"http://*:{Variables.AppSettings.NotifierApiPort}/");
+            server.Prefixes.Add($"http://+:{Variables.AppSettings.NotifierApiPort}/");
             server.Router.Options.SendExceptionMessages = true;
         }
     }

@@ -9,19 +9,17 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Coderr.Client;
 using Coderr.Client.Serilog;
 using HASSAgent.Commands;
 using HASSAgent.Enums;
-using HASSAgent.Models;
+using HASSAgent.Forms;
 using HASSAgent.Models.Internal;
 using HASSAgent.Mqtt;
 using HASSAgent.Notifications;
 using HASSAgent.Sensors;
-using Microsoft.Win32.TaskScheduler;
 using Serilog;
 using Syncfusion.Windows.Forms;
 using Task = System.Threading.Tasks.Task;
@@ -63,7 +61,8 @@ namespace HASSAgent.Functions
         /// Initializes Syncfusion's messagebox style
         /// Todo: incomplete, button color etc need to be done
         /// </summary>
-        internal static void SetMsgBoxStyle()
+        /// <param name="font"></param>
+        internal static void SetMsgBoxStyle(Font font)
         {
             var style = new MetroStyleColorTable
             {
@@ -78,10 +77,10 @@ namespace HASSAgent.Functions
             MessageBoxAdv.MetroColorTable = style;
             MessageBoxAdv.MessageBoxStyle = MessageBoxAdv.Style.Metro;
 
-            MessageBoxAdv.CaptionFont = Variables.MainForm.Font;
-            MessageBoxAdv.ButtonFont = Variables.MainForm.Font;
-            MessageBoxAdv.DetailsFont = Variables.MainForm.Font;
-            MessageBoxAdv.MessageFont = Variables.MainForm.Font;
+            MessageBoxAdv.CaptionFont = font;
+            MessageBoxAdv.ButtonFont = font;
+            MessageBoxAdv.DetailsFont = font;
+            MessageBoxAdv.MessageFont = font;
         }
 
         /// <summary>
@@ -197,98 +196,10 @@ namespace HASSAgent.Functions
         }
 
         /// <summary>
-        /// Determines if HASS.Agent has been launched through Scheduled Task or not, and restarts accordingly
+        /// Restarts HASS.Agent through a temporary bat file
         /// </summary>
         /// <returns></returns>
-        internal static bool Restart()
-        {
-            try
-            {
-                // check if there's a task
-                var present = ScheduledTasks.IsTaskPresent();
-                if (!present) return RestartWithoutTask();
-
-                // get task status
-                var status = ScheduledTasks.TaskStatus();
-                
-                // check if it's running or ready
-                if (status != TaskState.Running && status != TaskState.Ready) return RestartWithoutTask();
-
-                // restart using task
-                return RestartWithTask();
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal(ex, "[SYSTEM] Error executing restart: {msg}", ex.Message);
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Restart HASS.Agent based on its Scheduled Task
-        /// <para>Optionally check for existence/status by enabling the 'performCheck' bool</para>
-        /// </summary>
-        /// <param name="performCheck"></param>
-        /// <returns></returns>
-        internal static bool RestartWithTask(bool performCheck = false)
-        {
-            try
-            {
-                if (performCheck)
-                {
-                    // check if there's a task
-                    var present = ScheduledTasks.IsTaskPresent();
-                    if (!present) return false;
-
-                    // get task status
-                    var status = ScheduledTasks.TaskStatus();
-
-                    // check if it's running or ready
-                    if (status != TaskState.Running && status != TaskState.Ready) return false;
-                }
-
-                var restartBat = Path.Combine(Variables.StartupPath, "restart_hass_agent.bat");
-                if (File.Exists(restartBat)) File.Delete(restartBat);
-
-                var restartBatContent = new StringBuilder();
-
-                // prepare the .bat content
-                restartBatContent.AppendLine("@echo off");
-                restartBatContent.AppendLine("TITLE HASS.Agent Restarter");
-                restartBatContent.AppendLine("echo.");
-                restartBatContent.AppendLine("echo HASS.Agent Restarter");
-                restartBatContent.AppendLine("echo.");
-                restartBatContent.AppendLine("echo.");
-                restartBatContent.AppendLine("echo Waiting 10 seconds for HASS.Agent to properly close ..");
-                restartBatContent.AppendLine("echo.");
-                restartBatContent.AppendLine("timeout 10 > NUL");
-                restartBatContent.AppendLine("echo.");
-                restartBatContent.AppendLine($"echo Starting scheduled task: {ScheduledTasks.TaskName} ..");
-                restartBatContent.AppendLine($"schtasks /run /TN \"{ScheduledTasks.TaskName}\"");
-                restartBatContent.AppendLine("echo.");
-                restartBatContent.AppendLine("echo Done!");
-                restartBatContent.AppendLine("timeout 1 > NUL");
-
-                // create the .bat
-                File.WriteAllText(restartBat, restartBatContent.ToString());
-
-                // launch it
-                Process.Start(restartBat);
-
-                // close up
-                _ = ShutdownAsync();
-
-                // done
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal(ex, "[SYSTEM] Error executing task restart: {err}", ex.Message);
-                return false;
-            }
-        }
-
-        private static bool RestartWithoutTask()
+        internal static bool Restart(bool fromElevation = false)
         {
             try
             {
@@ -317,8 +228,16 @@ namespace HASSAgent.Functions
                 // create the .bat
                 File.WriteAllText(restartBat, restartBatContent.ToString());
 
-                // launch it
-                Process.Start(restartBat);
+                if (fromElevation)
+                {
+                    // launch unelevated
+                    CommandLine.ExecuteProcessUnElevated(restartBat);
+                }
+                else
+                {
+                    // launch from current elevation
+                    Process.Start(restartBat);
+                }
 
                 // close up
                 _ = ShutdownAsync();
@@ -364,29 +283,33 @@ namespace HASSAgent.Functions
                 // log our demise
                 Log.Information("[SYSTEM] Application shutting down");
 
-                // stop mqtt
-                await MqttManager.AnnounceAvailabilityAsync(true);
-                MqttManager.Disconnect();
-
-                // remove tray icon
-                Variables.MainForm?.HideTrayIcon();
-
-                // stop hotkey
-                Variables.UiDispatcher.Invoke(new MethodInvoker(delegate
+                // few steps only relevant if we're not in child-application mode
+                if (!Variables.ChildApplicationMode)
                 {
-                    Variables.HotKeyListener?.RemoveAll();
-                    Variables.HotKeyListener?.Dispose();
-                }));
+                    // stop mqtt
+                    await MqttManager.AnnounceAvailabilityAsync(true);
+                    MqttManager.Disconnect();
 
-                // stop notifier api
-                NotifierManager.Stop();
+                    // remove tray icon
+                    Variables.MainForm?.HideTrayIcon();
 
-                // process disposables
-                Variables.ImageWebClient?.Dispose();
+                    // stop hotkey
+                    Variables.UiDispatcher.Invoke(new MethodInvoker(delegate
+                    {
+                        Variables.HotKeyListener?.RemoveAll();
+                        Variables.HotKeyListener?.Dispose();
+                    }));
 
-                // stop entity managers
-                CommandsManager.Stop();
-                SensorsManager.Stop();
+                    // stop notifier api
+                    NotifierManager.Stop();
+
+                    // process disposables
+                    Variables.ImageWebClient?.Dispose();
+
+                    // stop entity managers
+                    CommandsManager.Stop();
+                    SensorsManager.Stop();
+                }
 
                 // flush the log
                 Log.Information("[SYSTEM] Application shutdown complete");
@@ -727,6 +650,37 @@ namespace HASSAgent.Functions
             catch (Exception ex)
             {
                 Log.Fatal("[STORAGE] Error while deleting file '{file}': {err}", file, ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Attempts to bring the provided form to the foreground if it's open
+        /// </summary>
+        /// <param name="formName"></param>
+        /// <returns></returns>
+        internal static async Task<bool> TryBringToFront(string formName)
+        {
+            try
+            {
+                // is it open?
+                var form = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x.Name == formName);
+                if (form == null) return false;
+
+                // yep, check if we need to undo minimized
+                if (form.WindowState == FormWindowState.Minimized) form.WindowState = FormWindowState.Normal;
+
+                // force topmost for a bit
+                form.TopMost = true;
+                await Task.Delay(50);
+                form.TopMost = false;
+
+                // done
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, ex.Message);
                 return false;
             }
         }

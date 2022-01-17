@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using HASSAgent.Enums;
-using HASSAgent.Models.HomeAssistant.Sensors;
-using HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue;
-using HASSAgent.Models.HomeAssistant.Sensors.WmiSensors.SingleValue;
 using HASSAgent.Mqtt;
 using Serilog;
 

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HASSAgent.Mqtt;
 using Serilog;
 
 namespace HASSAgent.Models.HomeAssistant.Sensors

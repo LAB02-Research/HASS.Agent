@@ -7,7 +7,7 @@ namespace HASSAgent.Enums
     {
         NeverDone,
         Aborted,
-        ScheduledTask,
+        Startup,
         Notifications,
         Integration,
         API,

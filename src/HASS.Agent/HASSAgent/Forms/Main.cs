@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -12,13 +10,11 @@ using HASSAgent.Forms.Commands;
 using HASSAgent.Forms.Sensors;
 using HASSAgent.Functions;
 using HASSAgent.HomeAssistant;
-using HASSAgent.Models;
 using HASSAgent.Models.Internal;
 using HASSAgent.Mqtt;
 using HASSAgent.Notifications;
 using HASSAgent.Sensors;
 using HASSAgent.Settings;
-using Microsoft.Win32.TaskScheduler;
 using Serilog;
 using Syncfusion.Windows.Forms;
 using WK.Libraries.HotkeyListenerNS;
@@ -58,10 +54,7 @@ namespace HASSAgent.Forms
 
                 // catch all key presses
                 KeyPreview = true;
-
-                // prepare configuration form
-                Variables.ConfigForm = new Configuration();
-
+                
                 // set all statuses to loading
                 SetNotificationApiStatus(ComponentStatus.Loading);
                 SetHassApiStatus(ComponentStatus.Loading);
@@ -105,9 +98,6 @@ namespace HASSAgent.Forms
                 Task.Run(SystemStateManager.Initialize);
                 Task.Run(CacheManager.Initialize);
 
-                // run a check to see if we could restart through the scheduled task
-                Task.Run(ScheduledTaskCheck);
-
 #if DEBUG
             // show the form while we're debugging
             Task.Run(async delegate
@@ -137,38 +127,6 @@ namespace HASSAgent.Forms
         {
             if (m.Msg == WM_QUERYENDSESSION) SystemStateManager.ProcessSessionEnd();
             base.WndProc(ref m);
-        }
-
-        /// <summary>
-        /// Looks for our Scheduled Task, if it's there but not started, offers to restart using it
-        /// </summary>
-        private void ScheduledTaskCheck()
-        {
-#if DEBUG
-            // don't perform this check when we're debugging
-            return;
-#endif
-
-            // check if there's a task
-            var present = ScheduledTasks.IsTaskPresent();
-            if (!present) return;
-
-            // get the task status
-            var status = ScheduledTasks.TaskStatus();
-
-            // only relevant if the task's in 'ready' state
-            if (status != TaskState.Ready) return;
-
-            Invoke(new MethodInvoker(delegate
-            {
-                // ask the user if they want to launch using the task
-                var question = MessageBoxAdv.Show("You've launched HASS.Agent manually, but there's a Scheduled Task present. That's the recommended way to start HASS.Agent.\r\n\r\nDo you want to restart HASS.Agent using the task?", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (question != DialogResult.Yes) return;
-
-                // prepare the restart
-                var restartPrepared = HelperFunctions.RestartWithTask();
-                if (!restartPrepared) MessageBoxAdv.Show("Something went wrong while preparing the restart.\r\nPlease restart manually through Windows' Task Scheduler.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }));
         }
 
         /// <summary>
@@ -212,10 +170,7 @@ namespace HASSAgent.Forms
         {
             // prepare listener
             Variables.HotKeyListener.HotkeyPressed += HotkeyListener_HotkeyPressed;
-
-            // always suspend when configuring
-            Variables.HotKeyListener.SuspendOn(Variables.ConfigForm);
-
+            
             // bind quick actions hotkey (if configured)
             Variables.HotKeyManager.InitializeQuickActionsHotKeys();
         }
@@ -341,7 +296,15 @@ namespace HASSAgent.Forms
         /// <summary>
         /// Show the config form
         /// </summary>
-        private void ShowConfiguration() => Variables.ConfigForm.ShowDialog();
+        private async void ShowConfiguration()
+        {
+            if (await HelperFunctions.TryBringToFront("Configuration")) return;
+
+            var t = new Configuration();
+            t.FormClosed += delegate { t.Dispose(); };
+            t.TopMost = true;
+            t.Show();
+        }
 
         /// <summary>
         /// Show the quickactions manager form

@@ -117,9 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label1.Text" xml:space="preserve">
-    <value>The recommended way to start HASS.Agent is through a Scheduled Task. This is a component of Windows, which lets you (you guessed it) schedule tasks.
-
-The upside of this is that we can create a task which launches HASS.Agent when you login to Windows, with elevated privileges. This way, you don't have to click UAC notices.</value>
-  </data>
 </root>

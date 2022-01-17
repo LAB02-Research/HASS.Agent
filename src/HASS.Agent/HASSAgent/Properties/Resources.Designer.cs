@@ -19,7 +19,7 @@ namespace HASSAgent.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -57,6 +57,26 @@ namespace HASSAgent.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap done_32 {
+            get {
+                object obj = ResourceManager.GetObject("done_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap failed_32 {
+            get {
+                object obj = ResourceManager.GetObject("failed_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -213,6 +233,16 @@ namespace HASSAgent.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap small_loader_32 {
+            get {
+                object obj = ResourceManager.GetObject("small_loader_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ti_exit_32 {
             get {
                 object obj = ResourceManager.GetObject("ti_exit_32", resourceCulture);
@@ -266,6 +296,16 @@ namespace HASSAgent.Properties {
         internal static System.Drawing.Bitmap ti_workflow_32 {
             get {
                 object obj = ResourceManager.GetObject("ti_workflow_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap todo_32 {
+            get {
+                object obj = ResourceManager.GetObject("todo_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

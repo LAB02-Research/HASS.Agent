@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using HASSAgent.Enums;
-using HASSAgent.Models;
 using HASSAgent.Models.Config;
 using HASSAgent.Models.HomeAssistant.Commands;
 using HASSAgent.Models.HomeAssistant.Sensors;

@@ -15,7 +15,7 @@ namespace HASSAgent.Models.HomeAssistant
             {
                 if (!string.IsNullOrEmpty(_objectId)) return _objectId;
 
-                _objectId = Regex.Replace(this.Name, "[^a-zA-Z0-9_-]", "_");
+                _objectId = Regex.Replace(Name, "[^a-zA-Z0-9_-]", "_");
                 return _objectId;
             }
 

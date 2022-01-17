@@ -140,9 +140,9 @@ Afterwards, you should be able to add the notifier entity in your automations &a
 Leave empty if you're not going to use commands and sensors.</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
-    <value>The recommended way to start HASS.Agent is through a Scheduled Task. This is a component of Windows, which lets you (you guessed it) schedule tasks.
+    <value>HASS.Agent can start when you login by creating an entry in your user profile's registry.
 
-The upside of this is that we can create a task which launches HASS.Agent when you login to Windows, with elevated privileges. This way, you don't have to click UAC notices.</value>
+Since HASS.Agent is user based, if you want to launch for another user, just install and config HASS.Agent there.</value>
   </data>
   <data name="label22.Text" xml:space="preserve">
     <value>HASS.Agent can use the excellent Coderr platform to gather error reports. This way, it becomes easier to catch and fix bugs. However, there is a chance that machine-specific info gets sent as well (like machinename, or username).

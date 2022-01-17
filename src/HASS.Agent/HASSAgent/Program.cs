@@ -1,12 +1,10 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Security;
 using System.Windows.Forms;
-using Coderr.Client;
-using Coderr.Client.Serilog;
 using HASSAgent.Forms;
+using HASSAgent.Forms.ChildApplications;
 using HASSAgent.Functions;
 using HASSAgent.Settings;
 using Serilog;
@@ -23,7 +21,7 @@ namespace HASSAgent
         [HandleProcessCorruptedStateExceptions]
         [SecurityCritical]
         [STAThread]
-        private static void Main()
+        private static void Main(string[] args)
         {
             try
             {
@@ -47,28 +45,48 @@ namespace HASSAgent
                 }
                 else Log.Information("[PROGRAM] Extended logging disabled");
 
-                // check to see if we're launched by the updater
-                if (Environment.GetCommandLineArgs().Any(x => x == "update"))
-                {
-                    var restartTask = HelperFunctions.RestartWithTask(true);
-                    if (restartTask)
-                    {
-                        Log.Information("[SYSTEM] Scheduled Task found and ready, restarting post-update");
-                        Log.CloseAndFlush();
-                        return;
-                    }
-                }
-
                 // prepare application
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
+                
+                // check to see if we're launched as a child application
+                if (args.Any(x => x == "update"))
+                {
+                    Log.Information("[SYSTEM] Post-update mode activated");
 
-                // prepare ui
-                Variables.MainForm = new Main(enableExtendedLogging);
-                HelperFunctions.SetMsgBoxStyle();
+                    // prepare form
+                    var postUpdate = new PostUpdate();
 
-                // launch application (hidden)
-                Application.Run(new CustomApplicationContext(Variables.MainForm));
+                    // prepare msgbox
+                    HelperFunctions.SetMsgBoxStyle(postUpdate.Font);
+
+                    // run
+                    Application.Run(postUpdate);
+                }
+                else if (args.Any(x => x == "portreservation"))
+                {
+                    Log.Information("[SYSTEM] Port reservation mode activated");
+
+                    // prepare form
+                    var portReservation = new PortReservation();
+
+                    // prepare msgbox
+                    HelperFunctions.SetMsgBoxStyle(portReservation.Font);
+
+                    // run
+                    Application.Run(portReservation);
+                }
+                else
+                {
+                    // prepare default application
+                    Variables.MainForm = new Main(enableExtendedLogging);
+
+                    // prepare msgbox
+                    HelperFunctions.SetMsgBoxStyle(Variables.MainForm.Font);
+
+                    // run (hidden)
+                    Application.Run(new CustomApplicationContext(Variables.MainForm));
+                }
             }
             catch (AccessViolationException ex)
             {

@@ -117,14 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label2.Text" xml:space="preserve">
-    <value>All done!
-
-
-HASS.Agent will now restart to activate 
-your configuration.
-
-If you've enabled notifications, an elevation request will popup. 
-This is required to allow HASS.Agent to listen on the specified port.</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAMDAAAAEAIAAQBQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAwAAAAMAgGAAAAVwL5hwAAAAFz
+        UkdCAK7OHOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAEpUlEQVRoQ+2Ya4hU
+        ZRjHn7nujFnGZmksbVlecLMkpTXCiCQoiD5VHyzoQgRlEdEHMQoiKBI/2AW6YHQlCKIoqCCICEnKUCIr
+        VyzLsix101xT5z7T+3vPvOPb2TMz55w5zrQwPxjPOHP2nP//ub3vnNhVnx6ryRQmXj9OWfoGek3fQK/p
+        GwjKlWcl5JklGXl00YAMT+v89l1dB244Jyn3zkvX/ydyqFiTB78uyJ7j1fonwelaBmzxm8YrWvRgOibr
+        l3SWia4YsMVvPFCRx74vNCLfqYmTbsAt/vHtBamoorXLBxOr5qX0OUE5qQZGTot7ijdg4rP9Ff1++JT/
+        QQZmpGL1dw7XnJ3Ux+8OVyeJB7Jz2xwn8m/sLuljUCIxQP2+cGlG3rsiKy8vy8hFpzuX3XbYie7IjLgs
+        PzOh3xvs0nrux6J8/GdZvw9KxwYQTxMuODWuIzxHlcLaxY4JyoZXQiXmkQsH9BoAbvHv/hZOPHRkwIin
+        CWnG2zfndLlklU5MEHlKxzaxemE6MvEQ2oBbPBNlb64ma7blW5q4tt4XUYiH0CvxhtGMzJ0eb4hnohiM
+        eMoop9oAU2MTVS3+8pkJ+fCPsnz5l9MfnRLKANF/7bKMrnnKhsi78TJBZqImVAkRdURTEqsXDmixbmzR
+        tpmoCX3FdTsKWiSiENcrE6GvhijEhTHBqI2KwFfi5ozBFbMSujHDmLjj/HD7Hi8CGWAhYvqwEDHTefk1
+        YTM0LaYnWBT4nkKIRzCNu+totSHAbNKY90a8XV5gSsdd/3z/9p6SvPlLadI+yS++wmCLR/A9W/J6IbK/
+        a5YJL/GsGZzHd2zm1l/inMv1pyfVPwFoa8At3uwqWUVtEytmJT0b2xa/L1/T5m/clJOHv528O127eEDe
+        WZ6V2Rn/JloaGD3DW7wBE/w8hGXqXHCbsCP/vDK885+q/uyJi53rmvPT8ZgsHUyoY/1kn7Q8/VaV3mbi
+        gWY22+TPx0/saxB139a8fLC3rBc9GC/UtFmTGUrGNrt08ESWePmlpYGJ+v6GDZs7MvaWmExg0mb3sao8
+        tbMoT253yozabiYebhp2RuuWg/+9TjtaGuBXkl3P3Bjc4k0veIER4G+biV95bkr/niiqU9/6taQb+6ER
+        5/rtaGmAerXrGQHczK94QNT7vzvl5SWeYNx1gRN9RiqZwgBDwc9EamkA7BtiwtzMj3jDSz8VdS/Y16K3
+        7GBQgq+rjNN38Mm+shwtt+8F3wsZTxhWzU/rEYd4Uh0E+iinpgCDgOjecl5KhrJOhBG7bkdRDwQeOXIO
+        2/RELKbe1zy364auPVok4verAFw9O9noJSJM1AmIvd4wvfiMBwVw3cbj+uhF2xKKCjJw/ZAjnpH6ys8l
+        ufmLvGxWv8xoWCJvRvazPxTlgQUpfe7YRL1ZmtC1DAA7WcYxwwFoVvNcCD5SPzWfVqP37rlp3dyU0p1f
+        5RtriRddywAwUo14mK9GJ3zzd0UvfK+qrFBGiAeGRCvx0NUMuGFMmqcaNPSG0awuGyL/4i5/Ty26mgE3
+        NLGJMOvFeKEqY0ecbYgf8dDTDERBTzMQBX0DvaZvoNdMcQMi/wKHssFyJvHDuwAAAABJRU5ErkJggg==
+</value>
   </data>
 </root>

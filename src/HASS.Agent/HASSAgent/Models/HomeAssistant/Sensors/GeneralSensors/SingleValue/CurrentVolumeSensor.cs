@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Linq;
 using CoreAudio;
 
 namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue

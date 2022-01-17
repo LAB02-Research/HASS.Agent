@@ -6,8 +6,8 @@ using System.IO;
 using System.Windows.Forms;
 using HASSAgent.Functions;
 using HASSAgent.HomeAssistant;
+using HASSAgent.Notifications;
 using HASSAgent.Settings;
-using Microsoft.Win32.TaskScheduler;
 using Newtonsoft.Json;
 using Serilog;
 using WK.Libraries.HotkeyListenerNS;
@@ -19,20 +19,24 @@ namespace HASSAgent.Forms
     {
         private readonly HotkeySelector _hotkeySelector = new HotkeySelector();
         private readonly Hotkey _previousHotkey = Variables.QuickActionsHotKey;
+        private readonly int _previousNotificationPort = Variables.AppSettings.NotifierApiPort;
 
         public Configuration()
         {
             InitializeComponent();
 
-            // force dotted group seperator (instead of comma)
-            TbIntNotifierApiPort.NumberGroupSeparator = ".";
-            TbIntMqttPort.NumberGroupSeparator = ".";
+            // hide group seperator
+            TbIntNotifierApiPort.NumberGroupSeparator = "";
+            TbIntMqttPort.NumberGroupSeparator = "";
         }
 
         private void Configuration_Load(object sender, EventArgs e)
         {
             // catch all key presses
             KeyPreview = true;
+
+            // suspend global hotkeys
+            Variables.HotKeyListener.Suspend();
 
             // load current settings from memory
             LoadSettings();
@@ -47,13 +51,50 @@ namespace HASSAgent.Forms
             // store settings
             StoreSettings();
 
-            // ask the user if they want to restart
-            var question = MessageBoxAdv.Show("Your configuration has been saved. Some changes require HASS.Agent to restart before they take effect.\r\n\r\nDo you want to restart now?", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (question == DialogResult.Yes)
+            // reserve the new notifier's port if it's changed
+            var forceRestart = false;
+            if (Variables.AppSettings.NotifierApiPort != _previousNotificationPort)
             {
-                // prepare the restart
+                MessageBoxAdv.Show("You've changed the notification API's port. This new port needs to be reserved.\r\n\r\nYou'll get an UAC request to do so, please approve.",
+                    "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // try to reserve elevated
+                if (!NotifierManager.ExecuteElevatedPortReservation())
+                {
+                    // failed, copy the command onto the clipboard
+                    Clipboard.SetText($"http add urlacl url=http://+:{Variables.AppSettings.NotifierApiPort}/ user={Environment.UserDomainName}\\{Environment.UserName}");
+
+                    // notify the user
+                    MessageBoxAdv.Show("Something went wrong!\r\n\r\nPlease manually execute the required command. It has been copied into your clipboard, " +
+                                       "you just need to paste it into an elevated command prompt.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    // notify the user
+                    MessageBoxAdv.Show("The port has succesfully been reserved!\r\n\r\nHASS.Agent will now restart to activate the new configuration.",
+                        "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // we need to restart, so go ahead, otherwise it's starting to look like popup-spam ..
+                    forceRestart = true;
+                }
+            }
+
+            if (forceRestart)
+            {
+                // prepare the restart without asking
                 var restartPrepared = HelperFunctions.Restart();
                 if (!restartPrepared) MessageBoxAdv.Show("Something went wrong while preparing to restart.\r\nPlease restart manually.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                // ask the user if they want to restart
+                var question = MessageBoxAdv.Show("Your configuration has been saved. Most changes require HASS.Agent to restart before they take effect.\r\n\r\nDo you want to restart now?", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (question == DialogResult.Yes)
+                {
+                    // prepare the restart
+                    var restartPrepared = HelperFunctions.Restart();
+                    if (!restartPrepared) MessageBoxAdv.Show("Something went wrong while preparing to restart.\r\nPlease restart manually.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
             // done
@@ -66,7 +107,7 @@ namespace HASSAgent.Forms
         private void LoadSettings()
         {
             // startup settings
-            Task.Run(DetermineScheduledTaskStatus);
+            Task.Run(DetermineStartOnLoginStatus);
 
             // notifications
             CbAcceptNotifications.CheckState = Variables.AppSettings.NotificationsEnabled ? CheckState.Checked : CheckState.Unchecked;
@@ -152,45 +193,28 @@ namespace HASSAgent.Forms
         }
 
         /// <summary>
-        /// Determine the current status (if any) of the run-on-login scheduled task
+        /// Determine the current status of the start-on-login setting, and sets the GUI accordingly
         /// </summary>
-        private void DetermineScheduledTaskStatus()
+        private void DetermineStartOnLoginStatus()
         {
-            var present = ScheduledTasks.IsTaskPresent();
-            var status = present ? ScheduledTasks.TaskStatus() : TaskState.Unknown;
-
-            Invoke(new MethodInvoker(delegate
+            if (Reg.CheckLaunchOnUserLogin())
             {
-                if (!present)
+                Invoke(new MethodInvoker(delegate
                 {
-                    LblLaunchOnBootActive.Text = "not present";
-                    LblLaunchOnBootActive.ForeColor = Color.OrangeRed;
-                    return;
-                }
-
-                switch (status)
+                    LblStartOnLoginStatus.ForeColor = Color.LimeGreen;
+                    LblStartOnLoginStatus.Text = "enabled";
+                    BtnSetStartOnLogin.Text = "disable start-on-login";
+                }));
+            }
+            else
+            {
+                Invoke(new MethodInvoker(delegate
                 {
-                    case TaskState.Running:
-                        LblLaunchOnBootActive.Text = "active";
-                        LblLaunchOnBootActive.ForeColor = Color.LimeGreen;
-                        return;
-
-                    case TaskState.Disabled:
-                        LblLaunchOnBootActive.Text = "present, but disabled";
-                        LblLaunchOnBootActive.ForeColor = Color.Yellow;
-                        return;
-
-                    case TaskState.Ready:
-                        LblLaunchOnBootActive.Text = "present, not running";
-                        LblLaunchOnBootActive.ForeColor = Color.LawnGreen;
-                        return;
-
-                    default:
-                        LblLaunchOnBootActive.Text = $"present, status: {status.ToString().ToLower()}";
-                        LblLaunchOnBootActive.ForeColor = Color.OrangeRed;
-                        return;
-                }
-            }));
+                    LblStartOnLoginStatus.ForeColor = Color.OrangeRed;
+                    LblStartOnLoginStatus.Text = "disabled";
+                    BtnSetStartOnLogin.Text = "enable start-on-login";
+                }));
+            }
         }
 
         /// <summary>
@@ -206,73 +230,47 @@ namespace HASSAgent.Forms
             }
         }
 
-        private void BtnNotificationsReadme_Click(object sender, System.EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent#configuration");
+        private void BtnNotificationsReadme_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent#configuration");
 
-        private void BtnScheduledTaskReadme_Click(object sender, System.EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent#installation");
-
-        private void BtnHelp_Click(object sender, System.EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent");
+        private void BtnHelp_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent");
 
         /// <summary>
-        /// Try to create a run-on-login scheduled task
+        /// Enables or disables start-on-login
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void BtnCreateLaunchOnBootTask_Click(object sender, EventArgs e)
+        private void BtnSetStartOnLogin_Click(object sender, EventArgs e)
         {
-            // check the current status
-            var present = ScheduledTasks.IsTaskPresent();
-            var status = present ? ScheduledTasks.TaskStatus() : TaskState.Unknown;
-
-            if (status == TaskState.Running)
+            if (Reg.CheckLaunchOnUserLogin())
             {
-                MessageBoxAdv.Show("The task is already present and running.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            // lock interface
-            BtnCreateLaunchOnBootTask.Text = "creating task ..";
-            BtnCreateLaunchOnBootTask.Enabled = false;
-
-            using (var userCredentials = new GetUserCredentials())
-            {
-                // get the user's credentials
-                var result = userCredentials.ShowDialog();
-                if (result != DialogResult.OK)
+                // already active, so disable
+                var disabled = Reg.DisableLaunchOnUserLogin();
+                if (!disabled)
                 {
-                    BtnCreateLaunchOnBootTask.Text = "create launch-on-login scheduled task";
-                    BtnCreateLaunchOnBootTask.Enabled = true;
-                    return;
+                    MessageBoxAdv.Show("Something went wrong while disabling start-on-login.\r\n\r\nCheck the logs for more info.",
+                        "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                // create the task
-                var created = await Task.Run(() => ScheduledTasks.InstallLaunchOnLoginTask(userCredentials.Username, userCredentials.Password));
-                if (created)
+            }
+            else
+            {
+                // not active yet, so enable
+                var enabled = Reg.EnableLaunchOnUserLogin();
+                if (!enabled)
                 {
-                    // success
-                    _ = Task.Run(DetermineScheduledTaskStatus);
-                    BtnCreateLaunchOnBootTask.Text = "launch-on-login scheduled task created";
-
-                    // ask the user if they want to launch using the task
-                    var question = MessageBoxAdv.Show("The task has sucessfully been created.\r\n\r\nDo you want to restart HASS.Agent using the new task?", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (question != DialogResult.Yes) return;
-
-                    // prepare the restart
-                    var restartPrepared = HelperFunctions.RestartWithTask();
-                    if (!restartPrepared) MessageBoxAdv.Show("Something went wrong while preparing the scheduled task restart.\r\nPlease restart manually through Windows' Task Scheduler.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    else DialogResult = DialogResult.OK;
-                    return;
+                    MessageBoxAdv.Show("Something went wrong while enabling start-on-login.\r\n\r\nCheck the logs for more info.",
+                        "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
-            // failed
-            BtnCreateLaunchOnBootTask.Text = "create launch-on-login scheduled task";
-            BtnCreateLaunchOnBootTask.Enabled = true;
-
-            MessageBoxAdv.Show("There was an error while creating the task.\r\n\r\nMake sure you have sufficient rights. Check the readme and logs for more info.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            // set the current state
+            DetermineStartOnLoginStatus();
         }
 
         private void Configuration_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // resume global hotkeys
+            Variables.HotKeyListener.Resume();
+
             _hotkeySelector?.Disable(TbQuickActionsHotkey);
             _hotkeySelector?.Dispose();
         }
@@ -319,52 +317,6 @@ namespace HASSAgent.Forms
             TbHassApiToken.Enabled = true;
             BtnTestApi.Enabled = true;
             BtnTestApi.Text = "test connection";
-        }
-
-        private async void BtnOpenFirewallPort_Click(object sender, EventArgs e)
-        {
-            // check the entered port value
-            var port = (int)TbIntNotifierApiPort.IntegerValue;
-
-            if (port < 1 || port > 65535)
-            {
-                MessageBoxAdv.Show("Please enter a port value between 1 and 65535.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                ActiveControl = TbIntNotifierApiPort;
-                return;
-            }
-
-            // lock interface
-            BtnOpenFirewallPort.Text = "creating rule, hold on ..";
-            BtnOpenFirewallPort.Enabled = false;
-
-            // add the rule
-            var consoleResult = await CommandLine.ExecuteCommandAsync("netsh", $"advfirewall firewall add rule name=\"HASS.Agent Notifier\" dir=in action=allow protocol=TCP localport={port}");
-
-            // check the outcome
-            if (consoleResult.Error)
-            {
-                // write the result to the logs
-                Log.Error("[ONBOARDING] Error creating firewall rule, console output:\r\n{output}", JsonConvert.SerializeObject(consoleResult, Formatting.Indented));
-
-                // notify user
-                MessageBoxAdv.Show("Something went wrong while creating the rule for you.\r\n\r\nPlease check the logs for more info, and resort to the GitHub\r\npage for more info, or to create a ticket.",
-                    "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                // enable gui, incase they want to try again
-                BtnOpenFirewallPort.Text = "yes, open the firewall port";
-                BtnOpenFirewallPort.Enabled = true;
-
-                return;
-            }
-
-            // all good
-            LblFirewallInfo.Text = "Firewall rule succesfully created!";
-            LblFirewallInfo.ForeColor = Color.LimeGreen;
-
-            BtnOpenFirewallPort.Visible = false;
-
-            // volatile setting, lazy way to remember we did this
-            Variables.OnboardingFirewallRuleCreated = true;
         }
 
         private void BtnMqttClearConfig_Click(object sender, EventArgs e)

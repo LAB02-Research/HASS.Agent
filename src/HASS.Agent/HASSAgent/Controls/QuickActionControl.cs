@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using HASSAgent.Enums;
 using HASSAgent.Forms.QuickActions;
 using HASSAgent.HomeAssistant;
-using HASSAgent.Models;
 using HASSAgent.Models.Internal;
 using HASSAgent.Properties;
 using Serilog;

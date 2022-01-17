@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.Management;
 using HASSAgent.Functions;
 using Serilog;
 

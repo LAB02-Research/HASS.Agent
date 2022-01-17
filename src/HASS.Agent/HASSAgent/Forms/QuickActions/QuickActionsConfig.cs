@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using HASSAgent.Functions;
-using HASSAgent.Models;
 using HASSAgent.Models.Internal;
 using HASSAgent.Settings;
-using Newtonsoft.Json;
-using Serilog;
 using Syncfusion.Windows.Forms;
 using Syncfusion.Windows.Forms.Grid;
 

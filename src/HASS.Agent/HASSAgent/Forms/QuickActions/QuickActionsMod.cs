@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HASSAgent.Enums;
 using HASSAgent.HomeAssistant;
-using HASSAgent.Models;
 using HASSAgent.Models.Internal;
 using Syncfusion.Windows.Forms;
 using WK.Libraries.HotkeyListenerNS;

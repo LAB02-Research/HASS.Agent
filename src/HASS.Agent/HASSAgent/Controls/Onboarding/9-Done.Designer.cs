@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Done));
             this.PbHassAgentLogo = new System.Windows.Forms.PictureBox();
             this.LblGitHub = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,7 +54,7 @@
             this.LblGitHub.AutoSize = true;
             this.LblGitHub.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblGitHub.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblGitHub.Location = new System.Drawing.Point(180, 263);
+            this.LblGitHub.Location = new System.Drawing.Point(180, 299);
             this.LblGitHub.Name = "LblGitHub";
             this.LblGitHub.Size = new System.Drawing.Size(162, 17);
             this.LblGitHub.TabIndex = 26;
@@ -63,7 +64,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(180, 151);
+            this.label1.Location = new System.Drawing.Point(180, 186);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(400, 82);
             this.label1.TabIndex = 25;
@@ -86,20 +87,20 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(180, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(236, 85);
+            this.label2.Size = new System.Drawing.Size(399, 136);
             this.label2.TabIndex = 28;
-            this.label2.Text = "All done!\r\n\r\n\r\nHASS.Agent will now restart to activate \r\nyour configuration.";
+            this.label2.Text = resources.GetString("label2.Text");
             // 
             // Done
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.PbUpdate);
             this.Controls.Add(this.LblGitHub);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PbHassAgentLogo);
+            this.Controls.Add(this.label2);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Margin = new System.Windows.Forms.Padding(4);

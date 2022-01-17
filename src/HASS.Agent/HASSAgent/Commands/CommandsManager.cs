@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using CliWrap;
 using HASSAgent.Enums;
-using HASSAgent.Models.HomeAssistant.Commands;
-using HASSAgent.Models.HomeAssistant.Commands.CustomCommands;
-using HASSAgent.Models.HomeAssistant.Commands.KeyCommands;
 using HASSAgent.Mqtt;
 using Serilog;
 
@@ -116,7 +112,7 @@ namespace HASSAgent.Commands
             CommandInfo.Add(CommandType.RestartCommand, "Restarts the machine after one minute.\r\n\r\nTip: accidentally triggered? Run 'shutdown /a' to abort.");
             CommandInfo.Add(CommandType.LogOffCommand, "Logs off the current session.");
             CommandInfo.Add(CommandType.LockCommand, "Locks the current session.");
-            CommandInfo.Add(CommandType.CustomCommand, "Execute a custom command.\r\n\r\nNote: this runs elevated, so be careful!");
+            CommandInfo.Add(CommandType.CustomCommand, "Execute a custom command.\r\n\r\nThese commands run without elevation. To run elevated, create a Scheduled Task, and use 'schtasks /Run /TN \"TaskName\"' as the command to execute your task.");
             CommandInfo.Add(CommandType.MediaPlayPauseCommand, "Simulates 'media playpause' key.");
             CommandInfo.Add(CommandType.MediaNextCommand, "Simulates 'media next' key.");
             CommandInfo.Add(CommandType.MediaPreviousCommand, "Simulates 'media previous' key.");

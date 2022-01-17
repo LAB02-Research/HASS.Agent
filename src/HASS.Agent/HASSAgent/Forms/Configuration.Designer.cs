@@ -39,8 +39,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.TabNotifications = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.label18 = new System.Windows.Forms.Label();
-            this.BtnOpenFirewallPort = new Syncfusion.WinForms.Controls.SfButton();
-            this.LblFirewallInfo = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.TbIntNotifierApiPort = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
             this.BtnNotificationsReadme = new Syncfusion.WinForms.Controls.SfButton();
@@ -63,9 +61,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.TabStartup = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.label15 = new System.Windows.Forms.Label();
-            this.BtnScheduledTaskReadme = new Syncfusion.WinForms.Controls.SfButton();
-            this.BtnCreateLaunchOnBootTask = new Syncfusion.WinForms.Controls.SfButton();
-            this.LblLaunchOnBootActive = new System.Windows.Forms.Label();
+            this.BtnSetStartOnLogin = new Syncfusion.WinForms.Controls.SfButton();
+            this.LblStartOnLoginStatus = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.TabHotKey = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.BtnClear = new Syncfusion.WinForms.Controls.SfButton();
@@ -236,8 +233,6 @@
             // TabNotifications
             // 
             this.TabNotifications.Controls.Add(this.label18);
-            this.TabNotifications.Controls.Add(this.BtnOpenFirewallPort);
-            this.TabNotifications.Controls.Add(this.LblFirewallInfo);
             this.TabNotifications.Controls.Add(this.label12);
             this.TabNotifications.Controls.Add(this.TbIntNotifierApiPort);
             this.TabNotifications.Controls.Add(this.BtnNotificationsReadme);
@@ -258,42 +253,11 @@
             // label18
             // 
             this.label18.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(27, 286);
+            this.label18.Location = new System.Drawing.Point(27, 219);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(393, 156);
             this.label18.TabIndex = 31;
             this.label18.Text = resources.GetString("label18.Text");
-            // 
-            // BtnOpenFirewallPort
-            // 
-            this.BtnOpenFirewallPort.AccessibleName = "Button";
-            this.BtnOpenFirewallPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnOpenFirewallPort.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnOpenFirewallPort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnOpenFirewallPort.Location = new System.Drawing.Point(159, 181);
-            this.BtnOpenFirewallPort.Name = "BtnOpenFirewallPort";
-            this.BtnOpenFirewallPort.Size = new System.Drawing.Size(265, 31);
-            this.BtnOpenFirewallPort.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnOpenFirewallPort.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnOpenFirewallPort.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnOpenFirewallPort.Style.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnOpenFirewallPort.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnOpenFirewallPort.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnOpenFirewallPort.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnOpenFirewallPort.TabIndex = 29;
-            this.BtnOpenFirewallPort.Text = "open the firewall port";
-            this.BtnOpenFirewallPort.UseVisualStyleBackColor = false;
-            this.BtnOpenFirewallPort.Click += new System.EventHandler(this.BtnOpenFirewallPort_Click);
-            // 
-            // LblFirewallInfo
-            // 
-            this.LblFirewallInfo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblFirewallInfo.Location = new System.Drawing.Point(27, 152);
-            this.LblFirewallInfo.Name = "LblFirewallInfo";
-            this.LblFirewallInfo.Size = new System.Drawing.Size(635, 26);
-            this.LblFirewallInfo.TabIndex = 30;
-            this.LblFirewallInfo.Text = "If you want, HASS.Agent can open the port in your local firewall so Home Assistan" +
-    "t can reach you.";
             // 
             // label12
             // 
@@ -316,17 +280,18 @@
             this.TbIntNotifierApiPort.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbIntNotifierApiPort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TbIntNotifierApiPort.IntegerValue = ((long)(1883));
-            this.TbIntNotifierApiPort.Location = new System.Drawing.Point(159, 82);
+            this.TbIntNotifierApiPort.Location = new System.Drawing.Point(160, 98);
             this.TbIntNotifierApiPort.MaxValue = ((long)(66000));
             this.TbIntNotifierApiPort.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.TbIntNotifierApiPort.MinValue = ((long)(1));
             this.TbIntNotifierApiPort.Name = "TbIntNotifierApiPort";
+            this.TbIntNotifierApiPort.NumberGroupSeparator = "";
             this.TbIntNotifierApiPort.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TbIntNotifierApiPort.Size = new System.Drawing.Size(92, 25);
             this.TbIntNotifierApiPort.SpecialCultureValue = Syncfusion.Windows.Forms.Tools.SpecialCultureValues.UICulture;
             this.TbIntNotifierApiPort.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
             this.TbIntNotifierApiPort.TabIndex = 4;
-            this.TbIntNotifierApiPort.Text = "1,883";
+            this.TbIntNotifierApiPort.Text = "1883";
             this.TbIntNotifierApiPort.ThemeName = "Metro";
             this.TbIntNotifierApiPort.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbIntNotifierApiPort.ThemeStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
@@ -361,7 +326,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(118, 84);
+            this.label1.Location = new System.Drawing.Point(119, 100);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 17);
             this.label1.TabIndex = 6;
@@ -371,7 +336,7 @@
             // 
             this.CbAcceptNotifications.AutoSize = true;
             this.CbAcceptNotifications.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CbAcceptNotifications.Location = new System.Drawing.Point(281, 83);
+            this.CbAcceptNotifications.Location = new System.Drawing.Point(282, 99);
             this.CbAcceptNotifications.Name = "CbAcceptNotifications";
             this.CbAcceptNotifications.Size = new System.Drawing.Size(139, 21);
             this.CbAcceptNotifications.TabIndex = 5;
@@ -483,12 +448,13 @@
             this.TbIntMqttPort.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.TbIntMqttPort.MinValue = ((long)(1));
             this.TbIntMqttPort.Name = "TbIntMqttPort";
+            this.TbIntMqttPort.NumberGroupSeparator = "";
             this.TbIntMqttPort.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TbIntMqttPort.Size = new System.Drawing.Size(92, 25);
             this.TbIntMqttPort.SpecialCultureValue = Syncfusion.Windows.Forms.Tools.SpecialCultureValues.UICulture;
             this.TbIntMqttPort.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
             this.TbIntMqttPort.TabIndex = 15;
-            this.TbIntMqttPort.Text = "1,883";
+            this.TbIntMqttPort.Text = "1883";
             this.TbIntMqttPort.ThemeName = "Metro";
             this.TbIntMqttPort.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbIntMqttPort.ThemeStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
@@ -586,9 +552,8 @@
             // TabStartup
             // 
             this.TabStartup.Controls.Add(this.label15);
-            this.TabStartup.Controls.Add(this.BtnScheduledTaskReadme);
-            this.TabStartup.Controls.Add(this.BtnCreateLaunchOnBootTask);
-            this.TabStartup.Controls.Add(this.LblLaunchOnBootActive);
+            this.TabStartup.Controls.Add(this.BtnSetStartOnLogin);
+            this.TabStartup.Controls.Add(this.LblStartOnLoginStatus);
             this.TabStartup.Controls.Add(this.label4);
             this.TabStartup.Image = null;
             this.TabStartup.ImageSize = new System.Drawing.Size(16, 16);
@@ -611,57 +576,36 @@
             this.label15.TabIndex = 11;
             this.label15.Text = resources.GetString("label15.Text");
             // 
-            // BtnScheduledTaskReadme
+            // BtnSetStartOnLogin
             // 
-            this.BtnScheduledTaskReadme.AccessibleName = "Button";
-            this.BtnScheduledTaskReadme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnScheduledTaskReadme.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnScheduledTaskReadme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnScheduledTaskReadme.Location = new System.Drawing.Point(476, 411);
-            this.BtnScheduledTaskReadme.Name = "BtnScheduledTaskReadme";
-            this.BtnScheduledTaskReadme.Size = new System.Drawing.Size(228, 31);
-            this.BtnScheduledTaskReadme.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnScheduledTaskReadme.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnScheduledTaskReadme.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnScheduledTaskReadme.Style.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnScheduledTaskReadme.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnScheduledTaskReadme.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnScheduledTaskReadme.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnScheduledTaskReadme.TabIndex = 10;
-            this.BtnScheduledTaskReadme.Text = "scheduled task readme";
-            this.BtnScheduledTaskReadme.UseVisualStyleBackColor = false;
-            this.BtnScheduledTaskReadme.Click += new System.EventHandler(this.BtnScheduledTaskReadme_Click);
+            this.BtnSetStartOnLogin.AccessibleName = "Button";
+            this.BtnSetStartOnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnSetStartOnLogin.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSetStartOnLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BtnSetStartOnLogin.Location = new System.Drawing.Point(128, 223);
+            this.BtnSetStartOnLogin.Name = "BtnSetStartOnLogin";
+            this.BtnSetStartOnLogin.Size = new System.Drawing.Size(295, 31);
+            this.BtnSetStartOnLogin.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnSetStartOnLogin.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnSetStartOnLogin.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BtnSetStartOnLogin.Style.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BtnSetStartOnLogin.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnSetStartOnLogin.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BtnSetStartOnLogin.Style.PressedForeColor = System.Drawing.Color.Black;
+            this.BtnSetStartOnLogin.TabIndex = 9;
+            this.BtnSetStartOnLogin.Text = "enable start-on-login";
+            this.BtnSetStartOnLogin.UseVisualStyleBackColor = false;
+            this.BtnSetStartOnLogin.Click += new System.EventHandler(this.BtnSetStartOnLogin_Click);
             // 
-            // BtnCreateLaunchOnBootTask
+            // LblStartOnLoginStatus
             // 
-            this.BtnCreateLaunchOnBootTask.AccessibleName = "Button";
-            this.BtnCreateLaunchOnBootTask.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnCreateLaunchOnBootTask.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCreateLaunchOnBootTask.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnCreateLaunchOnBootTask.Location = new System.Drawing.Point(128, 223);
-            this.BtnCreateLaunchOnBootTask.Name = "BtnCreateLaunchOnBootTask";
-            this.BtnCreateLaunchOnBootTask.Size = new System.Drawing.Size(295, 31);
-            this.BtnCreateLaunchOnBootTask.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnCreateLaunchOnBootTask.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnCreateLaunchOnBootTask.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnCreateLaunchOnBootTask.Style.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnCreateLaunchOnBootTask.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnCreateLaunchOnBootTask.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnCreateLaunchOnBootTask.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnCreateLaunchOnBootTask.TabIndex = 9;
-            this.BtnCreateLaunchOnBootTask.Text = "create launch-on-login scheduled task";
-            this.BtnCreateLaunchOnBootTask.UseVisualStyleBackColor = false;
-            this.BtnCreateLaunchOnBootTask.Click += new System.EventHandler(this.BtnCreateLaunchOnBootTask_Click);
-            // 
-            // LblLaunchOnBootActive
-            // 
-            this.LblLaunchOnBootActive.AutoSize = true;
-            this.LblLaunchOnBootActive.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblLaunchOnBootActive.Location = new System.Drawing.Point(298, 169);
-            this.LblLaunchOnBootActive.Name = "LblLaunchOnBootActive";
-            this.LblLaunchOnBootActive.Size = new System.Drawing.Size(13, 17);
-            this.LblLaunchOnBootActive.TabIndex = 8;
-            this.LblLaunchOnBootActive.Text = "-";
+            this.LblStartOnLoginStatus.AutoSize = true;
+            this.LblStartOnLoginStatus.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblStartOnLoginStatus.Location = new System.Drawing.Point(298, 169);
+            this.LblStartOnLoginStatus.Name = "LblStartOnLoginStatus";
+            this.LblStartOnLoginStatus.Size = new System.Drawing.Size(13, 17);
+            this.LblStartOnLoginStatus.TabIndex = 8;
+            this.LblStartOnLoginStatus.Text = "-";
             // 
             // label4
             // 
@@ -669,9 +613,9 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(125, 169);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(167, 17);
+            this.label4.Size = new System.Drawing.Size(129, 17);
             this.label4.TabIndex = 7;
-            this.label4.Text = "launch-on-login task status:";
+            this.label4.Text = "start-on-login status:";
             // 
             // TabHotKey
             // 
@@ -1157,9 +1101,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private Syncfusion.WinForms.Controls.SfButton BtnScheduledTaskReadme;
-        private Syncfusion.WinForms.Controls.SfButton BtnCreateLaunchOnBootTask;
-        private System.Windows.Forms.Label LblLaunchOnBootActive;
+        private Syncfusion.WinForms.Controls.SfButton BtnSetStartOnLogin;
+        private System.Windows.Forms.Label LblStartOnLoginStatus;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox TbQuickActionsHotkey;
         private System.Windows.Forms.CheckBox CbEnableQuickActionsHotkey;
@@ -1172,8 +1115,6 @@
         private Syncfusion.WinForms.Controls.SfButton BtnTestApi;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private Syncfusion.WinForms.Controls.SfButton BtnOpenFirewallPort;
-        private System.Windows.Forms.Label LblFirewallInfo;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;

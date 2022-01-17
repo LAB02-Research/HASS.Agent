@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using HASSAgent.Settings;
 using Serilog;
 
 namespace HASSAgent.Controls.Onboarding
@@ -22,6 +14,9 @@ namespace HASSAgent.Controls.Onboarding
 
         private void MQTT_Load(object sender, EventArgs e)
         {
+            // hide group seperator
+            TbIntMqttPort.NumberGroupSeparator = "";
+
             // let's see if we can get the host from the provided HASS uri
             if (!string.IsNullOrEmpty(Variables.AppSettings.HassUri))
             {

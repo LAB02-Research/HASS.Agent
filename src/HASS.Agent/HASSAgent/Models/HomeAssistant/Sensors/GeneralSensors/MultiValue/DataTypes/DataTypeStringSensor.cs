@@ -29,7 +29,7 @@
                 Unique_id = Id,
                 Device = Variables.DeviceConfig,
                 State_topic = $"{Variables.AppSettings.MqttDiscoveryPrefix}/{Domain}/{Variables.DeviceConfig.Name}/{TopicName}/{ObjectId}/state",
-                Availability_topic = $"{Variables.AppSettings.MqttDiscoveryPrefix}/{Domain}/{Variables.DeviceConfig.Name}/{TopicName}/availability"
+                Availability_topic = $"{Variables.AppSettings.MqttDiscoveryPrefix}/{Domain}/{Variables.DeviceConfig.Name}/availability"
             };
 
             if (!string.IsNullOrWhiteSpace(_deviceClass)) model.Device_class = _deviceClass;

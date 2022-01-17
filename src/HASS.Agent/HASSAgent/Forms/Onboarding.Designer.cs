@@ -141,10 +141,11 @@
         }
 
         #endregion
-        private Syncfusion.WinForms.Controls.SfButton BtnNext;
-        private CustomGroupBox.CustomGroupBox GpOnboardingControl;
-        private Syncfusion.WinForms.Controls.SfButton BtnClose;
-        private Syncfusion.WinForms.Controls.SfButton BtnPrevious;
+
+        internal Syncfusion.WinForms.Controls.SfButton BtnNext;
+        internal CustomGroupBox.CustomGroupBox GpOnboardingControl;
+        internal Syncfusion.WinForms.Controls.SfButton BtnClose;
+        internal Syncfusion.WinForms.Controls.SfButton BtnPrevious;
     }
 }
 

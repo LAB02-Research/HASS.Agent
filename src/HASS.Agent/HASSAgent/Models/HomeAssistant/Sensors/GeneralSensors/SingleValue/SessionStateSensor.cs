@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Management;
-using System.Text.RegularExpressions;
-using HASSAgent.Enums;
-using HASSAgent.Functions;
-using Serilog;
+﻿using HASSAgent.Functions;
 
 namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
 {

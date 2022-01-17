@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Diagnostics;
-using System.IO;
 using System.Runtime.InteropServices;
 using System.Security;
-using System.Text;
+using System.Threading.Tasks;
 using Microsoft.Win32.TaskScheduler;
 using Serilog;
+using Task = System.Threading.Tasks.Task;
 
 namespace HASSAgent.Functions
 {
@@ -32,7 +31,7 @@ namespace HASSAgent.Functions
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "[SCHEDULEDTASKS] Error while checking task exists: {err}", ex.Message);
+                Log.Fatal(ex, "[SCHEDULEDTASK] Error while checking task exists: {err}", ex.Message);
                 return false;
             }
         }
@@ -53,7 +52,7 @@ namespace HASSAgent.Functions
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "[SCHEDULEDTASKS] Error while getting task status: {err}", ex.Message);
+                Log.Fatal(ex, "[SCHEDULEDTASK] Error while getting task status: {err}", ex.Message);
                 return TaskState.Unknown;
             }
         }
@@ -130,13 +129,13 @@ namespace HASSAgent.Functions
                     if (!elevated) return false;
 
                     // done
-                    Log.Information("[TASK] Launch-on-login task created");
+                    Log.Information("[SCHEDULEDTASK] Launch-on-login task created");
                     return true;
                 }
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "[SCHEDULEDTASKS] Error while creating task: {err}", ex.Message);
+                Log.Fatal(ex, "[SCHEDULEDTASK] Error while creating task: {err}", ex.Message);
                 return false;
             }
         }
@@ -165,7 +164,7 @@ namespace HASSAgent.Functions
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "[SCHEDULEDTASKS] Error while elevating task: {err}", ex.Message);
+                Log.Fatal(ex, "[SCHEDULEDTASK] Error while elevating task: {err}", ex.Message);
                 return false;
             }
         }
@@ -193,7 +192,131 @@ namespace HASSAgent.Functions
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "[SCHEDULEDTASKS] Error while reenabling task: {err}", ex.Message);
+                Log.Fatal(ex, "[SCHEDULEDTASK] Error while reenabling task: {err}", ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Checks and prepares the Scheduled Task, and finally removes it
+        /// </summary>
+        /// <returns></returns>
+        internal static async Task<bool> RemoveAsync()
+        {
+            try
+            {
+                // check if task exists
+                using (var ts = new TaskService())
+                {
+                    var task = ts.FindTask(TaskName);
+                    if (task == null) return true;
+
+                    // task found, get current state
+                    Log.Information("[SCHEDULEDTASK] HASS.Agent task found, checking state ..");
+
+                    var taskState = TaskStatus();
+                    switch (taskState)
+                    {
+                        case TaskState.Running:
+                        {
+                            Log.Information("[SCHEDULEDTASK] Task still active, attempting to stop ..");
+                            var stopped = Stop();
+                            if (!stopped) Log.Warning("[SCHEDULEDTASK] Stopping task failed, removal might fail");
+                            else Log.Information("[SCHEDULEDTASK] Task succesfully stopped, ready for removal");
+
+                            // wait a bit
+                            await Task.Delay(250);
+                            break;
+                        }
+
+                        case TaskState.Ready:
+                            Log.Information("[SCHEDULEDTASK] Task is stopped, ready for removal");
+                            break;
+
+                        default:
+                            Log.Information("[SCHEDULEDTASK] Task in unexpected state, removal might fail: {state}",
+                                taskState.ToString());
+                            break;
+                    }
+
+                    // remove the task
+                    // remove the task from the containing folder
+                    task.Folder.DeleteTask(TaskName, false);
+
+                    // give it some time
+                    await Task.Delay(TimeSpan.FromSeconds(5));
+
+                    // check if it's really gone
+                    task = ts.FindTask(TaskName);
+                    if (task != null)
+                    {
+                        Log.Error("[SCHEDULEDTASK] Task removal failed, still present");
+                        return false;
+                    }
+
+                    // done
+                    Log.Information("[SCHEDULEDTASK] Task succesfully removed");
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[SCHEDULEDTASK] Error while processing scheduled task: {msg}", ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Attempts to stop the Scheduled Task
+        /// </summary>
+        /// <returns></returns>
+        internal static bool Stop()
+        {
+            try
+            {
+                using (var ts = new TaskService())
+                {
+                    var task = ts.FindTask(TaskName);
+
+                    if (task == null) return true;
+
+                    switch (task.State)
+                    {
+                        case TaskState.Running:
+                            task.Stop();
+                            return true;
+
+                        case TaskState.Disabled:
+                            task.Stop();
+                            Log.Warning("[SCHEDULEDTASK] Task is DISABLED, attempted to stop");
+                            return true;
+
+                        case TaskState.Queued:
+                            task.Stop();
+                            Log.Warning("[SCHEDULEDTASK] Task is QUEUED, attempted to stop");
+                            return false;
+
+                        case TaskState.Ready:
+                            return true;
+
+                        case TaskState.Unknown:
+                            task.Stop();
+                            Log.Information("[SCHEDULEDTASK] Task state is UNKNOWN, attempted to stop");
+                            return true;
+                    }
+
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("0x80070534"))
+                {
+                    Log.Error("[SCHEDULEDTASK] Task is corrupt, manual removal required");
+                    return false;
+                }
+
+                Log.Fatal(ex, ex.Message);
                 return false;
             }
         }

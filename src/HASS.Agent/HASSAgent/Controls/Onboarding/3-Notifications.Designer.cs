@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.PbHassAgentLogo = new System.Windows.Forms.PictureBox();
-            this.BtnOpenFirewallPort = new Syncfusion.WinForms.Controls.SfButton();
-            this.LblFirewallInfo = new System.Windows.Forms.Label();
             this.TbIntNotifierApiPort = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.CbAcceptNotifications = new System.Windows.Forms.CheckBox();
@@ -50,37 +48,6 @@
             this.PbHassAgentLogo.TabIndex = 2;
             this.PbHassAgentLogo.TabStop = false;
             // 
-            // BtnOpenFirewallPort
-            // 
-            this.BtnOpenFirewallPort.AccessibleName = "Button";
-            this.BtnOpenFirewallPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnOpenFirewallPort.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnOpenFirewallPort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnOpenFirewallPort.Location = new System.Drawing.Point(183, 300);
-            this.BtnOpenFirewallPort.Name = "BtnOpenFirewallPort";
-            this.BtnOpenFirewallPort.Size = new System.Drawing.Size(402, 31);
-            this.BtnOpenFirewallPort.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnOpenFirewallPort.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnOpenFirewallPort.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnOpenFirewallPort.Style.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnOpenFirewallPort.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnOpenFirewallPort.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnOpenFirewallPort.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnOpenFirewallPort.TabIndex = 2;
-            this.BtnOpenFirewallPort.Text = "yes, open the firewall port";
-            this.BtnOpenFirewallPort.UseVisualStyleBackColor = false;
-            this.BtnOpenFirewallPort.Click += new System.EventHandler(this.BtnOpenFirewallPort_Click);
-            // 
-            // LblFirewallInfo
-            // 
-            this.LblFirewallInfo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblFirewallInfo.Location = new System.Drawing.Point(180, 258);
-            this.LblFirewallInfo.Name = "LblFirewallInfo";
-            this.LblFirewallInfo.Size = new System.Drawing.Size(384, 39);
-            this.LblFirewallInfo.TabIndex = 28;
-            this.LblFirewallInfo.Text = "If you want, HASS.Agent can open the port in your local firewall so Home Assistan" +
-    "t can reach you.";
-            // 
             // TbIntNotifierApiPort
             // 
             this.TbIntNotifierApiPort.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -92,17 +59,18 @@
             this.TbIntNotifierApiPort.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbIntNotifierApiPort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TbIntNotifierApiPort.IntegerValue = ((long)(1883));
-            this.TbIntNotifierApiPort.Location = new System.Drawing.Point(183, 204);
+            this.TbIntNotifierApiPort.Location = new System.Drawing.Point(183, 274);
             this.TbIntNotifierApiPort.MaxValue = ((long)(66000));
             this.TbIntNotifierApiPort.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.TbIntNotifierApiPort.MinValue = ((long)(1));
             this.TbIntNotifierApiPort.Name = "TbIntNotifierApiPort";
+            this.TbIntNotifierApiPort.NumberGroupSeparator = "";
             this.TbIntNotifierApiPort.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TbIntNotifierApiPort.Size = new System.Drawing.Size(92, 25);
             this.TbIntNotifierApiPort.SpecialCultureValue = Syncfusion.Windows.Forms.Tools.SpecialCultureValues.UICulture;
             this.TbIntNotifierApiPort.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
             this.TbIntNotifierApiPort.TabIndex = 1;
-            this.TbIntNotifierApiPort.Text = "1,883";
+            this.TbIntNotifierApiPort.Text = "1883";
             this.TbIntNotifierApiPort.ThemeName = "Metro";
             this.TbIntNotifierApiPort.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbIntNotifierApiPort.ThemeStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
@@ -115,7 +83,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(180, 162);
+            this.label2.Location = new System.Drawing.Point(180, 232);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(384, 39);
             this.label2.TabIndex = 26;
@@ -127,7 +95,7 @@
             this.CbAcceptNotifications.Checked = true;
             this.CbAcceptNotifications.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CbAcceptNotifications.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CbAcceptNotifications.Location = new System.Drawing.Point(183, 118);
+            this.CbAcceptNotifications.Location = new System.Drawing.Point(183, 153);
             this.CbAcceptNotifications.Name = "CbAcceptNotifications";
             this.CbAcceptNotifications.Size = new System.Drawing.Size(165, 21);
             this.CbAcceptNotifications.TabIndex = 0;
@@ -149,8 +117,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.Controls.Add(this.BtnOpenFirewallPort);
-            this.Controls.Add(this.LblFirewallInfo);
             this.Controls.Add(this.TbIntNotifierApiPort);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.CbAcceptNotifications);
@@ -171,8 +137,6 @@
 
         #endregion
         private System.Windows.Forms.PictureBox PbHassAgentLogo;
-        private Syncfusion.WinForms.Controls.SfButton BtnOpenFirewallPort;
-        private System.Windows.Forms.Label LblFirewallInfo;
         private Syncfusion.Windows.Forms.Tools.IntegerTextBox TbIntNotifierApiPort;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox CbAcceptNotifications;

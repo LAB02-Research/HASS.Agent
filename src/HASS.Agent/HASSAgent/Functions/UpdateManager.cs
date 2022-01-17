@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using HASSAgent.Settings;
 using Octokit;
@@ -91,7 +88,7 @@ namespace HASSAgent.Functions
                 // ignore prereleases
                 if (latestRelease.Prerelease) return (false, string.Empty);
 
-                // ignore beta's (starting with a b)
+                // ignore betas (starting with a b)
                 if (latestRelease.TagName.StartsWith("b")) return (false, string.Empty);
 
                 // remove the 'v' if it's there

@@ -7,7 +7,6 @@ using HASSAgent.Models.Config;
 using HASSAgent.Models.HomeAssistant.Sensors;
 using HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue;
 using HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue;
-using HASSAgent.Models.HomeAssistant.Sensors.PerfCounterSensors;
 using HASSAgent.Models.HomeAssistant.Sensors.PerfCounterSensors.SingleValue;
 using HASSAgent.Models.HomeAssistant.Sensors.WmiSensors.SingleValue;
 using Newtonsoft.Json;

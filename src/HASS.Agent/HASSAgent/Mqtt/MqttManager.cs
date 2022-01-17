@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -14,7 +13,6 @@ using MQTTnet.Client;
 using MQTTnet.Client.Options;
 using MQTTnet.Exceptions;
 using MQTTnet.Extensions.ManagedClient;
-using Newtonsoft.Json;
 using Serilog;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
@@ -239,18 +237,25 @@ namespace HASSAgent.Mqtt
                     PropertyNameCaseInsensitive = true,
                 };
 
+                // prepare prefix
                 if (string.IsNullOrEmpty(Variables.AppSettings.MqttDiscoveryPrefix)) Variables.AppSettings.MqttDiscoveryPrefix = "homeassistant";
 
-                var topic = string.IsNullOrEmpty(discoverable.TopicName)
-                    ? $"{Variables.AppSettings.MqttDiscoveryPrefix}/{domain}/{Variables.DeviceConfig.Name}/{discoverable.ObjectId}/config"
-                    : $"{Variables.AppSettings.MqttDiscoveryPrefix}/{domain}/{Variables.DeviceConfig.Name}/{discoverable.TopicName}/{discoverable.ObjectId}/config";
+                // prepare topic
+                var topic = $"{Variables.AppSettings.MqttDiscoveryPrefix}/{domain}/{Variables.DeviceConfig.Name}/{discoverable.ObjectId}/config";
+
+                // prepare payload
+                var payload = clearConfig 
+                    ? "" 
+                    : JsonSerializer.Serialize(discoverable.GetAutoDiscoveryConfig(), discoverable.GetAutoDiscoveryConfig().GetType(), options);
                 
+                // build config message
                 var message = new MqttApplicationMessageBuilder()
                     .WithTopic(topic)
-                    .WithPayload(clearConfig ? "" : JsonSerializer.Serialize(discoverable.GetAutoDiscoveryConfig(), discoverable.GetAutoDiscoveryConfig().GetType(), options))
+                    .WithPayload(payload)
                     .WithRetainFlag()
                     .Build();
 
+                // publish disco config
                 await PublishAsync(message);
             }
             catch (Exception ex)
