@@ -93,7 +93,7 @@ Adding a new sensor is just as easy, with an information panel on the right:
 
 You have the option to download an installer or a .zip package - they both contain the same, and the installer doesn't do any configuring. It's just easier, especially for updates. 
 
-HASS.Agent uses an entry in your user account's registry to launch on login. You'll be offered to enable this during onboarding, but you can always disable/enabled using the Configuration window.
+HASS.Agent uses an entry in your user account's registry to launch on login. You'll be offered to enable this during onboarding, but you can always disable/enable using the Configuration window.
 
 ![Onboarding Task](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_onboarding_startup.png)
 
