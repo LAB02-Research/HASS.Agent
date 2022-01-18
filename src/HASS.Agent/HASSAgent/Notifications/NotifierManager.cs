@@ -206,24 +206,32 @@ namespace HASSAgent.Notifications
                 var errOutput = executionResult.ErrorOutput.Trim();
                 var exitCode = executionResult.ExitCode;
 
-                // check for all-good output
-                if (output.Contains("URL reservation successfully added"))
+                // all good?
+                if (exitCode == 0)
                 {
                     Log.Information("[NOTIFIER] Port reservation succesfully added");
                     return true;
                 }
-
-                // check for already-exists
-                if (output.Contains("183") || errOutput.Contains("183"))
+                
+                // check for known errors
+                if (output.Contains(": 183") || errOutput.Contains(": 183"))
                 {
                     Log.Information("[NOTIFIER] Port reservation already exists, nothing to do");
                     return true;
                 }
+                if (output.Contains(": 5") || errOutput.Contains(": 5"))
+                {
+                    Log.Error("[NOTIFIER] Port reservation failed, requires elevation");
+                    return false;
+                }
+                if (output.Contains(": 1332") || errOutput.Contains(": 1332"))
+                {
+                    Log.Error("[NOTIFIER] Port reservation failed, incorrect parameters provided: {param}", args);
+                    return false;
+                }
 
                 // nope, something went wrong
-                Log.Error("[NOTIFIER] Unexpected console output, port reservation probably failed");
-                if (executionResult.Error) Log.Error("[NOTIFIER] Completed with errors");
-                if (exitCode != 0) Log.Error("[NOTIFIER] Completed with non-zero exitcode: {code}", exitCode);
+                Log.Error("[NOTIFIER] Execution failed, port reservation probably failed - exitcode: {code}", exitCode);
 
                 // process & print normal output
                 if (!string.IsNullOrEmpty(output))
