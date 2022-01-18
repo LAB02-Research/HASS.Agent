@@ -22,13 +22,20 @@ namespace HASSAgent.Settings
         /// Load all stored settings and objects
         /// </summary>
         /// <returns></returns>
-        internal static bool Load()
+        internal static bool Load(bool createInitialSettings = true)
         {
             Log.Information("[SETTINGS] Config storage path: {path}", Variables.ConfigPath);
 
             // check config dir
             if (!Directory.Exists(Variables.ConfigPath))
             {
+                // only create initial settings when asked
+                if (!createInitialSettings)
+                {
+                    StoreInitialSettings(false);
+                    return true;
+                }
+
                 // create dir
                 Directory.CreateDirectory(Variables.ConfigPath);
 
@@ -122,7 +129,7 @@ namespace HASSAgent.Settings
         /// Store default settings
         /// </summary>
         /// <returns></returns>
-        private static bool StoreInitialSettings()
+        private static bool StoreInitialSettings(bool storeSettings = true)
         {
             try
             {
@@ -136,7 +143,10 @@ namespace HASSAgent.Settings
                 // default settings
                 Variables.AppSettings = new AppSettings();
 
-                // store default
+                // store ?
+                if (!storeSettings) return true;
+
+                // jep
                 var appSettings = JsonConvert.SerializeObject(Variables.AppSettings, Formatting.Indented);
                 File.WriteAllText(Variables.AppSettingsFile, appSettings);
                 return true;

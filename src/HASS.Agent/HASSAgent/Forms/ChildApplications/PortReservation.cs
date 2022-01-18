@@ -36,7 +36,7 @@ namespace HASSAgent.Forms.ChildApplications
             await Task.Delay(TimeSpan.FromSeconds(2));
 
             // make sure settings are loaded
-            SettingsManager.Load();
+            SettingsManager.Load(false);
 
             // execute port reservation
             var portDone = await ProcessPortReservationAsync();

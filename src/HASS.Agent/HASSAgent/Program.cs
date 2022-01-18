@@ -53,6 +53,7 @@ namespace HASSAgent
                 if (args.Any(x => x == "update"))
                 {
                     Log.Information("[SYSTEM] Post-update mode activated");
+                    Variables.ChildApplicationMode = true;
 
                     // prepare form
                     var postUpdate = new PostUpdate();
@@ -66,6 +67,7 @@ namespace HASSAgent
                 else if (args.Any(x => x == "portreservation"))
                 {
                     Log.Information("[SYSTEM] Port reservation mode activated");
+                    Variables.ChildApplicationMode = true;
 
                     // prepare form
                     var portReservation = new PortReservation();

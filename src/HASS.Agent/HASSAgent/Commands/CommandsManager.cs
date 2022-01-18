@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using HASSAgent.Enums;
 using HASSAgent.Mqtt;
@@ -70,6 +71,9 @@ namespace HASSAgent.Commands
                         continue;
                     }
 
+                    // do we have commands?
+                    if (!CommandsPresent()) continue;
+
                     // publish availability & sensor autodisco's every 30 sec
                     if ((DateTime.Now - _lastAutoDiscoPublish).TotalSeconds > 30)
                     {
@@ -92,6 +96,8 @@ namespace HASSAgent.Commands
                 }
             }
         }
+
+        private static bool CommandsPresent() => Variables.Commands != null && Variables.Commands.Any();
 
         /// <summary>
         /// Returns default information for the specified command type

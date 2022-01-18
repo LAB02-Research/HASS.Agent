@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using HASSAgent.Enums;
 using HASSAgent.Mqtt;
@@ -69,7 +70,7 @@ namespace HASSAgent.Sensors
                         // nothing to do
                         continue;
                     }
-                    
+
                     // publish availability & sensor autodisco's every 30 sec
                     if ((DateTime.Now - _lastAutoDiscoPublish).TotalSeconds > 30)
                     {
@@ -77,16 +78,16 @@ namespace HASSAgent.Sensors
                         await MqttManager.AnnounceAvailabilityAsync();
 
                         // publish the autodisco's
-                        foreach (var sensor in Variables.SingleValueSensors) await sensor.PublishAutoDiscoveryConfigAsync();
-                        foreach (var sensor in Variables.MultiValueSensors) await sensor.PublishAutoDiscoveryConfigAsync();
+                        if (SingleValueSensorsPresent()) foreach (var sensor in Variables.SingleValueSensors) await sensor.PublishAutoDiscoveryConfigAsync();
+                        if (MultiValueSensorsPresent()) foreach (var sensor in Variables.MultiValueSensors) await sensor.PublishAutoDiscoveryConfigAsync();
 
                         // log moment
                         _lastAutoDiscoPublish = DateTime.Now;
                     }
 
                     // publish sensor states (they have their own time-based scheduling)
-                    foreach (var sensor in Variables.SingleValueSensors) await sensor.PublishStateAsync();
-                    foreach (var sensor in Variables.MultiValueSensors) await sensor.PublishStatesAsync();
+                    if (SingleValueSensorsPresent()) foreach (var sensor in Variables.SingleValueSensors) await sensor.PublishStateAsync();
+                    if (MultiValueSensorsPresent()) foreach (var sensor in Variables.MultiValueSensors) await sensor.PublishStatesAsync();
                 }
                 catch (Exception ex)
                 {
@@ -94,6 +95,9 @@ namespace HASSAgent.Sensors
                 }
             }
         }
+
+        private static bool SingleValueSensorsPresent() => Variables.SingleValueSensors != null && Variables.SingleValueSensors.Any();
+        private static bool MultiValueSensorsPresent() => Variables.MultiValueSensors != null && Variables.MultiValueSensors.Any();
 
         /// <summary>
         /// Returns default information for the specified sensor type
