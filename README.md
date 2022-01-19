@@ -269,7 +269,7 @@ Checklist to start using HASS.Agent:
 - HASS.Agent will restart to activate your configuration
 - Start adding Quick Actions, commands & sensors!
 
-Stuck? <a href="https://github.com/LAB02-Research/HASS.Agent/issues" target="_blank">Create a ticket</a>.
+Stuck? <a href="https://github.com/LAB02-Research/HASS.Agent/issues" target="_blank">Create a ticket</a> or <a href="https://discord.gg/nMvqzwrVBU" target="_blank">join on Discord</a>.
 
 ---
 
