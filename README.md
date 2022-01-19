@@ -266,7 +266,7 @@ Checklist to start using HASS.Agent:
 - Download & run the <a href="https://github.com/LAB02-Research/HASS.Agent/releases/latest">latest release's installer</a>
 - HASS.Agent will launch and show you the onboarding process
 - Configure the parts you'll be using
-- HASS.Agent will restart through the scheduled task
+- HASS.Agent will restart to activate your configuration
 - Start adding Quick Actions, commands & sensors!
 
 Stuck? <a href="https://github.com/LAB02-Research/HASS.Agent/issues" target="_blank">Create a ticket</a>.
