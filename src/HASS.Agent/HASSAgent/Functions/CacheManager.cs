@@ -17,7 +17,7 @@ namespace HASSAgent.Functions
         {
             // rmeove the legacy 'temp' folder if it's there
             var legacyTempFolder = Path.Combine(Variables.StartupPath, "Temp");
-            if (Directory.Exists(legacyTempFolder)) _ = Task.Run(() => HelperFunctions.DeleteDirectoryAsync(legacyTempFolder));
+            if (Directory.Exists(legacyTempFolder)) _ = Task.Run(() => StorageManager.DeleteDirectoryAsync(legacyTempFolder));
 
             // start periodic image cache cleaner
             _ = Task.Run(PeriodicImageCacheCleaner);
@@ -34,11 +34,12 @@ namespace HASSAgent.Functions
                 // pause the periodic cleaner
                 _imageCacheCleanerActive = true;
 
+                // folder still there?
                 if (!Directory.Exists(Variables.ImageCachePath)) return;
 
                 // enumerate all files
                 var imageFiles = Directory.EnumerateFiles(Variables.ImageCachePath, "*.*", SearchOption.TopDirectoryOnly).ToArray();
-                foreach (var imageFile in imageFiles) await HelperFunctions.DeleteFileAsync(imageFile);
+                foreach (var imageFile in imageFiles) await StorageManager.DeleteFileAsync(imageFile);
 
                 Log.Information("[CACHE] Clear cache: {count} images removed", imageFiles.Length);
             }
@@ -70,6 +71,9 @@ namespace HASSAgent.Functions
                     // check if we need to clean
                     if (Variables.AppSettings.ImageCacheRetentionDays <= 0) continue;
 
+                    // folder still there?
+                    if (!Directory.Exists(Variables.ImageCachePath)) continue;
+
                     // enumerate all files
                     var imageFiles = Directory.EnumerateFiles(Variables.ImageCachePath, "*.*", SearchOption.TopDirectoryOnly).ToArray();
                     var now = DateTime.Now;
@@ -80,7 +84,7 @@ namespace HASSAgent.Functions
                         if ((now - fileInfo.CreationTime).TotalDays < Variables.AppSettings.ImageCacheRetentionDays) continue;
 
                         // too old, remove
-                        await HelperFunctions.DeleteFileAsync(imageFile);
+                        await StorageManager.DeleteFileAsync(imageFile);
                     }
                 }
                 catch (Exception ex)

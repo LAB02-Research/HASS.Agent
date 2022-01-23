@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using HASSAgent.Enums;
 using HASSAgent.Models.Config;
 using HASSAgent.Models.HomeAssistant.Commands;
@@ -22,7 +23,7 @@ namespace HASSAgent.Settings
         /// Load all stored settings and objects
         /// </summary>
         /// <returns></returns>
-        internal static bool Load(bool createInitialSettings = true)
+        internal static async Task<bool> LoadAsync(bool createInitialSettings = true)
         {
             Log.Information("[SETTINGS] Config storage path: {path}", Variables.ConfigPath);
 
@@ -60,11 +61,11 @@ namespace HASSAgent.Settings
             if (!ok) allGood = false;
 
             // load commands
-            ok = StoredCommands.Load();
+            ok = await StoredCommands.LoadAsync();
             if (!ok) allGood = false;
 
             // load sensors
-            ok = StoredSensors.Load();
+            ok = await StoredSensors.LoadAsync();
             if (!ok) allGood = false;
 
             // done
@@ -134,7 +135,7 @@ namespace HASSAgent.Settings
             try
             {
                 Log.Information("[SETTINGS] No config found, storing default settings");
-                
+
                 // empty collections
                 Variables.QuickActions = new List<QuickAction>();
                 Variables.Commands = new List<AbstractCommand>();

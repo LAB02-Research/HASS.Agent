@@ -49,7 +49,7 @@ namespace HASSAgent.Functions
             if (string.IsNullOrEmpty(hotkey)) return;
 
             // check if we stil have the hotkey bound to a quickaction
-            if (Variables.QuickActions.All(x => x.HotKey == hotkey))
+            if (Variables.QuickActions.All(x => x.HotKey != hotkey))
             {
                 Log.Warning("[HOTKEY] Registered hotkey no longer bound to a QuickAction: {hotkey}", hotkey);
                 return;
@@ -117,7 +117,7 @@ namespace HASSAgent.Functions
             Variables.UiDispatcher?.BeginInvoke(new MethodInvoker(delegate
             {
                 Variables.HotKeyListener?.Remove(previousKey);
-                if (register) Variables.HotKeyListener?.Add(Variables.QuickActionsHotKey);
+                if (register && Variables.QuickActionsHotKey != null && Variables.QuickActionsHotKey.KeyCode != Keys.None) Variables.HotKeyListener?.Add(Variables.QuickActionsHotKey);
             }));
         }
     }

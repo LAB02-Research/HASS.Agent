@@ -36,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnTest = new Syncfusion.WinForms.Controls.SfButton();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PbHassAgentLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +57,7 @@
             this.TbHassApiToken.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbHassApiToken.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbHassApiToken.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbHassApiToken.Location = new System.Drawing.Point(183, 271);
+            this.TbHassApiToken.Location = new System.Drawing.Point(183, 265);
             this.TbHassApiToken.Name = "TbHassApiToken";
             this.TbHassApiToken.Size = new System.Drawing.Size(392, 25);
             this.TbHassApiToken.TabIndex = 1;
@@ -67,7 +68,7 @@
             this.TbHassIp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbHassIp.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbHassIp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbHassIp.Location = new System.Drawing.Point(183, 208);
+            this.TbHassIp.Location = new System.Drawing.Point(183, 202);
             this.TbHassIp.Name = "TbHassIp";
             this.TbHassIp.Size = new System.Drawing.Size(392, 25);
             this.TbHassIp.TabIndex = 0;
@@ -77,7 +78,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(180, 251);
+            this.label3.Location = new System.Drawing.Point(180, 245);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 17);
             this.label3.TabIndex = 15;
@@ -87,7 +88,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(180, 188);
+            this.label2.Location = new System.Drawing.Point(180, 182);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(198, 17);
             this.label2.TabIndex = 14;
@@ -108,9 +109,9 @@
             this.BtnTest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnTest.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnTest.Location = new System.Drawing.Point(395, 302);
+            this.BtnTest.Location = new System.Drawing.Point(395, 296);
             this.BtnTest.Name = "BtnTest";
-            this.BtnTest.Size = new System.Drawing.Size(180, 29);
+            this.BtnTest.Size = new System.Drawing.Size(180, 23);
             this.BtnTest.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnTest.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnTest.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -123,11 +124,22 @@
             this.BtnTest.UseVisualStyleBackColor = false;
             this.BtnTest.Click += new System.EventHandler(this.BtnTest_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(178, 341);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(358, 13);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Tip: specialized settings can be found in the Configuration window.";
+            // 
             // API
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.BtnTest);
             this.Controls.Add(this.TbHassApiToken);
             this.Controls.Add(this.TbHassIp);
@@ -155,5 +167,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private Syncfusion.WinForms.Controls.SfButton BtnTest;
+        private System.Windows.Forms.Label label4;
     }
 }

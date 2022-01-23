@@ -5,7 +5,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
 {
     public class UserNotificationStateSensor : AbstractSingleValueSensor
     {
-        public UserNotificationStateSensor(int? updateInterval = null, string name = "NotificationState", string id = default) : base(name ?? "NotificationState", updateInterval ?? 10, id) { }
+        public UserNotificationStateSensor(int? updateInterval = null, string name = "notificationstate", string id = default) : base(name ?? "notificationstate", updateInterval ?? 10, id) { }
 
         public override DiscoveryConfigModel GetAutoDiscoveryConfig()
         {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HASSAgent.Enums;
 using HASSAgent.Mqtt;
+using HASSAgent.Settings;
 using Serilog;
 
 namespace HASSAgent.Commands
@@ -51,15 +52,51 @@ namespace HASSAgent.Commands
         internal static void Unpause() => _pause = false;
 
         /// <summary>
+        /// Unpublishes all commands
+        /// </summary>
+        /// <returns></returns>
+        internal static async Task UnpublishAllCommands()
+        {
+            // unpublish the autodisco's
+            if (!CommandsPresent()) return;
+            foreach (var command in Variables.Commands)
+            {
+                await command.UnPublishAutoDiscoveryConfigAsync();
+                await MqttManager.UnubscribeAsync(command);
+            }
+        }
+
+        /// <summary>
+        /// Generates new ID's for all commands
+        /// </summary>
+        internal static void ResetCommandIds()
+        {
+            if (!CommandsPresent()) return;
+            foreach (var command in Variables.Commands) command.Id = Guid.NewGuid().ToString();
+
+            StoredCommands.Store();
+        }
+
+        /// <summary>
         /// Continuously processes commands (autodiscovery, state)
         /// </summary>
         private static async void Process()
         {
+            var firstRun = true;
+            var subscribed = false;
+
             while (_active)
             {
                 try
                 {
-                    await Task.Delay(TimeSpan.FromSeconds(30));
+                    if (firstRun)
+                    {
+                        // on the first run, just wait 1 sec - this is to make sure we're announcing ourselves,
+                        // when there are no sensors or when the sensor manager's still initialising
+                        await Task.Delay(TimeSpan.FromSeconds(1));
+                        firstRun = false;
+                    }
+                    else await Task.Delay(TimeSpan.FromSeconds(30));
 
                     // are we paused?
                     if (_pause) continue;
@@ -81,14 +118,30 @@ namespace HASSAgent.Commands
                         await MqttManager.AnnounceAvailabilityAsync();
 
                         // publish command autodisco's
-                        foreach (var command in Variables.Commands) await command.PublishAutoDiscoveryConfigAsync();
+                        foreach (var command in Variables.Commands.TakeWhile(command => !_pause).TakeWhile(command => _active))
+                        {
+                            await command.PublishAutoDiscoveryConfigAsync();
+                        }
+
+                        // are we subscribed?
+                        if (!subscribed)
+                        {
+                            foreach (var command in Variables.Commands.TakeWhile(command => !_pause).TakeWhile(command => _active))
+                            {
+                                await MqttManager.SubscribeAsync(command);
+                            }
+                            subscribed = true;
+                        }
 
                         // log moment
                         _lastAutoDiscoPublish = DateTime.Now;
                     }
 
                     // publish command states (they have their own time-based scheduling)
-                    foreach (var command in Variables.Commands) await command.PublishStateAsync();
+                    foreach (var command in Variables.Commands.TakeWhile(command => !_pause).TakeWhile(command => _active))
+                    {
+                        await command.PublishStateAsync();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -116,9 +169,11 @@ namespace HASSAgent.Commands
         {
             CommandInfo.Add(CommandType.ShutdownCommand, "Shuts down the machine after one minute.\r\n\r\nTip: accidentally triggered? Run 'shutdown /a' to abort.");
             CommandInfo.Add(CommandType.RestartCommand, "Restarts the machine after one minute.\r\n\r\nTip: accidentally triggered? Run 'shutdown /a' to abort.");
+            CommandInfo.Add(CommandType.HibernateCommand, "Sets the machine in hibernation.");
             CommandInfo.Add(CommandType.LogOffCommand, "Logs off the current session.");
             CommandInfo.Add(CommandType.LockCommand, "Locks the current session.");
-            CommandInfo.Add(CommandType.CustomCommand, "Execute a custom command.\r\n\r\nThese commands run without elevation. To run elevated, create a Scheduled Task, and use 'schtasks /Run /TN \"TaskName\"' as the command to execute your task.");
+            CommandInfo.Add(CommandType.CustomCommand, "Execute a custom command.\r\n\r\nThese commands run without special elevation. To run elevated, create a Scheduled Task, and use 'schtasks /Run /TN \"TaskName\"' as the command to execute your task.\r\n\r\nOr enable 'run as low integrity' for even stricter execution.");
+            CommandInfo.Add(CommandType.PowershellCommand, "Execute a Powershell command or script.\r\n\r\nYou can either provide the location of a script (*.ps1), or a single-line command.\r\n\r\nThis will run without special elevation.");
             CommandInfo.Add(CommandType.MediaPlayPauseCommand, "Simulates 'media playpause' key.");
             CommandInfo.Add(CommandType.MediaNextCommand, "Simulates 'media next' key.");
             CommandInfo.Add(CommandType.MediaPreviousCommand, "Simulates 'media previous' key.");

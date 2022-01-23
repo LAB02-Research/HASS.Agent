@@ -16,7 +16,7 @@ namespace HASSAgent.Functions
         internal const string TaskName = "HASS.Agent";
 
         /// <summary>
-        /// Check whether the task is present
+        /// Depcrecated: Check whether the task is present
         /// </summary>
         /// <returns></returns>
         internal static bool IsTaskPresent()
@@ -37,7 +37,7 @@ namespace HASSAgent.Functions
         }
 
         /// <summary>
-        /// Check our task status
+        /// Depcrecated: Check our task status
         /// </summary>
         /// <returns></returns>
         internal static TaskState TaskStatus()
@@ -58,7 +58,7 @@ namespace HASSAgent.Functions
         }
 
         /// <summary>
-        /// Install a launch-on-login task
+        /// Depcrecated: Install a launch-on-login task
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
@@ -141,7 +141,7 @@ namespace HASSAgent.Functions
         }
 
         /// <summary>
-        /// Enable 'run with highest privileges'
+        /// Depcrecated: Enable 'run with highest privileges'
         /// This has to be done after the task is created
         /// </summary>
         /// <returns></returns>
@@ -170,7 +170,7 @@ namespace HASSAgent.Functions
         }
 
         /// <summary>
-        /// Sets the Scheduled Task to enabled
+        /// Depcrecated: Sets the Scheduled Task to enabled
         /// </summary>
         /// <returns></returns>
         internal static bool Enable()

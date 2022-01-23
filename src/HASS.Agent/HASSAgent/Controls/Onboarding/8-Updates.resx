@@ -124,4 +124,7 @@ You'll get a notification (once per update) , letting you know a new version is 
 
 Do you want to enable this functionality?</value>
   </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>When there's an update, HASS.Agent will offer the option to open the release page. But if you want, HASS.Agent can also download and launch the installer for you - even less to do! The certificate of the downloaded file will get checked.</value>
+  </data>
 </root>

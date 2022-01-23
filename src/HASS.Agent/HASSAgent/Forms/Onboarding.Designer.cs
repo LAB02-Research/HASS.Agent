@@ -45,6 +45,7 @@
             this.BtnNext.Name = "BtnNext";
             this.BtnNext.Size = new System.Drawing.Size(184, 31);
             this.BtnNext.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnNext.Style.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnNext.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnNext.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnNext.Style.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -136,6 +137,7 @@
             this.Text = "HASS.Agent Onboarding";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Onboarding_FormClosing);
             this.Load += new System.EventHandler(this.Onboarding_Load);
+            this.ResizeEnd += new System.EventHandler(this.Onboarding_ResizeEnd);
             this.ResumeLayout(false);
 
         }

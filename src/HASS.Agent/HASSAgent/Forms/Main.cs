@@ -28,24 +28,32 @@ namespace HASSAgent.Forms
     {
         private static int WM_QUERYENDSESSION = 0x11;
         private bool _isClosing = false;
-
-        private readonly bool _extendedLogging;
-
-        public Main(bool extendedLogging)
+        
+        public Main()
         {
-            _extendedLogging = extendedLogging;
             InitializeComponent();
         }
 
-        private void Main_Load(object sender, EventArgs e)
+        private async void Main_Load(object sender, EventArgs e)
         {
             try
             {
                 // bind the ui dispatcher
                 Variables.UiDispatcher = Dispatcher.CurrentDispatcher;
 
+#if DEBUG
+                // show the form while we're debugging
+                _ = Task.Run(async delegate
+                {
+                    await Task.Delay(500);
+                    Invoke(new MethodInvoker(Show));
+                    await Task.Delay(150);
+                    Invoke(new MethodInvoker(BringToFront));
+                });
+#endif
+
                 // check if we're enabling extended logging
-                if (_extendedLogging)
+                if (Variables.ExtendedLogging)
                 {
                     // exception handlers
                     Application.ThreadException += Application_ThreadException;
@@ -67,7 +75,7 @@ namespace HASSAgent.Forms
                 Variables.HotKeyListener = new HotkeyListener();
 
                 // load settings
-                var loaded = SettingsManager.Load();
+                var loaded = await SettingsManager.LoadAsync();
                 if (!loaded)
                 {
                     MessageBoxAdv.Show("Something went wrong while loading your settings.\r\n\r\nCheck appsettings.json in the 'Config' subfolder, or just delete it to start fresh.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -89,25 +97,14 @@ namespace HASSAgent.Forms
                 InitializeHotkeys();
 
                 // initialize managers
-                Task.Run(NotifierManager.Initialize);
-                Task.Run(HassApiManager.InitializeAsync);
-                Task.Run(MqttManager.Initialize);
-                Task.Run(SensorsManager.Initialize);
-                Task.Run(CommandsManager.Initialize);
-                Task.Run(UpdateManager.Initialize);
-                Task.Run(SystemStateManager.Initialize);
-                Task.Run(CacheManager.Initialize);
-
-#if DEBUG
-            // show the form while we're debugging
-            Task.Run(async delegate
-            {
-                await Task.Delay(500);
-                Invoke(new MethodInvoker(Show));
-                await Task.Delay(150);
-                Invoke(new MethodInvoker(BringToFront));
-            });
-#endif
+                _ = Task.Run(NotifierManager.Initialize);
+                _ = Task.Run(HassApiManager.InitializeAsync);
+                _ = Task.Run(MqttManager.Initialize);
+                _ = Task.Run(SensorsManager.Initialize);
+                _ = Task.Run(CommandsManager.Initialize);
+                _ = Task.Run(UpdateManager.Initialize);
+                _ = Task.Run(SystemStateManager.Initialize);
+                _ = Task.Run(CacheManager.Initialize);
             }
             catch (Exception ex)
             {
@@ -279,18 +276,34 @@ namespace HASSAgent.Forms
         }
 
         /// <summary>
-        /// Get confirmation to close, if so, close
+        /// Ask the user what to do and process the choice
         /// </summary>
+        [SuppressMessage("ReSharper", "InvertIf")]
         private void Exit()
         {
-#if !DEBUG
-            // only ask for confirmation if we're not debugging
-            var q = MessageBoxAdv.Show("Are you sure?\r\n\r\nYou won't be able to receive notifications,\r\nuse quick actions, receive commands or transmit sensor data.", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (q != DialogResult.Yes) return;
-#endif
+            using (var exitDialog = new ExitDialog())
+            {
+                var result = exitDialog.ShowDialog();
+                if (result != DialogResult.OK) return;
 
-            Variables.ShuttingDown = true;
-            Close();
+                if (exitDialog.HideToTray)
+                {
+                    Hide();
+                    return;
+                }
+
+                if (exitDialog.Restart)
+                {
+                    HelperFunctions.Restart();
+                    return;
+                }
+
+                if (exitDialog.Exit)
+                {
+                    Variables.ShuttingDown = true;
+                    Close();
+                }
+            }
         }
 
         /// <summary>
@@ -415,11 +428,21 @@ namespace HASSAgent.Forms
                                 break;
 
                             case Component.Sensors:
+                                if (status != ComponentStatus.Loading)
+                                {
+                                    BtnSensorsManager.Text = "\r\nlocal sensors";
+                                    BtnSensorsManager.Enabled = true;
+                                }
                                 LblStatusSensors.Text = status.ToString().ToLower();
                                 LblStatusSensors.ForeColor = status.GetColor();
                                 break;
 
                             case Component.Commands:
+                                if (status != ComponentStatus.Loading)
+                                {
+                                    BtnCommandsManager.Text = "\r\ncommands";
+                                    BtnCommandsManager.Enabled = true;
+                                }
                                 LblStatusCommands.Text = status.ToString().ToLower();
                                 LblStatusCommands.ForeColor = status.GetColor();
                                 break;
@@ -513,11 +536,11 @@ namespace HASSAgent.Forms
             }
         }
 
-        private void BtnAbout_Click(object sender, EventArgs e)
+        private void BtnHelp_Click(object sender, EventArgs e)
         {
-            using (var about = new About())
+            using (var help = new Help())
             {
-                about.ShowDialog();
+                help.ShowDialog();
             }
         }
 
@@ -545,7 +568,10 @@ namespace HASSAgent.Forms
                     return;
                 }
 
-                // new update, show info
+                // new update, hide
+                Hide();
+
+                // show info
                 ShowUpdateInfo(version);
             }
             catch (Exception ex)
@@ -585,5 +611,31 @@ namespace HASSAgent.Forms
                 // best effort
             }
         }
+
+        private void Main_ResizeEnd(object sender, EventArgs e)
+        {
+            if (Variables.ShuttingDown) return;
+            if (!IsHandleCreated) return;
+            if (IsDisposed) return;
+
+            try
+            {
+                Refresh();
+            }
+            catch
+            {
+                // best effort
+            }
+        }
+
+        private void TsHelp_Click(object sender, EventArgs e)
+        {
+            using (var help = new Help())
+            {
+                help.ShowDialog();
+            }
+        }
+
+        private void TsDonate_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://www.buymeacoffee.com/lab02research");
     }
 }

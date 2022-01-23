@@ -50,5 +50,23 @@ namespace HASSAgent.Forms
         private void LblOctokit_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/octokit/octokit.net");
 
         private void LblCliWrap_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/Tyrrrz/CliWrap");
+
+        private void About_ResizeEnd(object sender, EventArgs e)
+        {
+            if (Variables.ShuttingDown) return;
+            if (!IsHandleCreated) return;
+            if (IsDisposed) return;
+
+            try
+            {
+                Refresh();
+            }
+            catch
+            {
+                // best effort
+            }
+        }
+
+        private void PbBMAC_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://www.buymeacoffee.com/lab02research");
     }
 }

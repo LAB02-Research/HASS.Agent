@@ -134,15 +134,15 @@ You can get a token through your profile page. Scroll to the bottom and click 'C
 
 Afterwards, you should be able to add the notifier entity in your automations &amp;&amp; scripts.</value>
   </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>Commands and sensors are sent through MQTT. Please provide credentials for your server. If you're using the HA addon, you can probably use the preset address.
-
-Leave empty if you're not going to use commands and sensors.</value>
-  </data>
   <data name="label15.Text" xml:space="preserve">
     <value>HASS.Agent can start when you login by creating an entry in your user profile's registry.
 
 Since HASS.Agent is user based, if you want to launch for another user, just install and config HASS.Agent there.</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>When there's an update, HASS.Agent will offer the option to open the release page. But if you want, HASS.Agent can also download and launch the installer for you - even less to do!
+
+The certificate of the downloaded file will get checked before execution.</value>
   </data>
   <data name="label22.Text" xml:space="preserve">
     <value>HASS.Agent can use the excellent Coderr platform to gather error reports. This way, it becomes easier to catch and fix bugs. However, there is a chance that machine-specific info gets sent as well (like machinename, or username).

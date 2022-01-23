@@ -31,6 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Configuration));
             this.ConfigTabs = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.TabHassApi = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.label28 = new System.Windows.Forms.Label();
+            this.TbHassClientCertificate = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.CbHassAutoClientCertificate = new System.Windows.Forms.CheckBox();
             this.BtnTestApi = new Syncfusion.WinForms.Controls.SfButton();
             this.label11 = new System.Windows.Forms.Label();
             this.TbHassApiToken = new System.Windows.Forms.TextBox();
@@ -45,6 +49,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.CbAcceptNotifications = new System.Windows.Forms.CheckBox();
             this.TabMQTT = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.label27 = new System.Windows.Forms.Label();
+            this.TbMqttClientCertificate = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.TbMqttRootCertificate = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.CbUseRetainFlag = new System.Windows.Forms.CheckBox();
+            this.CbAllowUntrustedCertificates = new System.Windows.Forms.CheckBox();
             this.BtnMqttClearConfig = new Syncfusion.WinForms.Controls.SfButton();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -71,6 +82,8 @@
             this.CbEnableQuickActionsHotkey = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.TabUpdates = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.label24 = new System.Windows.Forms.Label();
+            this.CbExecuteUpdater = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
             this.CbUpdates = new System.Windows.Forms.CheckBox();
             this.TabLocalStorage = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
@@ -91,6 +104,12 @@
             this.BtnHelp = new Syncfusion.WinForms.Controls.SfButton();
             this.BtnStore = new Syncfusion.WinForms.Controls.SfButton();
             this.PnlTabs = new System.Windows.Forms.Panel();
+            this.TabGeneral = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.TbDeviceName = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ConfigTabs)).BeginInit();
             this.ConfigTabs.SuspendLayout();
             this.TabHassApi.SuspendLayout();
@@ -105,6 +124,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TbIntImageRetention)).BeginInit();
             this.TabLogging.SuspendLayout();
             this.PnlTabs.SuspendLayout();
+            this.TabGeneral.SuspendLayout();
             this.SuspendLayout();
             // 
             // ConfigTabs
@@ -115,6 +135,7 @@
             this.ConfigTabs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.ConfigTabs.BeforeTouchSize = new System.Drawing.Size(884, 461);
             this.ConfigTabs.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ConfigTabs.Controls.Add(this.TabGeneral);
             this.ConfigTabs.Controls.Add(this.TabHassApi);
             this.ConfigTabs.Controls.Add(this.TabNotifications);
             this.ConfigTabs.Controls.Add(this.TabMQTT);
@@ -140,6 +161,10 @@
             // 
             // TabHassApi
             // 
+            this.TabHassApi.Controls.Add(this.label28);
+            this.TabHassApi.Controls.Add(this.TbHassClientCertificate);
+            this.TabHassApi.Controls.Add(this.label29);
+            this.TabHassApi.Controls.Add(this.CbHassAutoClientCertificate);
             this.TabHassApi.Controls.Add(this.BtnTestApi);
             this.TabHassApi.Controls.Add(this.label11);
             this.TabHassApi.Controls.Add(this.TbHassApiToken);
@@ -158,13 +183,57 @@
             this.TabHassApi.Text = "Home Assistant API";
             this.TabHassApi.ThemesEnabled = false;
             // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(454, 289);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(189, 13);
+            this.label28.TabIndex = 47;
+            this.label28.Text = "tip: doubleclick this field to browse";
+            // 
+            // TbHassClientCertificate
+            // 
+            this.TbHassClientCertificate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.TbHassClientCertificate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbHassClientCertificate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbHassClientCertificate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.TbHassClientCertificate.Location = new System.Drawing.Point(159, 261);
+            this.TbHassClientCertificate.Name = "TbHassClientCertificate";
+            this.TbHassClientCertificate.Size = new System.Drawing.Size(484, 25);
+            this.TbHassClientCertificate.TabIndex = 45;
+            this.TbHassClientCertificate.DoubleClick += new System.EventHandler(this.TbHassClientCertificate_DoubleClick);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(47, 263);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(98, 17);
+            this.label29.TabIndex = 46;
+            this.label29.Text = "client certificate";
+            // 
+            // CbHassAutoClientCertificate
+            // 
+            this.CbHassAutoClientCertificate.AutoSize = true;
+            this.CbHassAutoClientCertificate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CbHassAutoClientCertificate.Location = new System.Drawing.Point(159, 326);
+            this.CbHassAutoClientCertificate.Name = "CbHassAutoClientCertificate";
+            this.CbHassAutoClientCertificate.Size = new System.Drawing.Size(257, 21);
+            this.CbHassAutoClientCertificate.TabIndex = 44;
+            this.CbHassAutoClientCertificate.Text = "use automatic client certificate selection";
+            this.CbHassAutoClientCertificate.UseVisualStyleBackColor = true;
+            this.CbHassAutoClientCertificate.CheckedChanged += new System.EventHandler(this.CbHassAutoClientCertificate_CheckedChanged);
+            // 
             // BtnTestApi
             // 
             this.BtnTestApi.AccessibleName = "Button";
             this.BtnTestApi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnTestApi.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnTestApi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnTestApi.Location = new System.Drawing.Point(463, 264);
+            this.BtnTestApi.Location = new System.Drawing.Point(463, 369);
             this.BtnTestApi.Name = "BtnTestApi";
             this.BtnTestApi.Size = new System.Drawing.Size(180, 29);
             this.BtnTestApi.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -194,7 +263,7 @@
             this.TbHassApiToken.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbHassApiToken.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbHassApiToken.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbHassApiToken.Location = new System.Drawing.Point(159, 233);
+            this.TbHassApiToken.Location = new System.Drawing.Point(159, 211);
             this.TbHassApiToken.Name = "TbHassApiToken";
             this.TbHassApiToken.Size = new System.Drawing.Size(484, 25);
             this.TbHassApiToken.TabIndex = 7;
@@ -205,7 +274,7 @@
             this.TbHassIp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbHassIp.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbHassIp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbHassIp.Location = new System.Drawing.Point(159, 187);
+            this.TbHassIp.Location = new System.Drawing.Point(159, 165);
             this.TbHassIp.Name = "TbHassIp";
             this.TbHassIp.Size = new System.Drawing.Size(484, 25);
             this.TbHassIp.TabIndex = 6;
@@ -214,21 +283,21 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(77, 235);
+            this.label3.Location = new System.Drawing.Point(77, 213);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 17);
+            this.label3.Size = new System.Drawing.Size(62, 17);
             this.label3.TabIndex = 9;
-            this.label3.Text = "api token:";
+            this.label3.Text = "api token";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(79, 189);
+            this.label2.Location = new System.Drawing.Point(79, 167);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 17);
+            this.label2.Size = new System.Drawing.Size(63, 17);
             this.label2.TabIndex = 8;
-            this.label2.Text = "server uri:";
+            this.label2.Text = "server uri";
             // 
             // TabNotifications
             // 
@@ -272,7 +341,7 @@
             // TbIntNotifierApiPort
             // 
             this.TbIntNotifierApiPort.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.TbIntNotifierApiPort.BeforeTouchSize = new System.Drawing.Size(67, 25);
+            this.TbIntNotifierApiPort.BeforeTouchSize = new System.Drawing.Size(61, 25);
             this.TbIntNotifierApiPort.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.TbIntNotifierApiPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbIntNotifierApiPort.CurrentCultureRefresh = true;
@@ -345,6 +414,13 @@
             // 
             // TabMQTT
             // 
+            this.TabMQTT.Controls.Add(this.label27);
+            this.TabMQTT.Controls.Add(this.TbMqttClientCertificate);
+            this.TabMQTT.Controls.Add(this.label26);
+            this.TabMQTT.Controls.Add(this.TbMqttRootCertificate);
+            this.TabMQTT.Controls.Add(this.label25);
+            this.TabMQTT.Controls.Add(this.CbUseRetainFlag);
+            this.TabMQTT.Controls.Add(this.CbAllowUntrustedCertificates);
             this.TabMQTT.Controls.Add(this.BtnMqttClearConfig);
             this.TabMQTT.Controls.Add(this.label14);
             this.TabMQTT.Controls.Add(this.label13);
@@ -371,6 +447,82 @@
             this.TabMQTT.Text = "MQTT";
             this.TabMQTT.ThemesEnabled = false;
             // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(426, 205);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(203, 13);
+            this.label27.TabIndex = 43;
+            this.label27.Text = "tip: doubleclick these fields to browse";
+            // 
+            // TbMqttClientCertificate
+            // 
+            this.TbMqttClientCertificate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.TbMqttClientCertificate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbMqttClientCertificate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbMqttClientCertificate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.TbMqttClientCertificate.Location = new System.Drawing.Point(429, 177);
+            this.TbMqttClientCertificate.Name = "TbMqttClientCertificate";
+            this.TbMqttClientCertificate.Size = new System.Drawing.Size(268, 25);
+            this.TbMqttClientCertificate.TabIndex = 41;
+            this.TbMqttClientCertificate.DoubleClick += new System.EventHandler(this.TbMqttClientCertificate_DoubleClick);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(426, 158);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(98, 17);
+            this.label26.TabIndex = 42;
+            this.label26.Text = "client certificate";
+            // 
+            // TbMqttRootCertificate
+            // 
+            this.TbMqttRootCertificate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.TbMqttRootCertificate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbMqttRootCertificate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbMqttRootCertificate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.TbMqttRootCertificate.Location = new System.Drawing.Point(429, 125);
+            this.TbMqttRootCertificate.Name = "TbMqttRootCertificate";
+            this.TbMqttRootCertificate.Size = new System.Drawing.Size(268, 25);
+            this.TbMqttRootCertificate.TabIndex = 39;
+            this.TbMqttRootCertificate.DoubleClick += new System.EventHandler(this.TbMqttRootCertificate_DoubleClick);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(426, 106);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(93, 17);
+            this.label25.TabIndex = 40;
+            this.label25.Text = "root certificate";
+            // 
+            // CbUseRetainFlag
+            // 
+            this.CbUseRetainFlag.AutoSize = true;
+            this.CbUseRetainFlag.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CbUseRetainFlag.Location = new System.Drawing.Point(429, 315);
+            this.CbUseRetainFlag.Name = "CbUseRetainFlag";
+            this.CbUseRetainFlag.Size = new System.Drawing.Size(110, 21);
+            this.CbUseRetainFlag.TabIndex = 38;
+            this.CbUseRetainFlag.Text = "use retain flag";
+            this.CbUseRetainFlag.UseVisualStyleBackColor = true;
+            // 
+            // CbAllowUntrustedCertificates
+            // 
+            this.CbAllowUntrustedCertificates.AutoSize = true;
+            this.CbAllowUntrustedCertificates.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CbAllowUntrustedCertificates.Location = new System.Drawing.Point(429, 263);
+            this.CbAllowUntrustedCertificates.Name = "CbAllowUntrustedCertificates";
+            this.CbAllowUntrustedCertificates.Size = new System.Drawing.Size(182, 21);
+            this.CbAllowUntrustedCertificates.TabIndex = 37;
+            this.CbAllowUntrustedCertificates.Text = "allow untrusted certificates";
+            this.CbAllowUntrustedCertificates.UseVisualStyleBackColor = true;
+            // 
             // BtnMqttClearConfig
             // 
             this.BtnMqttClearConfig.AccessibleName = "Button";
@@ -396,7 +548,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(269, 356);
+            this.label14.Location = new System.Drawing.Point(68, 378);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(135, 13);
             this.label14.TabIndex = 35;
@@ -407,9 +559,10 @@
             this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(27, 19);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(670, 80);
+            this.label13.Size = new System.Drawing.Size(670, 44);
             this.label13.TabIndex = 28;
-            this.label13.Text = resources.GetString("label13.Text");
+            this.label13.Text = "Commands and sensors are sent through MQTT. Please provide credentials for your s" +
+    "erver. If you\'re using the HA addon, you can probably use the preset address.\r\n";
             // 
             // TbMqttDiscoveryPrefix
             // 
@@ -417,7 +570,7 @@
             this.TbMqttDiscoveryPrefix.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbMqttDiscoveryPrefix.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbMqttDiscoveryPrefix.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbMqttDiscoveryPrefix.Location = new System.Drawing.Point(72, 351);
+            this.TbMqttDiscoveryPrefix.Location = new System.Drawing.Point(71, 350);
             this.TbMqttDiscoveryPrefix.Name = "TbMqttDiscoveryPrefix";
             this.TbMqttDiscoveryPrefix.Size = new System.Drawing.Size(191, 25);
             this.TbMqttDiscoveryPrefix.TabIndex = 23;
@@ -426,7 +579,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(71, 331);
+            this.label10.Location = new System.Drawing.Point(70, 330);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(100, 17);
             this.label10.TabIndex = 24;
@@ -435,7 +588,7 @@
             // TbIntMqttPort
             // 
             this.TbIntMqttPort.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.TbIntMqttPort.BeforeTouchSize = new System.Drawing.Size(67, 25);
+            this.TbIntMqttPort.BeforeTouchSize = new System.Drawing.Size(61, 25);
             this.TbIntMqttPort.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.TbIntMqttPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbIntMqttPort.CurrentCultureRefresh = true;
@@ -443,7 +596,7 @@
             this.TbIntMqttPort.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbIntMqttPort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TbIntMqttPort.IntegerValue = ((long)(1883));
-            this.TbIntMqttPort.Location = new System.Drawing.Point(107, 187);
+            this.TbIntMqttPort.Location = new System.Drawing.Point(106, 168);
             this.TbIntMqttPort.MaxValue = ((long)(66000));
             this.TbIntMqttPort.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.TbIntMqttPort.MinValue = ((long)(1));
@@ -470,7 +623,7 @@
             this.TbMqttPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbMqttPassword.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbMqttPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbMqttPassword.Location = new System.Drawing.Point(72, 298);
+            this.TbMqttPassword.Location = new System.Drawing.Point(71, 285);
             this.TbMqttPassword.Name = "TbMqttPassword";
             this.TbMqttPassword.Size = new System.Drawing.Size(191, 25);
             this.TbMqttPassword.TabIndex = 19;
@@ -482,7 +635,7 @@
             this.TbMqttUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbMqttUsername.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbMqttUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbMqttUsername.Location = new System.Drawing.Point(74, 246);
+            this.TbMqttUsername.Location = new System.Drawing.Point(73, 233);
             this.TbMqttUsername.Name = "TbMqttUsername";
             this.TbMqttUsername.Size = new System.Drawing.Size(191, 25);
             this.TbMqttUsername.TabIndex = 18;
@@ -493,27 +646,28 @@
             this.TbMqttAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbMqttAddress.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbMqttAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbMqttAddress.Location = new System.Drawing.Point(74, 144);
+            this.TbMqttAddress.Location = new System.Drawing.Point(73, 125);
             this.TbMqttAddress.Name = "TbMqttAddress";
-            this.TbMqttAddress.Size = new System.Drawing.Size(330, 25);
+            this.TbMqttAddress.Size = new System.Drawing.Size(259, 25);
             this.TbMqttAddress.TabIndex = 14;
             // 
             // CbMqttTls
             // 
             this.CbMqttTls.AutoSize = true;
             this.CbMqttTls.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CbMqttTls.Location = new System.Drawing.Point(222, 192);
+            this.CbMqttTls.Location = new System.Drawing.Point(221, 173);
             this.CbMqttTls.Name = "CbMqttTls";
             this.CbMqttTls.Size = new System.Drawing.Size(47, 21);
             this.CbMqttTls.TabIndex = 16;
             this.CbMqttTls.Text = "TLS";
             this.CbMqttTls.UseVisualStyleBackColor = true;
+            this.CbMqttTls.CheckedChanged += new System.EventHandler(this.CbMqttTls_CheckedChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(71, 278);
+            this.label9.Location = new System.Drawing.Point(70, 265);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 17);
             this.label9.TabIndex = 22;
@@ -523,7 +677,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(71, 227);
+            this.label8.Location = new System.Drawing.Point(70, 214);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 17);
             this.label8.TabIndex = 21;
@@ -533,7 +687,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(69, 190);
+            this.label7.Location = new System.Drawing.Point(68, 171);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(33, 17);
             this.label7.TabIndex = 20;
@@ -543,11 +697,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(71, 124);
+            this.label6.Location = new System.Drawing.Point(70, 105);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(148, 17);
+            this.label6.Size = new System.Drawing.Size(191, 17);
             this.label6.TabIndex = 17;
-            this.label6.Text = "ip address or hostname";
+            this.label6.Text = "broker ip address or hostname";
             // 
             // TabStartup
             // 
@@ -702,6 +856,8 @@
             // 
             // TabUpdates
             // 
+            this.TabUpdates.Controls.Add(this.label24);
+            this.TabUpdates.Controls.Add(this.CbExecuteUpdater);
             this.TabUpdates.Controls.Add(this.label17);
             this.TabUpdates.Controls.Add(this.CbUpdates);
             this.TabUpdates.Image = null;
@@ -715,6 +871,26 @@
             this.TabUpdates.TabIndex = 6;
             this.TabUpdates.Text = "Updates";
             this.TabUpdates.ThemesEnabled = false;
+            // 
+            // label24
+            // 
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(27, 204);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(598, 79);
+            this.label24.TabIndex = 33;
+            this.label24.Text = resources.GetString("label24.Text");
+            // 
+            // CbExecuteUpdater
+            // 
+            this.CbExecuteUpdater.AutoSize = true;
+            this.CbExecuteUpdater.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CbExecuteUpdater.Location = new System.Drawing.Point(124, 329);
+            this.CbExecuteUpdater.Name = "CbExecuteUpdater";
+            this.CbExecuteUpdater.Size = new System.Drawing.Size(266, 21);
+            this.CbExecuteUpdater.TabIndex = 32;
+            this.CbExecuteUpdater.Text = "download and launch the installer for me";
+            this.CbExecuteUpdater.UseVisualStyleBackColor = true;
             // 
             // label17
             // 
@@ -731,7 +907,7 @@
             // 
             this.CbUpdates.AutoSize = true;
             this.CbUpdates.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CbUpdates.Location = new System.Drawing.Point(125, 169);
+            this.CbUpdates.Location = new System.Drawing.Point(124, 131);
             this.CbUpdates.Name = "CbUpdates";
             this.CbUpdates.Size = new System.Drawing.Size(267, 21);
             this.CbUpdates.TabIndex = 8;
@@ -836,7 +1012,7 @@
             // TbIntImageRetention
             // 
             this.TbIntImageRetention.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.TbIntImageRetention.BeforeTouchSize = new System.Drawing.Size(67, 25);
+            this.TbIntImageRetention.BeforeTouchSize = new System.Drawing.Size(61, 25);
             this.TbIntImageRetention.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.TbIntImageRetention.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbIntImageRetention.CurrentCultureRefresh = true;
@@ -984,7 +1160,7 @@
             this.BtnHelp.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnHelp.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnHelp.TabIndex = 8;
-            this.BtnHelp.Text = "help && documentation";
+            this.BtnHelp.Text = "help && contact";
             this.BtnHelp.UseVisualStyleBackColor = false;
             this.BtnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
             // 
@@ -998,6 +1174,7 @@
             this.BtnStore.Name = "BtnStore";
             this.BtnStore.Size = new System.Drawing.Size(530, 31);
             this.BtnStore.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnStore.Style.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -1017,6 +1194,79 @@
             this.PnlTabs.Name = "PnlTabs";
             this.PnlTabs.Size = new System.Drawing.Size(886, 463);
             this.PnlTabs.TabIndex = 11;
+            // 
+            // TabGeneral
+            // 
+            this.TabGeneral.Controls.Add(this.label33);
+            this.TabGeneral.Controls.Add(this.label32);
+            this.TabGeneral.Controls.Add(this.label31);
+            this.TabGeneral.Controls.Add(this.TbDeviceName);
+            this.TabGeneral.Controls.Add(this.label30);
+            this.TabGeneral.Image = null;
+            this.TabGeneral.ImageSize = new System.Drawing.Size(16, 16);
+            this.TabGeneral.Location = new System.Drawing.Point(161, 2);
+            this.TabGeneral.Name = "TabGeneral";
+            this.TabGeneral.ShowCloseButton = false;
+            this.TabGeneral.Size = new System.Drawing.Size(721, 457);
+            this.TabGeneral.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.TabGeneral.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.TabGeneral.TabIndex = 9;
+            this.TabGeneral.Text = "General";
+            this.TabGeneral.ThemesEnabled = false;
+            // 
+            // TbDeviceName
+            // 
+            this.TbDeviceName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.TbDeviceName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbDeviceName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbDeviceName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.TbDeviceName.Location = new System.Drawing.Point(102, 232);
+            this.TbDeviceName.Name = "TbDeviceName";
+            this.TbDeviceName.Size = new System.Drawing.Size(358, 25);
+            this.TbDeviceName.TabIndex = 46;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(99, 212);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(81, 17);
+            this.label30.TabIndex = 47;
+            this.label30.Text = "device name";
+            // 
+            // label31
+            // 
+            this.label31.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(27, 19);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(669, 44);
+            this.label31.TabIndex = 48;
+            this.label31.Text = "This page contains general configuration items. For more settings, browse the tab" +
+    "s on the left.";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(99, 164);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(515, 34);
+            this.label32.TabIndex = 49;
+            this.label32.Text = "Device name is used to identify your machine on HA. \r\nIt\'s also used as a prefix " +
+    "for your command/sensor names (can be changed per entity).";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(99, 271);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(555, 34);
+            this.label33.TabIndex = 50;
+            this.label33.Text = "Important: if you change this value, HASS.Agent will unpublish all your sensors a" +
+    "nd commands\r\nand force a restart of itself, so they can be republished under the" +
+    " new device name.";
             // 
             // Configuration
             // 
@@ -1044,6 +1294,7 @@
             this.Text = "Configuration";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Configuration_FormClosing);
             this.Load += new System.EventHandler(this.Configuration_Load);
+            this.ResizeEnd += new System.EventHandler(this.Configuration_ResizeEnd);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Configuration_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.ConfigTabs)).EndInit();
             this.ConfigTabs.ResumeLayout(false);
@@ -1067,6 +1318,8 @@
             this.TabLogging.ResumeLayout(false);
             this.TabLogging.PerformLayout();
             this.PnlTabs.ResumeLayout(false);
+            this.TabGeneral.ResumeLayout(false);
+            this.TabGeneral.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1135,6 +1388,25 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.CheckBox CbExceptionReporting;
         private System.Windows.Forms.Label LblCoderr;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.CheckBox CbExecuteUpdater;
+        private System.Windows.Forms.CheckBox CbAllowUntrustedCertificates;
+        private System.Windows.Forms.CheckBox CbUseRetainFlag;
+        private System.Windows.Forms.TextBox TbMqttClientCertificate;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox TbMqttRootCertificate;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox TbHassClientCertificate;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.CheckBox CbHassAutoClientCertificate;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv TabGeneral;
+        private System.Windows.Forms.TextBox TbDeviceName;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label33;
     }
 }
 

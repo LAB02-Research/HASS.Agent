@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using Windows.Devices.Perception.Provider;
 using HASSAgent.Enums;
 using HASSAgent.Models.Config;
 using HASSAgent.Models.HomeAssistant.Sensors;
@@ -23,7 +25,7 @@ namespace HASSAgent.Settings
         /// Load all stored sensors
         /// </summary>
         /// <returns></returns>
-        internal static bool Load()
+        internal static async Task<bool> LoadAsync()
         {
             try
             {
@@ -61,11 +63,14 @@ namespace HASSAgent.Settings
                 }
 
                 // convert to abstract sensors
-                foreach (var sensor in configuredSensors)
+                await Task.Run(delegate
                 {
-                    if (sensor.IsSingleValue()) Variables.SingleValueSensors.Add(ConvertConfiguredToAbstractSingleValue(sensor));
-                    else Variables.MultiValueSensors.Add(ConvertConfiguredToAbstractMultiValue(sensor));
-                }
+                    foreach (var sensor in configuredSensors)
+                    {
+                        if (sensor.IsSingleValue()) Variables.SingleValueSensors.Add(ConvertConfiguredToAbstractSingleValue(sensor));
+                        else Variables.MultiValueSensors.Add(ConvertConfiguredToAbstractMultiValue(sensor));
+                    }
+                });
 
                 // all good
                 Log.Information("[SETTINGS_SENSORS] Loaded {count} entities", (Variables.SingleValueSensors.Count + Variables.MultiValueSensors.Count));
@@ -144,6 +149,9 @@ namespace HASSAgent.Settings
                 case SensorType.WmiQuerySensor:
                     abstractSensor = new WmiQuerySensor(sensor.Query, sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
                     break;
+                case SensorType.PerformanceCounterSensor:
+                    abstractSensor = new PerformanceCounterSensor(sensor.Category, sensor.Counter, sensor.Instance, sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    break;
                 default:
                     Log.Error("[SETTINGS_SENSORS] [{name}] Unknown configured single-value sensor type: {type}", sensor.Name, sensor.Type.ToString());
                     break;
@@ -168,6 +176,12 @@ namespace HASSAgent.Settings
                     break;
                 case SensorType.NetworkSensors:
                     abstractSensor = new NetworkSensors(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    break;
+                case SensorType.WindowsUpdatesSensors:
+                    abstractSensor = new WindowsUpdatesSensors(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    break;
+                case SensorType.BatterySensors:
+                    abstractSensor = new BatterySensors(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
                     break;
                 default:
                     Log.Error("[SETTINGS_SENSORS] [{name}] Unknown configured multi-value sensor type: {type}", sensor.Name, sensor.Type.ToString());
@@ -212,6 +226,21 @@ namespace HASSAgent.Settings
                     };
                 }
 
+                case PerformanceCounterSensor performanceCounterSensor:
+                {
+                    _ = Enum.TryParse<SensorType>(performanceCounterSensor.GetType().Name, out var type);
+                    return new ConfiguredSensor
+                    {
+                        Id = Guid.Parse(performanceCounterSensor.Id),
+                        Name = performanceCounterSensor.Name,
+                        Type = type,
+                        UpdateInterval = performanceCounterSensor.UpdateIntervalSeconds,
+                        Category = performanceCounterSensor.CategoryName,
+                        Counter = performanceCounterSensor.CounterName,
+                        Instance = performanceCounterSensor.InstanceName
+                    };
+                }
+
                 default:
                 {
                     _ = Enum.TryParse<SensorType>(sensor.GetType().Name, out var type);
@@ -235,9 +264,9 @@ namespace HASSAgent.Settings
         {
             switch (sensor)
             {
-                case StorageSensors storageSensor:
+                case StorageSensors storageSensors:
                     {
-                        _ = Enum.TryParse<SensorType>(storageSensor.GetType().Name, out var type);
+                        _ = Enum.TryParse<SensorType>(storageSensors.GetType().Name, out var type);
                         return new ConfiguredSensor
                         {
                             Id = Guid.Parse(sensor.Id),
@@ -246,9 +275,31 @@ namespace HASSAgent.Settings
                             UpdateInterval = sensor.UpdateIntervalSeconds
                         };
                     }
-                case NetworkSensors networkSensor:
+                case NetworkSensors networkSensors:
                 {
-                    _ = Enum.TryParse<SensorType>(networkSensor.GetType().Name, out var type);
+                    _ = Enum.TryParse<SensorType>(networkSensors.GetType().Name, out var type);
+                    return new ConfiguredSensor
+                    {
+                        Id = Guid.Parse(sensor.Id),
+                        Name = sensor.Name,
+                        Type = type,
+                        UpdateInterval = sensor.UpdateIntervalSeconds
+                    };
+                }
+                case WindowsUpdatesSensors windowsUpdatesSensors:
+                {
+                    _ = Enum.TryParse<SensorType>(windowsUpdatesSensors.GetType().Name, out var type);
+                    return new ConfiguredSensor
+                    {
+                        Id = Guid.Parse(sensor.Id),
+                        Name = sensor.Name,
+                        Type = type,
+                        UpdateInterval = sensor.UpdateIntervalSeconds
+                    };
+                }
+                case BatterySensors batterySensors:
+                {
+                    _ = Enum.TryParse<SensorType>(batterySensors.GetType().Name, out var type);
                     return new ConfiguredSensor
                     {
                         Id = Guid.Parse(sensor.Id),

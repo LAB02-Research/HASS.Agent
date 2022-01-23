@@ -10,14 +10,12 @@ namespace HASSAgent.Models.HomeAssistant.Sensors
     {
         protected PerformanceCounter Counter = null;
 
-        protected readonly string CategoryName;
-        protected readonly string CounterName;
-        protected readonly string InstanceName;
+        public string CategoryName;
+        public string CounterName;
+        public string InstanceName;
 
-        public PerformanceCounterSensor(string categoryName, string counterName, string instanceName, int? updateInterval = null, string name = "PerformanceCounterSensor", string id = default) : base(name ?? "PerformanceCounterSensor", updateInterval ?? 10, id)
+        public PerformanceCounterSensor(string categoryName, string counterName, string instanceName, int? updateInterval = null, string name = "performancecountersensor", string id = default) : base(name ?? "performancecountersensor", updateInterval ?? 10, id)
         {
-            id = Guid.NewGuid().ToString();
-
             CategoryName = categoryName;
             CounterName = counterName;
             InstanceName = instanceName;

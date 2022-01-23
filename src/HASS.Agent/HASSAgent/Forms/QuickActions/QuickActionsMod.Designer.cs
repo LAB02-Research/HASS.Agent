@@ -31,9 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuickActionsMod));
             this.BtnStore = new Syncfusion.WinForms.Controls.SfButton();
             this.TbDescription = new System.Windows.Forms.TextBox();
-            this.CbAction = new System.Windows.Forms.ComboBox();
-            this.CbEntity = new System.Windows.Forms.ComboBox();
-            this.CbDomain = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,6 +40,10 @@
             this.TbHotkey = new System.Windows.Forms.TextBox();
             this.CbEnableHotkey = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.CbDomain = new System.Windows.Forms.ComboBox();
+            this.CbEntity = new System.Windows.Forms.ComboBox();
+            this.CbAction = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BtnStore
@@ -56,6 +57,7 @@
             this.BtnStore.Name = "BtnStore";
             this.BtnStore.Size = new System.Drawing.Size(352, 38);
             this.BtnStore.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnStore.Style.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -77,44 +79,6 @@
             this.TbDescription.Name = "TbDescription";
             this.TbDescription.Size = new System.Drawing.Size(328, 25);
             this.TbDescription.TabIndex = 3;
-            // 
-            // CbAction
-            // 
-            this.CbAction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.CbAction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CbAction.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CbAction.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.CbAction.FormattingEnabled = true;
-            this.CbAction.Location = new System.Drawing.Point(12, 229);
-            this.CbAction.Name = "CbAction";
-            this.CbAction.Size = new System.Drawing.Size(139, 25);
-            this.CbAction.TabIndex = 2;
-            // 
-            // CbEntity
-            // 
-            this.CbEntity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.CbEntity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CbEntity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CbEntity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.CbEntity.FormattingEnabled = true;
-            this.CbEntity.Location = new System.Drawing.Point(12, 99);
-            this.CbEntity.Name = "CbEntity";
-            this.CbEntity.Size = new System.Drawing.Size(328, 25);
-            this.CbEntity.TabIndex = 1;
-            this.CbEntity.SelectedIndexChanged += new System.EventHandler(this.CbEntity_SelectedIndexChanged);
-            // 
-            // CbDomain
-            // 
-            this.CbDomain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.CbDomain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CbDomain.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CbDomain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.CbDomain.FormattingEnabled = true;
-            this.CbDomain.Location = new System.Drawing.Point(12, 39);
-            this.CbDomain.Name = "CbDomain";
-            this.CbDomain.Size = new System.Drawing.Size(328, 25);
-            this.CbDomain.TabIndex = 0;
-            this.CbDomain.SelectedIndexChanged += new System.EventHandler(this.CbDomain_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -152,9 +116,9 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(9, 271);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(342, 17);
+            this.label4.Size = new System.Drawing.Size(73, 17);
             this.label4.TabIndex = 10;
-            this.label4.Text = "description (optional, will be used instead of entity name)";
+            this.label4.Text = "description";
             // 
             // LblLoading
             // 
@@ -211,6 +175,66 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "hotkey combination:";
             // 
+            // CbDomain
+            // 
+            this.CbDomain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.CbDomain.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CbDomain.DropDownHeight = 300;
+            this.CbDomain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbDomain.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CbDomain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.CbDomain.FormattingEnabled = true;
+            this.CbDomain.IntegralHeight = false;
+            this.CbDomain.Location = new System.Drawing.Point(12, 39);
+            this.CbDomain.Name = "CbDomain";
+            this.CbDomain.Size = new System.Drawing.Size(328, 26);
+            this.CbDomain.TabIndex = 25;
+            this.CbDomain.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.CbDomain_DrawItem);
+            this.CbDomain.SelectedIndexChanged += new System.EventHandler(this.CbDomain_SelectedIndexChanged);
+            // 
+            // CbEntity
+            // 
+            this.CbEntity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.CbEntity.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CbEntity.DropDownHeight = 300;
+            this.CbEntity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbEntity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CbEntity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.CbEntity.FormattingEnabled = true;
+            this.CbEntity.IntegralHeight = false;
+            this.CbEntity.Location = new System.Drawing.Point(12, 98);
+            this.CbEntity.Name = "CbEntity";
+            this.CbEntity.Size = new System.Drawing.Size(328, 26);
+            this.CbEntity.TabIndex = 26;
+            this.CbEntity.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.CbEntity_DrawItem);
+            this.CbEntity.SelectedIndexChanged += new System.EventHandler(this.CbEntity_SelectedIndexChanged);
+            // 
+            // CbAction
+            // 
+            this.CbAction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.CbAction.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CbAction.DropDownHeight = 300;
+            this.CbAction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbAction.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CbAction.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.CbAction.FormattingEnabled = true;
+            this.CbAction.IntegralHeight = false;
+            this.CbAction.Location = new System.Drawing.Point(12, 229);
+            this.CbAction.Name = "CbAction";
+            this.CbAction.Size = new System.Drawing.Size(166, 26);
+            this.CbAction.TabIndex = 27;
+            this.CbAction.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.CbAction_DrawItem);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(97, 275);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(243, 13);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "(optional, will be used instead of entity name)";
+            // 
             // QuickActionsMod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -220,16 +244,17 @@
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(352, 478);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.CbAction);
+            this.Controls.Add(this.CbEntity);
+            this.Controls.Add(this.CbDomain);
             this.Controls.Add(this.TbHotkey);
             this.Controls.Add(this.CbEnableHotkey);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.LblEntity);
             this.Controls.Add(this.TbDescription);
-            this.Controls.Add(this.CbAction);
             this.Controls.Add(this.LblLoading);
-            this.Controls.Add(this.CbEntity);
             this.Controls.Add(this.BtnStore);
-            this.Controls.Add(this.CbDomain);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
@@ -247,6 +272,8 @@
             this.Text = "Quick Action";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuickActionsMod_FormClosing);
             this.Load += new System.EventHandler(this.QuickActionsMod_Load);
+            this.ResizeEnd += new System.EventHandler(this.QuickActionsMod_ResizeEnd);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.QuickActionsMod_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,14 +286,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label LblLoading;
-        private System.Windows.Forms.ComboBox CbDomain;
-        private System.Windows.Forms.ComboBox CbEntity;
-        private System.Windows.Forms.ComboBox CbAction;
         private System.Windows.Forms.TextBox TbDescription;
         private System.Windows.Forms.Label LblEntity;
         private System.Windows.Forms.TextBox TbHotkey;
         private System.Windows.Forms.CheckBox CbEnableHotkey;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox CbDomain;
+        private System.Windows.Forms.ComboBox CbEntity;
+        private System.Windows.Forms.ComboBox CbAction;
+        private System.Windows.Forms.Label label6;
     }
 }
 

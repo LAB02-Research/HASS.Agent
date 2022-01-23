@@ -43,6 +43,12 @@ namespace HASSAgent.Enums
         [EnumMember(Value = "StorageSensors")]
         StorageSensors,
         [EnumMember(Value = "NetworkSensors")]
-        NetworkSensors
+        NetworkSensors,
+        [EnumMember(Value = "PerformanceCounterSensor")]
+        PerformanceCounterSensor,
+        [EnumMember(Value = "WindowsUpdatesSensors")]
+        WindowsUpdatesSensors,
+        [EnumMember(Value = "BatterySensors")]
+        BatterySensors
     }
 }

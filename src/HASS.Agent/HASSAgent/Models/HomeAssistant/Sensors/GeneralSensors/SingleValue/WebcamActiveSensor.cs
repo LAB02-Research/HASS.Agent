@@ -6,7 +6,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
     public class WebcamActiveSensor : AbstractSingleValueSensor
     {
         public override string Domain => "binary_sensor";
-        public WebcamActiveSensor(int? updateInterval = null, string name = "WebcamActive", string id = default) : base(name ?? "WebcamActive", updateInterval ?? 10, id) {}
+        public WebcamActiveSensor(int? updateInterval = null, string name = "webcamactive", string id = default) : base(name ?? "webcamactive", updateInterval ?? 10, id) {}
 
         public override string GetState()
         {

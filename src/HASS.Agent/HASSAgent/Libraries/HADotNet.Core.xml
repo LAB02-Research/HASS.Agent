@@ -1,0 +1,1729 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HADotNet.Core</name>
+    </assembly>
+    <members>
+        <member name="T:HADotNet.Core.BaseClient">
+            <summary>
+            Represents the base client from which all other API clients derive.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.BaseClient.Client">
+            <summary>
+            Gets the static HttpClient instance.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.BaseClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new <see cref="T:HADotNet.Core.BaseClient" /> instance.
+            </summary>
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient" /> preconfigured to communicate with a Home Assistant instance.</param>
+        </member>
+        <member name="M:HADotNet.Core.BaseClient.Get``1(System.String)">
+            <summary>
+            Performs a GET request on the specified path.
+            </summary>
+            <typeparam name="T">The type of data to deserialize and return.</typeparam>
+            <param name="path">The relative API endpoint path.</param>
+            <returns>The deserialized data of type <typeparamref name="T" />.</returns>
+        </member>
+        <member name="M:HADotNet.Core.BaseClient.Post``1(System.String,System.Object,System.Boolean)">
+            <summary>
+            Performs a POST request on the specified path.
+            </summary>
+            <typeparam name="T">The type of object expected back.</typeparam>
+            <param name="path">The path to post to.</param>
+            <param name="body">The body contents to serialize and include.</param>
+            <param name="isRawBody"><see langword="true" /> if the body should be interpereted as a pre-built JSON string, or <see langword="false" /> if it should be serialized.</param>
+            <returns></returns>
+        </member>
+        <member name="M:HADotNet.Core.BaseClient.Delete``1(System.String)">
+            <summary>
+            Performs a DELETE request on the specified path.
+            </summary>
+            <typeparam name="T">The type of data to deserialize and return.</typeparam>
+            <param name="path">The relative API endpoint path.</param>
+            <returns>The deserialized data of type <typeparamref name="T" />.</returns>
+        </member>
+        <member name="M:HADotNet.Core.BaseClient.Delete(System.String)">
+            <summary>
+            Performs a DELETE request on the specified path.
+            </summary>
+            <param name="path">The relative API endpoint path.</param>
+        </member>
+        <member name="T:HADotNet.Core.ClientFactory">
+            <summary>
+            Provides a factory which can instantiate API clients (useful in DI scenarios, for example).
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.ClientFactory.IsInitialized">
+            <summary>
+            Gets whether or not the Client Factory has been initialized.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.ClientFactory.Client">
+            <summary>
+            Gets the <see cref="T:System.Net.Http.HttpClient" /> instance configured for this ClientFactory. To reconfigure the HttpClient, call <see cref="M:HADotNet.Core.ClientFactory.Initialize(System.String,System.String)" /> again.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.ClientFactory.Initialize(System.Uri,System.String)">
+            <summary>
+            Initializes the client factory with the specified <paramref name="instanceAddress" /> and <paramref name="apiKey" /> which are forwarded to clients instantiated from this factory.
+            </summary>
+            <param name="instanceAddress">The Home Assistant base instance address (do not include /api/).</param>
+            <param name="apiKey">The Home Assistant long-lived access token.</param>
+        </member>
+        <member name="M:HADotNet.Core.ClientFactory.Initialize(System.Uri,System.String,System.Net.Http.HttpClientHandler)">
+            <summary>
+            Initializes the client factory with the specified <paramref name="instanceAddress" /> and <paramref name="apiKey" /> which are forwarded to clients instantiated from this factory.
+            <para>Allows specifying the <paramref name="handler" /> to allow further configuring.</para>
+            </summary>
+            <param name="instanceAddress"></param>
+            <param name="apiKey"></param>
+            <param name="handler"></param>
+        </member>
+        <member name="M:HADotNet.Core.ClientFactory.Initialize(System.String,System.String)">
+            <summary>
+            Initializes the client factory with the specified <paramref name="instanceAddress" /> and <paramref name="apiKey" /> which are forwarded to clients instantiated from this factory.
+            </summary>
+            <param name="instanceAddress">The Home Assistant base instance address (do not include /api/).</param>
+            <param name="apiKey">The Home Assistant long-lived access token.</param>
+        </member>
+        <member name="M:HADotNet.Core.ClientFactory.Initialize(System.String,System.String,System.Net.Http.HttpClientHandler)">
+            <summary>
+            Initializes the client factory with the specified <paramref name="instanceAddress" /> and <paramref name="apiKey" /> which are forwarded to clients instantiated from this factory.
+            <para>Allows specifying the <paramref name="handler" /> to allow further configuring.</para>
+            </summary>
+            <param name="instanceAddress"></param>
+            <param name="apiKey"></param>
+            <param name="handler"></param>
+        </member>
+        <member name="M:HADotNet.Core.ClientFactory.Reset">
+            <summary>
+            Resets the Client Factory to its initial state (not initialized).
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.ClientFactory.GetClient``1">
+            <summary>
+            Retrieves a new instance of a client by type, preconfigured with the same <see cref="T:System.Net.Http.HttpClient" /> as this <see cref="T:HADotNet.Core.ClientFactory" /> (from the last time <see cref="M:HADotNet.Core.ClientFactory.Initialize(System.Uri,System.String)" /> was called).
+            </summary>
+            <typeparam name="TClient">The type of client to get.</typeparam>
+            <exception cref="T:System.Exception">Thrown if this <see cref="T:HADotNet.Core.ClientFactory" /> is not initialized (call <see cref="M:HADotNet.Core.ClientFactory.Initialize(System.Uri,System.String)" /> first).</exception>
+            <returns>A new instance of the specified <typeparamref name="TClient" /> type.</returns>
+        </member>
+        <member name="T:HADotNet.Core.Clients.AutomationClient">
+            <summary>
+            Provides access to the automations API for working with automations.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Clients.AutomationClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HADotNet.Core.Clients.AutomationClient" />.
+            </summary>
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient" /> preconfigured to communicate with a Home Assistant instance.</param>
+        </member>
+        <member name="M:HADotNet.Core.Clients.AutomationClient.Create(HADotNet.Core.Models.AutomationObject)">
+            <summary>
+            Create the <see cref="T:HADotNet.Core.Models.AutomationObject"/>.
+            </summary>
+            <param name="automation">The <see cref="T:HADotNet.Core.Models.AutomationObject"/>.</param>
+            <returns>The <see cref="T:HADotNet.Core.Models.AutomationResultObject"/>.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.AutomationClient.Get(System.String)">
+            <summary>
+            Read the <see cref="T:HADotNet.Core.Models.AutomationObject"/>.
+            </summary>
+            <param name="id">The automation id.</param>
+            <returns>The <see cref="T:HADotNet.Core.Models.AutomationObject"/>.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.AutomationClient.Update(HADotNet.Core.Models.AutomationObject)">
+            <summary>
+            Update the <see cref="T:HADotNet.Core.Models.AutomationObject"/>.
+            </summary>
+            <param name="automation">The <see cref="T:HADotNet.Core.Models.AutomationObject"/>.</param>
+            <returns>The <see cref="T:HADotNet.Core.Models.AutomationResultObject"/>.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.AutomationClient.Delete(System.String)">
+            <summary>
+            Delete the <see cref="T:HADotNet.Core.Models.AutomationObject"/>.
+            </summary>
+            <param name="id">The automation id.</param>
+            <returns>The <see cref="T:HADotNet.Core.Models.AutomationResultObject"/>.</returns>
+        </member>
+        <member name="T:HADotNet.Core.Clients.CalendarClient">
+            <summary>
+            Provides access to the calendar API for retrieving information about calendar entries.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Clients.CalendarClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HADotNet.Core.Clients.CalendarClient" />.
+            </summary>
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient" /> preconfigured to communicate with a Home Assistant instance.</param>
+        </member>
+        <member name="M:HADotNet.Core.Clients.CalendarClient.GetEvents(System.String,System.Int32)">
+            <summary>
+            Retrieves a list of current and future calendar items, from now until the specified <paramref name="daysFromNow" />. The maximum number of results is driven by the "max_results" configuration option in the calendar config.
+            </summary>
+            <param name="calendarEntityName">The full name of the calendar entity. If this paramter does not start with "calendar.", it will be prepended automatically.</param>
+            <param name="daysFromNow">Optional, defaults to 30. The number of days from the current point in time to retrieve calendar items for.</param>
+            <returns>A <see cref="T:System.Collections.Generic.List`1" /> representing the calendar items found.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.CalendarClient.GetEvents(System.String,System.DateTimeOffset,System.DateTimeOffset)">
+            <summary>
+            Retrieves a list of current and future calendar items, between the <paramref name="start" /> and <paramref name="end" /> parameters. The maximum number of results is driven by the "max_results" configuration option in the calendar config.
+            </summary>
+            <param name="calendarEntityName">The full name of the calendar entity. If this paramter does not start with "calendar.", it will be prepended automatically.</param>
+            <param name="start">The start date/time to search.</param>
+            <param name="end">The end date/time to search.</param>
+            <returns>A <see cref="T:System.Collections.Generic.List`1" /> representing the calendar items found.</returns>
+        </member>
+        <member name="T:HADotNet.Core.Clients.CameraProxyClient">
+            <summary>
+            Provides access to the camera proxy API which allows fetching of the current image from a camera entity.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Clients.CameraProxyClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HADotNet.Core.Clients.CameraProxyClient" />.
+            </summary>
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient" /> preconfigured to communicate with a Home Assistant instance.</param>
+        </member>
+        <member name="M:HADotNet.Core.Clients.CameraProxyClient.GetCameraImage(System.String)">
+            <summary>
+            Retrieves the most recently available (still) image data from the specified <paramref name="cameraEntityId" />.
+            </summary>
+            <param name="cameraEntityId">The camera entity ID to reteive the image for.</param>
+            <returns>A byte array containing the still image, typically in JPEG format.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.CameraProxyClient.GetCameraImageAsBase64(System.String,System.Boolean)">
+            <summary>
+            Retrieves the most recently available (still) image data from the specified <paramref name="cameraEntityId" />.
+            </summary>
+            <param name="cameraEntityId">The camera entity ID to reteive the image for.</param>
+            <param name="includeDataPrefix"><c>true</c> to include the prefix "data:image/jpg;base64,", <c>false</c> to omit. Defaults to <c>true</c>.</param>
+            <returns>A web-friendly Base64-encoded still image, in JPEG format.</returns>
+        </member>
+        <member name="T:HADotNet.Core.Clients.ConfigClient">
+            <summary>
+            Provides access to the configuration API for retrieving the current Home Assistant configuration.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Clients.ConfigClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HADotNet.Core.Clients.ConfigClient" />.
+            </summary>
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient" /> preconfigured to communicate with a Home Assistant instance.</param>
+        </member>
+        <member name="M:HADotNet.Core.Clients.ConfigClient.GetConfiguration">
+            <summary>
+            Retrieves the current Home Assistant configuration object.
+            </summary>
+            <returns>A <see cref="T:HADotNet.Core.Models.ConfigurationObject" /> representing the current Home Assistant configuration.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.ConfigClient.CheckConfiguration">
+            <summary>
+            Performs a configuration check and returns the result.
+            </summary>
+            <returns>A <see cref="T:HADotNet.Core.Models.ConfigurationCheckResultObject" /> containing the results of the check, and any errors that occurred.</returns>
+        </member>
+        <member name="T:HADotNet.Core.Clients.DiscoveryClient">
+            <summary>
+            Provides access to the discovery API for retrieving the current Home Assistant instance information.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Clients.DiscoveryClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HADotNet.Core.Clients.DiscoveryClient" />.
+            </summary>
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient" /> preconfigured to communicate with a Home Assistant instance.</param>
+        </member>
+        <member name="M:HADotNet.Core.Clients.DiscoveryClient.GetDiscoveryInfo">
+            <summary>
+            Retrieves the current Home Assistant discovery object.
+            </summary>
+            <returns>A <see cref="T:HADotNet.Core.Models.DiscoveryObject" /> representing the current Home Assistant instance information.</returns>
+        </member>
+        <member name="T:HADotNet.Core.Clients.EntityClient">
+            <summary>
+            Provides a wrapper around the States endpoint for retrieving entity info.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Clients.EntityClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HADotNet.Core.Clients.EntityClient" />.
+            </summary>
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient" /> preconfigured to communicate with a Home Assistant instance.</param>
+        </member>
+        <member name="M:HADotNet.Core.Clients.EntityClient.GetEntities">
+            <summary>
+            Retrieves a list of all current entity names (that have state) in the format "domain.name".
+            </summary>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of strings of all known entities (with state) at the time.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.EntityClient.GetEntities(System.String)">
+            <summary>
+            Retrieves a list of entity names for a particular domain (that have state) in the format "domain.name".
+            </summary>
+            <param name="domainFilter">A domain name to filter the entity list to (e.g. "light").</param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of strings of all known entities (with state) at the time.</returns>
+        </member>
+        <member name="T:HADotNet.Core.Clients.ErrorLogClient">
+            <summary>
+            Provides access to the error log API for retrieving the current error log messages.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Clients.ErrorLogClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HADotNet.Core.Clients.ErrorLogClient" />.
+            </summary>
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient" /> preconfigured to communicate with a Home Assistant instance.</param>
+        </member>
+        <member name="M:HADotNet.Core.Clients.ErrorLogClient.GetErrorLogEntries">
+            <summary>
+            Retrieves a list of error log entries.
+            </summary>
+            <returns>An <see cref="T:HADotNet.Core.Models.ErrorLogObject" /> containing error log entries.</returns>
+        </member>
+        <member name="T:HADotNet.Core.Clients.EventClient">
+            <summary>
+            Provides access to the event API for retrieving information about events and firing events.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Clients.EventClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HADotNet.Core.Clients.EventClient" />.
+            </summary>
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient" /> preconfigured to communicate with a Home Assistant instance.</param>
+        </member>
+        <member name="M:HADotNet.Core.Clients.EventClient.GetEvents">
+            <summary>
+            Retrieves a list of event types from the current Home Assistant instance.
+            </summary>
+            <returns>A list of <see cref="T:HADotNet.Core.Models.EventObject" /> representing the available event types.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.EventClient.FireEvent(System.String,System.Object)">
+            <summary>
+            Fires an event of type <paramref name="eventType" /> on the event bus.
+            </summary>
+            <returns>An <see cref="T:HADotNet.Core.Models.EventFireResultObject" /> with a message on if the event fired successfully or not.</returns>
+        </member>
+        <member name="T:HADotNet.Core.Clients.HistoryClient">
+            <summary>
+            Provides access to the history API for retrieving and querying for historical state information.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Clients.HistoryClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HADotNet.Core.Clients.HistoryClient" />.
+            </summary>
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient" /> preconfigured to communicate with a Home Assistant instance.</param>
+        </member>
+        <member name="M:HADotNet.Core.Clients.HistoryClient.GetHistory">
+            <summary>
+            Retrieves a list of ALL historical states for all entities for the past 1 day. WARNING: On larger HA installs, this can return 300+ entities, over 4 MB of data, and take 20+ seconds.
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.List`1"/> representing a 24-hour history snapshot for all entities.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.HistoryClient.GetHistory(System.DateTimeOffset)">
+            <summary>
+            Retrieves a list of ALL historical states for all entities for the specified day (<paramref name="startDate" /> + 24 hours). WARNING: On larger HA installs, this can return 300+ entities, over 4 MB of data, and take 20+ seconds.
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.List`1"/> representing a 24-hour history snapshot starting from <paramref name="startDate" /> for all entities.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.HistoryClient.GetHistory(System.DateTimeOffset,System.DateTimeOffset)">
+            <summary>
+            Retrieves a list of ALL historical states for all entities for the specified time range, from <paramref name="startDate" /> to <paramref name="endDate" />. WARNING: On larger HA installs, for multiple days, this can return A LOT of data and potentially take a LONG time to return. Use with caution!
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.List`1"/> representing a 24-hour history snapshot, from <paramref name="startDate" /> to <paramref name="endDate" />, for all entities.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.HistoryClient.GetHistory(System.DateTimeOffset,System.TimeSpan)">
+            <summary>
+            Retrieves a list of ALL historical states for all entities for the specified time range, from <paramref name="startDate" />, for the specified <paramref name="duration" />. WARNING: On larger HA installs, for multiple days, this can return A LOT of data and potentially take a LONG time to return. Use with caution!
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.List`1"/> representing a 24-hour history snapshot, from <paramref name="startDate" />, for the specified <paramref name="duration" />, for all entities.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.HistoryClient.GetHistory(System.String,System.DateTimeOffset,System.DateTimeOffset)">
+            <summary>
+            Retrieves a list of historical states for the specified <paramref name="entityId" /> for the specified time range, from <paramref name="startDate" /> to <paramref name="endDate" />.
+            </summary>
+            <param name="entityId">The entity ID to filter on.</param>
+            <param name="startDate">The earliest history entry to retrieve.</param>
+            <param name="endDate">The most recent history entry to retrieve.</param>
+            <returns>A <see cref="T:HADotNet.Core.Models.HistoryList"/> of history snapshots for the specified <paramref name="entityId" />, from <paramref name="startDate" /> to <paramref name="endDate" />.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.HistoryClient.GetHistory(System.String)">
+            <summary>
+            Retrieves a list of historical states for the specified <paramref name="entityId" /> for the past 1 day.
+            </summary>
+            <param name="entityId">The entity ID to retrieve state history for.</param>
+            <returns>A <see cref="T:HADotNet.Core.Models.HistoryList"/> representing a 24-hour history snapshot for the specified <paramref name="entityId" />.</returns>
+        </member>
+        <member name="T:HADotNet.Core.Clients.InfoClient">
+            <summary>
+            Provides access to the info API for retrieving information about Supervisor, Core and Host.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Clients.InfoClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HADotNet.Core.Clients.InfoClient" />.
+            </summary>
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient" /> preconfigured to communicate with a Home Assistant instance.</param>
+        </member>
+        <member name="M:HADotNet.Core.Clients.InfoClient.GetSupervisorInfo">
+            <summary>
+            Retrieves Supervisor information.
+            </summary>
+            <returns>A <see cref="T:HADotNet.Core.Models.SupervisorInfoObject"/> representing Supervisor informatio.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.InfoClient.GetHostInfo">
+            <summary>
+            Retrieves Host information.
+            </summary>
+            <returns>A <see cref="T:HADotNet.Core.Models.HostInfoObject"/> representing Host informatio.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.InfoClient.GetCoreInfo">
+            <summary>
+            Retrieves Core information.
+            </summary>
+            <returns>A <see cref="T:HADotNet.Core.Models.CoreInfoObject"/> representing Host informatio.</returns>
+        </member>
+        <member name="T:HADotNet.Core.Clients.LogbookClient">
+            <summary>
+            Provides access to the Logbook API for retrieving and querying for change events.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Clients.LogbookClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HADotNet.Core.Clients.LogbookClient" />.
+            </summary>
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient" /> preconfigured to communicate with a Home Assistant instance.</param>
+        </member>
+        <member name="M:HADotNet.Core.Clients.LogbookClient.GetLogbookEntries">
+            <summary>
+            Retrieves a list of ALL logbook states for all entities for the past 1 day.
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.List`1"/> representing a 24-hour history snapshot for all entities.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.LogbookClient.GetLogbookEntries(System.DateTimeOffset)">
+            <summary>
+            Retrieves a list of ALL historical states for all entities for the specified day (<paramref name="startDate" /> + 24 hours). WARNING: On larger HA installs, this can return 300+ entities, over 4 MB of data, and take 20+ seconds.
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.List`1"/> representing a 24-hour history snapshot starting from <paramref name="startDate" /> for all entities.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.LogbookClient.GetLogbookEntries(System.DateTimeOffset,System.DateTimeOffset)">
+            <summary>
+            Retrieves a list of ALL historical states for all entities for the specified time range, from <paramref name="startDate" /> to <paramref name="endDate" />. WARNING: On larger HA installs, for multiple days, this can return A LOT of data and potentially take a LONG time to return. Use with caution!
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.List`1"/> representing a 24-hour history snapshot, from <paramref name="startDate" /> to <paramref name="endDate" />, for all entities.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.LogbookClient.GetLogbookEntries(System.DateTimeOffset,System.TimeSpan)">
+            <summary>
+            Retrieves a list of ALL historical states for all entities for the specified time range, from <paramref name="startDate" />, for the specified <paramref name="duration" />. WARNING: On larger HA installs, for multiple days, this can return A LOT of data and potentially take a LONG time to return. Use with caution!
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.List`1"/> representing a 24-hour history snapshot, from <paramref name="startDate" />, for the specified <paramref name="duration" />, for all entities.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.LogbookClient.GetLogbookEntries(System.String,System.DateTimeOffset,System.DateTimeOffset)">
+            <summary>
+            Retrieves a list of historical states for the specified <paramref name="entityId" /> for the specified time range, from <paramref name="startDate" /> to <paramref name="endDate" />.
+            </summary>
+            <param name="entityId">The entity ID to filter on.</param>
+            <param name="startDate">The earliest history entry to retrieve.</param>
+            <param name="endDate">The most recent history entry to retrieve.</param>
+            <returns>A <see cref="T:HADotNet.Core.Models.LogbookObject"/> of history snapshots for the specified <paramref name="entityId" />, from <paramref name="startDate" /> to <paramref name="endDate" />.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.LogbookClient.GetLogbookEntries(System.String)">
+            <summary>
+            Retrieves a list of historical states for the specified <paramref name="entityId" /> for the past 1 day.
+            </summary>
+            <param name="entityId">The entity ID to retrieve state history for.</param>
+            <returns>A <see cref="T:HADotNet.Core.Models.LogbookObject"/> representing a 24-hour history snapshot for the specified <paramref name="entityId" />.</returns>
+        </member>
+        <member name="T:HADotNet.Core.Clients.RootApiClient">
+            <summary>
+            Provides access to the root API call (located at /api/) to ensure the API is working normally.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Clients.RootApiClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HADotNet.Core.Clients.RootApiClient" />.
+            </summary>
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient" /> preconfigured to communicate with a Home Assistant instance.</param>
+        </member>
+        <member name="M:HADotNet.Core.Clients.RootApiClient.GetStatusMessage">
+            <summary>
+            Retrieves the API status message for the Home Assistant instance, to ensure it is running.
+            </summary>
+            <returns>A <see cref="T:HADotNet.Core.Models.MessageObject" /> indicating the status of the connected instance.</returns>
+        </member>
+        <member name="T:HADotNet.Core.Clients.ServiceClient">
+            <summary>
+            Provides access to the service API for retrieving information about services and calling services.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Clients.ServiceClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HADotNet.Core.Clients.ServiceClient" />.
+            </summary>
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient" /> preconfigured to communicate with a Home Assistant instance.</param>
+        </member>
+        <member name="M:HADotNet.Core.Clients.ServiceClient.GetServices">
+            <summary>
+            Retrieves a list of current services, separated into service domains.
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.List`1" /> representing available services grouped by domain.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.ServiceClient.CallService(System.String,System.String,System.Object)">
+            <summary>
+            Calls a service using the given <paramref name="domain" />, <paramref name="service" />, and optionally, <paramref name="fields" />.
+            </summary>
+            <param name="domain">The domain of the service (e.g. "light").</param>
+            <param name="service">The name of the service (e.g. "turn_on").</param>
+            <param name="fields">Optional. An object representing the fields/parameters to pass to the service. Can be an anonymous type, or a <see cref="T:System.Collections.Generic.Dictionary`2">Dictionary&lt;string, object&gt;</see>.</param>
+            <returns></returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.ServiceClient.CallService(System.String,System.Object)">
+            <summary>
+            Calls a service using the given fully-qualified <paramref name="serviceName" />, and optionally, <paramref name="fields" />.
+            </summary>
+            <param name="serviceName">The fully-qualified service name (e.g. "light.turn_on").</param>
+            <param name="fields">Optional. An object representing the fields/parameters to pass to the service. Can be an anonymous type, or a <see cref="T:System.Collections.Generic.Dictionary`2">Dictionary&lt;string, object&gt;</see>.</param>
+            <returns></returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.ServiceClient.CallService(System.String,System.String,System.String)">
+            <summary>
+            Calls a service using the given <paramref name="domain" />, <paramref name="service" />, and optionally, <paramref name="fields" />.
+            </summary>
+            <param name="domain">The domain of the service (e.g. "light").</param>
+            <param name="service">The name of the service (e.g. "turn_on").</param>
+            <param name="fields">Optional. A JSON string representing the fields/parameters to pass to the service. Ensure the JSON is a well-formatted object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.ServiceClient.CallService(System.String,System.String)">
+            <summary>
+            Calls a service using the given fully-qualified <paramref name="serviceName" />, and optionally, <paramref name="fields" />.
+            </summary>
+            <param name="serviceName">The fully-qualified service name (e.g. "light.turn_on").</param>
+            <param name="fields">Optional. A JSON string representing the fields/parameters to pass to the service. Ensure the JSON is a well-formatted object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.ServiceClient.CallServiceForEntities(System.String,System.String[])">
+            <summary>
+            Calls a service using the given fully-qualified <paramref name="serviceName" /> and one or more <paramref name="entityIds" />.
+            </summary>
+            <param name="serviceName">The fully-qualified service name (e.g. "light.turn_on").</param>
+            <param name="entityIds">The entity IDs to pass to the service (using the <c>entity_ids</c> parameter).</param>
+            <returns></returns>
+        </member>
+        <member name="T:HADotNet.Core.Clients.StatesClient">
+            <summary>
+            Provides access to the states API for retrieving information about the current state of entities.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Clients.StatesClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HADotNet.Core.Clients.StatesClient" />.
+            </summary>
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient" /> preconfigured to communicate with a Home Assistant instance.</param>
+        </member>
+        <member name="M:HADotNet.Core.Clients.StatesClient.GetStates">
+            <summary>
+            Retrieves a list of current entities and their states.
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.List`1" /> representing the current state.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.StatesClient.GetState(System.String)">
+            <summary>
+            Retrieves the state of an entity by its ID.
+            </summary>
+            <returns>A <see cref="T:HADotNet.Core.Models.StateObject" /> representing the current state of the requested <paramref name="entityId" />.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.StatesClient.SetState(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Sets the state of an entity. If the entity does not exist, it will be created.
+            </summary>
+            <param name="entityId">The entity ID of the state to change.</param>
+            <param name="newState">The new state value.</param>
+            <param name="setAttributes">Optional. The attributes to set.</param>
+            <returns>A <see cref="T:HADotNet.Core.Models.StateObject" /> representing the updated state of the updated <paramref name="entityId" />.</returns>
+        </member>
+        <member name="T:HADotNet.Core.Clients.StatsClient">
+            <summary>
+            Provides access to the info API for retrieving statistics about Supervisor and Core.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Clients.StatsClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HADotNet.Core.Clients.StatsClient" />.
+            </summary>
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient" /> preconfigured to communicate with a Home Assistant instance.</param>
+        </member>
+        <member name="M:HADotNet.Core.Clients.StatsClient.GetSupervisorStats">
+            <summary>
+            Retrieves Supervisor information.
+            </summary>
+            <returns>A <see cref="T:HADotNet.Core.Models.StatsObject"/> representing Supervisor stats.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Clients.StatsClient.GetCoreStats">
+            <summary>
+            Retrieves Core stats.
+            </summary>
+            <returns>A <see cref="T:HADotNet.Core.Models.StatsObject"/> representing Core stats.</returns>
+        </member>
+        <member name="T:HADotNet.Core.Clients.TemplateClient">
+            <summary>
+            Provides access to the template API for rendering Home Assistant templates.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Clients.TemplateClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HADotNet.Core.Clients.TemplateClient" />.
+            </summary>
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient" /> preconfigured to communicate with a Home Assistant instance.</param>
+        </member>
+        <member name="M:HADotNet.Core.Clients.TemplateClient.RenderTemplate(System.String)">
+            <summary>
+            Renders a template and returns the resulting output as a string.
+            </summary>
+            <returns>A string of the rendered template output.</returns>
+        </member>
+        <member name="T:HADotNet.Core.Domain.HttpResponseException">
+            <summary>
+            Represents a failed HTTP call to a Home Assistant endpoint.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Domain.HttpResponseException.StatusCode">
+            <summary>
+            Gets the status code for the HTTP response.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Domain.HttpResponseException.NetworkDescription">
+            <summary>
+            Gets the network description, if the error was at the network level.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Domain.HttpResponseException.RequestPath">
+            <summary>
+            Gets the original request path.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Domain.HttpResponseException.ResponseBody">
+            <summary>
+            Gets the error response body.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Domain.HttpResponseException.#ctor(System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new HttpResponseException.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Domain.HttpResponseException.#ctor(System.Int32,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new HttpResponseException.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Domain.HttpResponseException.#ctor(System.Int32,System.String,System.String,System.String,System.String,System.Exception)">
+            <summary>
+            Initializes a new HttpResponseException.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Domain.SupervisorNotFoundException">
+            <summary>
+            The exception that occurs when a Supervisor-only API call is made to a non-Supervisor environment.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Domain.SupervisorNotFoundException.#ctor">
+            <summary>
+            Initializes a new instance of the SupervisorNotFoundException.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Domain.SupervisorNotFoundException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the SupervisorNotFoundException.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Domain.SupervisorNotFoundException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the SupervisorNotFoundException.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.AddonObject">
+            <summary>
+            Represents Add-on object.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.AddonObject.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.AddonObject.Icon">
+            <summary>
+            <c>True</c> if icon is available, otherwise <c>False</c>.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.AddonObject.Logo">
+            <summary>
+            <c>True</c> if logo is available, otherwise <c>False</c>.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.AddonObject.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.AddonObject.Repository">
+            <summary>
+            Gets or sets the repository.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.AddonObject.Slug">
+            <summary>
+            Gets or sets the slug.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.AddonObject.State">
+            <summary>
+            Gets or sets the state.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.AddonObject.UpdateAvailable">
+            <summary>
+            <c>True</c> if update is available, otherwise <c>False</c>.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.AddonObject.Version">
+            <summary>
+            Gets or sets the version.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.AddonObject.VersionLatest">
+            <summary>
+            Gets or sets the latest version.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.AutomationObject">
+            <summary>
+            Represents automation object.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.AutomationObject.Id">
+            <summary>
+            Gets or sets the ID.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.AutomationObject.Alias">
+            <summary>
+            Gets or sets the alias.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.AutomationObject.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.AutomationObject.Actions">
+            <summary>
+            Gets or sets the actions.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.AutomationObject.Conditions">
+            <summary>
+            Gets or sets the conditions.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.AutomationObject.Triggers">
+            <summary>
+            Gets or sets the triggers.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.AutomationResultObject">
+            <summary>
+            Represents the automation result.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.AutomationResultObject.Result">
+            <summary>
+            Gets or sets the automation result.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.CalendarObject">
+            <summary>
+            Represents a calendar item from the Calendar API.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.Attendees">
+            <summary>
+            Gets or sets the Attendee list, if applicable.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.Created">
+            <summary>
+            Gets or sets the Created time of the event.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.Creator">
+            <summary>
+            Gets or sets the creator of the event.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.End">
+            <summary>
+            Gets or sets the end time of the event.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.Etag">
+            <summary>
+            Gets or sets the eTag for this object.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.HtmlLink">
+            <summary>
+            Gets or sets the HTML link for this calendar item.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.ICalUID">
+            <summary>
+            Gets or sets the iCal UID for this calendar item.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.Id">
+            <summary>
+            Gets or sets the unique ID of this calendar item.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.Kind">
+            <summary>
+            Gets or sets the kind of item (e.g. "calendar#event").
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.Location">
+            <summary>
+            Gets or sets the location of the event.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.Organizer">
+            <summary>
+            Gets or sets the organizer of the event.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.OriginalStartTime">
+            <summary>
+            Gets or sets the original start time of the event.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.RecurringEventId">
+            <summary>
+            Gets or sets the recurring ID, if this is a recurring item.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.Reminders">
+            <summary>
+            Gets or sets if there are any reminders for this event.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.Sequence">
+            <summary>
+            Gets or sets the sequence number of this event, if applicable.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.Start">
+            <summary>
+            Gets or sets the start time of the event.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.Status">
+            <summary>
+            Gets or sets the status of this event (e.g. "confirmed").
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.Summary">
+            <summary>
+            Gets or sets the summary, or title, of this event.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.Transparency">
+            <summary>
+            Gets or sets the transparency of this event (e.g. "transparent").
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarObject.Updated">
+            <summary>
+            Gets or sets the timestamp when this item was last updated.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.CalendarPersonObject">
+            <summary>
+            Represents a person (an organizer, an attendee, etc) for an event.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarPersonObject.DisplayName">
+            <summary>
+            Gets or sets the display name for this person.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarPersonObject.Email">
+            <summary>
+            Gets or sets the person's e-mail address.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarPersonObject.ResponseStatus">
+            <summary>
+            Gets or sets the response if this is an attendee person (e.g. "accepted").
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarPersonObject.Self">
+            <summary>
+            Gets or sets if this is the same person as the owner of this calendar (yourself).
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarPersonObject.Organizer">
+            <summary>
+            Gets or sets if this is the organizer of the event, for attendees.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.CalendarDateTimeObject">
+            <summary>
+            Represents a date/time with a timezone.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarDateTimeObject.Date">
+            <summary>
+            The date of the event, if the event is all-day.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarDateTimeObject.DateTime">
+            <summary>
+            The date/time of the event, in local time (with an offset).
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarDateTimeObject.TimeZone">
+            <summary>
+            The timezone of this date/time. Not always present.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.CalendarReminderOverrideObject">
+            <summary>
+            Represents a reminder override notification.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarReminderOverrideObject.Method">
+            <summary>
+            The method of notification.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarReminderOverrideObject.Minutes">
+            <summary>
+            The number of minutes before the event starts.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.CalendarRemindersObject">
+            <summary>
+            Represents a set of reminders for an event.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarRemindersObject.UseDefault">
+            <summary>
+            Whether or not to use the account's default reminder period for this event.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CalendarRemindersObject.Overrides">
+            <summary>
+            A list of specific notifications or reminders for this event only.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.ConfigurationCheckResultObject">
+            <summary>
+            Represents the Home Assistant configuration object.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ConfigurationCheckResultObject.Errors">
+            <summary>
+            Gets the errors that occurred. This value is <see langword="null" /> if <see cref="P:HADotNet.Core.Models.ConfigurationCheckResultObject.Result" /> is <c>valid</c>.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ConfigurationCheckResultObject.Result">
+            <summary>
+            Gets the result of the configuration check. Valid values are <c>valid</c> and <c>invalid</c>.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Models.ConfigurationCheckResultObject.ToString">
+            <summary>
+            Gets a string representation of this object.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.ConfigurationObject">
+            <summary>
+            Represents the Home Assistant configuration object.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ConfigurationObject.Components">
+            <summary>
+            Gets or sets the list of components loaded, in the [domain] or [domain].[component] format.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ConfigurationObject.ConfigDirectory">
+            <summary>
+            Gets or sets the relative path to the config directory (usually "/config").
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ConfigurationObject.ConfigSource">
+            <summary>
+            Gets or sets the config source, or type of configuration file (usually "yaml").
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ConfigurationObject.Elevation">
+            <summary>
+            Gets or sets the elevation (in meters) of the current location.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ConfigurationObject.Latitude">
+            <summary>
+            Gets or sets the latitude of the current location.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ConfigurationObject.Longitude">
+            <summary>
+            Gets or sets the longitude of the current location.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ConfigurationObject.LocationName">
+            <summary>
+            Gets or sets the location's friendly name.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ConfigurationObject.TimeZone">
+            <summary>
+            Gets or sets the time zone name (in "tz database" name format, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ConfigurationObject.UnitSystem">
+            <summary>
+            Gets or sets information about the various measurement unit preferences.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ConfigurationObject.Version">
+            <summary>
+            Gets or sets the version of Home Assistant that is currently running (e.g. 0.96.1).
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ConfigurationObject.WhitelistedExternalDirs">
+            <summary>
+            Gets or sets a list of relative paths that are approved to be exposed externally (e.g. /config/www).
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Models.ConfigurationObject.ToString">
+            <summary>
+            Gets a string representation of this object.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.ContextObject">
+            <summary>
+            Represents an entity state's context.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ContextObject.Id">
+            <summary>
+            Gets or sets the ID of this context.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ContextObject.ParentId">
+            <summary>
+            Gets or sets the Parent Context ID if this element is a child of another context, otherwise <see langword="null" />.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ContextObject.UserId">
+            <summary>
+            Gets or sets the User ID of this element, or <see langword="null" /> for the default user or no user.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Models.ContextObject.ToString">
+            <summary>
+            Gets a string representation of this object.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.CoreInfoObject">
+            <summary>
+            Represents Core info object.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CoreInfoObject.Arch">
+            <summary>
+            Gets or sets the processor architecture.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CoreInfoObject.AudioInput">
+            <summary>
+            Gets or sets the audio input.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CoreInfoObject.AudioOutput">
+            <summary>
+            Gets or sets the audio output.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CoreInfoObject.Boot">
+            <summary>
+            <code>True</code> if booted, otherwise <code>False</code>.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CoreInfoObject.Image">
+            <summary>
+            Gets or sets the image.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CoreInfoObject.IpAddress">
+            <summary>
+            Gets or sets the IP address.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CoreInfoObject.LastVersion">
+            <summary>
+            Gets or sets the last_version.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CoreInfoObject.Machine">
+            <summary>
+            Gets or sets the machine.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CoreInfoObject.Port">
+            <summary>
+            Gets or sets the port.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CoreInfoObject.Ssl">
+            <summary>
+            <code>True</code> if SSL is enabled, otherwise <code>False</code>.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CoreInfoObject.UpdateAvailable">
+            <summary>
+            <code>True</code> if update is available, otherwise <code>False</code>.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CoreInfoObject.Version">
+            <summary>
+            Gets or sets the version.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CoreInfoObject.VersionLatest">
+            <summary>
+            Gets or sets the latest version.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CoreInfoObject.WaitBoot">
+            <summary>
+            Gets or sets the wait boot timeout.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.CoreInfoObject.Watchdog">
+            <summary>
+            <code>True</code> if watchdog is enabled, otherwise <code>False</code>.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.DiscoveryObject">
+            <summary>
+            Represents a discovery info object, used to convey basic information about the HA instance.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.DiscoveryObject.BaseUrl">
+            <summary>
+            Gets or sets the Base URL for the instance (e.g. http://192.168.0.2:8123).
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.DiscoveryObject.LocationName">
+            <summary>
+            Gets or sets the location name for this instance (e.g. "Home").
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.DiscoveryObject.RequiresApiPassword">
+            <summary>
+            Gets or sets whether or not a password is required to use the API. (should most always be "true").
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.DiscoveryObject.Version">
+            <summary>
+            Gets or sets the current version of Home Assistant (e.g. 0.96.1).
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Models.DiscoveryObject.ToString">
+            <summary>
+            Gets a string representation of this object.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.ErrorLogObject">
+            <summary>
+            Represents an error log entry.
+            </summary>
+        </member>
+        <member name="F:HADotNet.Core.Models.ErrorLogObject.NewLogLineRegex">
+            <summary>
+            Gets a Regex object representing a new log line.
+            </summary>
+        </member>
+        <member name="F:HADotNet.Core.Models.ErrorLogObject.LogTypeError">
+            <summary>
+            Gets a Regex object representing an error line.
+            </summary>
+        </member>
+        <member name="F:HADotNet.Core.Models.ErrorLogObject.LogTypeWarning">
+            <summary>
+            Gets a Regex object representing a warning line.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ErrorLogObject.RawLog">
+            <summary>
+            Gets the full, raw log text.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ErrorLogObject.LogEntries">
+            <summary>
+            Gets the list of log entries.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ErrorLogObject.Errors">
+            <summary>
+            Gets only log lines with a type of "ERROR".
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ErrorLogObject.Warnings">
+            <summary>
+            Gets only log lines with a type of "WARNING".
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ErrorLogObject.Item(System.Int32)">
+            <summary>
+            Gets the most recent <paramref name="count" /> of entries, sorted newest first.
+            </summary>
+            <param name="count">The number of entries to retrieve.</param>
+            <returns>A list of log entries of the specified <paramref name="count" />, newest first.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Models.ErrorLogObject.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the error log object with the specified <paramref name="log" /> data.
+            </summary>
+            <param name="log">The raw log data to parse.</param>
+        </member>
+        <member name="M:HADotNet.Core.Models.ErrorLogObject.ParseLog(System.String)">
+            <summary>
+            Parses the raw log text and splits each entry out based on whether or not the line starts with a date.
+            </summary>
+            <param name="log">The log text to parse.</param>
+            <returns>A parsed list of log entries.</returns>
+        </member>
+        <member name="T:HADotNet.Core.Models.EventFireResultObject">
+            <summary>
+            Represents the result of an event firing.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.EventFireResultObject.Message">
+            <summary>
+            Gets the resulting message from the event fire command.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.EventObject">
+            <summary>
+            Represents an event definition in Home Assistant.
+            </summary>
+        </member>
+        <member name="F:HADotNet.Core.Models.EventObject.GlobalEvent">
+            <summary>
+            Gets the global event string (*).
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.EventObject.Event">
+            <summary>
+            Gets the event's name.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.EventObject.ListenerCount">
+            <summary>
+            Gets the listener count for this event.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Models.EventObject.ToString">
+            <summary>
+            Gets a string representation of this object.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.HistoryList">
+            <summary>
+            Represents a list of one or more historical states for an entity.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.HistoryList.EntityId">
+            <summary>
+            Gets the EntityId for the state objects in this list.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.HistoryList.DateFrom">
+            <summary>
+            Gets the earliest point in time represented by this history list.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.HistoryList.DateTo">
+            <summary>
+            Gets the most recent point in time represented by this history list.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Models.HistoryList.ToString">
+            <summary>
+            Gets a string representation of this object.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.HostInfoObject">
+            <summary>
+            Represents Host info object.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.HostInfoObject.Chassis">
+            <summary>
+            Gets or sets the chassis type.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.HostInfoObject.Cpe">
+            <summary>
+            Gets or sets the CPE string.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.HostInfoObject.Deployment">
+            <summary>
+            Gets or sets the deployment type (e.g. production).
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.HostInfoObject.DiskFree">
+            <summary>
+            Gets or sets the disk free, expressed in GB.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.HostInfoObject.DiskTotal">
+            <summary>
+            Gets or sets the disk total, expressed in GB.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.HostInfoObject.DiskUsed">
+            <summary>
+            Gets or sets the disk used, expressed in GB.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.HostInfoObject.Features">
+            <summary>
+            Gets or sets the feature list.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.HostInfoObject.Hostname">
+            <summary>
+            Gets or sets the hostname.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.HostInfoObject.Kernel">
+            <summary>
+            Gets or sets the kernel version.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.HostInfoObject.OperatingSystem">
+            <summary>
+            Gets or sets the operating system.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.LogbookObject">
+            <summary>
+            Represents a logbook entry object. The only consistently available properties are <see cref="P:HADotNet.Core.Models.LogbookObject.Timestamp" />, <see cref="P:HADotNet.Core.Models.LogbookObject.Name" />, and <see cref="P:HADotNet.Core.Models.LogbookObject.EntityId" />.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.LogbookObject.EntityId">
+            <summary>
+            Gets or sets the entity ID for this entry.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.LogbookObject.Domain">
+            <summary>
+            Gets or sets the domain.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.LogbookObject.ContextUserId">
+            <summary>
+            Gets or sets the context user ID associated with this entry.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.LogbookObject.ContextEntityId">
+            <summary>
+            Gets or sets the context entity ID associated with this entry. (For example, which automation triggered this change?)
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.LogbookObject.ContextEntityIdName">
+            <summary>
+            Gets or sets the friendly name for the <see cref="P:HADotNet.Core.Models.LogbookObject.ContextEntityId" />. This is sometimes the same as <see cref="P:HADotNet.Core.Models.LogbookObject.ContextName" />.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.LogbookObject.ContextEventType">
+            <summary>
+            Gets or sets the type of associated change, for example, if an automation triggered this event, the value is 'automation_triggered'.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.LogbookObject.ContextDomain">
+            <summary>
+            Gets or sets the domain associated with the context entity. For example, if an automation triggered this change, the value is 'automation'.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.LogbookObject.ContextName">
+            <summary>
+            Gets or sets the name associated with the context entity (e.g. the name of the automation). This is sometimes the same as <see cref="P:HADotNet.Core.Models.LogbookObject.ContextEntityIdName" />.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.LogbookObject.State">
+            <summary>
+            Gets or sets the new state that the entity transitioned to.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.LogbookObject.Source">
+            <summary>
+            Gets or sets the source for this logbook entry (i.e. what triggered this change).
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.LogbookObject.Message">
+            <summary>
+            Gets or sets the message, a brief description of what happened.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.LogbookObject.Name">
+            <summary>
+            Gets or sets the category name for this entry.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.LogbookObject.Timestamp">
+            <summary>
+            Gets or sets the timestmap when this entry occurred..
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.MessageObject">
+            <summary>
+            Represents a basic message object returned from the server (e.g. an object with a "message" property).
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.MessageObject.Message">
+            <summary>
+            Gets or sets the message for this message object.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.ResponseObject`1">
+            <summary>
+            Represents Home Assistant response.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:HADotNet.Core.Models.ResponseObject`1.Result">
+            <summary>
+            Gets or sets the result.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ResponseObject`1.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.ServiceDomainObject">
+            <summary>
+            Represents a service domain definition in Home Assistant.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ServiceDomainObject.Domain">
+            <summary>
+            Gets the service domain's name.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ServiceDomainObject.Services">
+            <summary>
+            Gets the list of services in this domain.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ServiceDomainObject.FlatServiceList">
+            <summary>
+            Gets a flat, fully-qualified list of services in this service domain.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ServiceDomainObject.Item(System.String)">
+            <summary>
+            Retrieves a service object from this domain by its name, or returns <see langword="null" /> if the service does not exist.
+            </summary>
+            <param name="service">The service name to retrieve.</param>
+            <returns>The <see cref="T:HADotNet.Core.Models.ServiceObject" />, if the name exists in this domain, otherwise <see langword="null" />.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Models.ServiceDomainObject.TryGetService(System.String,System.String@)">
+            <summary>
+            If the specified <paramref name="serviceName" /> exists, populates the <paramref name="fullServiceName" /> with the 
+            fully qualified service name (domain.service), and returns <see langword="true" />. Otherwise, if the service does not exist, 
+            returns <see langword="false" />.
+            </summary>
+            <param name="serviceName">The relative name of the service to look up in this service domain.</param>
+            <param name="fullServiceName">Upon successful match, will be set to the fullly qualified service name (domain.service). Otherwise, <see langword="null" />.</param>
+            <returns><see langword="true" /> if a match was found, otherwise <see langword="false" />.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Models.ServiceDomainObject.ToString">
+            <summary>
+            Gets a string representation of this object.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.ServiceFieldObject">
+            <summary>
+            Represents a signle field in a service call.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ServiceFieldObject.Description">
+            <summary>
+            Gets or sets the description of this field.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ServiceFieldObject.Example">
+            <summary>
+            Gets or sets the example text for this field (may be <see langword="null" />).
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.ServiceObject">
+            <summary>
+            Represents a signle service definition.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ServiceObject.Description">
+            <summary>
+            The description of the service object.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.ServiceObject.Fields">
+            <summary>
+            The fields/parameters that the service supports.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.StateObject">
+            <summary>
+            Represents a single entity's state.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.StateObject.EntityId">
+            <summary>
+            Gets or sets the Entity ID that this state represents.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.StateObject.State">
+            <summary>
+            Gets or sets the string representation of the state that this entity is currently in.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.StateObject.Attributes">
+            <summary>
+            Gets or sets the entity's current attributes and values.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.StateObject.Context">
+            <summary>
+            Gets or sets the context for this entity's state.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.StateObject.LastChanged">
+            <summary>
+            Gets or sets the UTC date and time that this state was last changed.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.StateObject.LastUpdated">
+            <summary>
+            Gets or sets the UTC date and time that this state was last updated.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Models.StateObject.GetAttributeValue``1(System.String)">
+            <summary>
+            Attempts to get the value of the specified attribute by <paramref name="name" />, and cast the value to type <typeparamref name="T" />.
+            </summary>
+            <exception cref="T:System.InvalidCastException">Thrown when the specified type <typeparamref name="T" /> cannot be cast to the attribute's current value.</exception>
+            <typeparam name="T">The desired type to cast the attribute value to.</typeparam>
+            <param name="name">The name of the attribute to retrieve the value for.</param>
+            <returns>The attribute's current value, cast to type <typeparamref name="T" />.</returns>
+        </member>
+        <member name="M:HADotNet.Core.Models.StateObject.ToString">
+            <summary>
+            Gets a string representation of this entity's state.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.StatsObject">
+            <summary>
+            Represents the stats object.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.StatsObject.BlkRead">
+            <summary>
+            Gets or sets the number of bulk reads.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.StatsObject.BlkWrite">
+            <summary>
+            Gets or sets the number of bulk writes.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.StatsObject.CpuPercent">
+            <summary>
+            Gets or sets the CPU usage percent.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.StatsObject.MemoryLimit">
+            <summary>
+            Gets or sets the memory limit.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.StatsObject.MemoryPercent">
+            <summary>
+            Gets or sets the memory usage percent.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.StatsObject.MemoryUsage">
+            <summary>
+            Gets or sets the memory usage.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.StatsObject.NetworkRx">
+            <summary>
+            Gets or sets the network rx.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.StatsObject.NetworkTx">
+            <summary>
+            Gets or sets the network tx.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.SupervisorInfoObject">
+            <summary>
+            Represents Supervisor info object.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.SupervisorInfoObject.Addons">
+            <summary>
+            Gets or sets the addons.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.SupervisorInfoObject.AddonsRepositories">
+            <summary>
+            Gets or sets the addons repositories.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.SupervisorInfoObject.Arch">
+            <summary>
+            Gets or sets the processor architecture.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.SupervisorInfoObject.Channel">
+            <summary>
+            Gets or sets the processor channel.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.SupervisorInfoObject.Debug">
+            <summary>
+            <code>True</code> if debug, otherwise <code>False</code>.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.SupervisorInfoObject.DebugBlock">
+            <summary>
+            <code>True</code> if debug block, otherwise <code>False</code>.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.SupervisorInfoObject.Diagnostics">
+            <summary>
+            <code>True</code> if diagnostics is available, otherwise <code>False</code>.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.SupervisorInfoObject.Healthy">
+            <summary>
+            <code>True</code> if healthy, otherwise <code>False</code>.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.SupervisorInfoObject.IpAddress">
+            <summary>
+            Gets or sets the IP address.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.SupervisorInfoObject.Logging">
+            <summary>
+            Gets or sets the logging.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.SupervisorInfoObject.Supported">
+            <summary>
+            <code>True</code> if supported, otherwise <code>False</code>.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.SupervisorInfoObject.Timezone">
+            <summary>
+            Gets or sets the timezone.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.SupervisorInfoObject.UpdateAvailable">
+            <summary>
+            <code>True</code> if update is available, otherwise <code>False</code>.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.SupervisorInfoObject.Version">
+            <summary>
+            Gets or sets the version.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.SupervisorInfoObject.VersionLatest">
+            <summary>
+            Gets or sets the latest version.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.SupervisorInfoObject.WaitBoot">
+            <summary>
+            Gets or sets the wait boot timeout.
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Models.UnitSystemObject">
+            <summary>
+            Represents the Unit System, part of the <see cref="T:HADotNet.Core.Models.ConfigurationObject" />.
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.UnitSystemObject.Length">
+            <summary>
+            The length unit (e.g. mi, km).
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.UnitSystemObject.Mass">
+            <summary>
+            The mass unit (e.g. lb, kg).
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.UnitSystemObject.Pressure">
+            <summary>
+            The pressure unit (e.g. psi, bar).
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.UnitSystemObject.Temperature">
+            <summary>
+            The temperature unit including degree symbol (e.g. °F, °C).
+            </summary>
+        </member>
+        <member name="P:HADotNet.Core.Models.UnitSystemObject.Volume">
+            <summary>
+            The volume unit (e.g. gal, L).
+            </summary>
+        </member>
+        <member name="T:HADotNet.Core.Utility.ServiceExampleDeserializer">
+            <summary>
+            Deserializes the "Example" field into a string regardless of its type.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Utility.ServiceExampleDeserializer.CanConvert(System.Type)">
+            <summary>
+            Always attempt to deserialize examples.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Utility.ServiceExampleDeserializer.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Read the JSON into a string.
+            </summary>
+        </member>
+        <member name="M:HADotNet.Core.Utility.ServiceExampleDeserializer.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Read-only, no writing.
+            </summary>
+        </member>
+    </members>
+</doc>

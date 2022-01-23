@@ -31,10 +31,9 @@ namespace HASSAgent.Forms.Sensors
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SensorsMod));
             this.BtnStore = new Syncfusion.WinForms.Controls.SfButton();
-            this.LblSetting = new System.Windows.Forms.Label();
-            this.TbSetting = new System.Windows.Forms.TextBox();
+            this.LblSetting1 = new System.Windows.Forms.Label();
+            this.TbSetting1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.CbType = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.TbName = new System.Windows.Forms.TextBox();
             this.TbIntInterval = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
@@ -43,6 +42,11 @@ namespace HASSAgent.Forms.Sensors
             this.label5 = new System.Windows.Forms.Label();
             this.TbDescription = new System.Windows.Forms.RichTextBox();
             this.PnlDescription = new System.Windows.Forms.Panel();
+            this.LblSetting2 = new System.Windows.Forms.Label();
+            this.TbSetting2 = new System.Windows.Forms.TextBox();
+            this.LblSetting3 = new System.Windows.Forms.Label();
+            this.TbSetting3 = new System.Windows.Forms.TextBox();
+            this.CbType = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.TbIntInterval)).BeginInit();
             this.PnlDescription.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +58,7 @@ namespace HASSAgent.Forms.Sensors
             this.BtnStore.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BtnStore.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnStore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnStore.Location = new System.Drawing.Point(0, 238);
+            this.BtnStore.Location = new System.Drawing.Point(0, 342);
             this.BtnStore.Name = "BtnStore";
             this.BtnStore.Size = new System.Drawing.Size(765, 38);
             this.BtnStore.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -64,33 +68,33 @@ namespace HASSAgent.Forms.Sensors
             this.BtnStore.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnStore.TabIndex = 3;
+            this.BtnStore.TabIndex = 5;
             this.BtnStore.Text = "store sensor";
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
-            // LblSetting
+            // LblSetting1
             // 
-            this.LblSetting.AutoSize = true;
-            this.LblSetting.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblSetting.Location = new System.Drawing.Point(9, 171);
-            this.LblSetting.Name = "LblSetting";
-            this.LblSetting.Size = new System.Drawing.Size(44, 17);
-            this.LblSetting.TabIndex = 12;
-            this.LblSetting.Text = "config";
-            this.LblSetting.Visible = false;
+            this.LblSetting1.AutoSize = true;
+            this.LblSetting1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSetting1.Location = new System.Drawing.Point(9, 174);
+            this.LblSetting1.Name = "LblSetting1";
+            this.LblSetting1.Size = new System.Drawing.Size(58, 17);
+            this.LblSetting1.TabIndex = 12;
+            this.LblSetting1.Text = "setting 1";
+            this.LblSetting1.Visible = false;
             // 
-            // TbSetting
+            // TbSetting1
             // 
-            this.TbSetting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.TbSetting.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TbSetting.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbSetting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbSetting.Location = new System.Drawing.Point(12, 191);
-            this.TbSetting.Name = "TbSetting";
-            this.TbSetting.Size = new System.Drawing.Size(328, 25);
-            this.TbSetting.TabIndex = 2;
-            this.TbSetting.Visible = false;
+            this.TbSetting1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.TbSetting1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbSetting1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbSetting1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.TbSetting1.Location = new System.Drawing.Point(12, 194);
+            this.TbSetting1.Name = "TbSetting1";
+            this.TbSetting1.Size = new System.Drawing.Size(328, 25);
+            this.TbSetting1.TabIndex = 2;
+            this.TbSetting1.Visible = false;
             // 
             // label1
             // 
@@ -101,19 +105,6 @@ namespace HASSAgent.Forms.Sensors
             this.label1.Size = new System.Drawing.Size(33, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "type";
-            // 
-            // CbType
-            // 
-            this.CbType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.CbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CbType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CbType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.CbType.FormattingEnabled = true;
-            this.CbType.Location = new System.Drawing.Point(12, 35);
-            this.CbType.Name = "CbType";
-            this.CbType.Size = new System.Drawing.Size(328, 25);
-            this.CbType.TabIndex = 0;
-            this.CbType.SelectedIndexChanged += new System.EventHandler(this.CbType_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -148,7 +139,7 @@ namespace HASSAgent.Forms.Sensors
             this.TbIntInterval.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TbIntInterval.IntegerValue = ((long)(5));
             this.TbIntInterval.Location = new System.Drawing.Point(99, 131);
-            this.TbIntInterval.MaxValue = ((long)(300));
+            this.TbIntInterval.MaxValue = ((long)(43200));
             this.TbIntInterval.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.TbIntInterval.MinValue = ((long)(1));
             this.TbIntInterval.Name = "TbIntInterval";
@@ -207,7 +198,7 @@ namespace HASSAgent.Forms.Sensors
             this.TbDescription.Location = new System.Drawing.Point(0, 0);
             this.TbDescription.Name = "TbDescription";
             this.TbDescription.ReadOnly = true;
-            this.TbDescription.Size = new System.Drawing.Size(352, 179);
+            this.TbDescription.Size = new System.Drawing.Size(352, 288);
             this.TbDescription.TabIndex = 18;
             this.TbDescription.Text = "";
             this.TbDescription.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.TbDescription_LinkClicked);
@@ -218,8 +209,71 @@ namespace HASSAgent.Forms.Sensors
             this.PnlDescription.Controls.Add(this.TbDescription);
             this.PnlDescription.Location = new System.Drawing.Point(401, 35);
             this.PnlDescription.Name = "PnlDescription";
-            this.PnlDescription.Size = new System.Drawing.Size(354, 181);
+            this.PnlDescription.Size = new System.Drawing.Size(354, 290);
             this.PnlDescription.TabIndex = 19;
+            // 
+            // LblSetting2
+            // 
+            this.LblSetting2.AutoSize = true;
+            this.LblSetting2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSetting2.Location = new System.Drawing.Point(9, 227);
+            this.LblSetting2.Name = "LblSetting2";
+            this.LblSetting2.Size = new System.Drawing.Size(54, 17);
+            this.LblSetting2.TabIndex = 21;
+            this.LblSetting2.Text = "setting2";
+            this.LblSetting2.Visible = false;
+            // 
+            // TbSetting2
+            // 
+            this.TbSetting2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.TbSetting2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbSetting2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbSetting2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.TbSetting2.Location = new System.Drawing.Point(12, 247);
+            this.TbSetting2.Name = "TbSetting2";
+            this.TbSetting2.Size = new System.Drawing.Size(328, 25);
+            this.TbSetting2.TabIndex = 3;
+            this.TbSetting2.Visible = false;
+            // 
+            // LblSetting3
+            // 
+            this.LblSetting3.AutoSize = true;
+            this.LblSetting3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSetting3.Location = new System.Drawing.Point(9, 280);
+            this.LblSetting3.Name = "LblSetting3";
+            this.LblSetting3.Size = new System.Drawing.Size(58, 17);
+            this.LblSetting3.TabIndex = 23;
+            this.LblSetting3.Text = "setting 3";
+            this.LblSetting3.Visible = false;
+            // 
+            // TbSetting3
+            // 
+            this.TbSetting3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.TbSetting3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbSetting3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbSetting3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.TbSetting3.Location = new System.Drawing.Point(12, 300);
+            this.TbSetting3.Name = "TbSetting3";
+            this.TbSetting3.Size = new System.Drawing.Size(328, 25);
+            this.TbSetting3.TabIndex = 4;
+            this.TbSetting3.Visible = false;
+            // 
+            // CbType
+            // 
+            this.CbType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.CbType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CbType.DropDownHeight = 300;
+            this.CbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CbType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.CbType.FormattingEnabled = true;
+            this.CbType.IntegralHeight = false;
+            this.CbType.Location = new System.Drawing.Point(12, 36);
+            this.CbType.Name = "CbType";
+            this.CbType.Size = new System.Drawing.Size(328, 26);
+            this.CbType.TabIndex = 24;
+            this.CbType.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.CbType_DrawItem);
+            this.CbType.SelectedIndexChanged += new System.EventHandler(this.CbType_SelectedIndexChanged);
             // 
             // SensorsMod
             // 
@@ -229,14 +283,18 @@ namespace HASSAgent.Forms.Sensors
             this.CaptionBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(765, 276);
+            this.ClientSize = new System.Drawing.Size(765, 380);
+            this.Controls.Add(this.CbType);
+            this.Controls.Add(this.LblSetting3);
+            this.Controls.Add(this.TbSetting3);
+            this.Controls.Add(this.LblSetting2);
+            this.Controls.Add(this.TbSetting2);
             this.Controls.Add(this.PnlDescription);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.LblSetting);
+            this.Controls.Add(this.LblSetting1);
             this.Controls.Add(this.BtnStore);
-            this.Controls.Add(this.TbSetting);
+            this.Controls.Add(this.TbSetting1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.CbType);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
@@ -254,6 +312,8 @@ namespace HASSAgent.Forms.Sensors
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sensor";
             this.Load += new System.EventHandler(this.SensorMod_Load);
+            this.ResizeEnd += new System.EventHandler(this.SensorsMod_ResizeEnd);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SensorsMod_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.TbIntInterval)).EndInit();
             this.PnlDescription.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -264,10 +324,9 @@ namespace HASSAgent.Forms.Sensors
         #endregion
 
         private Syncfusion.WinForms.Controls.SfButton BtnStore;
-        private System.Windows.Forms.Label LblSetting;
-        private System.Windows.Forms.TextBox TbSetting;
+        private System.Windows.Forms.Label LblSetting1;
+        private System.Windows.Forms.TextBox TbSetting1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox CbType;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox TbName;
         private System.Windows.Forms.Label label3;
@@ -276,6 +335,11 @@ namespace HASSAgent.Forms.Sensors
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RichTextBox TbDescription;
         private System.Windows.Forms.Panel PnlDescription;
+        private System.Windows.Forms.Label LblSetting2;
+        private System.Windows.Forms.TextBox TbSetting2;
+        private System.Windows.Forms.Label LblSetting3;
+        private System.Windows.Forms.TextBox TbSetting3;
+        private System.Windows.Forms.ComboBox CbType;
     }
 }
 

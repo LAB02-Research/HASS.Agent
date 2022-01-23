@@ -6,7 +6,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
 {
     public class ActiveWindowSensor : AbstractSingleValueSensor
     {
-        public ActiveWindowSensor(int? updateInterval = null, string name = "ActiveWindow", string id = default) : base(name ?? "ActiveWindow", updateInterval ?? 15, id) { }
+        public ActiveWindowSensor(int? updateInterval = null, string name = "activewindow", string id = default) : base(name ?? "activewindow", updateInterval ?? 15, id) { }
 
         public override DiscoveryConfigModel GetAutoDiscoveryConfig()
         {

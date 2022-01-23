@@ -31,7 +31,6 @@ namespace HASSAgent.Forms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
             this.BtnClose = new Syncfusion.WinForms.Controls.SfButton();
-            this.PbHassAgentLogo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,18 +46,20 @@ namespace HASSAgent.Forms
             this.LblTaskScheduler = new System.Windows.Forms.Label();
             this.LblSyncfusion = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.PbHassLogo = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.LblHassAgentProject = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.LblLab02Research = new System.Windows.Forms.Label();
             this.LblVersion = new System.Windows.Forms.Label();
             this.LblCoderr = new System.Windows.Forms.Label();
             this.LblOctokit = new System.Windows.Forms.Label();
             this.LblCliWrap = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.PbHassAgentLogo)).BeginInit();
+            this.label6 = new System.Windows.Forms.Label();
+            this.PbBMAC = new System.Windows.Forms.PictureBox();
+            this.PbHassLogo = new System.Windows.Forms.PictureBox();
+            this.PbHassAgentLogo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.PbBMAC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbHassLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PbHassAgentLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnClose
@@ -68,7 +69,7 @@ namespace HASSAgent.Forms
             this.BtnClose.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BtnClose.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnClose.Location = new System.Drawing.Point(0, 516);
+            this.BtnClose.Location = new System.Drawing.Point(0, 559);
             this.BtnClose.Name = "BtnClose";
             this.BtnClose.Size = new System.Drawing.Size(685, 37);
             this.BtnClose.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -82,18 +83,6 @@ namespace HASSAgent.Forms
             this.BtnClose.Text = "whatever, close";
             this.BtnClose.UseVisualStyleBackColor = false;
             this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
-            // 
-            // PbHassAgentLogo
-            // 
-            this.PbHassAgentLogo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PbHassAgentLogo.Image = global::HASSAgent.Properties.Resources.logo_128;
-            this.PbHassAgentLogo.Location = new System.Drawing.Point(12, 23);
-            this.PbHassAgentLogo.Name = "PbHassAgentLogo";
-            this.PbHassAgentLogo.Size = new System.Drawing.Size(128, 128);
-            this.PbHassAgentLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.PbHassAgentLogo.TabIndex = 1;
-            this.PbHassAgentLogo.TabStop = false;
-            this.PbHassAgentLogo.Click += new System.EventHandler(this.PbHassAgentLogo_Click);
             // 
             // label1
             // 
@@ -267,18 +256,6 @@ namespace HASSAgent.Forms
             this.label15.Text = "A big \'thank you\' to the developers of these projects, who were kind enough to sh" +
     "are their hard work with the rest of us mere mortals. ";
             // 
-            // PbHassLogo
-            // 
-            this.PbHassLogo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PbHassLogo.Image = global::HASSAgent.Properties.Resources.hass_avatar;
-            this.PbHassLogo.Location = new System.Drawing.Point(12, 342);
-            this.PbHassLogo.Name = "PbHassLogo";
-            this.PbHassLogo.Size = new System.Drawing.Size(128, 128);
-            this.PbHassLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PbHassLogo.TabIndex = 17;
-            this.PbHassLogo.TabStop = false;
-            this.PbHassLogo.Click += new System.EventHandler(this.PbHassLogo_Click);
-            // 
             // label16
             // 
             this.label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -288,28 +265,6 @@ namespace HASSAgent.Forms
             this.label16.TabIndex = 18;
             this.label16.Text = "And of course; thanks to Paulus Shoutsen, Franck Nijhof and the entire team of de" +
     "vs that created and maintain Home Assistant :-)";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(173, 444);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(459, 17);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "More info and documentation can be found on the HASS.Agent project page:";
-            // 
-            // LblHassAgentProject
-            // 
-            this.LblHassAgentProject.AutoSize = true;
-            this.LblHassAgentProject.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblHassAgentProject.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblHassAgentProject.Location = new System.Drawing.Point(173, 472);
-            this.LblHassAgentProject.Name = "LblHassAgentProject";
-            this.LblHassAgentProject.Size = new System.Drawing.Size(286, 17);
-            this.LblHassAgentProject.TabIndex = 20;
-            this.LblHassAgentProject.Text = "https://github.com/LAB02-Research/HASS.Agent";
-            this.LblHassAgentProject.Click += new System.EventHandler(this.LblHassAgentProject_Click);
             // 
             // label5
             // 
@@ -379,6 +334,52 @@ namespace HASSAgent.Forms
             this.LblCliWrap.Text = "CliWrap";
             this.LblCliWrap.Click += new System.EventHandler(this.LblCliWrap_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(173, 467);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(442, 17);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "Like this tool? Support us (read: keep us awake) by buying a cup of coffee:";
+            // 
+            // PbBMAC
+            // 
+            this.PbBMAC.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PbBMAC.Image = global::HASSAgent.Properties.Resources.bmac_logo;
+            this.PbBMAC.Location = new System.Drawing.Point(176, 495);
+            this.PbBMAC.Name = "PbBMAC";
+            this.PbBMAC.Size = new System.Drawing.Size(153, 43);
+            this.PbBMAC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PbBMAC.TabIndex = 29;
+            this.PbBMAC.TabStop = false;
+            this.PbBMAC.Click += new System.EventHandler(this.PbBMAC_Click);
+            // 
+            // PbHassLogo
+            // 
+            this.PbHassLogo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PbHassLogo.Image = global::HASSAgent.Properties.Resources.hass_avatar;
+            this.PbHassLogo.Location = new System.Drawing.Point(12, 410);
+            this.PbHassLogo.Name = "PbHassLogo";
+            this.PbHassLogo.Size = new System.Drawing.Size(128, 128);
+            this.PbHassLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PbHassLogo.TabIndex = 17;
+            this.PbHassLogo.TabStop = false;
+            this.PbHassLogo.Click += new System.EventHandler(this.PbHassLogo_Click);
+            // 
+            // PbHassAgentLogo
+            // 
+            this.PbHassAgentLogo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PbHassAgentLogo.Image = global::HASSAgent.Properties.Resources.logo_128;
+            this.PbHassAgentLogo.Location = new System.Drawing.Point(12, 23);
+            this.PbHassAgentLogo.Name = "PbHassAgentLogo";
+            this.PbHassAgentLogo.Size = new System.Drawing.Size(128, 128);
+            this.PbHassAgentLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PbHassAgentLogo.TabIndex = 1;
+            this.PbHassAgentLogo.TabStop = false;
+            this.PbHassAgentLogo.Click += new System.EventHandler(this.PbHassAgentLogo_Click);
+            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -387,15 +388,15 @@ namespace HASSAgent.Forms
             this.CaptionBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(685, 553);
+            this.ClientSize = new System.Drawing.Size(685, 596);
+            this.Controls.Add(this.PbBMAC);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.LblCliWrap);
             this.Controls.Add(this.LblOctokit);
             this.Controls.Add(this.LblCoderr);
             this.Controls.Add(this.LblVersion);
             this.Controls.Add(this.LblLab02Research);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.LblHassAgentProject);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.PbHassLogo);
             this.Controls.Add(this.label15);
@@ -427,8 +428,10 @@ namespace HASSAgent.Forms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About";
             this.Load += new System.EventHandler(this.About_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.PbHassAgentLogo)).EndInit();
+            this.ResizeEnd += new System.EventHandler(this.About_ResizeEnd);
+            ((System.ComponentModel.ISupportInitialize)(this.PbBMAC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbHassLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PbHassAgentLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -454,14 +457,14 @@ namespace HASSAgent.Forms
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.PictureBox PbHassLogo;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label LblHassAgentProject;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label LblLab02Research;
         private System.Windows.Forms.Label LblVersion;
         private System.Windows.Forms.Label LblCoderr;
         private System.Windows.Forms.Label LblOctokit;
         private System.Windows.Forms.Label LblCliWrap;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox PbBMAC;
     }
 }
 

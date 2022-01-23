@@ -42,7 +42,10 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.TsCheckForUpdates = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.TsDonate = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.TsAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.TsExit = new System.Windows.Forms.ToolStripMenuItem();
             this.BtnExit = new Syncfusion.WinForms.Controls.SfButton();
             this.BtnHide = new Syncfusion.WinForms.Controls.SfButton();
@@ -65,7 +68,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnCheckForUpdate = new Syncfusion.WinForms.Controls.SfButton();
-            this.BtnAbout = new Syncfusion.WinForms.Controls.SfButton();
+            this.BtnHelp = new Syncfusion.WinForms.Controls.SfButton();
             this.CmTrayIcon.SuspendLayout();
             this.GpControls.SuspendLayout();
             this.GpStatus.SuspendLayout();
@@ -93,11 +96,14 @@
             this.toolStripMenuItem1,
             this.TsCheckForUpdates,
             this.toolStripSeparator1,
+            this.TsDonate,
+            this.TsHelp,
             this.TsAbout,
+            this.toolStripSeparator3,
             this.TsExit});
             this.CmTrayIcon.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(236)))), ((int)(((byte)(249)))));
             this.CmTrayIcon.Name = "CmTrayIcon";
-            this.CmTrayIcon.Size = new System.Drawing.Size(190, 220);
+            this.CmTrayIcon.Size = new System.Drawing.Size(190, 270);
             this.CmTrayIcon.Style = Syncfusion.Windows.Forms.Tools.ContextMenuStripEx.ContextMenuStyle.Default;
             this.CmTrayIcon.ThemeName = "Default";
             // 
@@ -172,6 +178,22 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(186, 6);
             // 
+            // TsDonate
+            // 
+            this.TsDonate.Image = global::HASSAgent.Properties.Resources.bmac_logo_32;
+            this.TsDonate.Name = "TsDonate";
+            this.TsDonate.Size = new System.Drawing.Size(189, 22);
+            this.TsDonate.Text = "donate";
+            this.TsDonate.Click += new System.EventHandler(this.TsDonate_Click);
+            // 
+            // TsHelp
+            // 
+            this.TsHelp.Image = global::HASSAgent.Properties.Resources.question_32;
+            this.TsHelp.Name = "TsHelp";
+            this.TsHelp.Size = new System.Drawing.Size(189, 22);
+            this.TsHelp.Text = "help && contact";
+            this.TsHelp.Click += new System.EventHandler(this.TsHelp_Click);
+            // 
             // TsAbout
             // 
             this.TsAbout.Image = global::HASSAgent.Properties.Resources.question_32;
@@ -179,6 +201,11 @@
             this.TsAbout.Size = new System.Drawing.Size(189, 22);
             this.TsAbout.Text = "about";
             this.TsAbout.Click += new System.EventHandler(this.TsAbout_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(186, 6);
             // 
             // TsExit
             // 
@@ -194,6 +221,7 @@
             this.BtnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnExit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BtnExit.ImageSize = new System.Drawing.Size(24, 24);
             this.BtnExit.Location = new System.Drawing.Point(12, 403);
             this.BtnExit.Name = "BtnExit";
             this.BtnExit.Size = new System.Drawing.Size(59, 31);
@@ -203,9 +231,9 @@
             this.BtnExit.Style.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnExit.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnExit.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BtnExit.Style.Image = global::HASSAgent.Properties.Resources.exit_24;
             this.BtnExit.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnExit.TabIndex = 1;
-            this.BtnExit.Text = "exit";
             this.BtnExit.UseVisualStyleBackColor = false;
             this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
@@ -298,6 +326,7 @@
             // 
             this.BtnCommandsManager.AccessibleName = "Button";
             this.BtnCommandsManager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnCommandsManager.Enabled = false;
             this.BtnCommandsManager.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCommandsManager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnCommandsManager.ImageSize = new System.Drawing.Size(48, 48);
@@ -305,6 +334,7 @@
             this.BtnCommandsManager.Name = "BtnCommandsManager";
             this.BtnCommandsManager.Size = new System.Drawing.Size(105, 130);
             this.BtnCommandsManager.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnCommandsManager.Style.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnCommandsManager.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnCommandsManager.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnCommandsManager.Style.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -313,7 +343,7 @@
             this.BtnCommandsManager.Style.Image = global::HASSAgent.Properties.Resources.workflow_48;
             this.BtnCommandsManager.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnCommandsManager.TabIndex = 5;
-            this.BtnCommandsManager.Text = "\r\ncommands";
+            this.BtnCommandsManager.Text = "\r\nloading";
             this.BtnCommandsManager.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnCommandsManager.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BtnCommandsManager.UseVisualStyleBackColor = false;
@@ -323,14 +353,15 @@
             // 
             this.BtnSensorsManager.AccessibleName = "Button";
             this.BtnSensorsManager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnSensorsManager.Enabled = false;
             this.BtnSensorsManager.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSensorsManager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnSensorsManager.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnSensorsManager.ImageSize = new System.Drawing.Size(48, 48);
             this.BtnSensorsManager.Location = new System.Drawing.Point(271, 28);
             this.BtnSensorsManager.Name = "BtnSensorsManager";
             this.BtnSensorsManager.Size = new System.Drawing.Size(105, 130);
             this.BtnSensorsManager.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnSensorsManager.Style.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnSensorsManager.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnSensorsManager.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnSensorsManager.Style.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -339,7 +370,8 @@
             this.BtnSensorsManager.Style.Image = global::HASSAgent.Properties.Resources.radar_48;
             this.BtnSensorsManager.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnSensorsManager.TabIndex = 4;
-            this.BtnSensorsManager.Text = "\r\nlocal sensors";
+            this.BtnSensorsManager.Text = "\r\nloading";
+            this.BtnSensorsManager.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnSensorsManager.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BtnSensorsManager.UseVisualStyleBackColor = false;
             this.BtnSensorsManager.Click += new System.EventHandler(this.BtnSensorsManager_Click);
@@ -495,26 +527,26 @@
             this.BtnCheckForUpdate.UseVisualStyleBackColor = false;
             this.BtnCheckForUpdate.Click += new System.EventHandler(this.BtnCheckForUpdate_Click);
             // 
-            // BtnAbout
+            // BtnHelp
             // 
-            this.BtnAbout.AccessibleName = "Button";
-            this.BtnAbout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnAbout.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAbout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnAbout.Location = new System.Drawing.Point(77, 403);
-            this.BtnAbout.Name = "BtnAbout";
-            this.BtnAbout.Size = new System.Drawing.Size(30, 31);
-            this.BtnAbout.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnAbout.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnAbout.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnAbout.Style.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnAbout.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnAbout.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnAbout.Style.Image = global::HASSAgent.Properties.Resources.question_24;
-            this.BtnAbout.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnAbout.TabIndex = 8;
-            this.BtnAbout.UseVisualStyleBackColor = false;
-            this.BtnAbout.Click += new System.EventHandler(this.BtnAbout_Click);
+            this.BtnHelp.AccessibleName = "Button";
+            this.BtnHelp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnHelp.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BtnHelp.Location = new System.Drawing.Point(77, 403);
+            this.BtnHelp.Name = "BtnHelp";
+            this.BtnHelp.Size = new System.Drawing.Size(30, 31);
+            this.BtnHelp.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnHelp.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnHelp.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BtnHelp.Style.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BtnHelp.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnHelp.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BtnHelp.Style.Image = global::HASSAgent.Properties.Resources.question_24;
+            this.BtnHelp.Style.PressedForeColor = System.Drawing.Color.Black;
+            this.BtnHelp.TabIndex = 8;
+            this.BtnHelp.UseVisualStyleBackColor = false;
+            this.BtnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
             // 
             // Main
             // 
@@ -526,7 +558,7 @@
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(542, 436);
             this.Controls.Add(this.BtnCheckForUpdate);
-            this.Controls.Add(this.BtnAbout);
+            this.Controls.Add(this.BtnHelp);
             this.Controls.Add(this.GpControls);
             this.Controls.Add(this.GpStatus);
             this.Controls.Add(this.BtnHide);
@@ -544,6 +576,7 @@
             this.Text = "HASS.Agent";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
+            this.ResizeEnd += new System.EventHandler(this.Main_ResizeEnd);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Main_KeyUp);
             this.CmTrayIcon.ResumeLayout(false);
             this.GpControls.ResumeLayout(false);
@@ -587,10 +620,13 @@
         private System.Windows.Forms.Label LblStatusMqtt;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ToolStripMenuItem TsAbout;
-        private Syncfusion.WinForms.Controls.SfButton BtnAbout;
+        private Syncfusion.WinForms.Controls.SfButton BtnHelp;
         private Syncfusion.WinForms.Controls.SfButton BtnCheckForUpdate;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem TsCheckForUpdates;
+        private System.Windows.Forms.ToolStripMenuItem TsHelp;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem TsDonate;
     }
 }
 

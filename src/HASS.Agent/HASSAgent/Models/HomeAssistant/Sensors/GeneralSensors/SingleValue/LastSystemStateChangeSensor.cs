@@ -4,7 +4,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
 {
     public class LastSystemStateChangeSensor : AbstractSingleValueSensor
     {
-        public LastSystemStateChangeSensor(int? updateInterval = 10, string name = "LastSystemStateChange", string id = default) : base(name ?? "LastSystemStateChange", updateInterval ?? 10, id) { }
+        public LastSystemStateChangeSensor(int? updateInterval = 10, string name = "lastsystemstatechange", string id = default) : base(name ?? "lastsystemstatechange", updateInterval ?? 10, id) { }
 
         public override DiscoveryConfigModel GetAutoDiscoveryConfig()
         {

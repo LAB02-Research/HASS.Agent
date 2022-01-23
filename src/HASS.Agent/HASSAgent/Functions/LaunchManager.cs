@@ -4,7 +4,7 @@ using Serilog;
 
 namespace HASSAgent.Functions
 {
-    internal static class Reg
+    internal static class LaunchManager
     {
         private const string RunKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
         private static readonly RegistryView RegView = Environment.Is64BitOperatingSystem ? RegistryView.Registry32 : RegistryView.Default;

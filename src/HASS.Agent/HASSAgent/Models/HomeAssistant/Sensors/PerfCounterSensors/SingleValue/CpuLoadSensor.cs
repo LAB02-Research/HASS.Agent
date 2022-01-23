@@ -2,7 +2,7 @@
 {
     public class CpuLoadSensor : PerformanceCounterSensor
     {
-        public CpuLoadSensor(int? updateInterval = null, string name = "CpuLoadSensor", string id = default) : base("Processor", "% Processor Time", "_Total", updateInterval ?? 30, name ?? "CpuLoadSensor", id) {}
+        public CpuLoadSensor(int? updateInterval = null, string name = "cpuload", string id = default) : base("Processor", "% Processor Time", "_Total", updateInterval ?? 30, name ?? "cpuload", id) {}
         
         public override DiscoveryConfigModel GetAutoDiscoveryConfig()
         {

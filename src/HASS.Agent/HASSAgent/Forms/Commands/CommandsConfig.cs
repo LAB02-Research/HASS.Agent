@@ -46,6 +46,9 @@ namespace HASSAgent.Forms.Commands
             LcCommands.Grid.ListBoxSelectionMode = SelectionMode.One;
             LcCommands.SelectionMode = SelectionMode.One;
 
+            // fit last column
+            LcCommands.FillLastColumn = true;
+
             // we have to refresh after selecting, otherwise a bunch of rows stay highlighted :\
             LcCommands.Grid.SelectionChanged += (o, args) => LcCommands.Grid.Refresh();
             LcCommands.Grid.SelectionChanging += (o, args) => LcCommands.Grid.Refresh();
@@ -71,15 +74,18 @@ namespace HASSAgent.Forms.Commands
             // hide keycode column
             LcCommands.Grid.HideCols["KeyCode"] = true;
 
+            // hide low integrity column
+            LcCommands.Grid.HideCols["RunAsLowIntegrity"] = true;
+
             // force column resize
             LcCommands.Grid.ColWidths.ResizeToFit(GridRangeInfo.Table(), GridResizeToFitOptions.IncludeHeaders);
-
+            
             // set header height
             LcCommands.Grid.RowHeights[0] = 25;
 
             // add extra space
             for (var i = 1; i <= LcCommands.Grid.ColCount; i++) LcCommands.Grid.ColWidths[i] += 15;
-
+            
             // redraw
             LcCommands.Refresh();
         }
@@ -97,7 +103,7 @@ namespace HASSAgent.Forms.Commands
 
             // add extra space
             for (var i = 1; i <= LcCommands.Grid.ColCount; i++) LcCommands.Grid.ColWidths[i] += 15;
-
+            
             // redraw
             LcCommands.Refresh();
         }
@@ -289,5 +295,21 @@ namespace HASSAgent.Forms.Commands
         private void LcCommands_DoubleClick(object sender, EventArgs e) => ModifySelectedCommand();
 
         private void CommandsConfig_Resize(object sender, EventArgs e) => LcCommands.Height = Height - _heightDiff;
+
+        private void CommandsConfig_ResizeEnd(object sender, EventArgs e)
+        {
+            if (Variables.ShuttingDown) return;
+            if (!IsHandleCreated) return;
+            if (IsDisposed) return;
+
+            try
+            {
+                Refresh();
+            }
+            catch
+            {
+                // best effort
+            }
+        }
     }
 }

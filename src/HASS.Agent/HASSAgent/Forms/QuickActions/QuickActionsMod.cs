@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HASSAgent.Enums;
@@ -34,11 +35,14 @@ namespace HASSAgent.Forms.QuickActions
                 DialogResult = DialogResult.Abort;
                 return;
             }
-            
+
+            // catch all key presses
+            KeyPreview = true;
+
             // load enums
             CbDomain.DataSource = Enum.GetValues(typeof(HassDomain));
             CbAction.DataSource = Enum.GetValues(typeof(HassAction));
-
+            
             // load or set quick action
             if (QuickAction.Id == Guid.Empty)
             {
@@ -294,6 +298,69 @@ namespace HASSAgent.Forms.QuickActions
             }
 
             CbEnableHotkey.CheckState = CheckState.Checked;
+        }
+
+        private void QuickActionsMod_ResizeEnd(object sender, EventArgs e)
+        {
+            if (Variables.ShuttingDown) return;
+            if (!IsHandleCreated) return;
+            if (IsDisposed) return;
+
+            try
+            {
+                Refresh();
+            }
+            catch
+            {
+                // best effort
+            }
+        }
+
+        private void CbDomain_DrawItem(object sender, DrawItemEventArgs e) => DrawComboBox(sender, e);
+        private void CbEntity_DrawItem(object sender, DrawItemEventArgs e) => DrawComboBox(sender, e);
+        private void CbAction_DrawItem(object sender, DrawItemEventArgs e) => DrawComboBox(sender, e);
+
+        /// <summary>
+        /// Makes sure our combobox has the right colors
+        /// <para>Source: https://stackoverflow.com/a/60421006 </para>
+        /// <para>Source: https://stackoverflow.com/a/11650321 </para>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void DrawComboBox(object sender, DrawItemEventArgs e)
+        {
+            // fetch the sender
+            if (!(sender is ComboBox comboBox)) return;
+            if (comboBox.Items.Count <= 0) return;
+
+            // fetch the index
+            var index = e.Index >= 0 ? e.Index : 0;
+
+            // draw the control's background
+            e.DrawBackground();
+
+            // check if we have an item to process
+            if (index != -1)
+            {
+                // optionally set the item's background color as selected
+                if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                {
+                    e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(241, 241, 241)), e.Bounds);
+                }
+
+                // draw the string
+                var brush = (e.State & DrawItemState.Selected) > 0 ? new SolidBrush(Color.FromArgb(63, 63, 70)) : new SolidBrush(comboBox.ForeColor);
+                e.Graphics.DrawString(comboBox.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
+            }
+
+            // draw focus rectangle
+            e.DrawFocusRectangle();
+        }
+
+        private void QuickActionsMod_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Escape) return;
+            Close();
         }
     }
 }

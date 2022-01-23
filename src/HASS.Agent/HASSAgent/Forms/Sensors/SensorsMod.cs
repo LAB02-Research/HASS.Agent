@@ -1,5 +1,6 @@
 ﻿using Syncfusion.Windows.Forms;
 using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using HASSAgent.Enums;
@@ -29,6 +30,9 @@ namespace HASSAgent.Forms.Sensors
         {
             // load enums
             CbType.DataSource = Enum.GetValues(typeof(SensorType));
+
+            // catch all key presses
+            KeyPreview = true;
 
             // load or set sensor
             if (Sensor.Id == Guid.Empty)
@@ -64,11 +68,17 @@ namespace HASSAgent.Forms.Sensors
             switch (type)
             {
                 case SensorType.NamedWindowSensor:
-                    TbSetting.Text = Sensor.WindowName;
+                    TbSetting1.Text = Sensor.WindowName;
                     break;
 
                 case SensorType.WmiQuerySensor:
-                    TbSetting.Text = Sensor.Query;
+                    TbSetting1.Text = Sensor.Query;
+                    break;
+
+                case SensorType.PerformanceCounterSensor:
+                    TbSetting1.Text = Sensor.Category;
+                    TbSetting2.Text = Sensor.Counter;
+                    TbSetting3.Text = Sensor.Instance;
                     break;
             }
 
@@ -102,6 +112,10 @@ namespace HASSAgent.Forms.Sensors
                 case SensorType.WmiQuerySensor:
                     SetWmiGui();
                     break;
+
+                case SensorType.PerformanceCounterSensor:
+                    SetPerformanceCounterGui();
+                    break;
                 
                 default:
                     SetEmptyGui();
@@ -116,9 +130,11 @@ namespace HASSAgent.Forms.Sensors
         {
             Invoke(new MethodInvoker(delegate
             {
-                LblSetting.Text = "window name";
-                LblSetting.Visible = true;
-                TbSetting.Visible = true;
+                SetEmptyGui();
+
+                LblSetting1.Text = "window name";
+                LblSetting1.Visible = true;
+                TbSetting1.Visible = true;
             }));
         }
 
@@ -129,9 +145,35 @@ namespace HASSAgent.Forms.Sensors
         {
             Invoke(new MethodInvoker(delegate
             {
-                LblSetting.Text = "wmi query";
-                LblSetting.Visible = true;
-                TbSetting.Visible = true;
+                SetEmptyGui();
+
+                LblSetting1.Text = "wmi query";
+                LblSetting1.Visible = true;
+                TbSetting1.Visible = true;
+            }));
+        }
+
+        /// <summary>
+        /// Change the UI to a 'performance counter' type
+        /// </summary>
+        private void SetPerformanceCounterGui()
+        {
+            Invoke(new MethodInvoker(delegate
+            {
+                LblSetting1.Text = "category";
+                LblSetting1.Visible = true;
+                TbSetting1.Text = string.Empty;
+                TbSetting1.Visible = true;
+
+                LblSetting2.Text = "counter";
+                LblSetting2.Visible = true;
+                TbSetting2.Text = string.Empty;
+                TbSetting2.Visible = true;
+
+                LblSetting3.Text = "instance (optional)";
+                LblSetting3.Visible = true;
+                TbSetting3.Text = "";
+                TbSetting3.Visible = true;
             }));
         }
 
@@ -142,8 +184,17 @@ namespace HASSAgent.Forms.Sensors
         {
             Invoke(new MethodInvoker(delegate
             {
-                LblSetting.Visible = false;
-                TbSetting.Visible = false;
+                LblSetting1.Visible = false;
+                TbSetting1.Text = string.Empty;
+                TbSetting1.Visible = false;
+
+                LblSetting2.Visible = false;
+                TbSetting2.Text = string.Empty;
+                TbSetting2.Visible = false;
+
+                LblSetting3.Visible = false;
+                TbSetting3.Text = string.Empty;
+                TbSetting3.Visible = false;
             }));
         }
 
@@ -211,9 +262,9 @@ namespace HASSAgent.Forms.Sensors
 
             // get and check update interval
             var interval = (int)TbIntInterval.IntegerValue;
-            if (interval < 1 || interval > 300)
+            if (interval < 1 || interval > 43200)
             {
-                MessageBox.Show("Enter an interval between 1 and 300 first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Enter an interval between 1 and 43200 (12 hours) first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = TbIntInterval;
                 return;
             }
@@ -222,25 +273,40 @@ namespace HASSAgent.Forms.Sensors
             switch (type)
             {
                 case SensorType.NamedWindowSensor:
-                    var window = TbSetting.Text.Trim();
+                    var window = TbSetting1.Text.Trim();
                     if (string.IsNullOrEmpty(window))
                     {
                         MessageBox.Show("Enter a window name first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        ActiveControl = TbSetting;
+                        ActiveControl = TbSetting1;
                         return;
                     }
                     Sensor.WindowName = window;
                     break;
 
                 case SensorType.WmiQuerySensor:
-                    var query = TbSetting.Text.Trim();
+                    var query = TbSetting1.Text.Trim();
                     if (string.IsNullOrEmpty(query))
                     {
                         MessageBox.Show("Enter a query first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        ActiveControl = TbSetting;
+                        ActiveControl = TbSetting1;
                         return;
                     }
                     Sensor.Query = query;
+                    break;
+
+                case SensorType.PerformanceCounterSensor:
+                    var category = TbSetting1.Text.Trim();
+                    var counter = TbSetting2.Text.Trim();
+                    var instance = TbSetting3.Text.Trim();
+                    if (string.IsNullOrEmpty(category) || string.IsNullOrEmpty(counter))
+                    {
+                        MessageBox.Show("Enter a category and instance first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ActiveControl = TbSetting1;
+                        return;
+                    }
+                    Sensor.Category = category;
+                    Sensor.Counter = counter;
+                    Sensor.Instance = instance;
                     break;
             }
 
@@ -259,6 +325,64 @@ namespace HASSAgent.Forms.Sensors
             if (!e.LinkText.ToLower().StartsWith("http")) return;
 
             HelperFunctions.LaunchUrl(e.LinkText);
+        }
+
+        private void SensorsMod_ResizeEnd(object sender, EventArgs e)
+        {
+            if (Variables.ShuttingDown) return;
+            if (!IsHandleCreated) return;
+            if (IsDisposed) return;
+
+            try
+            {
+                Refresh();
+            }
+            catch
+            {
+                // best effort
+            }
+        }
+
+        /// <summary>
+        /// Makes sure our combobox has the right colors
+        /// <para>Source: https://stackoverflow.com/a/60421006 </para>
+        /// <para>Source: https://stackoverflow.com/a/11650321 </para>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CbType_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            // only if there are items
+            if (CbType.Items.Count <= 0) return;
+
+            // fetch the index
+            var index = e.Index >= 0 ? e.Index : 0;
+            
+            // draw the control's background
+            e.DrawBackground();
+
+            // check if we have an item to process
+            if (index != -1)
+            {
+                // optionally set the item's background color as selected
+                if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                {
+                    e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(241, 241, 241)), e.Bounds);
+                }
+
+                // draw the string
+                var brush = (e.State & DrawItemState.Selected) > 0 ? new SolidBrush(Color.FromArgb(63, 63, 70)) : new SolidBrush(CbType.ForeColor);
+                e.Graphics.DrawString(CbType.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
+            }
+
+            // draw focus rectangle
+            e.DrawFocusRectangle();
+        }
+
+        private void SensorsMod_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Escape) return;
+            Close();
         }
     }
 }

@@ -33,8 +33,8 @@ namespace HASSAgent.Forms.Commands
             this.BtnRemove = new Syncfusion.WinForms.Controls.SfButton();
             this.BtnModify = new Syncfusion.WinForms.Controls.SfButton();
             this.BtnAdd = new Syncfusion.WinForms.Controls.SfButton();
-            this.LcCommands = new Syncfusion.Windows.Forms.Grid.GridListControl();
             this.BtnStore = new Syncfusion.WinForms.Controls.SfButton();
+            this.LcCommands = new Syncfusion.Windows.Forms.Grid.GridListControl();
             ((System.ComponentModel.ISupportInitialize)(this.LcCommands)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,6 +104,29 @@ namespace HASSAgent.Forms.Commands
             this.BtnAdd.UseVisualStyleBackColor = false;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
+            // BtnStore
+            // 
+            this.BtnStore.AccessibleName = "Button";
+            this.BtnStore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnStore.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BtnStore.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnStore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BtnStore.Location = new System.Drawing.Point(0, 515);
+            this.BtnStore.Name = "BtnStore";
+            this.BtnStore.Size = new System.Drawing.Size(628, 47);
+            this.BtnStore.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnStore.Style.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnStore.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnStore.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BtnStore.Style.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BtnStore.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
+            this.BtnStore.TabIndex = 6;
+            this.BtnStore.Text = "store and activate commands";
+            this.BtnStore.UseVisualStyleBackColor = false;
+            this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
+            // 
             // LcCommands
             // 
             this.LcCommands.AlphaBlendSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(94)))), ((int)(((byte)(171)))), ((int)(((byte)(222)))));
@@ -126,8 +149,8 @@ namespace HASSAgent.Forms.Commands
             this.LcCommands.ResizeRowsBehavior = Syncfusion.Windows.Forms.Grid.GridResizeCellsBehavior.ResizeAll;
             this.LcCommands.SelectedIndex = -1;
             this.LcCommands.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.LcCommands.Size = new System.Drawing.Size(628, 449);
-            this.LcCommands.TabIndex = 1;
+            this.LcCommands.Size = new System.Drawing.Size(628, 446);
+            this.LcCommands.TabIndex = 11;
             this.LcCommands.ThemeName = "";
             this.LcCommands.ThemeStyle.HorizontalScrollBarStyle.ArrowButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.LcCommands.ThemeStyle.HorizontalScrollBarStyle.ArrowButtonBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
@@ -166,28 +189,6 @@ namespace HASSAgent.Forms.Commands
             this.LcCommands.TopIndex = 0;
             this.LcCommands.DoubleClick += new System.EventHandler(this.LcCommands_DoubleClick);
             // 
-            // BtnStore
-            // 
-            this.BtnStore.AccessibleName = "Button";
-            this.BtnStore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnStore.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BtnStore.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnStore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnStore.Location = new System.Drawing.Point(0, 515);
-            this.BtnStore.Name = "BtnStore";
-            this.BtnStore.Size = new System.Drawing.Size(628, 47);
-            this.BtnStore.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnStore.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnStore.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnStore.Style.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnStore.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnStore.TabIndex = 6;
-            this.BtnStore.Text = "store and activate commands";
-            this.BtnStore.UseVisualStyleBackColor = false;
-            this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
-            // 
             // CommandsConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -215,6 +216,7 @@ namespace HASSAgent.Forms.Commands
             this.Text = "Commands Config";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CommandsConfig_FormClosing);
             this.Load += new System.EventHandler(this.CommandsConfig_Load);
+            this.ResizeEnd += new System.EventHandler(this.CommandsConfig_ResizeEnd);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CommandsConfig_KeyUp);
             this.Resize += new System.EventHandler(this.CommandsConfig_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.LcCommands)).EndInit();

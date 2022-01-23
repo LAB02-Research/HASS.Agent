@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using HASSAgent.Enums;
@@ -51,10 +52,25 @@ namespace HASSAgent.Sensors
         internal static void Unpause() => _pause = false;
 
         /// <summary>
+        /// Unpublishes all single- and multivalue sensors
+        /// </summary>
+        /// <returns></returns>
+        internal static async Task UnpublishAllSensors()
+        {
+            // unpublish the autodisco's
+            if (SingleValueSensorsPresent()) foreach (var sensor in Variables.SingleValueSensors) await sensor.UnPublishAutoDiscoveryConfigAsync();
+            if (MultiValueSensorsPresent()) foreach (var sensor in Variables.MultiValueSensors) await sensor.UnPublishAutoDiscoveryConfigAsync();
+        }
+
+        /// <summary>
         /// Continously processes sensors (autodiscovery, states)
         /// </summary>
         private static async void Process()
         {
+            // we use the firstrun flag to publish our state without respecting the time elapsed/value change check
+            // otherwise, the state might stay in 'unknown' in HA until the value changes
+            var firstRun = true;
+
             while (_active)
             {
                 try
@@ -78,20 +94,52 @@ namespace HASSAgent.Sensors
                         await MqttManager.AnnounceAvailabilityAsync();
 
                         // publish the autodisco's
-                        if (SingleValueSensorsPresent()) foreach (var sensor in Variables.SingleValueSensors) await sensor.PublishAutoDiscoveryConfigAsync();
-                        if (MultiValueSensorsPresent()) foreach (var sensor in Variables.MultiValueSensors) await sensor.PublishAutoDiscoveryConfigAsync();
+                        if (SingleValueSensorsPresent())
+                        {
+                            foreach (var sensor in Variables.SingleValueSensors.TakeWhile(sensor => !_pause).TakeWhile(command => _active))
+                            {
+                                await sensor.PublishAutoDiscoveryConfigAsync();
+                            }
+                        }
+
+                        if (MultiValueSensorsPresent())
+                        {
+                            foreach (var sensor in Variables.MultiValueSensors.TakeWhile(sensor => !_pause).TakeWhile(command => _active))
+                            {
+                                await sensor.PublishAutoDiscoveryConfigAsync();
+                            }
+                        }
 
                         // log moment
                         _lastAutoDiscoPublish = DateTime.Now;
                     }
 
+                    if (_pause) continue;
+
                     // publish sensor states (they have their own time-based scheduling)
-                    if (SingleValueSensorsPresent()) foreach (var sensor in Variables.SingleValueSensors) await sensor.PublishStateAsync();
-                    if (MultiValueSensorsPresent()) foreach (var sensor in Variables.MultiValueSensors) await sensor.PublishStatesAsync();
+                    if (SingleValueSensorsPresent())
+                    {
+                        foreach (var sensor in Variables.SingleValueSensors.TakeWhile(sensor => !_pause).TakeWhile(command => _active))
+                        {
+                            await sensor.PublishStateAsync(firstRun);
+                        }
+                    }
+
+                    // check if there are multivalue sensors
+                    if (!MultiValueSensorsPresent()) continue;
+
+                    foreach (var sensor in Variables.MultiValueSensors.TakeWhile(sensor => !_pause).TakeWhile(command => _active))
+                    {
+                        await sensor.PublishStatesAsync(firstRun);
+                    }
                 }
                 catch (Exception ex)
                 {
                     Log.Fatal(ex, "[SENSORSMANAGER] Eroor while publishing: {err}", ex.Message);
+                }
+                finally
+                {
+                    firstRun = false;
                 }
             }
         }
@@ -133,6 +181,12 @@ namespace HASSAgent.Sensors
             SensorInfo.Add(SensorType.WmiQuerySensor, ("Provides the result of the provided WMI query.", 10));
             SensorInfo.Add(SensorType.StorageSensors, ("Provides the labels, total size (MB), available space (MB), used space (MB) and file system of all present non-removable disks.\r\n\r\nThis is a multi-value sensor.", 30));
             SensorInfo.Add(SensorType.NetworkSensors, ("Provides card info, configuration, transfer- & package statistics and addresses (ip, mac, dhcp, dns) of all present network cards.\r\n\r\nThis is a multi-value sensor.", 30));
+            SensorInfo.Add(SensorType.PerformanceCounterSensor, ("Provides the values of a performance counter.\r\n\r\nFor example, the built-in CPU load sensor uses these values:\r\n\r\nCategory: Processor\r\nCounter: % Processor Time\r\nInstance: _Total\r\n\r\nYou can explore the counters through Windows' 'perfmon.exe' tool.", 30));
+
+            //SensorInfo.Add(SensorType.WindowsUpdatesSensors, ("Provides a sensor with the amount of pending driver updates, a sensor with the amount of pending software updates, a sensor containing all pending driver updates information (title, kb article id's, hidden, type and categories) and a sensor containing the same for pending software updates.\r\n\r\nThis is a costly request, so the recommended interval is 15 minutes (900 seconds). But it's capped at 10 minutes, if you provide a lower value, you'll get the last known list.\r\n\r\nThis is a multi-value sensor.", 900));
+            SensorInfo.Add(SensorType.WindowsUpdatesSensors, ("Provides a sensor with the amount of pending driver updates and a sensor with the amount of pending software updates.\r\n\r\nThis is a costly request, so the recommended interval is 15 minutes (900 seconds). But it's capped at 10 minutes, if you provide a lower value, you'll get the last known list.\r\n\r\nThis is a multi-value sensor.", 900));
+
+            SensorInfo.Add(SensorType.BatterySensors, ("Provides a sensor with the current charging status, estimated amount of minutes on a full charge, remaining charge in percentage, remaining charge in minutes and the powerline status.\r\n\r\nThis is a multi-value sensor.", 30));
         }
     }
 }

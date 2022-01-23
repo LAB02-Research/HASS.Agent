@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using ByteSizeLib;
+using HASSAgent.Functions;
 using HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue.DataTypes;
 using Newtonsoft.Json;
 using Serilog;
@@ -14,7 +15,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
         public sealed override Dictionary<string, AbstractSingleValueSensor> Sensors { get; protected set; } = new Dictionary<string, AbstractSingleValueSensor>();
         
-        public NetworkSensors(int? updateInterval = null, string name = "Network", string id = default) : base(name ?? "Network", updateInterval ?? 30, id)
+        public NetworkSensors(int? updateInterval = null, string name = "network", string id = default) : base(name ?? "network", updateInterval ?? 30, id)
         {
             _updateInterval = updateInterval ?? 30;
 
@@ -23,6 +24,10 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
         public sealed override void UpdateSensorValues()
         {
+            // lowercase and safe name of the multivalue sensor
+            var parentSensorSafeName = HelperFunctions.GetSafeValue(Name);
+
+            // get nic info
             var nicCount = 0;
             var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
 
@@ -38,9 +43,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
                 
                     // name
                     var name = nic.Name;
-                    var nameId = $"nic_{id}_name";
+                    var nameId = $"{parentSensorSafeName}_{id}_name";
 
-                    var nameSensor = new DataTypeStringSensor(_updateInterval, $"NIC {name} - Name", nameId, string.Empty, "mdi:lan", string.Empty, Name);
+                    var nameSensor = new DataTypeStringSensor(_updateInterval, $"{Name} {name} Name", nameId, string.Empty, "mdi:lan", string.Empty, Name);
                     nameSensor.SetState(name);
 
                     if (!Sensors.ContainsKey(nameId)) Sensors.Add(nameId, nameSensor);
@@ -48,9 +53,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
                     // interfacetype
                     var interfaceType = nic.NetworkInterfaceType.ToString();
-                    var interfaceTypeId = $"nic_{id}_interface_type";
+                    var interfaceTypeId = $"{parentSensorSafeName}_{id}_interface_type";
 
-                    var interfaceTypeSensor = new DataTypeStringSensor(_updateInterval, $"NIC {name} - Interface Type", interfaceTypeId, string.Empty, "mdi:lan", string.Empty, Name);
+                    var interfaceTypeSensor = new DataTypeStringSensor(_updateInterval, $"{Name} {name} Interface Type", interfaceTypeId, string.Empty, "mdi:lan", string.Empty, Name);
                     interfaceTypeSensor.SetState(interfaceType);
 
                     if (!Sensors.ContainsKey(interfaceTypeId)) Sensors.Add(interfaceTypeId, interfaceTypeSensor);
@@ -58,9 +63,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
                     // speed
                     var speed = nic.Speed;
-                    var speedId = $"nic_{id}_speed";
+                    var speedId = $"{parentSensorSafeName}_{id}_speed";
 
-                    var speedIdSensor = new DataTypeDoubleSensor(_updateInterval, $"NIC {name} - Speed", speedId, string.Empty, "mdi:lan", string.Empty, Name);
+                    var speedIdSensor = new DataTypeDoubleSensor(_updateInterval, $"{Name} {name} Speed", speedId, string.Empty, "mdi:lan", string.Empty, Name);
                     speedIdSensor.SetState(speed);
 
                     if (!Sensors.ContainsKey(speedId)) Sensors.Add(speedId, speedIdSensor);
@@ -68,9 +73,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
                     // operational status
                     var operationalStatus = nic.OperationalStatus.ToString();
-                    var operationalStatusId = $"nic_{id}_operational_status";
+                    var operationalStatusId = $"{parentSensorSafeName}_{id}_operational_status";
 
-                    var operationalStatusSensor = new DataTypeStringSensor(_updateInterval, $"NIC {name} - Operational Status", operationalStatusId, string.Empty, "mdi:lan", string.Empty, Name);
+                    var operationalStatusSensor = new DataTypeStringSensor(_updateInterval, $"{Name} {name} Operational Status", operationalStatusId, string.Empty, "mdi:lan", string.Empty, Name);
                     operationalStatusSensor.SetState(operationalStatus);
 
                     if (!Sensors.ContainsKey(operationalStatusId)) Sensors.Add(operationalStatusId, operationalStatusSensor);
@@ -81,9 +86,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
                     // data received
                     var dataReceivedMb = Math.Round(ByteSize.FromBytes(interfaceStats.BytesReceived).MegaBytes);
-                    var dataReceivedMbId = $"nic_{id}_data_received";
+                    var dataReceivedMbId = $"{parentSensorSafeName}_{id}_data_received";
 
-                    var dataReceivedMbSensor = new DataTypeDoubleSensor(_updateInterval, $"NIC {name} - Received", dataReceivedMbId, string.Empty, "mdi:lan", "MB", Name);
+                    var dataReceivedMbSensor = new DataTypeDoubleSensor(_updateInterval, $"{Name} {name} Received", dataReceivedMbId, string.Empty, "mdi:lan", "MB", Name);
                     dataReceivedMbSensor.SetState(dataReceivedMb);
 
                     if (!Sensors.ContainsKey(dataReceivedMbId)) Sensors.Add(dataReceivedMbId, dataReceivedMbSensor);
@@ -91,9 +96,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
                     // data sent
                     var dataSentMb = Math.Round(ByteSize.FromBytes(interfaceStats.BytesSent).MegaBytes);
-                    var dataSentMbId = $"nic_{id}_data_sent";
+                    var dataSentMbId = $"{parentSensorSafeName}_{id}_data_sent";
 
-                    var dataSentMbSensor = new DataTypeDoubleSensor(_updateInterval, $"NIC {name} - Sent", dataSentMbId, string.Empty, "mdi:lan", "MB", Name);
+                    var dataSentMbSensor = new DataTypeDoubleSensor(_updateInterval, $"{Name} {name} Sent", dataSentMbId, string.Empty, "mdi:lan", "MB", Name);
                     dataSentMbSensor.SetState(dataSentMb);
 
                     if (!Sensors.ContainsKey(dataSentMbId)) Sensors.Add(dataSentMbId, dataSentMbSensor);
@@ -101,9 +106,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
                     // incoming discarded packets
                     var incomingPacketsDiscarded = interfaceStats.IncomingPacketsDiscarded;
-                    var incomingPacketsDiscardedId = $"nic_{id}_incoming_discarded_packets";
+                    var incomingPacketsDiscardedId = $"{parentSensorSafeName}_{id}_incoming_discarded_packets";
 
-                    var incomingPacketsDiscardedSensor = new DataTypeDoubleSensor(_updateInterval, $"NIC {name} - Incoming Packets Discarded", incomingPacketsDiscardedId, string.Empty, "mdi:lan", string.Empty, Name);
+                    var incomingPacketsDiscardedSensor = new DataTypeDoubleSensor(_updateInterval, $"{Name} {name} Incoming Packets Discarded", incomingPacketsDiscardedId, string.Empty, "mdi:lan", string.Empty, Name);
                     incomingPacketsDiscardedSensor.SetState(incomingPacketsDiscarded);
 
                     if (!Sensors.ContainsKey(incomingPacketsDiscardedId)) Sensors.Add(incomingPacketsDiscardedId, incomingPacketsDiscardedSensor);
@@ -111,9 +116,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
                     // incoming discarded packets
                     var incomingPacketsWithErrors = interfaceStats.IncomingPacketsWithErrors;
-                    var incomingPacketsWithErrorsId = $"nic_{id}_incoming_error_packets";
+                    var incomingPacketsWithErrorsId = $"{parentSensorSafeName}_{id}_incoming_error_packets";
 
-                    var incomingPacketsWithErrorsSensor = new DataTypeDoubleSensor(_updateInterval, $"NIC {name} - Incoming Packets With Errors", incomingPacketsWithErrorsId, string.Empty, "mdi:lan", string.Empty, Name);
+                    var incomingPacketsWithErrorsSensor = new DataTypeDoubleSensor(_updateInterval, $"{Name} {name} Incoming Packets With Errors", incomingPacketsWithErrorsId, string.Empty, "mdi:lan", string.Empty, Name);
                     incomingPacketsWithErrorsSensor.SetState(incomingPacketsWithErrors);
 
                     if (!Sensors.ContainsKey(incomingPacketsWithErrorsId)) Sensors.Add(incomingPacketsWithErrorsId, incomingPacketsWithErrorsSensor);
@@ -121,9 +126,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
                     // incoming discarded packets
                     var incomingPacketsWithUnknownProtocol = interfaceStats.IncomingUnknownProtocolPackets;
-                    var incomingPacketsWithUnknownProtocolId = $"nic_{id}_incoming_unknown_protocol_packets";
+                    var incomingPacketsWithUnknownProtocolId = $"{parentSensorSafeName}_{id}_incoming_unknown_protocol_packets";
 
-                    var incomingPacketsWithUnknownProtocolSensor = new DataTypeDoubleSensor(_updateInterval, $"NIC {name} - Incoming Unknown Protocol Packets", incomingPacketsWithUnknownProtocolId, string.Empty, "mdi:lan", string.Empty, Name);
+                    var incomingPacketsWithUnknownProtocolSensor = new DataTypeDoubleSensor(_updateInterval, $"{Name} {name} Incoming Unknown Protocol Packets", incomingPacketsWithUnknownProtocolId, string.Empty, "mdi:lan", string.Empty, Name);
                     incomingPacketsWithUnknownProtocolSensor.SetState(incomingPacketsWithUnknownProtocol);
 
                     if (!Sensors.ContainsKey(incomingPacketsWithUnknownProtocolId)) Sensors.Add(incomingPacketsWithUnknownProtocolId, incomingPacketsWithUnknownProtocolSensor);
@@ -131,9 +136,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
                     // outgoing discarded packets
                     var outgoingPacketsDiscarded = interfaceStats.OutgoingPacketsDiscarded;
-                    var outgoingPacketsDiscardedId = $"nic_{id}_outgoing_discarded_packets";
+                    var outgoingPacketsDiscardedId = $"{parentSensorSafeName}_{id}_outgoing_discarded_packets";
 
-                    var outgoingPacketsDiscardedSensor = new DataTypeDoubleSensor(_updateInterval, $"NIC {name} - Outgoing Packets Discarded", outgoingPacketsDiscardedId, string.Empty, "mdi:lan", string.Empty, Name);
+                    var outgoingPacketsDiscardedSensor = new DataTypeDoubleSensor(_updateInterval, $"{Name} {name} Outgoing Packets Discarded", outgoingPacketsDiscardedId, string.Empty, "mdi:lan", string.Empty, Name);
                     outgoingPacketsDiscardedSensor.SetState(outgoingPacketsDiscarded);
 
                     if (!Sensors.ContainsKey(outgoingPacketsDiscardedId)) Sensors.Add(outgoingPacketsDiscardedId, outgoingPacketsDiscardedSensor);
@@ -141,9 +146,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
                     // outgoing discarded packets
                     var outgoingPacketsWithErrors = interfaceStats.OutgoingPacketsWithErrors;
-                    var outgoingPacketsWithErrorsId = $"nic_{id}_outgoing_error_packets";
+                    var outgoingPacketsWithErrorsId = $"{parentSensorSafeName}_{id}_outgoing_error_packets";
 
-                    var outgoingPacketsWithErrorsSensor = new DataTypeDoubleSensor(_updateInterval, $"NIC {name} - Outgoing Packets With Errors", outgoingPacketsWithErrorsId, string.Empty, "mdi:lan", string.Empty, Name);
+                    var outgoingPacketsWithErrorsSensor = new DataTypeDoubleSensor(_updateInterval, $"{Name} {name} Outgoing Packets With Errors", outgoingPacketsWithErrorsId, string.Empty, "mdi:lan", string.Empty, Name);
                     outgoingPacketsWithErrorsSensor.SetState(outgoingPacketsWithErrors);
 
                     if (!Sensors.ContainsKey(outgoingPacketsWithErrorsId)) Sensors.Add(outgoingPacketsWithErrorsId, outgoingPacketsWithErrorsSensor);
@@ -164,19 +169,19 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
                         if (!string.IsNullOrEmpty(mac) && !macs.Contains(mac)) macs.Add(mac);
                     }
 
-                    var ipList = JsonConvert.SerializeObject(new { ip_addresses = ips });
-                    var ipListId = $"nic_{id}_ip_addresses";
+                    var ipList = JsonConvert.SerializeObject(ips);
+                    var ipListId = $"{parentSensorSafeName}_{id}_ip_addresses";
 
-                    var ipListSensor = new DataTypeStringSensor(_updateInterval, $"NIC {name} - IP Addresses", ipListId, string.Empty, "mdi:lan", string.Empty, Name);
+                    var ipListSensor = new DataTypeStringSensor(_updateInterval, $"{Name} {name} IP Addresses", ipListId, string.Empty, "mdi:lan", string.Empty, Name);
                     ipListSensor.SetState(ipList);
 
                     if (!Sensors.ContainsKey(ipListId)) Sensors.Add(ipListId, ipListSensor);
                     else Sensors[ipListId] = ipListSensor;
 
-                    var macList = JsonConvert.SerializeObject(new { mac_addresses = macs });
-                    var macListId = $"nic_{id}_mac_addresses";
+                    var macList = JsonConvert.SerializeObject(macs);
+                    var macListId = $"{parentSensorSafeName}_{id}_mac_addresses";
 
-                    var macListSensor = new DataTypeStringSensor(_updateInterval, $"NIC {name} - MAC Addresses", macListId, string.Empty, "mdi:lan", string.Empty, Name);
+                    var macListSensor = new DataTypeStringSensor(_updateInterval, $"{Name} {name} MAC Addresses", macListId, string.Empty, "mdi:lan", string.Empty, Name);
                     macListSensor.SetState(macList);
 
                     if (!Sensors.ContainsKey(macListId)) Sensors.Add(macListId, macListSensor);
@@ -190,10 +195,10 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
                         if (!string.IsNullOrEmpty(gatewayAddress) && !gateways.Contains(gatewayAddress)) gateways.Add(gatewayAddress);
                     }
 
-                    var gatewayList = JsonConvert.SerializeObject(new { gateway_addresses = gateways });
-                    var gatewayListId = $"nic_{id}_gateway_addresses";
+                    var gatewayList = JsonConvert.SerializeObject(gateways);
+                    var gatewayListId = $"{parentSensorSafeName}_{id}_gateway_addresses";
 
-                    var gatewayListSensor = new DataTypeStringSensor(_updateInterval, $"NIC {name} - Gateway Addresses", gatewayListId, string.Empty, "mdi:lan", string.Empty, Name);
+                    var gatewayListSensor = new DataTypeStringSensor(_updateInterval, $"{Name} {name} Gateway Addresses", gatewayListId, string.Empty, "mdi:lan", string.Empty, Name);
                     gatewayListSensor.SetState(gatewayList);
 
                     if (!Sensors.ContainsKey(gatewayListId)) Sensors.Add(gatewayListId, gatewayListSensor);
@@ -201,9 +206,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
                     // dhcp enabled
                     var dhcpEnabled = nicProperties.GetIPv4Properties().IsDhcpEnabled ? "TRUE" : "FALSE";
-                    var dhcpEnabledId = $"nic_{id}_dhcp_enabled";
+                    var dhcpEnabledId = $"{parentSensorSafeName}_{id}_dhcp_enabled";
 
-                    var dhcpEnabledSensor = new DataTypeStringSensor(_updateInterval, $"NIC {name} - DHCP Enabled", dhcpEnabledId, string.Empty, "mdi:lan", string.Empty, Name);
+                    var dhcpEnabledSensor = new DataTypeStringSensor(_updateInterval, $"{Name} {name} DHCP Enabled", dhcpEnabledId, string.Empty, "mdi:lan", string.Empty, Name);
                     dhcpEnabledSensor.SetState(dhcpEnabled);
 
                     if (!Sensors.ContainsKey(dhcpEnabledId)) Sensors.Add(dhcpEnabledId, dhcpEnabledSensor);
@@ -217,10 +222,10 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
                         if (!string.IsNullOrEmpty(dhcpAddress) && !dhcps.Contains(dhcpAddress)) dhcps.Add(dhcpAddress);
                     }
 
-                    var dhcpList = JsonConvert.SerializeObject(new { dhcp_addresses = dhcps });
-                    var dhcpListId = $"nic_{id}_dhcp_addresses";
+                    var dhcpList = JsonConvert.SerializeObject(dhcps);
+                    var dhcpListId = $"{parentSensorSafeName}_{id}_dhcp_addresses";
 
-                    var dhcpListSensor = new DataTypeStringSensor(_updateInterval, $"NIC {name} - DHCP Addresses", dhcpListId, string.Empty, "mdi:lan", string.Empty, Name);
+                    var dhcpListSensor = new DataTypeStringSensor(_updateInterval, $"{Name} {name} DHCP Addresses", dhcpListId, string.Empty, "mdi:lan", string.Empty, Name);
                     dhcpListSensor.SetState(dhcpList);
 
                     if (!Sensors.ContainsKey(dhcpListId)) Sensors.Add(dhcpListId, dhcpListSensor);
@@ -228,9 +233,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
                     // dns enabled
                     var dnsEnabled = nicProperties.IsDnsEnabled ? "TRUE" : "FALSE";
-                    var dnsEnabledId = $"nic_{id}_dns_enabled";
+                    var dnsEnabledId = $"{parentSensorSafeName}_{id}_dns_enabled";
 
-                    var dnsEnabledSensor = new DataTypeStringSensor(_updateInterval, $"NIC {name} - DNS Enabled", dnsEnabledId, string.Empty, "mdi:lan", string.Empty, Name);
+                    var dnsEnabledSensor = new DataTypeStringSensor(_updateInterval, $"{Name} {name} DNS Enabled", dnsEnabledId, string.Empty, "mdi:lan", string.Empty, Name);
                     dnsEnabledSensor.SetState(dnsEnabled);
 
                     if (!Sensors.ContainsKey(dnsEnabledId)) Sensors.Add(dnsEnabledId, dnsEnabledSensor);
@@ -238,9 +243,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
                     // dns suffix
                     var dnsSuffix = nicProperties.DnsSuffix;
-                    var dnsSuffixId = $"nic_{id}_dns_suffix";
+                    var dnsSuffixId = $"{parentSensorSafeName}_{id}_dns_suffix";
 
-                    var dnsSuffixSensor = new DataTypeStringSensor(_updateInterval, $"NIC {name} - DNS Suffix", dnsSuffixId, string.Empty, "mdi:lan", string.Empty, Name);
+                    var dnsSuffixSensor = new DataTypeStringSensor(_updateInterval, $"{Name} {name} DNS Suffix", dnsSuffixId, string.Empty, "mdi:lan", string.Empty, Name);
                     dnsSuffixSensor.SetState(dnsSuffix);
 
                     if (!Sensors.ContainsKey(dnsSuffixId)) Sensors.Add(dnsSuffixId, dnsSuffixSensor);
@@ -254,10 +259,10 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
                         if (!string.IsNullOrEmpty(dnsAddress) && !dnses.Contains(dnsAddress)) dnses.Add(dnsAddress);
                     }
                     
-                    var dnsList = JsonConvert.SerializeObject(new { dns_addresses = dnses });
-                    var dnsListId = $"nic_{id}_dns_addresses";
+                    var dnsList = JsonConvert.SerializeObject(dnses);
+                    var dnsListId = $"{parentSensorSafeName}_{id}_dns_addresses";
 
-                    var dnsListSensor = new DataTypeStringSensor(_updateInterval, $"NIC {name} - DNS Addresses", dnsListId, string.Empty, "mdi:lan", string.Empty, Name);
+                    var dnsListSensor = new DataTypeStringSensor(_updateInterval, $"{Name} {name} DNS Addresses", dnsListId, string.Empty, "mdi:lan", string.Empty, Name);
                     dnsListSensor.SetState(dnsList);
 
                     if (!Sensors.ContainsKey(dnsListId)) Sensors.Add(dnsListId, dnsListSensor);
@@ -273,8 +278,8 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
             }
 
             // nic count
-            const string nicCountId = "nic_total_count";
-            var nicCountSensor = new DataTypeIntSensor(_updateInterval, "NIC - Total Count", nicCountId, string.Empty, "mdi:harddisk", string.Empty, Name);
+            var nicCountId = $"{parentSensorSafeName}_total_network_card_count";
+            var nicCountSensor = new DataTypeIntSensor(_updateInterval, $"{Name} Network Card Count", nicCountId, string.Empty, "mdi:harddisk", string.Empty, Name);
             nicCountSensor.SetState(nicCount);
 
             if (!Sensors.ContainsKey(nicCountId)) Sensors.Add(nicCountId, nicCountSensor);

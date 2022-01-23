@@ -6,7 +6,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
 {
     public class LastActiveSensor : AbstractSingleValueSensor
     {
-        public LastActiveSensor(int? updateInterval = 10, string name = "LastActive", string id = default) : base(name ?? "LastActive", updateInterval ?? 10, id) { }
+        private DateTime _lastActive = DateTime.MinValue;
+
+        public LastActiveSensor(int? updateInterval = 10, string name = "lastactive", string id = default) : base(name ?? "lastactive", updateInterval ?? 10, id) { }
 
         public override DiscoveryConfigModel GetAutoDiscoveryConfig()
         {
@@ -22,7 +24,15 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
             });
         }
 
-        public override string GetState() => GetLastInputTime().ToTimeZoneString();
+        public override string GetState()
+        {
+            // changed to min. 1 sec difference
+            // source: https://github.com/sleevezipper/hass-workstation-service/pull/156
+            var lastInput = GetLastInputTime();
+            if ((_lastActive - lastInput).Duration().TotalSeconds > 1) _lastActive = lastInput;
+
+            return _lastActive.ToTimeZoneString();
+        }
         
         private static DateTime GetLastInputTime()
         {
@@ -38,8 +48,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
             var idleTime = envTicks - lastInputTick;
             return idleTime > 0 ? DateTime.Now - TimeSpan.FromMilliseconds(idleTime) : DateTime.Now;
         }
-
-
+        
         [DllImport("User32.dll")]
         private static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
 

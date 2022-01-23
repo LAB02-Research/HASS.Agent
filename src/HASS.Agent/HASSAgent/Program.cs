@@ -29,13 +29,13 @@ namespace HASSAgent
                 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(Variables.SyncfusionLicense);
 
                 // get logging settings
-                var enableExtendedLogging = SettingsManager.GetExtendedLoggingSetting();
-                var exceptionLogging = SettingsManager.GetExceptionReportingSetting();
+                Variables.ExtendedLogging = SettingsManager.GetExtendedLoggingSetting();
+                Variables.ExceptionLogging = SettingsManager.GetExceptionReportingSetting();
 
                 // enable logging and optionally prepare Coderr
-                HelperFunctions.PrepareLogging(exceptionLogging);
+                HelperFunctions.PrepareLogging();
 
-                if (enableExtendedLogging)
+                if (Variables.ExtendedLogging)
                 {
                     // make sure we catch 'm all
                     AppDomain.CurrentDomain.FirstChanceException += (sender, eventArgs) =>
@@ -81,7 +81,7 @@ namespace HASSAgent
                 else
                 {
                     // prepare default application
-                    Variables.MainForm = new Main(enableExtendedLogging);
+                    Variables.MainForm = new Main();
 
                     // prepare msgbox
                     HelperFunctions.SetMsgBoxStyle(Variables.MainForm.Font);

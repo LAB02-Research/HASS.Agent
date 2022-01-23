@@ -6,7 +6,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
     public class MicrophoneActiveSensor : AbstractSingleValueSensor
     {
         public override string Domain => "binary_sensor";
-        public MicrophoneActiveSensor(int? updateInterval = null, string name = "MicrophoneActive", string id = default) : base(name ?? "MicrophoneActive", updateInterval ?? 10, id) {}
+        public MicrophoneActiveSensor(int? updateInterval = null, string name = "microphoneactive", string id = default) : base(name ?? "microphoneactive", updateInterval ?? 10, id) {}
 
         public override string GetState()
         {

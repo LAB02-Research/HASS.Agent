@@ -114,6 +114,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HASS.Agent Port Reservation";
             this.Load += new System.EventHandler(this.PortReservation_Load);
+            this.ResizeEnd += new System.EventHandler(this.PortReservation_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.PbStep1PortBinding)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbStep2Firewall)).EndInit();
             this.ResumeLayout(false);

@@ -36,7 +36,7 @@ namespace HASSAgent.Forms.ChildApplications
             await Task.Delay(TimeSpan.FromSeconds(2));
 
             // make sure settings are loaded
-            SettingsManager.Load(false);
+            await SettingsManager.LoadAsync(false);
 
             // check leftover legacy tasks
             var taskDone = await ProcessLegacyTaskAsync();
@@ -92,7 +92,7 @@ namespace HASSAgent.Forms.ChildApplications
                 else Log.Information("[POSTUPDATE] Legacy scheduled task removed");
 
                 // set startup-through-reg
-                var launchOnLoginSet = Reg.EnableLaunchOnUserLogin();
+                var launchOnLoginSet = LaunchManager.EnableLaunchOnUserLogin();
                 if (!launchOnLoginSet) Log.Error("[POSTUPDATE] Unable to activate registry based launch-on-login method");
                 else Log.Information("[POSTUPDATE] Registry based launch-on-login method activated");
 
@@ -132,6 +132,22 @@ namespace HASSAgent.Forms.ChildApplications
             {
                 Log.Fatal(ex, "[POSTUPDATE] Error processing port reservation: {err}", ex.Message);
                 return false;
+            }
+        }
+
+        private void PostUpdate_ResizeEnd(object sender, EventArgs e)
+        {
+            if (Variables.ShuttingDown) return;
+            if (!IsHandleCreated) return;
+            if (IsDisposed) return;
+
+            try
+            {
+                Refresh();
+            }
+            catch
+            {
+                // best effort
             }
         }
     }

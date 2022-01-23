@@ -8,7 +8,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
     {
         private readonly IHardware _gpu;
 
-        public GpuTemperatureSensor(int? updateInterval = null, string name = "GPUTemperature", string id = default) : base(name ?? "GPUTemperature", updateInterval ?? 30, id)
+        public GpuTemperatureSensor(int? updateInterval = null, string name = "gputemperature", string id = default) : base(name ?? "gputemperature", updateInterval ?? 30, id)
         {
             var computer = new Computer
             {

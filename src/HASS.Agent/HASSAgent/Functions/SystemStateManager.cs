@@ -64,6 +64,9 @@ namespace HASSAgent.Functions
             }
         }
 
+        /// <summary>
+        /// Hooks onto system events and acts accordingly
+        /// </summary>
         private static void Monitor()
         {
             try

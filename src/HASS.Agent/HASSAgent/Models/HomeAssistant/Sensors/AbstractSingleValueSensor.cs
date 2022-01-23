@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using HASSAgent.Mqtt;
 using MQTTnet;
@@ -35,7 +36,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors
             {
                 if (respectChecks)
                 {
-                    if (LastUpdated.HasValue && LastUpdated.Value.AddSeconds(UpdateIntervalSeconds) > DateTime.UtcNow) return;
+                    if (LastUpdated.HasValue && LastUpdated.Value.AddSeconds(UpdateIntervalSeconds) > DateTime.Now) return;
                 }
             
                 var state = GetState();
@@ -48,14 +49,16 @@ namespace HASSAgent.Models.HomeAssistant.Sensors
                 var message = new MqttApplicationMessageBuilder()
                     .WithTopic(GetAutoDiscoveryConfig().State_topic)
                     .WithPayload(state)
-                    .WithExactlyOnceQoS()
-                    .WithRetainFlag()
                     .Build();
 
                 await MqttManager.PublishAsync(message);
 
+                // only store the state if the checks are respected
+                // otherwise, we might stay in 'unknown' state untill the value changes
+                if (!respectChecks) return;
+
                 PreviousPublishedState = state;
-                LastUpdated = DateTime.UtcNow;
+                LastUpdated = DateTime.Now;
             }
             catch (Exception ex)
             {

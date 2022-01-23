@@ -2,7 +2,7 @@
 {
     public class DummySensor : AbstractSingleValueSensor
     {
-        public DummySensor(int? updateInterval = null, string name = "Dummy", string id = default) : base(name ?? "Dummy", updateInterval ?? 5, id) { }
+        public DummySensor(int? updateInterval = null, string name = "dummy", string id = default) : base(name ?? "dummy", updateInterval ?? 5, id) { }
 
         public override DiscoveryConfigModel GetAutoDiscoveryConfig()
         {

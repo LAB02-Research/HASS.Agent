@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using HASSAgent.Functions;
 using Serilog;
 
 namespace HASSAgent.Models.HomeAssistant.Commands
@@ -9,46 +10,33 @@ namespace HASSAgent.Models.HomeAssistant.Commands
     {
         public string Command { get; protected set; }
         public string State { get; protected set; }
+        public bool RunAsLowIntegrity { get; protected set; }
         public Process Process { get; set; }
 
-        public CustomCommand(string command, string name = "Custom", string id = default) : base(name ?? "Custom", id)
+        public CustomCommand(string command, bool runAsLowIntegrity, string name = "Custom", string id = default) : base(name ?? "Custom", id)
         {
             Command = command;
+            RunAsLowIntegrity = runAsLowIntegrity;
             State = "OFF";
         }
 
-        public override async void TurnOn()
+        public override void TurnOn()
         {
             State = "ON";
 
-            using (Process = new Process())
+            if (RunAsLowIntegrity) CommandLineManager.LaunchAsLowIntegrity(Command);
+            else
             {
-                var startInfo = new ProcessStartInfo
-                {
-                    WindowStyle = ProcessWindowStyle.Hidden,
-                    CreateNoWindow = true,
-                    FileName = "cmd.exe",
-                    Arguments = $"/C {Command}"
-                };
+                var executed = CommandLineManager.ExecuteHeadless(Command);
 
-                Process.StartInfo = startInfo;
-
-                try
+                if (!executed)
                 {
-                    Process.Start();
-                }
-                catch (Exception ex)
-                {
-                    Log.Error("[COMMAND] Execution of '{name}' failed: {msg}", Name, ex.Message);
+                    Log.Error("[COMMAND] Launching command '{name}' failed", Name);
                     State = "FAILED";
-                }
-
-                while (!Process.HasExited)
-                {
-                    await Task.Delay(1000);
+                    return;
                 }
             }
-                
+
             State = "OFF";
         }
         

@@ -88,6 +88,7 @@ namespace HASSAgent.Forms.QuickActions
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuickActions_FormClosing);
             this.Load += new System.EventHandler(this.QuickActions_Load);
+            this.ResizeEnd += new System.EventHandler(this.QuickActions_ResizeEnd);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.QuickActions_KeyUp);
             this.ResumeLayout(false);
 

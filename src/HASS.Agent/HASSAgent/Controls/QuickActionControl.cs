@@ -30,10 +30,7 @@ namespace HASSAgent.Controls
             _quickActionsForm = quickActionsForm;
 
             // bind to unfocus event
-            quickActionsForm.ClearFocus += delegate
-            {
-                FocusLost();
-            };
+            quickActionsForm.ClearFocus += delegate { FocusLost(); };
 
             InitializeComponent();
         }

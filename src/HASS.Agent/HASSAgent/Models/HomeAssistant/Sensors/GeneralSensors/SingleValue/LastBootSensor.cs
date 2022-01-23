@@ -6,7 +6,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
 {
     public class LastBootSensor : AbstractSingleValueSensor
     {
-        public LastBootSensor(int? updateInterval = 10, string name = "LastBoot", string id = default) : base(name ?? "LastBoot", updateInterval ?? 10, id) {}
+        public LastBootSensor(int? updateInterval = 10, string name = "lastboot", string id = default) : base(name ?? "lastboot", updateInterval ?? 10, id) {}
 
         public override DiscoveryConfigModel GetAutoDiscoveryConfig()
         {

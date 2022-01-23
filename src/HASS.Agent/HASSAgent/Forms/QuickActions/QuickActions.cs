@@ -328,5 +328,21 @@ namespace HASSAgent.Forms.QuickActions
         {
             ClearFocus?.Invoke(this, EventArgs.Empty);
         }
+
+        private void QuickActions_ResizeEnd(object sender, EventArgs e)
+        {
+            if (Variables.ShuttingDown) return;
+            if (!IsHandleCreated) return;
+            if (IsDisposed) return;
+
+            try
+            {
+                Refresh();
+            }
+            catch
+            {
+                // best effort
+            }
+        }
     }
 }

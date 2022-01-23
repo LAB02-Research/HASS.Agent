@@ -36,7 +36,7 @@ namespace HASSAgent.Forms.ChildApplications
             await Task.Delay(TimeSpan.FromSeconds(2));
 
             // make sure settings are loaded
-            SettingsManager.Load(false);
+            await SettingsManager.LoadAsync(false);
 
             // execute port reservation
             var portDone = await ProcessPortReservationAsync();
@@ -120,6 +120,22 @@ namespace HASSAgent.Forms.ChildApplications
             {
                 Log.Fatal(ex, "[PORTRESERVATION] Error creating firewall rule: {err}", ex.Message);
                 return false;
+            }
+        }
+
+        private void PortReservation_ResizeEnd(object sender, EventArgs e)
+        {
+            if (Variables.ShuttingDown) return;
+            if (!IsHandleCreated) return;
+            if (IsDisposed) return;
+
+            try
+            {
+                Refresh();
+            }
+            catch
+            {
+                // best effort
             }
         }
     }

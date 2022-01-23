@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using HASSAgent.Enums;
 using HASSAgent.Models.Config;
 using HASSAgent.Models.HomeAssistant.Commands;
@@ -21,7 +22,7 @@ namespace HASSAgent.Settings
         /// Load all stored commands
         /// </summary>
         /// <returns></returns>
-        internal static bool Load()
+        internal static async Task<bool> LoadAsync()
         {
             try
             {
@@ -58,10 +59,13 @@ namespace HASSAgent.Settings
                 }
 
                 // convert to abstract commands
-                foreach (var abstractCommand in configuredCommands.Select(ConvertConfiguredToAbstract).Where(abstractCommand => abstractCommand != null))
+                await Task.Run(delegate
                 {
-                    Variables.Commands.Add(abstractCommand);
-                }
+                    foreach (var abstractCommand in configuredCommands.Select(ConvertConfiguredToAbstract).Where(abstractCommand => abstractCommand != null))
+                    {
+                        Variables.Commands.Add(abstractCommand);
+                    }
+                });
 
                 // all good
                 Log.Information("[SETTINGS_COMMANDS] Loaded {count} entities", Variables.Commands.Count);
@@ -95,6 +99,9 @@ namespace HASSAgent.Settings
                 case CommandType.RestartCommand:
                     abstractCommand = new RestartCommand(command.Name, command.Id.ToString());
                     break;
+                case CommandType.HibernateCommand:
+                    abstractCommand = new HibernateCommand(command.Name, command.Id.ToString());
+                    break;
                 case CommandType.LogOffCommand:
                     abstractCommand = new LogOffCommand(command.Name, command.Id.ToString());
                     break;
@@ -102,7 +109,10 @@ namespace HASSAgent.Settings
                     abstractCommand = new LockCommand(command.Name, command.Id.ToString());
                     break;
                 case CommandType.CustomCommand:
-                    abstractCommand = new CustomCommand(command.Command, command.Name, command.Id.ToString());
+                    abstractCommand = new CustomCommand(command.Command, command.RunAsLowIntegrity, command.Name, command.Id.ToString());
+                    break;
+                case CommandType.PowershellCommand:
+                    abstractCommand = new PowershellCommand(command.Command, command.Name, command.Id.ToString());
                     break;
                 case CommandType.MediaPlayPauseCommand:
                     abstractCommand = new MediaPlayPauseCommand(command.Name, command.Id.ToString());
@@ -150,7 +160,20 @@ namespace HASSAgent.Settings
                         Id = Guid.Parse(customCommand.Id), 
                         Name = customCommand.Name, 
                         Type = type, 
-                        Command = customCommand.Command
+                        Command = customCommand.Command,
+                        RunAsLowIntegrity = customCommand.RunAsLowIntegrity
+                    };
+                }
+
+                case PowershellCommand powershellCommand:
+                {
+                    _ = Enum.TryParse<CommandType>(powershellCommand.GetType().Name, out var type);
+                    return new ConfiguredCommand()
+                    {
+                        Id = Guid.Parse(powershellCommand.Id),
+                        Name = powershellCommand.Name,
+                        Type = type,
+                        Command = powershellCommand.Command
                     };
                 }
 

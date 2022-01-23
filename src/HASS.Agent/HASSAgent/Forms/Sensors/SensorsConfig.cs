@@ -8,6 +8,7 @@ using HASSAgent.Models.Config;
 using HASSAgent.Mqtt;
 using HASSAgent.Sensors;
 using HASSAgent.Settings;
+using Newtonsoft.Json;
 using Serilog;
 using Syncfusion.Windows.Forms.Grid;
 
@@ -74,6 +75,11 @@ namespace HASSAgent.Forms.Sensors
 
             // hide updateinterval column
             LcSensors.Grid.HideCols["UpdateInterval"] = true;
+
+            // hide performancecounter columns
+            LcSensors.Grid.HideCols["Category"] = true;
+            LcSensors.Grid.HideCols["Counter"] = true;
+            LcSensors.Grid.HideCols["Instance"] = true;
 
             // force column resize
             LcSensors.Grid.ColWidths.ResizeToFit(GridRangeInfo.Table(), GridResizeToFitOptions.IncludeHeaders);
@@ -341,9 +347,22 @@ namespace HASSAgent.Forms.Sensors
 
         private void LcSensors_DoubleClick(object sender, EventArgs e) => ModifySelectedSensor();
 
-        private void SensorsConfig_Resize(object sender, EventArgs e)
+        private void SensorsConfig_Resize(object sender, EventArgs e) => LcSensors.Height = Height - _heightDiff;
+
+        private void SensorsConfig_ResizeEnd(object sender, EventArgs e)
         {
-            LcSensors.Height = Height - _heightDiff;
+            if (Variables.ShuttingDown) return;
+            if (!IsHandleCreated) return;
+            if (IsDisposed) return;
+
+            try
+            {
+                Refresh();
+            }
+            catch
+            {
+                // best effort
+            }
         }
     }
 }

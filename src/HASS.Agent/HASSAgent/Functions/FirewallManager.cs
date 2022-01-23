@@ -20,7 +20,7 @@ namespace HASSAgent.Functions
         {
             try
             {
-                await CommandLine.ExecuteCommandAsync("netsh", "advfirewall firewall delete rule name=\"HASS.Agent Notifier\"");
+                await CommandLineManager.ExecuteCommandAsync("netsh", "advfirewall firewall delete rule name=\"HASS.Agent Notifier\"");
                 return true;
             }
             catch (Exception ex)
@@ -40,7 +40,7 @@ namespace HASSAgent.Functions
             try
             {
                 // add the rule
-                var consoleResult = await CommandLine.ExecuteCommandAsync("netsh", $"advfirewall firewall add rule name=\"HASS.Agent Notifier\" dir=in action=allow protocol=TCP localport={port}");
+                var consoleResult = await CommandLineManager.ExecuteCommandAsync("netsh", $"advfirewall firewall add rule name=\"HASS.Agent Notifier\" dir=in action=allow protocol=TCP localport={port}");
 
                 // error'd?
                 if (consoleResult.Error)

@@ -9,7 +9,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
         public override string Domain => "binary_sensor";
         public string WindowName { get; protected set; }
 
-        public NamedWindowSensor(string windowName, string name = "NamedWindow", int? updateInterval = 10, string id = default) : base(name ?? "NamedWindow", updateInterval ?? 30, id)
+        public NamedWindowSensor(string windowName, string name = "namedwindow", int? updateInterval = 10, string id = default) : base(name ?? "namedwindow", updateInterval ?? 30, id)
         {
             WindowName = windowName;
         }

@@ -32,47 +32,57 @@ namespace HASSAgent.Notifications
 
             Log.Information("[NOTIFIER] Initializing local API ..");
 
-            // prepare and use a new server
-            using (Variables.NotificationServer = RestServerBuilder.From<NotifierConfiguration>().Build())
+            try
             {
-                Variables.NotificationServer.AfterStarting += (s) =>
+                // prepare and use a new server
+                using (Variables.NotificationServer = RestServerBuilder.From<NotifierConfiguration>().Build())
                 {
-                    // root route to show we're up & running
-                    s.Router.Register(new Route(async (ctx) =>
+                    Variables.NotificationServer.AfterStarting += (s) =>
                     {
-                        await ctx.Response.SendResponseAsync("HASS.Agent Active");
-                    }, "Get", "/", true, "RootEndpoint"));
+                        // root route to show we're up & running
+                        s.Router.Register(new Route(async (ctx) =>
+                        {
+                            await ctx.Response.SendResponseAsync("HASS.Agent Active");
+                        }, "Get", "/", true, "RootEndpoint"));
 
-                    // notification route
-                    var notifyRoute = new Route(NotifierEndpoints.NotifyRoute, "Post", "/notify", true, "NotifyRoute");
-                    s.Router.Register(notifyRoute);
+                        // notification route
+                        var notifyRoute = new Route(NotifierEndpoints.NotifyRoute, "Post", "/notify", true, "NotifyRoute");
+                        s.Router.Register(notifyRoute);
 
-                    // done
-                    Log.Information("[NOTIFIER] API listening on port {port}", Variables.AppSettings.NotifierApiPort);
-                    Variables.MainForm?.SetNotificationApiStatus(ComponentStatus.Ok);
-                };
+                        // done
+                        Log.Information("[NOTIFIER] API listening on port {port}", Variables.AppSettings.NotifierApiPort);
+                        Variables.MainForm?.SetNotificationApiStatus(ComponentStatus.Ok);
+                    };
 
-                // register shutdown event
-                Variables.NotificationServer.AfterStopping += (s) =>
-                {
-                    if (Variables.ShuttingDown) return;
+                    // register shutdown event
+                    Variables.NotificationServer.AfterStopping += (s) =>
+                    {
+                        if (Variables.ShuttingDown) return;
 
-                    Log.Information("[NOTIFIER] API stopped");
-                    Variables.MainForm?.SetNotificationApiStatus(ComponentStatus.Stopped);
-                };
+                        Log.Information("[NOTIFIER] API stopped");
+                        Variables.MainForm?.SetNotificationApiStatus(ComponentStatus.Stopped);
+                    };
 
-                // try to launch server
-                try
-                {
-                    Variables.NotificationServer.Run();
+                    // try to launch server
+                    try
+                    {
+                        Variables.NotificationServer.Run();
+                    }
+                    catch (Exception ex)
+                    {
+                        if (Variables.ShuttingDown) return;
+                        Log.Fatal(ex, "[NOTIFIER] Error trying to bind the API to port {port}: {err}", Variables.AppSettings.NotifierApiPort, ex.Message);
+                        Variables.MainForm?.ShowMessageBox($"Error trying to bind the API to port {Variables.AppSettings.NotifierApiPort}.\r\n\r\nMake sure no other instance of HASS.Agent is running and the port is available and registered.", true);
+
+                        Variables.MainForm?.SetNotificationApiStatus(ComponentStatus.Failed);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    Log.Fatal(ex, "[NOTIFIER] Error trying to bind the API to port {port}: {err}", Variables.AppSettings.NotifierApiPort, ex.Message);
-                    Variables.MainForm?.ShowMessageBox($"Error trying to bind the API to port {Variables.AppSettings.NotifierApiPort}.\r\n\r\nMake sure no other instance of HASS.Agent is running and the port is available and registered.", true);
-
-                    Variables.MainForm?.SetNotificationApiStatus(ComponentStatus.Failed);
-                }
+            }
+            catch (Exception ex)
+            {
+                if (Variables.ShuttingDown) return;
+                Log.Fatal(ex, "[NOTIFIER] Error initializing the API to {port}: {err}", Variables.AppSettings.NotifierApiPort, ex.Message);
+                Variables.MainForm?.SetNotificationApiStatus(ComponentStatus.Failed);
             }
         }
 
@@ -117,7 +127,7 @@ namespace HASSAgent.Notifications
                 // prepare image
                 if (!string.IsNullOrWhiteSpace(notification.Image))
                 {
-                    var imageOk = HelperFunctions.DownloadImage(notification.Image, out var localPath);
+                    var imageOk = StorageManager.DownloadImage(notification.Image, out var localPath);
                     if (imageOk) toastBuilder.AddInlineImage(new Uri(localPath));
                     else Log.Error("[NOTIFIER] Image download failed, dropping: {img}", notification.Image);
                 }
@@ -199,7 +209,7 @@ namespace HASSAgent.Notifications
                 Log.Information("[NOTIFIER] Executing port reservation for port: {port}", port);
 
                 var args = $"http add urlacl url=http://+:{port}/ user={Environment.UserDomainName}\\{Environment.UserName}";
-                var executionResult = await CommandLine.ExecuteCommandAsync("netsh", args, TimeSpan.FromMinutes(2));
+                var executionResult = await CommandLineManager.ExecuteCommandAsync("netsh", args, TimeSpan.FromMinutes(2));
 
                 // capture normal and error output
                 var output = executionResult.Output.Trim();

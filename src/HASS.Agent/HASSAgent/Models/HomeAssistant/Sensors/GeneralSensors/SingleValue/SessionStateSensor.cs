@@ -4,7 +4,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
 {
     public class SessionStateSensor : AbstractSingleValueSensor
     {
-        public SessionStateSensor(int? updateInterval = null, string name = "SessionState", string id = default) : base(name ?? "SessionState", updateInterval ?? 10, id) { }
+        public SessionStateSensor(int? updateInterval = null, string name = "sessionstate", string id = default) : base(name ?? "sessionstate", updateInterval ?? 10, id) { }
 
         public override DiscoveryConfigModel GetAutoDiscoveryConfig()
         {

@@ -7,6 +7,8 @@ namespace HASSAgent.Controls.Onboarding
     // ReSharper disable once InconsistentNaming
     public partial class MQTT : UserControl
     {
+        private bool _initializing = true;
+
         public MQTT()
         {
             InitializeComponent();
@@ -43,6 +45,8 @@ namespace HASSAgent.Controls.Onboarding
             TbMqttPassword.Text = Variables.AppSettings.MqttPassword;
             TbMqttDiscoveryPrefix.Text = Variables.AppSettings.MqttDiscoveryPrefix;
 
+            _initializing = false;
+
             ActiveControl = !string.IsNullOrEmpty(TbMqttAddress.Text) ? TbMqttUsername : TbMqttAddress;
         }
 
@@ -55,6 +59,12 @@ namespace HASSAgent.Controls.Onboarding
             Variables.AppSettings.MqttPassword = TbMqttPassword.Text;
             Variables.AppSettings.MqttDiscoveryPrefix = TbMqttDiscoveryPrefix.Text;
             return true;
+        }
+
+        private void CbMqttTls_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_initializing) return;
+            TbIntMqttPort.IntegerValue = CbMqttTls.Checked ? 8883 : 1883;
         }
     }
 }

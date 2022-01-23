@@ -2,7 +2,7 @@
 {
     internal class RestartCommand : CustomCommand
     {
-        internal RestartCommand(string name = "Restart", string id = default) : base("shutdown /r", name ?? "Restart", id)
+        internal RestartCommand(string name = "Restart", string id = default) : base("shutdown /r", false, name ?? "Restart", id)
         {
             State = "OFF";
         }

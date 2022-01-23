@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using HASSAgent.Settings;
 using Octokit;
 using Serilog;
+using Syncfusion.Windows.Forms;
 
 namespace HASSAgent.Functions
 {
@@ -123,10 +128,10 @@ namespace HASSAgent.Functions
         }
 
         /// <summary>
-        /// Returns the release's URL and release notes for the latest release tag
+        /// Returns the release's URL, release notes and installer url for the latest release tag
         /// </summary>
         /// <returns></returns>
-        internal static async Task<(string releaseUrl, string releaseNotes)> GetLatestVersionInfoAsync()
+        internal static async Task<(string releaseUrl, string releaseNotes, string installerExe)> GetLatestVersionInfoAsync()
         {
             try
             {
@@ -136,17 +141,15 @@ namespace HASSAgent.Functions
                 // fetch the latest release
                 var latestRelease = await client.Repository.Release.GetLatest("LAB02-Research", "HASS.Agent");
 
-                // get the .zip asset
-                // deprecated: we're using the general page now
-
-                //var zipAssetUri = string.Empty;
-                //var zipAsset = latestRelease.Assets.Select(x => x).FirstOrDefault(y => y.ContentType == "application/x-zip-compressed");
-                //if (zipAsset == null)
-                //{
-                //    // not found ..
-                //    Log.Error("[UPDATER] No .zip asset found for release: {v}", latestRelease.TagName);
-                //}
-                //else zipAssetUri = zipAsset.BrowserDownloadUrl;
+                // get the installer
+                var installerAssetUrl = string.Empty;
+                var installerAsset = latestRelease.Assets.Select(x => x).FirstOrDefault(y => y.BrowserDownloadUrl.ToLower().EndsWith("installer.exe"));
+                if (installerAsset == null)
+                {
+                    // not found ..
+                    Log.Error("[UPDATER] No .installer.exe asset found for release: {v}", latestRelease.TagName);
+                }
+                else installerAssetUrl = installerAsset.BrowserDownloadUrl;
 
                 // get the release url
                 var releaseUrl = latestRelease.HtmlUrl;
@@ -155,13 +158,82 @@ namespace HASSAgent.Functions
                 var releaseNotes = latestRelease.Body;
 
                 // done
-                return (releaseUrl, releaseNotes);
+                return (releaseUrl, releaseNotes, installerAssetUrl);
             }
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[UPDATER] Error getting the latest version's info: {err}", ex.Message);
-                return (string.Empty, "error fetching info, check the logs");
+                return (string.Empty, "error fetching info, check the logs", string.Empty);
             }
+        }
+
+        /// <summary>
+        /// Downloads the latest installer to a local temp file, and executes it
+        /// </summary>
+        /// <param name="installerUrl"></param>
+        /// <param name="releaseUrl"></param>
+        /// <returns></returns>
+        internal static async Task DownloadAndExecuteUpdate(string installerUrl, string releaseUrl)
+        {
+            // yep, prepare a temporary filename
+            var tempFile = await StorageManager.PrepareTempInstallerFilename();
+            if (string.IsNullOrEmpty(tempFile))
+            {
+                MessageBoxAdv.Show("Unable to prepare downloading the update, check the logs for more info.\r\n\r\nThe release page will now open instead.",
+                    "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                LaunchReleaseUrl(releaseUrl);
+                return;
+            }
+
+            // download the installer
+            var downloaded = await Task.Run(() => StorageManager.DownloadFile(installerUrl, tempFile));
+            if (!downloaded || !File.Exists(tempFile))
+            {
+                MessageBoxAdv.Show("Unable to download the update, check the logs for more info.\r\n\r\nThe release page will now open instead.",
+                    "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                LaunchReleaseUrl(releaseUrl);
+                return;
+            }
+
+            // check the certificate
+            var certCheck = HelperFunctions.ConfirmCertificate(tempFile);
+            if (!certCheck)
+            {
+                MessageBoxAdv.Show("The downloaded file FAILED the certificate check.\r\n\r\nThis could be a technical error, but also a tampered file!\r\n\r\n" +
+                                   "Please check the logs, and post a ticket with the findings.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                LaunchReleaseUrl(releaseUrl);
+                return;
+            }
+
+            // finally, execute it
+            try
+            {
+                Process.Start(tempFile);
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[UPDATER] Error while launching the installer: {err}", ex.Message);
+                MessageBoxAdv.Show("Unable to launch the installer (did you approve the UAC prompt?), check the logs for more info.\r\n\r\nThe release page will now open instead.",
+                    "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                LaunchReleaseUrl(releaseUrl);
+            }
+        }
+
+        /// <summary>
+        /// Attempts to launch the release's page, if that's not found, the latest release page
+        /// </summary>
+        internal static void LaunchReleaseUrl(string releaseUrl)
+        {
+            // check if we got the release url
+            if (string.IsNullOrEmpty(releaseUrl))
+            {
+                // nope, weird
+                HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent/releases/latest");
+                return;
+            }
+
+            // open the release's github page
+            HelperFunctions.LaunchUrl(releaseUrl);
         }
     }
 }

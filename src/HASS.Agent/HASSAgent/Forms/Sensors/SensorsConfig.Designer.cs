@@ -177,6 +177,7 @@ namespace HASSAgent.Forms.Sensors
             this.BtnStore.Name = "BtnStore";
             this.BtnStore.Size = new System.Drawing.Size(624, 47);
             this.BtnStore.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnStore.Style.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -215,6 +216,7 @@ namespace HASSAgent.Forms.Sensors
             this.Text = "Sensors Config";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SensorsConfig_FormClosing);
             this.Load += new System.EventHandler(this.SensorsConfig_Load);
+            this.ResizeEnd += new System.EventHandler(this.SensorsConfig_ResizeEnd);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SensorsConfig_KeyUp);
             this.Resize += new System.EventHandler(this.SensorsConfig_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.LcSensors)).EndInit();

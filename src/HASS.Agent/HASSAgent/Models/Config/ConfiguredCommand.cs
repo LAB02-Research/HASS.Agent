@@ -1,5 +1,6 @@
 ﻿using System;
 using HASSAgent.Enums;
+using HASSAgent.Functions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -12,7 +13,11 @@ namespace HASSAgent.Models.Config
         /// </summary>
         /// <param name="commandType"></param>
         /// <returns></returns>
-        public static string GetCommandName(this CommandType commandType) => commandType.ToString().Replace("Command", "");
+        public static string GetCommandName(this CommandType commandType)
+        {
+            var commandName = commandType.ToString().ToLower().Replace("command", "");
+            return $"{HelperFunctions.GetSafeConfiguredDeviceName()}_{commandName}";
+        }
     }
 
     public class ConfiguredCommand
@@ -23,5 +28,6 @@ namespace HASSAgent.Models.Config
         public string Command { get; set; }
         public byte KeyCode { get; set; }
         public string Name { get; set; }
+        public bool RunAsLowIntegrity { get; set; } = false;
     }
 }

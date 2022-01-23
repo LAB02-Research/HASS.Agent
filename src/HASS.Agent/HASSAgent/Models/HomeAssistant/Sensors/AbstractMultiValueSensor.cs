@@ -29,7 +29,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors
             {
                 if (respectChecks)
                 {
-                    if (LastUpdated.HasValue && LastUpdated.Value.AddSeconds(UpdateIntervalSeconds) > DateTime.UtcNow) return;
+                    if (LastUpdated.HasValue && LastUpdated.Value.AddSeconds(UpdateIntervalSeconds) > DateTime.Now) return;
                 }
 
                 if (Sensors == null || !Sensors.Any()) return;
@@ -40,7 +40,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors
                 // update their values
                 foreach (var sensor in Sensors) await sensor.Value.PublishStateAsync(respectChecks);
 
-                LastUpdated = DateTime.UtcNow;
+                LastUpdated = DateTime.Now;
             }
             catch (Exception ex)
             {

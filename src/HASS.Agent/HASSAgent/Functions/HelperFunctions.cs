@@ -7,8 +7,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Coderr.Client;
@@ -84,62 +87,11 @@ namespace HASSAgent.Functions
         }
 
         /// <summary>
-        /// Download an image to local temp path
+        /// Initializes Serilog logger, optionally with exception logging through Coderr
         /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="localPath"></param>
-        /// <returns></returns>
-        internal static bool DownloadImage(string uri, out string localPath)
+        internal static void PrepareLogging()
         {
-            localPath = string.Empty;
-
-            try
-            {
-                if (string.IsNullOrWhiteSpace(uri))
-                {
-                    Log.Error("[DOWNLOADIMAGE] Can't parse an empty uri");
-                    return false;
-                }
-
-                if (!uri.StartsWith("http"))
-                {
-                    Log.Error("[DOWNLOADIMAGE] Only HTTP uri's are allowed, received: {uri}", uri);
-                    return false;
-                }
-                
-                if (!Directory.Exists(Variables.ImageCachePath)) Directory.CreateDirectory(Variables.ImageCachePath);
-
-                // check for extension
-                // this fails for hass proxy urls, so add an extra length check
-                var ext = Path.GetExtension(uri);
-                if (string.IsNullOrEmpty(ext) || ext.Length > 5) ext = ".png";
-
-                // create a random local filename
-                var localFile = $"{DateTime.Now:yyyyMMddHHmmss}_{Guid.NewGuid().ToString().Substring(0, 8)}";
-                localPath = Path.Combine(Variables.ImageCachePath, $"{localFile}{ext}");
-
-                // make the uri safe
-                var safeUri = Uri.EscapeUriString(uri);
-                
-                // download the file
-                Variables.ImageWebClient.DownloadFile(new Uri(safeUri), localPath);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal(ex, "[DOWNLOADIMAGE] Error downloading image: {uri}", uri);
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Initializes Serilog logger, optionally with Coderr
-        /// </summary>
-        /// <param name="enableCoderr"></param>
-        internal static void PrepareLogging(bool enableCoderr)
-        {
-            if (enableCoderr)
+            if (Variables.ExceptionLogging)
             {
                 PrepareCoderrEnabledLogging();
                 return;
@@ -231,7 +183,7 @@ namespace HASSAgent.Functions
                 if (fromElevation)
                 {
                     // launch unelevated
-                    CommandLine.ExecuteProcessUnElevated(restartBat);
+                    CommandLineManager.ExecuteProcessUnElevated(restartBat);
                 }
                 else
                 {
@@ -304,7 +256,7 @@ namespace HASSAgent.Functions
                     NotifierManager.Stop();
 
                     // process disposables
-                    Variables.ImageWebClient?.Dispose();
+                    Variables.WebClient?.Dispose();
 
                     // stop entity managers
                     CommandsManager.Stop();
@@ -315,9 +267,6 @@ namespace HASSAgent.Functions
                 Log.Information("[SYSTEM] Application shutdown complete");
                 Log.CloseAndFlush();
                 logClosed = true;
-
-                // shutdown
-                Environment.Exit(1);
             }
             catch (Exception ex)
             {
@@ -326,8 +275,10 @@ namespace HASSAgent.Functions
                     Log.Error("[SYSTEM] Error shutting down nicely: {msg}", ex.Message);
                     Log.CloseAndFlush();
                 }
-
-                // screw it
+            }
+            finally
+            {
+                // shutdown
                 Environment.Exit(1);
             }
         }
@@ -511,150 +462,6 @@ namespace HASSAgent.Functions
         }
 
         /// <summary>
-        /// Deletes the provided directory and its containing files, optionally recursively
-        /// </summary>
-        /// <param name="directory"></param>
-        /// <param name="recursive"></param>
-        /// <returns></returns>
-        internal static async Task<bool> DeleteDirectoryAsync(string directory, bool recursive = true)
-        {
-            try
-            {
-                if (!Directory.Exists(directory)) return true;
-
-                // get dir info
-                var dirInfo = new DirectoryInfo(directory);
-
-                if (recursive) await Task.Run(async () => await DeleteDirectoryRecursively(dirInfo));
-                else
-                {
-                    await Task.Run(async delegate
-                    {
-                        var files = dirInfo.GetFiles();
-
-                        // remove readonly from files and remove them
-                        foreach (var file in files)
-                        {
-                            file.IsReadOnly = false;
-                            file.Delete();
-                        }
-
-                        // give io time to catchup
-                        await Task.Delay(250);
-
-                        // delete the directory
-                        Directory.Delete(directory, false);
-                    });
-                }
-                
-                // done
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal("[STORAGE] Error while deleting directory '{dir}': {err}", directory, ex.Message);
-                return false;
-            }
-        }
-
-        private static async Task DeleteDirectoryRecursively(DirectoryInfo baseDir)
-        {
-            try
-            {
-                if (!baseDir.Exists) return;
-
-                foreach (var dir in baseDir.EnumerateDirectories()) await DeleteDirectoryRecursively(dir);
-
-                var files = baseDir.GetFiles();
-
-                foreach (var file in files)
-                {
-                    file.IsReadOnly = false;
-                    file.Delete();
-                }
-
-                var errMsg = string.Empty;
-                for (var attempt = 0; attempt < 3; attempt++)
-                {
-                    try
-                    {
-                        baseDir.Delete(true);
-                        return;
-                    }
-                    catch (Exception ex)
-                    {
-                        errMsg = ex.Message;
-
-                        // give io time to catchup and try again
-                        await Task.Delay(250);
-                    }
-                }
-
-                Log.Error("[STORAGE] Error while deleting sub-directory '{dir}': {err}", baseDir.FullName, errMsg);
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal("[STORAGE] Error while cleaning sub-directory '{dir}': {err}", baseDir.FullName, ex.Message);
-            }
-        }
-
-        /// <summary>
-        /// Deletes the provided file, by default three attempts
-        /// </summary>
-        /// <param name="file"></param>
-        /// <param name="threeAttempts"></param>
-        /// <returns></returns>
-        internal static async Task<bool> DeleteFileAsync(string file, bool threeAttempts = true)
-        {
-            try
-            {
-                if (!File.Exists(file)) return true;
-
-                // remove readonly if set
-                try
-                {
-                    var fileInfo = new FileInfo(file);
-                    if (fileInfo.IsReadOnly) fileInfo.IsReadOnly = false;
-                }
-                catch
-                {
-                    // best effort
-                }
-
-                if (!threeAttempts)
-                {
-                    // just once
-                    File.Delete(file);
-                    return true;
-                }
-
-                // three attempts
-                var errMsg = string.Empty;
-                for (var i = 0; i < 3; i++)
-                {
-                    try
-                    {
-                        File.Delete(file);
-                        return true;
-                    }
-                    catch (Exception ex)
-                    {
-                        errMsg = ex.Message;
-                        await Task.Delay(TimeSpan.FromSeconds(3));
-                    }
-                }
-
-                Log.Error("[STORAGE] Errors during three attempts to delete file '{file}': {err}", file, errMsg);
-                return false;
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal("[STORAGE] Error while deleting file '{file}': {err}", file, ex.Message);
-                return false;
-            }
-        }
-
-        /// <summary>
         /// Attempts to bring the provided form to the foreground if it's open
         /// </summary>
         /// <param name="formName"></param>
@@ -684,6 +491,85 @@ namespace HASSAgent.Functions
                 return false;
             }
         }
+
+        /// <summary>
+        /// Checks the local file to see if it has the right signature
+        /// </summary>
+        /// <param name="localFile"></param>
+        /// <returns></returns>
+        internal static bool ConfirmCertificate(string localFile)
+        {
+            try
+            {
+                if (!File.Exists(localFile))
+                {
+                    Log.Error("[CERT] File not found, can't check certificate: {file}", localFile);
+                    return false;
+                }
+
+                // load the cert, and specifically its hash
+                var certInfo = X509Certificate.CreateFromSignedFile(localFile);
+                var certHash = certInfo.GetCertHashString();
+
+                // hash found?
+                if (string.IsNullOrWhiteSpace(certHash))
+                {
+                    Log.Error("[CERT] IMPORTANT: Certificate check returned an empty hash - CHECK IF ITS PROPERLY SIGNED: {file}", localFile);
+                    return false;
+                }
+
+                // compare hashes
+                if (certHash != Variables.CertificateHash)
+                {
+                    Log.Error("[CERT] IMPORTANT: Certificate check FAILED: {file}", localFile);
+                    return false;
+                }
+
+                // all good
+                Log.Information("[CERT] Certificate check passed for file: {file}", localFile);
+                return true;
+            }
+            catch (CryptographicException ex)
+            {
+                Log.Fatal(ex, "[CERT] IMPORTANT: Something went wrong while checking local file certificate - CHECK IF ITS ACTUALLY SIGNED: {file}", localFile);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[CERT] Error while checking certificate of local file: {file}", localFile);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Returns a safe version of this machine's name
+        /// </summary>
+        /// <returns></returns>
+        internal static string GetSafeDeviceName() => Regex.Replace(Environment.MachineName.ToLower(), "[^a-zA-Z0-9_-]", "_");
+
+        /// <summary>
+        /// Returns the configured device name, or a safe version of the machinename if nothing's stored
+        /// </summary>
+        /// <returns></returns>
+        internal static string GetConfiguredDeviceName() =>
+            string.IsNullOrEmpty(Variables.AppSettings?.DeviceName) 
+                ? GetSafeDeviceName() 
+                : Variables.AppSettings.DeviceName;
+
+        /// <summary>
+        /// Returns the safe variant of the configured device name, or a safe version of the machinename if nothing's stored
+        /// </summary>
+        /// <returns></returns>
+        internal static string GetSafeConfiguredDeviceName() =>
+            string.IsNullOrEmpty(Variables.AppSettings?.DeviceName)
+                ? GetSafeDeviceName()
+                : Regex.Replace(Variables.AppSettings.DeviceName.ToLower(), "[^a-zA-Z0-9_-]", "_");
+
+        /// <summary>
+        /// Returns a safe (lowercase) version of the provided value
+        /// </summary>
+        /// <returns></returns>
+        internal static string GetSafeValue(string value) => Regex.Replace(value.ToLower(), "[^a-zA-Z0-9_-]", "_");
     }
 
     public class CamelCaseJsonNamingpolicy : JsonNamingPolicy

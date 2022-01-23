@@ -34,7 +34,7 @@ namespace HASSAgent.Controls.Onboarding
         /// </summary>
         private void DetermineLaunchOnLoginStatus()
         {
-            var present = Reg.CheckLaunchOnUserLogin();
+            var present = LaunchManager.CheckLaunchOnUserLogin();
             if (!present)
             {
                 Invoke(new MethodInvoker(delegate
@@ -58,7 +58,7 @@ namespace HASSAgent.Controls.Onboarding
             BtnSetLaunchOnLogin.Enabled = false;
 
             // set the key
-            var enabled = Reg.EnableLaunchOnUserLogin();
+            var enabled = LaunchManager.EnableLaunchOnUserLogin();
             if (enabled)
             {
                 // success

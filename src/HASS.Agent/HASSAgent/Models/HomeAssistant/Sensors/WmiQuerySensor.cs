@@ -9,9 +9,8 @@ namespace HASSAgent.Models.HomeAssistant.Sensors
         protected readonly ObjectQuery ObjectQuery;
         protected readonly ManagementObjectSearcher Searcher;
 
-        public WmiQuerySensor(string query, int? updateInterval = null, string name = "WmiQuerySensor", string id = default) : base(name ?? "WmiQuerySensor", updateInterval ?? 10, id)
+        public WmiQuerySensor(string query, int? updateInterval = null, string name = "wmiquerysensor", string id = default) : base(name ?? "wmiquerysensor", updateInterval ?? 10, id)
         {
-            id = Guid.NewGuid().ToString();
             Query = query;
             ObjectQuery = new ObjectQuery(Query);
             Searcher = new ManagementObjectSearcher(query);

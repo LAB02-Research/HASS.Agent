@@ -114,6 +114,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HASS.Agent Post Update";
             this.Load += new System.EventHandler(this.PostUpdate_Load);
+            this.ResizeEnd += new System.EventHandler(this.PostUpdate_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.PbStep1ScheduledTask)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbStep2PortBinding)).EndInit();
             this.ResumeLayout(false);

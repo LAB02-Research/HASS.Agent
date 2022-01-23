@@ -45,5 +45,21 @@ namespace HASSAgent.Forms
         {
             if (!_onboardingManager.ConfirmBeforeClose()) e.Cancel = true;
         }
+
+        private void Onboarding_ResizeEnd(object sender, EventArgs e)
+        {
+            if (Variables.ShuttingDown) return;
+            if (!IsHandleCreated) return;
+            if (IsDisposed) return;
+
+            try
+            {
+                Refresh();
+            }
+            catch
+            {
+                // best effort
+            }
+        }
     }
 }

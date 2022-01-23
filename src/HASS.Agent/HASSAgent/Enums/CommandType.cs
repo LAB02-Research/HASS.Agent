@@ -8,12 +8,16 @@ namespace HASSAgent.Enums
         ShutdownCommand,
         [EnumMember(Value = "RestartCommand")]
         RestartCommand,
+        [EnumMember(Value = "HibernateCommand")]
+        HibernateCommand,
         [EnumMember(Value = "LogOffCommand")]
         LogOffCommand,
         [EnumMember(Value = "LockCommand")]
         LockCommand,
         [EnumMember(Value = "CustomCommand")]
         CustomCommand,
+        [EnumMember(Value = "PowershellCommand")]
+        PowershellCommand,
         [EnumMember(Value = "MediaPlayPauseCommand")]
         MediaPlayPauseCommand,
         [EnumMember(Value = "MediaNextCommand")]

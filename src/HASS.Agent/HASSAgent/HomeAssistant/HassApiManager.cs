@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using HADotNet.Core;
 using HADotNet.Core.Clients;
@@ -50,10 +52,17 @@ namespace HASSAgent.HomeAssistant
                     Variables.MainForm?.SetHassApiStatus(ComponentStatus.Stopped);
                     return ManagerStatus;
                 }
-                
-                // initialize hass client
-                var hassUri = new Uri(Variables.AppSettings.HassUri);
-                ClientFactory.Initialize(hassUri, Variables.AppSettings.HassToken);
+
+                // initialize hass client, optionally using certificate
+                var clientInitialized = InitializeClient();
+                if (!clientInitialized)
+                {
+                    Variables.MainForm?.SetHassApiStatus(ComponentStatus.Failed);
+                    ManagerStatus = HassManagerStatus.Failed;
+
+                    Variables.MainForm?.ShowToolTip("hass api: connection setup failed", true);
+                    return ManagerStatus;
+                }
 
                 // retrieve config
                 _configClient = ClientFactory.GetClient<ConfigClient>();
@@ -95,22 +104,96 @@ namespace HASSAgent.HomeAssistant
         }
 
         /// <summary>
-        /// Checks the provided provided credentials to see if we can connect
-        /// <para>This will disconnect any current connections!</para>
+        /// Initializes the HA API client, optionally using provided certificate config
         /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="apiKey"></param>
         /// <returns></returns>
-        internal static async Task<(bool success, string message)> CheckHassConfigAsync(string uri, string apiKey)
+        private static bool InitializeClient()
         {
             try
             {
                 var hassUri = new Uri(Variables.AppSettings.HassUri);
 
-                // initialize hass client
-                if (ClientFactory.IsInitialized) ClientFactory.Reset();
-                ClientFactory.Initialize(uri, apiKey);
+                // automatic certificate selection
+                if (Variables.AppSettings.HassAutoClientCertificate)
+                {
+                    Log.Information("[HASS_API] Connecting using automatic client certificate selection");
 
+                    var handler = new HttpClientHandler();
+                    handler.ClientCertificateOptions = ClientCertificateOption.Automatic;
+
+                    ClientFactory.Initialize(hassUri, Variables.AppSettings.HassToken, handler);
+                    return true;
+                }
+
+                // manual certificate selection
+                if (!string.IsNullOrEmpty(Variables.AppSettings.HassClientCertificate))
+                {
+                    if (!File.Exists(Variables.AppSettings.HassClientCertificate))
+                    {
+                        Log.Error("[HASS_API] The specified certificate isn't found: {cert}", Variables.AppSettings.HassClientCertificate);
+                        return false;
+                    }
+
+                    var certFile = Path.GetFileName(Variables.AppSettings.HassClientCertificate);
+                    Log.Information("[HASS_API] Connecting using client certificate: {cert}", certFile);
+
+                    var handler = new HttpClientHandler();
+                    handler.ClientCertificateOptions = ClientCertificateOption.Manual;
+                    handler.ClientCertificates.Add(new X509Certificate2(Variables.AppSettings.HassClientCertificate));
+
+                    ClientFactory.Initialize(hassUri, Variables.AppSettings.HassToken, handler);
+                    return true;
+                }
+
+                // default connection
+                ClientFactory.Initialize(hassUri, Variables.AppSettings.HassToken);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[HASS_API] Error while initializing client: {err}", ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Checks the provided provided credentials to see if we can connect
+        /// <para>This will disconnect any current connections!</para>
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <param name="apiKey"></param>
+        /// <param name="automaticClientCertificate"></param>
+        /// <param name="clientCertificate"></param>
+        /// <returns></returns>
+        internal static async Task<(bool success, string message)> CheckHassConfigAsync(string uri, string apiKey, bool automaticClientCertificate = false, string clientCertificate = "")
+        {
+            try
+            {
+                // optionally reset the client
+                if (ClientFactory.IsInitialized) ClientFactory.Reset();
+
+                // initialize hass client, optionally using certificate
+                if (automaticClientCertificate)
+                {
+                    // automatic certificate selection
+                    var handler = new HttpClientHandler();
+                    handler.ClientCertificateOptions = ClientCertificateOption.Automatic;
+
+                    ClientFactory.Initialize(uri, apiKey, handler);
+                }
+                else if (!string.IsNullOrEmpty(clientCertificate))
+                {
+                    // manual certificate selection
+                    if (!File.Exists(clientCertificate)) return (false, "client certificate file not found");
+
+                    var handler = new HttpClientHandler();
+                    handler.ClientCertificateOptions = ClientCertificateOption.Manual;
+                    handler.ClientCertificates.Add(new X509Certificate2(clientCertificate));
+
+                    ClientFactory.Initialize(uri, apiKey, handler);
+                }
+                else ClientFactory.Initialize(uri, apiKey);
+                
                 // check if we're initialized
                 if (!ClientFactory.IsInitialized) return (false, "unable to connect, check uri");
 
@@ -125,7 +208,7 @@ namespace HASSAgent.HomeAssistant
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[HASS_API] Error while checking config: {err}", ex.Message);
-                return (false, "unable to connect, check uri");
+                return (false, "unable to connect, check uri and config");
             }
             finally
             {
@@ -163,46 +246,68 @@ namespace HASSAgent.HomeAssistant
                 LightList.Clear();
             }
 
-            var domain = "automation";
-            var entities = await _entityClient.GetEntities(domain);
-            foreach (var automation in entities)
+            try
             {
-                AutomationList.Add(automation.Remove(0, domain.Length + 1));
-            }
+                var domain = "automation";
+                var entities = await _entityClient.GetEntities(domain);
+                foreach (var automation in entities)
+                {
+                    AutomationList.Add(automation.Remove(0, domain.Length + 1));
+                }
 
-            domain = "script";
-            entities = await _entityClient.GetEntities(domain);
-            foreach (var script in entities)
-            {
-                ScriptList.Add(script.Remove(0, domain.Length + 1));
-            }
+                domain = "script";
+                entities = await _entityClient.GetEntities(domain);
+                foreach (var script in entities)
+                {
+                    ScriptList.Add(script.Remove(0, domain.Length + 1));
+                }
 
-            domain = "input_boolean";
-            entities = await _entityClient.GetEntities(domain);
-            foreach (var inputboolean in entities)
-            {
-                InputBooleanList.Add(inputboolean.Remove(0, domain.Length + 1));
-            }
+                domain = "input_boolean";
+                entities = await _entityClient.GetEntities(domain);
+                foreach (var inputboolean in entities)
+                {
+                    InputBooleanList.Add(inputboolean.Remove(0, domain.Length + 1));
+                }
 
-            domain = "scene";
-            entities = await _entityClient.GetEntities(domain);
-            foreach (var scene in entities)
-            {
-                SceneList.Add(scene.Remove(0, domain.Length + 1));
-            }
+                domain = "scene";
+                entities = await _entityClient.GetEntities(domain);
+                foreach (var scene in entities)
+                {
+                    SceneList.Add(scene.Remove(0, domain.Length + 1));
+                }
 
-            domain = "switch";
-            entities = await _entityClient.GetEntities(domain);
-            foreach (var @switch in entities)
-            {
-                SwitchList.Add(@switch.Remove(0, domain.Length + 1));
-            }
+                domain = "switch";
+                entities = await _entityClient.GetEntities(domain);
+                foreach (var @switch in entities)
+                {
+                    SwitchList.Add(@switch.Remove(0, domain.Length + 1));
+                }
 
-            domain = "light";
-            entities = await _entityClient.GetEntities(domain);
-            foreach (var light in entities)
+                domain = "light";
+                entities = await _entityClient.GetEntities(domain);
+                foreach (var light in entities)
+                {
+                    LightList.Add(light.Remove(0, domain.Length + 1));
+                }
+
+                if (ManagerStatus != HassManagerStatus.Failed) return;
+
+                // reset failed state and log
+                ManagerStatus = HassManagerStatus.Ready;
+                Variables.MainForm?.SetHassApiStatus(ComponentStatus.Ok);
+
+                Log.Information("[HASS_API] Server recovered from failed state");
+            }
+            catch (Exception ex)
             {
-                LightList.Add(light.Remove(0, domain.Length + 1));
+                // only log errors once to prevent log spamming
+                if (ManagerStatus == HassManagerStatus.Failed) return;
+
+                // set failed state and log
+                Variables.MainForm?.SetHassApiStatus(ComponentStatus.Failed);
+                ManagerStatus = HassManagerStatus.Failed;
+
+                Log.Error("[HASS_API] Error while reloading entities: {err}", ex.Message);
             }
         }
 
@@ -231,7 +336,12 @@ namespace HASSAgent.HomeAssistant
             try
             {
                 // check if the states client is up
-                if (_statesClient == null) return false;
+                if (_statesClient == null)
+                {
+                    Log.Error("[HASS_API] [{domain}.{entity}] Unable to execute action, states client not initialized", domainVal, entityVal);
+                    Variables.MainForm?.ShowToolTip("quick action: action failed, check the logs for info", true);
+                    return false;
+                }
 
                 Log.Information("[HASS_API] [{domain}.{entity}] Performing action: {action}", domainVal, entityVal, actionVal);
 
@@ -268,7 +378,7 @@ namespace HASSAgent.HomeAssistant
                 var service = DetermineServiceForDomain(entity.Domain, action);
 
                 // process the request
-                var _ = await _serviceClient.CallService(service, $@"{{""entity_id"":""{fullEntity}""}}");
+                _ = await _serviceClient.CallService(service, $@"{{""entity_id"":""{fullEntity}""}}");
 
                 // done
                 Log.Information("[HASS_API] [{domain}.{entity}] Action completed: {action}", domainVal, entityVal, actionVal);
@@ -279,10 +389,12 @@ namespace HASSAgent.HomeAssistant
                 if (ex.Message.Contains("code 404"))
                 {
                     Log.Error("[HASS_API] [{domain}.{entity}] Error while processing action: entity not found", domainVal, entityVal);
+                    Variables.MainForm?.ShowToolTip("quick action: action failed, entity not found", true);
                     return false;
                 }
 
                 Log.Fatal(ex, "[HASS_API] [{domain}.{entity}] Error while processing action: {ex}", domainVal, entityVal, ex.Message);
+                Variables.MainForm?.ShowToolTip("quick action: action failed, check the logs for info", true);
                 return false;
             }
         }
@@ -303,13 +415,36 @@ namespace HASSAgent.HomeAssistant
                     var res = await _configClient.GetConfiguration();
                     if (res == null)
                     {
-                        Log.Warning("[HASS_API] Unable to contact API, skipping entity reload");
+                        // only log errors once to prevent log spamming
+                        if (ManagerStatus == HassManagerStatus.Failed) continue;
+
+                        // set failed state and log
+                        Variables.MainForm?.SetHassApiStatus(ComponentStatus.Failed);
+                        ManagerStatus = HassManagerStatus.Failed;
+
+                        Log.Error("[HASS_API] Error while periodically reloading entities: null object returned");
                         continue;
                     }
+
+                    if (ManagerStatus == HassManagerStatus.Failed)
+                    {
+                        // reset failed state and log
+                        ManagerStatus = HassManagerStatus.Ready;
+                        Variables.MainForm?.SetHassApiStatus(ComponentStatus.Ok);
+
+                        Log.Information("[HASS_API] Server recovered from failed state");
+                    }
                 }
-                catch
+                catch (Exception ex)
                 {
-                    Log.Warning("[HASS_API] Unable to contact API, skipping entity reload");
+                    // only log errors once to prevent log spamming
+                    if (ManagerStatus == HassManagerStatus.Failed) continue;
+
+                    // set failed state and log
+                    Variables.MainForm?.SetHassApiStatus(ComponentStatus.Failed);
+                    ManagerStatus = HassManagerStatus.Failed;
+
+                    Log.Error("[HASS_API] Error while periodically reloading entities: {err}", ex.Message);
                     continue;
                 }
 
@@ -341,6 +476,13 @@ namespace HASSAgent.HomeAssistant
                         _ = await _statesClient.GetState(fullEntity);
 
                         if (Variables.ShuttingDown) return;
+                        if (ManagerStatus != HassManagerStatus.Failed) continue;
+
+                        // reset failed state and log
+                        ManagerStatus = HassManagerStatus.Ready;
+                        Variables.MainForm?.SetHassApiStatus(ComponentStatus.Ok);
+
+                        Log.Information("[HASS_API] Server recovered from failed state");
                     }
                     catch (HttpRequestException ex)
                     {
@@ -348,16 +490,29 @@ namespace HASSAgent.HomeAssistant
 
                         if (ex.Message.Contains("404"))
                         {
-                            Log.Warning("[HASS] Server returned 404 (not found) while getting entity state, this can happen after a server reboot. If the problem persists, please file a ticket on github.\r\nError message: {err}", ex.Message);
+                            Log.Warning("[HASS_API] Server returned 404 (not found) while getting entity state. This can happen after a server reboot, or if you've deleted the entity. If the problem persists, please file a ticket on github.\r\nEntity: {entity}\r\nError message: {err}", $"{quickAction.Domain}.{quickAction.Entity}", ex.Message);
                             return;
                         }
 
-                        Log.Fatal(ex, "[HASS] HTTP error while sending periodic status update: {err}", ex.Message);
+                        // only log errors once to prevent log spamming
+                        if (ManagerStatus == HassManagerStatus.Failed) continue;
+
+                        // set failed state and log
+                        Variables.MainForm?.SetHassApiStatus(ComponentStatus.Failed);
+                        ManagerStatus = HassManagerStatus.Failed;
+
+                        Log.Error("[HASS_API] HTTP error while sending periodic status update: {err}", ex.Message);
                     }
                     catch (Exception ex)
                     {
                         if (Variables.ShuttingDown) return;
-                        Log.Fatal(ex, "[HASS] Error while sending periodic status update: {err}", ex.Message);
+                        if (ManagerStatus == HassManagerStatus.Failed) continue;
+
+                        // set failed state and log
+                        Variables.MainForm?.SetHassApiStatus(ComponentStatus.Failed);
+                        ManagerStatus = HassManagerStatus.Failed;
+
+                        Log.Fatal(ex, "[HASS_API] Error while sending periodic status update: {err}", ex.Message);
                     }
                 }
             }

@@ -8,7 +8,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
     {
         private readonly IHardware _gpu;
 
-        public GpuLoadSensor(int? updateInterval = null, string name = "GPULoad", string id = default) : base(name ?? "GPULoad", updateInterval ?? 30, id)
+        public GpuLoadSensor(int? updateInterval = null, string name = "gpuload", string id = default) : base(name ?? "gpuload", updateInterval ?? 30, id)
         {
             var computer = new Computer
             {

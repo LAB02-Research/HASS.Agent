@@ -1,12 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HASSAgent.Enums;
 using HASSAgent.Functions;
 using HASSAgent.Models.HomeAssistant;
 using HASSAgent.Models.HomeAssistant.Commands;
+using HASSAgent.Sensors;
 using MQTTnet;
 using MQTTnet.Adapter;
 using MQTTnet.Client;
@@ -156,43 +162,91 @@ namespace HASSAgent.Mqtt
         }
 
         /// <summary>
-        /// Registers stored commands and sensors
+        /// Announce our availability
+        /// <para>Deprecated: used to announce sensors/commands, now left to their managers</para>
         /// </summary>
         private static async void InitialRegistration()
         {
             if (_mqttClient == null) return;
             while (!_mqttClient.IsConnected) await Task.Delay(2000);
 
-            // register commands
-            foreach (var command in Variables.Commands)
-            {
-                await SubscribeAsync(command);
-                await command.PublishStateAsync(false);
-            }
-
-            // register sensors
-            foreach (var sensor in Variables.SingleValueSensors)
-            {
-                await sensor.PublishStateAsync(false);
-            }
-
-            // let hass know we're here
+            // let HA know we're here
             await AnnounceAvailabilityAsync();
 
             // done
             Log.Information("[MQTT] Initial registration completed");
+
+            // rest is deprecated: the sensor & command managers can do it themselves, lazy bastards
+
+            //var errorsFound = false;
+            //try
+            //{
+            //    // we're making temp copies of all lists, to prevent 'collection has been changed' if the user's very
+            //    // enthousiastic in adding/modding directly after launch
+
+            //    // register commands
+            //    var currentCommands = Variables.Commands.Select(x => x).ToArray();
+            //    foreach (var command in currentCommands)
+            //    {
+            //        // check if it's still there
+            //        if (Variables.Commands.All(x => x.Id != command.Id)) continue;
+
+            //        // publish
+            //        await SubscribeAsync(command);
+            //        await command.PublishStateAsync(false);
+            //    }
+
+            //    // register single-value sensors
+            //    var currentSensors = Variables.SingleValueSensors.Select(x => x).ToArray();
+            //    foreach (var sensor in currentSensors)
+            //    {
+            //        // check if it's still there
+            //        if (Variables.SingleValueSensors.All(x => x.Id != sensor.Id)) continue;
+
+            //        // publish
+            //        await sensor.PublishStateAsync(false);
+            //    }
+
+            //    // register multi-value sensors
+            //    var currentMultivalueSensors = Variables.MultiValueSensors.Select(x => x).ToArray();
+            //    foreach (var mvSensor in currentMultivalueSensors)
+            //    {
+            //        // check if it's still there
+            //        if (Variables.MultiValueSensors.All(x => x.Id != mvSensor.Id)) continue;
+
+            //        // start publishing sensors
+            //        currentSensors = mvSensor.Sensors.Select(x => x.Value).ToArray();
+            //        foreach (var sensor in currentSensors)
+            //        {
+            //            // check if it's still there (including parent multivalue sensor)
+            //            if (Variables.MultiValueSensors.All(x => x.Id != mvSensor.Id)) break;
+            //            if (mvSensor.Sensors.All(x => x.Value.Id != sensor.Id)) continue;
+
+            //            // publish
+            //            await sensor.PublishStateAsync(false);
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Log.Fatal(ex, "[MQTT] Error while processing entity registration: {err}", ex.Message);
+            //    errorsFound = true;
+            //}
         }
         
         /// <summary>
         /// Prepares info for the device we're running on
         /// </summary>
-        private static void CreateDeviceConfigModel()
+        internal static void CreateDeviceConfigModel()
         {
+            var name = HelperFunctions.GetConfiguredDeviceName();
+            Log.Information("[MQTT] Identifying as device: {name}", name);
+
             Variables.DeviceConfig = new DeviceConfigModel
             {
-                Name = Environment.MachineName,
-                Identifiers = "hass.agent-" + Environment.MachineName,
-                Manufacturer = Environment.UserName,
+                Name = name,
+                Identifiers = "hass.agent-" + name,
+                Manufacturer = "LAB02 Research",
                 Model = Environment.OSVersion.ToString(),
                 Sw_version = Variables.Version
             };
@@ -242,28 +296,27 @@ namespace HASSAgent.Mqtt
 
                 // prepare topic
                 var topic = $"{Variables.AppSettings.MqttDiscoveryPrefix}/{domain}/{Variables.DeviceConfig.Name}/{discoverable.ObjectId}/config";
-
-                // prepare payload
-                var payload = clearConfig 
-                    ? "" 
-                    : JsonSerializer.Serialize(discoverable.GetAutoDiscoveryConfig(), discoverable.GetAutoDiscoveryConfig().GetType(), options);
                 
                 // build config message
-                var message = new MqttApplicationMessageBuilder()
-                    .WithTopic(topic)
-                    .WithPayload(payload)
-                    .WithRetainFlag()
-                    .Build();
+                var messageBuilder = new MqttApplicationMessageBuilder()
+                    .WithTopic(topic);
+
+                // set retain flag
+                if (Variables.AppSettings.MqttUseRetainFlag) messageBuilder.WithRetainFlag();
+
+                // add payload
+                if (clearConfig) messageBuilder.WithPayload(Array.Empty<byte>());
+                else messageBuilder.WithPayload(JsonSerializer.Serialize(discoverable.GetAutoDiscoveryConfig(), discoverable.GetAutoDiscoveryConfig().GetType(), options));
 
                 // publish disco config
-                await PublishAsync(message);
+                await PublishAsync(messageBuilder.Build());
             }
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[MQTT] Error while announcing autodiscovery: {err}", ex.Message);
             }
 
-            LastConfigAnnounce = DateTime.UtcNow;
+            LastConfigAnnounce = DateTime.Now;
         }
 
         /// <summary>
@@ -300,14 +353,18 @@ namespace HASSAgent.Mqtt
                 {
                     if (string.IsNullOrEmpty(Variables.AppSettings.MqttDiscoveryPrefix)) Variables.AppSettings.MqttDiscoveryPrefix = "homeassistant";
 
-                    await _mqttClient.PublishAsync(
-                        new MqttApplicationMessageBuilder()
-                            .WithTopic($"{Variables.AppSettings.MqttDiscoveryPrefix}/sensor/{Variables.DeviceConfig.Name}/availability")
-                            .WithPayload(offline ? "offline" : "online")
-                            .Build()
-                    );
+                    // prepare message
+                    var messageBuilder = new MqttApplicationMessageBuilder()
+                        .WithTopic($"{Variables.AppSettings.MqttDiscoveryPrefix}/sensor/{Variables.DeviceConfig.Name}/availability")
+                        .WithPayload(offline ? "offline" : "online");
 
-                    LastAvailabilityAnnounce = DateTime.UtcNow;
+                    // set retain flag
+                    if (Variables.AppSettings.MqttUseRetainFlag) messageBuilder.WithRetainFlag();
+
+                    // publish
+                    await _mqttClient.PublishAsync(messageBuilder.Build());
+
+                    LastAvailabilityAnnounce = DateTime.Now;
                 }
                 else
                 {
@@ -322,6 +379,40 @@ namespace HASSAgent.Mqtt
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[MQTT] Error while announcing availability: {err}", ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// CLears the device config, removing the retained message
+        /// </summary>
+        /// <returns></returns>
+        internal static async Task ClearDeviceConfig()
+        {
+            if (_mqttClient == null) return;
+            if (!_mqttClient.IsConnected) return;
+
+            try
+            {
+                if (_mqttClient.IsConnected)
+                {
+                    if (string.IsNullOrEmpty(Variables.AppSettings.MqttDiscoveryPrefix)) Variables.AppSettings.MqttDiscoveryPrefix = "homeassistant";
+
+                    // prepare message
+                    var messageBuilder = new MqttApplicationMessageBuilder()
+                        .WithTopic($"{Variables.AppSettings.MqttDiscoveryPrefix}/sensor/{Variables.DeviceConfig.Name}/availability")
+                        .WithPayload(Array.Empty<byte>());
+
+                    // set retain flag
+                    if (Variables.AppSettings.MqttUseRetainFlag) messageBuilder.WithRetainFlag();
+                    
+                    // publish
+                    await _mqttClient.PublishAsync(messageBuilder.Build());
+                }
+                else Log.Warning("[MQTT] Not connected, clearing device config failed");
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[MQTT] Error while clearing device config: {err}", ex.Message);
             }
         }
 
@@ -351,7 +442,7 @@ namespace HASSAgent.Mqtt
             if (IsConnected) await _mqttClient.SubscribeAsync(((CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig()).Command_topic);
             else
             {
-                while (IsConnected == false) await Task.Delay(5500);
+                while (IsConnected == false) await Task.Delay(250);
                 await _mqttClient.SubscribeAsync(((CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig()).Command_topic);
             }
         }
@@ -367,7 +458,7 @@ namespace HASSAgent.Mqtt
             if (IsConnected) await _mqttClient.UnsubscribeAsync(((CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig()).Command_topic);
             else
             {
-                while (IsConnected == false) await Task.Delay(5500);
+                while (IsConnected == false) await Task.Delay(250);
                 await _mqttClient.UnsubscribeAsync(((CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig()).Command_topic);
             }
         }
@@ -382,19 +473,54 @@ namespace HASSAgent.Mqtt
             
             // id can be random
             var clientId = Guid.NewGuid().ToString().Substring(0, 8);
-            
+
+            // configure last will message
+            // todo: cover other domains
+            var lastWillMessageBuilder = new MqttApplicationMessageBuilder()
+                .WithTopic($"{Variables.AppSettings.MqttDiscoveryPrefix}/sensor/{Variables.DeviceConfig.Name}/availability")
+                .WithPayload("offline");
+
+            // set retain flag
+            if (Variables.AppSettings.MqttUseRetainFlag) lastWillMessageBuilder.WithRetainFlag();
+
+            // prepare message
+            var lastWillMessage = lastWillMessageBuilder.Build();
+
             // basic options
             var clientOptionsBuilder = new MqttClientOptionsBuilder()
                 .WithClientId(clientId)
                 .WithTcpServer(Variables.AppSettings.MqttAddress, Variables.AppSettings.MqttPort)
                 .WithCleanSession()
+                .WithWillMessage(lastWillMessage)
                 .WithKeepAlivePeriod(TimeSpan.FromSeconds(15));
 
             // optional credentials
             if (!string.IsNullOrEmpty(Variables.AppSettings.MqttUsername)) clientOptionsBuilder.WithCredentials(Variables.AppSettings.MqttUsername, Variables.AppSettings.MqttPassword);
 
-            // optional tls
-            if (Variables.AppSettings.MqttUseTls) clientOptionsBuilder.WithTls();
+            // configure tls
+            var tlsParameters = new MqttClientOptionsBuilderTlsParameters()
+            {
+                UseTls = Variables.AppSettings.MqttUseTls,
+                AllowUntrustedCertificates = Variables.AppSettings.MqttAllowUntrustedCertificates,
+                SslProtocol = Variables.AppSettings.MqttUseTls ? System.Security.Authentication.SslProtocols.Tls12 : System.Security.Authentication.SslProtocols.None
+            };
+
+            // configure certificates
+            var certificates = new List<X509Certificate>();
+            if (!string.IsNullOrEmpty(Variables.AppSettings.MqttRootCertificate))
+            {
+                if (!File.Exists(Variables.AppSettings.MqttRootCertificate)) Log.Error("[MQTT] Provided root certificate not found: {cert}", Variables.AppSettings.MqttRootCertificate);
+                else certificates.Add(new X509Certificate2(Variables.AppSettings.MqttRootCertificate));
+            }
+
+            if (!string.IsNullOrEmpty(Variables.AppSettings.MqttClientCertificate))
+            {
+                if (!File.Exists(Variables.AppSettings.MqttClientCertificate)) Log.Error("[MQTT] Provided client certificate not found: {cert}", Variables.AppSettings.MqttClientCertificate);
+                certificates.Add(new X509Certificate2(Variables.AppSettings.MqttClientCertificate));
+            }
+
+            if (certificates.Count > 0) tlsParameters.Certificates = certificates;
+            clientOptionsBuilder.WithTls(tlsParameters);
 
             // build the client options
             clientOptionsBuilder.Build();

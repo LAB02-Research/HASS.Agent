@@ -118,8 +118,23 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="bmac_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmac_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmac_logo_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmac_logo_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="discord_avatar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\discord_avatar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="done_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\done_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="exit_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exit_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="exit_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exit_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="failed_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\failed_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -127,8 +142,14 @@
   <data name="gear_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gear_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="github_avatar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\github_avatar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="hass_avatar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hass_avatar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hide_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hide_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logo_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -168,6 +189,9 @@
   </data>
   <data name="remote_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\remote_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="restart_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\restart_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="small_loader_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\small_loader_32.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

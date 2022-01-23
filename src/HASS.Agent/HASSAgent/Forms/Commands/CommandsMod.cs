@@ -1,5 +1,6 @@
 ﻿using Syncfusion.Windows.Forms;
 using System;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -30,6 +31,9 @@ namespace HASSAgent.Forms.Commands
         {
             // load enums
             CbType.DataSource = Enum.GetValues(typeof(CommandType));
+
+            // catch all key presses
+            KeyPreview = true;
 
             // load or set command
             if (Command.Id == Guid.Empty)
@@ -65,10 +69,16 @@ namespace HASSAgent.Forms.Commands
                     TbSetting.Text = Command.Command;
                     break;
 
+                case CommandType.PowershellCommand:
+                    TbSetting.Text = Command.Command;
+                    break;
+
                 case CommandType.KeyCommand:
                     TbSetting.Text = Command.KeyCode.ToString();
                     break;
             }
+
+            CbRunAsLowIntegrity.CheckState = Command.RunAsLowIntegrity ? CheckState.Checked : CheckState.Unchecked;
 
             // redraw
             Refresh();
@@ -132,6 +142,17 @@ namespace HASSAgent.Forms.Commands
                     Command.Command = command;
                     break;
 
+                case CommandType.PowershellCommand:
+                    var script = TbSetting.Text.Trim();
+                    if (string.IsNullOrEmpty(script))
+                    {
+                        MessageBox.Show("Enter a command or script first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ActiveControl = TbSetting;
+                        return;
+                    }
+                    Command.Command = script;
+                    break;
+
                 case CommandType.KeyCommand:
                     var keycode = TbSetting.Text.Trim();
                     if (string.IsNullOrEmpty(keycode))
@@ -143,6 +164,8 @@ namespace HASSAgent.Forms.Commands
                     Command.KeyCode = Encoding.ASCII.GetBytes(keycode).First();
                     break;
             }
+
+            Command.RunAsLowIntegrity = CbRunAsLowIntegrity.CheckState == CheckState.Checked;
 
             // set values
             Command.Type = type;
@@ -181,6 +204,10 @@ namespace HASSAgent.Forms.Commands
                     SetCommandGui();
                     break;
 
+                case CommandType.PowershellCommand:
+                    SetPowershellGui();
+                    break;
+
                 case CommandType.KeyCommand:
                     SetKeyGui();
                     break;
@@ -201,6 +228,26 @@ namespace HASSAgent.Forms.Commands
                 LblSetting.Text = "command";
                 LblSetting.Visible = true;
                 TbSetting.Visible = true;
+
+                CbRunAsLowIntegrity.Visible = true;
+                LblIntegrityInfo.Visible = true;
+            }));
+        }
+
+        /// <summary>
+        /// Change the UI to a 'powershell' type
+        /// </summary>
+        private void SetPowershellGui()
+        {
+            Invoke(new MethodInvoker(delegate
+            {
+                LblSetting.Text = "command or script";
+                LblSetting.Visible = true;
+                TbSetting.Visible = true;
+
+                CbRunAsLowIntegrity.CheckState = CheckState.Unchecked;
+                CbRunAsLowIntegrity.Visible = false;
+                LblIntegrityInfo.Visible = false;
             }));
         }
 
@@ -214,6 +261,10 @@ namespace HASSAgent.Forms.Commands
                 LblSetting.Text = "keycode";
                 LblSetting.Visible = true;
                 TbSetting.Visible = true;
+
+                CbRunAsLowIntegrity.CheckState = CheckState.Unchecked;
+                CbRunAsLowIntegrity.Visible = false;
+                LblIntegrityInfo.Visible = false;
             }));
         }
 
@@ -226,6 +277,10 @@ namespace HASSAgent.Forms.Commands
             {
                 LblSetting.Visible = false;
                 TbSetting.Visible = false;
+
+                CbRunAsLowIntegrity.CheckState = CheckState.Unchecked;
+                CbRunAsLowIntegrity.Visible = false;
+                LblIntegrityInfo.Visible = false;
             }));
         }
 
@@ -235,6 +290,78 @@ namespace HASSAgent.Forms.Commands
             if (!e.LinkText.ToLower().StartsWith("http")) return;
 
             HelperFunctions.LaunchUrl(e.LinkText);
+        }
+
+        private void CommandsMod_ResizeEnd(object sender, EventArgs e)
+        {
+            if (Variables.ShuttingDown) return;
+            if (!IsHandleCreated) return;
+            if (IsDisposed) return;
+
+            try
+            {
+                Refresh();
+            }
+            catch
+            {
+                // best effort
+            }
+        }
+
+        /// <summary>
+        /// Makes sure our combobox has the right colors
+        /// <para>Source: https://stackoverflow.com/a/60421006 </para>
+        /// <para>Source: https://stackoverflow.com/a/11650321 </para>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CbType_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            // only if there are items
+            if (CbType.Items.Count <= 0) return;
+
+            // fetch the index
+            var index = e.Index >= 0 ? e.Index : 0;
+
+            // draw the control's background
+            e.DrawBackground();
+
+            // check if we have an item to process
+            if (index != -1)
+            {
+                // optionally set the item's background color as selected
+                if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                {
+                    e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(241, 241, 241)), e.Bounds);
+                }
+
+                // draw the string
+                var brush = (e.State & DrawItemState.Selected) > 0 ? new SolidBrush(Color.FromArgb(63, 63, 70)) : new SolidBrush(CbType.ForeColor);
+                e.Graphics.DrawString(CbType.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
+            }
+
+            // draw focus rectangle
+            e.DrawFocusRectangle();
+        }
+
+        private void LblIntegrityInfo_Click(object sender, EventArgs e)
+        {
+            var infoMsg = new StringBuilder();
+            infoMsg.AppendLine("Low integrity means your command will be executed with restricted privileges.");
+            infoMsg.AppendLine("");
+            infoMsg.AppendLine("That means it will only be able to save and modify files in certain locations,");
+            infoMsg.AppendLine("such as the '%USERPROFILE%\\AppData\\LocalLow' folder or");
+            infoMsg.AppendLine("the 'HKEY_CURRENT_USER\\Software\\AppDataLow' registry key.");
+            infoMsg.AppendLine("");
+            infoMsg.AppendLine("You should test your command to make sure it's not influenced by this.");
+
+            MessageBoxAdv.Show(infoMsg.ToString(), "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void CommandsMod_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Escape) return;
+            Close();
         }
     }
 }

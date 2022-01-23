@@ -222,5 +222,21 @@ namespace HASSAgent.Forms.QuickActions
         {
             LcQuickActions.Height = Height - _heightDiff;
         }
+
+        private void QuickActionsConfig_ResizeEnd(object sender, EventArgs e)
+        {
+            if (Variables.ShuttingDown) return;
+            if (!IsHandleCreated) return;
+            if (IsDisposed) return;
+
+            try
+            {
+                Refresh();
+            }
+            catch
+            {
+                // best effort
+            }
+        }
     }
 }

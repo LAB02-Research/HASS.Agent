@@ -240,6 +240,7 @@ namespace HASSAgent.Forms.QuickActions
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quick Actions Config";
             this.Load += new System.EventHandler(this.QuickActionsConfig_Load);
+            this.ResizeEnd += new System.EventHandler(this.QuickActionsConfig_ResizeEnd);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.QuickActionsConfig_KeyUp);
             this.Resize += new System.EventHandler(this.QuickActionsConfig_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.LcQuickActions)).EndInit();

@@ -8,7 +8,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
     {
         private MMDevice _audioDevice;
 
-        public CurrentVolumeSensor(int? updateInterval = null, string name = "CurrentVolume", string id = default) : base(name ?? "CurrentVolume", updateInterval ?? 15, id)
+        public CurrentVolumeSensor(int? updateInterval = null, string name = "currentvolume", string id = default) : base(name ?? "currentvolume", updateInterval ?? 15, id)
         {
             //
         }

@@ -36,7 +36,7 @@ namespace HASSAgent.Models.HomeAssistant.Commands
 
                 if (respectChecks)
                 {
-                    if (LastUpdated.HasValue && LastUpdated.Value.AddSeconds(UpdateIntervalSeconds) > DateTime.UtcNow) return;
+                    if (LastUpdated.HasValue && LastUpdated.Value.AddSeconds(UpdateIntervalSeconds) > DateTime.Now) return;
                     if (PreviousPublishedState == state) return;
                 }
 
@@ -50,7 +50,7 @@ namespace HASSAgent.Models.HomeAssistant.Commands
                 await MqttManager.PublishAsync(message);
 
                 PreviousPublishedState = state;
-                LastUpdated = DateTime.UtcNow;
+                LastUpdated = DateTime.Now;
             }
             catch (Exception ex)
             {

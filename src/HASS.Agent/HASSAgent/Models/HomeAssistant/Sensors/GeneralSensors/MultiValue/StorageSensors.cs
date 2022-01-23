@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security;
 using ByteSizeLib;
+using HASSAgent.Functions;
 using HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue.DataTypes;
 using Serilog;
 
@@ -14,7 +15,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
         public sealed override Dictionary<string, AbstractSingleValueSensor> Sensors { get; protected set; } = new Dictionary<string, AbstractSingleValueSensor>();
         
-        public StorageSensors(int? updateInterval = null, string name = "Storage", string id = default) : base(name ?? "Storage", updateInterval ?? 30, id)
+        public StorageSensors(int? updateInterval = null, string name = "storage", string id = default) : base(name ?? "storage", updateInterval ?? 30, id)
         {
             _updateInterval = updateInterval ?? 30;
 
@@ -24,6 +25,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
         public sealed override void UpdateSensorValues()
         {
             var driveCount = 0;
+
+            // lowercase and safe name of the multivalue sensor
+            var parentSensorSafeName = HelperFunctions.GetSafeValue(Name);
 
             foreach (var drive in DriveInfo.GetDrives())
             {
@@ -38,9 +42,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
                     // label
                     var driveLabel = string.IsNullOrEmpty(drive.VolumeLabel) ? "-" : drive.VolumeLabel;
-                    var driveLabelId = $"drive_{driveNameLower}_label";
+                    var driveLabelId = $"{parentSensorSafeName}_{driveNameLower}_label";
 
-                    var labelSensor = new DataTypeStringSensor(_updateInterval, $"Drive {driveName} - Label", driveLabelId, string.Empty, "mdi:harddisk", string.Empty, Name);
+                    var labelSensor = new DataTypeStringSensor(_updateInterval, $"{Name} {driveName} Label", driveLabelId, string.Empty, "mdi:harddisk", string.Empty, Name);
                     labelSensor.SetState(driveLabel);
 
                     if (!Sensors.ContainsKey(driveLabelId)) Sensors.Add(driveLabelId, labelSensor);
@@ -48,9 +52,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
                     // total size
                     var totalSizeMb = Math.Round(ByteSize.FromBytes(drive.TotalSize).MegaBytes);
-                    var totalSizeId = $"drive_{driveNameLower}_total_size";
+                    var totalSizeId = $"{parentSensorSafeName}_{driveNameLower}_total_size";
 
-                    var totalSizeSensor = new DataTypeDoubleSensor(_updateInterval, $"Drive {driveName} - Total Size", totalSizeId, string.Empty, "mdi:harddisk", "MB", Name);
+                    var totalSizeSensor = new DataTypeDoubleSensor(_updateInterval, $"{Name} {driveName} Total Size", totalSizeId, string.Empty, "mdi:harddisk", "MB", Name);
                     totalSizeSensor.SetState(totalSizeMb);
 
                     if (!Sensors.ContainsKey(totalSizeId)) Sensors.Add(totalSizeId, totalSizeSensor);
@@ -58,9 +62,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
                     // available space
                     var availableSpaceMb = Math.Round(ByteSize.FromBytes(drive.AvailableFreeSpace).MegaBytes);
-                    var availableSpaceId = $"drive_{driveNameLower}_available_space";
+                    var availableSpaceId = $"{parentSensorSafeName}_{driveNameLower}_available_space";
 
-                    var availableSpaceSensor = new DataTypeDoubleSensor(_updateInterval, $"Drive {driveName} - Available Space", availableSpaceId, string.Empty, "mdi:harddisk", "MB", Name);
+                    var availableSpaceSensor = new DataTypeDoubleSensor(_updateInterval, $"{Name} {driveName} Available Space", availableSpaceId, string.Empty, "mdi:harddisk", "MB", Name);
                     availableSpaceSensor.SetState(availableSpaceMb);
 
                     if (!Sensors.ContainsKey(availableSpaceId)) Sensors.Add(availableSpaceId, availableSpaceSensor);
@@ -68,9 +72,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
                     // used space
                     var usedSpaceMb = totalSizeMb - availableSpaceMb;
-                    var usedSpaceId = $"drive_{driveNameLower}_used_space";
+                    var usedSpaceId = $"{parentSensorSafeName}_{driveNameLower}_used_space";
 
-                    var usedSpaceSensor = new DataTypeDoubleSensor(_updateInterval, $"Drive {driveName} - Used Space", usedSpaceId, string.Empty, "mdi:harddisk", "MB", Name);
+                    var usedSpaceSensor = new DataTypeDoubleSensor(_updateInterval, $"{Name} {driveName} Used Space", usedSpaceId, string.Empty, "mdi:harddisk", "MB", Name);
                     usedSpaceSensor.SetState(usedSpaceMb);
 
                     if (!Sensors.ContainsKey(usedSpaceId)) Sensors.Add(usedSpaceId, usedSpaceSensor);
@@ -78,9 +82,9 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
 
                     // file system
                     var fileSystem = drive.DriveFormat;
-                    var fileSystemId = $"drive_{driveNameLower}_filesystem";
+                    var fileSystemId = $"{parentSensorSafeName}_{driveNameLower}_filesystem";
 
-                    var fileSystemSensor = new DataTypeStringSensor(_updateInterval, $"Drive {driveName} - File System", fileSystemId, string.Empty, "mdi:harddisk", string.Empty, Name);
+                    var fileSystemSensor = new DataTypeStringSensor(_updateInterval, $"{Name} {driveName} File System", fileSystemId, string.Empty, "mdi:harddisk", string.Empty, Name);
                     fileSystemSensor.SetState(fileSystem);
 
                     if (!Sensors.ContainsKey(fileSystemId)) Sensors.Add(fileSystemId, fileSystemSensor);
@@ -110,8 +114,8 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.MultiValue
             }
 
             // drive count
-            const string driveCountId = "drives_total_count";
-            var driveCountSensor = new DataTypeIntSensor(_updateInterval, "Drives - Total Count", driveCountId, string.Empty, "mdi:harddisk", string.Empty, Name);
+            var driveCountId = $"{parentSensorSafeName}_total_disk_count";
+            var driveCountSensor = new DataTypeIntSensor(_updateInterval, $"{Name} Total Disk Count", driveCountId, string.Empty, "mdi:harddisk", string.Empty, Name);
             driveCountSensor.SetState(driveCount);
 
             if (!Sensors.ContainsKey(driveCountId)) Sensors.Add(driveCountId, driveCountSensor);
