@@ -16,7 +16,7 @@ HASS.Agent is a Windows-based client application for <a href="https://www.home-a
 
 Click <a href="https://github.com/LAB02-Research/HASS.Agent/releases/latest/download/HASS.Agent.Installer.exe" target="_blank">here</a> to download the latest installer, or click <a href="https://github.com/LAB02-Research/HASS.Agent/releases/latest/download/HASS.Agent.zip" target="_blank">here</a> to download the latest zip package.
 
-Need help? Visit the <a href="https://community.home-assistant.io/t/hass-agent-a-new-windows-based-client-to-receive-notifications-perform-quick-actions-and-much-more/369094" target="_blank">dedicated HA forum thread</a> or <a href="https://discord.gg/nMvqzwrVBU" target="_blank">join on Discord</a>.
+Need help? <a href="https://github.com/LAB02-Research/HASS.Agent/wiki" target="_blank">Check the wiki</a>, visit the <a href="https://community.home-assistant.io/t/hass-agent-a-new-windows-based-client-to-receive-notifications-perform-quick-actions-and-much-more/369094" target="_blank">dedicated HA forum thread</a> or <a href="https://discord.gg/nMvqzwrVBU" target="_blank">join on Discord</a>.
 
 ----
 
@@ -272,7 +272,7 @@ Checklist to start using HASS.Agent:
 - HASS.Agent will restart to activate your configuration
 - Start adding Quick Actions, commands & sensors!
 
-Stuck? <a href="https://github.com/LAB02-Research/HASS.Agent/issues" target="_blank">Create a ticket</a> or <a href="https://discord.gg/nMvqzwrVBU" target="_blank">join on Discord</a>.
+Stuck? <a href="https://github.com/LAB02-Research/HASS.Agent/wiki" target="_blank">Check the wiki</a>, <a href="https://github.com/LAB02-Research/HASS.Agent/issues" target="_blank">create a ticket</a> or <a href="https://discord.gg/nMvqzwrVBU" target="_blank">join on Discord</a>.
 
 ---
 
