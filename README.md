@@ -16,8 +16,6 @@ HASS.Agent is a Windows-based client application for <a href="https://www.home-a
 
 Click <a href="https://github.com/LAB02-Research/HASS.Agent/releases/latest/download/HASS.Agent.Installer.exe" target="_blank">here</a> to download the latest installer, or click <a href="https://github.com/LAB02-Research/HASS.Agent/releases/latest/download/HASS.Agent.zip" target="_blank">here</a> to download the latest zip package.
 
-Need help? <a href="https://github.com/LAB02-Research/HASS.Agent/wiki" target="_blank">Check the wiki</a>, visit the <a href="https://community.home-assistant.io/t/hass-agent-a-new-windows-based-client-to-receive-notifications-perform-quick-actions-and-much-more/369094" target="_blank">dedicated HA forum thread</a> or <a href="https://discord.gg/nMvqzwrVBU" target="_blank">join on Discord</a>.
-
 ----
 
 Developing this tool takes up quite a bit of time. It's completely free, and it'll stay that way without restrictions.<br/>
@@ -30,6 +28,7 @@ However, like most developers, I run on caffeïne - so a cup of coffee is always
 ### Contents
 
  * [Why?](#why)
+ * [Help and Documentation](#help-and-documentation)
  * [Functionality](#functionality)
  * [Screenshots](#screenshots)
  * [Installation](#installation)
@@ -49,6 +48,22 @@ The main reason I built this is that I wanted to receive notifications, includin
 
 That's also the premise of this project; it's built to solve problems I encountered (or perhaps I should use the word "*nuisances*"), so it may not work for you. 
 If that's the case, feel free to open a ticket so we can discuss! 
+
+----
+
+### Help and Documentation
+
+Stuck while using HASS.Agent, need some help integrating the sensors/commands or have a great idea for the next version?
+
+There are a few channels through which you can reach us:
+
+[Github Tickets](https://github.com/LAB02-Research/HASS.Agent): Report bugs, feature requests, ideas, tips, ..
+
+[Wiki](https://github.com/LAB02-Research/HASS.Agent/wiki): Installation, configuration and usage documentation, as well as examples.
+
+[Discord](https://discord.gg/nMvqzwrVBU): Get help with setting up and using HASS.Agent, report bugs or just talk about whatever.
+
+[Home Assistant forum](https://community.home-assistant.io/t/hass-agent-a-new-windows-based-client-to-receive-notifications-perform-quick-actions-and-much-more/369094): Bit of everything, with the addition that other HA users can help as well.
 
 ----
 
