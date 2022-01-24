@@ -121,7 +121,7 @@ namespace HASSAgent.Sensors
                     {
                         foreach (var sensor in Variables.SingleValueSensors.TakeWhile(sensor => !_pause).TakeWhile(command => _active))
                         {
-                            await sensor.PublishStateAsync(firstRun);
+                            await sensor.PublishStateAsync(!firstRun);
                         }
                     }
 
@@ -130,7 +130,7 @@ namespace HASSAgent.Sensors
 
                     foreach (var sensor in Variables.MultiValueSensors.TakeWhile(sensor => !_pause).TakeWhile(command => _active))
                     {
-                        await sensor.PublishStatesAsync(firstRun);
+                        await sensor.PublishStatesAsync(!firstRun);
                     }
                 }
                 catch (Exception ex)
