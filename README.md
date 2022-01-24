@@ -59,7 +59,7 @@ Summary of the core functions:
 * **Notifications**: receive notifications, show them using Windows builtin toast popups, and optionally attach images. 
   - *This requires the installation of the <a href="https://github.com/LAB02-Research/HASS.Agent-Notifier" target="_blank">HASS.Agent Notifier integration</a>*.
 
-* **Quick Actions**: use a keyboard shortcut to quickly pull up a command interface, through which you can control Home Assistant entities - or, assign a keyboard shortcut to individual Quick Actions for even faster triggering
+* **Quick Actions**: use a keyboard shortcut to quickly pull up a command interface, through which you can control Home Assistant entities - or, assign a keyboard shortcut to individual Quick Actions for even faster triggering.
 
 * **Commands**: control your PC (or other Windows based device) through Home Assistant using custom- or built-in commands.
 
@@ -105,17 +105,13 @@ HASS.Agent uses an entry in your user account's registry to launch on login. You
 
 To use notifications, you'll need to install the <a href="https://github.com/LAB02-Research/HASS.Agent-Notifier" target="_blank">HASS.Agent Notifier integration</a>. This can be done through <a href="https://hacs.xyz" target="_blank">HACS</a> or manually. 
 
-You'll also need to open the configured port in the firewall of the receiving PC (default `5115`). During the onboarding process (or when using the Configuration window), HASS.Agent will offer to do it for you. If you want to do so manually, you can run this command in an elevated prompt:
+You'll also need to open the configured port in the firewall of the receiving PC (default `5115`). During the onboarding process (or when using the Configuration window), HASS.Agent will offer to do it for you. If you want to do so manually, you can run this command in an elevated prompt (optionally change `5115`):
 
 `netsh advfirewall firewall add rule name="HASS.Agent Notifier" dir=in action=allow protocol=TCP localport=5115`
 
-Optionally change `5115`.
-
-The port has to be reserved in order for HASS.Agent to use it. Again, this'll be done for you by the onboarding process (or when using the Configuration window), but if you want to do it manually, run this command in an elevated prompt:
+The port has to be reserved in order for HASS.Agent to use it. Again, this'll be done for you by the onboarding process (or when using the Configuration window), but if you want to do it manually, run this command in an elevated prompt (optionally change `5115`):
 
 `netsh http add urlacl url=http://+:5115/ user=%USERDOMAIN%\%USERNAME%`
-
-Optionally change `5115`.
 
 ----
 
@@ -129,37 +125,41 @@ If you don't want this, or if you want to change something later on, you can use
 
 Configuring HASS.Agent is split into different pages:
 
-#### 1. Home Assistant API config
+#### 1. General
+
+Miscellaneous HASS.Agent related settings.
+
+#### 2. Home Assistant API config
 
 To use quick actions, you have to configure your instance's API. Normally the default URI should work, unless you've changed the port or mdns name. You can get a long-lived API token following <a href="https://www.home-assistant.io/docs/authentication/" target="_blank">this doc</a>.
 
-#### 2. Notifications
+#### 3. Notifications
 
 Make sure the integration has been installed and configured in Home Assistant, and actually works (I used a test automation). In the configuration screen, check the '*accept notifications*' box and change the default port if needed.
 
 After changing the port (or enabling/disabling), HASS.Agent will perform the port binding and create/modify the firewall rule as soon as you save your changes. This requires elevation, so you'll be shown an UAC prompt. 
 
-#### 3. MQTT config
+#### 4. MQTT config
 
 Enter your MQTT broker configuration. This is only required if you want to use commands (triggered from Home Assistant) or sensors (sent from your PC).
 
-#### 4. Startup
+#### 5. Startup
 
 Gives the option to enable/disable running HASS.Agent when you login. 
 
-#### 5. HotKey
+#### 6. HotKey
 
 This is optional, and can be used to pull up the Quick Actions window at any time.
 
-#### 6. Updates
+#### 7. Updates
 
-If you want, HASS.Agent can check for updates in the background. This works by checking the latest release on GitHub. When a new release is found, you'll be notified and given the chance to open the release page.
+If you want, HASS.Agent can check for updates in the background. This works by checking the latest release on GitHub. When a new release is found, you'll be notified and given the option to install the update.
 
-#### 7. Local Storage
+#### 8. Local Storage
 
 Enables you to manage how local storage is handled.
 
-#### 8. Logging and Reporting
+#### 9. Logging and Reporting
 
 HASS.Agent provides extended logging options (see [Error Reporting](#error-reporting)), you can easily manage them from this page.
 
@@ -216,7 +216,7 @@ Example configuration of a shutdown command in Home Assistant, used in combinati
 
 ### Updating
 
-Apart from the automatic update checker, you can check for new updates from the main window or rightclicking the systray icon and selecting 'check for updates'. If there's an update, you will be offered to download the .zip package from GitHub.
+Apart from the automatic update checker, you can check for new updates from the main window or rightclicking the systray icon and selecting 'check for updates'. If there's an update, HASS.Agent can download and install it for you.
 
 ![Update window](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_update.png)
 
@@ -233,17 +233,19 @@ List of things I want to add somewhere down the road (basically a personal to-do
  * **Notifications**: history window
  * **Notifications**: use our own method of showing instead of Windows toast, for added versatility
  * **Notifications**: show a videostream for x seconds with size y (small/normal/fullscreen) on position z (bottom right, center screen, etc)
+ * **Notifications**: use websockets so the integration/port reservations/firewall rules aren't needed
+ * **Notifications**: broadcast to all HASS.Agents on a subnet
  * **Quick Actions**: show current state in window
  * **Quick Actions**: ability to change button size (small/medium/large)
- * **Quick Actions**: ability to define custom mdi icons, and/or fetch icon from Home Assistant
+ * **Quick Actions**: ability to define mdi icons, and/or fetch the entity-specified icon from Home Assistant
  * **Quick Actions**: add pages as tabs instead of one form, i.e. one tab with 'lights', one tab with 'switches'
- * **Sensors**: implement library plugin system for more powerful custom sensors
  * **Commands**: command to open URL on default browser
  * **Updater**: give HASS.Agent the option to update itself 100% automatically
  * **General**: a built-in way to show a Home Assistant dashboard
- * **General**: switch to being a 'native app' so mqtt/integrations are no longer needed
+ * **General**: satellite service which executes user-specified commands/sensors without logging in
+ * **General**: internal mDNS client/server to drop the need for IPs
 
-If you have any other wishes, feel free to submit a ticket.
+If you have any other wishes/ideas/suggestions, please <a href="https://github.com/LAB02-Research/HASS.Agent/issues" target="_blank">create a ticket</a> or <a href="https://discord.gg/nMvqzwrVBU" target="_blank">discuss on Discord</a>.
 
 ----
 
