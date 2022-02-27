@@ -1,6 +1,7 @@
 ﻿using Syncfusion.Windows.Forms;
 using System;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using HASSAgent.Enums;
@@ -18,12 +19,16 @@ namespace HASSAgent.Forms.Sensors
         {
             Sensor = sensor;
             InitializeComponent();
+
+            TbIntInterval.Culture = CultureInfo.InstalledUICulture;
         }
 
         public SensorsMod()
         {
             Sensor = new ConfiguredSensor();
             InitializeComponent();
+
+            TbIntInterval.Culture = CultureInfo.InstalledUICulture;
         }
 
         private void SensorMod_Load(object sender, EventArgs e)
@@ -57,6 +62,7 @@ namespace HASSAgent.Forms.Sensors
 
             // set the name
             TbName.Text = Sensor.Name;
+            if (!string.IsNullOrWhiteSpace(TbName.Text)) TbName.SelectionStart = TbName.Text.Length;
 
             // set interval
             TbIntInterval.Text = Sensor.UpdateInterval?.ToString() ?? "10";
@@ -73,12 +79,21 @@ namespace HASSAgent.Forms.Sensors
 
                 case SensorType.WmiQuerySensor:
                     TbSetting1.Text = Sensor.Query;
+                    TbSetting2.Text = Sensor.Scope;
                     break;
 
                 case SensorType.PerformanceCounterSensor:
                     TbSetting1.Text = Sensor.Category;
                     TbSetting2.Text = Sensor.Counter;
                     TbSetting3.Text = Sensor.Instance;
+                    break;
+
+                case SensorType.ProcessActiveSensor:
+                    TbSetting1.Text = Sensor.Query;
+                    break;
+
+                case SensorType.ServiceStateSensor:
+                    TbSetting1.Text = Sensor.Query;
                     break;
             }
 
@@ -116,7 +131,15 @@ namespace HASSAgent.Forms.Sensors
                 case SensorType.PerformanceCounterSensor:
                     SetPerformanceCounterGui();
                     break;
-                
+
+                case SensorType.ProcessActiveSensor:
+                    SetProcessActiveGui();
+                    break;
+
+                case SensorType.ServiceStateSensor:
+                    SetServiceStateGui();
+                    break;
+
                 default:
                     SetEmptyGui();
                     break;
@@ -150,6 +173,10 @@ namespace HASSAgent.Forms.Sensors
                 LblSetting1.Text = "wmi query";
                 LblSetting1.Visible = true;
                 TbSetting1.Visible = true;
+
+                LblSetting2.Text = "wmi scope (optional)";
+                LblSetting2.Visible = true;
+                TbSetting2.Visible = true;
             }));
         }
 
@@ -178,6 +205,36 @@ namespace HASSAgent.Forms.Sensors
         }
 
         /// <summary>
+        /// Change the UI to a 'process active' type
+        /// </summary>
+        private void SetProcessActiveGui()
+        {
+            Invoke(new MethodInvoker(delegate
+            {
+                SetEmptyGui();
+
+                LblSetting1.Text = "process";
+                LblSetting1.Visible = true;
+                TbSetting1.Visible = true;
+            }));
+        }
+
+        /// <summary>
+        /// Change the UI to a 'service state' type
+        /// </summary>
+        private void SetServiceStateGui()
+        {
+            Invoke(new MethodInvoker(delegate
+            {
+                SetEmptyGui();
+
+                LblSetting1.Text = "service";
+                LblSetting1.Visible = true;
+                TbSetting1.Visible = true;
+            }));
+        }
+
+        /// <summary>
         /// Change the UI to a general type
         /// </summary>
         private void SetEmptyGui()
@@ -200,10 +257,15 @@ namespace HASSAgent.Forms.Sensors
 
         private void CbType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // set the ui to the selected type
             SetType();
 
             // redraw
             Refresh();
+
+            // set focus to the name field
+            ActiveControl = TbName;
+            if (!string.IsNullOrWhiteSpace(TbName.Text)) TbName.SelectionStart = TbName.Text.Length;
         }
 
         /// <summary>
@@ -285,6 +347,7 @@ namespace HASSAgent.Forms.Sensors
 
                 case SensorType.WmiQuerySensor:
                     var query = TbSetting1.Text.Trim();
+                    var scope = TbSetting2.Text.Trim();
                     if (string.IsNullOrEmpty(query))
                     {
                         MessageBox.Show("Enter a query first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -292,6 +355,7 @@ namespace HASSAgent.Forms.Sensors
                         return;
                     }
                     Sensor.Query = query;
+                    Sensor.Scope = scope;
                     break;
 
                 case SensorType.PerformanceCounterSensor:
@@ -307,6 +371,28 @@ namespace HASSAgent.Forms.Sensors
                     Sensor.Category = category;
                     Sensor.Counter = counter;
                     Sensor.Instance = instance;
+                    break;
+
+                case SensorType.ProcessActiveSensor:
+                    var process = TbSetting1.Text.Trim();
+                    if (string.IsNullOrEmpty(process))
+                    {
+                        MessageBox.Show("Enter the name of a process first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ActiveControl = TbSetting1;
+                        return;
+                    }
+                    Sensor.Query = process;
+                    break;
+
+                case SensorType.ServiceStateSensor:
+                    var service = TbSetting1.Text.Trim();
+                    if (string.IsNullOrEmpty(service))
+                    {
+                        MessageBox.Show("Enter the name of a service first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ActiveControl = TbSetting1;
+                        return;
+                    }
+                    Sensor.Query = service;
                     break;
             }
 

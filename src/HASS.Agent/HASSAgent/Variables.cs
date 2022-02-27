@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net;
 using System.Reflection;
@@ -20,6 +21,7 @@ using AppSettings = HASSAgent.Models.Config.AppSettings;
 
 namespace HASSAgent
 {
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public static class Variables
     {
         /// <summary>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using System.Security.Principal;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
@@ -41,6 +43,13 @@ namespace HASSAgent.Functions
 
     internal static class HelperFunctions
     {
+        [DllImport("advapi32.dll", SetLastError = true)]
+        private static extern bool OpenProcessToken(IntPtr processHandle, uint desiredAccess, out IntPtr tokenHandle);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool CloseHandle(IntPtr hObject);
+
         private delegate bool EnumWindowsProc(IntPtr hWnd, int lParam);
 
         [DllImport("USER32.DLL")]
@@ -155,40 +164,15 @@ namespace HASSAgent.Functions
         {
             try
             {
-                var restartBat = Path.Combine(Variables.StartupPath, "restart_hass_agent.bat");
-                if (File.Exists(restartBat)) File.Delete(restartBat);
-                
-                var restartBatContent = new StringBuilder();
-
-                // prepare the .bat content
-                restartBatContent.AppendLine("@echo off");
-                restartBatContent.AppendLine("TITLE HASS.Agent Restarter");
-                restartBatContent.AppendLine("echo.");
-                restartBatContent.AppendLine("echo HASS.Agent Restarter");
-                restartBatContent.AppendLine("echo.");
-                restartBatContent.AppendLine("echo.");
-                restartBatContent.AppendLine("echo Waiting 10 seconds for HASS.Agent to properly close ..");
-                restartBatContent.AppendLine("echo.");
-                restartBatContent.AppendLine("timeout 10 > NUL");
-                restartBatContent.AppendLine("echo.");
-                restartBatContent.AppendLine("echo Launching HASS.Agent ..");
-                restartBatContent.AppendLine($"start \"\" \"{Variables.ApplicationExecutable}\"");
-                restartBatContent.AppendLine("echo.");
-                restartBatContent.AppendLine("echo Done!");
-                restartBatContent.AppendLine("timeout 1 > NUL");
-
-                // create the .bat
-                File.WriteAllText(restartBat, restartBatContent.ToString());
-
                 if (fromElevation)
                 {
                     // launch unelevated
-                    CommandLineManager.ExecuteProcessUnElevated(restartBat);
+                    CommandLineManager.ExecuteProcessUnElevated(Variables.ApplicationExecutable, "restart");
                 }
                 else
                 {
                     // launch from current elevation
-                    Process.Start(restartBat);
+                    Process.Start(Variables.ApplicationExecutable, "restart");
                 }
 
                 // close up
@@ -361,6 +345,7 @@ namespace HASSAgent.Functions
             switch (value)
             {
                 case ComponentStatus.Loading:
+                case ComponentStatus.Connecting:
                     return Color.DodgerBlue;
 
                 case ComponentStatus.Ok:
@@ -384,10 +369,42 @@ namespace HASSAgent.Functions
         internal static bool CheckIfFormIsOpen(string formname) => Application.OpenForms.Cast<Form>().Any(form => form?.Name == formname);
 
         /// <summary>
-        /// Launches the system's default browser with the provided url
+        /// Launches the url with the user's custom browser if provided, or the system's default
         /// </summary>
         /// <param name="url"></param>
-        internal static void LaunchUrl(string url) => Process.Start(url);
+        /// <param name="incognito"></param>
+        internal static void LaunchUrl(string url, bool incognito = false)
+        {
+            // did the user provide a browser?
+            if (string.IsNullOrEmpty(Variables.AppSettings.BrowserBinary))
+            {
+                // nope
+                using (_ = Process.Start(url)) { }
+                return;
+            }
+
+            if (!File.Exists(Variables.AppSettings.BrowserBinary))
+            {
+                // yep, but not found
+                Log.Warning("[BROWSER] User provided browser not found, using default: {bin}", Variables.AppSettings.BrowserBinary);
+
+                using (_ = Process.Start(url)) { }
+                return;
+            }
+
+            // yep, use it to launch
+            using (var userBrowser = new Process())
+            {
+                var startupArgs = new ProcessStartInfo { FileName = Variables.AppSettings.BrowserBinary };
+
+                // if incgonito flag is set, use the incog. args (if set) - otherwise, just the url
+                if (incognito) startupArgs.Arguments = !string.IsNullOrEmpty(Variables.AppSettings.BrowserIncognitoArg) ? $"{Variables.AppSettings.BrowserIncognitoArg} {url}" : url;
+                else startupArgs.Arguments = url;
+
+                userBrowser.StartInfo = startupArgs;
+                userBrowser.Start();
+            }
+        }
 
         /// <summary>
         /// Provides a dictionary containing the pointers and titles of all open windows
@@ -570,6 +587,83 @@ namespace HASSAgent.Functions
         /// </summary>
         /// <returns></returns>
         internal static string GetSafeValue(string value) => Regex.Replace(value.ToLower(), "[^a-zA-Z0-9_-]", "_");
+
+        /// <summary>
+        /// Returns the owner of the supplied process
+        /// </summary>
+        /// <param name="process"></param>
+        /// <param name="includeDomain"></param>
+        /// <returns></returns>
+        [SuppressMessage("ReSharper", "StringIndexOfIsCultureSpecific.1")]
+        internal static string GetProcessOwner(Process process, bool includeDomain = true)
+        {
+            var processHandle = IntPtr.Zero;
+            try
+            {
+                OpenProcessToken(process.Handle, 8, out processHandle);
+                using (var wi = new WindowsIdentity(processHandle))
+                {
+                    var user = wi.Name;
+                    if (!includeDomain) return user.Contains(@"\") ? user.Substring(user.IndexOf(@"\") + 1) : user;
+                    else return user;
+                }
+            }
+            catch
+            {
+                return "NO OWNER";
+            }
+            finally
+            {
+                if (processHandle != IntPtr.Zero) CloseHandle(processHandle);
+            }
+        }
+
+        /// <summary>
+        /// Checks whether the process is currently running under the current user, by default ignoring the current process
+        /// </summary>
+        /// <param name="process"></param>
+        /// <param name="ignoreOwnProcess"></param>
+        /// <returns></returns>
+        internal static bool IsProcessActiveUnderCurrentUser(string process, bool ignoreOwnProcess = true)
+        {
+            try
+            {
+                if (process.Contains(".")) process = Path.GetFileNameWithoutExtension(process);
+                var isRunning = false;
+                var currentUser = Environment.UserName;
+
+                var procs = Process.GetProcessesByName(process);
+                using (var curProc = Process.GetCurrentProcess())
+                {
+                    var ownId = curProc.Id;
+
+                    foreach (var proc in procs)
+                    {
+                        try
+                        {
+                            if (isRunning) continue;
+                            if (ignoreOwnProcess && proc.Id == ownId) continue;
+                            var owner = GetProcessOwner(proc, false);
+                            if (owner != currentUser) continue;
+
+                            isRunning = true;
+                        }
+                        finally
+                        {
+                            proc?.Dispose();
+                        }
+                    }
+                }
+
+                // done
+                return isRunning;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[PROCESS] [{process}] Error while determining if process is running (ignoreOwnProcess: {ignore}): {msg}", process, ignoreOwnProcess, ex.Message);
+                return false;
+            }
+        }
     }
 
     public class CamelCaseJsonNamingpolicy : JsonNamingPolicy

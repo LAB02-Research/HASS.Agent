@@ -4,55 +4,56 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HASSAgent.Functions;
+using HASSAgent.Models.Internal;
 using MessageBoxAdv = Syncfusion.Windows.Forms.MessageBoxAdv;
 
 namespace HASSAgent.Forms
 {
     public partial class UpdatePending : MetroForm
     {
-        private readonly string _version;
+        private PendingUpdate _pendingUpdate;
 
-        private string _releaseInfo = string.Empty;
-        private string _releaseUrl = string.Empty;
-        private string _installerUrl = string.Empty;
-
-        public UpdatePending(string version)
+        public UpdatePending(PendingUpdate pendingUpdate)
         {
-            _version = version;
+            _pendingUpdate = pendingUpdate;
             InitializeComponent();
         }
 
         private void UpdatePending_Load(object sender, EventArgs e)
         {
-            LblVersion.Text = _version;
+            // show version nr
+            LblVersion.Text = _pendingUpdate.Version;
 
+            // optionally show beta ui
+            if (_pendingUpdate.IsBeta)
+            {
+                LblNewReleaseInfo.Text = "There's a new BETA release available:";
+                Text = "HASS.Agent BETA Update";
+            }
+
+            // load the rest of the info
             Task.Run(FetchInfo);
         }
 
-        private async void FetchInfo()
+        private void FetchInfo()
         {
-            // fetch asset info
-            var (releaseUrl, releaseNotes, installerUrl) = await UpdateManager.GetLatestVersionInfoAsync();
-
-            // assign to the vars
-            _releaseInfo = releaseNotes;
-            _releaseUrl = releaseUrl;
-            _installerUrl = installerUrl;
-
+            // add the rest of the update info
+            _pendingUpdate = UpdateManager.GetLatestVersionInfo(_pendingUpdate);
+            
             // update gui
             Invoke(new MethodInvoker(delegate
             {
-                TbReleaseNotes.Text = _releaseInfo;
+                TbReleaseNotes.Text = _pendingUpdate.ReleaseNotes;
 
-                if (Variables.AppSettings.EnableExecuteUpdateInstaller && !string.IsNullOrEmpty(_installerUrl))
+                if (Variables.AppSettings.EnableExecuteUpdateInstaller && !string.IsNullOrEmpty(_pendingUpdate.InstallerUrl))
                 {
                     LblUpdateQuestion.Text = "Do you want to download and launch the installer?";
-                    BtnDownload.Text = "install update";
+                    BtnDownload.Text = !_pendingUpdate.IsBeta ? "install update" : "install BETA release";
                 }
                 else
                 {
                     LblUpdateQuestion.Text = "Do you want to navigate to the release page?";
-                    BtnDownload.Text = "open release page";
+                    BtnDownload.Text = !_pendingUpdate.IsBeta ? "open release page" : "open BETA release page";
                 }
                 
                 BtnDownload.Enabled = true;
@@ -66,7 +67,6 @@ namespace HASSAgent.Forms
             BtnDownload.Text = "processing ..";
             BtnDownload.Enabled = false;
             BtnIgnore.Enabled = false;
-            TbReleaseNotes.Enabled = false;
 
             // execute the update
             await ExecuteUpdate();
@@ -85,12 +85,12 @@ namespace HASSAgent.Forms
             if (!Variables.AppSettings.EnableExecuteUpdateInstaller)
             {
                 // nope, open github
-                UpdateManager.LaunchReleaseUrl(_releaseUrl);
+                UpdateManager.LaunchReleaseUrl(_pendingUpdate);
                 return;
             }
 
             // yep, go for it
-            await UpdateManager.DownloadAndExecuteUpdate(_installerUrl, _releaseUrl);
+            await UpdateManager.DownloadAndExecuteUpdate(_pendingUpdate);
         }
 
         private void BtnIgnore_Click(object sender, EventArgs e) => Close();
@@ -111,6 +111,14 @@ namespace HASSAgent.Forms
             }
         }
 
-        private void LblRelease_Click(object sender, EventArgs e) => UpdateManager.LaunchReleaseUrl(_releaseUrl);
+        private void LblRelease_Click(object sender, EventArgs e) => UpdateManager.LaunchReleaseUrl(_pendingUpdate);
+
+        private void TbReleaseNotes_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(e.LinkText)) return;
+            if (!e.LinkText.ToLower().StartsWith("http")) return;
+
+            HelperFunctions.LaunchUrl(e.LinkText);
+        }
     }
 }

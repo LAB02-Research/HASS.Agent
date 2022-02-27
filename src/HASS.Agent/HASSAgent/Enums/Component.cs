@@ -2,11 +2,11 @@
 {
     public enum Component
     {
-        NotificationApi,
+        Commands,
         HassApi,
         Mqtt,
+        NotificationApi,
         QuickActions,
-        Sensors,
-        Commands
+        Sensors
     }
 }

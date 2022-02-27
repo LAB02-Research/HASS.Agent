@@ -11,7 +11,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.WmiSensors.SingleValue
         private protected DateTime LastFetched = DateTime.MinValue;
         private protected string LastValue = string.Empty;
 
-        public CurrentClockSpeedSensor(int? updateInterval = null, string name = "currentclockspeed", string id = default) : base(string.Empty, updateInterval ?? 300, name ?? "currentclockspeed", id)
+        public CurrentClockSpeedSensor(int? updateInterval = null, string name = "currentclockspeed", string id = default) : base(string.Empty, string.Empty, updateInterval ?? 300, name ?? "currentclockspeed", id)
         {
             _managementObject = new ManagementObject("Win32_Processor.DeviceID='CPU0'");
         }

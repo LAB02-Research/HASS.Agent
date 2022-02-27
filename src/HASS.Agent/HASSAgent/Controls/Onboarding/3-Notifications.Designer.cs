@@ -1,4 +1,6 @@
-﻿namespace HASSAgent.Controls.Onboarding
+﻿using System.Globalization;
+
+namespace HASSAgent.Controls.Onboarding
 {
     partial class Notifications
     {
@@ -64,13 +66,12 @@
             this.TbIntNotifierApiPort.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.TbIntNotifierApiPort.MinValue = ((long)(1));
             this.TbIntNotifierApiPort.Name = "TbIntNotifierApiPort";
-            this.TbIntNotifierApiPort.NumberGroupSeparator = "";
             this.TbIntNotifierApiPort.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TbIntNotifierApiPort.Size = new System.Drawing.Size(92, 25);
-            this.TbIntNotifierApiPort.SpecialCultureValue = Syncfusion.Windows.Forms.Tools.SpecialCultureValues.UICulture;
+            this.TbIntNotifierApiPort.SpecialCultureValue = Syncfusion.Windows.Forms.Tools.SpecialCultureValues.InstalledCulture;
             this.TbIntNotifierApiPort.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
             this.TbIntNotifierApiPort.TabIndex = 1;
-            this.TbIntNotifierApiPort.Text = "1883";
+            this.TbIntNotifierApiPort.Text = "1,883";
             this.TbIntNotifierApiPort.ThemeName = "Metro";
             this.TbIntNotifierApiPort.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbIntNotifierApiPort.ThemeStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
@@ -114,8 +115,8 @@
             // 
             // Notifications
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.Controls.Add(this.TbIntNotifierApiPort);
             this.Controls.Add(this.label2);

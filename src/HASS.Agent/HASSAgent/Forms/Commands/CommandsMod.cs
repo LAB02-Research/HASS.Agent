@@ -1,6 +1,7 @@
 ﻿using Syncfusion.Windows.Forms;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -8,6 +9,8 @@ using HASSAgent.Commands;
 using HASSAgent.Enums;
 using HASSAgent.Functions;
 using HASSAgent.Models.Config;
+using HASSAgent.Models.Internal;
+using Newtonsoft.Json;
 
 namespace HASSAgent.Forms.Commands
 {
@@ -58,6 +61,7 @@ namespace HASSAgent.Forms.Commands
 
             // set the name
             TbName.Text = Command.Name;
+            if (!string.IsNullOrWhiteSpace(TbName.Text)) TbName.SelectionStart = TbName.Text.Length;
 
             // set optional setting
             var parsed = Enum.TryParse<CommandType>(CbType.SelectedValue.ToString(), out var type);
@@ -75,6 +79,20 @@ namespace HASSAgent.Forms.Commands
 
                 case CommandType.KeyCommand:
                     TbSetting.Text = Command.KeyCode.ToString();
+                    break;
+
+                case CommandType.LaunchUrlCommand:
+                    var urlInfo = Command.Command;
+                    if (string.IsNullOrEmpty(urlInfo)) break;
+                    var urlPackage = JsonConvert.DeserializeObject<UrlInfo>(urlInfo);
+                    if (urlPackage == null) break;
+
+                    TbSetting.Text = urlPackage.Url;
+                    CbCommandSpecific.Checked = urlPackage.Incognito;
+                    break;
+
+                case CommandType.CustomExecutorCommand:
+                    TbSetting.Text = Command.Command;
                     break;
             }
 
@@ -163,6 +181,35 @@ namespace HASSAgent.Forms.Commands
                     }
                     Command.KeyCode = Encoding.ASCII.GetBytes(keycode).First();
                     break;
+
+                case CommandType.LaunchUrlCommand:
+                    var url = TbSetting.Text.Trim();
+                    if (string.IsNullOrEmpty(url))
+                    {
+                        MessageBox.Show("Enter a URL first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ActiveControl = TbSetting;
+                        return;
+                    }
+
+                    var urlInfo = new UrlInfo
+                    {
+                        Url = url,
+                        Incognito = CbCommandSpecific.Checked
+                    };
+
+                    Command.Command = JsonConvert.SerializeObject(urlInfo);
+                    break;
+
+                case CommandType.CustomExecutorCommand:
+                    var executorCommand = TbSetting.Text.Trim();
+                    if (string.IsNullOrEmpty(executorCommand))
+                    {
+                        MessageBox.Show("Enter a command or script first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ActiveControl = TbSetting;
+                        return;
+                    }
+                    Command.Command = executorCommand;
+                    break;
             }
 
             Command.RunAsLowIntegrity = CbRunAsLowIntegrity.CheckState == CheckState.Checked;
@@ -177,10 +224,15 @@ namespace HASSAgent.Forms.Commands
 
         private void CbType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // set the ui to the selected type
             SetType();
 
             // redraw
             Refresh();
+
+            // set focus to the name field
+            ActiveControl = TbName;
+            if (!string.IsNullOrWhiteSpace(TbName.Text)) TbName.SelectionStart = TbName.Text.Length;
         }
 
         /// <summary>
@@ -212,6 +264,14 @@ namespace HASSAgent.Forms.Commands
                     SetKeyGui();
                     break;
 
+                case CommandType.LaunchUrlCommand:
+                    SetUrlGui();
+                    break;
+
+                case CommandType.CustomExecutorCommand:
+                    SetCustomExecutorUi();
+                    break;
+
                 default:
                     SetEmptyGui();
                     break;
@@ -231,6 +291,12 @@ namespace HASSAgent.Forms.Commands
 
                 CbRunAsLowIntegrity.Visible = true;
                 LblIntegrityInfo.Visible = true;
+
+                CbCommandSpecific.CheckState = CheckState.Unchecked;
+                CbCommandSpecific.Visible = false;
+
+                LblInfo.Text = string.Empty;
+                LblInfo.Visible = false;
             }));
         }
 
@@ -248,6 +314,12 @@ namespace HASSAgent.Forms.Commands
                 CbRunAsLowIntegrity.CheckState = CheckState.Unchecked;
                 CbRunAsLowIntegrity.Visible = false;
                 LblIntegrityInfo.Visible = false;
+
+                CbCommandSpecific.CheckState = CheckState.Unchecked;
+                CbCommandSpecific.Visible = false;
+
+                LblInfo.Text = string.Empty;
+                LblInfo.Visible = false;
             }));
         }
 
@@ -265,6 +337,84 @@ namespace HASSAgent.Forms.Commands
                 CbRunAsLowIntegrity.CheckState = CheckState.Unchecked;
                 CbRunAsLowIntegrity.Visible = false;
                 LblIntegrityInfo.Visible = false;
+
+                CbCommandSpecific.CheckState = CheckState.Unchecked;
+                CbCommandSpecific.Visible = false;
+
+                LblInfo.Text = string.Empty;
+                LblInfo.Visible = false;
+            }));
+        }
+
+        /// <summary>
+        /// Change the UI to a 'url' type
+        /// </summary>
+        private void SetUrlGui()
+        {
+            Invoke(new MethodInvoker(delegate
+            {
+                LblSetting.Text = "URL";
+                LblSetting.Visible = true;
+                TbSetting.Visible = true;
+
+                CbRunAsLowIntegrity.CheckState = CheckState.Unchecked;
+                CbRunAsLowIntegrity.Visible = false;
+                LblIntegrityInfo.Visible = false;
+                
+                CbCommandSpecific.CheckState = CheckState.Unchecked;
+                CbCommandSpecific.Text = "launch in incognito mode";
+
+                if (string.IsNullOrEmpty(Variables.AppSettings.BrowserBinary))
+                {
+                    LblInfo.Text = "browser: default\r\n\r\nplease configure a browser to enable incognito mode";
+                    LblInfo.Visible = true;
+
+                    CbCommandSpecific.CheckState = CheckState.Unchecked;
+                    CbCommandSpecific.Visible = false;
+                }
+                else
+                {
+                    var browser = string.IsNullOrEmpty(Variables.AppSettings.BrowserName)
+                        ? Path.GetFileNameWithoutExtension(Variables.AppSettings.BrowserBinary)
+                        : Variables.AppSettings.BrowserName;
+
+                    LblInfo.Text = $"browser: {browser}";
+                    LblInfo.Visible = true;
+
+                    CbCommandSpecific.Visible = true;
+                }
+            }));
+        }
+
+        /// <summary>
+        /// Change the UI to a 'custom executor' type
+        /// </summary>
+        private void SetCustomExecutorUi()
+        {
+            Invoke(new MethodInvoker(delegate
+            {
+                LblSetting.Text = "command or script";
+                LblSetting.Visible = true;
+                TbSetting.Visible = true;
+
+                CbRunAsLowIntegrity.CheckState = CheckState.Unchecked;
+                CbRunAsLowIntegrity.Visible = false;
+                LblIntegrityInfo.Visible = false;
+
+                CbCommandSpecific.CheckState = CheckState.Unchecked;
+                CbCommandSpecific.Visible = false;
+
+                if (string.IsNullOrEmpty(Variables.AppSettings.CustomExecutorBinary)) LblInfo.Text = "executor: none\r\n\r\nplease configure an executor or your command won't run";
+                else
+                {
+                    var executor = string.IsNullOrEmpty(Variables.AppSettings.CustomExecutorName)
+                        ? Path.GetFileNameWithoutExtension(Variables.AppSettings.CustomExecutorBinary)
+                        : Variables.AppSettings.CustomExecutorName;
+
+                    LblInfo.Text = $"executor: {executor}";
+                }
+
+                LblInfo.Visible = true;
             }));
         }
 
@@ -281,6 +431,9 @@ namespace HASSAgent.Forms.Commands
                 CbRunAsLowIntegrity.CheckState = CheckState.Unchecked;
                 CbRunAsLowIntegrity.Visible = false;
                 LblIntegrityInfo.Visible = false;
+
+                CbCommandSpecific.CheckState = CheckState.Unchecked;
+                CbCommandSpecific.Visible = false;
             }));
         }
 

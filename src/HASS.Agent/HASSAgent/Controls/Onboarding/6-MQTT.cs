@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows.Forms;
 using Serilog;
 
@@ -12,6 +13,8 @@ namespace HASSAgent.Controls.Onboarding
         public MQTT()
         {
             InitializeComponent();
+
+            TbIntMqttPort.Culture = CultureInfo.InstalledUICulture;
         }
 
         private void MQTT_Load(object sender, EventArgs e)

@@ -5,7 +5,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.WmiSensors.SingleValue
 {
     public class MemoryUsageSensor : WmiQuerySensor
     {
-        public MemoryUsageSensor(int? updateInterval = null, string name = "memoryusage", string id = default) : base("SELECT FreePhysicalMemory,TotalVisibleMemorySize FROM Win32_OperatingSystem", updateInterval ?? 30, name ?? "memoryusage", id) {}
+        public MemoryUsageSensor(int? updateInterval = null, string name = "memoryusage", string id = default) : base("SELECT FreePhysicalMemory,TotalVisibleMemorySize FROM Win32_OperatingSystem", string.Empty, updateInterval ?? 30, name ?? "memoryusage", id) {}
 
         public override DiscoveryConfigModel GetAutoDiscoveryConfig()
         {

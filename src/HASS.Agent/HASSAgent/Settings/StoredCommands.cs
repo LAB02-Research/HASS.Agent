@@ -7,6 +7,7 @@ using HASSAgent.Enums;
 using HASSAgent.Models.Config;
 using HASSAgent.Models.HomeAssistant.Commands;
 using HASSAgent.Models.HomeAssistant.Commands.CustomCommands;
+using HASSAgent.Models.HomeAssistant.Commands.InternalCommands;
 using HASSAgent.Models.HomeAssistant.Commands.KeyCommands;
 using Newtonsoft.Json;
 using Serilog;
@@ -102,6 +103,9 @@ namespace HASSAgent.Settings
                 case CommandType.HibernateCommand:
                     abstractCommand = new HibernateCommand(command.Name, command.Id.ToString());
                     break;
+                case CommandType.SleepCommand:
+                    abstractCommand = new SleepCommand(command.Name, command.Id.ToString());
+                    break;
                 case CommandType.LogOffCommand:
                     abstractCommand = new LogOffCommand(command.Name, command.Id.ToString());
                     break;
@@ -134,6 +138,15 @@ namespace HASSAgent.Settings
                     break;
                 case CommandType.KeyCommand:
                     abstractCommand = new KeyCommand(command.KeyCode, command.Name, command.Id.ToString());
+                    break;
+                case CommandType.PublishAllSensorsCommand:
+                    abstractCommand = new PublishAllSensorsCommand(command.Name, command.Id.ToString());
+                    break;
+                case CommandType.LaunchUrlCommand:
+                    abstractCommand = new LaunchUrlCommand(command.Name, command.Command, command.Id.ToString());
+                    break;
+                case CommandType.CustomExecutorCommand:
+                    abstractCommand = new CustomExecutorCommand(command.Name, command.Command, command.Id.ToString());
                     break;
                 default:
                     Log.Error("[SETTINGS_COMMANDS] [{name}] Unknown configured command type: {type}", command.Name, command.Type.ToString());
@@ -186,6 +199,18 @@ namespace HASSAgent.Settings
                         Name = customKeyCommand.Name, 
                         Type = type,
                         KeyCode = customKeyCommand.KeyCode
+                    };
+                }
+
+                case InternalCommand internalCommand:
+                {
+                    _ = Enum.TryParse<CommandType>(internalCommand.GetType().Name, out var type);
+                    return new ConfiguredCommand()
+                    {
+                        Id = Guid.Parse(internalCommand.Id),
+                        Name = internalCommand.Name,
+                        Command = internalCommand.CommandConfig ?? string.Empty,
+                        Type = type,
                     };
                 }
             }

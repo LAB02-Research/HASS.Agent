@@ -22,6 +22,12 @@ namespace HASSAgent.Models.HomeAssistant.Sensors
         }
 
         public abstract void UpdateSensorValues();
+
+        public void ResetChecks()
+        {
+            LastUpdated = DateTime.MinValue;
+            foreach (var sensor in Sensors) sensor.Value.ResetChecks();
+        }
         
         public async Task PublishStatesAsync(bool respectChecks = true)
         {

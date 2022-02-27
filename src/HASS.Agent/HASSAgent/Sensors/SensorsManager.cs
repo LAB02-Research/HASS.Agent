@@ -4,7 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using HASSAgent.Enums;
+using HASSAgent.Models.Config;
 using HASSAgent.Mqtt;
+using HASSAgent.Settings;
 using Serilog;
 
 namespace HASSAgent.Sensors
@@ -70,6 +72,7 @@ namespace HASSAgent.Sensors
             // we use the firstrun flag to publish our state without respecting the time elapsed/value change check
             // otherwise, the state might stay in 'unknown' in HA until the value changes
             var firstRun = true;
+            var firstRunDone = false;
 
             while (_active)
             {
@@ -87,6 +90,9 @@ namespace HASSAgent.Sensors
                         continue;
                     }
 
+                    // optionally flag as the first real run
+                    if (!firstRunDone) firstRunDone = true;
+
                     // publish availability & sensor autodisco's every 30 sec
                     if ((DateTime.Now - _lastAutoDiscoPublish).TotalSeconds > 30)
                     {
@@ -98,6 +104,7 @@ namespace HASSAgent.Sensors
                         {
                             foreach (var sensor in Variables.SingleValueSensors.TakeWhile(sensor => !_pause).TakeWhile(command => _active))
                             {
+                                if (_pause || MqttManager.GetStatus() != MqttStatus.Connected) continue;
                                 await sensor.PublishAutoDiscoveryConfigAsync();
                             }
                         }
@@ -106,6 +113,7 @@ namespace HASSAgent.Sensors
                         {
                             foreach (var sensor in Variables.MultiValueSensors.TakeWhile(sensor => !_pause).TakeWhile(command => _active))
                             {
+                                if (_pause || MqttManager.GetStatus() != MqttStatus.Connected) continue;
                                 await sensor.PublishAutoDiscoveryConfigAsync();
                             }
                         }
@@ -121,6 +129,7 @@ namespace HASSAgent.Sensors
                     {
                         foreach (var sensor in Variables.SingleValueSensors.TakeWhile(sensor => !_pause).TakeWhile(command => _active))
                         {
+                            if (_pause || MqttManager.GetStatus() != MqttStatus.Connected) continue;
                             await sensor.PublishStateAsync(!firstRun);
                         }
                     }
@@ -130,17 +139,183 @@ namespace HASSAgent.Sensors
 
                     foreach (var sensor in Variables.MultiValueSensors.TakeWhile(sensor => !_pause).TakeWhile(command => _active))
                     {
+                        if (_pause || MqttManager.GetStatus() != MqttStatus.Connected) continue;
                         await sensor.PublishStatesAsync(!firstRun);
                     }
                 }
                 catch (Exception ex)
                 {
-                    Log.Fatal(ex, "[SENSORSMANAGER] Eroor while publishing: {err}", ex.Message);
+                    Log.Fatal(ex, "[SENSORSMANAGER] Error while publishing: {err}", ex.Message);
                 }
                 finally
                 {
-                    firstRun = false;
+                    // check if we need to take down the 'first run' flag
+                    if (firstRunDone && firstRun) firstRun = false;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Resets all sensor checks (last sent and previous value), so they'll all be published again
+        /// </summary>
+        internal static void ResetAllSensorChecks()
+        {
+            try
+            {
+                // pause processing
+                Pause();
+
+                // reset single-value sensors
+                if (SingleValueSensorsPresent())
+                {
+                    foreach (var sensor in Variables.SingleValueSensors) sensor.ResetChecks();
+                }
+
+                // reset multi-value sensors
+                if (MultiValueSensorsPresent())
+                {
+                    foreach (var sensor in Variables.MultiValueSensors) sensor.ResetChecks();
+                }
+
+                // done
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[SENSORSMANAGER] Error while resetting all sensor checks: {err}", ex.Message);
+            }
+            finally
+            {
+                // resume processing
+                Unpause();
+            }
+        }
+
+        /// <summary>
+        /// Stores the provided sensors, and (re)publishes them
+        /// </summary>
+        /// <param name="sensors"></param>
+        /// <param name="toBeDeletedSensors"></param>
+        /// <returns></returns>
+        internal static async Task<bool> StoreAsync(List<ConfiguredSensor> sensors, List<ConfiguredSensor> toBeDeletedSensors = null)
+        {
+            if (toBeDeletedSensors == null) toBeDeletedSensors = new List<ConfiguredSensor>();
+
+            try
+            {
+                // pause processing
+                Pause();
+
+                // process the to-be-removed
+                if (toBeDeletedSensors.Any())
+                {
+                    foreach (var sensor in toBeDeletedSensors.Where(sensor => sensor != null))
+                    {
+                        if (sensor.IsSingleValue())
+                        {
+                            var abstractSensor = StoredSensors.ConvertConfiguredToAbstractSingleValue(sensor);
+
+                            // remove and unregister
+                            await abstractSensor.UnPublishAutoDiscoveryConfigAsync();
+                            Variables.SingleValueSensors.RemoveAt(Variables.SingleValueSensors.FindIndex(x => x.Id == abstractSensor.Id));
+
+                            Log.Information("[SENSORS] Removed single-value sensor: {sensor}", abstractSensor.Name);
+                        }
+                        else
+                        {
+                            var abstractSensor = StoredSensors.ConvertConfiguredToAbstractMultiValue(sensor);
+
+                            // remove and unregister
+                            await abstractSensor.UnPublishAutoDiscoveryConfigAsync();
+                            Variables.MultiValueSensors.RemoveAt(Variables.MultiValueSensors.FindIndex(x => x.Id == abstractSensor.Id));
+
+                            Log.Information("[SENSORS] Removed multi-value sensor: {sensor}", abstractSensor.Name);
+                        }
+                    }
+                }
+
+                // copy our list to the main one
+                foreach (var sensor in sensors.Where(sensor => sensor != null))
+                {
+                    if (sensor.IsSingleValue())
+                    {
+                        var abstractSensor = StoredSensors.ConvertConfiguredToAbstractSingleValue(sensor);
+                        if (Variables.SingleValueSensors.All(x => x.Id != abstractSensor.Id))
+                        {
+                            // new, add and register
+                            Variables.SingleValueSensors.Add(abstractSensor);
+                            await abstractSensor.PublishAutoDiscoveryConfigAsync();
+                            await abstractSensor.PublishStateAsync(false);
+
+                            Log.Information("[SENSORS] Added single-value sensor: {sensor}", abstractSensor.Name);
+                            continue;
+                        }
+
+                        // existing, update and re-register
+                        var currentSensorIndex = Variables.SingleValueSensors.FindIndex(x => x.Id == abstractSensor.Id);
+                        if (Variables.SingleValueSensors[currentSensorIndex].Name != abstractSensor.Name)
+                        {
+                            // name changed, unregister
+                            Log.Information("[SENSORS] Single-value sensor changed name, re-registering as new entity: {old} to {new}", Variables.SingleValueSensors[currentSensorIndex].Name, abstractSensor.Name);
+
+                            await Variables.SingleValueSensors[currentSensorIndex].UnPublishAutoDiscoveryConfigAsync();
+                        }
+
+                        Variables.SingleValueSensors[currentSensorIndex] = abstractSensor;
+                        await abstractSensor.PublishAutoDiscoveryConfigAsync();
+                        await abstractSensor.PublishStateAsync(false);
+
+                        Log.Information("[SENSORS] Modified single-value sensor: {sensor}", abstractSensor.Name);
+                    }
+                    else
+                    {
+                        var abstractSensor = StoredSensors.ConvertConfiguredToAbstractMultiValue(sensor);
+                        if (Variables.MultiValueSensors.All(x => x.Id != abstractSensor.Id))
+                        {
+                            // new, add and register
+                            Variables.MultiValueSensors.Add(abstractSensor);
+                            await abstractSensor.PublishAutoDiscoveryConfigAsync();
+                            await abstractSensor.PublishStatesAsync(false);
+
+                            Log.Information("[SENSORS] Added multi-value sensor: {sensor}", abstractSensor.Name);
+                            continue;
+                        }
+
+                        // existing, update and re-register
+                        var currentSensorIndex = Variables.MultiValueSensors.FindIndex(x => x.Id == abstractSensor.Id);
+                        if (Variables.MultiValueSensors[currentSensorIndex].Name != abstractSensor.Name)
+                        {
+                            // name changed, unregister
+                            Log.Information("[SENSORS] Multi-value sensor changed name, re-registering as new entity: {old} to {new}", Variables.MultiValueSensors[currentSensorIndex].Name, abstractSensor.Name);
+
+                            await Variables.MultiValueSensors[currentSensorIndex].UnPublishAutoDiscoveryConfigAsync();
+                        }
+
+                        Variables.MultiValueSensors[currentSensorIndex] = abstractSensor;
+                        await abstractSensor.PublishAutoDiscoveryConfigAsync();
+                        await abstractSensor.PublishStatesAsync(false);
+
+                        Log.Information("[SENSORS] Modified multi-value sensor: {sensor}", abstractSensor.Name);
+                    }
+                }
+
+                // annouce ourselves
+                await MqttManager.AnnounceAvailabilityAsync();
+
+                // store to file
+                StoredSensors.Store();
+
+                // done
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[SENSORSMANAGER] Error while storing: {err}", ex.Message);
+                return false;
+            }
+            finally
+            {
+                // resume processing
+                Unpause();
             }
         }
 
@@ -154,7 +329,7 @@ namespace HASSAgent.Sensors
         /// <returns></returns>
         internal static (string name, int interval) GetSensorDefaultInfo(SensorType type)
         {
-            return !SensorInfo.ContainsKey(type) ? ("unknown sensor", 0) : SensorInfo[type];
+            return !SensorInfo.ContainsKey(type) ? ("Unknown sensor, make sure HASS.Agent has finished booting up", 0) : SensorInfo[type];
         }
 
         /// <summary>
@@ -187,6 +362,11 @@ namespace HASSAgent.Sensors
             SensorInfo.Add(SensorType.WindowsUpdatesSensors, ("Provides a sensor with the amount of pending driver updates and a sensor with the amount of pending software updates.\r\n\r\nThis is a costly request, so the recommended interval is 15 minutes (900 seconds). But it's capped at 10 minutes, if you provide a lower value, you'll get the last known list.\r\n\r\nThis is a multi-value sensor.", 900));
 
             SensorInfo.Add(SensorType.BatterySensors, ("Provides a sensor with the current charging status, estimated amount of minutes on a full charge, remaining charge in percentage, remaining charge in minutes and the powerline status.\r\n\r\nThis is a multi-value sensor.", 30));
+            SensorInfo.Add(SensorType.DisplaySensors, ("Provides a sensor with the amount of displays, name of the primary display, and per display its name, resolution and bits per pixel.\r\n\r\nThis is a multi-value sensor.", 15));
+            SensorInfo.Add(SensorType.AudioSensors, ("Provides information various aspects of your device's audio:\r\n\r\nCurrent peak volume level (can be used as a simple 'is something playing' value).\r\n\r\nDefault audiodevice: name, state and volume.\r\n\r\nSummary of your audio sessions: application name, muted state, volume and current peak volume.\r\n\r\nThis is a multi-value sensor.", 20));
+            SensorInfo.Add(SensorType.ProcessActiveSensor, ("Provides the number of active instances of the process.", 10));
+            SensorInfo.Add(SensorType.ServiceStateSensor, ("Returns the state of the provided service: NotFound, Stopped, StartPending, StopPending, Running, ContinuePending, PausePending or Paused.\r\n\r\nMake sure to provide the 'Service name', not the 'Display name'.", 10));
+            SensorInfo.Add(SensorType.LoggedUsersSensor, ("Returns a json-formatted list of currently logged users.", 30));
         }
     }
 }

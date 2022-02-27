@@ -133,6 +133,7 @@ namespace HASSAgent.Forms.QuickActions
 
             // set the optional description
             TbDescription.Text = QuickAction.Description;
+            if (!string.IsNullOrWhiteSpace(TbDescription.Text)) TbDescription.SelectionStart = TbDescription.Text.Length;
 
             // load the hotkey
             if (!string.IsNullOrEmpty(QuickAction.HotKey)) _hotkeySelector.Enable(TbHotkey, new Hotkey(QuickAction.HotKey));
@@ -203,6 +204,10 @@ namespace HASSAgent.Forms.QuickActions
         
         private void CbDomain_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // set focus to entity list
+            ActiveControl = CbEntity;
+
+            // load entities
             LoadEntityList();
         }
 
@@ -227,24 +232,16 @@ namespace HASSAgent.Forms.QuickActions
                     }
                     break;
 
-                case HassDomain.Script:
-                    foreach (var item in HassApiManager.ScriptList)
+                case HassDomain.Climate:
+                    foreach (var item in HassApiManager.ClimateList)
                     {
                         CbEntity.AutoCompleteCustomSource.Add(item);
                         CbEntity.Items.Add(item);
                     }
                     break;
 
-                case HassDomain.Scene:
-                    foreach (var item in HassApiManager.SceneList)
-                    {
-                        CbEntity.AutoCompleteCustomSource.Add(item);
-                        CbEntity.Items.Add(item);
-                    }
-                    break;
-
-                case HassDomain.Switch:
-                    foreach (var item in HassApiManager.SwitchList)
+                case HassDomain.Cover:
+                    foreach (var item in HassApiManager.CoverList)
                     {
                         CbEntity.AutoCompleteCustomSource.Add(item);
                         CbEntity.Items.Add(item);
@@ -266,6 +263,38 @@ namespace HASSAgent.Forms.QuickActions
                         CbEntity.Items.Add(item);
                     }
                     break;
+
+                case HassDomain.MediaPlayer:
+                    foreach (var item in HassApiManager.MediaPlayerList)
+                    {
+                        CbEntity.AutoCompleteCustomSource.Add(item);
+                        CbEntity.Items.Add(item);
+                    }
+                    break;
+
+                case HassDomain.Scene:
+                    foreach (var item in HassApiManager.SceneList)
+                    {
+                        CbEntity.AutoCompleteCustomSource.Add(item);
+                        CbEntity.Items.Add(item);
+                    }
+                    break;
+
+                case HassDomain.Script:
+                    foreach (var item in HassApiManager.ScriptList)
+                    {
+                        CbEntity.AutoCompleteCustomSource.Add(item);
+                        CbEntity.Items.Add(item);
+                    }
+                    break;
+
+                case HassDomain.Switch:
+                    foreach (var item in HassApiManager.SwitchList)
+                    {
+                        CbEntity.AutoCompleteCustomSource.Add(item);
+                        CbEntity.Items.Add(item);
+                    }
+                    break;
             }
         }
 
@@ -277,6 +306,11 @@ namespace HASSAgent.Forms.QuickActions
                 return;
             }
 
+            // set focus to description
+            ActiveControl = TbDescription;
+            if (!string.IsNullOrWhiteSpace(TbDescription.Text)) TbDescription.SelectionStart = TbDescription.Text.Length;
+
+            // load entity name
             LblEntity.Text = CbEntity.Text;
         }
 
@@ -361,6 +395,13 @@ namespace HASSAgent.Forms.QuickActions
         {
             if (e.KeyCode != Keys.Escape) return;
             Close();
+        }
+
+        private void CbAction_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // set focus to description
+            ActiveControl = TbDescription;
+            if (!string.IsNullOrWhiteSpace(TbDescription.Text)) TbDescription.SelectionStart = TbDescription.Text.Length;
         }
     }
 }

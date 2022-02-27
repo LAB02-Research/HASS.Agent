@@ -1,4 +1,6 @@
 ﻿
+using System.Globalization;
+
 namespace HASSAgent.Forms.Sensors
 {
     partial class SensorsMod
@@ -145,7 +147,7 @@ namespace HASSAgent.Forms.Sensors
             this.TbIntInterval.Name = "TbIntInterval";
             this.TbIntInterval.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TbIntInterval.Size = new System.Drawing.Size(61, 25);
-            this.TbIntInterval.SpecialCultureValue = Syncfusion.Windows.Forms.Tools.SpecialCultureValues.UICulture;
+            this.TbIntInterval.SpecialCultureValue = Syncfusion.Windows.Forms.Tools.SpecialCultureValues.InstalledCulture;
             this.TbIntInterval.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
             this.TbIntInterval.TabIndex = 14;
             this.TbIntInterval.Text = "5";

@@ -6,6 +6,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using HASSAgent.Commands;
+using HASSAgent.Controls.Configuration;
 using HASSAgent.Functions;
 using HASSAgent.HomeAssistant;
 using HASSAgent.Mqtt;
@@ -27,6 +28,17 @@ namespace HASSAgent.Forms
         private readonly string _previousDeviceName = Variables.AppSettings.DeviceName;
         private readonly int _previousNotificationPort = Variables.AppSettings.NotifierApiPort;
 
+        private readonly General _general = new General();
+        private readonly HomeAssistantApi _homeAssistantApi = new HomeAssistantApi();
+        private readonly Controls.Configuration.Notifications _notifications = new Controls.Configuration.Notifications();
+        private readonly MQTT _mqtt = new MQTT();
+        private readonly Startup _startup = new Startup();
+        private readonly HotKey _hotKey = new HotKey();
+        private readonly Updates _updates = new Updates();
+        private readonly LocalStorage _localStorage = new LocalStorage();
+        private readonly Logging _logging = new Logging();
+        private readonly ExternalTools _externalTools = new ExternalTools();
+
         private bool _initializing = true;
 
         public Configuration()
@@ -34,8 +46,8 @@ namespace HASSAgent.Forms
             InitializeComponent();
 
             // hide group seperator
-            TbIntNotifierApiPort.NumberGroupSeparator = "";
-            TbIntMqttPort.NumberGroupSeparator = "";
+            _notifications.TbIntNotifierApiPort.NumberGroupSeparator = "";
+            _mqtt.TbIntMqttPort.NumberGroupSeparator = "";
         }
 
         private void Configuration_Load(object sender, EventArgs e)
@@ -46,19 +58,61 @@ namespace HASSAgent.Forms
             // suspend global hotkeys
             Variables.HotKeyListener.Suspend();
 
+            // load controls
+            TabGeneral.Controls.Add(_general);
+            TabHassApi.Controls.Add(_homeAssistantApi);
+            TabNotifications.Controls.Add(_notifications);
+            TabMQTT.Controls.Add(_mqtt);
+            TabStartup.Controls.Add(_startup);
+            TabHotKey.Controls.Add(_hotKey);
+            TabUpdates.Controls.Add(_updates);
+            TabLocalStorage.Controls.Add(_localStorage);
+            TabLogging.Controls.Add(_logging);
+            TabExternalTools.Controls.Add(_externalTools);
+
+            // bind events
+            BindEvents();
+
             // load current settings from memory
             LoadSettings();
 
             // config quick actions hotkey selector
-            if (Variables.QuickActionsHotKey != null) _hotkeySelector.Enable(TbQuickActionsHotkey, Variables.QuickActionsHotKey);
-            else _hotkeySelector.Enable(TbQuickActionsHotkey);
+            if (Variables.QuickActionsHotKey != null) _hotkeySelector.Enable(_hotKey.TbQuickActionsHotkey, Variables.QuickActionsHotKey);
+            else _hotkeySelector.Enable(_hotKey.TbQuickActionsHotkey);
+        }
 
-            // remove topmost
-            Task.Run(async delegate
-            {
-                await Task.Delay(150);
-                Invoke(new MethodInvoker(delegate { TopMost = false; }));
-            });
+        private void Configuration_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // resume global hotkeys
+            Variables.HotKeyListener.Resume();
+
+            // remove hotkey selector
+            _hotkeySelector?.Disable(_hotKey.TbQuickActionsHotkey);
+            _hotkeySelector?.Dispose();
+
+            // dispose controls
+            _general.Dispose();
+            _homeAssistantApi.Dispose();
+            _notifications.Dispose();
+            _mqtt.Dispose();
+            _startup.Dispose();
+            _hotKey.Dispose();
+            _updates.Dispose();
+            _localStorage.Dispose();
+            _logging.Dispose();
+            _externalTools.Dispose();
+        }
+
+        private void BindEvents()
+        {
+            // hass
+            _homeAssistantApi.CbHassAutoClientCertificate.CheckedChanged += CbHassAutoClientCertificate_CheckedChanged;
+            
+            // mqtt
+            _mqtt.CbMqttTls.CheckedChanged += CbMqttTls_CheckedChanged;
+            
+            // hotkey
+            _hotKey.BtnClearHotKey.Click += BtnClearHotKey_Click;
         }
 
         private void BtnStore_Click(object sender, EventArgs e) => ProcessChanges();
@@ -82,7 +136,7 @@ namespace HASSAgent.Forms
             StoreSettings();
 
             // unpublish all entities if the device's name is changed
-            if (TbDeviceName.Text != _previousDeviceName)
+            if (_general.TbDeviceName.Text != _previousDeviceName)
             {
                 MessageBoxAdv.Show("You've changed your device's name.\r\n\r\nAll your sensors and commands will now be unpublished, and HASS.Agent\r\nwill restart afterwards to republish them.\r\n\r\nThey'll keep their current names, to avoid breaking automations or scripts.",
                     "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -165,52 +219,61 @@ namespace HASSAgent.Forms
         private void LoadSettings()
         {
             // general
-            TbDeviceName.Text = Variables.AppSettings.DeviceName;
+            _general.TbDeviceName.Text = Variables.AppSettings.DeviceName;
+            _general.TbDisconnectGrace.IntegerValue = Variables.AppSettings.DisconnectedGracePeriodSeconds;
 
             // startup settings
-            Task.Run(DetermineStartOnLoginStatus);
+            Task.Run(_startup.DetermineStartOnLoginStatus);
 
             // notifications
-            CbAcceptNotifications.CheckState = Variables.AppSettings.NotificationsEnabled ? CheckState.Checked : CheckState.Unchecked;
-            TbIntNotifierApiPort.IntegerValue = Variables.AppSettings.NotifierApiPort;
+            _notifications.CbAcceptNotifications.CheckState = Variables.AppSettings.NotificationsEnabled ? CheckState.Checked : CheckState.Unchecked;
+            _notifications.TbIntNotifierApiPort.IntegerValue = Variables.AppSettings.NotifierApiPort;
 
             // hass settings
-            TbHassIp.Text = Variables.AppSettings.HassUri;
-            TbHassApiToken.Text = Variables.AppSettings.HassToken;
-            TbHassClientCertificate.Text = Variables.AppSettings.HassClientCertificate;
-            CbHassAutoClientCertificate.CheckState = Variables.AppSettings.HassAutoClientCertificate ? CheckState.Checked : CheckState.Unchecked;
+            _homeAssistantApi.TbHassIp.Text = Variables.AppSettings.HassUri;
+            _homeAssistantApi.TbHassApiToken.Text = Variables.AppSettings.HassToken;
+            _homeAssistantApi.TbHassClientCertificate.Text = Variables.AppSettings.HassClientCertificate;
+            _homeAssistantApi.CbHassAutoClientCertificate.CheckState = Variables.AppSettings.HassAutoClientCertificate ? CheckState.Checked : CheckState.Unchecked;
             if (Variables.AppSettings.HassAutoClientCertificate)
             {
-                TbHassClientCertificate.Text = string.Empty;
-                TbHassClientCertificate.Enabled = false;
+                _homeAssistantApi.TbHassClientCertificate.Text = string.Empty;
+                _homeAssistantApi.TbHassClientCertificate.Enabled = false;
             }
 
             // hotkey
-            CbEnableQuickActionsHotkey.CheckState = Variables.AppSettings.QuickActionsHotKeyEnabled ? CheckState.Checked : CheckState.Unchecked;
+            _hotKey.CbEnableQuickActionsHotkey.CheckState = Variables.AppSettings.QuickActionsHotKeyEnabled ? CheckState.Checked : CheckState.Unchecked;
 
             // mqtt
-            TbMqttAddress.Text = Variables.AppSettings.MqttAddress;
-            TbIntMqttPort.IntegerValue = Variables.AppSettings.MqttPort;
-            CbMqttTls.CheckState = Variables.AppSettings.MqttUseTls ? CheckState.Checked : CheckState.Unchecked;
-            TbMqttUsername.Text = Variables.AppSettings.MqttUsername;
-            TbMqttPassword.Text = Variables.AppSettings.MqttPassword;
-            TbMqttDiscoveryPrefix.Text = Variables.AppSettings.MqttDiscoveryPrefix;
-            TbMqttRootCertificate.Text = Variables.AppSettings.MqttRootCertificate;
-            TbMqttClientCertificate.Text = Variables.AppSettings.MqttClientCertificate;
-            CbAllowUntrustedCertificates.CheckState = Variables.AppSettings.MqttAllowUntrustedCertificates ? CheckState.Checked : CheckState.Unchecked;
-            CbUseRetainFlag.CheckState = Variables.AppSettings.MqttUseRetainFlag ? CheckState.Checked : CheckState.Unchecked;
+            _mqtt.TbMqttAddress.Text = Variables.AppSettings.MqttAddress;
+            _mqtt.TbIntMqttPort.IntegerValue = Variables.AppSettings.MqttPort;
+            _mqtt.CbMqttTls.CheckState = Variables.AppSettings.MqttUseTls ? CheckState.Checked : CheckState.Unchecked;
+            _mqtt.TbMqttUsername.Text = Variables.AppSettings.MqttUsername;
+            _mqtt.TbMqttPassword.Text = Variables.AppSettings.MqttPassword;
+            _mqtt.TbMqttDiscoveryPrefix.Text = Variables.AppSettings.MqttDiscoveryPrefix;
+            _mqtt.TbMqttRootCertificate.Text = Variables.AppSettings.MqttRootCertificate;
+            _mqtt.TbMqttClientCertificate.Text = Variables.AppSettings.MqttClientCertificate;
+            _mqtt.CbAllowUntrustedCertificates.CheckState = Variables.AppSettings.MqttAllowUntrustedCertificates ? CheckState.Checked : CheckState.Unchecked;
+            _mqtt.CbUseRetainFlag.CheckState = Variables.AppSettings.MqttUseRetainFlag ? CheckState.Checked : CheckState.Unchecked;
 
             // updates
-            CbUpdates.CheckState = Variables.AppSettings.CheckForUpdates ? CheckState.Checked : CheckState.Unchecked;
-            CbExecuteUpdater.CheckState = Variables.AppSettings.EnableExecuteUpdateInstaller ? CheckState.Checked : CheckState.Unchecked;
+            _updates.CbUpdates.CheckState = Variables.AppSettings.CheckForUpdates ? CheckState.Checked : CheckState.Unchecked;
+            _updates.CbBetaUpdates.CheckState = Variables.AppSettings.ShowBetaUpdates ? CheckState.Checked : CheckState.Unchecked;
+            _updates.CbExecuteUpdater.CheckState = Variables.AppSettings.EnableExecuteUpdateInstaller ? CheckState.Checked : CheckState.Unchecked;
 
             // cache
-            TbImageCacheLocation.Text = Variables.ImageCachePath;
-            TbIntImageRetention.IntegerValue = Variables.AppSettings.ImageCacheRetentionDays;
+            _localStorage.TbImageCacheLocation.Text = Variables.ImageCachePath;
+            _localStorage.TbIntImageRetention.IntegerValue = Variables.AppSettings.ImageCacheRetentionDays;
 
             // logging
-            CbExtendedLogging.CheckState = SettingsManager.GetExtendedLoggingSetting() ? CheckState.Checked : CheckState.Unchecked;
-            CbExceptionReporting.CheckState = SettingsManager.GetExceptionReportingSetting() ? CheckState.Checked : CheckState.Unchecked;
+            _logging.CbExtendedLogging.CheckState = SettingsManager.GetExtendedLoggingSetting() ? CheckState.Checked : CheckState.Unchecked;
+            _logging.CbExceptionReporting.CheckState = SettingsManager.GetExceptionReportingSetting() ? CheckState.Checked : CheckState.Unchecked;
+
+            // external tools
+            _externalTools.TbExternalBrowserName.Text = Variables.AppSettings.BrowserName;
+            _externalTools.TbExternalBrowserBinary.Text = Variables.AppSettings.BrowserBinary;
+            _externalTools.TbExternalBrowserIncognito.Text = Variables.AppSettings.BrowserIncognitoArg;
+            _externalTools.TbExternalExecutorName.Text = Variables.AppSettings.CustomExecutorName;
+            _externalTools.TbExternalExecutorBinary.Text = Variables.AppSettings.CustomExecutorBinary;
 
             // done
             _initializing = false;
@@ -222,25 +285,27 @@ namespace HASSAgent.Forms
         private void StoreSettings()
         {
             // general
-            var deviceName = string.IsNullOrEmpty(TbDeviceName.Text) ? HelperFunctions.GetSafeDeviceName() : TbDeviceName.Text;
+            var deviceName = string.IsNullOrEmpty(_general.TbDeviceName.Text) ? HelperFunctions.GetSafeDeviceName() : _general.TbDeviceName.Text;
             Variables.AppSettings.DeviceName = deviceName;
 
+            Variables.AppSettings.DisconnectedGracePeriodSeconds = (int)_general.TbDisconnectGrace.IntegerValue;
+
             // notifications
-            Variables.AppSettings.NotificationsEnabled = CbAcceptNotifications.CheckState == CheckState.Checked;
-            Variables.AppSettings.NotifierApiPort = (int)TbIntNotifierApiPort.IntegerValue;
+            Variables.AppSettings.NotificationsEnabled = _notifications.CbAcceptNotifications.CheckState == CheckState.Checked;
+            Variables.AppSettings.NotifierApiPort = (int)_notifications.TbIntNotifierApiPort.IntegerValue;
 
             // hass settings
-            Variables.AppSettings.HassUri = TbHassIp.Text;
-            Variables.AppSettings.HassToken = TbHassApiToken.Text;
-            Variables.AppSettings.HassClientCertificate = TbHassClientCertificate.Text;
-            Variables.AppSettings.HassAutoClientCertificate = CbHassAutoClientCertificate.CheckState == CheckState.Checked;
+            Variables.AppSettings.HassUri = _homeAssistantApi.TbHassIp.Text;
+            Variables.AppSettings.HassToken = _homeAssistantApi.TbHassApiToken.Text;
+            Variables.AppSettings.HassClientCertificate = _homeAssistantApi.TbHassClientCertificate.Text;
+            Variables.AppSettings.HassAutoClientCertificate = _homeAssistantApi.CbHassAutoClientCertificate.CheckState == CheckState.Checked;
 
             // hotkey config
-            Variables.AppSettings.QuickActionsHotKeyEnabled = CbEnableQuickActionsHotkey.CheckState == CheckState.Checked;
+            Variables.AppSettings.QuickActionsHotKeyEnabled = _hotKey.CbEnableQuickActionsHotkey.CheckState == CheckState.Checked;
             if (Variables.AppSettings.QuickActionsHotKeyEnabled)
             {
                 // hotkey enabled, store and activate
-                Variables.QuickActionsHotKey = new Hotkey(TbQuickActionsHotkey.Text);
+                Variables.QuickActionsHotKey = new Hotkey(_hotKey.TbQuickActionsHotkey.Text);
                 Variables.AppSettings.QuickActionsHotKey = Variables.QuickActionsHotKey.ToString();
                 Variables.HotKeyManager.QuickActionsHotKeyChanged(_previousHotkey);
             }
@@ -253,55 +318,38 @@ namespace HASSAgent.Forms
             }
 
             // mqtt
-            Variables.AppSettings.MqttAddress = TbMqttAddress.Text;
-            Variables.AppSettings.MqttPort = (int)TbIntMqttPort.IntegerValue;
-            Variables.AppSettings.MqttUseTls = CbMqttTls.CheckState == CheckState.Checked;
-            Variables.AppSettings.MqttUsername = TbMqttUsername.Text;
-            Variables.AppSettings.MqttPassword = TbMqttPassword.Text;
-            Variables.AppSettings.MqttDiscoveryPrefix = TbMqttDiscoveryPrefix.Text;
-            Variables.AppSettings.MqttRootCertificate = TbMqttRootCertificate.Text;
-            Variables.AppSettings.MqttClientCertificate = TbMqttClientCertificate.Text;
-            Variables.AppSettings.MqttAllowUntrustedCertificates = CbAllowUntrustedCertificates.CheckState == CheckState.Checked;
-            Variables.AppSettings.MqttUseRetainFlag = CbUseRetainFlag.CheckState == CheckState.Checked;
+            Variables.AppSettings.MqttAddress = _mqtt.TbMqttAddress.Text;
+            Variables.AppSettings.MqttPort = (int)_mqtt.TbIntMqttPort.IntegerValue;
+            Variables.AppSettings.MqttUseTls = _mqtt.CbMqttTls.CheckState == CheckState.Checked;
+            Variables.AppSettings.MqttUsername = _mqtt.TbMqttUsername.Text;
+            Variables.AppSettings.MqttPassword = _mqtt.TbMqttPassword.Text;
+            Variables.AppSettings.MqttDiscoveryPrefix = _mqtt.TbMqttDiscoveryPrefix.Text;
+            Variables.AppSettings.MqttRootCertificate = _mqtt.TbMqttRootCertificate.Text;
+            Variables.AppSettings.MqttClientCertificate = _mqtt.TbMqttClientCertificate.Text;
+            Variables.AppSettings.MqttAllowUntrustedCertificates = _mqtt.CbAllowUntrustedCertificates.CheckState == CheckState.Checked;
+            Variables.AppSettings.MqttUseRetainFlag = _mqtt.CbUseRetainFlag.CheckState == CheckState.Checked;
 
             // updates
-            Variables.AppSettings.CheckForUpdates = CbUpdates.CheckState == CheckState.Checked;
-            Variables.AppSettings.EnableExecuteUpdateInstaller = CbExecuteUpdater.CheckState == CheckState.Checked;
+            Variables.AppSettings.CheckForUpdates = _updates.CbUpdates.CheckState == CheckState.Checked;
+            Variables.AppSettings.ShowBetaUpdates = _updates.CbBetaUpdates.CheckState == CheckState.Checked;
+            Variables.AppSettings.EnableExecuteUpdateInstaller = _updates.CbExecuteUpdater.CheckState == CheckState.Checked;
 
             // cache
-            Variables.AppSettings.ImageCacheRetentionDays = (int)TbIntImageRetention.IntegerValue;
+            Variables.AppSettings.ImageCacheRetentionDays = (int)_localStorage.TbIntImageRetention.IntegerValue;
 
             // logging
-            SettingsManager.SetExtendedLoggingSetting(CbExtendedLogging.CheckState == CheckState.Checked);
-            SettingsManager.SetExceptionReportingSetting(CbExceptionReporting.CheckState == CheckState.Checked);
+            SettingsManager.SetExtendedLoggingSetting(_logging.CbExtendedLogging.CheckState == CheckState.Checked);
+            SettingsManager.SetExceptionReportingSetting(_logging.CbExceptionReporting.CheckState == CheckState.Checked);
+
+            // external tools
+            Variables.AppSettings.BrowserName = _externalTools.TbExternalBrowserName.Text;
+            Variables.AppSettings.BrowserBinary = _externalTools.TbExternalBrowserBinary.Text;
+            Variables.AppSettings.BrowserIncognitoArg = _externalTools.TbExternalBrowserIncognito.Text;
+            Variables.AppSettings.CustomExecutorName = _externalTools.TbExternalExecutorName.Text;
+            Variables.AppSettings.CustomExecutorBinary = _externalTools.TbExternalExecutorBinary.Text;
 
             // save to file
             SettingsManager.StoreAppSettings();
-        }
-
-        /// <summary>
-        /// Determine the current status of the start-on-login setting, and sets the GUI accordingly
-        /// </summary>
-        private void DetermineStartOnLoginStatus()
-        {
-            if (LaunchManager.CheckLaunchOnUserLogin())
-            {
-                Invoke(new MethodInvoker(delegate
-                {
-                    LblStartOnLoginStatus.ForeColor = Color.LimeGreen;
-                    LblStartOnLoginStatus.Text = "enabled";
-                    BtnSetStartOnLogin.Text = "disable start-on-login";
-                }));
-            }
-            else
-            {
-                Invoke(new MethodInvoker(delegate
-                {
-                    LblStartOnLoginStatus.ForeColor = Color.OrangeRed;
-                    LblStartOnLoginStatus.Text = "disabled";
-                    BtnSetStartOnLogin.Text = "enable start-on-login";
-                }));
-            }
         }
 
         /// <summary>
@@ -309,63 +357,22 @@ namespace HASSAgent.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnAbout_Click(object sender, EventArgs e)
+        private async void BtnAbout_Click(object sender, EventArgs e)
         {
-            using (var about = new About())
-            {
-                about.ShowDialog();
-            }
+            if (await HelperFunctions.TryBringToFront("About")) return;
+
+            var form = new About();
+            form.FormClosed += delegate { form.Dispose(); };
+            form.Show(this);
         }
 
-        private void BtnNotificationsReadme_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent#configuration");
-
-        private void BtnHelp_Click(object sender, EventArgs e)
+        private async void BtnHelp_Click(object sender, EventArgs e)
         {
-            using (var help = new Help())
-            {
-                help.ShowDialog();
-            }
-        }
+            if (await HelperFunctions.TryBringToFront("Help")) return;
 
-        /// <summary>
-        /// Enables or disables start-on-login
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnSetStartOnLogin_Click(object sender, EventArgs e)
-        {
-            if (LaunchManager.CheckLaunchOnUserLogin())
-            {
-                // already active, so disable
-                var disabled = LaunchManager.DisableLaunchOnUserLogin();
-                if (!disabled)
-                {
-                    MessageBoxAdv.Show("Something went wrong while disabling start-on-login.\r\n\r\nCheck the logs for more info.",
-                        "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                // not active yet, so enable
-                var enabled = LaunchManager.EnableLaunchOnUserLogin();
-                if (!enabled)
-                {
-                    MessageBoxAdv.Show("Something went wrong while enabling start-on-login.\r\n\r\nCheck the logs for more info.",
-                        "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-
-            // set the current state
-            DetermineStartOnLoginStatus();
-        }
-
-        private void Configuration_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            // resume global hotkeys
-            Variables.HotKeyListener.Resume();
-
-            _hotkeySelector?.Disable(TbQuickActionsHotkey);
-            _hotkeySelector?.Dispose();
+            var form = new Help();
+            form.FormClosed += delegate { form.Dispose(); };
+            form.Show(this);
         }
 
         private void Configuration_KeyUp(object sender, KeyEventArgs e)
@@ -374,91 +381,9 @@ namespace HASSAgent.Forms
             Close();
         }
 
-        private async void BtnTestApi_Click(object sender, EventArgs e)
+        private void BtnClearHotKey_Click(object sender, EventArgs e)
         {
-            // test entered values
-            var apiKey = TbHassApiToken.Text.Trim();
-            var hassUri = TbHassIp.Text.Trim();
-
-            if (string.IsNullOrEmpty(apiKey))
-            {
-                MessageBoxAdv.Show("Please enter a valid API key.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                ActiveControl = TbHassApiToken;
-                return;
-            }
-
-            if (string.IsNullOrEmpty(hassUri))
-            {
-                MessageBoxAdv.Show("Please enter your Home Assistant's URI.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                ActiveControl = TbHassIp;
-                return;
-            }
-
-            var clientCert = TbHassClientCertificate.Text;
-            var useAutoCert = CbHassAutoClientCertificate.CheckState == CheckState.Checked;
-
-            // lock gui
-            TbHassIp.Enabled = false;
-            TbHassApiToken.Enabled = false;
-            TbHassClientCertificate.Enabled = false;
-            CbHassAutoClientCertificate.Enabled = false;
-            BtnTestApi.Enabled = false;
-            BtnTestApi.Text = "testing ..";
-
-            // perform test
-            var (success, message) = await HassApiManager.CheckHassConfigAsync(hassUri, apiKey, useAutoCert, clientCert);
-            if (!success) MessageBoxAdv.Show($"Unable to connect, the following error was returned:\r\n\r\n{message}", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else MessageBoxAdv.Show($"Connection OK!\r\n\r\nHome Assistant version: {message}", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // unlock gui
-            TbHassIp.Enabled = true;
-            TbHassApiToken.Enabled = true;
-            TbHassClientCertificate.Enabled = true;
-            CbHassAutoClientCertificate.Enabled = true;
-            BtnTestApi.Enabled = true;
-            BtnTestApi.Text = "test connection";
-        }
-
-        private void BtnMqttClearConfig_Click(object sender, EventArgs e)
-        {
-            TbMqttAddress.Text = string.Empty;
-            TbIntMqttPort.IntegerValue = 1883;
-            CbMqttTls.CheckState = CheckState.Unchecked;
-            TbMqttUsername.Text = string.Empty;
-            TbMqttPassword.Text = string.Empty;
-            TbMqttDiscoveryPrefix.Text = "homeassistant";
-            TbMqttRootCertificate.Text = string.Empty;
-            TbMqttClientCertificate.Text = string.Empty;
-            CbAllowUntrustedCertificates.CheckState = CheckState.Checked;
-            CbUseRetainFlag.CheckState = CheckState.Checked;
-        }
-
-        private void LblCoderr_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://coderr.io");
-
-        private void BtnClear_Click(object sender, EventArgs e)
-        {
-            TbQuickActionsHotkey.Text = _hotkeySelector.EmptyHotkeyText;
-        }
-
-        private async void BtnClearImageCache_Click(object sender, EventArgs e)
-        {
-            BtnClearImageCache.Enabled = false;
-            BtnClearImageCache.Text = "cleaning ..";
-
-            await CacheManager.ClearImageCacheAsync();
-
-            MessageBoxAdv.Show("Image cache has been cleared!", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            BtnClearImageCache.Enabled = true;
-            BtnClearImageCache.Text = "clear image cache";
-        }
-
-        private void BtnOpenImageCache_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(Variables.ImageCachePath)) return;
-            if (!Directory.Exists(Variables.ImageCachePath)) Directory.CreateDirectory(Variables.ImageCachePath);
-
-            Process.Start("explorer.exe", Variables.ImageCachePath);
+            _hotKey.TbQuickActionsHotkey.Text = _hotkeySelector.EmptyHotkeyText;
         }
 
         private void Configuration_ResizeEnd(object sender, EventArgs e)
@@ -480,64 +405,19 @@ namespace HASSAgent.Forms
         private void CbMqttTls_CheckedChanged(object sender, EventArgs e)
         {
             if (_initializing) return;
-            TbIntMqttPort.IntegerValue = CbMqttTls.Checked ? 8883 : 1883;
-        }
-
-        private void TbMqttRootCertificate_DoubleClick(object sender, EventArgs e)
-        {
-            using (var dialog = new OpenFileDialog())
-            {
-                dialog.CheckFileExists = true;
-                dialog.Multiselect = false;
-                dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-                var result = dialog.ShowDialog();
-                if (result != DialogResult.OK) return;
-
-                TbMqttRootCertificate.Text = dialog.FileName;
-            }
-        }
-
-        private void TbMqttClientCertificate_DoubleClick(object sender, EventArgs e)
-        {
-            using (var dialog = new OpenFileDialog())
-            {
-                dialog.CheckFileExists = true;
-                dialog.Multiselect = false;
-                dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-                var result = dialog.ShowDialog();
-                if (result != DialogResult.OK) return;
-
-                TbMqttClientCertificate.Text = dialog.FileName;
-            }
-        }
-
-        private void TbHassClientCertificate_DoubleClick(object sender, EventArgs e)
-        {
-            using (var dialog = new OpenFileDialog())
-            {
-                dialog.CheckFileExists = true;
-                dialog.Multiselect = false;
-                dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-                var result = dialog.ShowDialog();
-                if (result != DialogResult.OK) return;
-
-                TbHassClientCertificate.Text = dialog.FileName;
-            }
+            _mqtt.TbIntMqttPort.IntegerValue = _mqtt.CbMqttTls.Checked ? 8883 : 1883;
         }
 
         private void CbHassAutoClientCertificate_CheckedChanged(object sender, EventArgs e)
         {
             if (_initializing) return;
 
-            if (CbHassAutoClientCertificate.CheckState == CheckState.Checked)
+            if (_homeAssistantApi.CbHassAutoClientCertificate.CheckState == CheckState.Checked)
             {
-                TbHassClientCertificate.Text = string.Empty;
-                TbHassClientCertificate.Enabled = false;
+                _homeAssistantApi.TbHassClientCertificate.Text = string.Empty;
+                _homeAssistantApi.TbHassClientCertificate.Enabled = false;
             }
-            else TbHassClientCertificate.Enabled = true;
+            else _homeAssistantApi.TbHassClientCertificate.Enabled = true;
         }
     }
 }

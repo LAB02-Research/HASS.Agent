@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HASSAgent.Enums;
+using HASSAgent.Models.Config;
 using HASSAgent.Mqtt;
 using HASSAgent.Settings;
 using Serilog;
@@ -94,7 +95,6 @@ namespace HASSAgent.Commands
                         // on the first run, just wait 1 sec - this is to make sure we're announcing ourselves,
                         // when there are no sensors or when the sensor manager's still initialising
                         await Task.Delay(TimeSpan.FromSeconds(1));
-                        firstRun = false;
                     }
                     else await Task.Delay(TimeSpan.FromSeconds(30));
 
@@ -108,6 +108,9 @@ namespace HASSAgent.Commands
                         continue;
                     }
 
+                    // we're starting the first real run
+                    firstRun = false;
+
                     // do we have commands?
                     if (!CommandsPresent()) continue;
 
@@ -120,6 +123,7 @@ namespace HASSAgent.Commands
                         // publish command autodisco's
                         foreach (var command in Variables.Commands.TakeWhile(command => !_pause).TakeWhile(command => _active))
                         {
+                            if (_pause || MqttManager.GetStatus() != MqttStatus.Connected) continue;
                             await command.PublishAutoDiscoveryConfigAsync();
                         }
 
@@ -128,6 +132,7 @@ namespace HASSAgent.Commands
                         {
                             foreach (var command in Variables.Commands.TakeWhile(command => !_pause).TakeWhile(command => _active))
                             {
+                                if (_pause || MqttManager.GetStatus() != MqttStatus.Connected) continue;
                                 await MqttManager.SubscribeAsync(command);
                             }
                             subscribed = true;
@@ -140,13 +145,98 @@ namespace HASSAgent.Commands
                     // publish command states (they have their own time-based scheduling)
                     foreach (var command in Variables.Commands.TakeWhile(command => !_pause).TakeWhile(command => _active))
                     {
+                        if (_pause || MqttManager.GetStatus() != MqttStatus.Connected) continue;
                         await command.PublishStateAsync();
                     }
                 }
                 catch (Exception ex)
                 {
-                    Log.Fatal(ex, "[COMMANDSMANAGER] Eroor while publishing: {err}", ex.Message);
+                    Log.Fatal(ex, "[COMMANDSMANAGER] Error while publishing: {err}", ex.Message);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Stores the provided commands, and (re)publishes them
+        /// </summary>
+        /// <param name="commands"></param>
+        /// <param name="toBeDeletedCommands"></param>
+        /// <returns></returns>
+        internal static async Task<bool> StoreAsync(List<ConfiguredCommand> commands, List<ConfiguredCommand> toBeDeletedCommands = null)
+        {
+            if (toBeDeletedCommands == null) toBeDeletedCommands = new List<ConfiguredCommand>();
+
+            try
+            {
+                // pause processing
+                Pause();
+
+                // process the to-be-removed
+                if (toBeDeletedCommands.Any())
+                {
+                    foreach (var abstractCommand in toBeDeletedCommands.Select(StoredCommands.ConvertConfiguredToAbstract).Where(abstractCommand => abstractCommand != null))
+                    {
+                        // remove and unregister
+                        await abstractCommand.UnPublishAutoDiscoveryConfigAsync();
+                        await MqttManager.UnubscribeAsync(abstractCommand);
+                        Variables.Commands.RemoveAt(Variables.Commands.FindIndex(x => x.Id == abstractCommand.Id));
+
+                        Log.Information("[COMMANDS] Removed command: {command}", abstractCommand.Name);
+                    }
+                }
+
+                // copy our list to the main one
+                foreach (var abstractCommand in commands.Select(StoredCommands.ConvertConfiguredToAbstract).Where(abstractCommand => abstractCommand != null))
+                {
+                    if (Variables.Commands.All(x => x.Id != abstractCommand.Id))
+                    {
+                        // new, add and register
+                        Variables.Commands.Add(abstractCommand);
+                        await MqttManager.SubscribeAsync(abstractCommand);
+                        await abstractCommand.PublishAutoDiscoveryConfigAsync();
+                        await abstractCommand.PublishStateAsync(false);
+
+                        Log.Information("[COMMANDS] Added command: {command}", abstractCommand.Name);
+                        continue;
+                    }
+
+                    // existing, update and re-register
+                    var currentCommandIndex = Variables.Commands.FindIndex(x => x.Id == abstractCommand.Id);
+                    if (Variables.Commands[currentCommandIndex].Name != abstractCommand.Name)
+                    {
+                        // name changed, unregister and resubscribe on new mqtt channel
+                        Log.Information("[COMMANDS] Command changed name, re-registering as new entity: {old} to {new}", Variables.Commands[currentCommandIndex].Name, abstractCommand.Name);
+
+                        await Variables.Commands[currentCommandIndex].UnPublishAutoDiscoveryConfigAsync();
+                        await MqttManager.UnubscribeAsync(Variables.Commands[currentCommandIndex]);
+                        await MqttManager.SubscribeAsync(abstractCommand);
+                    }
+
+                    Variables.Commands[currentCommandIndex] = abstractCommand;
+                    await abstractCommand.PublishAutoDiscoveryConfigAsync();
+                    await abstractCommand.PublishStateAsync(false);
+
+                    Log.Information("[COMMANDS] Modified command: {command}", abstractCommand.Name);
+                }
+
+                // annouce ourselves
+                await MqttManager.AnnounceAvailabilityAsync();
+
+                // store to file
+                StoredCommands.Store();
+
+                // done
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[COMMANDSMANAGER] Error while storing: {err}", ex.Message);
+                return false;
+            }
+            finally
+            {
+                // resume processing
+                Unpause();
             }
         }
 
@@ -159,7 +249,7 @@ namespace HASSAgent.Commands
         /// <returns></returns>
         internal static string GetCommandDefaultInfo(CommandType type)
         {
-            return !CommandInfo.ContainsKey(type) ? "unknown command" : CommandInfo[type];
+            return !CommandInfo.ContainsKey(type) ? "Unknown command, make sure HASS.Agent has finished booting up." : CommandInfo[type];
         }
 
         /// <summary>
@@ -170,6 +260,7 @@ namespace HASSAgent.Commands
             CommandInfo.Add(CommandType.ShutdownCommand, "Shuts down the machine after one minute.\r\n\r\nTip: accidentally triggered? Run 'shutdown /a' to abort.");
             CommandInfo.Add(CommandType.RestartCommand, "Restarts the machine after one minute.\r\n\r\nTip: accidentally triggered? Run 'shutdown /a' to abort.");
             CommandInfo.Add(CommandType.HibernateCommand, "Sets the machine in hibernation.");
+            CommandInfo.Add(CommandType.SleepCommand, "Puts the machine to sleep.\r\n\r\nNote: due to a limitation in Windows, this only works if hibernation is disabled, otherwise it will just hibernate.\r\n\r\nYou can use something like NirCmd (http://www.nirsoft.net/utils/nircmd.html) to circumvent this.");
             CommandInfo.Add(CommandType.LogOffCommand, "Logs off the current session.");
             CommandInfo.Add(CommandType.LockCommand, "Locks the current session.");
             CommandInfo.Add(CommandType.CustomCommand, "Execute a custom command.\r\n\r\nThese commands run without special elevation. To run elevated, create a Scheduled Task, and use 'schtasks /Run /TN \"TaskName\"' as the command to execute your task.\r\n\r\nOr enable 'run as low integrity' for even stricter execution.");
@@ -181,6 +272,9 @@ namespace HASSAgent.Commands
             CommandInfo.Add(CommandType.MediaVolumeDownCommand, "Simulates 'volume down' key.");
             CommandInfo.Add(CommandType.MediaMuteCommand, "Simulates 'mute' key.");
             CommandInfo.Add(CommandType.KeyCommand, "Simulates a single keypress.\r\n\r\nYou can pick any of these values: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes \r\n\r\nAnother option is using a tool like AutoHotKey and binding it to a CustomCommand.");
+            CommandInfo.Add(CommandType.PublishAllSensorsCommand, "Resets all sensor checks, forcing all sensors to process and send their value.\r\n\r\nUseful for example if you want to force HASS.Agent to update all your sensors after a HA reboot.");
+            CommandInfo.Add(CommandType.LaunchUrlCommand, "Launches the provided URL, by default in your default browser.\r\n\r\nTo use 'incognito', provide a specific browser in Configuration -> External Tools.");
+            CommandInfo.Add(CommandType.CustomExecutorCommand, "Executes the command through the configured custom executor (in Configuration -> External Tools).\r\n\r\nYour command is provided as an argument 'as is', so you have to supply your own quotes etc. if necessary.");
         }
     }
 }

@@ -224,6 +224,7 @@
             this.CbAction.Size = new System.Drawing.Size(166, 26);
             this.CbAction.TabIndex = 27;
             this.CbAction.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.CbAction_DrawItem);
+            this.CbAction.SelectedIndexChanged += new System.EventHandler(this.CbAction_SelectedIndexChanged);
             // 
             // label6
             // 

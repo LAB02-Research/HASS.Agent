@@ -6,14 +6,24 @@ namespace HASSAgent.Models.HomeAssistant.Sensors
     public class WmiQuerySensor : AbstractSingleValueSensor
     {
         public string Query { get; private set; }
+        public string Scope { get; private set; }
+
         protected readonly ObjectQuery ObjectQuery;
         protected readonly ManagementObjectSearcher Searcher;
 
-        public WmiQuerySensor(string query, int? updateInterval = null, string name = "wmiquerysensor", string id = default) : base(name ?? "wmiquerysensor", updateInterval ?? 10, id)
+        public WmiQuerySensor(string query, string scope = "", int? updateInterval = null, string name = "wmiquerysensor", string id = default) : base(name ?? "wmiquerysensor", updateInterval ?? 10, id)
         {
             Query = query;
+            Scope = scope;
+
+            // prepare query
             ObjectQuery = new ObjectQuery(Query);
-            Searcher = new ManagementObjectSearcher(query);
+
+            // use either default or provided scope
+            var managementscope = !string.IsNullOrWhiteSpace(scope) ? new ManagementScope(scope) : new ManagementScope(@"\\localhost\");
+
+            // prepare searcher
+            Searcher = new ManagementObjectSearcher(managementscope, ObjectQuery);
         }
 
         public override DiscoveryConfigModel GetAutoDiscoveryConfig()
@@ -53,8 +63,7 @@ namespace HASSAgent.Models.HomeAssistant.Sensors
                         managementBaseObject?.Dispose();
                     }
                 }
-
-                return string.Empty;
+                return retValue;
             }
         }
     }

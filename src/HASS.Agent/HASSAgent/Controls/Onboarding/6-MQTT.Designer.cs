@@ -1,4 +1,6 @@
-﻿namespace HASSAgent.Controls.Onboarding
+﻿using System.Globalization;
+
+namespace HASSAgent.Controls.Onboarding
 {
     partial class MQTT
     {
@@ -75,13 +77,12 @@
             this.TbIntMqttPort.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.TbIntMqttPort.MinValue = ((long)(1));
             this.TbIntMqttPort.Name = "TbIntMqttPort";
-            this.TbIntMqttPort.NumberGroupSeparator = "";
             this.TbIntMqttPort.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TbIntMqttPort.Size = new System.Drawing.Size(92, 25);
-            this.TbIntMqttPort.SpecialCultureValue = Syncfusion.Windows.Forms.Tools.SpecialCultureValues.UICulture;
+            this.TbIntMqttPort.SpecialCultureValue = Syncfusion.Windows.Forms.Tools.SpecialCultureValues.InstalledCulture;
             this.TbIntMqttPort.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
             this.TbIntMqttPort.TabIndex = 1;
-            this.TbIntMqttPort.Text = "1883";
+            this.TbIntMqttPort.Text = "1,883";
             this.TbIntMqttPort.ThemeName = "Metro";
             this.TbIntMqttPort.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbIntMqttPort.ThemeStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
@@ -229,8 +230,8 @@
             // 
             // MQTT
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);

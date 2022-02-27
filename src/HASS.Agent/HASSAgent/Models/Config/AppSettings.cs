@@ -19,8 +19,17 @@ namespace HASSAgent.Models.Config
         public bool CheckForUpdates { get; set; } = true;
         public string LastUpdateNotificationShown { get; set; }
         public bool EnableExecuteUpdateInstaller { get; set; } = true;
+        public bool ShowBetaUpdates { get; set; }
+        public int DisconnectedGracePeriodSeconds { get; set; } = 60;
 
         public int ImageCacheRetentionDays { get; set; } = 7;
+
+        public string BrowserName { get; set; }
+        public string BrowserBinary { get; set; }
+        public string BrowserIncognitoArg { get; set; }
+
+        public string CustomExecutorName { get; set; }
+        public string CustomExecutorBinary { get; set; }
         
         public bool NotificationsEnabled { get; set; } = true;
         public int NotifierApiPort { get; set; } = 5115;

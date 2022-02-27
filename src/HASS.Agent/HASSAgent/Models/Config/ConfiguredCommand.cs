@@ -27,7 +27,7 @@ namespace HASSAgent.Models.Config
         public Guid Id { get; set; } = Guid.Empty;
         public string Command { get; set; }
         public byte KeyCode { get; set; }
-        public string Name { get; set; }
         public bool RunAsLowIntegrity { get; set; } = false;
+        public string Name { get; set; }
     }
 }

@@ -6,8 +6,6 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
 {
     public class CurrentVolumeSensor : AbstractSingleValueSensor
     {
-        private MMDevice _audioDevice;
-
         public CurrentVolumeSensor(int? updateInterval = null, string name = "currentvolume", string id = default) : base(name ?? "currentvolume", updateInterval ?? 15, id)
         {
             //
@@ -29,14 +27,15 @@ namespace HASSAgent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue
 
         public override string GetState()
         {
-            _audioDevice = Variables.AudioDeviceEnumerator?.GetDefaultAudioEndpoint(EDataFlow.eRender, ERole.eMultimedia);
+            using (var audioDevice = Variables.AudioDeviceEnumerator?.GetDefaultAudioEndpoint(EDataFlow.eRender, ERole.eMultimedia))
+            {
+                // check for null & mute
+                if (audioDevice?.AudioEndpointVolume == null) return "0";
+                if (audioDevice.AudioEndpointVolume.Mute) return "0";
 
-            // check for null & mute
-            if (_audioDevice?.AudioEndpointVolume == null) return "0";
-            if (_audioDevice.AudioEndpointVolume.Mute) return "0";
-
-            // return as percentage
-            return Math.Round(_audioDevice.AudioEndpointVolume.MasterVolumeLevelScalar * 100, 0).ToString(CultureInfo.InvariantCulture); 
+                // return as percentage
+                return Math.Round(audioDevice.AudioEndpointVolume.MasterVolumeLevelScalar * 100, 0).ToString(CultureInfo.InvariantCulture);
+            }
         }
     }
 }

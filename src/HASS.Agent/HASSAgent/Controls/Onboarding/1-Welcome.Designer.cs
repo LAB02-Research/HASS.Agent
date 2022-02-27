@@ -30,6 +30,9 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.PbHassAgentLogo = new System.Windows.Forms.PictureBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.TbDeviceName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PbHassAgentLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,8 +44,7 @@
             this.label1.Size = new System.Drawing.Size(384, 128);
             this.label1.TabIndex = 0;
             this.label1.Text = "It looks like this is the first time you\'ve launched HASS.Agent.\r\n\r\nIf you want, " +
-    "we can go through the configuration. If not, just click \'close\'.\r\n\r\n\r\nClick \'nex" +
-    "t\' to get started.\r\n";
+    "we can go through the configuration. If not, just click \'close\'.\r\n";
             // 
             // PbHassAgentLogo
             // 
@@ -55,11 +57,46 @@
             this.PbHassAgentLogo.TabIndex = 2;
             this.PbHassAgentLogo.TabStop = false;
             // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(180, 243);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(411, 34);
+            this.label32.TabIndex = 51;
+            this.label32.Text = "Device name is used to identify your machine on HA. \r\nIt\'s also used as a suggest" +
+    "ed prefix for your commands and sensors.\r\n";
+            // 
+            // TbDeviceName
+            // 
+            this.TbDeviceName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.TbDeviceName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbDeviceName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbDeviceName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.TbDeviceName.Location = new System.Drawing.Point(183, 196);
+            this.TbDeviceName.Name = "TbDeviceName";
+            this.TbDeviceName.Size = new System.Drawing.Size(358, 25);
+            this.TbDeviceName.TabIndex = 50;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(180, 176);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 17);
+            this.label3.TabIndex = 52;
+            this.label3.Text = "device name";
+            // 
             // Welcome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label32);
+            this.Controls.Add(this.TbDeviceName);
             this.Controls.Add(this.PbHassAgentLogo);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -77,5 +114,8 @@
         #endregion
         private System.Windows.Forms.PictureBox PbHassAgentLogo;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox TbDeviceName;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -2,10 +2,10 @@
 {
     public enum HassManagerStatus
     {
+        ConfigMissing,
+        Failed,
         Initialising,
         LoadingData,
-        Ready,
-        Failed,
-        ConfigMissing
+        Ready
     }
 }

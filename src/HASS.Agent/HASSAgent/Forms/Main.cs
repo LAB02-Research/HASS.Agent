@@ -262,17 +262,21 @@ namespace HASSAgent.Forms
         /// <summary>
         /// Show the QuickActions form
         /// </summary>
-        private void ShowQuickActions()
+        private async void ShowQuickActions()
         {
             // check if quickactions aren't already open, and if there are any actions
-            if (HelperFunctions.CheckIfFormIsOpen("QuickActions")) return;
+            if (HelperFunctions.CheckIfFormIsOpen("QuickActions"))
+            {
+                await HelperFunctions.TryBringToFront("QuickActions");
+                return;
+            }
+
             if (!Variables.QuickActions.Any()) return;
 
             // show a new window
-            using (var quickActions = new QuickActions.QuickActions(Variables.QuickActions))
-            {
-                quickActions.ShowDialog();
-            }
+            var form = new QuickActions.QuickActions(Variables.QuickActions);
+            form.FormClosed += delegate { form.Dispose(); };
+            form.Show(this);
         }
 
         /// <summary>
@@ -313,43 +317,45 @@ namespace HASSAgent.Forms
         {
             if (await HelperFunctions.TryBringToFront("Configuration")) return;
 
-            var t = new Configuration();
-            t.FormClosed += delegate { t.Dispose(); };
-            t.TopMost = true;
-            t.Show();
+            var form = new Configuration();
+            form.FormClosed += delegate { form.Dispose(); };
+            form.Show(this);
         }
 
         /// <summary>
         /// Show the quickactions manager form
         /// </summary>
-        private void ShowQuickActionsManager()
+        private async void ShowQuickActionsManager()
         {
-            using (var quickActions = new QuickActionsConfig())
-            {
-                quickActions.ShowDialog();
-            }
+            if (await HelperFunctions.TryBringToFront("QuickActionsConfig")) return;
+
+            var form = new QuickActionsConfig();
+            form.FormClosed += delegate { form.Dispose(); };
+            form.Show(this);
         }
 
         /// <summary>
         /// Show the sensors manager form
         /// </summary>
-        private void ShowSensorsManager()
+        private async void ShowSensorsManager()
         {
-            using (var sensorsConfig = new SensorsConfig())
-            {
-                sensorsConfig.ShowDialog();
-            }
+            if (await HelperFunctions.TryBringToFront("SensorsConfig")) return;
+
+            var form = new SensorsConfig();
+            form.FormClosed += delegate { form.Dispose(); };
+            form.Show(this);
         }
 
         /// <summary>
         /// /Show the commands manager form
         /// </summary>
-        private void ShowCommandsManager()
+        private async void ShowCommandsManager()
         {
-            using (var commandsConfig = new CommandsConfig())
-            {
-                commandsConfig.ShowDialog();
-            }
+            if (await HelperFunctions.TryBringToFront("CommandsConfig")) return;
+
+            var form = new CommandsConfig();
+            form.FormClosed += delegate { form.Dispose(); };
+            form.Show(this);
         }
 
         /// <summary>
@@ -528,20 +534,22 @@ namespace HASSAgent.Forms
 
         private void TsExit_Click(object sender, EventArgs e) => Exit();
 
-        private void TsAbout_Click(object sender, EventArgs e)
+        private async void TsAbout_Click(object sender, EventArgs e)
         {
-            using (var about = new About())
-            {
-                about.ShowDialog();
-            }
+            if (await HelperFunctions.TryBringToFront("About")) return;
+
+            var form = new About();
+            form.FormClosed += delegate { form.Dispose(); };
+            form.Show(this);
         }
 
-        private void BtnHelp_Click(object sender, EventArgs e)
+        private async void BtnHelp_Click(object sender, EventArgs e)
         {
-            using (var help = new Help())
-            {
-                help.ShowDialog();
-            }
+            if (await HelperFunctions.TryBringToFront("Help")) return;
+
+            var form = new Help();
+            form.FormClosed += delegate { form.Dispose(); };
+            form.Show(this);
         }
 
         private void BtnCheckForUpdate_Click(object sender, EventArgs e) => CheckForUpdate();
@@ -591,19 +599,21 @@ namespace HASSAgent.Forms
         /// <summary>
         /// Shows a window, informing the user of a pending update
         /// </summary>
-        /// <param name="version"></param>
-        internal void ShowUpdateInfo(string version)
+        /// <param name="pendingUpdate"></param>
+        internal void ShowUpdateInfo(PendingUpdate pendingUpdate)
         {
             if (!IsHandleCreated) return;
             if (IsDisposed) return;
 
             try
             {
-                Invoke(new MethodInvoker(delegate
+                Invoke(new MethodInvoker(async delegate
                 {
-                    var updatePending = new UpdatePending(version);
-                    updatePending.FormClosed += delegate { updatePending.Dispose(); };
-                    updatePending.Show();
+                    if (await HelperFunctions.TryBringToFront("UpdatePending")) return;
+
+                    var form = new UpdatePending(pendingUpdate);
+                    form.FormClosed += delegate { form.Dispose(); };
+                    form.Show(this);
                 }));
             }
             catch
@@ -628,12 +638,13 @@ namespace HASSAgent.Forms
             }
         }
 
-        private void TsHelp_Click(object sender, EventArgs e)
+        private async void TsHelp_Click(object sender, EventArgs e)
         {
-            using (var help = new Help())
-            {
-                help.ShowDialog();
-            }
+            if (await HelperFunctions.TryBringToFront("Help")) return;
+
+            var form = new Help();
+            form.FormClosed += delegate { form.Dispose(); };
+            form.Show(this);
         }
 
         private void TsDonate_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://www.buymeacoffee.com/lab02research");

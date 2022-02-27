@@ -17,12 +17,13 @@ namespace HASSAgent.Forms
 
         private void BtnClose_Click(object sender, EventArgs e) => Close();
 
-        private void LblAbout_Click(object sender, EventArgs e)
+        private async void LblAbout_Click(object sender, EventArgs e)
         {
-            using (var about = new About())
-            {
-                about.ShowDialog();
-            }
+            if (await HelperFunctions.TryBringToFront("About")) return;
+
+            var form = new About();
+            form.FormClosed += delegate { form.Dispose(); };
+            form.Show(this);
         }
 
         private void Help_ResizeEnd(object sender, EventArgs e)

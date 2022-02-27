@@ -2,8 +2,8 @@
 {
     public enum LockState
     {
-        Unknown,
         Locked,
+        Unknown,
         Unlocked
     }
 }

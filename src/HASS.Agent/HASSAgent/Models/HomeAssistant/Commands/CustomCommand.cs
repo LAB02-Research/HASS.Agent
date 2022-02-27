@@ -11,7 +11,7 @@ namespace HASSAgent.Models.HomeAssistant.Commands
         public string Command { get; protected set; }
         public string State { get; protected set; }
         public bool RunAsLowIntegrity { get; protected set; }
-        public Process Process { get; set; }
+        public Process Process { get; set; } = null;
 
         public CustomCommand(string command, bool runAsLowIntegrity, string name = "Custom", string id = default) : base(name ?? "Custom", id)
         {
@@ -60,7 +60,7 @@ namespace HASSAgent.Models.HomeAssistant.Commands
 
         public override void TurnOff()
         {
-            Process.Kill();
+            Process?.Kill();
         }
     }
 }

@@ -29,7 +29,13 @@ namespace HASSAgent.Models.HomeAssistant.Sensors
         }
 
         public abstract string GetState();
-        
+
+        public void ResetChecks()
+        {
+            LastUpdated = DateTime.MinValue;
+            PreviousPublishedState = string.Empty;
+        }
+
         public async Task PublishStateAsync(bool respectChecks = true)
         {
             try

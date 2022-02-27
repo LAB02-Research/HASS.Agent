@@ -40,6 +40,13 @@ namespace HASSAgent
                     // make sure we catch 'm all
                     AppDomain.CurrentDomain.FirstChanceException += (sender, eventArgs) =>
                     {
+                        // resource exceptions can be ignored
+                        if (eventArgs.Exception.Message.Contains("GetLocalizedResourceManager")) return;
+
+                        // syncfusion input-string errors as well
+                        if (eventArgs.Exception.Message.Contains("IntegerTextBox.FormatChanged")) return;
+
+                        // log it
                         Log.Fatal(eventArgs.Exception, "[PROGRAM] FirstChanceException: {err}", eventArgs.Exception.Message);
                     };
                 }
@@ -77,6 +84,20 @@ namespace HASSAgent
 
                     // run
                     Application.Run(portReservation);
+                }
+                if (args.Any(x => x == "restart"))
+                {
+                    Log.Information("[SYSTEM] Restart mode activated");
+                    Variables.ChildApplicationMode = true;
+
+                    // prepare form
+                    var restart = new Restart();
+
+                    // prepare msgbox
+                    HelperFunctions.SetMsgBoxStyle(restart.Font);
+
+                    // run
+                    Application.Run(restart);
                 }
                 else
                 {

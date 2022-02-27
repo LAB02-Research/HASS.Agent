@@ -197,7 +197,7 @@ namespace HASSAgent.Forms.QuickActions
             Variables.HotKeyManager.ReloadQuickActionsHotKeys();
 
             // done
-            DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void BtnRemove_Click(object sender, EventArgs e) => DeleteSelectedActions();

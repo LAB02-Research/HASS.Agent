@@ -30,9 +30,6 @@ namespace HASSAgent.Forms.Commands
             // set the initial height difference for resizing
             _heightDiff = Height - LcCommands.Height;
 
-            // pause the commands manager
-            CommandsManager.Pause();
-
             // catch all key presses
             KeyPreview = true;
 
@@ -207,73 +204,12 @@ namespace HASSAgent.Forms.Commands
             BtnStore.Enabled = false;
             BtnStore.Text = "storing and registering, please wait .. ";
 
-            await Task.Run(async delegate
-            {
-                try
-                {
-                    // process the to-be-removed
-                    if (_toBeDeletedCommands.Any())
-                    {
-                        foreach (var abstractCommand in _toBeDeletedCommands.Select(StoredCommands.ConvertConfiguredToAbstract).Where(abstractCommand => abstractCommand != null))
-                        {
-                            // remove and unregister
-                            await abstractCommand.UnPublishAutoDiscoveryConfigAsync();
-                            await MqttManager.UnubscribeAsync(abstractCommand);
-                            Variables.Commands.RemoveAt(Variables.Commands.FindIndex(x => x.Id == abstractCommand.Id));
-
-                            Log.Information("[COMMANDS] Removed command: {command}", abstractCommand.Name);
-                        }
-                    }
-
-                    // copy our list to the main one
-                    foreach (var abstractCommand in _commands.Select(StoredCommands.ConvertConfiguredToAbstract).Where(abstractCommand => abstractCommand != null))
-                    {
-                        if (Variables.Commands.All(x => x.Id != abstractCommand.Id))
-                        {
-                            // new, add and register
-                            Variables.Commands.Add(abstractCommand);
-                            await MqttManager.SubscribeAsync(abstractCommand);
-                            await abstractCommand.PublishAutoDiscoveryConfigAsync();
-                            await abstractCommand.PublishStateAsync(false);
-
-                            Log.Information("[COMMANDS] Added command: {command}", abstractCommand.Name);
-                            continue;
-                        }
-
-                        // existing, update and re-register
-                        var currentCommandIndex = Variables.Commands.FindIndex(x => x.Id == abstractCommand.Id);
-                        if (Variables.Commands[currentCommandIndex].Name != abstractCommand.Name)
-                        {
-                            // name changed, unregister and resubscribe on new mqtt channel
-                            Log.Information("[COMMANDS] Command changed name, re-registering as new entity: {old} to {new}", Variables.Commands[currentCommandIndex].Name, abstractCommand.Name);
-
-                            await Variables.Commands[currentCommandIndex].UnPublishAutoDiscoveryConfigAsync();
-                            await MqttManager.UnubscribeAsync(Variables.Commands[currentCommandIndex]);
-                            await MqttManager.SubscribeAsync(abstractCommand);
-                        }
-                        
-                        Variables.Commands[currentCommandIndex] = abstractCommand;
-                        await abstractCommand.PublishAutoDiscoveryConfigAsync();
-                        await abstractCommand.PublishStateAsync(false);
-
-                        Log.Information("[COMMANDS] Modified command: {command}", abstractCommand.Name);
-                    }
-
-                    // annouce ourselves
-                    await MqttManager.AnnounceAvailabilityAsync();
-
-                    // store to file
-                    StoredCommands.Store();
-                }
-                catch (Exception ex)
-                {
-                    Log.Fatal(ex, "[COMMANDS] Error while saving: {err}", ex.Message);
-                    Variables.MainForm?.ShowMessageBox("An error occured while saving the commands, check the logs for more info.", true);
-                }
-            });
+            // store
+            var stored = await CommandsManager.StoreAsync(_commands, _toBeDeletedCommands);
+            if (!stored) MessageBoxAdv.Show("An error occured while saving the commands, check the logs for more info.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             // done
-            DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void BtnModify_Click(object sender, EventArgs e) => ModifySelectedCommand();
@@ -288,8 +224,7 @@ namespace HASSAgent.Forms.Commands
 
         private void CommandsConfig_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // unpause the commands manager
-            CommandsManager.Unpause();
+            //
         }
 
         private void LcCommands_DoubleClick(object sender, EventArgs e) => ModifySelectedCommand();

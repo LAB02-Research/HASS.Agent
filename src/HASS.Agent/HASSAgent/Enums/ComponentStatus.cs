@@ -2,9 +2,10 @@
 {
     public enum ComponentStatus
     {
+        Connecting,
+        Failed,
         Loading,
         Ok,
-        Failed,
         Stopped
     }
 }

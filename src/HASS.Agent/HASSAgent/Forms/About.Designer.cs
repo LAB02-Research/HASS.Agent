@@ -111,8 +111,8 @@ namespace HASSAgent.Forms
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(489, 37);
             this.label3.TabIndex = 4;
-            this.label3.Text = "This application is open source and free as in speech.  Please check the licenses" +
-    " of the used components for their individual licenses:";
+            this.label3.Text = "This application is open source and completely free.  Please check the licenses o" +
+    "f the used components for their individual licenses:";
             // 
             // LblCoreAudio
             // 

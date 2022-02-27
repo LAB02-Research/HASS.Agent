@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 using HASSAgent.Functions;
 using Newtonsoft.Json;
@@ -13,6 +14,8 @@ namespace HASSAgent.Controls.Onboarding
         public Notifications()
         {
             InitializeComponent();
+
+            TbIntNotifierApiPort.Culture = CultureInfo.InstalledUICulture;
         }
 
         private void Notifications_Load(object sender, EventArgs e)

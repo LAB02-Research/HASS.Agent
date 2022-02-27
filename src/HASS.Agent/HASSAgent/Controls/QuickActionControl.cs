@@ -58,11 +58,20 @@ namespace HASSAgent.Controls
                 case HassDomain.Automation:
                     PbImage.Image = Resources.qa_automate_225;
                     break;
+                case HassDomain.Cover:
+                    PbImage.Image = Resources.qa_cover_225;
+                    break;
+                case HassDomain.Climate:
+                    PbImage.Image = Resources.qa_climate_225;
+                    break;
                 case HassDomain.Script:
                     PbImage.Image = Resources.qa_script_225;
                     break;
                 case HassDomain.InputBoolean:
                     PbImage.Image = Resources.qa_inputboolean_225;
+                    break;
+                case HassDomain.MediaPlayer:
+                    PbImage.Image = Resources.qa_mediaplayer_225;
                     break;
                 case HassDomain.Scene:
                     PbImage.Image = Resources.qa_scene_225;

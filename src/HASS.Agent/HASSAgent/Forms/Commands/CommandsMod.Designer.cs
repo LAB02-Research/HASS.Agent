@@ -42,6 +42,8 @@ namespace HASSAgent.Forms.Commands
             this.CbType = new System.Windows.Forms.ComboBox();
             this.CbRunAsLowIntegrity = new System.Windows.Forms.CheckBox();
             this.LblIntegrityInfo = new System.Windows.Forms.Label();
+            this.CbCommandSpecific = new System.Windows.Forms.CheckBox();
+            this.LblInfo = new System.Windows.Forms.Label();
             this.PnlDescription.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +54,7 @@ namespace HASSAgent.Forms.Commands
             this.BtnStore.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BtnStore.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnStore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnStore.Location = new System.Drawing.Point(0, 264);
+            this.BtnStore.Location = new System.Drawing.Point(0, 295);
             this.BtnStore.Name = "BtnStore";
             this.BtnStore.Size = new System.Drawing.Size(756, 38);
             this.BtnStore.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -127,7 +129,7 @@ namespace HASSAgent.Forms.Commands
             this.PnlDescription.Controls.Add(this.TbDescription);
             this.PnlDescription.Location = new System.Drawing.Point(387, 39);
             this.PnlDescription.Name = "PnlDescription";
-            this.PnlDescription.Size = new System.Drawing.Size(354, 205);
+            this.PnlDescription.Size = new System.Drawing.Size(354, 229);
             this.PnlDescription.TabIndex = 21;
             // 
             // TbDescription
@@ -140,7 +142,7 @@ namespace HASSAgent.Forms.Commands
             this.TbDescription.Location = new System.Drawing.Point(0, 0);
             this.TbDescription.Name = "TbDescription";
             this.TbDescription.ReadOnly = true;
-            this.TbDescription.Size = new System.Drawing.Size(352, 203);
+            this.TbDescription.Size = new System.Drawing.Size(352, 227);
             this.TbDescription.TabIndex = 18;
             this.TbDescription.Text = "";
             this.TbDescription.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.TbDescription_LinkClicked);
@@ -196,6 +198,27 @@ namespace HASSAgent.Forms.Commands
             this.LblIntegrityInfo.Visible = false;
             this.LblIntegrityInfo.Click += new System.EventHandler(this.LblIntegrityInfo_Click);
             // 
+            // CbCommandSpecific
+            // 
+            this.CbCommandSpecific.AutoSize = true;
+            this.CbCommandSpecific.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CbCommandSpecific.Location = new System.Drawing.Point(12, 247);
+            this.CbCommandSpecific.Name = "CbCommandSpecific";
+            this.CbCommandSpecific.Size = new System.Drawing.Size(32, 21);
+            this.CbCommandSpecific.TabIndex = 28;
+            this.CbCommandSpecific.Text = "-";
+            this.CbCommandSpecific.UseVisualStyleBackColor = true;
+            // 
+            // LblInfo
+            // 
+            this.LblInfo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblInfo.Location = new System.Drawing.Point(12, 193);
+            this.LblInfo.Name = "LblInfo";
+            this.LblInfo.Size = new System.Drawing.Size(328, 74);
+            this.LblInfo.TabIndex = 29;
+            this.LblInfo.Text = "-";
+            this.LblInfo.Visible = false;
+            // 
             // CommandsMod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -204,7 +227,8 @@ namespace HASSAgent.Forms.Commands
             this.CaptionBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(756, 302);
+            this.ClientSize = new System.Drawing.Size(756, 333);
+            this.Controls.Add(this.CbCommandSpecific);
             this.Controls.Add(this.LblIntegrityInfo);
             this.Controls.Add(this.CbRunAsLowIntegrity);
             this.Controls.Add(this.CbType);
@@ -216,6 +240,7 @@ namespace HASSAgent.Forms.Commands
             this.Controls.Add(this.LblSetting);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.LblInfo);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -250,6 +275,8 @@ namespace HASSAgent.Forms.Commands
         private System.Windows.Forms.ComboBox CbType;
         private System.Windows.Forms.CheckBox CbRunAsLowIntegrity;
         private System.Windows.Forms.Label LblIntegrityInfo;
+        private System.Windows.Forms.CheckBox CbCommandSpecific;
+        private System.Windows.Forms.Label LblInfo;
     }
 }
 

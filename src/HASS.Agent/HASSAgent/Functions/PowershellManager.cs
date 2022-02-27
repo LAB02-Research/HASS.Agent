@@ -39,15 +39,25 @@ namespace HASSAgent.Functions
                     workingDir = !string.IsNullOrEmpty(scriptDir) ? scriptDir : Variables.StartupPath;
                 }
 
+                // find the powershell executable
+                var psExec = GetPsExecutable();
+                if (string.IsNullOrEmpty(psExec)) return false;
+
+                // prepare the executing process
                 var processInfo = new ProcessStartInfo
                 {
                     WindowStyle = ProcessWindowStyle.Hidden,
                     CreateNoWindow = true,
-                    FileName = @"powershell.exe",
-                    Arguments = $@"& {{{command}}}",
+                    FileName = psExec,
                     WorkingDirectory = workingDir
                 };
 
+                // set the right type of arguments
+                processInfo.Arguments = isScript ?
+                    $@"& '{command}'" 
+                    : $@"& {{{command}}}";
+
+                // launch
                 using (var process = new Process())
                 {
                     process.StartInfo = processInfo;
@@ -100,16 +110,26 @@ namespace HASSAgent.Functions
                     workingDir = !string.IsNullOrEmpty(scriptDir) ? scriptDir : Variables.StartupPath;
                 }
 
+                // find the powershell executable
+                var psExec = GetPsExecutable();
+                if (string.IsNullOrEmpty(psExec)) return false;
+
+                // prepare the executing process
                 var processInfo = new ProcessStartInfo
                 {
-                    FileName = @"powershell.exe",
-                    Arguments = $@"& {{{command}}}",
+                    FileName = psExec,
                     RedirectStandardError = true,
                     RedirectStandardOutput = true,
                     UseShellExecute = false,
                     WorkingDirectory = workingDir
                 };
 
+                // set the right type of arguments
+                processInfo.Arguments = isScript ?
+                    $@"& '{command}'"
+                    : $@"& {{{command}}}";
+
+                // launch
                 using (var process = new Process())
                 {
                     process.StartInfo = processInfo;
@@ -151,6 +171,25 @@ namespace HASSAgent.Functions
                 Log.Fatal(ex, "[POWERSHELL] Fatal error when executing {descriptor}: {command}", descriptor, command);
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Attempt to locate powershell.exe
+        /// </summary>
+        /// <returns></returns>
+        internal static string GetPsExecutable()
+        {
+            // try regular location
+            var psExec = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "WindowsPowerShell\\v1.0\\powershell.exe");
+            if (File.Exists(psExec)) return psExec;
+
+            // try specific
+            psExec = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.SystemX86), "WindowsPowerShell\\v1.0\\powershell.exe");
+            if (File.Exists(psExec)) return psExec;
+
+            // not found
+            Log.Error("[POWERSHELL] PS executable not found, make sure you have powershell installed on your system");
+            return string.Empty;
         }
     }
 }

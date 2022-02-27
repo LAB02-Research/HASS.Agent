@@ -213,6 +213,26 @@ namespace HASSAgent.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap qa_climate_225 {
+            get {
+                object obj = ResourceManager.GetObject("qa_climate_225", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap qa_cover_225 {
+            get {
+                object obj = ResourceManager.GetObject("qa_cover_225", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap qa_inputboolean_225 {
             get {
                 object obj = ResourceManager.GetObject("qa_inputboolean_225", resourceCulture);
@@ -226,6 +246,16 @@ namespace HASSAgent.Properties {
         internal static System.Drawing.Bitmap qa_light_225 {
             get {
                 object obj = ResourceManager.GetObject("qa_light_225", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap qa_mediaplayer_225 {
+            get {
+                object obj = ResourceManager.GetObject("qa_mediaplayer_225", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

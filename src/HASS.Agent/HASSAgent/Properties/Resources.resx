@@ -163,11 +163,20 @@
   <data name="qa_automate_225" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\qa_automate_225.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="qa_climate_225" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\qa_climate_225.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="qa_cover_225" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\qa_cover_225.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="qa_inputboolean_225" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\qa_inputboolean_225.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="qa_light_225" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\qa_light_225.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="qa_mediaplayer_225" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\qa_mediaplayer_225.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="qa_scene_225" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\qa_scene_225.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

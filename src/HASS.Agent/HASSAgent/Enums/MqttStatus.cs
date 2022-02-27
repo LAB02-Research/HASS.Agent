@@ -3,8 +3,8 @@
     public enum MqttStatus
     {
         ConfigMissing,
-        Connecting,
         Connected,
+        Connecting,
         Disconnected,
         Error
     }

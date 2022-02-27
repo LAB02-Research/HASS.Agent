@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
@@ -16,6 +17,7 @@ using HASSAgent.Sensors;
 using MQTTnet;
 using MQTTnet.Adapter;
 using MQTTnet.Client;
+using MQTTnet.Client.Disconnecting;
 using MQTTnet.Client.Options;
 using MQTTnet.Exceptions;
 using MQTTnet.Extensions.ManagedClient;
@@ -72,21 +74,7 @@ namespace HASSAgent.Mqtt
                 _mqttClient.UseApplicationMessageReceivedHandler(e => HandleMessageReceived(e.ApplicationMessage));
 
                 // bind 'disconnected' handler
-                _mqttClient.UseDisconnectedHandler(e =>
-                {
-                    _status = MqttStatus.Disconnected;
-                    Variables.MainForm?.SetMqttStatus(ComponentStatus.Stopped);
-
-                    // log if we're not shutting down
-                    if (Variables.ShuttingDown) return;
-
-                    // only once
-                    if (_disconnectionNotified) return;
-                    _disconnectionNotified = true;
-
-                    Variables.MainForm?.ShowToolTip("mqtt: disconnected", true);
-                    Log.Warning("[MQTT] Disconnected: {reason}", e.Reason.ToString());
-                });
+                _mqttClient.DisconnectedHandler = new MqttClientDisconnectedHandlerDelegate(DisconnectedHandler);
 
                 // get the mqtt options
                 var options = GetOptions();
@@ -147,8 +135,26 @@ namespace HASSAgent.Mqtt
         /// <summary>
         /// Fires when connecting to the broker failed
         /// </summary>
-        private static void ConnectingFailedHandler(ManagedProcessFailedEventArgs ex)
+        private static async void ConnectingFailedHandler(ManagedProcessFailedEventArgs ex)
         {
+            // set state to loading
+            Variables.MainForm?.SetMqttStatus(ComponentStatus.Connecting);
+
+            // give the connection the grace period to recover
+            var runningTimer = Stopwatch.StartNew();
+            while (runningTimer.Elapsed.TotalSeconds < Variables.AppSettings.DisconnectedGracePeriodSeconds)
+            {
+                if (_mqttClient.IsConnected)
+                {
+                    // recoved, nevermind
+                    Variables.MainForm?.SetMqttStatus(ComponentStatus.Ok);
+                    return;
+                }
+
+                await Task.Delay(TimeSpan.FromSeconds(5));
+            }
+
+            // nope, call it
             _status = MqttStatus.Error;
             Variables.MainForm?.SetMqttStatus(ComponentStatus.Failed);
 
@@ -159,6 +165,44 @@ namespace HASSAgent.Mqtt
             Log.Fatal(ex.Exception, "[MQTT] Error while connecting: {err}", ex.Exception.Message);
 
             Variables.MainForm?.ShowToolTip("mqtt: failed to connect", true);
+        }
+
+        /// <summary>
+        /// Fires when the client gets disconnected from the broker
+        /// </summary>
+        /// <param name="e"></param>
+        private static async void DisconnectedHandler(MqttClientDisconnectedEventArgs e)
+        {
+            // set state to loading
+            Variables.MainForm?.SetMqttStatus(ComponentStatus.Connecting);
+
+            // give the connection the grace period to recover
+            var runningTimer = Stopwatch.StartNew();
+            while (runningTimer.Elapsed.TotalSeconds < Variables.AppSettings.DisconnectedGracePeriodSeconds)
+            {
+                if (_mqttClient.IsConnected)
+                {
+                    // recoved, nevermind
+                    Variables.MainForm?.SetMqttStatus(ComponentStatus.Ok);
+                    return;
+                }
+
+                await Task.Delay(TimeSpan.FromSeconds(5));
+            }
+
+            // nope, call it
+            _status = MqttStatus.Disconnected;
+            Variables.MainForm?.SetMqttStatus(ComponentStatus.Stopped);
+
+            // log if we're not shutting down
+            if (Variables.ShuttingDown) return;
+
+            // only once
+            if (_disconnectionNotified) return;
+            _disconnectionNotified = true;
+
+            Variables.MainForm?.ShowToolTip("mqtt: disconnected", true);
+            Log.Warning("[MQTT] Disconnected: {reason}", e.Reason.ToString());
         }
 
         /// <summary>
@@ -262,10 +306,9 @@ namespace HASSAgent.Mqtt
             else
             {
                 // only log failures once every 5 minutes to minimize log growth
-                var diff = DateTime.Now - _lastPublishFailedLogged;
-                if (diff.TotalMinutes < 5) return;
-
+                if ((DateTime.Now - _lastPublishFailedLogged).TotalMinutes < 5) return;
                 _lastPublishFailedLogged = DateTime.Now;
+
                 Log.Warning("[MQTT] Not connected, message dropped (won't report again for 5 minutes)");
             }
         }
@@ -343,9 +386,7 @@ namespace HASSAgent.Mqtt
                 // offline msgs always need to be sent, the rest once every 30 secs
                 if (!offline)
                 {
-                    var diff = DateTime.Now - _lastAvailableAnnouncement;
-                    if (diff.TotalSeconds < 30) return;
-
+                    if ((DateTime.Now - _lastAvailableAnnouncement).TotalSeconds < 30) return;
                     _lastAvailableAnnouncement = DateTime.Now;
                 }
 
@@ -369,10 +410,9 @@ namespace HASSAgent.Mqtt
                 else
                 {
                     // only log failures once every 5 minutes to minimize log growth
-                    var diff = DateTime.Now - _lastAvailableAnnouncementFailedLogged;
-                    if (diff.TotalMinutes < 5) return;
-
+                    if ((DateTime.Now - _lastAvailableAnnouncementFailedLogged).TotalMinutes < 5) return;
                     _lastAvailableAnnouncementFailedLogged = DateTime.Now;
+
                     Log.Warning("[MQTT] Not connected, availability announcement dropped");
                 }
             }
@@ -388,8 +428,11 @@ namespace HASSAgent.Mqtt
         /// <returns></returns>
         internal static async Task ClearDeviceConfig()
         {
-            if (_mqttClient == null) return;
-            if (!_mqttClient.IsConnected) return;
+            if (_mqttClient == null || !_mqttClient.IsConnected)
+            {
+                Log.Warning("[MQTT] Not connected, clearing device config failed");
+                return;
+            }
 
             try
             {
@@ -530,32 +573,7 @@ namespace HASSAgent.Mqtt
                 .WithAutoReconnectDelay(TimeSpan.FromSeconds(5))
                 .WithClientOptions(clientOptionsBuilder).Build();
         }
-
-        /// <summary>
-        /// Deprecated - Reload new settings (and build a new client)
-        /// </summary>
-        /// <returns></returns>
-        internal static async Task ReloadMqttSettingsAsync()
-        {
-            if (_mqttClient == null) return;
-            Log.Information("[MQTT] Reloading config");
-            
-            // stop our client
-            await _mqttClient.StopAsync();
-
-            // get new options
-            var options = GetOptions();
-
-            if (options == null)
-            {
-                Log.Warning("[MQTT] Configuration missing, unable to reconnect");
-                return;
-            }
-
-            // restart the client
-            StartClient(options);
-        }
-
+        
         /// <summary>
         /// Handle incoming messages
         /// </summary>

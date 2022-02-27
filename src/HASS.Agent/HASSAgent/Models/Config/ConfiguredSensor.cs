@@ -25,7 +25,9 @@ namespace HASSAgent.Models.Config
             return sensorType != SensorType.StorageSensors
                    && sensorType != SensorType.NetworkSensors
                    && sensorType != SensorType.WindowsUpdatesSensors
-                   && sensorType != SensorType.BatterySensors;
+                   && sensorType != SensorType.BatterySensors
+                   && sensorType != SensorType.DisplaySensors
+                   && sensorType != SensorType.AudioSensors;
         }
 
         /// <summary>
@@ -47,6 +49,7 @@ namespace HASSAgent.Models.Config
         public Guid Id { get; set; } = Guid.Empty;
         public int? UpdateInterval { get; set; }
         public string Query { get; set; }
+        public string Scope { get; set; }
         public string WindowName { get; set; }
         public string Category { get; set; }
         public string Counter { get; set; }

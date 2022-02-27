@@ -179,6 +179,12 @@ namespace HASSAgent.Functions
         {
             switch (Variables.AppSettings.OnboardingStatus)
             {
+                case OnboardingStatus.NeverDone:
+                {
+                    var obj = (Welcome)_currentControl;
+                    return obj.Store();
+                    }
+
                 case OnboardingStatus.Notifications:
                     {
                         var obj = (NotificationsControl)_currentControl;

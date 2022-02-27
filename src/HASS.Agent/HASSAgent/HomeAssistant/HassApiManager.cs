@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -11,6 +12,7 @@ using HASSAgent.Enums;
 using HASSAgent.Functions;
 using HASSAgent.Models.HomeAssistant;
 using HASSAgent.Models.Internal;
+using HASSAgent.Sensors;
 using Serilog;
 
 namespace HASSAgent.HomeAssistant
@@ -26,6 +28,7 @@ namespace HASSAgent.HomeAssistant
         private static StatesClient _statesClient = null;
         
         internal static HassManagerStatus ManagerStatus = HassManagerStatus.Initialising;
+        private static string _haVersion = string.Empty;
 
         internal static List<string> AutomationList = new List<string>();
         internal static List<string> ScriptList = new List<string>();
@@ -33,9 +36,12 @@ namespace HASSAgent.HomeAssistant
         internal static List<string> SceneList = new List<string>();
         internal static List<string> SwitchList = new List<string>();
         internal static List<string> LightList = new List<string>();
+        internal static List<string> CoverList = new List<string>();
+        internal static List<string> ClimateList = new List<string>();
+        internal static List<string> MediaPlayerList = new List<string>();
 
         private static readonly string[] OnStates = { "on", "playing", "open", "opening" };
-        private static readonly string[] OffStates = { "off", "idle", "closed", "closing" };
+        private static readonly string[] OffStates = { "off", "idle", "paused", "stopped", "closed", "closing" };
 
         /// <summary>
         /// Initializes the HASS API manager, establishes a connection and loads the entities
@@ -65,9 +71,11 @@ namespace HASSAgent.HomeAssistant
                 }
 
                 // retrieve config
-                _configClient = ClientFactory.GetClient<ConfigClient>();
-                var config = await _configClient.GetConfiguration();
-                Log.Information("[HASS_API] Home Assistant version: {version}", config.Version);
+                if (!await GetConfig())
+                {
+                    Variables.MainForm?.ShowToolTip("hass api: initial connection failed", true);
+                    return ManagerStatus;
+                }
 
                 // prepare clients
                 _serviceClient = ClientFactory.GetClient<ServiceClient>();
@@ -154,6 +162,87 @@ namespace HASSAgent.HomeAssistant
                 Log.Fatal(ex, "[HASS_API] Error while initializing client: {err}", ex.Message);
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Fetches Home Assistant's config, will keep retrying in a 60 seconds period
+        /// </summary>
+        /// <returns></returns>
+        private static async Task<bool> GetConfig()
+        {
+            // prepare a stopwatch to time our execution
+            var runningTimer = Stopwatch.StartNew();
+            Exception err = null;
+
+            // prepare a config client
+            _configClient = ClientFactory.GetClient<ConfigClient>();
+
+            // start trying during the grace period
+            while (runningTimer.Elapsed.Seconds < Variables.AppSettings.DisconnectedGracePeriodSeconds)
+            {
+                try
+                {
+                    // attempt to fetch the config
+                    var config = await _configClient.GetConfiguration();
+
+                    // if we're here, the connection works
+                    if (config.Version == _haVersion) return true;
+
+                    // version changed since last check (or this is the first check), log
+                    _haVersion = config.Version;
+                    Log.Information("[HASS_API] Home Assistant version: {version}", config.Version);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    if (err == null)
+                    {
+                        // set state to loading on the first failed attempt
+                        Variables.MainForm?.SetHassApiStatus(ComponentStatus.Connecting);
+                        ManagerStatus = HassManagerStatus.Initialising;
+                    }
+
+                    // save the exception
+                    err = ex;
+
+                    // wait a bit
+                    await Task.Delay(TimeSpan.FromSeconds(5));
+                }
+            }
+
+            // if we're here, set failed state and log
+            Variables.MainForm?.SetHassApiStatus(ComponentStatus.Failed);
+            ManagerStatus = HassManagerStatus.Failed;
+
+            if (err != null) Log.Fatal("[HASS_API] Error while fetching HA config: {err}", err.Message);
+            else Log.Error("[HASS_API] Error while fetching HA config: timeout");
+            return false;
+        }
+
+        /// <summary>
+        /// Checks if the connection's working, if not, will retry for max 60 seconds through GetConfig()
+        /// </summary>
+        /// <returns></returns>
+        private static async Task<bool> CheckConnection()
+        {
+            // check if we can connect
+            if (!await GetConfig()) return false;
+
+            // optionally reset failed state
+            if (ManagerStatus == HassManagerStatus.Failed)
+            {
+                // reset failed state and log
+                ManagerStatus = HassManagerStatus.Ready;
+                Variables.MainForm?.SetHassApiStatus(ComponentStatus.Ok);
+
+                Log.Information("[HASS_API] Server recovered from failed state");
+
+                // reset all sensors so they'll republish
+                SensorsManager.ResetAllSensorChecks();
+            }
+
+            // all good
+            return true;
         }
 
         /// <summary>
@@ -290,6 +379,27 @@ namespace HASSAgent.HomeAssistant
                     LightList.Add(light.Remove(0, domain.Length + 1));
                 }
 
+                domain = "cover";
+                entities = await _entityClient.GetEntities(domain);
+                foreach (var cover in entities)
+                {
+                    CoverList.Add(cover.Remove(0, domain.Length + 1));
+                }
+
+                domain = "climate";
+                entities = await _entityClient.GetEntities(domain);
+                foreach (var climate in entities)
+                {
+                    ClimateList.Add(climate.Remove(0, domain.Length + 1));
+                }
+
+                domain = "media_player";
+                entities = await _entityClient.GetEntities(domain);
+                foreach (var mediaplayer in entities)
+                {
+                    MediaPlayerList.Add(mediaplayer.Remove(0, domain.Length + 1));
+                }
+
                 if (ManagerStatus != HassManagerStatus.Failed) return;
 
                 // reset failed state and log
@@ -407,46 +517,10 @@ namespace HASSAgent.HomeAssistant
             while (!Variables.ShuttingDown)
             {
                 // wait a while
-                await Task.Delay(TimeSpan.FromMinutes(30));
+                await Task.Delay(TimeSpan.FromMinutes(5));
 
-                // check if we can connect
-                try
-                {
-                    var res = await _configClient.GetConfiguration();
-                    if (res == null)
-                    {
-                        // only log errors once to prevent log spamming
-                        if (ManagerStatus == HassManagerStatus.Failed) continue;
-
-                        // set failed state and log
-                        Variables.MainForm?.SetHassApiStatus(ComponentStatus.Failed);
-                        ManagerStatus = HassManagerStatus.Failed;
-
-                        Log.Error("[HASS_API] Error while periodically reloading entities: null object returned");
-                        continue;
-                    }
-
-                    if (ManagerStatus == HassManagerStatus.Failed)
-                    {
-                        // reset failed state and log
-                        ManagerStatus = HassManagerStatus.Ready;
-                        Variables.MainForm?.SetHassApiStatus(ComponentStatus.Ok);
-
-                        Log.Information("[HASS_API] Server recovered from failed state");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // only log errors once to prevent log spamming
-                    if (ManagerStatus == HassManagerStatus.Failed) continue;
-
-                    // set failed state and log
-                    Variables.MainForm?.SetHassApiStatus(ComponentStatus.Failed);
-                    ManagerStatus = HassManagerStatus.Failed;
-
-                    Log.Error("[HASS_API] Error while periodically reloading entities: {err}", ex.Message);
-                    continue;
-                }
+                // check if the connection's still up
+                if (!await CheckConnection()) return;
 
                 // reload all entities
                 await LoadEntitiesAsync(true);
@@ -462,6 +536,9 @@ namespace HASSAgent.HomeAssistant
             while (!Variables.ShuttingDown)
             {
                 await Task.Delay(TimeSpan.FromSeconds(3));
+
+                // check if the connection's still up
+                if (!await CheckConnection()) continue;
 
                 foreach (var quickAction in Variables.QuickActions)
                 {
@@ -501,7 +578,7 @@ namespace HASSAgent.HomeAssistant
                         Variables.MainForm?.SetHassApiStatus(ComponentStatus.Failed);
                         ManagerStatus = HassManagerStatus.Failed;
 
-                        Log.Error("[HASS_API] HTTP error while sending periodic status update: {err}", ex.Message);
+                        Log.Error("[HASS_API] HTTP error while getting periodic status update: {err}", ex.Message);
                     }
                     catch (Exception ex)
                     {
@@ -512,7 +589,7 @@ namespace HASSAgent.HomeAssistant
                         Variables.MainForm?.SetHassApiStatus(ComponentStatus.Failed);
                         ManagerStatus = HassManagerStatus.Failed;
 
-                        Log.Fatal(ex, "[HASS_API] Error while sending periodic status update: {err}", ex.Message);
+                        Log.Fatal(ex, "[HASS_API] Error while getting periodic status update: {err}", ex.Message);
                     }
                 }
             }
@@ -527,21 +604,26 @@ namespace HASSAgent.HomeAssistant
         private static string DetermineServiceForDomain(HassDomain domain, HassAction action)
         {
             var domainValue = domain.GetDescription();
+
+            // attempt to fix some impossible settings
+            switch (domain)
+            {
+                case HassDomain.Cover when action == HassAction.On:
+                    action = HassAction.Open;
+                    break;
+                case HassDomain.Cover when action == HassAction.Off:
+                    action = HassAction.Close;
+                    break;
+                case HassDomain.MediaPlayer when action == HassAction.On:
+                    action = HassAction.Play;
+                    break;
+                case HassDomain.MediaPlayer when action == HassAction.Off:
+                    action = HassAction.Stop;
+                    break;
+            }
+            
             var actionValue = action.GetDescription();
-
             return $"{domainValue}.{actionValue}";
-
-            //case HassDomain.Cover:
-            //    return on ? "cover.open_cover" : "cover.close_cover";
-
-            //case "water_heater":
-            //    return on ? "water_heater.turn_on" : "water_heater.turn_off";
-
-            //case "climate":
-            //    return on ? "climate.turn_on" : "climate.turn_off";
-
-            //case "media_player":
-            //    return on ? "media_player.media_play" : "media_player.media_stop";
         }
     }
 }

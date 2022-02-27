@@ -147,10 +147,19 @@ namespace HASSAgent.Settings
                     abstractSensor = new GpuTemperatureSensor(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
                     break;
                 case SensorType.WmiQuerySensor:
-                    abstractSensor = new WmiQuerySensor(sensor.Query, sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    abstractSensor = new WmiQuerySensor(sensor.Query, sensor.Scope, sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
                     break;
                 case SensorType.PerformanceCounterSensor:
                     abstractSensor = new PerformanceCounterSensor(sensor.Category, sensor.Counter, sensor.Instance, sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    break;
+                case SensorType.ProcessActiveSensor:
+                    abstractSensor = new ProcessActiveSensor(sensor.Query, sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    break;
+                case SensorType.ServiceStateSensor:
+                    abstractSensor = new ServiceStateSensor(sensor.Query, sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    break;
+                case SensorType.LoggedUsersSensor:
+                    abstractSensor = new LoggedUsersSensor(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
                     break;
                 default:
                     Log.Error("[SETTINGS_SENSORS] [{name}] Unknown configured single-value sensor type: {type}", sensor.Name, sensor.Type.ToString());
@@ -183,6 +192,12 @@ namespace HASSAgent.Settings
                 case SensorType.BatterySensors:
                     abstractSensor = new BatterySensors(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
                     break;
+                case SensorType.DisplaySensors:
+                    abstractSensor = new DisplaySensors(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    break;
+                case SensorType.AudioSensors:
+                    abstractSensor = new AudioSensors(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    break;
                 default:
                     Log.Error("[SETTINGS_SENSORS] [{name}] Unknown configured multi-value sensor type: {type}", sensor.Name, sensor.Type.ToString());
                     break;
@@ -209,6 +224,7 @@ namespace HASSAgent.Settings
                         Name = wmiSensor.Name, 
                         Type = type,
                         UpdateInterval = wmiSensor.UpdateIntervalSeconds, 
+                        Scope = wmiSensor.Scope,
                         Query = wmiSensor.Query
                     };
                 }
@@ -238,6 +254,32 @@ namespace HASSAgent.Settings
                         Category = performanceCounterSensor.CategoryName,
                         Counter = performanceCounterSensor.CounterName,
                         Instance = performanceCounterSensor.InstanceName
+                    };
+                }
+
+                case ProcessActiveSensor processActiveSensor:
+                {
+                    _ = Enum.TryParse<SensorType>(processActiveSensor.GetType().Name, out var type);
+                    return new ConfiguredSensor
+                    {
+                        Id = Guid.Parse(processActiveSensor.Id),
+                        Name = processActiveSensor.Name,
+                        Type = type,
+                        UpdateInterval = processActiveSensor.UpdateIntervalSeconds,
+                        Query = processActiveSensor.ProcessName
+                    };
+                }
+
+                case ServiceStateSensor serviceStateSensor:
+                {
+                    _ = Enum.TryParse<SensorType>(serviceStateSensor.GetType().Name, out var type);
+                    return new ConfiguredSensor
+                    {
+                        Id = Guid.Parse(serviceStateSensor.Id),
+                        Name = serviceStateSensor.Name,
+                        Type = type,
+                        UpdateInterval = serviceStateSensor.UpdateIntervalSeconds,
+                        Query = serviceStateSensor.ServiceName
                     };
                 }
 
@@ -300,6 +342,28 @@ namespace HASSAgent.Settings
                 case BatterySensors batterySensors:
                 {
                     _ = Enum.TryParse<SensorType>(batterySensors.GetType().Name, out var type);
+                    return new ConfiguredSensor
+                    {
+                        Id = Guid.Parse(sensor.Id),
+                        Name = sensor.Name,
+                        Type = type,
+                        UpdateInterval = sensor.UpdateIntervalSeconds
+                    };
+                }
+                case DisplaySensors displaySensors:
+                {
+                    _ = Enum.TryParse<SensorType>(displaySensors.GetType().Name, out var type);
+                    return new ConfiguredSensor
+                    {
+                        Id = Guid.Parse(sensor.Id),
+                        Name = sensor.Name,
+                        Type = type,
+                        UpdateInterval = sensor.UpdateIntervalSeconds
+                    };
+                }
+                case AudioSensors audioSensors:
+                {
+                    _ = Enum.TryParse<SensorType>(audioSensors.GetType().Name, out var type);
                     return new ConfiguredSensor
                     {
                         Id = Guid.Parse(sensor.Id),
