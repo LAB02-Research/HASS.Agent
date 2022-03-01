@@ -280,6 +280,7 @@
     <Compile Include="Functions\CommandLineManager.cs" />
     <Compile Include="Functions\FirewallManager.cs" />
     <Compile Include="Functions\HotKeyManager.cs" />
+    <Compile Include="Functions\LoggingManager.cs" />
     <Compile Include="Functions\OnboardingManager.cs" />
     <Compile Include="Functions\PerformanceCounters.cs" />
     <Compile Include="Functions\LaunchManager.cs" />

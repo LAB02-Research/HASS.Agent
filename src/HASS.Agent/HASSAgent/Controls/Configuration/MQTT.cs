@@ -59,6 +59,7 @@ namespace HASSAgent.Controls.Configuration
             TbMqttUsername.Text = string.Empty;
             TbMqttPassword.Text = string.Empty;
             TbMqttDiscoveryPrefix.Text = "homeassistant";
+            TbMqttClientId.Text = string.Empty;
             TbMqttRootCertificate.Text = string.Empty;
             TbMqttClientCertificate.Text = string.Empty;
             CbAllowUntrustedCertificates.CheckState = CheckState.Checked;

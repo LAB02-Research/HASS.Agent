@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading;
 using System.Threading.Tasks;
 using HADotNet.Core;
 using HADotNet.Core.Clients;
@@ -22,9 +23,9 @@ namespace HASSAgent.HomeAssistant
     /// </summary>
     internal static class HassApiManager
     {
-        private static ConfigClient _configClient;
-        private static ServiceClient _serviceClient;
-        private static EntityClient _entityClient;
+        private static ConfigClient _configClient = null;
+        private static ServiceClient _serviceClient = null;
+        private static EntityClient _entityClient = null;
         private static StatesClient _statesClient = null;
         
         internal static HassManagerStatus ManagerStatus = HassManagerStatus.Initialising;
@@ -42,6 +43,10 @@ namespace HASSAgent.HomeAssistant
 
         private static readonly string[] OnStates = { "on", "playing", "open", "opening" };
         private static readonly string[] OffStates = { "off", "idle", "paused", "stopped", "closed", "closing" };
+
+        private static readonly List<string> NotFoundEntities = new List<string>();
+
+        private static readonly SemaphoreSlim ConfigCheckSemaphore = new SemaphoreSlim(1, 1);
 
         /// <summary>
         /// Initializes the HASS API manager, establishes a connection and loads the entities
@@ -174,11 +179,21 @@ namespace HASSAgent.HomeAssistant
             var runningTimer = Stopwatch.StartNew();
             Exception err = null;
 
-            // prepare a config client
-            _configClient = ClientFactory.GetClient<ConfigClient>();
+            // make sure clientfactory's initialized
+            if (!ClientFactory.IsInitialized)
+            {
+                InitializeClient();
+
+                if (_serviceClient == null) _serviceClient = ClientFactory.GetClient<ServiceClient>();
+                if (_serviceClient == null) _entityClient = ClientFactory.GetClient<EntityClient>();
+                if (_statesClient == null) _statesClient = ClientFactory.GetClient<StatesClient>();
+            }
+
+            // create config client
+            if (_configClient == null) _configClient = ClientFactory.GetClient<ConfigClient>();
 
             // start trying during the grace period
-            while (runningTimer.Elapsed.Seconds < Variables.AppSettings.DisconnectedGracePeriodSeconds)
+            while (runningTimer.Elapsed.TotalSeconds < Variables.AppSettings.DisconnectedGracePeriodSeconds)
             {
                 try
                 {
@@ -186,6 +201,7 @@ namespace HASSAgent.HomeAssistant
                     var config = await _configClient.GetConfiguration();
 
                     // if we're here, the connection works
+                    // only log if the version changed
                     if (config.Version == _haVersion) return true;
 
                     // version changed since last check (or this is the first check), log
@@ -210,7 +226,14 @@ namespace HASSAgent.HomeAssistant
                 }
             }
 
-            // if we're here, set failed state and log
+            // if we're here, reset clients, set failed state and log
+            ClientFactory.Reset();
+
+            _configClient = null;
+            _serviceClient = null;
+            _entityClient = null;
+            _statesClient = null;
+
             Variables.MainForm?.SetHassApiStatus(ComponentStatus.Failed);
             ManagerStatus = HassManagerStatus.Failed;
 
@@ -223,26 +246,40 @@ namespace HASSAgent.HomeAssistant
         /// Checks if the connection's working, if not, will retry for max 60 seconds through GetConfig()
         /// </summary>
         /// <returns></returns>
-        private static async Task<bool> CheckConnection()
+        private static async Task<bool> CheckConnectionAsync()
         {
-            // check if we can connect
-            if (!await GetConfig()) return false;
+            await ConfigCheckSemaphore.WaitAsync();
 
-            // optionally reset failed state
-            if (ManagerStatus == HassManagerStatus.Failed)
+            try
             {
-                // reset failed state and log
-                ManagerStatus = HassManagerStatus.Ready;
-                Variables.MainForm?.SetHassApiStatus(ComponentStatus.Ok);
+                // check if we can connect
+                if (!await GetConfig()) return false;
 
-                Log.Information("[HASS_API] Server recovered from failed state");
+                // optionally reset failed state
+                if (ManagerStatus != HassManagerStatus.Ready)
+                {
+                    // set new clients
+                    _serviceClient = ClientFactory.GetClient<ServiceClient>();
+                    _entityClient = ClientFactory.GetClient<EntityClient>();
+                    _statesClient = ClientFactory.GetClient<StatesClient>();
 
-                // reset all sensors so they'll republish
-                SensorsManager.ResetAllSensorChecks();
+                    // reset failed state and log
+                    ManagerStatus = HassManagerStatus.Ready;
+                    Variables.MainForm?.SetHassApiStatus(ComponentStatus.Ok);
+
+                    Log.Information("[HASS_API] Server recovered from failed state");
+
+                    // reset all sensors so they'll republish
+                    SensorsManager.ResetAllSensorChecks();
+                }
+
+                // all good
+                return true;
             }
-
-            // all good
-            return true;
+            finally
+            {
+                ConfigCheckSemaphore.Release();
+            }
         }
 
         /// <summary>
@@ -520,7 +557,7 @@ namespace HASSAgent.HomeAssistant
                 await Task.Delay(TimeSpan.FromMinutes(5));
 
                 // check if the connection's still up
-                if (!await CheckConnection()) return;
+                if (!await CheckConnectionAsync()) continue;
 
                 // reload all entities
                 await LoadEntitiesAsync(true);
@@ -538,7 +575,7 @@ namespace HASSAgent.HomeAssistant
                 await Task.Delay(TimeSpan.FromSeconds(3));
 
                 // check if the connection's still up
-                if (!await CheckConnection()) continue;
+                if (!await CheckConnectionAsync()) continue;
 
                 foreach (var quickAction in Variables.QuickActions)
                 {
@@ -567,8 +604,14 @@ namespace HASSAgent.HomeAssistant
 
                         if (ex.Message.Contains("404"))
                         {
-                            Log.Warning("[HASS_API] Server returned 404 (not found) while getting entity state. This can happen after a server reboot, or if you've deleted the entity. If the problem persists, please file a ticket on github.\r\nEntity: {entity}\r\nError message: {err}", $"{quickAction.Domain}.{quickAction.Entity}", ex.Message);
-                            return;
+                            var notFoundEntity = $"{quickAction.Domain.ToString().ToLower()}.{quickAction.Entity.ToLower()}";
+
+                            // log only once
+                            if (NotFoundEntities.Contains(notFoundEntity)) continue;
+                            NotFoundEntities.Add(notFoundEntity);
+
+                            Log.Warning("[HASS_API] Server returned 404 (not found) while getting entity state. This can happen after a server reboot, or if you've deleted the entity. If the problem persists, please file a ticket on github.\r\nEntity: {entity}\r\nError message: {err}", notFoundEntity, ex.Message);
+                            continue;
                         }
 
                         // only log errors once to prevent log spamming

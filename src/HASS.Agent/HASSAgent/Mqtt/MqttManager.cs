@@ -14,6 +14,7 @@ using HASSAgent.Functions;
 using HASSAgent.Models.HomeAssistant;
 using HASSAgent.Models.HomeAssistant.Commands;
 using HASSAgent.Sensors;
+using HASSAgent.Settings;
 using MQTTnet;
 using MQTTnet.Adapter;
 using MQTTnet.Client;
@@ -146,8 +147,12 @@ namespace HASSAgent.Mqtt
             {
                 if (_mqttClient.IsConnected)
                 {
-                    // recoved, nevermind
+                    // recovered, nevermind
+                    if (_status == MqttStatus.Connected) return;
+                    _status = MqttStatus.Connected;
                     Variables.MainForm?.SetMqttStatus(ComponentStatus.Ok);
+
+                    Log.Information("[MQTT] Connected");
                     return;
                 }
 
@@ -162,7 +167,10 @@ namespace HASSAgent.Mqtt
             if (_connectingFailureNotified) return;
             _connectingFailureNotified = true;
 
-            Log.Fatal(ex.Exception, "[MQTT] Error while connecting: {err}", ex.Exception.Message);
+            var excMsg = ex.Exception.ToString();
+            if (excMsg.Contains("SocketException")) Log.Error("[MQTT] Error while connecting: {err}", ex.Exception.Message);
+            else if (excMsg.Contains("MqttCommunicationTimedOutException")) Log.Error("[MQTT] Error while connecting: {err}", "Connection timed out");
+            else Log.Fatal(ex.Exception, "[MQTT] Error while connecting: {err}", ex.Exception.Message);
 
             Variables.MainForm?.ShowToolTip("mqtt: failed to connect", true);
         }
@@ -182,8 +190,12 @@ namespace HASSAgent.Mqtt
             {
                 if (_mqttClient.IsConnected)
                 {
-                    // recoved, nevermind
+                    // recovered, nevermind
+                    if (_status == MqttStatus.Connected) return;
+                    _status = MqttStatus.Connected;
                     Variables.MainForm?.SetMqttStatus(ComponentStatus.Ok);
+
+                    Log.Information("[MQTT] Connected");
                     return;
                 }
 
@@ -513,9 +525,13 @@ namespace HASSAgent.Mqtt
         private static ManagedMqttClientOptions GetOptions()
         {
             if (string.IsNullOrEmpty(Variables.AppSettings.MqttAddress)) return null;
-            
-            // id can be random
-            var clientId = Guid.NewGuid().ToString().Substring(0, 8);
+
+            // id can be random, but we'll store it for consistency (unless user-defined)
+            if (string.IsNullOrEmpty(Variables.AppSettings.MqttClientId))
+            {
+                Variables.AppSettings.MqttClientId = Guid.NewGuid().ToString().Substring(0, 8);
+                SettingsManager.StoreAppSettings();
+            }
 
             // configure last will message
             // todo: cover other domains
@@ -531,7 +547,7 @@ namespace HASSAgent.Mqtt
 
             // basic options
             var clientOptionsBuilder = new MqttClientOptionsBuilder()
-                .WithClientId(clientId)
+                .WithClientId(Variables.AppSettings.MqttClientId)
                 .WithTcpServer(Variables.AppSettings.MqttAddress, Variables.AppSettings.MqttPort)
                 .WithCleanSession()
                 .WithWillMessage(lastWillMessage)

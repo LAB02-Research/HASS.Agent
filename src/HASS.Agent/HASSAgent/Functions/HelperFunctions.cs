@@ -6,7 +6,11 @@ using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Sockets;
 using System.Reflection;
+using System.Runtime.ExceptionServices;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
@@ -25,6 +29,7 @@ using HASSAgent.Models.Internal;
 using HASSAgent.Mqtt;
 using HASSAgent.Notifications;
 using HASSAgent.Sensors;
+using MQTTnet.Exceptions;
 using Serilog;
 using Syncfusion.Windows.Forms;
 using Task = System.Threading.Tasks.Task;
@@ -93,67 +98,6 @@ namespace HASSAgent.Functions
             MessageBoxAdv.ButtonFont = font;
             MessageBoxAdv.DetailsFont = font;
             MessageBoxAdv.MessageFont = font;
-        }
-
-        /// <summary>
-        /// Initializes Serilog logger, optionally with exception logging through Coderr
-        /// </summary>
-        internal static void PrepareLogging()
-        {
-            if (Variables.ExceptionLogging)
-            {
-                PrepareCoderrEnabledLogging();
-                return;
-            }
-
-            // prepare a serilog logger without coderr
-            Log.Logger = new LoggerConfiguration()
-                .WriteTo.Async(a =>
-                    a.File(Path.Combine(Variables.LogPath, $"[{DateTime.Now:yyyy-MM-dd}] {Variables.ApplicationName}_.log"),
-                        rollingInterval: RollingInterval.Day,
-                        fileSizeLimitBytes: 10000000,
-                        retainedFileCountLimit: 10,
-                        rollOnFileSizeLimit: true,
-                        buffered: true,
-                        flushToDiskInterval: TimeSpan.FromMilliseconds(150)))
-                .CreateLogger();
-
-            Log.Information("[LOG] Coderr exception reporting disabled");
-        }
-
-        /// <summary>
-        /// Prepare Serilog logger and bind Coderr reporting
-        /// </summary>
-        private static void PrepareCoderrEnabledLogging()
-        {
-            // initialize coderr
-            Err.Configuration.ThrowExceptions = false;
-
-            var url = new Uri("https://report.coderr.io/");
-            Err.Configuration.Credentials(url,
-                "b8f26633ad354e91ab570f840080816a",
-                "87163340045849d993879be4407d952b");
-
-            Err.Configuration.CatchWinFormsExceptions();
-
-            Err.Configuration.UserInteraction.AskUserForDetails = false;
-            Err.Configuration.UserInteraction.AskUserForPermission = false;
-            Err.Configuration.UserInteraction.AskForEmailAddress = false;
-
-            // prepare a serilog logger including coderr
-            Log.Logger = new LoggerConfiguration()
-                .WriteTo.Coderr()
-                .WriteTo.Async(a =>
-                    a.File(Path.Combine(Variables.LogPath, $"[{DateTime.Now:yyyy-MM-dd}] {Variables.ApplicationName}_.log"),
-                        rollingInterval: RollingInterval.Day,
-                        fileSizeLimitBytes: 10000000,
-                        retainedFileCountLimit: 10,
-                        rollOnFileSizeLimit: true,
-                        buffered: true,
-                        flushToDiskInterval: TimeSpan.FromMilliseconds(150)))
-                .CreateLogger();
-
-            Log.Information("[LOG] Coderr exception reporting enabled");
         }
 
         /// <summary>

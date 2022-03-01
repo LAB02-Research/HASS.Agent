@@ -49,6 +49,7 @@ namespace HASSAgent.Models.Config
         public string MqttUsername { get; set; }
         public string MqttPassword { get; set; }
         public string MqttDiscoveryPrefix { get; set; } = "homeassistant";
+        public string MqttClientId { get; set; } = string.Empty;
         public bool MqttUseRetainFlag { get; set; } = true;
         public string MqttRootCertificate { get; set; }
         public string MqttClientCertificate { get; set; }

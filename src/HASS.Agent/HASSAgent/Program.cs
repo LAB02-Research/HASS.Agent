@@ -33,22 +33,12 @@ namespace HASSAgent
                 Variables.ExceptionLogging = SettingsManager.GetExceptionReportingSetting();
 
                 // enable logging and optionally prepare Coderr
-                HelperFunctions.PrepareLogging();
+                LoggingManager.PrepareLogging();
 
                 if (Variables.ExtendedLogging)
                 {
                     // make sure we catch 'm all
-                    AppDomain.CurrentDomain.FirstChanceException += (sender, eventArgs) =>
-                    {
-                        // resource exceptions can be ignored
-                        if (eventArgs.Exception.Message.Contains("GetLocalizedResourceManager")) return;
-
-                        // syncfusion input-string errors as well
-                        if (eventArgs.Exception.Message.Contains("IntegerTextBox.FormatChanged")) return;
-
-                        // log it
-                        Log.Fatal(eventArgs.Exception, "[PROGRAM] FirstChanceException: {err}", eventArgs.Exception.Message);
-                    };
+                    AppDomain.CurrentDomain.FirstChanceException += LoggingManager.CurrentDomainOnFirstChanceException;
                 }
                 else Log.Information("[PROGRAM] Extended logging disabled");
 
