@@ -210,6 +210,60 @@ namespace HASSAgent.Functions
                 Environment.Exit(1);
             }
         }
+        
+        /// <summary>
+        /// Tries to parse the keyString into multiple keys (they need to be encapsuled in square brackets)
+        /// </summary>
+        /// <param name="keyString"></param>
+        /// <param name="keys"></param>
+        /// <param name="errorMsg"></param>
+        /// <returns></returns>
+        internal static bool ParseMultipleKeys(string keyString, out List<string> keys, out string errorMsg)
+        {
+            keys = new List<string>();
+            errorMsg = string.Empty;
+
+            try
+            {
+                // any value?
+                if (string.IsNullOrWhiteSpace(keyString))
+                {
+                    errorMsg = "no keys found";
+                    return false;
+                }
+
+                // any brackets?
+                if (!keyString.Contains('[') || !keyString.Contains(']'))
+                {
+                    errorMsg = "brackets missing, start and close all keys with [ ]";
+                    return false;
+                }
+
+                // lets see if the brackets corresponds
+                var leftBrackets = keyString.Count(x => x == '[');
+                var rightBrackets = keyString.Count(x => x == ']');
+
+                if (leftBrackets != rightBrackets)
+                {
+                    errorMsg = $"the number of '[' brackets don't correspond to the ']' ones ({leftBrackets} to {rightBrackets})";
+                    return false;
+                }
+
+                // ok, try parsen
+                var pattern = @"\[(.*?)\]";
+                var matches = Regex.Matches(keyString, pattern);
+                keys.AddRange(from Match m in matches select m.Groups[1].ToString());
+
+                // done
+                return true;
+            }
+            catch (Exception ex)
+            {
+                errorMsg = "error while parsing keys, check the log for more info";
+                Log.Error("[PARSER] Error parsing multiple keys: {msg}", ex.Message);
+                return false;
+            }
+        }
 
         /// <summary>
         /// Determine the amount of columns and rows needed for the amount of quickactions

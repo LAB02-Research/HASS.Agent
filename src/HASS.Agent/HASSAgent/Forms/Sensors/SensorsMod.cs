@@ -279,7 +279,7 @@ namespace HASSAgent.Forms.Sensors
             var typeStr = CbType.Text;
             if (string.IsNullOrEmpty(typeStr))
             {
-                MessageBox.Show("Select a type first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show("Select a type first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = CbType;
                 return;
             }
@@ -287,7 +287,7 @@ namespace HASSAgent.Forms.Sensors
             var parsed = Enum.TryParse<SensorType>(CbType.SelectedValue.ToString(), out var type);
             if (!parsed)
             {
-                MessageBox.Show("Select a valid type first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show("Select a valid type first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = CbType;
                 return;
             }
@@ -296,7 +296,7 @@ namespace HASSAgent.Forms.Sensors
             var name = TbName.Text.Trim();
             if (string.IsNullOrEmpty(name))
             {
-                MessageBox.Show("Enter a name first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show("Enter a name first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = TbName;
                 return;
             }
@@ -326,7 +326,7 @@ namespace HASSAgent.Forms.Sensors
             var interval = (int)TbIntInterval.IntegerValue;
             if (interval < 1 || interval > 43200)
             {
-                MessageBox.Show("Enter an interval between 1 and 43200 (12 hours) first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show("Enter an interval between 1 and 43200 (12 hours) first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = TbIntInterval;
                 return;
             }
@@ -338,7 +338,7 @@ namespace HASSAgent.Forms.Sensors
                     var window = TbSetting1.Text.Trim();
                     if (string.IsNullOrEmpty(window))
                     {
-                        MessageBox.Show("Enter a window name first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show("Enter a window name first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting1;
                         return;
                     }
@@ -350,7 +350,7 @@ namespace HASSAgent.Forms.Sensors
                     var scope = TbSetting2.Text.Trim();
                     if (string.IsNullOrEmpty(query))
                     {
-                        MessageBox.Show("Enter a query first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show("Enter a query first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting1;
                         return;
                     }
@@ -364,7 +364,7 @@ namespace HASSAgent.Forms.Sensors
                     var instance = TbSetting3.Text.Trim();
                     if (string.IsNullOrEmpty(category) || string.IsNullOrEmpty(counter))
                     {
-                        MessageBox.Show("Enter a category and instance first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show("Enter a category and instance first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting1;
                         return;
                     }
@@ -377,7 +377,7 @@ namespace HASSAgent.Forms.Sensors
                     var process = TbSetting1.Text.Trim();
                     if (string.IsNullOrEmpty(process))
                     {
-                        MessageBox.Show("Enter the name of a process first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show("Enter the name of a process first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting1;
                         return;
                     }
@@ -388,7 +388,7 @@ namespace HASSAgent.Forms.Sensors
                     var service = TbSetting1.Text.Trim();
                     if (string.IsNullOrEmpty(service))
                     {
-                        MessageBox.Show("Enter the name of a service first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show("Enter the name of a service first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting1;
                         return;
                     }

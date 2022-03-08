@@ -43,7 +43,7 @@ namespace HASSAgent.Forms.ChildApplications
             if (!closed)
             {
                 PbStep1WaitForInstances.Image = Resources.failed_32;
-                MessageBox.Show($"HASS.Agent is still active after {MaxWaitSeconds} seconds. Please close all instances and restart manually.\r\n\r\nCheck the logs for more info, and optionally inform the developers.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show($"HASS.Agent is still active after {MaxWaitSeconds} seconds. Please close all instances and restart manually.\r\n\r\nCheck the logs for more info, and optionally inform the developers.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 // close up
                 _ = HelperFunctions.ShutdownAsync();

@@ -54,9 +54,10 @@ namespace HASSAgent.Forms.Commands
             this.BtnStore.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BtnStore.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnStore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnStore.Location = new System.Drawing.Point(0, 295);
+            this.BtnStore.Location = new System.Drawing.Point(0, 367);
+            this.BtnStore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnStore.Name = "BtnStore";
-            this.BtnStore.Size = new System.Drawing.Size(756, 38);
+            this.BtnStore.Size = new System.Drawing.Size(944, 48);
             this.BtnStore.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -75,9 +76,10 @@ namespace HASSAgent.Forms.Commands
             this.TbSetting.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbSetting.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbSetting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbSetting.Location = new System.Drawing.Point(12, 156);
+            this.TbSetting.Location = new System.Drawing.Point(15, 195);
+            this.TbSetting.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbSetting.Name = "TbSetting";
-            this.TbSetting.Size = new System.Drawing.Size(328, 25);
+            this.TbSetting.Size = new System.Drawing.Size(410, 29);
             this.TbSetting.TabIndex = 2;
             this.TbSetting.Visible = false;
             // 
@@ -87,18 +89,20 @@ namespace HASSAgent.Forms.Commands
             this.TbName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbName.Location = new System.Drawing.Point(12, 95);
+            this.TbName.Location = new System.Drawing.Point(15, 119);
+            this.TbName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbName.Name = "TbName";
-            this.TbName.Size = new System.Drawing.Size(328, 25);
+            this.TbName.Size = new System.Drawing.Size(410, 29);
             this.TbName.TabIndex = 1;
             // 
             // LblSetting
             // 
             this.LblSetting.AutoSize = true;
             this.LblSetting.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblSetting.Location = new System.Drawing.Point(9, 136);
+            this.LblSetting.Location = new System.Drawing.Point(11, 170);
+            this.LblSetting.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblSetting.Name = "LblSetting";
-            this.LblSetting.Size = new System.Drawing.Size(44, 17);
+            this.LblSetting.Size = new System.Drawing.Size(57, 23);
             this.LblSetting.TabIndex = 12;
             this.LblSetting.Text = "config";
             this.LblSetting.Visible = false;
@@ -107,9 +111,10 @@ namespace HASSAgent.Forms.Commands
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 19);
+            this.label1.Location = new System.Drawing.Point(11, 24);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 17);
+            this.label1.Size = new System.Drawing.Size(43, 23);
             this.label1.TabIndex = 3;
             this.label1.Text = "type";
             // 
@@ -117,9 +122,10 @@ namespace HASSAgent.Forms.Commands
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(9, 75);
+            this.label4.Location = new System.Drawing.Point(11, 94);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 17);
+            this.label4.Size = new System.Drawing.Size(53, 23);
             this.label4.TabIndex = 10;
             this.label4.Text = "name";
             // 
@@ -127,9 +133,10 @@ namespace HASSAgent.Forms.Commands
             // 
             this.PnlDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PnlDescription.Controls.Add(this.TbDescription);
-            this.PnlDescription.Location = new System.Drawing.Point(387, 39);
+            this.PnlDescription.Location = new System.Drawing.Point(484, 49);
+            this.PnlDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PnlDescription.Name = "PnlDescription";
-            this.PnlDescription.Size = new System.Drawing.Size(354, 229);
+            this.PnlDescription.Size = new System.Drawing.Size(442, 286);
             this.PnlDescription.TabIndex = 21;
             // 
             // TbDescription
@@ -140,9 +147,10 @@ namespace HASSAgent.Forms.Commands
             this.TbDescription.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TbDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TbDescription.Location = new System.Drawing.Point(0, 0);
+            this.TbDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbDescription.Name = "TbDescription";
             this.TbDescription.ReadOnly = true;
-            this.TbDescription.Size = new System.Drawing.Size(352, 227);
+            this.TbDescription.Size = new System.Drawing.Size(440, 284);
             this.TbDescription.TabIndex = 18;
             this.TbDescription.Text = "";
             this.TbDescription.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.TbDescription_LinkClicked);
@@ -151,9 +159,10 @@ namespace HASSAgent.Forms.Commands
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(384, 19);
+            this.label5.Location = new System.Drawing.Point(480, 24);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(135, 17);
+            this.label5.Size = new System.Drawing.Size(176, 23);
             this.label5.TabIndex = 20;
             this.label5.Text = "command description";
             // 
@@ -167,9 +176,10 @@ namespace HASSAgent.Forms.Commands
             this.CbType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.CbType.FormattingEnabled = true;
             this.CbType.IntegralHeight = false;
-            this.CbType.Location = new System.Drawing.Point(12, 40);
+            this.CbType.Location = new System.Drawing.Point(15, 50);
+            this.CbType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CbType.Name = "CbType";
-            this.CbType.Size = new System.Drawing.Size(328, 26);
+            this.CbType.Size = new System.Drawing.Size(409, 30);
             this.CbType.TabIndex = 25;
             this.CbType.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.CbType_DrawItem);
             this.CbType.SelectedIndexChanged += new System.EventHandler(this.CbType_SelectedIndexChanged);
@@ -178,9 +188,10 @@ namespace HASSAgent.Forms.Commands
             // 
             this.CbRunAsLowIntegrity.AutoSize = true;
             this.CbRunAsLowIntegrity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CbRunAsLowIntegrity.Location = new System.Drawing.Point(12, 207);
+            this.CbRunAsLowIntegrity.Location = new System.Drawing.Point(15, 259);
+            this.CbRunAsLowIntegrity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CbRunAsLowIntegrity.Name = "CbRunAsLowIntegrity";
-            this.CbRunAsLowIntegrity.Size = new System.Drawing.Size(144, 21);
+            this.CbRunAsLowIntegrity.Size = new System.Drawing.Size(186, 27);
             this.CbRunAsLowIntegrity.TabIndex = 26;
             this.CbRunAsLowIntegrity.Text = "run as \'low integrity\'";
             this.CbRunAsLowIntegrity.UseVisualStyleBackColor = true;
@@ -190,9 +201,10 @@ namespace HASSAgent.Forms.Commands
             this.LblIntegrityInfo.AutoSize = true;
             this.LblIntegrityInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblIntegrityInfo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblIntegrityInfo.Location = new System.Drawing.Point(187, 208);
+            this.LblIntegrityInfo.Location = new System.Drawing.Point(234, 260);
+            this.LblIntegrityInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblIntegrityInfo.Name = "LblIntegrityInfo";
-            this.LblIntegrityInfo.Size = new System.Drawing.Size(74, 17);
+            this.LblIntegrityInfo.Size = new System.Drawing.Size(98, 23);
             this.LblIntegrityInfo.TabIndex = 27;
             this.LblIntegrityInfo.Text = "what\'s this?";
             this.LblIntegrityInfo.Visible = false;
@@ -202,9 +214,10 @@ namespace HASSAgent.Forms.Commands
             // 
             this.CbCommandSpecific.AutoSize = true;
             this.CbCommandSpecific.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CbCommandSpecific.Location = new System.Drawing.Point(12, 247);
+            this.CbCommandSpecific.Location = new System.Drawing.Point(15, 309);
+            this.CbCommandSpecific.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CbCommandSpecific.Name = "CbCommandSpecific";
-            this.CbCommandSpecific.Size = new System.Drawing.Size(32, 21);
+            this.CbCommandSpecific.Size = new System.Drawing.Size(39, 27);
             this.CbCommandSpecific.TabIndex = 28;
             this.CbCommandSpecific.Text = "-";
             this.CbCommandSpecific.UseVisualStyleBackColor = true;
@@ -212,22 +225,23 @@ namespace HASSAgent.Forms.Commands
             // LblInfo
             // 
             this.LblInfo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblInfo.Location = new System.Drawing.Point(12, 193);
+            this.LblInfo.Location = new System.Drawing.Point(15, 241);
+            this.LblInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblInfo.Name = "LblInfo";
-            this.LblInfo.Size = new System.Drawing.Size(328, 74);
+            this.LblInfo.Size = new System.Drawing.Size(410, 92);
             this.LblInfo.TabIndex = 29;
             this.LblInfo.Text = "-";
             this.LblInfo.Visible = false;
             // 
             // CommandsMod
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.CaptionBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(756, 333);
+            this.ClientSize = new System.Drawing.Size(944, 415);
             this.Controls.Add(this.CbCommandSpecific);
             this.Controls.Add(this.LblIntegrityInfo);
             this.Controls.Add(this.CbRunAsLowIntegrity);
@@ -245,6 +259,7 @@ namespace HASSAgent.Forms.Commands
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(129)))), ((int)(((byte)(131)))));
             this.Name = "CommandsMod";

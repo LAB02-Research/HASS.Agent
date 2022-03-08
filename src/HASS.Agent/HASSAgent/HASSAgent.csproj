@@ -295,6 +295,7 @@
     <Compile Include="Models\HomeAssistant\Commands\InternalCommands\LaunchUrlCommand.cs" />
     <Compile Include="Models\HomeAssistant\Commands\InternalCommands\PublishAllSensorsCommand.cs" />
     <Compile Include="Models\HomeAssistant\Commands\CustomCommands\SleepCommand.cs" />
+    <Compile Include="Models\HomeAssistant\Commands\MultipleKeysCommand.cs" />
     <Compile Include="Models\HomeAssistant\Commands\PowershellCommand.cs" />
     <Compile Include="Models\HomeAssistant\Commands\CustomCommands\LockCommand.cs" />
     <Compile Include="Models\HomeAssistant\Commands\CustomCommands\HibernateCommand.cs" />
@@ -303,6 +304,7 @@
     <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\MultiValue\DisplaySensors.cs" />
     <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\MultiValue\NetworkSensors.cs" />
     <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\MultiValue\BatterySensors.cs" />
+    <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\LoggedUserSensor.cs" />
     <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\LoggedUsersSensor.cs" />
     <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\SingleValue\LastSystemStateChangeSensor.cs" />
     <Compile Include="Models\HomeAssistant\Sensors\GeneralSensors\MultiValue\WindowsUpdatesSensors.cs" />

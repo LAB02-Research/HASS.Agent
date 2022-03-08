@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using HASSAgent.Enums;
 using HASSAgent.Functions;
 using Newtonsoft.Json;
@@ -29,5 +30,6 @@ namespace HASSAgent.Models.Config
         public byte KeyCode { get; set; }
         public bool RunAsLowIntegrity { get; set; } = false;
         public string Name { get; set; }
+        public List<string> Keys { get; set; } = new List<string>();
     }
 }

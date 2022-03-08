@@ -148,6 +148,9 @@ namespace HASSAgent.Settings
                 case CommandType.CustomExecutorCommand:
                     abstractCommand = new CustomExecutorCommand(command.Name, command.Command, command.Id.ToString());
                     break;
+                case CommandType.MultipleKeysCommand:
+                    abstractCommand = new MultipleKeysCommand(command.Keys, command.Name, command.Id.ToString());
+                    break;
                 default:
                     Log.Error("[SETTINGS_COMMANDS] [{name}] Unknown configured command type: {type}", command.Name, command.Type.ToString());
                     break;
@@ -210,6 +213,18 @@ namespace HASSAgent.Settings
                         Id = Guid.Parse(internalCommand.Id),
                         Name = internalCommand.Name,
                         Command = internalCommand.CommandConfig ?? string.Empty,
+                        Type = type,
+                    };
+                }
+
+                case MultipleKeysCommand multipleKeysCommand:
+                {
+                    _ = Enum.TryParse<CommandType>(multipleKeysCommand.GetType().Name, out var type);
+                    return new ConfiguredCommand()
+                    {
+                        Id = Guid.Parse(multipleKeysCommand.Id),
+                        Name = multipleKeysCommand.Name,
+                        Keys = multipleKeysCommand.Keys ?? new List<string>(),
                         Type = type,
                     };
                 }

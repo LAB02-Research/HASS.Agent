@@ -367,6 +367,7 @@ namespace HASSAgent.Sensors
             SensorInfo.Add(SensorType.ProcessActiveSensor, ("Provides the number of active instances of the process.", 10));
             SensorInfo.Add(SensorType.ServiceStateSensor, ("Returns the state of the provided service: NotFound, Stopped, StartPending, StopPending, Running, ContinuePending, PausePending or Paused.\r\n\r\nMake sure to provide the 'Service name', not the 'Display name'.", 10));
             SensorInfo.Add(SensorType.LoggedUsersSensor, ("Returns a json-formatted list of currently logged users.", 30));
+            SensorInfo.Add(SensorType.LoggedUserSensor, ("Returns the name of the currently logged user.", 30));
         }
     }
 }

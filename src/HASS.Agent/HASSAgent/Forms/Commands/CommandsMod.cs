@@ -81,6 +81,12 @@ namespace HASSAgent.Forms.Commands
                     TbSetting.Text = Command.KeyCode.ToString();
                     break;
 
+                case CommandType.MultipleKeysCommand:
+                    var commands = new StringBuilder();
+                    foreach (var command in Command.Keys) commands.Append($"[{command}] ");
+                    TbSetting.Text = commands.ToString().Trim();
+                    break;
+
                 case CommandType.LaunchUrlCommand:
                     var urlInfo = Command.Command;
                     if (string.IsNullOrEmpty(urlInfo)) break;
@@ -113,7 +119,7 @@ namespace HASSAgent.Forms.Commands
             var typeStr = CbType.Text;
             if (string.IsNullOrEmpty(typeStr))
             {
-                MessageBox.Show("Select a type first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show("Select a type first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = CbType;
                 return;
             }
@@ -122,7 +128,7 @@ namespace HASSAgent.Forms.Commands
             var name = TbName.Text.Trim();
             if (string.IsNullOrEmpty(name))
             {
-                MessageBox.Show("Enter a name first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show("Enter a name first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = TbName;
                 return;
             }
@@ -142,7 +148,7 @@ namespace HASSAgent.Forms.Commands
             var parsed = Enum.TryParse<CommandType>(CbType.SelectedValue.ToString(), out var type);
             if (!parsed)
             {
-                MessageBox.Show("Select a valid type first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show("Select a valid type first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = CbType;
                 return;
             }
@@ -153,7 +159,7 @@ namespace HASSAgent.Forms.Commands
                     var command = TbSetting.Text.Trim();
                     if (string.IsNullOrEmpty(command))
                     {
-                        MessageBox.Show("Enter a command first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show("Enter a command first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting;
                         return;
                     }
@@ -164,7 +170,7 @@ namespace HASSAgent.Forms.Commands
                     var script = TbSetting.Text.Trim();
                     if (string.IsNullOrEmpty(script))
                     {
-                        MessageBox.Show("Enter a command or script first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show("Enter a command or script first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting;
                         return;
                     }
@@ -175,18 +181,29 @@ namespace HASSAgent.Forms.Commands
                     var keycode = TbSetting.Text.Trim();
                     if (string.IsNullOrEmpty(keycode))
                     {
-                        MessageBox.Show("Enter a keycode first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show("Enter a keycode first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting;
                         return;
                     }
                     Command.KeyCode = Encoding.ASCII.GetBytes(keycode).First();
                     break;
 
+                case CommandType.MultipleKeysCommand:
+                    var keysParsed = HelperFunctions.ParseMultipleKeys(TbSetting.Text.Trim(), out var keys, out var errorMsg);
+                    if (!keysParsed)
+                    {
+                        MessageBoxAdv.Show($"Processing keys failed: {errorMsg}", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        ActiveControl = TbSetting;
+                        return;
+                    }
+                    Command.Keys = keys;
+                    break;
+
                 case CommandType.LaunchUrlCommand:
                     var url = TbSetting.Text.Trim();
                     if (string.IsNullOrEmpty(url))
                     {
-                        MessageBox.Show("Enter a URL first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show("Enter a URL first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting;
                         return;
                     }
@@ -204,12 +221,14 @@ namespace HASSAgent.Forms.Commands
                     var executorCommand = TbSetting.Text.Trim();
                     if (string.IsNullOrEmpty(executorCommand))
                     {
-                        MessageBox.Show("Enter a command or script first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show("Enter a command or script first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting;
                         return;
                     }
                     Command.Command = executorCommand;
                     break;
+
+
             }
 
             Command.RunAsLowIntegrity = CbRunAsLowIntegrity.CheckState == CheckState.Checked;
@@ -262,6 +281,10 @@ namespace HASSAgent.Forms.Commands
 
                 case CommandType.KeyCommand:
                     SetKeyGui();
+                    break;
+
+                case CommandType.MultipleKeysCommand:
+                    SetMultipleKeysGui();
                     break;
 
                 case CommandType.LaunchUrlCommand:
@@ -331,6 +354,29 @@ namespace HASSAgent.Forms.Commands
             Invoke(new MethodInvoker(delegate
             {
                 LblSetting.Text = "keycode";
+                LblSetting.Visible = true;
+                TbSetting.Visible = true;
+
+                CbRunAsLowIntegrity.CheckState = CheckState.Unchecked;
+                CbRunAsLowIntegrity.Visible = false;
+                LblIntegrityInfo.Visible = false;
+
+                CbCommandSpecific.CheckState = CheckState.Unchecked;
+                CbCommandSpecific.Visible = false;
+
+                LblInfo.Text = string.Empty;
+                LblInfo.Visible = false;
+            }));
+        }
+
+        /// <summary>
+        /// Change the UI to a 'multiple keys' type
+        /// </summary>
+        private void SetMultipleKeysGui()
+        {
+            Invoke(new MethodInvoker(delegate
+            {
+                LblSetting.Text = "keycodes";
                 LblSetting.Visible = true;
                 TbSetting.Visible = true;
 

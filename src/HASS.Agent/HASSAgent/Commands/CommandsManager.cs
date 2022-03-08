@@ -271,10 +271,11 @@ namespace HASSAgent.Commands
             CommandInfo.Add(CommandType.MediaVolumeUpCommand, "Simulates 'volume up' key.");
             CommandInfo.Add(CommandType.MediaVolumeDownCommand, "Simulates 'volume down' key.");
             CommandInfo.Add(CommandType.MediaMuteCommand, "Simulates 'mute' key.");
-            CommandInfo.Add(CommandType.KeyCommand, "Simulates a single keypress.\r\n\r\nYou can pick any of these values: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes \r\n\r\nAnother option is using a tool like AutoHotKey and binding it to a CustomCommand.");
+            CommandInfo.Add(CommandType.KeyCommand, "Simulates a single keypress.\r\n\r\nYou can pick any of these values: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes \r\n\r\nIf you need more keys and/or modifiers like CTRL, use the MultipleKeys command.");
             CommandInfo.Add(CommandType.PublishAllSensorsCommand, "Resets all sensor checks, forcing all sensors to process and send their value.\r\n\r\nUseful for example if you want to force HASS.Agent to update all your sensors after a HA reboot.");
             CommandInfo.Add(CommandType.LaunchUrlCommand, "Launches the provided URL, by default in your default browser.\r\n\r\nTo use 'incognito', provide a specific browser in Configuration -> External Tools.");
             CommandInfo.Add(CommandType.CustomExecutorCommand, "Executes the command through the configured custom executor (in Configuration -> External Tools).\r\n\r\nYour command is provided as an argument 'as is', so you have to supply your own quotes etc. if necessary.");
+            CommandInfo.Add(CommandType.MultipleKeysCommand, "Simulates pressing mulitple keys.\r\n\r\nYou need to put [ ] between every key, otherwise HASS.Agent can't tell them apart. So say you want to press X TAB Y SHIFT-Z, it'd be [X] [{TAB}] [Y] [+Z].\r\n\r\nThere are a few tricks you can use:\r\n\r\n- Special keys go between { }, like {TAB} or {UP}\r\n\r\n- Put a + in front of a key to add SHIFT, ^ for CTRL and % for ALT. So, +C is SHIFT-C. Or, +(CD) is SHIFT-C and SHIFT-D, while +CD is SHIFT-C and D\r\n\r\n- For multiple presses, use {z 15}, which means Z will get pressed 15 times.\r\n\r\nMore info: https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys");
         }
     }
 }

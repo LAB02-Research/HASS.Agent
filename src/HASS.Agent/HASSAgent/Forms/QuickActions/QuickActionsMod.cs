@@ -155,7 +155,7 @@ namespace HASSAgent.Forms.QuickActions
             var entity = CbEntity.Text;
             if (string.IsNullOrEmpty(entity))
             {
-                MessageBox.Show("Select an entity first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show("Select an entity first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = CbEntity;
                 return;
             }
@@ -164,7 +164,7 @@ namespace HASSAgent.Forms.QuickActions
             var parsed = Enum.TryParse<HassDomain>(CbDomain.SelectedValue.ToString(), out var domain);
             if (!parsed)
             {
-                MessageBox.Show("Unknown domain, please select a valid one.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show("Unknown domain, please select a valid one.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = CbDomain;
                 return;
             }
@@ -173,7 +173,7 @@ namespace HASSAgent.Forms.QuickActions
             parsed = Enum.TryParse<HassAction>(CbAction.SelectedValue.ToString(), out var action);
             if (!parsed)
             {
-                MessageBox.Show("Unknown action, please select a valid one.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show("Unknown action, please select a valid one.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = CbAction;
                 return;
             }

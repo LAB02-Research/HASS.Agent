@@ -161,6 +161,9 @@ namespace HASSAgent.Settings
                 case SensorType.LoggedUsersSensor:
                     abstractSensor = new LoggedUsersSensor(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
                     break;
+                case SensorType.LoggedUserSensor:
+                    abstractSensor = new LoggedUserSensor(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    break;
                 default:
                     Log.Error("[SETTINGS_SENSORS] [{name}] Unknown configured single-value sensor type: {type}", sensor.Name, sensor.Type.ToString());
                     break;
