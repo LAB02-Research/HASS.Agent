@@ -27,9 +27,9 @@ However, like most developers, I run on caffeïne - so a cup of coffee is always
 ### Contents
 
  * [Why?](#why)
- * [What it's not](#what-its-not)
  * [Help and Documentation](#help-and-documentation)
  * [Functionality](#functionality)
+ * [What it's not](#what-its-not)
  * [Screenshots](#screenshots)
  * [Installation](#installation)
  * [Configuration](#configuration)
@@ -47,16 +47,6 @@ The main reason I built this is that I wanted to receive notifications, includin
 
 That's also the premise of this project; it's built to solve problems I encountered (or perhaps I should use the word "*nuisances*"), so it may not work for you. 
 If that's the case, feel free to open a ticket so we can discuss! 
-
-----
-
-### What it's not
-
-A Linux/macOS client! This question comes up a lot, understandably. However it's currently focussed on being a Windows-based client. Even though .NET 6 allows for development on Linux/macOS, it's not as easy as pressing a button. The interface would have to be redesigned from the ground up, sensors would have multiple codebases for each OS, testing would take way more time.
-
-And since this is a free-time project, next to a full-time job, that's just not realistic. I'd love to tinker with it in the future, perhaps as a testcase for Microsoft's new MAUI platform, but that won't happen anytime soon.
-
-Until then, you can try this [companion app](https://www.home-assistant.io/blog/2020/09/18/mac-companion/) for macOS, or sleevezipper's [HASS Workstation Service](https://github.com/sleevezipper/hass-workstation-service) which also runs on Linux.
 
 ----
 
@@ -94,6 +84,16 @@ Summary of the core functions:
 * All entities are dynamically acquired from your Home Assistant instance.
 
 * Commands and sensors are automatically added to your Home Assistant instance.
+
+----
+
+### What it's not
+
+A Linux/macOS client! This question comes up a lot, understandably. However it's currently focussed on being a Windows-based client. Even though .NET 6 allows for Linux/macOS development, it's not as easy as pressing a button. The interface would have to be redesigned from the ground up, sensors and commands would need multiple codebases for each OS, testing would take way more time, every OS handles notifications differently, etc.
+
+Since this is a spare-time project, next to a full-time job, that's just not realistic. I'd love to tinker with it in the future, perhaps as a testcase for Microsoft's new MAUI platform, but it won't happen anytime soon.
+
+Until then, you can try this [companion app](https://www.home-assistant.io/blog/2020/09/18/mac-companion/) for macOS, or sleevezipper's [HASS Workstation Service](https://github.com/sleevezipper/hass-workstation-service) which runs on Linux. Note: I haven't tested either.
 
 ----
 
