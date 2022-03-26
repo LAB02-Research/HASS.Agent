@@ -89,11 +89,13 @@ Summary of the core functions:
 
 ### What it's not
 
-A Linux/macOS client! This question comes up a lot, understandably. However it's currently focussed on being a Windows-based client. Even though .NET 6 allows for Linux/macOS development, it's not as easy as pressing a button. The interface would have to be redesigned from the ground up, sensors and commands would need multiple codebases for each OS, testing would take way more time, every OS handles notifications differently, etc.
+A Linux/macOS client! 
 
-Since this is a spare-time project, next to a full-time job, that's just not realistic. I'd love to tinker with it in the future, perhaps as a testcase for Microsoft's new MAUI platform, but it won't happen anytime soon.
+This question comes up a lot, understandably. However it's currently focussed on being a Windows-based client. Even though .NET 6 allows for Linux/macOS development, it's not as easy as pressing a button. The interface would have to be redesigned from the ground up, sensors and commands would need multiple codebases for each OS, testing would take way more time, every OS handles notifications differently, etc.
 
-Until then, you can try this [companion app](https://www.home-assistant.io/blog/2020/09/18/mac-companion/) for macOS, or sleevezipper's [HASS Workstation Service](https://github.com/sleevezipper/hass-workstation-service) which runs on Linux. Note: I haven't tested either.
+Since this is a spare-time project, next to a full-time job, that's just not realistic. I'd love to tinker with it in the future, perhaps as a testcase for Microsoft's new MAUI platform, but it won't happen anytime soon. By focussing on Windows, I can make sure it really excels there instead of being meh everywhere.
+
+You can try this [companion app](https://www.home-assistant.io/blog/2020/09/18/mac-companion/) for macOS, or sleevezipper's [HASS Workstation Service](https://github.com/sleevezipper/hass-workstation-service) which runs on Linux. Note: I haven't tested either.
 
 ----
 
