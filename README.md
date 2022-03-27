@@ -241,7 +241,7 @@ Manage your quick action buttons. Use the `add new` button to create your first 
 
 #### 3. Satellite Service
 
-From here, you can configure there service's inner workings (MQTT, commands, sensors ..). 
+From here, you can configure the service's inner workings (MQTT, commands, sensors ..). 
 
 Use the `copy from hass.agent` button on the `MQTT` tab to easily copy your MQTT configuration (the service will use its own client ID). Remember to click `send and activate config` afterwards!
 
