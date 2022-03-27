@@ -8,7 +8,7 @@
 [![Discord](https://img.shields.io/badge/dynamic/json?color=blue&label=Discord&logo=discord&logoColor=white&query=presence_count&suffix=%20Online&url=https://discordapp.com/api/guilds/932957721622360074/widget.json)](https://discord.gg/nMvqzwrVBU)
 
 <a href="https://github.com/LAB02-Research/HASS.Agent/">
-    <img src="https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/src/HASS.Agent/HASSAgent/Resources/logo_128.png" alt="HASS.Agent logo" title="HASS.Agent" align="right" height="128" /></a>
+    <img src="https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/src/HASSAgent/Resources/logo_128.png" alt="HASS.Agent logo" title="HASS.Agent" align="right" height="128" /></a>
 
 # HASS.Agent
 
