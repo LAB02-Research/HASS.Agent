@@ -1,0 +1,144 @@
+syntax = "proto3";
+
+service HassAgentSatelliteRpcCalls {
+  rpc Ping (PingRequest) returns (PingResponse);
+  rpc ShutdownService (ShutdownServiceRequest) returns (AckResponse);
+  rpc ClearEntities (ClearEntitiesRequest) returns (AckResponse);
+  rpc SetDeviceName (SetDeviceNameRequest) returns (AckResponse);  
+  rpc SetServiceSettings (SetServiceSettingsRequest) returns (AckResponse);
+  rpc SetServiceMqttSettings (SetServiceMqttSettingsRequest) returns (AckResponse);
+  rpc SetConfiguredCommands (SetConfiguredCommandsRequest) returns (AckResponse);
+  rpc SetConfiguredSensors (SetConfiguredSensorsRequest) returns (AckResponse);
+  rpc GetDeviceName (GetDeviceNameRequest) returns (GetDeviceNameResponse);  
+  rpc GetServiceSettings (GetServiceSettingsRequest) returns (GetServiceSettingsResponse);
+  rpc GetServiceMqttSettings (GetServiceMqttSettingsRequest) returns (GetServiceMqttSettingsResponse);
+  rpc GetConfiguredCommands (GetConfiguredCommandsRequest) returns (GetConfiguredCommandsResponse);
+  rpc GetConfiguredSensors (GetConfiguredSensorsRequest) returns (GetConfiguredSensorsResponse);
+  rpc GetMqttStatus (GetMqttStatusRequest) returns (GetMqttStatusResponse);
+}
+
+message PingRequest {}
+
+message PingResponse {
+	bool ok = 1;
+	string version = 2;
+	string error = 3;
+}
+
+message AckResponse {
+  bool ok = 1;
+  string error = 2;
+}
+
+message SetDeviceNameRequest {
+  string auth = 1;
+  string devicename = 2;
+}
+
+message GetDeviceNameRequest {  string auth = 1;  }
+message GetDeviceNameResponse {
+  bool ok = 1;
+  string error = 2;
+  string deviceName = 3;
+}
+
+message GetMqttStatusRequest {  string auth = 1;  }
+message GetMqttStatusResponse {
+	bool ok = 1;
+	string error = 2;
+	int32 mqttStatus = 3;
+}
+
+message ShutdownServiceRequest {  string auth = 1;  }
+
+message ClearEntitiesRequest {  string auth = 1;  }
+
+message SetServiceSettingsRequest {
+  string auth = 1;
+  RpcServiceSettings serviceSettings = 2;
+}
+
+message GetServiceSettingsRequest {  string auth = 1;  }
+message GetServiceSettingsResponse {
+  bool ok = 1;
+  string error = 2;
+  RpcServiceSettings serviceSettings = 3;
+}
+
+message SetServiceMqttSettingsRequest {
+  string auth = 1;
+  RpcServiceMqttSettings serviceMqttSettings = 2;
+}
+
+message GetServiceMqttSettingsRequest {  string auth = 1;  }
+message GetServiceMqttSettingsResponse {
+  bool ok = 1;
+  string error = 2;
+  RpcServiceMqttSettings serviceMqttSettings = 3;
+}
+
+message SetConfiguredCommandsRequest {
+  string auth = 1;
+  repeated RpcConfiguredServerCommand configuredServerCommands = 2;
+}
+
+message GetConfiguredCommandsRequest {  string auth = 1;  }
+message GetConfiguredCommandsResponse {
+  bool ok = 1;
+  string error = 2;
+  repeated RpcConfiguredServerCommand configuredServerCommands = 3;
+}
+
+message SetConfiguredSensorsRequest {
+  string auth = 1;
+  repeated RpcConfiguredServerSensor configuredServerSensors = 2;
+}
+
+message GetConfiguredSensorsRequest {  string auth = 1;  }
+message GetConfiguredSensorsResponse {
+  bool ok = 1;
+  string error = 2;
+  repeated RpcConfiguredServerSensor configuredServerSensors = 3;
+}
+
+message RpcServiceSettings {
+	string authId = 1;
+	string customExecutorName = 2;
+	string customExecutorBinary = 3;
+	int32 disconnectedGracePeriodSeconds = 4;
+}
+
+message RpcServiceMqttSettings {
+  string mqttAddress = 1;
+  int32 mqttPort = 2;
+  bool mqttUseTls = 3;
+  bool mqttAllowUntrustedCertificates = 4;
+  string mqttUsername = 5;
+  string mqttPassword = 6;
+  string mqttDiscoveryPrefix = 7;
+  bool mqttUseRetainFlag = 8;
+  string mqttRootCertificate = 9;
+  string mqttClientCertificate = 10;
+  string mqttClientId = 11;
+}
+
+message RpcConfiguredServerSensor {
+  int32 type = 1;
+  string id = 2;
+  int32 updateInterval = 3;
+  string query = 4;
+  string scope = 5;
+  string windowName = 6;
+  string category = 7;
+  string counter = 8;
+  string instance = 9;
+  string name = 10;
+}
+
+message RpcConfiguredServerCommand {
+  int32 type = 1;
+  string id = 2;
+  string command = 3;
+  bool runAsLowIntegrity = 4;
+  string name = 5;
+}
