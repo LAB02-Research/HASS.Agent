@@ -297,11 +297,10 @@ List of things I want to add somewhere down the road (basically a personal to-do
  * **Quick Actions**: ability to change button size (small/medium/large)
  * **Quick Actions**: ability to define mdi icons, and/or fetch the entity-specified icon from Home Assistant
  * **Quick Actions**: add pages as tabs instead of one form, i.e. one tab with 'lights', one tab with 'switches'
- * **Commands**: command to open URL on default browser
  * **General**: a built-in way to show a Home Assistant dashboard
  * **General**: internal mDNS client/server to drop the need for IPs
 
-If you have any other wishes/ideas/suggestions, please [create a ticket](https://github.com/LAB02-Research/HASS.Agent/issues) or [discuss on Discord](https://discord.gg/nMvqzwrVBU).
+More community provided ideas can be found in the [issue list](https://github.com/LAB02-Research/HASS.Agent/issues). If your idea hasn't been mentioned yet, please [create a ticket](https://github.com/LAB02-Research/HASS.Agent/issues) or [discuss on Discord](https://discord.gg/nMvqzwrVBU).
 
 ----
 
