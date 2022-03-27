@@ -1,6 +1,6 @@
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/LAB02-Research/HASS.Agent)](https://github.com/LAB02-Research/HASS.Agent/releases/)
-[![license](https://img.shields.io/badge/License-MIT-blue)](#license)
+[![license](https://img.shields.io/badge/license-MIT-blue)](#license)
 [![OS - Windows](https://img.shields.io/badge/OS-Windows-blue?logo=windows&logoColor=white)](https://www.microsoft.com/ "Go to Microsoft homepage")
 [![dotnet](https://img.shields.io/badge/.NET-6.0-blue)](https://img.shields.io/badge/.NET-6.0-blue)
 ![GitHub all releases](https://img.shields.io/github/downloads/LAB02-Research/HASS.Agent/total?color=blue)
