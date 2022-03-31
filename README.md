@@ -273,6 +273,10 @@ Example configuration of a shutdown command in Home Assistant, used in combinati
       entity_id: switch.test_w10_x64_01_cmd_shutdown
 ```
 
+Some commands have support for **actions**. You can use automations to send extra variables along with the command, for instance the exact level to which the volume has to be set, or an URL to open.
+
+There's a wiki page dedicated to these: [Command Actions Usage & Examples](https://github.com/LAB02-Research/HASS.Agent/wiki/Command-Actions-Usage-&-Examples).
+
 ----
 
 ### Updating
