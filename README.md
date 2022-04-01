@@ -298,11 +298,11 @@ The best way to help out with developing is to test as much as you can, and repo
 
 Same goes for sharing ideas for new (or improved) functions! If you want, you can [join on Discord](https://discord.gg/nMvqzwrVBU) to discuss your ideas.
 
-Another great way is to help translating HASS.Agent. It's easy thanks to POEditor - no coding knowledge required. Join on our localization project: 
+Another great way is to help translating HASS.Agent. It's easy thanks to POEditor - no coding knowledge required. For more info, check out the translating wiki page:
 
-[POEditor Project](https://poeditor.com/join/project/R7HIVG0wie)
+[Translating](https://github.com/LAB02-Research/HASS.Agent/wiki/Translating)
 
-You can add to an existing language, or suggest a new one. 
+You can add to an existing language, or suggest a new one.
 
 Thanks to [POEditor](https://poeditor.com) for providing a free opensource license!
 
