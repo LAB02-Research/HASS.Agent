@@ -36,6 +36,7 @@ However, like most developers, I run on caffeïne - so a cup of coffee is always
  * [Configuration](#configuration)
  * [Usage](#usage)
  * [Updating](#updating)
+ * [Helping Out](#helping-out)
  * [Wishlist](#wishlist)
  * [Usage Summary](#usage-summary)
  * [Credits and Licensing](#credits-and-licensing)
@@ -289,6 +290,20 @@ If you're using the installer, it'll launch HASS.Agent for you when it's done. B
 
 ----
 
+### Helping Out
+
+The best way to help out with developing is to test as much as you can, and report any weird or failing behavior by opening a ticket. Same goes for sharing ideas for new (or improved) functions. 
+
+Another great way is to help translating HASS.Agent into your native language (or any language you speak fluently). There's a projectpage on POEditor that you can join on: 
+
+[POEditor Project](https://poeditor.com/join/project/R7HIVG0wie)
+
+You can add to an existing language, or suggest a new one. 
+
+Thanks to [POEditor](https://poeditor.com) for providing a free opensource license!
+
+----
+
 ### Wishlist
 
 List of things I want to add somewhere down the road (basically a personal to-do notepad):
@@ -329,6 +344,8 @@ Stuck? [Check the wiki](https://github.com/LAB02-Research/HASS.Agent/wiki), [cre
 First: thanks to the entire team that's developing [Home Assistant](https://www.home-assistant.io) - such an amazing platform!
 
 Second: I learned a lot from sleevezipper's [HASS Workstation Service](https://github.com/sleevezipper/hass-workstation-service). Thank you for sharing your hard work!
+
+Thanks to [POEditor](https://poeditor.com) for providing a free opensource license for their excellent translation platform!
 
 And a big thank you to all other packages:
 
