@@ -1,6 +1,7 @@
 ﻿using HASS.Agent.Functions;
 using HASS.Agent.Notifications;
 using HASS.Agent.Properties;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Settings;
 using Serilog;
 using Syncfusion.Windows.Forms;
@@ -23,7 +24,7 @@ namespace HASS.Agent.Forms.ChildApplications
         private async void ProcessPostUpdate()
         {
             // set busy indicator
-            PbStep1PortBinding.Image = Resources.small_loader_32;
+            PbStep1PortBinding.Image = Properties.Resources.small_loader_32;
 
             // give the ui time to load
             await Task.Delay(TimeSpan.FromSeconds(2));
@@ -33,15 +34,15 @@ namespace HASS.Agent.Forms.ChildApplications
 
             // execute port reservation
             var portDone = await ProcessPortReservationAsync();
-            PbStep1PortBinding.Image = portDone ? Resources.done_32 : Resources.failed_32;
+            PbStep1PortBinding.Image = portDone ? Properties.Resources.done_32 : Properties.Resources.failed_32;
 
             // execute firewall rule creation
             var firewallDone = await ProcessFirewallRuleAsync();
-            PbStep2Firewall.Image = firewallDone ? Resources.done_32 : Resources.failed_32;
+            PbStep2Firewall.Image = firewallDone ? Properties.Resources.done_32 : Properties.Resources.failed_32;
 
             // notify the user if something went wrong
-            if (!portDone || !firewallDone) MessageBoxAdv.Show("Not all steps completed succesfully. Please consult the logs for more information.",
-                    "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!portDone || !firewallDone) MessageBoxAdv.Show(Languages.PortReservation_ProcessPostUpdate_MessageBox1,
+                    Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
                 // wait a bit to show the 'completed' check
@@ -64,7 +65,7 @@ namespace HASS.Agent.Forms.ChildApplications
             try
             {
                 // set busy indicator
-                PbStep1PortBinding.Image = Resources.small_loader_32;
+                PbStep1PortBinding.Image = Properties.Resources.small_loader_32;
 
                 // is the notifier enabled?
                 if (!Variables.AppSettings.NotificationsEnabled) return true;
@@ -93,7 +94,7 @@ namespace HASS.Agent.Forms.ChildApplications
             try
             {
                 // set busy indicator
-                PbStep2Firewall.Image = Resources.small_loader_32;
+                PbStep2Firewall.Image = Properties.Resources.small_loader_32;
 
                 // remove any existing rules (ignore result)
                 await FirewallManager.RemoveRule();

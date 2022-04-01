@@ -3,12 +3,13 @@ using HASS.Agent.Commands;
 using HASS.Agent.Controls.Configuration;
 using HASS.Agent.Functions;
 using HASS.Agent.Notifications;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Sensors;
 using HASS.Agent.Settings;
 using HASS.Agent.Shared;
 using WK.Libraries.HotkeyListenerNS;
 using Task = System.Threading.Tasks.Task;
-using SatelliteService = HASS.Agent.Controls.Configuration.Service;
+using SatelliteService = HASS.Agent.Controls.Configuration.ConfigService;
 
 namespace HASS.Agent.Forms
 {
@@ -20,16 +21,16 @@ namespace HASS.Agent.Forms
         private readonly string _previousDeviceName = Variables.AppSettings.DeviceName;
         private readonly int _previousNotificationPort = Variables.AppSettings.NotifierApiPort;
 
-        private readonly General _general = new();
-        private readonly HomeAssistantApi _homeAssistantApi = new();
-        private readonly Controls.Configuration.Notifications _notifications = new();
-        private readonly Controls.Configuration.MQTT _mqtt = new();
-        private readonly Startup _startup = new();
-        private readonly HotKey _hotKey = new();
-        private readonly Updates _updates = new();
-        private readonly LocalStorage _localStorage = new();
-        private readonly Logging _logging = new();
-        private readonly ExternalTools _externalTools = new();
+        private readonly ConfigGeneral _general = new();
+        private readonly ConfigHomeAssistantApi _homeAssistantApi = new();
+        private readonly ConfigNotifications _notifications = new();
+        private readonly ConfigMqtt _mqtt = new();
+        private readonly ConfigStartup _startup = new();
+        private readonly ConfigHotKey _hotKey = new();
+        private readonly ConfigUpdates _updates = new();
+        private readonly ConfigLocalStorage _localStorage = new();
+        private readonly ConfigLogging _logging = new();
+        private readonly ConfigExternalTools _externalTools = new();
         private readonly SatelliteService _service = new();
 
         private bool _initializing = true;
@@ -130,8 +131,7 @@ namespace HASS.Agent.Forms
             // unpublish all entities if the device's name is changed
             if (_general.TbDeviceName.Text != _previousDeviceName)
             {
-                MessageBoxAdv.Show("You've changed your device's name.\r\n\r\nAll your sensors and commands will now be unpublished, and HASS.Agent\r\nwill restart afterwards to republish them.\r\n\r\nThey'll keep their current names, to avoid breaking automations or scripts.",
-                    "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBoxAdv.Show(Languages.Configuration_ProcessChanges_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // make sure the managers stop publishing
                 SensorsManager.Stop();
@@ -159,8 +159,7 @@ namespace HASS.Agent.Forms
             // reserve the new notifier's port if it's changed
             if (Variables.AppSettings.NotifierApiPort != _previousNotificationPort)
             {
-                MessageBoxAdv.Show("You've changed the notification API's port. This new port needs to be reserved.\r\n\r\nYou'll get an UAC request to do so, please approve.",
-                    "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBoxAdv.Show(Languages.Configuration_ProcessChanges_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // try to reserve elevated
                 if (!NotifierManager.ExecuteElevatedPortReservation())
@@ -169,14 +168,12 @@ namespace HASS.Agent.Forms
                     Clipboard.SetText($"http add urlacl url=http://+:{Variables.AppSettings.NotifierApiPort}/ user={Environment.UserDomainName}\\{Environment.UserName}");
 
                     // notify the user
-                    MessageBoxAdv.Show("Something went wrong!\r\n\r\nPlease manually execute the required command. It has been copied onto your clipboard, " +
-                                       "you just need to paste it into an elevated command prompt.\r\n\r\nRemember to change your firewall rule's port as well.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxAdv.Show(Languages.Configuration_ProcessChanges_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     // notify the user
-                    MessageBoxAdv.Show("The port has succesfully been reserved!\r\n\r\nHASS.Agent will now restart to activate the new configuration.",
-                        "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxAdv.Show(Languages.Configuration_ProcessChanges_MessageBox4, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // we need to restart, so go ahead, otherwise it's starting to look like popup-spam ..
                     forceRestart = true;
@@ -187,17 +184,17 @@ namespace HASS.Agent.Forms
             {
                 // prepare the restart without asking
                 var restartPrepared = HelperFunctions.Restart();
-                if (!restartPrepared) MessageBoxAdv.Show("Something went wrong while preparing to restart.\r\nPlease restart manually.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (!restartPrepared) MessageBoxAdv.Show(Languages.Configuration_MessageBox_RestartManually, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 // ask the user if they want to restart
-                var question = MessageBoxAdv.Show("Your configuration has been saved. Most changes require HASS.Agent to restart before they take effect.\r\n\r\nDo you want to restart now?", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var question = MessageBoxAdv.Show(Languages.Configuration_ProcessChanges_MessageBox5, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (question == DialogResult.Yes)
                 {
                     // prepare the restart
                     var restartPrepared = HelperFunctions.Restart();
-                    if (!restartPrepared) MessageBoxAdv.Show("Something went wrong while preparing to restart.\r\nPlease restart manually.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (!restartPrepared) MessageBoxAdv.Show(Languages.Configuration_MessageBox_RestartManually, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -220,6 +217,7 @@ namespace HASS.Agent.Forms
             // notifications
             _notifications.CbAcceptNotifications.CheckState = Variables.AppSettings.NotificationsEnabled ? CheckState.Checked : CheckState.Unchecked;
             _notifications.NumNotificationApiPort.Value = Variables.AppSettings.NotifierApiPort;
+            _notifications.CbNotificationsIgnoreImageCertErrors.CheckState = Variables.AppSettings.NotificationsIgnoreImageCertificateErrors ? CheckState.Checked : CheckState.Unchecked;
 
             // hass settings
             _homeAssistantApi.TbHassIp.Text = Variables.AppSettings.HassUri;
@@ -285,6 +283,7 @@ namespace HASS.Agent.Forms
             // notifications
             Variables.AppSettings.NotificationsEnabled = _notifications.CbAcceptNotifications.CheckState == CheckState.Checked;
             Variables.AppSettings.NotifierApiPort = (int)_notifications.NumNotificationApiPort.Value;
+            Variables.AppSettings.NotificationsIgnoreImageCertificateErrors = _notifications.CbNotificationsIgnoreImageCertErrors.CheckState == CheckState.Checked;
 
             // hass settings
             Variables.AppSettings.HassUri = _homeAssistantApi.TbHassIp.Text;

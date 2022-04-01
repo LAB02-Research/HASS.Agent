@@ -1,5 +1,6 @@
 ﻿
 using HASS.Agent.Forms.Service;
+using HASS.Agent.Resources.Localization;
 
 namespace HASS.Agent.Forms.Sensors
 {
@@ -44,7 +45,7 @@ namespace HASS.Agent.Forms.Sensors
             this.ClmRefresh = new System.Windows.Forms.ColumnHeader("refresh_16_header");
             this.ClmEmpty = new System.Windows.Forms.ColumnHeader();
             this.ImgLv = new System.Windows.Forms.ImageList(this.components);
-            this.label8 = new System.Windows.Forms.Label();
+            this.LblRefresh = new System.Windows.Forms.Label();
             this.PbRefresh = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PbRefresh)).BeginInit();
             this.SuspendLayout();
@@ -67,7 +68,7 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnRemove.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnRemove.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnRemove.TabIndex = 15;
-            this.BtnRemove.Text = "remove";
+            this.BtnRemove.Text = Languages.SensorsConfig_BtnRemove;
             this.BtnRemove.UseVisualStyleBackColor = false;
             this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
@@ -89,7 +90,7 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnModify.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnModify.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnModify.TabIndex = 14;
-            this.BtnModify.Text = "modify";
+            this.BtnModify.Text = Languages.SensorsConfig_BtnModify;
             this.BtnModify.UseVisualStyleBackColor = false;
             this.BtnModify.Click += new System.EventHandler(this.BtnModify_Click);
             // 
@@ -111,7 +112,7 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnAdd.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnAdd.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnAdd.TabIndex = 13;
-            this.BtnAdd.Text = "add new";
+            this.BtnAdd.Text = Languages.SensorsConfig_BtnAdd;
             this.BtnAdd.UseVisualStyleBackColor = false;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
@@ -134,7 +135,7 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnStore.TabIndex = 11;
-            this.BtnStore.Text = "store and activate sensors";
+            this.BtnStore.Text = Languages.SensorsConfig_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
@@ -173,12 +174,12 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // ClmName
             // 
-            this.ClmName.Text = "name";
+            this.ClmName.Text = Languages.SensorsConfig_ClmName;
             this.ClmName.Width = 300;
             // 
             // ClmType
             // 
-            this.ClmType.Text = "type";
+            this.ClmType.Text = Languages.SensorsConfig_ClmType;
             this.ClmType.Width = 250;
             // 
             // ClmRefresh
@@ -197,16 +198,16 @@ namespace HASS.Agent.Forms.Sensors
             this.ImgLv.TransparentColor = System.Drawing.Color.Transparent;
             this.ImgLv.Images.SetKeyName(0, "refresh_16_header");
             // 
-            // label8
+            // LblRefresh
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(585, 485);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 15);
-            this.label8.TabIndex = 41;
-            this.label8.Text = "refresh";
+            this.LblRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblRefresh.AutoSize = true;
+            this.LblRefresh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblRefresh.Location = new System.Drawing.Point(585, 485);
+            this.LblRefresh.Name = "LblRefresh";
+            this.LblRefresh.Size = new System.Drawing.Size(43, 15);
+            this.LblRefresh.TabIndex = 41;
+            this.LblRefresh.Text = Languages.SensorsConfig_LblRefresh;
             // 
             // PbRefresh
             // 
@@ -228,7 +229,7 @@ namespace HASS.Agent.Forms.Sensors
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(645, 604);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.LblRefresh);
             this.Controls.Add(this.PbRefresh);
             this.Controls.Add(this.LvSensors);
             this.Controls.Add(this.BtnRemove);
@@ -245,7 +246,7 @@ namespace HASS.Agent.Forms.Sensors
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sensors Config";
+            this.Text = Languages.SensorsConfig_Title;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SensorsConfig_FormClosing);
             this.Load += new System.EventHandler(this.SensorsConfig_Load);
             this.ResizeBegin += new System.EventHandler(this.SensorsConfig_ResizeBegin);
@@ -271,7 +272,7 @@ namespace HASS.Agent.Forms.Sensors
         private ColumnHeader ClmRefresh;
         private ColumnHeader ClmEmpty;
         private ImageList ImgLv;
-        private Label label8;
+        private Label LblRefresh;
         private PictureBox PbRefresh;
     }
 }

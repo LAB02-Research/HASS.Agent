@@ -3,6 +3,7 @@ using System.Text;
 using HASS.Agent.Commands;
 using HASS.Agent.Functions;
 using HASS.Agent.Models.Internal;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Sensors;
 using HASS.Agent.Shared.Enums;
 using HASS.Agent.Shared.Extensions;
@@ -31,6 +32,8 @@ namespace HASS.Agent.Forms.Commands
             InitializeComponent();
 
             BindListViewTheme();
+
+            BindComboBoxTheme();
         }
 
         public CommandsMod(bool serviceMode = false, string serviceDeviceName = "")
@@ -43,6 +46,8 @@ namespace HASS.Agent.Forms.Commands
             InitializeComponent();
 
             BindListViewTheme();
+
+            BindComboBoxTheme();
         }
 
         private void BindListViewTheme()
@@ -52,18 +57,24 @@ namespace HASS.Agent.Forms.Commands
             LvCommands.DrawColumnHeader += ListViewTheme.DrawColumnHeader;
         }
 
+        private void BindComboBoxTheme() => CbEntityType.DrawItem += ComboBoxTheme.DrawItem;
+
         private void CommandsMod_Load(object sender, EventArgs e)
         {
             // catch all key presses
             KeyPreview = true;
+
+            // load enums
+            CbEntityType.DataSource = Enum.GetValues(typeof(CommandEntityType));
 
             // load commands
             LvCommands.BeginUpdate();
             foreach (var command in CommandsManager.CommandInfoCards.Select(x => x.Value))
             {
                 var lvCommand = new ListViewItem(command.Name);
-                lvCommand.SubItems.Add(command.AgentCompatible ? "√" : "");
-                lvCommand.SubItems.Add(command.SatelliteCompatible ? "√" : "");
+                lvCommand.SubItems.Add(command.AgentCompatible ? "√" : string.Empty);
+                lvCommand.SubItems.Add(command.SatelliteCompatible ? "√" : string.Empty);
+                lvCommand.SubItems.Add(command.ActionCompatible ? "√" : string.Empty);
                 LvCommands.Items.Add(lvCommand);
             }
             LvCommands.EndUpdate();
@@ -72,7 +83,8 @@ namespace HASS.Agent.Forms.Commands
             if (Command.Id == Guid.Empty)
             {
                 Command.Id = Guid.NewGuid();
-                Text = "New Command";
+                Text = Languages.CommandsMod_Title_NewCommand;
+                CbEntityType.Text = CommandEntityType.Switch.ToString();
 
                 // done
                 _loading = false;
@@ -81,7 +93,7 @@ namespace HASS.Agent.Forms.Commands
 
             // we're modding, load it
             LoadCommand();
-            Text = "Mod Command";
+            Text = Languages.CommandsMod_Title_ModCommand;
 
             // done
             _loading = false;
@@ -111,6 +123,12 @@ namespace HASS.Agent.Forms.Commands
             // set the name
             TbName.Text = Command.Name;
             if (!string.IsNullOrWhiteSpace(TbName.Text)) TbName.SelectionStart = TbName.Text.Length;
+
+            // set the entity type
+            CbEntityType.Text = Command.EntityType.ToString();
+
+            // action compatible?
+            LblMqttTopic.Visible = commandCard.ActionCompatible;
 
             // set optional settings
             switch (commandCard.CommandType)
@@ -160,7 +178,7 @@ namespace HASS.Agent.Forms.Commands
         {
             if (LvCommands.SelectedItems.Count == 0)
             {
-                MessageBoxAdv.Show("Select a commandtype first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -171,7 +189,16 @@ namespace HASS.Agent.Forms.Commands
 
             if (commandCard == null)
             {
-                MessageBoxAdv.Show("Select a valid commandtype first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // get and check entity type
+            var parsed = Enum.TryParse<CommandEntityType>(CbEntityType.SelectedValue.ToString(), out var entityType);
+            if (!parsed)
+            {
+                MessageBoxAdv.Show(Languages.CommandsMod_MessageBox_EntityType, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ActiveControl = CbEntityType;
                 return;
             }
 
@@ -179,7 +206,7 @@ namespace HASS.Agent.Forms.Commands
             var name = TbName.Text.Trim();
             if (string.IsNullOrEmpty(name))
             {
-                MessageBoxAdv.Show("Enter a name first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(Languages.CommandsMod_MessageBox_Name, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = TbName;
                 return;
             }
@@ -187,7 +214,7 @@ namespace HASS.Agent.Forms.Commands
             // name already used?
             if (!_serviceMode && Variables.Commands.Any(x => string.Equals(x.Name, name, StringComparison.InvariantCultureIgnoreCase) && x.Id != Command.Id.ToString()))
             {
-                var confirm = MessageBoxAdv.Show("There's already a command with that name. Are you sure you want to continue?", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var confirm = MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (confirm != DialogResult.Yes)
                 {
                     ActiveControl = TbName;
@@ -201,9 +228,12 @@ namespace HASS.Agent.Forms.Commands
                     var command = TbSetting.Text.Trim();
                     if (string.IsNullOrEmpty(command))
                     {
-                        MessageBoxAdv.Show("Enter a command first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        ActiveControl = TbSetting;
-                        return;
+                        var q = MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox4, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (q != DialogResult.Yes)
+                        {
+                            ActiveControl = TbSetting;
+                            return;
+                        }
                     }
                     Command.Command = command;
                     break;
@@ -212,9 +242,12 @@ namespace HASS.Agent.Forms.Commands
                     var script = TbSetting.Text.Trim();
                     if (string.IsNullOrEmpty(script))
                     {
-                        MessageBoxAdv.Show("Enter a command or script first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        ActiveControl = TbSetting;
-                        return;
+                        var q = MessageBoxAdv.Show(Languages.CommandsMod_MessageBox_Action, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (q != DialogResult.Yes)
+                        {
+                            ActiveControl = TbSetting;
+                            return;
+                        }
                     }
                     Command.Command = script;
                     break;
@@ -223,7 +256,7 @@ namespace HASS.Agent.Forms.Commands
                     var keycode = TbSetting.Text.Trim();
                     if (string.IsNullOrEmpty(keycode))
                     {
-                        MessageBoxAdv.Show("Enter a keycode first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox5, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting;
                         return;
                     }
@@ -234,7 +267,7 @@ namespace HASS.Agent.Forms.Commands
                     var keysParsed = HelperFunctions.ParseMultipleKeys(TbSetting.Text.Trim(), out var keys, out var errorMsg);
                     if (!keysParsed)
                     {
-                        MessageBoxAdv.Show($"Processing keys failed: {errorMsg}", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBoxAdv.Show(string.Format(Languages.CommandsMod_BtnStore_MessageBox6, errorMsg), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         ActiveControl = TbSetting;
                         return;
                     }
@@ -245,27 +278,37 @@ namespace HASS.Agent.Forms.Commands
                     var url = TbSetting.Text.Trim();
                     if (string.IsNullOrEmpty(url))
                     {
-                        MessageBoxAdv.Show("Enter a URL first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        ActiveControl = TbSetting;
-                        return;
+                        var q = MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox7, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (q != DialogResult.Yes)
+                        {
+                            ActiveControl = TbSetting;
+                            return;
+                        }
+
+                        Command.Command = string.Empty;
                     }
-
-                    var urlInfo = new UrlInfo
+                    else
                     {
-                        Url = url,
-                        Incognito = CbCommandSpecific.Checked
-                    };
+                        var urlInfo = new UrlInfo
+                        {
+                            Url = url,
+                            Incognito = CbCommandSpecific.Checked
+                        };
 
-                    Command.Command = JsonConvert.SerializeObject(urlInfo);
+                        Command.Command = JsonConvert.SerializeObject(urlInfo);
+                    }
                     break;
 
                 case CommandType.CustomExecutorCommand:
                     var executorCommand = TbSetting.Text.Trim();
                     if (string.IsNullOrEmpty(executorCommand))
                     {
-                        MessageBoxAdv.Show("Enter a command or script first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        ActiveControl = TbSetting;
-                        return;
+                        var q = MessageBoxAdv.Show(Languages.CommandsMod_MessageBox_Action, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (q != DialogResult.Yes)
+                        {
+                            ActiveControl = TbSetting;
+                            return;
+                        }
                     }
                     Command.Command = executorCommand;
                     break;
@@ -275,6 +318,7 @@ namespace HASS.Agent.Forms.Commands
 
             // set values
             Command.Type = commandCard.CommandType;
+            Command.EntityType = entityType;
             Command.Name = name;
 
             // done
@@ -308,8 +352,7 @@ namespace HASS.Agent.Forms.Commands
 
             // find the command card
             var commandName = LvCommands.SelectedItems[0].Text;
-            var commandCard = CommandsManager.CommandInfoCards.Where(card => card.Value.Name == commandName)
-                .Select(card => card.Value).FirstOrDefault();
+            var commandCard = CommandsManager.CommandInfoCards.Where(card => card.Value.Name == commandName).Select(card => card.Value).FirstOrDefault();
             if (commandCard == null) return false;
 
             // can the current client load this type?
@@ -329,7 +372,17 @@ namespace HASS.Agent.Forms.Commands
             if (_interfaceLockedWrongType) UnlockWrongClient();
 
             // set default values
-            if (setDefaultValues) TbName.Text = _serviceMode ? commandCard.CommandType.GetCommandName(_serviceDeviceName) : commandCard.CommandType.GetCommandName();
+            if (setDefaultValues)
+            {
+                // name
+                TbName.Text = _serviceMode ? commandCard.CommandType.GetCommandName(_serviceDeviceName) : commandCard.CommandType.GetCommandName();
+
+                // entity type
+                CbEntityType.Text = CommandEntityType.Switch.ToString();
+
+                // action compatible
+                LblMqttTopic.Visible = commandCard.ActionCompatible;
+            }
 
             TbSelectedType.Text = commandCard.CommandType.ToString();
             TbDescription.Text = CommandsManager.GetCommandDefaultInfo(commandCard.CommandType).Description;
@@ -375,7 +428,7 @@ namespace HASS.Agent.Forms.Commands
         {
             Invoke(new MethodInvoker(delegate
             {
-                LblSetting.Text = "command";
+                LblSetting.Text = Languages.CommandsMod_LblSetting_Command;
                 LblSetting.Visible = true;
 
                 TbSetting.Text = string.Empty;
@@ -399,7 +452,7 @@ namespace HASS.Agent.Forms.Commands
         {
             Invoke(new MethodInvoker(delegate
             {
-                LblSetting.Text = "command or script";
+                LblSetting.Text = Languages.CommandsMod_LblSetting_CommandScript;
                 LblSetting.Visible = true;
 
                 TbSetting.Text = string.Empty;
@@ -424,7 +477,7 @@ namespace HASS.Agent.Forms.Commands
         {
             Invoke(new MethodInvoker(delegate
             {
-                LblSetting.Text = "keycode";
+                LblSetting.Text = Languages.CommandsMod_LblSetting_KeyCode;
                 LblSetting.Visible = true;
 
                 TbSetting.Text = string.Empty;
@@ -449,7 +502,7 @@ namespace HASS.Agent.Forms.Commands
         {
             Invoke(new MethodInvoker(delegate
             {
-                LblSetting.Text = "keycodes";
+                LblSetting.Text = Languages.CommandsMod_LblSetting_KeyCodes;
                 LblSetting.Visible = true;
 
                 TbSetting.Text = string.Empty;
@@ -474,7 +527,7 @@ namespace HASS.Agent.Forms.Commands
         {
             Invoke(new MethodInvoker(delegate
             {
-                LblSetting.Text = "URL";
+                LblSetting.Text = Languages.CommandsMod_LblSetting_Url;
                 LblSetting.Visible = true;
 
                 TbSetting.Text = string.Empty;
@@ -485,11 +538,11 @@ namespace HASS.Agent.Forms.Commands
                 LblIntegrityInfo.Visible = false;
                 
                 CbCommandSpecific.CheckState = CheckState.Unchecked;
-                CbCommandSpecific.Text = "launch in incognito mode";
+                CbCommandSpecific.Text = Languages.CommandsMod_CbCommandSpecific_Incognito;
 
                 if (string.IsNullOrEmpty(Variables.AppSettings.BrowserBinary))
                 {
-                    LblInfo.Text = "browser: default\r\n\r\nplease configure a browser to enable incognito mode";
+                    LblInfo.Text = Languages.CommandsMod_LblInfo_Browser;
                     LblInfo.Visible = true;
 
                     CbCommandSpecific.CheckState = CheckState.Unchecked;
@@ -501,7 +554,7 @@ namespace HASS.Agent.Forms.Commands
                         ? Path.GetFileNameWithoutExtension(Variables.AppSettings.BrowserBinary)
                         : Variables.AppSettings.BrowserName;
 
-                    LblInfo.Text = $"browser: {browser}";
+                    LblInfo.Text = string.Format(Languages.CommandsMod_LblInfo_BrowserSpecific, browser);
                     LblInfo.Visible = true;
 
                     CbCommandSpecific.Visible = true;
@@ -516,7 +569,7 @@ namespace HASS.Agent.Forms.Commands
         {
             Invoke(new MethodInvoker(delegate
             {
-                LblSetting.Text = "command or script";
+                LblSetting.Text = Languages.CommandsMod_LblSetting_CommandScript;
                 LblSetting.Visible = true;
 
                 TbSetting.Text = string.Empty;
@@ -529,14 +582,14 @@ namespace HASS.Agent.Forms.Commands
                 CbCommandSpecific.CheckState = CheckState.Unchecked;
                 CbCommandSpecific.Visible = false;
 
-                if (string.IsNullOrEmpty(Variables.AppSettings.CustomExecutorBinary)) LblInfo.Text = "executor: none\r\n\r\nplease configure an executor or your command won't run";
+                if (string.IsNullOrEmpty(Variables.AppSettings.CustomExecutorBinary)) LblInfo.Text = Languages.CommandsMod_LblInfo_Executor;
                 else
                 {
                     var executor = string.IsNullOrEmpty(Variables.AppSettings.CustomExecutorName)
                         ? Path.GetFileNameWithoutExtension(Variables.AppSettings.CustomExecutorBinary)
                         : Variables.AppSettings.CustomExecutorName;
 
-                    LblInfo.Text = $"executor: {executor}";
+                    LblInfo.Text = string.Format(Languages.CommandsMod_LblInfo_ExecutorSpecific, executor);
                 }
 
                 LblInfo.Visible = true;
@@ -597,15 +650,15 @@ namespace HASS.Agent.Forms.Commands
         private void LblIntegrityInfo_Click(object sender, EventArgs e)
         {
             var infoMsg = new StringBuilder();
-            infoMsg.AppendLine("Low integrity means your command will be executed with restricted privileges.");
-            infoMsg.AppendLine("");
-            infoMsg.AppendLine("That means it will only be able to save and modify files in certain locations,");
-            infoMsg.AppendLine("such as the '%USERPROFILE%\\AppData\\LocalLow' folder or");
-            infoMsg.AppendLine("the 'HKEY_CURRENT_USER\\Software\\AppDataLow' registry key.");
-            infoMsg.AppendLine("");
-            infoMsg.AppendLine("You should test your command to make sure it's not influenced by this.");
+            infoMsg.AppendLine(Languages.CommandsMod_LblIntegrityInfo_InfoMsg1);
+            infoMsg.AppendLine(string.Empty);
+            infoMsg.AppendLine(Languages.CommandsMod_LblIntegrityInfo_InfoMsg2);
+            infoMsg.AppendLine(Languages.CommandsMod_LblIntegrityInfo_InfoMsg3);
+            infoMsg.AppendLine(Languages.CommandsMod_LblIntegrityInfo_InfoMsg4);
+            infoMsg.AppendLine(string.Empty);
+            infoMsg.AppendLine(Languages.CommandsMod_LblIntegrityInfo_InfoMsg5);
 
-            MessageBoxAdv.Show(infoMsg.ToString(), "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBoxAdv.Show(infoMsg.ToString(), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void CommandsMod_KeyUp(object sender, KeyEventArgs e)
@@ -634,7 +687,7 @@ namespace HASS.Agent.Forms.Commands
             _interfaceLockedWrongType = true;
 
             var requiredClient = _serviceMode ? "hass.agent" : "service";
-            LblSpecificClient.Text = $"{requiredClient} only!";
+            LblSpecificClient.Text = string.Format(Languages.CommandsMod_SpecificClient, requiredClient);
 
             LblSpecificClient.Visible = true;
 
@@ -664,5 +717,50 @@ namespace HASS.Agent.Forms.Commands
             TbName.Enabled = true;
             BtnStore.Enabled = true;
         }
+
+        private void CbEntityType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // set focus to the name field
+            ActiveControl = TbName;
+            if (!string.IsNullOrWhiteSpace(TbName.Text)) TbName.SelectionStart = TbName.Text.Length;
+        }
+
+        private void LblMqttTopic_Click(object sender, EventArgs e)
+        {
+            var parsed = Enum.TryParse<CommandEntityType>(CbEntityType.SelectedValue.ToString(), out var entityType);
+            if (!parsed)
+            {
+                MessageBoxAdv.Show(Languages.CommandsMod_MessageBox_EntityType, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                ActiveControl = CbEntityType;
+                return;
+            }
+
+            var deviceConfig = Variables.MqttManager?.GetDeviceConfigModel();
+            if (deviceConfig == null)
+            {
+                MessageBoxAdv.Show(Languages.CommandsMod_LblMqttTopic_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            var name = TbName.Text.Trim();
+            if (string.IsNullOrEmpty(name))
+            {
+                MessageBoxAdv.Show(Languages.CommandsMod_MessageBox_Name, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                ActiveControl = TbName;
+                return;
+            }
+
+            // prepare the topic
+            var topic = $"{Variables.MqttManager.MqttDiscoveryPrefix()}/{entityType.GetEnumMemberValue()}/{deviceConfig.Name}/{name}/action";
+
+            // show the form
+            var form = new CommandMqttTopic(topic);
+            form.FormClosed += delegate { form.Dispose(); };
+            form.Show(this);
+        }
+
+        private void LblActionInfo_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent/wiki/Command-Actions-Usage-&-Examples");
+
+        private void PbActionInfo_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent/wiki/Command-Actions-Usage-&-Examples");
     }
 }

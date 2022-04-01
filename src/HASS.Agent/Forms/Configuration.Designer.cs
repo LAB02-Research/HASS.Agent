@@ -1,4 +1,6 @@
-﻿namespace HASS.Agent.Forms
+﻿using HASS.Agent.Resources.Localization;
+
+namespace HASS.Agent.Forms
 {
     partial class Configuration
     {
@@ -99,7 +101,7 @@
             this.TabGeneral.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabGeneral.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabGeneral.TabIndex = 9;
-            this.TabGeneral.Text = "General";
+            this.TabGeneral.Text = Languages.Configuration_TabGeneral;
             this.TabGeneral.ThemesEnabled = false;
             // 
             // TabExternalTools
@@ -115,7 +117,7 @@
             this.TabExternalTools.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabExternalTools.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabExternalTools.TabIndex = 10;
-            this.TabExternalTools.Text = "External Tools";
+            this.TabExternalTools.Text = Languages.Configuration_TabExternalTools;
             this.TabExternalTools.ThemesEnabled = false;
             // 
             // TabHassApi
@@ -131,7 +133,7 @@
             this.TabHassApi.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabHassApi.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabHassApi.TabIndex = 1;
-            this.TabHassApi.Text = "Home Assistant API";
+            this.TabHassApi.Text = Languages.Configuration_TabHassApi;
             this.TabHassApi.ThemesEnabled = false;
             // 
             // TabHotKey
@@ -147,7 +149,7 @@
             this.TabHotKey.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabHotKey.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabHotKey.TabIndex = 5;
-            this.TabHotKey.Text = "HotKey";
+            this.TabHotKey.Text = Languages.Configuration_TabHotKey;
             this.TabHotKey.ThemesEnabled = false;
             // 
             // TabLocalStorage
@@ -163,7 +165,7 @@
             this.TabLocalStorage.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabLocalStorage.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabLocalStorage.TabIndex = 8;
-            this.TabLocalStorage.Text = "Local Storage";
+            this.TabLocalStorage.Text = Languages.Configuration_TabLocalStorage;
             this.TabLocalStorage.ThemesEnabled = false;
             // 
             // TabLogging
@@ -179,7 +181,7 @@
             this.TabLogging.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabLogging.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabLogging.TabIndex = 7;
-            this.TabLogging.Text = "Logging";
+            this.TabLogging.Text = Languages.Configuration_TabLogging;
             this.TabLogging.ThemesEnabled = false;
             // 
             // TabMQTT
@@ -195,7 +197,7 @@
             this.TabMQTT.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabMQTT.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabMQTT.TabIndex = 3;
-            this.TabMQTT.Text = "MQTT";
+            this.TabMQTT.Text = Languages.Configuration_TabMQTT;
             this.TabMQTT.ThemesEnabled = false;
             // 
             // TabNotifications
@@ -211,7 +213,7 @@
             this.TabNotifications.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabNotifications.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabNotifications.TabIndex = 2;
-            this.TabNotifications.Text = "Notifications";
+            this.TabNotifications.Text = Languages.Configuration_TabNotifications;
             this.TabNotifications.ThemesEnabled = false;
             // 
             // TabService
@@ -226,7 +228,7 @@
             this.TabService.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabService.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabService.TabIndex = 11;
-            this.TabService.Text = "Satellite Service";
+            this.TabService.Text = Languages.Configuration_TabService;
             this.TabService.ThemesEnabled = false;
             // 
             // TabStartup
@@ -242,7 +244,7 @@
             this.TabStartup.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabStartup.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabStartup.TabIndex = 4;
-            this.TabStartup.Text = "Startup";
+            this.TabStartup.Text = Languages.Configuration_TabStartup;
             this.TabStartup.ThemesEnabled = false;
             // 
             // TabUpdates
@@ -258,7 +260,7 @@
             this.TabUpdates.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabUpdates.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabUpdates.TabIndex = 6;
-            this.TabUpdates.Text = "Updates";
+            this.TabUpdates.Text = Languages.Configuration_TabUpdates;
             this.TabUpdates.ThemesEnabled = false;
             // 
             // BtnAbout
@@ -278,7 +280,7 @@
             this.BtnAbout.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnAbout.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnAbout.TabIndex = 9;
-            this.BtnAbout.Text = "about";
+            this.BtnAbout.Text = Languages.Configuration_BtnAbout;
             this.BtnAbout.UseVisualStyleBackColor = false;
             this.BtnAbout.Click += new System.EventHandler(this.BtnAbout_Click);
             // 
@@ -299,7 +301,7 @@
             this.BtnHelp.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnHelp.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnHelp.TabIndex = 8;
-            this.BtnHelp.Text = "help && contact";
+            this.BtnHelp.Text = Languages.Configuration_BtnHelp;
             this.BtnHelp.UseVisualStyleBackColor = false;
             this.BtnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
             // 
@@ -321,7 +323,7 @@
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnStore.TabIndex = 10;
-            this.BtnStore.Text = "store configuration";
+            this.BtnStore.Text = Languages.Configuration_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
@@ -352,7 +354,7 @@
             this.BtnClose.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnClose.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnClose.TabIndex = 12;
-            this.BtnClose.Text = "close without saving";
+            this.BtnClose.Text = Languages.Configuration_BtnClose;
             this.BtnClose.UseVisualStyleBackColor = false;
             this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
@@ -380,7 +382,7 @@
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Configuration";
+            this.Text = Languages.Configuration_Title;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Configuration_FormClosing);
             this.Load += new System.EventHandler(this.Configuration_Load);
             this.ResizeEnd += new System.EventHandler(this.Configuration_ResizeEnd);

@@ -1,6 +1,7 @@
 ﻿using HASS.Agent.Enums;
 using HASS.Agent.HomeAssistant;
 using HASS.Agent.Models.Internal;
+using HASS.Agent.Resources.Localization;
 using Syncfusion.Windows.Forms;
 using WK.Libraries.HotkeyListenerNS;
 
@@ -43,7 +44,7 @@ namespace HASS.Agent.Forms.QuickActions
             if (QuickAction.Id == Guid.Empty)
             {
                 QuickAction.Id = Guid.NewGuid();
-                Text = "New Quick Action";
+                Text = Languages.QuickActionsMod_Title_New;
 
                 _hotkeySelector.Enable(TbHotkey);
                 TbHotkey.Text = _hotkeySelector.EmptyHotkeyText;
@@ -52,7 +53,7 @@ namespace HASS.Agent.Forms.QuickActions
             }
 
             LoadQuickAction();
-            Text = "Mod Quick Action";
+            Text = Languages.QuickActionsMod_Title_Mod;
         }
 
         /// <summary>
@@ -67,11 +68,11 @@ namespace HASS.Agent.Forms.QuickActions
                     return true;
 
                 case HassManagerStatus.ConfigMissing:
-                    MessageBoxAdv.Show("Unable to fetch your entities because of missing config, please enter the required values in the config screen.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBoxAdv.Show(Languages.QuickActionsMod_CheckHassManager_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
 
                 case HassManagerStatus.Failed:
-                    MessageBoxAdv.Show("There was an error trying to fetch your entities.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBoxAdv.Show(Languages.QuickActionsMod_MessageBox_Entities, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
 
                 case HassManagerStatus.Initialising:
@@ -86,7 +87,7 @@ namespace HASS.Agent.Forms.QuickActions
                         if (HassApiManager.ManagerStatus != HassManagerStatus.Failed) continue;
 
                         // manager failed, abort
-                        MessageBoxAdv.Show("There was an error trying to fetch your entities.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBoxAdv.Show(Languages.QuickActionsMod_MessageBox_Entities, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return false;
                     }
 
@@ -163,7 +164,7 @@ namespace HASS.Agent.Forms.QuickActions
             var entity = CbEntity.Text;
             if (string.IsNullOrEmpty(entity))
             {
-                MessageBoxAdv.Show("Select an entity first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(Languages.QuickActionsMod_BtnStore_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = CbEntity;
                 return;
             }
@@ -172,7 +173,7 @@ namespace HASS.Agent.Forms.QuickActions
             var parsed = Enum.TryParse<HassDomain>(CbDomain.SelectedValue.ToString(), out var domain);
             if (!parsed)
             {
-                MessageBoxAdv.Show("Unknown domain, please select a valid one.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(Languages.QuickActionsMod_BtnStore_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = CbDomain;
                 return;
             }
@@ -181,7 +182,7 @@ namespace HASS.Agent.Forms.QuickActions
             parsed = Enum.TryParse<HassAction>(CbAction.SelectedValue.ToString(), out var action);
             if (!parsed)
             {
-                MessageBoxAdv.Show("Unknown action, please select a valid one.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(Languages.QuickActionsMod_BtnStore_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = CbAction;
                 return;
             }

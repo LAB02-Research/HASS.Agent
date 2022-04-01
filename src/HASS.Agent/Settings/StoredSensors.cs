@@ -1,5 +1,6 @@
 ﻿using HASS.Agent.Enums;
 using HASS.Agent.Extensions;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Shared.Enums;
 using HASS.Agent.Shared.Extensions;
 using HASS.Agent.Shared.Models.Config;
@@ -77,7 +78,7 @@ namespace HASS.Agent.Settings
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS_SENSORS] Error loading entities: {err}", ex.Message);
-                Variables.MainForm?.ShowMessageBox($"Error loading sensors:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowMessageBox(string.Format(Languages.StoredSensors_Load_MessageBox1, ex.Message), true);
 
                 Variables.MainForm?.SetSensorsStatus(ComponentStatus.Failed);
                 return false;
@@ -411,7 +412,7 @@ namespace HASS.Agent.Settings
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS_SENSORS] Error storing entities: {err}", ex.Message);
-                Variables.MainForm?.ShowMessageBox($"Error storing sensors:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowMessageBox(string.Format(Languages.StoredSensors_Store_MessageBox1, ex.Message), true);
 
                 Variables.MainForm?.SetSensorsStatus(ComponentStatus.Failed);
                 return false;

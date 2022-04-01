@@ -1,4 +1,6 @@
 ﻿
+using HASS.Agent.Resources.Localization;
+
 namespace HASS.Agent.Forms
 {
     partial class About
@@ -32,8 +34,8 @@ namespace HASS.Agent.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
             this.BtnClose = new Syncfusion.WinForms.Controls.SfButton();
             this.LblHassAgentProject = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LblInfo1 = new System.Windows.Forms.Label();
+            this.LblInfo3 = new System.Windows.Forms.Label();
             this.LblCoreAudio = new System.Windows.Forms.Label();
             this.LblGrapevine = new System.Windows.Forms.Label();
             this.LblHADotNet = new System.Windows.Forms.Label();
@@ -44,20 +46,20 @@ namespace HASS.Agent.Forms
             this.LblNewtonsoftJson = new System.Windows.Forms.Label();
             this.LblMQTTnet = new System.Windows.Forms.Label();
             this.LblSyncfusion = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.LblInfo4 = new System.Windows.Forms.Label();
+            this.LblInfo5 = new System.Windows.Forms.Label();
+            this.LblInfo2 = new System.Windows.Forms.Label();
             this.LblLab02Research = new System.Windows.Forms.Label();
             this.LblVersion = new System.Windows.Forms.Label();
             this.LblOctokit = new System.Windows.Forms.Label();
             this.LblCliWrap = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.LblInfo6 = new System.Windows.Forms.Label();
             this.PbBMAC = new System.Windows.Forms.PictureBox();
             this.PbHassLogo = new System.Windows.Forms.PictureBox();
             this.PbHassAgentLogo = new System.Windows.Forms.PictureBox();
             this.LblCassia = new System.Windows.Forms.Label();
             this.LblGrpcDotNetNamedPipes = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.LblOr = new System.Windows.Forms.Label();
             this.PbGithubSponsor = new System.Windows.Forms.PictureBox();
             this.LblGrpc = new System.Windows.Forms.Label();
             this.LblByteSize = new System.Windows.Forms.Label();
@@ -85,7 +87,7 @@ namespace HASS.Agent.Forms
             this.BtnClose.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnClose.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnClose.TabIndex = 0;
-            this.BtnClose.Text = "whatever, close";
+            this.BtnClose.Text = Languages.About_BtnClose;
             this.BtnClose.UseVisualStyleBackColor = false;
             this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
@@ -101,26 +103,25 @@ namespace HASS.Agent.Forms
             this.LblHassAgentProject.Text = "HASS.Agent";
             this.LblHassAgentProject.Click += new System.EventHandler(this.LblHassAgentProject_Click);
             // 
-            // label2
+            // LblInfo1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(173, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(364, 19);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "A Windows-based client for the Home Assistant platform. \r\n";
+            this.LblInfo1.AutoSize = true;
+            this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblInfo1.Location = new System.Drawing.Point(173, 70);
+            this.LblInfo1.Name = "LblInfo1";
+            this.LblInfo1.Size = new System.Drawing.Size(364, 19);
+            this.LblInfo1.TabIndex = 3;
+            this.LblInfo1.Text = Languages.About_LblInfo1;
             // 
-            // label3
+            // LblInfo3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(176, 134);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(480, 38);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "This application is open source and completely free.  Please check the licenses\r\n" +
-    "of the used components for their individual licenses:";
+            this.LblInfo3.AutoSize = true;
+            this.LblInfo3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblInfo3.Location = new System.Drawing.Point(176, 134);
+            this.LblInfo3.Name = "LblInfo3";
+            this.LblInfo3.Size = new System.Drawing.Size(480, 38);
+            this.LblInfo3.TabIndex = 4;
+            this.LblInfo3.Text = Languages.About_LblInfo3;
             // 
             // LblCoreAudio
             // 
@@ -242,35 +243,35 @@ namespace HASS.Agent.Forms
             this.LblSyncfusion.Text = "Syncfusion";
             this.LblSyncfusion.Click += new System.EventHandler(this.LblSyncfusion_Click);
             // 
-            // label15
+            // LblInfo4
             // 
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(176, 377);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(489, 39);
-            this.label15.TabIndex = 16;
-            this.label15.Text = "A big \'thank you\' to the developers of these projects, who were kind enough to sh" +
-    "are their hard work with the rest of us mere mortals. ";
+            this.LblInfo4.AutoSize = true;
+            this.LblInfo4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblInfo4.Location = new System.Drawing.Point(176, 377);
+            this.LblInfo4.Name = "LblInfo4";
+            this.LblInfo4.Size = new System.Drawing.Size(476, 38);
+            this.LblInfo4.TabIndex = 16;
+            this.LblInfo4.Text = Languages.About_LblInfo4;
             // 
-            // label16
+            // LblInfo5
             // 
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(176, 431);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(489, 39);
-            this.label16.TabIndex = 18;
-            this.label16.Text = "And of course; thanks to Paulus Shoutsen, Franck Nijhof and the entire team of de" +
-    "vs that created and maintain Home Assistant :-)";
+            this.LblInfo5.AutoSize = true;
+            this.LblInfo5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblInfo5.Location = new System.Drawing.Point(176, 431);
+            this.LblInfo5.Name = "LblInfo5";
+            this.LblInfo5.Size = new System.Drawing.Size(476, 38);
+            this.LblInfo5.TabIndex = 18;
+            this.LblInfo5.Text = Languages.About_LblInfo5;
             // 
-            // label5
+            // LblInfo2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(173, 105);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(135, 19);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Created with love by";
+            this.LblInfo2.AutoSize = true;
+            this.LblInfo2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblInfo2.Location = new System.Drawing.Point(173, 105);
+            this.LblInfo2.Name = "LblInfo2";
+            this.LblInfo2.Size = new System.Drawing.Size(135, 19);
+            this.LblInfo2.TabIndex = 21;
+            this.LblInfo2.Text = Languages.About_LblInfo2;
             // 
             // LblLab02Research
             // 
@@ -318,15 +319,15 @@ namespace HASS.Agent.Forms
             this.LblCliWrap.Text = "CliWrap";
             this.LblCliWrap.Click += new System.EventHandler(this.LblCliWrap_Click);
             // 
-            // label6
+            // LblInfo6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(173, 506);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(460, 19);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "Like this tool? Support us (read: keep us awake) by buying a cup of coffee:";
+            this.LblInfo6.AutoSize = true;
+            this.LblInfo6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblInfo6.Location = new System.Drawing.Point(173, 506);
+            this.LblInfo6.Name = "LblInfo6";
+            this.LblInfo6.Size = new System.Drawing.Size(460, 19);
+            this.LblInfo6.TabIndex = 28;
+            this.LblInfo6.Text = Languages.About_LblInfo6;
             // 
             // PbBMAC
             // 
@@ -388,15 +389,15 @@ namespace HASS.Agent.Forms
             this.LblGrpcDotNetNamedPipes.Text = "GrpcDotNetNamedPipes";
             this.LblGrpcDotNetNamedPipes.Click += new System.EventHandler(this.LblGrpcDotNetNamedPipes_Click);
             // 
-            // label4
+            // LblOr
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(365, 550);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(22, 19);
-            this.label4.TabIndex = 32;
-            this.label4.Text = "or";
+            this.LblOr.AutoSize = true;
+            this.LblOr.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblOr.Location = new System.Drawing.Point(365, 550);
+            this.LblOr.Name = "LblOr";
+            this.LblOr.Size = new System.Drawing.Size(22, 19);
+            this.LblOr.TabIndex = 32;
+            this.LblOr.Text = "or";
             // 
             // PbGithubSponsor
             // 
@@ -446,19 +447,19 @@ namespace HASS.Agent.Forms
             this.Controls.Add(this.LblByteSize);
             this.Controls.Add(this.LblGrpc);
             this.Controls.Add(this.PbGithubSponsor);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.LblOr);
             this.Controls.Add(this.LblGrpcDotNetNamedPipes);
             this.Controls.Add(this.LblCassia);
             this.Controls.Add(this.PbBMAC);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.LblInfo6);
             this.Controls.Add(this.LblCliWrap);
             this.Controls.Add(this.LblOctokit);
             this.Controls.Add(this.LblVersion);
             this.Controls.Add(this.LblLab02Research);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label16);
+            this.Controls.Add(this.LblInfo2);
+            this.Controls.Add(this.LblInfo5);
             this.Controls.Add(this.PbHassLogo);
-            this.Controls.Add(this.label15);
+            this.Controls.Add(this.LblInfo4);
             this.Controls.Add(this.LblSyncfusion);
             this.Controls.Add(this.LblSerilog);
             this.Controls.Add(this.LblNewtonsoftJson);
@@ -469,8 +470,8 @@ namespace HASS.Agent.Forms
             this.Controls.Add(this.LblHADotNet);
             this.Controls.Add(this.LblGrapevine);
             this.Controls.Add(this.LblCoreAudio);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.LblInfo3);
+            this.Controls.Add(this.LblInfo1);
             this.Controls.Add(this.LblHassAgentProject);
             this.Controls.Add(this.PbHassAgentLogo);
             this.Controls.Add(this.BtnClose);
@@ -484,7 +485,7 @@ namespace HASS.Agent.Forms
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "About";
+            this.Text = Languages.About_Title;
             this.Load += new System.EventHandler(this.About_Load);
             this.ResizeEnd += new System.EventHandler(this.About_ResizeEnd);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.About_KeyUp);
@@ -501,8 +502,8 @@ namespace HASS.Agent.Forms
         private Syncfusion.WinForms.Controls.SfButton BtnClose;
         private System.Windows.Forms.PictureBox PbHassAgentLogo;
         private System.Windows.Forms.Label LblHassAgentProject;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LblInfo1;
+        private System.Windows.Forms.Label LblInfo3;
         private System.Windows.Forms.Label LblCoreAudio;
         private System.Windows.Forms.Label LblGrapevine;
         private System.Windows.Forms.Label LblHADotNet;
@@ -513,19 +514,19 @@ namespace HASS.Agent.Forms
         private System.Windows.Forms.Label LblNewtonsoftJson;
         private System.Windows.Forms.Label LblMQTTnet;
         private System.Windows.Forms.Label LblSyncfusion;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label LblInfo4;
         private System.Windows.Forms.PictureBox PbHassLogo;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label LblInfo5;
+        private System.Windows.Forms.Label LblInfo2;
         private System.Windows.Forms.Label LblLab02Research;
         private System.Windows.Forms.Label LblVersion;
         private System.Windows.Forms.Label LblOctokit;
         private System.Windows.Forms.Label LblCliWrap;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label LblInfo6;
         private System.Windows.Forms.PictureBox PbBMAC;
         private System.Windows.Forms.Label LblCassia;
         private Label LblGrpcDotNetNamedPipes;
-        private Label label4;
+        private Label LblOr;
         private PictureBox PbGithubSponsor;
         private Label LblGrpc;
         private Label LblByteSize;

@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using HASS.Agent.Properties;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Shared.Functions;
 using Syncfusion.Windows.Forms;
 using HelperFunctions = HASS.Agent.Functions.HelperFunctions;
@@ -24,7 +25,7 @@ namespace HASS.Agent.Forms.ChildApplications
         private async void ProcessRestart()
         {
             // set initial busy indicator
-            PbStep1WaitForInstances.Image = Resources.small_loader_32;
+            PbStep1WaitForInstances.Image = Properties.Resources.small_loader_32;
 
             // give the ui time to load
             await Task.Delay(TimeSpan.FromSeconds(2));
@@ -33,8 +34,8 @@ namespace HASS.Agent.Forms.ChildApplications
             var closed = await GetAllInstancesClosedAsync();
             if (!closed)
             {
-                PbStep1WaitForInstances.Image = Resources.failed_32;
-                MessageBoxAdv.Show($"HASS.Agent is still active after {MaxWaitSeconds} seconds. Please close all instances and restart manually.\r\n\r\nCheck the logs for more info, and optionally inform the developers.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                PbStep1WaitForInstances.Image = Properties.Resources.failed_32;
+                MessageBoxAdv.Show(string.Format(Languages.Restart_ProcessRestart_MessageBox1, MaxWaitSeconds), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 // close up
                 _ = HelperFunctions.ShutdownAsync();
@@ -42,10 +43,10 @@ namespace HASS.Agent.Forms.ChildApplications
             }
 
             // instances done
-            PbStep1WaitForInstances.Image = Resources.done_32;
+            PbStep1WaitForInstances.Image = Properties.Resources.done_32;
 
             // launch new instance
-            PbStep2Restart.Image = Resources.small_loader_32;
+            PbStep2Restart.Image = Properties.Resources.small_loader_32;
 
             // launch unelevated
             CommandLineManager.ExecuteProcessUnElevated(Variables.ApplicationExecutable);
@@ -54,7 +55,7 @@ namespace HASS.Agent.Forms.ChildApplications
             await Task.Delay(150);
 
             // set restart done
-            PbStep2Restart.Image = Resources.done_32;
+            PbStep2Restart.Image = Properties.Resources.done_32;
 
             // wait for ui reasons
             await Task.Delay(150);

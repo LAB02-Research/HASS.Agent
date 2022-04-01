@@ -8,6 +8,7 @@ using HASS.Agent.Functions;
 using HASS.Agent.HomeAssistant;
 using HASS.Agent.Models.Internal;
 using HASS.Agent.Notifications;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Sensors;
 using HASS.Agent.Service;
 using HASS.Agent.Settings;
@@ -74,7 +75,7 @@ namespace HASS.Agent.Forms
                 var loaded = await SettingsManager.LoadAsync();
                 if (!loaded)
                 {
-                    MessageBoxAdv.Show("Something went wrong while loading your settings.\r\n\r\nCheck appsettings.json in the 'Config' subfolder, or just delete it to start fresh.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxAdv.Show(Languages.Main_Load_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     // abort
                     Variables.ShuttingDown = true;
@@ -109,7 +110,7 @@ namespace HASS.Agent.Forms
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[MAIN] Main_Load: {err}", ex.Message);
-                MessageBoxAdv.Show("There was an error launching HASS.Agent.\r\nPlease check the logs and make a bug report on github.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(Languages.Main_Load_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 // we're done
                 Application.Exit();
@@ -233,7 +234,7 @@ namespace HASS.Agent.Forms
             Invoke(new MethodInvoker(delegate
             {
                 var icon = error ? MessageBoxIcon.Error : MessageBoxIcon.Information;
-                MessageBoxAdv.Show(msg, "HASS.Agent", MessageBoxButtons.OK, icon);
+                MessageBoxAdv.Show(msg, Variables.MessageBoxTitle, MessageBoxButtons.OK, icon);
             }));
         }
 
@@ -450,7 +451,7 @@ namespace HASS.Agent.Forms
                             case Component.Sensors:
                                 if (status != ComponentStatus.Loading)
                                 {
-                                    BtnSensorsManager.Text = "\r\nlocal sensors";
+                                    BtnSensorsManager.Text = Languages.Main_BtnSensorsManage_Ready;
                                     BtnSensorsManager.Enabled = true;
                                 }
                                 LblStatusSensors.Text = status.ToString().ToLower();
@@ -465,7 +466,7 @@ namespace HASS.Agent.Forms
                             case Component.Commands:
                                 if (status != ComponentStatus.Loading)
                                 {
-                                    BtnCommandsManager.Text = "\r\ncommands";
+                                    BtnCommandsManager.Text = Languages.Main_BtnCommandsManager_Ready;
                                     BtnCommandsManager.Enabled = true;
                                 }
                                 LblStatusCommands.Text = status.ToString().ToLower();
@@ -587,14 +588,14 @@ namespace HASS.Agent.Forms
                 TsCheckForUpdates.Enabled = false;
                 BtnCheckForUpdate.Enabled = false;
 
-                TsCheckForUpdates.Text = "checking ..";
-                BtnCheckForUpdate.Text = "checking ..";
+                TsCheckForUpdates.Text = Languages.Main_Checking;
+                BtnCheckForUpdate.Text = Languages.Main_Checking;
 
                 var (isAvailable, version) = await UpdateManager.CheckIsUpdateAvailableAsync();
                 if (!isAvailable)
                 {
                     var beta = Variables.Beta ? " [BETA]" : string.Empty;
-                    MessageBoxAdv.Show($"You're running the latest version: {Variables.Version}{beta}", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxAdv.Show(string.Format(Languages.Main_CheckForUpdate_MessageBox1, Variables.Version, beta), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
@@ -613,8 +614,8 @@ namespace HASS.Agent.Forms
                 TsCheckForUpdates.Enabled = true;
                 BtnCheckForUpdate.Enabled = true;
 
-                TsCheckForUpdates.Text = "check for updates";
-                BtnCheckForUpdate.Text = "check for updates";
+                TsCheckForUpdates.Text = Languages.Main_CheckForUpdates;
+                BtnCheckForUpdate.Text = Languages.Main_CheckForUpdates;
             }
         }
 

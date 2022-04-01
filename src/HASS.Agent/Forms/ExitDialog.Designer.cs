@@ -1,4 +1,6 @@
-﻿namespace HASS.Agent.Forms
+﻿using HASS.Agent.Resources.Localization;
+
+namespace HASS.Agent.Forms
 {
     partial class ExitDialog
     {
@@ -29,21 +31,21 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExitDialog));
-            this.label1 = new System.Windows.Forms.Label();
+            this.LblInfo1 = new System.Windows.Forms.Label();
             this.BtnRestart = new Syncfusion.WinForms.Controls.SfButton();
             this.BtnHide = new Syncfusion.WinForms.Controls.SfButton();
             this.BtnExit = new Syncfusion.WinForms.Controls.SfButton();
             this.SuspendLayout();
             // 
-            // label1
+            // LblInfo1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(80, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(219, 21);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "What would you like to do?";
+            this.LblInfo1.AutoSize = true;
+            this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LblInfo1.Location = new System.Drawing.Point(80, 18);
+            this.LblInfo1.Name = "LblInfo1";
+            this.LblInfo1.Size = new System.Drawing.Size(219, 21);
+            this.LblInfo1.TabIndex = 1;
+            this.LblInfo1.Text = Languages.ExitDialog_LblInfo1;
             // 
             // BtnRestart
             // 
@@ -64,7 +66,7 @@
             this.BtnRestart.Style.Image = global::HASS.Agent.Properties.Resources.restart_32;
             this.BtnRestart.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnRestart.TabIndex = 1;
-            this.BtnRestart.Text = "restart";
+            this.BtnRestart.Text = Languages.ExitDialog_BtnRestart;
             this.BtnRestart.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnRestart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BtnRestart.UseVisualStyleBackColor = false;
@@ -90,7 +92,7 @@
             this.BtnHide.Style.Image = global::HASS.Agent.Properties.Resources.hide_32;
             this.BtnHide.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnHide.TabIndex = 0;
-            this.BtnHide.Text = "hide";
+            this.BtnHide.Text = Languages.ExitDialog_BtnHide;
             this.BtnHide.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnHide.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BtnHide.UseVisualStyleBackColor = false;
@@ -115,7 +117,7 @@
             this.BtnExit.Style.Image = global::HASS.Agent.Properties.Resources.exit_32;
             this.BtnExit.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnExit.TabIndex = 2;
-            this.BtnExit.Text = "exit";
+            this.BtnExit.Text = Languages.ExitDialog_BtnExit;
             this.BtnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BtnExit.UseVisualStyleBackColor = false;
@@ -133,7 +135,7 @@
             this.Controls.Add(this.BtnExit);
             this.Controls.Add(this.BtnRestart);
             this.Controls.Add(this.BtnHide);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LblInfo1);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -144,7 +146,7 @@
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Exit Dialog";
+            this.Text = Languages.ExitDialog_Title;
             this.Load += new System.EventHandler(this.ExitDialog_Load);
             this.ResizeEnd += new System.EventHandler(this.ExitDialog_ResizeEnd);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ExitDialog_KeyUp);
@@ -154,7 +156,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblInfo1;
         private Syncfusion.WinForms.Controls.SfButton BtnRestart;
         private Syncfusion.WinForms.Controls.SfButton BtnHide;
         private Syncfusion.WinForms.Controls.SfButton BtnExit;

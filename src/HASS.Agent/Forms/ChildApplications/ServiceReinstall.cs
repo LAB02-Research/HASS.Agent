@@ -2,6 +2,7 @@
 using HASS.Agent.Functions;
 using HASS.Agent.Notifications;
 using HASS.Agent.Properties;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Service;
 using HASS.Agent.Settings;
 using Serilog;
@@ -25,7 +26,7 @@ namespace HASS.Agent.Forms.ChildApplications
         private async void ProcessReinstall()
         {
             // set initial busy indicator
-            PbStep1Remove.Image = Resources.small_loader_32;
+            PbStep1Remove.Image = Properties.Resources.small_loader_32;
 
             // give the ui time to load
             await Task.Delay(TimeSpan.FromSeconds(2));
@@ -39,14 +40,14 @@ namespace HASS.Agent.Forms.ChildApplications
 
             // uninstall satellite service
             var uninstallDone = await UninstallSatelliteServiceAsync();
-            PbStep1Remove.Image = uninstallDone ? Resources.done_32 : Resources.failed_32;
+            PbStep1Remove.Image = uninstallDone ? Properties.Resources.done_32 : Properties.Resources.failed_32;
 
             // install/configure satellite service
             var installDone = await InstallSatelliteServiceAsync();
-            PbStep2Install.Image = installDone ? Resources.done_32 : Resources.failed_32;
+            PbStep2Install.Image = installDone ? Properties.Resources.done_32 : Properties.Resources.failed_32;
 
             // notify the user if something went wrong
-            if (!uninstallDone || !installDone) MessageBoxAdv.Show("Not all steps completed succesfully. Please consult the logs for more information.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!uninstallDone || !installDone) MessageBoxAdv.Show(Languages.ServiceReinstall_ProcessReinstall_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
                 // wait a bit to show the 'completed' checks
@@ -69,7 +70,7 @@ namespace HASS.Agent.Forms.ChildApplications
             try
             {
                 // set busy indicator
-                PbStep1Remove.Image = Resources.small_loader_32;
+                PbStep1Remove.Image = Properties.Resources.small_loader_32;
 
                 // service installed?
                 if (!await Task.Run(ServiceControllerManager.ServiceExists))
@@ -113,7 +114,7 @@ namespace HASS.Agent.Forms.ChildApplications
             try
             {
                 // set busy indicator
-                PbStep2Install.Image = Resources.small_loader_32;
+                PbStep2Install.Image = Properties.Resources.small_loader_32;
 
                 // short pause to make sure the service's removed
                 await Task.Delay(TimeSpan.FromSeconds(2));

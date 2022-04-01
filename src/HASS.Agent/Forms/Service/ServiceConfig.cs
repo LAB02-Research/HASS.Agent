@@ -3,17 +3,13 @@ using HASS.Agent.Shared.Models.Config;
 using HASS.Agent.Shared.Models.Config.Service;
 using Serilog;
 using Syncfusion.Windows.Forms;
-using ServiceSensors = HASS.Agent.Controls.Service.Sensors;
-using ServiceCommands = HASS.Agent.Controls.Service.Commands; 
-using ServiceMqtt = HASS.Agent.Controls.Service.MQTT;
-using ServiceConnect = HASS.Agent.Controls.Service.Connect;
 
 namespace HASS.Agent.Forms.Service
 {
     public partial class ServiceConfig : MetroForm
     {
         private ServiceConnect _connect;
-        private readonly General _general = new();
+        private readonly ServiceGeneral _general = new();
         private readonly ServiceSensors _sensors = new();
         private readonly ServiceCommands _commands = new();
         private readonly ServiceMqtt _mqtt = new();

@@ -1,4 +1,5 @@
 ﻿using HASS.Agent.Models.Internal;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Settings;
 using HASS.Agent.Shared.Enums;
 using HASS.Agent.Shared.Models.Config;
@@ -253,152 +254,152 @@ namespace HASS.Agent.Commands
             // =================================
 
             var commandInfoCard = new CommandInfoCard(CommandType.CustomCommand,
-                "Execute a custom command.\r\n\r\nThese commands run without special elevation. To run elevated, create a Scheduled Task, and use 'schtasks /Run /TN \"TaskName\"' as the command to execute your task.\r\n\r\nOr enable 'run as low integrity' for even stricter execution.",
-                true, true);
+                Languages.CommandsManager_CustomCommandDescription,
+                true, true, true);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 
             // =================================
 
             commandInfoCard = new CommandInfoCard(CommandType.CustomExecutorCommand,
-                "Executes the command through the configured custom executor (in Configuration -> External Tools).\r\n\r\nYour command is provided as an argument 'as is', so you have to supply your own quotes etc. if necessary.",
-                true, true);
+                Languages.CommandsManager_CustomExecutorCommandDescription,
+                true, true, true);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 
             // =================================
 
             commandInfoCard = new CommandInfoCard(CommandType.HibernateCommand,
-                "Sets the machine in hibernation.",
-                true, true);
+                Languages.CommandsManager_HibernateCommandDescription,
+                true, true, false);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 
             // =================================
 
             commandInfoCard = new CommandInfoCard(CommandType.KeyCommand,
-                "Simulates a single keypress.\r\n\r\nYou can pick any of these values: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes \r\n\r\nIf you need more keys and/or modifiers like CTRL, use the MultipleKeys command.",
-                true, false);
+                Languages.CommandsManager_KeyCommandDescription,
+                true, false, false);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 
             // =================================
 
             commandInfoCard = new CommandInfoCard(CommandType.LaunchUrlCommand,
-                "Launches the provided URL, by default in your default browser.\r\n\r\nTo use 'incognito', provide a specific browser in Configuration -> External Tools.",
-                true, false);
+                Languages.CommandsManager_LaunchUrlCommandDescription,
+                true, false, true);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 
             // =================================
 
             commandInfoCard = new CommandInfoCard(CommandType.LockCommand,
-                "Locks the current session.",
-                true, false);
+                Languages.CommandsManager_LockCommandDescription,
+                true, false, false);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 
             // =================================
 
             commandInfoCard = new CommandInfoCard(CommandType.LogOffCommand,
-                "Logs off the current session.",
-                true, false);
+                Languages.CommandsManager_LogOffCommandDescription,
+                true, false, false);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 
             // =================================
 
             commandInfoCard = new CommandInfoCard(CommandType.MediaMuteCommand,
-                "Simulates 'mute' key.",
-                true, false);
+                Languages.CommandsManager_MediaMuteCommandDescription,
+                true, false, false);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 
             // =================================
 
             commandInfoCard = new CommandInfoCard(CommandType.MediaNextCommand,
-                "Simulates 'media next' key.",
-                true, false);
+                Languages.CommandsManager_MediaNextCommandDescription,
+                true, false, false);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 
             // =================================
 
             commandInfoCard = new CommandInfoCard(CommandType.MediaPlayPauseCommand,
-                "Simulates 'media playpause' key.",
-                true, false);
+                Languages.CommandsManager_MediaPlayPauseCommandDescription,
+                true, false, false);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 
             // =================================
 
             commandInfoCard = new CommandInfoCard(CommandType.MediaPreviousCommand,
-                "Simulates 'media previous' key.",
-                true, false);
+                Languages.CommandsManager_MediaPreviousCommandDescription,
+                true, false, false);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 
             // =================================
 
             commandInfoCard = new CommandInfoCard(CommandType.MediaVolumeDownCommand,
-                "Simulates 'volume down' key.",
-                true, false);
+                Languages.CommandsManager_MediaVolumeDownCommandDescription,
+                true, false, false);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 
             // =================================
 
             commandInfoCard = new CommandInfoCard(CommandType.MediaVolumeUpCommand,
-                "Simulates 'volume up' key.",
-                true, false);
+                Languages.CommandsManager_MediaVolumeUpCommandDescription,
+                true, false, false);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 
             // =================================
 
             commandInfoCard = new CommandInfoCard(CommandType.MultipleKeysCommand,
-                "Simulates pressing mulitple keys.\r\n\r\nYou need to put [ ] between every key, otherwise HASS.Agent can't tell them apart. So say you want to press X TAB Y SHIFT-Z, it'd be [X] [{TAB}] [Y] [+Z].\r\n\r\nThere are a few tricks you can use:\r\n\r\n- Special keys go between { }, like {TAB} or {UP}\r\n\r\n- Put a + in front of a key to add SHIFT, ^ for CTRL and % for ALT. So, +C is SHIFT-C. Or, +(CD) is SHIFT-C and SHIFT-D, while +CD is SHIFT-C and D\r\n\r\n- For multiple presses, use {z 15}, which means Z will get pressed 15 times.\r\n\r\nMore info: https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys",
-                true, false);
+                Languages.CommandsManager_MultipleKeysCommandDescription,
+                true, false, false);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 
             // =================================
 
             commandInfoCard = new CommandInfoCard(CommandType.PowershellCommand,
-                "Execute a Powershell command or script.\r\n\r\nYou can either provide the location of a script (*.ps1), or a single-line command.\r\n\r\nThis will run without special elevation.",
-                true, true);
+                Languages.CommandsManager_PowershellCommandDescription,
+                true, true, true);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 
             // =================================
 
             commandInfoCard = new CommandInfoCard(CommandType.PublishAllSensorsCommand,
-                "Resets all sensor checks, forcing all sensors to process and send their value.\r\n\r\nUseful for example if you want to force HASS.Agent to update all your sensors after a HA reboot.",
-                true, true);
+                Languages.CommandsManager_PublishAllSensorsCommandDescription,
+                true, true, false);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 
             // =================================
 
             commandInfoCard = new CommandInfoCard(CommandType.RestartCommand,
-                "Restarts the machine after one minute.\r\n\r\nTip: accidentally triggered? Run 'shutdown /a' to abort.",
-                true, true);
+                Languages.CommandsManager_RestartCommandDescription,
+                true, true, false);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 
             // =================================
 
             commandInfoCard = new CommandInfoCard(CommandType.ShutdownCommand,
-                "Shuts down the machine after one minute.\r\n\r\nTip: accidentally triggered? Run 'shutdown /a' to abort.",
-                true, true);
+                Languages.CommandsManager_ShutdownCommandDescription,
+                true, true, false);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 
             // =================================
 
             commandInfoCard = new CommandInfoCard(CommandType.SleepCommand,
-                "Puts the machine to sleep.\r\n\r\nNote: due to a limitation in Windows, this only works if hibernation is disabled, otherwise it will just hibernate.\r\n\r\nYou can use something like NirCmd (http://www.nirsoft.net/utils/nircmd.html) to circumvent this.",
-                true, true);
+                Languages.CommandsManager_SleepCommandDescription,
+                true, true, false);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
         }

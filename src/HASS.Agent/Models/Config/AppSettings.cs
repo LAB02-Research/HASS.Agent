@@ -32,6 +32,7 @@ namespace HASS.Agent.Models.Config
 
         public bool NotificationsEnabled { get; set; } = true;
         public int NotifierApiPort { get; set; } = 5115;
+        public bool NotificationsIgnoreImageCertificateErrors { get; set; } = false;
 
         public string HassUri { get; set; } = "http://homeassistant.local:8123";
         public string HassToken { get; set; } = string.Empty;

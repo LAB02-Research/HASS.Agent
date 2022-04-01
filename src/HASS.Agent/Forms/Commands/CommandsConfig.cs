@@ -1,5 +1,6 @@
 ﻿using HASS.Agent.Commands;
 using HASS.Agent.Functions;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Settings;
 using HASS.Agent.Shared.Extensions;
 using HASS.Agent.Shared.Models.Config;
@@ -59,13 +60,16 @@ namespace HASS.Agent.Forms.Commands
 
             // reload data
             LvCommands.Items.Clear();
-
+            
             foreach (var command in _commands)
             {
+                var commandCard = CommandsManager.CommandInfoCards[command.Type];
+
                 var lviCommand = new ListViewItem(command.Id.ToString());
                 lviCommand.SubItems.Add(command.Name);
-                lviCommand.SubItems.Add(CommandsManager.CommandInfoCards[command.Type].Name);
-                lviCommand.SubItems.Add(command.RunAsLowIntegrity ? "√" : "");
+                lviCommand.SubItems.Add(commandCard.Name);
+                lviCommand.SubItems.Add(command.RunAsLowIntegrity ? "√" : string.Empty);
+                lviCommand.SubItems.Add(commandCard.ActionCompatible ? "√" : string.Empty);
 
                 LvCommands.Items.Add(lviCommand);
             }
@@ -160,11 +164,11 @@ namespace HASS.Agent.Forms.Commands
             BtnModify.Enabled = false;
             BtnAdd.Enabled = false;
             BtnStore.Enabled = false;
-            BtnStore.Text = "storing and registering, please wait .. ";
+            BtnStore.Text = Languages.CommandsConfig_BtnStore_Storing;
 
             // store
             var stored = await Task.Run(async () => await CommandsManager.StoreAsync(_commands, _toBeDeletedCommands));
-            if (!stored) MessageBoxAdv.Show("An error occured while saving the commands, check the logs for more info.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!stored) MessageBoxAdv.Show(Languages.CommandsConfig_BtnStore_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             // done
             Close();
@@ -231,5 +235,9 @@ namespace HASS.Agent.Forms.Commands
             // hide the pesky horizontal scrollbar
             ListViewTheme.ShowScrollBar(LvCommands.Handle, ListViewTheme.SB_HORZ, false);
         }
+
+        private void PbActionInfo_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent/wiki/Command-Actions-Usage-&-Examples");
+
+        private void LblActionInfo_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent/wiki/Command-Actions-Usage-&-Examples");
     }
 }

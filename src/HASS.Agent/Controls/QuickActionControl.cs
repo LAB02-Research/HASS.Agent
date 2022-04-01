@@ -51,16 +51,16 @@ namespace HASS.Agent.Controls
 
             PbImage.Image = _quickAction.Domain switch
             {
-                HassDomain.Automation => Resources.qa_automate_225,
-                HassDomain.Cover => Resources.qa_cover_225,
-                HassDomain.Climate => Resources.qa_climate_225,
-                HassDomain.Script => Resources.qa_script_225,
-                HassDomain.InputBoolean => Resources.qa_inputboolean_225,
-                HassDomain.MediaPlayer => Resources.qa_mediaplayer_225,
-                HassDomain.Scene => Resources.qa_scene_225,
-                HassDomain.Switch => Resources.qa_switch_225,
-                HassDomain.Light => Resources.qa_light_225,
-                _ => Resources.hass_avatar
+                HassDomain.Automation => Properties.Resources.qa_automate_225,
+                HassDomain.Cover => Properties.Resources.qa_cover_225,
+                HassDomain.Climate => Properties.Resources.qa_climate_225,
+                HassDomain.Script => Properties.Resources.qa_script_225,
+                HassDomain.InputBoolean => Properties.Resources.qa_inputboolean_225,
+                HassDomain.MediaPlayer => Properties.Resources.qa_mediaplayer_225,
+                HassDomain.Scene => Properties.Resources.qa_scene_225,
+                HassDomain.Switch => Properties.Resources.qa_switch_225,
+                HassDomain.Light => Properties.Resources.qa_light_225,
+                _ => Properties.Resources.hass_avatar
             };
         }
 

@@ -1,5 +1,6 @@
 ﻿using HASS.Agent.Enums;
 using HASS.Agent.Models.HomeAssistant.Commands.InternalCommands;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Shared.Enums;
 using HASS.Agent.Shared.Models.Config;
 using HASS.Agent.Shared.Models.HomeAssistant.Commands;
@@ -73,7 +74,7 @@ namespace HASS.Agent.Settings
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS_COMMANDS] Error loading entities: {err}", ex.Message);
-                Variables.MainForm?.ShowMessageBox($"Error loading commands:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowMessageBox(string.Format(Languages.StoredCommands_Load_MessageBox1, ex.Message), true);
 
                 Variables.MainForm?.SetCommandsStatus(ComponentStatus.Failed);
                 return false;
@@ -92,61 +93,61 @@ namespace HASS.Agent.Settings
             switch (command.Type)
             {
                 case CommandType.ShutdownCommand:
-                    abstractCommand = new ShutdownCommand(command.Name, command.Id.ToString());
+                    abstractCommand = new ShutdownCommand(command.Name, command.EntityType, command.Id.ToString());
                     break;
                 case CommandType.RestartCommand:
-                    abstractCommand = new RestartCommand(command.Name, command.Id.ToString());
+                    abstractCommand = new RestartCommand(command.Name, command.EntityType, command.Id.ToString());
                     break;
                 case CommandType.HibernateCommand:
-                    abstractCommand = new HibernateCommand(command.Name, command.Id.ToString());
+                    abstractCommand = new HibernateCommand(command.Name, command.EntityType, command.Id.ToString());
                     break;
                 case CommandType.SleepCommand:
-                    abstractCommand = new SleepCommand(command.Name, command.Id.ToString());
+                    abstractCommand = new SleepCommand(command.Name, command.EntityType, command.Id.ToString());
                     break;
                 case CommandType.LogOffCommand:
-                    abstractCommand = new LogOffCommand(command.Name, command.Id.ToString());
+                    abstractCommand = new LogOffCommand(command.Name, command.EntityType, command.Id.ToString());
                     break;
                 case CommandType.LockCommand:
-                    abstractCommand = new LockCommand(command.Name, command.Id.ToString());
+                    abstractCommand = new LockCommand(command.Name, command.EntityType, command.Id.ToString());
                     break;
                 case CommandType.CustomCommand:
-                    abstractCommand = new CustomCommand(command.Command, command.RunAsLowIntegrity, command.Name, command.Id.ToString());
+                    abstractCommand = new CustomCommand(command.Command, command.RunAsLowIntegrity, command.Name, command.EntityType, command.Id.ToString());
                     break;
                 case CommandType.PowershellCommand:
-                    abstractCommand = new PowershellCommand(command.Command, command.Name, command.Id.ToString());
+                    abstractCommand = new PowershellCommand(command.Command, command.Name, command.EntityType, command.Id.ToString());
                     break;
                 case CommandType.MediaPlayPauseCommand:
-                    abstractCommand = new MediaPlayPauseCommand(command.Name, command.Id.ToString());
+                    abstractCommand = new MediaPlayPauseCommand(command.Name, command.EntityType, command.Id.ToString());
                     break;
                 case CommandType.MediaNextCommand:
-                    abstractCommand = new MediaNextCommand(command.Name, command.Id.ToString());
+                    abstractCommand = new MediaNextCommand(command.Name, command.EntityType, command.Id.ToString());
                     break;
                 case CommandType.MediaPreviousCommand:
-                    abstractCommand = new MediaPreviousCommand(command.Name, command.Id.ToString());
+                    abstractCommand = new MediaPreviousCommand(command.Name, command.EntityType, command.Id.ToString());
                     break;
                 case CommandType.MediaVolumeUpCommand:
-                    abstractCommand = new MediaVolumeUpCommand(command.Name, command.Id.ToString());
+                    abstractCommand = new MediaVolumeUpCommand(command.Name, command.EntityType, command.Id.ToString());
                     break;
                 case CommandType.MediaVolumeDownCommand:
-                    abstractCommand = new MediaVolumeDownCommand(command.Name, command.Id.ToString());
+                    abstractCommand = new MediaVolumeDownCommand(command.Name, command.EntityType, command.Id.ToString());
                     break;
                 case CommandType.MediaMuteCommand:
-                    abstractCommand = new MediaMuteCommand(command.Name, command.Id.ToString());
+                    abstractCommand = new MediaMuteCommand(command.Name, command.EntityType, command.Id.ToString());
                     break;
                 case CommandType.KeyCommand:
-                    abstractCommand = new KeyCommand(command.KeyCode, command.Name, command.Id.ToString());
+                    abstractCommand = new KeyCommand(command.KeyCode, command.Name, command.EntityType, command.Id.ToString());
                     break;
                 case CommandType.PublishAllSensorsCommand:
-                    abstractCommand = new PublishAllSensorsCommand(command.Name, command.Id.ToString());
+                    abstractCommand = new PublishAllSensorsCommand(command.Name, command.EntityType, command.Id.ToString());
                     break;
                 case CommandType.LaunchUrlCommand:
-                    abstractCommand = new LaunchUrlCommand(command.Name, command.Command, command.Id.ToString());
+                    abstractCommand = new LaunchUrlCommand(command.Name, command.Command, command.EntityType, command.Id.ToString());
                     break;
                 case CommandType.CustomExecutorCommand:
-                    abstractCommand = new CustomExecutorCommand(command.Name, command.Command, command.Id.ToString());
+                    abstractCommand = new CustomExecutorCommand(command.Name, command.Command, command.EntityType, command.Id.ToString());
                     break;
                 case CommandType.MultipleKeysCommand:
-                    abstractCommand = new MultipleKeysCommand(command.Keys, command.Name, command.Id.ToString());
+                    abstractCommand = new MultipleKeysCommand(command.Keys, command.Name, command.EntityType, command.Id.ToString());
                     break;
                 default:
                     Log.Error("[SETTINGS_COMMANDS] [{name}] Unknown configured command type: {type}", command.Name, command.Type.ToString());
@@ -172,7 +173,8 @@ namespace HASS.Agent.Settings
                     {
                         Id = Guid.Parse(customCommand.Id), 
                         Name = customCommand.Name, 
-                        Type = type, 
+                        Type = type,
+                        EntityType = command.EntityType,
                         Command = customCommand.Command,
                         RunAsLowIntegrity = customCommand.RunAsLowIntegrity
                     };
@@ -186,6 +188,7 @@ namespace HASS.Agent.Settings
                         Id = Guid.Parse(powershellCommand.Id),
                         Name = powershellCommand.Name,
                         Type = type,
+                        EntityType = command.EntityType,
                         Command = powershellCommand.Command
                     };
                 }
@@ -198,6 +201,7 @@ namespace HASS.Agent.Settings
                         Id = Guid.Parse(customKeyCommand.Id), 
                         Name = customKeyCommand.Name, 
                         Type = type,
+                        EntityType = command.EntityType,
                         KeyCode = customKeyCommand.KeyCode
                     };
                 }
@@ -211,6 +215,7 @@ namespace HASS.Agent.Settings
                         Name = internalCommand.Name,
                         Command = internalCommand.CommandConfig ?? string.Empty,
                         Type = type,
+                        EntityType = command.EntityType,
                     };
                 }
 
@@ -223,6 +228,7 @@ namespace HASS.Agent.Settings
                         Name = multipleKeysCommand.Name,
                         Keys = multipleKeysCommand.Keys ?? new List<string>(),
                         Type = type,
+                        EntityType = command.EntityType,
                     };
                 }
             }
@@ -260,7 +266,7 @@ namespace HASS.Agent.Settings
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS_COMMANDS] Error storing entities: {err}", ex.Message);
-                Variables.MainForm?.ShowMessageBox($"Error storing commands:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowMessageBox(string.Format(Languages.StoredCommands_Store_MessageBox1, ex.Message), true);
 
                 Variables.MainForm?.SetCommandsStatus(ComponentStatus.Failed);
                 return false;

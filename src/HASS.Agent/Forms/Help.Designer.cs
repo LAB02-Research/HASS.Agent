@@ -1,4 +1,6 @@
 ﻿
+using HASS.Agent.Resources.Localization;
+
 namespace HASS.Agent.Forms
 {
     partial class Help
@@ -31,7 +33,7 @@ namespace HASS.Agent.Forms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Help));
             this.BtnClose = new Syncfusion.WinForms.Controls.SfButton();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LblInfo1 = new System.Windows.Forms.Label();
             this.LblAbout = new System.Windows.Forms.Label();
             this.LblVersion = new System.Windows.Forms.Label();
             this.LblHAForum = new System.Windows.Forms.Label();
@@ -61,9 +63,9 @@ namespace HASS.Agent.Forms
             this.BtnClose.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BtnClose.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnClose.Location = new System.Drawing.Point(0, 485);
+            this.BtnClose.Location = new System.Drawing.Point(0, 523);
             this.BtnClose.Name = "BtnClose";
-            this.BtnClose.Size = new System.Drawing.Size(579, 37);
+            this.BtnClose.Size = new System.Drawing.Size(626, 37);
             this.BtnClose.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnClose.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnClose.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -72,31 +74,30 @@ namespace HASS.Agent.Forms
             this.BtnClose.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnClose.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnClose.TabIndex = 0;
-            this.BtnClose.Text = "close";
+            this.BtnClose.Text = Languages.Help_BtnClose;
             this.BtnClose.UseVisualStyleBackColor = false;
             this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
-            // label2
+            // LblInfo1
             // 
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(171, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(396, 82);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Stuck while using HASS.Agent, need some help integrating the sensors/commands or " +
-    "have a great idea for the next version?\r\n\r\nThere are a few channels through whic" +
-    "h you can reach us:";
+            this.LblInfo1.AutoSize = true;
+            this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblInfo1.Location = new System.Drawing.Point(171, 23);
+            this.LblInfo1.Name = "LblInfo1";
+            this.LblInfo1.Size = new System.Drawing.Size(390, 76);
+            this.LblInfo1.TabIndex = 3;
+            this.LblInfo1.Text = Languages.Help_LblInfo1;
             // 
             // LblAbout
             // 
             this.LblAbout.AutoSize = true;
             this.LblAbout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblAbout.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.LblAbout.Location = new System.Drawing.Point(-3, 465);
+            this.LblAbout.Location = new System.Drawing.Point(0, 501);
             this.LblAbout.Name = "LblAbout";
             this.LblAbout.Size = new System.Drawing.Size(47, 19);
             this.LblAbout.TabIndex = 22;
-            this.LblAbout.Text = "About";
+            this.LblAbout.Text = Languages.Help_LblAbout;
             this.LblAbout.Click += new System.EventHandler(this.LblAbout_Click);
             // 
             // LblVersion
@@ -114,11 +115,11 @@ namespace HASS.Agent.Forms
             this.LblHAForum.AutoSize = true;
             this.LblHAForum.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblHAForum.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.LblHAForum.Location = new System.Drawing.Point(258, 391);
+            this.LblHAForum.Location = new System.Drawing.Point(258, 407);
             this.LblHAForum.Name = "LblHAForum";
             this.LblHAForum.Size = new System.Drawing.Size(146, 19);
             this.LblHAForum.TabIndex = 26;
-            this.LblHAForum.Text = "Home Assistant forum";
+            this.LblHAForum.Text = Languages.Help_LblHAForum;
             this.LblHAForum.Click += new System.EventHandler(this.LblHAForum_Click);
             // 
             // LblGitHub
@@ -126,11 +127,11 @@ namespace HASS.Agent.Forms
             this.LblGitHub.AutoSize = true;
             this.LblGitHub.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblGitHub.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.LblGitHub.Location = new System.Drawing.Point(258, 127);
+            this.LblGitHub.Location = new System.Drawing.Point(258, 143);
             this.LblGitHub.Name = "LblGitHub";
             this.LblGitHub.Size = new System.Drawing.Size(96, 19);
             this.LblGitHub.TabIndex = 28;
-            this.LblGitHub.Text = "GitHub tickets";
+            this.LblGitHub.Text = Languages.Help_LblGitHub;
             this.LblGitHub.Click += new System.EventHandler(this.LblGitHub_Click);
             // 
             // LblDiscord
@@ -138,7 +139,7 @@ namespace HASS.Agent.Forms
             this.LblDiscord.AutoSize = true;
             this.LblDiscord.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblDiscord.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.LblDiscord.Location = new System.Drawing.Point(258, 303);
+            this.LblDiscord.Location = new System.Drawing.Point(258, 319);
             this.LblDiscord.Name = "LblDiscord";
             this.LblDiscord.Size = new System.Drawing.Size(55, 19);
             this.LblDiscord.TabIndex = 30;
@@ -149,41 +150,40 @@ namespace HASS.Agent.Forms
             // 
             this.LblHAInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblHAInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblHAInfo.Location = new System.Drawing.Point(258, 421);
+            this.LblHAInfo.Location = new System.Drawing.Point(258, 437);
             this.LblHAInfo.Name = "LblHAInfo";
             this.LblHAInfo.Size = new System.Drawing.Size(292, 49);
             this.LblHAInfo.TabIndex = 31;
-            this.LblHAInfo.Text = "Bit of everything, with the addition that other HA users can help as well.";
+            this.LblHAInfo.Text = Languages.Help_LblHAInfo;
             this.LblHAInfo.Click += new System.EventHandler(this.LblHAInfo_Click);
             // 
             // LblGitHubInfo
             // 
             this.LblGitHubInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblGitHubInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblGitHubInfo.Location = new System.Drawing.Point(258, 157);
+            this.LblGitHubInfo.Location = new System.Drawing.Point(258, 173);
             this.LblGitHubInfo.Name = "LblGitHubInfo";
             this.LblGitHubInfo.Size = new System.Drawing.Size(292, 35);
             this.LblGitHubInfo.TabIndex = 32;
-            this.LblGitHubInfo.Text = "Report bugs, feature requests, ideas, tips, ..";
+            this.LblGitHubInfo.Text = Languages.Help_LblGitHubInfo;
             this.LblGitHubInfo.Click += new System.EventHandler(this.LblGitHubInfo_Click);
             // 
             // LblDiscordInfo
             // 
             this.LblDiscordInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblDiscordInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblDiscordInfo.Location = new System.Drawing.Point(258, 333);
+            this.LblDiscordInfo.Location = new System.Drawing.Point(258, 349);
             this.LblDiscordInfo.Name = "LblDiscordInfo";
             this.LblDiscordInfo.Size = new System.Drawing.Size(309, 46);
             this.LblDiscordInfo.TabIndex = 33;
-            this.LblDiscordInfo.Text = "Get help with setting up and using HASS.Agent, report bugs or just talk about wha" +
-    "tever.";
+            this.LblDiscordInfo.Text = Languages.Help_LblDiscordInfo;
             this.LblDiscordInfo.Click += new System.EventHandler(this.LblDiscordInfo_Click);
             // 
             // PbDiscord
             // 
             this.PbDiscord.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbDiscord.Image = global::HASS.Agent.Properties.Resources.discord_avatar;
-            this.PbDiscord.Location = new System.Drawing.Point(171, 303);
+            this.PbDiscord.Location = new System.Drawing.Point(171, 319);
             this.PbDiscord.Name = "PbDiscord";
             this.PbDiscord.Size = new System.Drawing.Size(65, 65);
             this.PbDiscord.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -195,7 +195,7 @@ namespace HASS.Agent.Forms
             // 
             this.PbGitHub.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbGitHub.Image = global::HASS.Agent.Properties.Resources.github_avatar;
-            this.PbGitHub.Location = new System.Drawing.Point(171, 127);
+            this.PbGitHub.Location = new System.Drawing.Point(171, 143);
             this.PbGitHub.Name = "PbGitHub";
             this.PbGitHub.Size = new System.Drawing.Size(65, 65);
             this.PbGitHub.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -207,7 +207,7 @@ namespace HASS.Agent.Forms
             // 
             this.PbHAForum.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbHAForum.Image = global::HASS.Agent.Properties.Resources.hass_avatar;
-            this.PbHAForum.Location = new System.Drawing.Point(171, 391);
+            this.PbHAForum.Location = new System.Drawing.Point(171, 407);
             this.PbHAForum.Name = "PbHAForum";
             this.PbHAForum.Size = new System.Drawing.Size(65, 65);
             this.PbHAForum.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -231,7 +231,7 @@ namespace HASS.Agent.Forms
             // 
             this.PbWiki.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbWiki.Image = global::HASS.Agent.Properties.Resources.github_avatar;
-            this.PbWiki.Location = new System.Drawing.Point(171, 215);
+            this.PbWiki.Location = new System.Drawing.Point(171, 231);
             this.PbWiki.Name = "PbWiki";
             this.PbWiki.Size = new System.Drawing.Size(65, 65);
             this.PbWiki.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -243,11 +243,11 @@ namespace HASS.Agent.Forms
             // 
             this.LblWikiInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblWikiInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblWikiInfo.Location = new System.Drawing.Point(258, 245);
+            this.LblWikiInfo.Location = new System.Drawing.Point(258, 261);
             this.LblWikiInfo.Name = "LblWikiInfo";
             this.LblWikiInfo.Size = new System.Drawing.Size(292, 35);
             this.LblWikiInfo.TabIndex = 38;
-            this.LblWikiInfo.Text = "Documentation and usage examples.";
+            this.LblWikiInfo.Text = Languages.Help_LblWikiInfo;
             this.LblWikiInfo.Click += new System.EventHandler(this.LblWikiInfo_Click);
             // 
             // LblWiki
@@ -255,7 +255,7 @@ namespace HASS.Agent.Forms
             this.LblWiki.AutoSize = true;
             this.LblWiki.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblWiki.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.LblWiki.Location = new System.Drawing.Point(258, 215);
+            this.LblWiki.Location = new System.Drawing.Point(258, 231);
             this.LblWiki.Name = "LblWiki";
             this.LblWiki.Size = new System.Drawing.Size(35, 19);
             this.LblWiki.TabIndex = 37;
@@ -270,7 +270,7 @@ namespace HASS.Agent.Forms
             this.CaptionBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(579, 522);
+            this.ClientSize = new System.Drawing.Size(626, 560);
             this.Controls.Add(this.LblWikiInfo);
             this.Controls.Add(this.LblWiki);
             this.Controls.Add(this.PbWiki);
@@ -285,7 +285,7 @@ namespace HASS.Agent.Forms
             this.Controls.Add(this.PbHAForum);
             this.Controls.Add(this.LblVersion);
             this.Controls.Add(this.LblAbout);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.LblInfo1);
             this.Controls.Add(this.PbHassAgentLogo);
             this.Controls.Add(this.BtnClose);
             this.DoubleBuffered = true;
@@ -298,7 +298,7 @@ namespace HASS.Agent.Forms
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Help";
+            this.Text = Languages.Help_Title;
             this.Load += new System.EventHandler(this.Help_Load);
             this.ResizeEnd += new System.EventHandler(this.Help_ResizeEnd);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Help_KeyUp);
@@ -315,7 +315,7 @@ namespace HASS.Agent.Forms
         #endregion
         private Syncfusion.WinForms.Controls.SfButton BtnClose;
         private System.Windows.Forms.PictureBox PbHassAgentLogo;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LblInfo1;
         private System.Windows.Forms.Label LblAbout;
         private System.Windows.Forms.Label LblVersion;
         private System.Windows.Forms.PictureBox PbHAForum;

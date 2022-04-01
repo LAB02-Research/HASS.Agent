@@ -1,4 +1,6 @@
-﻿namespace HASS.Agent.Forms.ChildApplications
+﻿using HASS.Agent.Resources.Localization;
+
+namespace HASS.Agent.Forms.ChildApplications
 {
     partial class PortReservation
     {
@@ -29,34 +31,34 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PortReservation));
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LblInfo1 = new System.Windows.Forms.Label();
+            this.LblTask1 = new System.Windows.Forms.Label();
             this.PbStep1PortBinding = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LblTask2 = new System.Windows.Forms.Label();
             this.PbStep2Firewall = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PbStep1PortBinding)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbStep2Firewall)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // LblInfo1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(166, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(286, 19);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Please wait a bit while the task is performed ..";
+            this.LblInfo1.AutoSize = true;
+            this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblInfo1.Location = new System.Drawing.Point(166, 47);
+            this.LblInfo1.Name = "LblInfo1";
+            this.LblInfo1.Size = new System.Drawing.Size(286, 19);
+            this.LblInfo1.TabIndex = 1;
+            this.LblInfo1.Text = Languages.PortReservation_LblInfo1;
             // 
-            // label3
+            // LblTask1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(257, 131);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(154, 19);
-            this.label3.TabIndex = 57;
-            this.label3.Text = "Create API port binding";
+            this.LblTask1.AutoSize = true;
+            this.LblTask1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblTask1.Location = new System.Drawing.Point(257, 131);
+            this.LblTask1.Name = "LblTask1";
+            this.LblTask1.Size = new System.Drawing.Size(154, 19);
+            this.LblTask1.TabIndex = 57;
+            this.LblTask1.Text = Languages.PortReservation_LblTask1;
             // 
             // PbStep1PortBinding
             // 
@@ -68,15 +70,15 @@
             this.PbStep1PortBinding.TabIndex = 56;
             this.PbStep1PortBinding.TabStop = false;
             // 
-            // label2
+            // LblTask2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(257, 192);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 19);
-            this.label2.TabIndex = 59;
-            this.label2.Text = "Set firewall rule";
+            this.LblTask2.AutoSize = true;
+            this.LblTask2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblTask2.Location = new System.Drawing.Point(257, 192);
+            this.LblTask2.Name = "LblTask2";
+            this.LblTask2.Size = new System.Drawing.Size(101, 19);
+            this.LblTask2.TabIndex = 59;
+            this.LblTask2.Text = Languages.PortReservation_LblTask2;
             // 
             // PbStep2Firewall
             // 
@@ -97,11 +99,11 @@
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(619, 284);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.LblTask2);
             this.Controls.Add(this.PbStep2Firewall);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.LblTask1);
             this.Controls.Add(this.PbStep1PortBinding);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LblInfo1);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -112,7 +114,7 @@
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HASS.Agent Port Reservation";
+            this.Text = Languages.PortReservation_Title;
             this.Load += new System.EventHandler(this.PortReservation_Load);
             this.ResizeEnd += new System.EventHandler(this.PortReservation_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.PbStep1PortBinding)).EndInit();
@@ -123,10 +125,10 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LblInfo1;
+        private System.Windows.Forms.Label LblTask1;
         private System.Windows.Forms.PictureBox PbStep1PortBinding;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LblTask2;
         private System.Windows.Forms.PictureBox PbStep2Firewall;
     }
 }

@@ -15,13 +15,14 @@ namespace HASS.Agent.Models.Internal
             //
         }
 
-        public CommandInfoCard(CommandType commandType, string description, bool agentCompatible, bool satelliteCompatible)
+        public CommandInfoCard(CommandType commandType, string description, bool agentCompatible, bool satelliteCompatible, bool actionCompatible)
         {
             CommandType = commandType;
             Name = HelperFunctions.ConvertCapitalizedEntityNameToReadable(commandType.ToString());
             Description = description;
             AgentCompatible = agentCompatible;
             SatelliteCompatible = satelliteCompatible;
+            ActionCompatible = actionCompatible;
         }
 
         public CommandType CommandType { get; set; }
@@ -30,5 +31,6 @@ namespace HASS.Agent.Models.Internal
 
         public bool AgentCompatible { get; set; }
         public bool SatelliteCompatible { get; set; }
+        public bool ActionCompatible { get; set; }
     }
 }

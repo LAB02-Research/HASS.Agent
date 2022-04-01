@@ -1,5 +1,6 @@
 ﻿using HASS.Agent.Extensions;
 using HASS.Agent.Functions;
+using HASS.Agent.Resources.Localization;
 using Syncfusion.Windows.Forms;
 using HASS.Agent.Sensors;
 using HASS.Agent.Settings;
@@ -161,11 +162,11 @@ namespace HASS.Agent.Forms.Sensors
             BtnModify.Enabled = false;
             BtnAdd.Enabled = false;
             BtnStore.Enabled = false;
-            BtnStore.Text = "storing and registering, please wait .. ";
+            BtnStore.Text = Languages.SensorsConfig_BtnStore_Storing;
 
             // store
             var stored = await Task.Run(async () => await SensorsManager.StoreAsync(_sensors, _toBeDeletedSensors));
-            if (!stored) MessageBoxAdv.Show("An error occured while saving the sensors, check the logs for more info.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!stored) MessageBoxAdv.Show(Languages.SensorsConfig_BtnStore_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             // done
             Close();

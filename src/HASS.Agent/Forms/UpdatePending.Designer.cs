@@ -1,4 +1,6 @@
-﻿namespace HASS.Agent.Forms
+﻿using HASS.Agent.Resources.Localization;
+
+namespace HASS.Agent.Forms
 {
     partial class UpdatePending
     {
@@ -32,7 +34,7 @@
             this.BtnDownload = new Syncfusion.WinForms.Controls.SfButton();
             this.LblNewReleaseInfo = new System.Windows.Forms.Label();
             this.LblVersion = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LblInfo1 = new System.Windows.Forms.Label();
             this.LblUpdateQuestion = new System.Windows.Forms.Label();
             this.BtnIgnore = new Syncfusion.WinForms.Controls.SfButton();
             this.PbUpdate = new System.Windows.Forms.PictureBox();
@@ -62,7 +64,7 @@
             this.BtnDownload.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnDownload.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnDownload.TabIndex = 0;
-            this.BtnDownload.Text = "one sec, fetching info ..";
+            this.BtnDownload.Text = Languages.UpdatePending_BtnDownload;
             this.BtnDownload.UseVisualStyleBackColor = false;
             this.BtnDownload.Click += new System.EventHandler(this.BtnDownload_Click);
             // 
@@ -74,7 +76,7 @@
             this.LblNewReleaseInfo.Name = "LblNewReleaseInfo";
             this.LblNewReleaseInfo.Size = new System.Drawing.Size(197, 19);
             this.LblNewReleaseInfo.TabIndex = 1;
-            this.LblNewReleaseInfo.Text = "There\'s a new release available:";
+            this.LblNewReleaseInfo.Text = Languages.UpdatePending_LblNewReleaseInfo;
             // 
             // LblVersion
             // 
@@ -86,15 +88,15 @@
             this.LblVersion.TabIndex = 2;
             this.LblVersion.Text = "-";
             // 
-            // label2
+            // LblInfo1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(1, 82);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 19);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Release notes";
+            this.LblInfo1.AutoSize = true;
+            this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblInfo1.Location = new System.Drawing.Point(1, 82);
+            this.LblInfo1.Name = "LblInfo1";
+            this.LblInfo1.Size = new System.Drawing.Size(92, 19);
+            this.LblInfo1.TabIndex = 3;
+            this.LblInfo1.Text = Languages.UpdatePending_LblInfo1;
             // 
             // LblUpdateQuestion
             // 
@@ -122,7 +124,7 @@
             this.BtnIgnore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnIgnore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnIgnore.TabIndex = 6;
-            this.BtnIgnore.Text = "ignore this update";
+            this.BtnIgnore.Text = Languages.UpdatePending_BtnIgnore;
             this.BtnIgnore.UseVisualStyleBackColor = false;
             this.BtnIgnore.Click += new System.EventHandler(this.BtnIgnore_Click);
             // 
@@ -145,7 +147,7 @@
             this.LblRelease.Name = "LblRelease";
             this.LblRelease.Size = new System.Drawing.Size(85, 19);
             this.LblRelease.TabIndex = 8;
-            this.LblRelease.Text = "release page";
+            this.LblRelease.Text = Languages.UpdatePending_LblRelease;
             this.LblRelease.Click += new System.EventHandler(this.LblRelease_Click);
             // 
             // TbReleaseNotes
@@ -188,7 +190,7 @@
             this.Controls.Add(this.PbUpdate);
             this.Controls.Add(this.BtnIgnore);
             this.Controls.Add(this.LblUpdateQuestion);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.LblInfo1);
             this.Controls.Add(this.LblVersion);
             this.Controls.Add(this.LblNewReleaseInfo);
             this.Controls.Add(this.BtnDownload);
@@ -202,7 +204,7 @@
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HASS.Agent Update";
+            this.Text = Languages.UpdatePending_Title;
             this.Load += new System.EventHandler(this.UpdatePending_Load);
             this.ResizeEnd += new System.EventHandler(this.UpdatePending_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.PbUpdate)).EndInit();
@@ -216,7 +218,7 @@
         private Syncfusion.WinForms.Controls.SfButton BtnDownload;
         private System.Windows.Forms.Label LblNewReleaseInfo;
         private System.Windows.Forms.Label LblVersion;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LblInfo1;
         private System.Windows.Forms.Label LblUpdateQuestion;
         private Syncfusion.WinForms.Controls.SfButton BtnIgnore;
         private System.Windows.Forms.PictureBox PbUpdate;

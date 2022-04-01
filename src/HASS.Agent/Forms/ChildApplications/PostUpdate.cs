@@ -2,6 +2,7 @@
 using HASS.Agent.Functions;
 using HASS.Agent.Notifications;
 using HASS.Agent.Properties;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Service;
 using HASS.Agent.Settings;
 using Serilog;
@@ -25,7 +26,7 @@ namespace HASS.Agent.Forms.ChildApplications
         private async void ProcessPostUpdate()
         {
             // set initial busy indicator
-            PbStep1InstallSatelliteService.Image = Resources.small_loader_32;
+            PbStep1InstallSatelliteService.Image = Properties.Resources.small_loader_32;
 
             // give the ui time to load
             await Task.Delay(TimeSpan.FromSeconds(2));
@@ -35,14 +36,14 @@ namespace HASS.Agent.Forms.ChildApplications
 
             // install/configure satellite service
             var serviceDone = await ConfigureSatelliteServiceAsync();
-            PbStep1InstallSatelliteService.Image = serviceDone ? Resources.done_32 : Resources.failed_32;
+            PbStep1InstallSatelliteService.Image = serviceDone ? Properties.Resources.done_32 : Properties.Resources.failed_32;
 
             // execute port reservation
             var portDone = await ProcessPortReservationAsync();
-            PbStep2PortBinding.Image = portDone ? Resources.done_32 : Resources.failed_32;
+            PbStep2PortBinding.Image = portDone ? Properties.Resources.done_32 : Properties.Resources.failed_32;
 
             // notify the user if something went wrong
-            if (!serviceDone || !portDone) MessageBoxAdv.Show("Not all steps completed succesfully. Please consult the logs for more information.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!serviceDone || !portDone) MessageBoxAdv.Show(Languages.PostUpdate_ProcessPostUpdate_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
                 // wait a bit to show the 'completed' checks
@@ -64,7 +65,7 @@ namespace HASS.Agent.Forms.ChildApplications
             try
             {
                 // set busy indicator
-                PbStep1InstallSatelliteService.Image = Resources.small_loader_32;
+                PbStep1InstallSatelliteService.Image = Properties.Resources.small_loader_32;
 
                 // make sure we have the location of the service's binary
                 await Task.Run(ServiceManager.SetSatelliteServiceLocalStorage);
@@ -125,7 +126,7 @@ namespace HASS.Agent.Forms.ChildApplications
             try
             {
                 // set busy indicator
-                PbStep2PortBinding.Image = Resources.small_loader_32;
+                PbStep2PortBinding.Image = Properties.Resources.small_loader_32;
 
                 // is the notifier enabled?
                 if (!Variables.AppSettings.NotificationsEnabled) return true;

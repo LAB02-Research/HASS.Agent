@@ -3,6 +3,7 @@ using HASS.Agent.Enums;
 using HASS.Agent.Functions;
 using HASS.Agent.HomeAssistant;
 using HASS.Agent.Models.Internal;
+using HASS.Agent.Resources.Localization;
 using Serilog;
 using Syncfusion.Windows.Forms;
 
@@ -152,11 +153,11 @@ namespace HASS.Agent.Forms.QuickActions
                     return true;
 
                 case HassManagerStatus.ConfigMissing:
-                    MessageBoxAdv.Show("Unable to fetch your entities because of missing config, please enter the required values in the config screen.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBoxAdv.Show(Languages.QuickActions_CheckHassManager_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
 
                 case HassManagerStatus.Failed:
-                    MessageBoxAdv.Show("There was an error trying to fetch your entities.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBoxAdv.Show(Languages.QuickActions_MessageBox_EntityFailed, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
 
                 case HassManagerStatus.Initialising:
@@ -167,7 +168,7 @@ namespace HASS.Agent.Forms.QuickActions
                         await Task.Delay(150);
                         if (HassApiManager.ManagerStatus != HassManagerStatus.Failed) continue;
 
-                        MessageBoxAdv.Show("There was an error trying to fetch your entities.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBoxAdv.Show(Languages.QuickActions_MessageBox_EntityFailed, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return false;
                     }
                     SetGuiLoading(false);

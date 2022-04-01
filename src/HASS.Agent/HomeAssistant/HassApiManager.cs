@@ -6,6 +6,7 @@ using HASS.Agent.Enums;
 using HASS.Agent.Functions;
 using HASS.Agent.Models.HomeAssistant;
 using HASS.Agent.Models.Internal;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Sensors;
 using Serilog;
 
@@ -64,14 +65,14 @@ namespace HASS.Agent.HomeAssistant
                     Variables.MainForm?.SetHassApiStatus(ComponentStatus.Failed);
                     ManagerStatus = HassManagerStatus.Failed;
 
-                    Variables.MainForm?.ShowToolTip("hass api: connection setup failed", true);
+                    Variables.MainForm?.ShowToolTip(Languages.HassApiManager_ToolTip_ConnectionSetupFailed, true);
                     return ManagerStatus;
                 }
 
                 // retrieve config
                 if (!await GetConfig())
                 {
-                    Variables.MainForm?.ShowToolTip("hass api: initial connection failed", true);
+                    Variables.MainForm?.ShowToolTip(Languages.HassApiManager_ToolTip_InitialConnectionFailed, true);
                     return ManagerStatus;
                 }
 
@@ -104,7 +105,7 @@ namespace HASS.Agent.HomeAssistant
                 Variables.MainForm?.SetHassApiStatus(ComponentStatus.Failed);
                 ManagerStatus = HassManagerStatus.Failed;
 
-                Variables.MainForm?.ShowToolTip("hass api: connection failed", true);
+                Variables.MainForm?.ShowToolTip(Languages.HassApiManager_ToolTip_ConnectionFailed, true);
                 return ManagerStatus;
             }
         }
@@ -308,7 +309,7 @@ namespace HASS.Agent.HomeAssistant
                 else if (!string.IsNullOrEmpty(clientCertificate))
                 {
                     // manual certificate selection
-                    if (!File.Exists(clientCertificate)) return (false, "client certificate file not found");
+                    if (!File.Exists(clientCertificate)) return (false, Languages.HassApiManager_CheckHassConfig_CertNotFound);
 
                     var handler = new HttpClientHandler();
                     handler.ClientCertificateOptions = ClientCertificateOption.Manual;
@@ -319,19 +320,19 @@ namespace HASS.Agent.HomeAssistant
                 else ClientFactory.Initialize(uri, apiKey);
                 
                 // check if we're initialized
-                if (!ClientFactory.IsInitialized) return (false, "unable to connect, check uri");
+                if (!ClientFactory.IsInitialized) return (false, Languages.HassApiManager_CheckHassConfig_UnableToConnect);
 
                 // check if we can fetch config
                 _configClient = ClientFactory.GetClient<ConfigClient>();
                 var config = await _configClient.GetConfiguration();
-                return config == null ? (false, "unable to fetch config, check api key") : (true, config.Version);
+                return config == null ? (false, Languages.HassApiManager_CheckHassConfig_ConfigFailed) : (true, config.Version);
 
                 // looks ok
             }
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[HASS_API] Error while checking config: {err}", ex.Message);
-                return (false, "unable to connect, check uri and config");
+                return (false, Languages.HassApiManager_ConnectionFailed);
             }
             finally
             {
@@ -481,7 +482,7 @@ namespace HASS.Agent.HomeAssistant
                 if (_statesClient == null)
                 {
                     Log.Error("[HASS_API] [{domain}.{entity}] Unable to execute action, states client not initialized", domainVal, entityVal);
-                    Variables.MainForm?.ShowToolTip("quick action: action failed, check the logs for info", true);
+                    Variables.MainForm?.ShowToolTip(Languages.HassApiManager_ToolTip_QuickActionFailed, true);
                     return false;
                 }
 
@@ -531,12 +532,12 @@ namespace HASS.Agent.HomeAssistant
                 if (ex.Message.Contains("code 404"))
                 {
                     Log.Error("[HASS_API] [{domain}.{entity}] Error while processing action: entity not found", domainVal, entityVal);
-                    Variables.MainForm?.ShowToolTip("quick action: action failed, entity not found", true);
+                    Variables.MainForm?.ShowToolTip(Languages.HassApiManager_ToolTip_QuickActionFailedOnEntity, true);
                     return false;
                 }
 
                 Log.Fatal(ex, "[HASS_API] [{domain}.{entity}] Error while processing action: {ex}", domainVal, entityVal, ex.Message);
-                Variables.MainForm?.ShowToolTip("quick action: action failed, check the logs for info", true);
+                Variables.MainForm?.ShowToolTip(Languages.HassApiManager_ToolTip_QuickActionFailed, true);
                 return false;
             }
         }

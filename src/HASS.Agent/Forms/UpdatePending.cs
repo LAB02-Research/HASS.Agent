@@ -1,6 +1,7 @@
 ﻿using Syncfusion.Windows.Forms;
 using HASS.Agent.Functions;
 using HASS.Agent.Models.Internal;
+using HASS.Agent.Resources.Localization;
 
 namespace HASS.Agent.Forms
 {
@@ -22,8 +23,8 @@ namespace HASS.Agent.Forms
             // optionally show beta ui
             if (_pendingUpdate.IsBeta)
             {
-                LblNewReleaseInfo.Text = "There's a new BETA release available:";
-                Text = "HASS.Agent BETA Update";
+                LblNewReleaseInfo.Text = Languages.UpdatePending_NewBetaRelease;
+                Text = Languages.UpdatePending_Title_Beta;
             }
 
             // load the rest of the info
@@ -42,13 +43,13 @@ namespace HASS.Agent.Forms
 
                 if (Variables.AppSettings.EnableExecuteUpdateInstaller && !string.IsNullOrEmpty(_pendingUpdate.InstallerUrl))
                 {
-                    LblUpdateQuestion.Text = "Do you want to download and launch the installer?";
-                    BtnDownload.Text = !_pendingUpdate.IsBeta ? "install update" : "install BETA release";
+                    LblUpdateQuestion.Text = Languages.UpdatePending_LblUpdateQuestion_Download;
+                    BtnDownload.Text = !_pendingUpdate.IsBeta ? Languages.UpdatePending_InstallUpdate : Languages.UpdatePending_InstallBetaRelease;
                 }
                 else
                 {
-                    LblUpdateQuestion.Text = "Do you want to navigate to the release page?";
-                    BtnDownload.Text = !_pendingUpdate.IsBeta ? "open release page" : "open BETA release page";
+                    LblUpdateQuestion.Text = Languages.UpdatePending_LblUpdateQuestion_Navigate;
+                    BtnDownload.Text = !_pendingUpdate.IsBeta ? Languages.UpdatePending_OpenReleasePage : Languages.UpdatePending_OpenBetaReleasePage;
                 }
                 
                 BtnDownload.Enabled = true;
@@ -58,8 +59,8 @@ namespace HASS.Agent.Forms
         private async void BtnDownload_Click(object sender, EventArgs e)
         {
             // lock the interface
-            LblUpdateQuestion.Text = "Hold on, processing your request ..";
-            BtnDownload.Text = "processing ..";
+            LblUpdateQuestion.Text = Languages.UpdatePending_LblUpdateQuestion_Processing;
+            BtnDownload.Text = Languages.UpdatePending_BtnDownload_Processing;
             BtnDownload.Enabled = false;
             BtnIgnore.Enabled = false;
 

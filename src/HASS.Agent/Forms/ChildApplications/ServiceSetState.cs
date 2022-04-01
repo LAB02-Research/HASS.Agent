@@ -3,6 +3,7 @@ using HASS.Agent.Enums;
 using HASS.Agent.Functions;
 using HASS.Agent.Notifications;
 using HASS.Agent.Properties;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Service;
 using HASS.Agent.Settings;
 using Serilog;
@@ -25,13 +26,13 @@ namespace HASS.Agent.Forms.ChildApplications
         private void ServiceSetState_Load(object sender, EventArgs e)
         {
             // set the right action description
-            LblStep1Configure.Text = _desiredState switch
+            LblTask1.Text = _desiredState switch
             {
-                ServiceDesiredState.Automatic => "Enable Satellite Service",
-                ServiceDesiredState.Disabled => "Disable Satellite Service",
-                ServiceDesiredState.Started => "Start Satellite Service",
-                ServiceDesiredState.Stopped => "Stop Satellite Service",
-                _ => LblStep1Configure.Text
+                ServiceDesiredState.Automatic => Languages.ServiceSetState_Enabled,
+                ServiceDesiredState.Disabled => Languages.ServiceSetState_Disabled,
+                ServiceDesiredState.Started => Languages.ServiceSetState_Started,
+                ServiceDesiredState.Stopped => Languages.ServiceSetState_Stopped,
+                _ => LblTask1.Text
             };
 
             ProcessState();
@@ -43,7 +44,7 @@ namespace HASS.Agent.Forms.ChildApplications
         private async void ProcessState()
         {
             // set initial busy indicator
-            PbStep1Configure.Image = Resources.small_loader_32;
+            PbStep1Configure.Image = Properties.Resources.small_loader_32;
 
             // give the ui time to load
             await Task.Delay(TimeSpan.FromSeconds(2));
@@ -72,10 +73,10 @@ namespace HASS.Agent.Forms.ChildApplications
                     break;
             }
 
-            PbStep1Configure.Image = stateDone ? Resources.done_32 : Resources.failed_32;
+            PbStep1Configure.Image = stateDone ? Properties.Resources.done_32 : Properties.Resources.failed_32;
             
             // notify the user if something went wrong
-            if (!stateDone) MessageBoxAdv.Show("Something went wrong while processing the desired service state.\r\n\r\nPlease consult the logs for more information.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!stateDone) MessageBoxAdv.Show(Languages.ServiceSetState_ProcessState_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
                 // wait a bit to show the 'completed' checks

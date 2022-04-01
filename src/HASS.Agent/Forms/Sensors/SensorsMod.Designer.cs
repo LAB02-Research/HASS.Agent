@@ -1,4 +1,6 @@
 ﻿
+using HASS.Agent.Resources.Localization;
+
 namespace HASS.Agent.Forms.Sensors
 {
     partial class SensorsMod
@@ -34,12 +36,12 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnStore = new Syncfusion.WinForms.Controls.SfButton();
             this.LblSetting1 = new System.Windows.Forms.Label();
             this.TbSetting1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.LblType = new System.Windows.Forms.Label();
+            this.LblName = new System.Windows.Forms.Label();
             this.TbName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.LblUpdate = new System.Windows.Forms.Label();
+            this.LblSeconds = new System.Windows.Forms.Label();
+            this.LblDescription = new System.Windows.Forms.Label();
             this.TbDescription = new System.Windows.Forms.RichTextBox();
             this.PnlDescription = new System.Windows.Forms.Panel();
             this.LblSetting2 = new System.Windows.Forms.Label();
@@ -56,10 +58,10 @@ namespace HASS.Agent.Forms.Sensors
             this.ImgLv = new System.Windows.Forms.ImageList(this.components);
             this.TbSelectedType = new System.Windows.Forms.TextBox();
             this.PbMultiValue = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.LblMultiValue = new System.Windows.Forms.Label();
+            this.LblAgent = new System.Windows.Forms.Label();
             this.PbAgent = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.LblService = new System.Windows.Forms.Label();
             this.PbService = new System.Windows.Forms.PictureBox();
             this.LblSpecificClient = new System.Windows.Forms.Label();
             this.PnlDescription.SuspendLayout();
@@ -87,7 +89,7 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnStore.TabIndex = 5;
-            this.BtnStore.Text = "store sensor";
+            this.BtnStore.Text = Languages.SensorsMod_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
@@ -99,7 +101,7 @@ namespace HASS.Agent.Forms.Sensors
             this.LblSetting1.Name = "LblSetting1";
             this.LblSetting1.Size = new System.Drawing.Size(63, 19);
             this.LblSetting1.TabIndex = 12;
-            this.LblSetting1.Text = "setting 1";
+            this.LblSetting1.Text = Languages.SensorsMod_LblSetting1;
             this.LblSetting1.Visible = false;
             // 
             // TbSetting1
@@ -114,25 +116,25 @@ namespace HASS.Agent.Forms.Sensors
             this.TbSetting1.TabIndex = 2;
             this.TbSetting1.Visible = false;
             // 
-            // label1
+            // LblType
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(566, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 19);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "selected type";
+            this.LblType.AutoSize = true;
+            this.LblType.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblType.Location = new System.Drawing.Point(566, 18);
+            this.LblType.Name = "LblType";
+            this.LblType.Size = new System.Drawing.Size(89, 19);
+            this.LblType.TabIndex = 3;
+            this.LblType.Text = Languages.SensorsMod_LblType;
             // 
-            // label4
+            // LblName
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(566, 91);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 19);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "name";
+            this.LblName.AutoSize = true;
+            this.LblName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblName.Location = new System.Drawing.Point(566, 91);
+            this.LblName.Name = "LblName";
+            this.LblName.Size = new System.Drawing.Size(43, 19);
+            this.LblName.TabIndex = 10;
+            this.LblName.Text = Languages.SensorsMod_LblName;
             // 
             // TbName
             // 
@@ -145,35 +147,35 @@ namespace HASS.Agent.Forms.Sensors
             this.TbName.Size = new System.Drawing.Size(328, 25);
             this.TbName.TabIndex = 1;
             // 
-            // label2
+            // LblUpdate
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(566, 174);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 19);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "update every";
+            this.LblUpdate.AutoSize = true;
+            this.LblUpdate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblUpdate.Location = new System.Drawing.Point(566, 174);
+            this.LblUpdate.Name = "LblUpdate";
+            this.LblUpdate.Size = new System.Drawing.Size(89, 19);
+            this.LblUpdate.TabIndex = 13;
+            this.LblUpdate.Text = Languages.SensorsMod_LblUpdate;
             // 
-            // label3
+            // LblSeconds
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(750, 176);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 19);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "seconds";
+            this.LblSeconds.AutoSize = true;
+            this.LblSeconds.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblSeconds.Location = new System.Drawing.Point(750, 176);
+            this.LblSeconds.Name = "LblSeconds";
+            this.LblSeconds.Size = new System.Drawing.Size(58, 19);
+            this.LblSeconds.TabIndex = 15;
+            this.LblSeconds.Text = Languages.SensorsMod_LblSeconds;
             // 
-            // label5
+            // LblDescription
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(955, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 19);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "description";
+            this.LblDescription.AutoSize = true;
+            this.LblDescription.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblDescription.Location = new System.Drawing.Point(955, 17);
+            this.LblDescription.Name = "LblDescription";
+            this.LblDescription.Size = new System.Drawing.Size(76, 19);
+            this.LblDescription.TabIndex = 17;
+            this.LblDescription.Text = Languages.SensorsMod_LblDescription;
             // 
             // TbDescription
             // 
@@ -209,7 +211,7 @@ namespace HASS.Agent.Forms.Sensors
             this.LblSetting2.Name = "LblSetting2";
             this.LblSetting2.Size = new System.Drawing.Size(59, 19);
             this.LblSetting2.TabIndex = 21;
-            this.LblSetting2.Text = "setting2";
+            this.LblSetting2.Text = Languages.SensorsMod_LblSetting2;
             this.LblSetting2.Visible = false;
             // 
             // TbSetting2
@@ -232,7 +234,7 @@ namespace HASS.Agent.Forms.Sensors
             this.LblSetting3.Name = "LblSetting3";
             this.LblSetting3.Size = new System.Drawing.Size(63, 19);
             this.LblSetting3.TabIndex = 23;
-            this.LblSetting3.Text = "setting 3";
+            this.LblSetting3.Text = Languages.SensorsMod_LblSetting3;
             this.LblSetting3.Visible = false;
             // 
             // TbSetting3
@@ -303,7 +305,7 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // ClmSensorName
             // 
-            this.ClmSensorName.Text = "  type";
+            this.ClmSensorName.Text = Languages.SensorsMod_ClmSensorName;
             this.ClmSensorName.Width = 300;
             // 
             // ClmMultiValue
@@ -354,25 +356,25 @@ namespace HASS.Agent.Forms.Sensors
             this.PbMultiValue.TabIndex = 28;
             this.PbMultiValue.TabStop = false;
             // 
-            // label6
+            // LblMultiValue
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(295, 393);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 15);
-            this.label6.TabIndex = 29;
-            this.label6.Text = "multivalue";
+            this.LblMultiValue.AutoSize = true;
+            this.LblMultiValue.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblMultiValue.Location = new System.Drawing.Point(295, 393);
+            this.LblMultiValue.Name = "LblMultiValue";
+            this.LblMultiValue.Size = new System.Drawing.Size(63, 15);
+            this.LblMultiValue.TabIndex = 29;
+            this.LblMultiValue.Text = Languages.SensorsMod_LblMultiValue;
             // 
-            // label7
+            // LblAgent
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(403, 393);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 15);
-            this.label7.TabIndex = 31;
-            this.label7.Text = "agent";
+            this.LblAgent.AutoSize = true;
+            this.LblAgent.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblAgent.Location = new System.Drawing.Point(403, 393);
+            this.LblAgent.Name = "LblAgent";
+            this.LblAgent.Size = new System.Drawing.Size(37, 15);
+            this.LblAgent.TabIndex = 31;
+            this.LblAgent.Text = Languages.SensorsMod_LblAgent;
             // 
             // PbAgent
             // 
@@ -384,15 +386,15 @@ namespace HASS.Agent.Forms.Sensors
             this.PbAgent.TabIndex = 30;
             this.PbAgent.TabStop = false;
             // 
-            // label8
+            // LblService
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(485, 393);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 15);
-            this.label8.TabIndex = 33;
-            this.label8.Text = "service";
+            this.LblService.AutoSize = true;
+            this.LblService.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblService.Location = new System.Drawing.Point(485, 393);
+            this.LblService.Name = "LblService";
+            this.LblService.Size = new System.Drawing.Size(43, 15);
+            this.LblService.TabIndex = 33;
+            this.LblService.Text = Languages.SensorsMod_LblService;
             // 
             // PbService
             // 
@@ -412,7 +414,7 @@ namespace HASS.Agent.Forms.Sensors
             this.LblSpecificClient.Name = "LblSpecificClient";
             this.LblSpecificClient.Size = new System.Drawing.Size(155, 19);
             this.LblSpecificClient.TabIndex = 39;
-            this.LblSpecificClient.Text = "hass.agent only!";
+            this.LblSpecificClient.Text = Languages.SensorsMod_LblSpecificClient;
             this.LblSpecificClient.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.LblSpecificClient.Visible = false;
             // 
@@ -426,11 +428,11 @@ namespace HASS.Agent.Forms.Sensors
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(1319, 455);
             this.Controls.Add(this.LblSpecificClient);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.LblService);
             this.Controls.Add(this.PbService);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.LblAgent);
             this.Controls.Add(this.PbAgent);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.LblMultiValue);
             this.Controls.Add(this.PbMultiValue);
             this.Controls.Add(this.TbSelectedType);
             this.Controls.Add(this.LvSensors);
@@ -440,14 +442,14 @@ namespace HASS.Agent.Forms.Sensors
             this.Controls.Add(this.LblSetting2);
             this.Controls.Add(this.TbSetting2);
             this.Controls.Add(this.PnlDescription);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.LblDescription);
             this.Controls.Add(this.LblSetting1);
             this.Controls.Add(this.BtnStore);
             this.Controls.Add(this.TbSetting1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.LblType);
+            this.Controls.Add(this.LblSeconds);
+            this.Controls.Add(this.LblName);
+            this.Controls.Add(this.LblUpdate);
             this.Controls.Add(this.TbName);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -459,7 +461,7 @@ namespace HASS.Agent.Forms.Sensors
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sensor";
+            this.Text = Languages.SensorsMod_Title;
             this.Load += new System.EventHandler(this.SensorMod_Load);
             this.ResizeEnd += new System.EventHandler(this.SensorsMod_ResizeEnd);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SensorsMod_KeyUp);
@@ -479,12 +481,12 @@ namespace HASS.Agent.Forms.Sensors
         private Syncfusion.WinForms.Controls.SfButton BtnStore;
         private System.Windows.Forms.Label LblSetting1;
         private System.Windows.Forms.TextBox TbSetting1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label LblType;
+        private System.Windows.Forms.Label LblName;
         private System.Windows.Forms.TextBox TbName;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label LblSeconds;
+        private System.Windows.Forms.Label LblUpdate;
+        private System.Windows.Forms.Label LblDescription;
         private System.Windows.Forms.RichTextBox TbDescription;
         private System.Windows.Forms.Panel PnlDescription;
         private System.Windows.Forms.Label LblSetting2;
@@ -501,10 +503,10 @@ namespace HASS.Agent.Forms.Sensors
         private TextBox TbSelectedType;
         private ImageList ImgLv;
         private PictureBox PbMultiValue;
-        private Label label6;
-        private Label label7;
+        private Label LblMultiValue;
+        private Label LblAgent;
         private PictureBox PbAgent;
-        private Label label8;
+        private Label LblService;
         private PictureBox PbService;
         private Label LblSpecificClient;
     }

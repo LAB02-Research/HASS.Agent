@@ -3,9 +3,9 @@ using HASS.Agent.Enums;
 using HASS.Agent.Forms;
 using HASS.Agent.Models.Config;
 using HASS.Agent.Notifications;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Settings;
 using Syncfusion.Windows.Forms;
-using NotificationsControl = HASS.Agent.Controls.Onboarding.Notifications;
 
 namespace HASS.Agent.Functions
 {
@@ -13,6 +13,8 @@ namespace HASS.Agent.Functions
     {
         private readonly Onboarding _onboarding;
         private Control _currentControl;
+
+        private const int _totalOnboardingSteps = 9;
 
         internal OnboardingManager(Onboarding onboarding)
         {
@@ -178,37 +180,37 @@ namespace HASS.Agent.Functions
             {
                 case OnboardingStatus.NeverDone:
                 {
-                    var obj = (Welcome)_currentControl;
+                    var obj = (OnboardingWelcome)_currentControl;
                     return obj.Store();
                     }
 
                 case OnboardingStatus.Notifications:
                     {
-                        var obj = (NotificationsControl)_currentControl;
+                        var obj = (OnboardingNotifications)_currentControl;
                         return obj.Store();
                     }
 
                 case OnboardingStatus.API:
                     {
-                        var obj = (API)_currentControl;
+                        var obj = (OnboardingApi)_currentControl;
                         return obj.Store();
                     }
 
                 case OnboardingStatus.MQTT:
                     {
-                        var obj = (Controls.Onboarding.MQTT)_currentControl;
+                        var obj = (OnboardingMqtt)_currentControl;
                         return obj.Store();
                     }
 
                 case OnboardingStatus.HotKey:
                     {
-                        var obj = (HotKey)_currentControl;
+                        var obj = (OnboardingHotKey)_currentControl;
                         return obj.Store();
                     }
 
                 case OnboardingStatus.Updates:
                     {
-                        var obj = (Updates)_currentControl;
+                        var obj = (OnboardingUpdates)_currentControl;
                         return obj.Store();
                     }
             }
@@ -249,10 +251,12 @@ namespace HASS.Agent.Functions
         {
             CloseCurrentControl();
 
-            _onboarding.Text = "HASS.Agent Onboarding: Start [1/9]";
+            const int onboardingStep = 1;
+
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Start, onboardingStep, _totalOnboardingSteps);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.NeverDone;
 
-            _currentControl = new Welcome();
+            _currentControl = new OnboardingWelcome();
 
             _onboarding.BtnPrevious.Visible = false;
             _onboarding.BtnNext.Text = "next";
@@ -267,10 +271,12 @@ namespace HASS.Agent.Functions
         {
             CloseCurrentControl();
 
-            _onboarding.Text = "HASS.Agent Onboarding: Startup [2/9]";
+            const int onboardingStep = 2;
+
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Startup, onboardingStep, _totalOnboardingSteps);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.Startup;
 
-            _currentControl = new Startup();
+            _currentControl = new OnboardingStartup();
 
             _onboarding.BtnPrevious.Visible = true;
             _onboarding.BtnNext.Text = "next";
@@ -285,10 +291,12 @@ namespace HASS.Agent.Functions
         {
             CloseCurrentControl();
 
-            _onboarding.Text = "HASS.Agent Onboarding: Notifications [3/9]";
+            const int onboardingStep = 3;
+
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Notifications, onboardingStep, _totalOnboardingSteps);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.Notifications;
 
-            _currentControl = new NotificationsControl();
+            _currentControl = new OnboardingNotifications();
 
             _onboarding.BtnPrevious.Visible = true;
             _onboarding.BtnNext.Text = "next";
@@ -303,10 +311,12 @@ namespace HASS.Agent.Functions
         {
             CloseCurrentControl();
 
-            _onboarding.Text = "HASS.Agent Onboarding: Integration [4/9]";
+            const int onboardingStep = 4;
+
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Integration, onboardingStep, _totalOnboardingSteps);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.Integration;
 
-            _currentControl = new Integration();
+            _currentControl = new OnboardingIntegration();
 
             _onboarding.BtnPrevious.Visible = true;
             _onboarding.BtnNext.Text = "next";
@@ -322,10 +332,12 @@ namespace HASS.Agent.Functions
         {
             CloseCurrentControl();
 
-            _onboarding.Text = "HASS.Agent Onboarding: API [5/9]";
+            const int onboardingStep = 5;
+
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Api, onboardingStep, _totalOnboardingSteps);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.API;
 
-            _currentControl = new API();
+            _currentControl = new OnboardingApi();
 
             _onboarding.BtnPrevious.Visible = true;
             _onboarding.BtnNext.Text = "next";
@@ -341,10 +353,12 @@ namespace HASS.Agent.Functions
         {
             CloseCurrentControl();
 
-            _onboarding.Text = "HASS.Agent Onboarding: MQTT [6/9]";
+            const int onboardingStep = 6;
+
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Mqtt, onboardingStep, _totalOnboardingSteps);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.MQTT;
 
-            _currentControl = new Controls.Onboarding.MQTT();
+            _currentControl = new OnboardingMqtt();
 
             _onboarding.BtnPrevious.Visible = true;
             _onboarding.BtnNext.Text = "next";
@@ -359,10 +373,12 @@ namespace HASS.Agent.Functions
         {
             CloseCurrentControl();
 
-            _onboarding.Text = "HASS.Agent Onboarding: HotKey [7/9]";
+            const int onboardingStep = 7;
+
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_HotKey, onboardingStep, _totalOnboardingSteps);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.HotKey;
 
-            _currentControl = new HotKey();
+            _currentControl = new OnboardingHotKey();
 
             _onboarding.BtnPrevious.Visible = true;
             _onboarding.BtnNext.Text = "next";
@@ -377,10 +393,12 @@ namespace HASS.Agent.Functions
         {
             CloseCurrentControl();
 
-            _onboarding.Text = "HASS.Agent Onboarding: Updates [8/9]";
+            const int onboardingStep = 8;
+
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Updates, onboardingStep, _totalOnboardingSteps);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.Updates;
 
-            _currentControl = new Updates();
+            _currentControl = new OnboardingUpdates();
 
             _onboarding.BtnPrevious.Visible = true;
             _onboarding.BtnNext.Text = "next";
@@ -397,10 +415,12 @@ namespace HASS.Agent.Functions
         {
             CloseCurrentControl();
 
-            _onboarding.Text = "HASS.Agent Onboarding: Completed [9/9]";
+            const int onboardingStep = 9;
+
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Completed, onboardingStep, _totalOnboardingSteps);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.Completed;
 
-            _currentControl = new Done();
+            _currentControl = new OnboardingDone();
 
             _onboarding.BtnPrevious.Visible = true;
             _onboarding.BtnNext.Text = "finish";
@@ -427,7 +447,7 @@ namespace HASS.Agent.Functions
             if (Variables.AppSettings.OnboardingStatus == OnboardingStatus.Aborted) return true;
 
             // ask the user
-            var q = MessageBoxAdv.Show("Are you sure you want to abort the onboarding process?\r\n\r\nYour progress will not be saved, and it will not be shown again on next launch.", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var q = MessageBoxAdv.Show(Languages.OnboardingManager_ConfirmBeforeClose_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (q != DialogResult.Yes) return false;
 
             // abort, we're done - load blanco settings and store

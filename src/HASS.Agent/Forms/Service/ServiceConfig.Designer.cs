@@ -1,4 +1,6 @@
 ﻿
+using HASS.Agent.Resources.Localization;
+
 namespace HASS.Agent.Forms.Service
 {
     partial class ServiceConfig
@@ -91,7 +93,7 @@ namespace HASS.Agent.Forms.Service
             this.TabGeneral.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabGeneral.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabGeneral.TabIndex = 9;
-            this.TabGeneral.Text = "     General     ";
+            this.TabGeneral.Text = Languages.ServiceConfig_TabGeneral;
             this.TabGeneral.ThemesEnabled = false;
             // 
             // TabMqtt
@@ -106,7 +108,7 @@ namespace HASS.Agent.Forms.Service
             this.TabMqtt.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabMqtt.TabIndex = 11;
             this.TabMqtt.TabVisible = false;
-            this.TabMqtt.Text = "     MQTT     ";
+            this.TabMqtt.Text = Languages.ServiceConfig_TabMqtt;
             this.TabMqtt.ThemesEnabled = false;
             // 
             // TabCommands
@@ -123,7 +125,7 @@ namespace HASS.Agent.Forms.Service
             this.TabCommands.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabCommands.TabIndex = 1;
             this.TabCommands.TabVisible = false;
-            this.TabCommands.Text = "     Commands     ";
+            this.TabCommands.Text = Languages.ServiceConfig_TabCommands;
             this.TabCommands.ThemesEnabled = false;
             // 
             // TabSensors
@@ -140,7 +142,7 @@ namespace HASS.Agent.Forms.Service
             this.TabSensors.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabSensors.TabIndex = 10;
             this.TabSensors.TabVisible = false;
-            this.TabSensors.Text = "     Sensors     ";
+            this.TabSensors.Text = Languages.ServiceConfig_TabSensors;
             this.TabSensors.ThemesEnabled = false;
             // 
             // ServiceConfig
@@ -164,7 +166,7 @@ namespace HASS.Agent.Forms.Service
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Satellite Service Config";
+            this.Text = Languages.ServiceConfig_Title;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SensorsConfig_FormClosing);
             this.Load += new System.EventHandler(this.ServiceConfig_Load);
             this.ResizeEnd += new System.EventHandler(this.SensorsConfig_ResizeEnd);

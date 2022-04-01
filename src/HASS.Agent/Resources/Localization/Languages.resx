@@ -1,0 +1,2171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+	
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>1.3</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="ConfigExternalTools_LblInfo1" xml:space="preserve">
+		<value>This page allows you to configure bindings with external tools.</value>
+	</data>
+	<data name="ConfigExternalTools_LblBrowserName" xml:space="preserve">
+		<value>browser name</value>
+	</data>
+	<data name="ConfigExternalTools_LblInfo2" xml:space="preserve">
+		<value>By default, HASS.Agent will launch URLs using your default browser. If you want, you can also
+configure a specific browser. Additionally, you can configure the arguments used to launch
+in private mode.</value>
+	</data>
+	<data name="ConfigExternalTools_LblBrowserBinary" xml:space="preserve">
+		<value>browser binary</value>
+	</data>
+	<data name="ConfigExternalTools_LblLaunchIncogArg" xml:space="preserve">
+		<value>launch incognito arg</value>
+	</data>
+	<data name="ConfigExternalTools_LblCustomExecutorBinary" xml:space="preserve">
+		<value>custom executor binary</value>
+	</data>
+	<data name="ConfigExternalTools_LblInfo3" xml:space="preserve">
+		<value>You can configure HASS.Agent to use a specific executor, like perl or python. 
+Use the 'custom executor' command to launch this executor.</value>
+	</data>
+	<data name="ConfigExternalTools_LblCustomExecutorName" xml:space="preserve">
+		<value>custom executor name</value>
+	</data>
+	<data name="ConfigExternalTools_LblTip1" xml:space="preserve">
+		<value>tip: doubleclick to browse</value>
+	</data>
+	<data name="ConfigExternalTools_BtnExternalBrowserIncognitoTest" xml:space="preserve">
+		<value>test</value>
+	</data>
+	<data name="ConfigGeneral_LblInfo4" xml:space="preserve">
+		<value>HASS.Agent will wait a while before notifying you of disconnects from MQTT or HA's API.
+You can set the amount of seconds here.</value>
+	</data>
+	<data name="ConfigGeneral_LblDisconGraceSeconds" xml:space="preserve">
+		<value>seconds</value>
+	</data>
+	<data name="ConfigGeneral_LblDisconGracePeriod" xml:space="preserve">
+		<value>disconnected grace period</value>
+	</data>
+	<data name="ConfigGeneral_LblInfo3" xml:space="preserve">
+		<value>Important: if you change this value, HASS.Agent will unpublish all your sensors and commands
+and force a restart of itself, so they can be republished under the new device name.
+Your automations and scripts will keep working.</value>
+	</data>
+	<data name="ConfigGeneral_LblInfo2" xml:space="preserve">
+		<value>Device name is used to identify your machine on HA. 
+It's also used as a prefix for your command/sensor names (can be changed per entity).</value>
+	</data>
+	<data name="ConfigGeneral_LblInfo1" xml:space="preserve">
+		<value>This page contains general configuration items. For more settings, browse the tabs on the left.</value>
+	</data>
+	<data name="ConfigGeneral_LblDeviceName" xml:space="preserve">
+		<value>device name</value>
+	</data>
+	<data name="ConfigHomeAssistantApi_LblTip1" xml:space="preserve">
+		<value>tip: doubleclick this field to browse</value>
+	</data>
+	<data name="ConfigHomeAssistantApi_LblClientCertificate" xml:space="preserve">
+		<value>client certificate</value>
+	</data>
+	<data name="ConfigHomeAssistantApi_CbHassAutoClientCertificate" xml:space="preserve">
+		<value>use automatic client certificate selection</value>
+	</data>
+	<data name="ConfigHomeAssistantApi_BtnTestApi" xml:space="preserve">
+		<value>test connection</value>
+	</data>
+	<data name="ConfigHomeAssistantApi_LblInfo1" xml:space="preserve">
+		<value>To learn which entities you have configured, and to send quick actions, HASS.Agent uses
+Home Assistant's API.
+
+Please provide a long-lived access token, and the address of your Home Assistant instance.
+
+You can get a token through your profile page. Scroll to the bottom and click 'CREATE TOKEN'.</value>
+	</data>
+	<data name="ConfigHomeAssistantApi_LblApiToken" xml:space="preserve">
+		<value>api token</value>
+	</data>
+	<data name="ConfigHomeAssistantApi_LblServerUri" xml:space="preserve">
+		<value>server uri</value>
+	</data>
+	<data name="ConfigHotKey_BtnClearHotKey" xml:space="preserve">
+		<value>clear</value>
+	</data>
+	<data name="ConfigHotKey_LblInfo1" xml:space="preserve">
+		<value>An easy way to pull up your quick actions is to use a global hotkey.
+
+This way, whatever you're doing on your machine, you can always interact with Home Assistant.</value>
+	</data>
+	<data name="ConfigHotKey_CbEnableQuickActionsHotkey" xml:space="preserve">
+		<value>enable quick actions hotkey</value>
+	</data>
+	<data name="ConfigHotKey_LblHotkeyCombo" xml:space="preserve">
+		<value>hotkey combination</value>
+	</data>
+	<data name="ConfigLocalStorage_BtnClearImageCache" xml:space="preserve">
+		<value>clear image cache</value>
+	</data>
+	<data name="ConfigLocalStorage_BtnOpenImageCache" xml:space="preserve">
+		<value>open folder</value>
+	</data>
+	<data name="ConfigLocalStorage_LblCacheLocations" xml:space="preserve">
+		<value>image cache location</value>
+	</data>
+	<data name="ConfigLocalStorage_LblCacheDays" xml:space="preserve">
+		<value>days</value>
+	</data>
+	<data name="ConfigLocalStorage_LblInfo1" xml:space="preserve">
+		<value>Images shown in notifications have to be temporarily stored locally. You can configure the amount of
+days they should be kept before HASS.Agent deletes them. Enter '0' to keep them permanently.</value>
+	</data>
+	<data name="ConfigLogging_LblInfo1" xml:space="preserve">
+		<value>Extended logging provides more verbose and in-depth logging, in case the default logging isn't
+sufficient. Please note that enabling this can cause the logfiles to grow large, and should only be
+used when you suspect something's wrong with HASS.Agent itself or when asked by the
+developers.</value>
+	</data>
+	<data name="ConfigLogging_CbExtendedLogging" xml:space="preserve">
+		<value>enable extended logging</value>
+	</data>
+	<data name="ConfigLogging_BtnShowLogs" xml:space="preserve">
+		<value>open logs folder</value>
+	</data>
+	<data name="ConfigMqtt_LblTip3" xml:space="preserve">
+		<value>tip: doubleclick these fields to browse</value>
+	</data>
+	<data name="ConfigMqtt_LblClientCert" xml:space="preserve">
+		<value>client certificate</value>
+	</data>
+	<data name="ConfigMqtt_LblRootCert" xml:space="preserve">
+		<value>root certificate</value>
+	</data>
+	<data name="ConfigMqtt_CbUseRetainFlag" xml:space="preserve">
+		<value>use retain flag</value>
+	</data>
+	<data name="ConfigMqtt_CbAllowUntrustedCertificates" xml:space="preserve">
+		<value>allow untrusted certificates</value>
+	</data>
+	<data name="ConfigMqtt_BtnMqttClearConfig" xml:space="preserve">
+		<value>clear config</value>
+	</data>
+	<data name="ConfigMqtt_LblTip1" xml:space="preserve">
+		<value>(leave default if not sure)</value>
+	</data>
+	<data name="ConfigMqtt_LblInfo1" xml:space="preserve">
+		<value>Commands and sensors are sent through MQTT. Please provide credentials for your server. If
+you're using the HA addon, you can probably use the preset address.</value>
+	</data>
+	<data name="ConfigMqtt_LblDiscoPrefix" xml:space="preserve">
+		<value>discovery prefix</value>
+	</data>
+	<data name="ConfigMqtt_LblBrokerPassword" xml:space="preserve">
+		<value>password</value>
+	</data>
+	<data name="ConfigMqtt_LblBrokerUsername" xml:space="preserve">
+		<value>username</value>
+	</data>
+	<data name="ConfigMqtt_LblBrokerPort" xml:space="preserve">
+		<value>port</value>
+	</data>
+	<data name="ConfigMqtt_LblBrokerIp" xml:space="preserve">
+		<value>broker ip address or hostname</value>
+	</data>
+	<data name="ConfigMqtt_LblTip2" xml:space="preserve">
+		<value>(leave empty for random)</value>
+	</data>
+	<data name="ConfigMqtt_LblClientId" xml:space="preserve">
+		<value>client id</value>
+	</data>
+	<data name="ConfigNotifications_LblInfo2" xml:space="preserve">
+		<value>If something's not working, make sure you followed these steps:
+
+- Install HASS.Agent-Notifier integration
+- Restart Home Assistant
+- Configure a notifier entity
+- Restart Home Assistant</value>
+	</data>
+	<data name="ConfigNotifications_LblInfo1" xml:space="preserve">
+		<value>HASS.Agent can receive notifications from Home Assistant, using text and/or images.</value>
+	</data>
+	<data name="ConfigNotifications_BtnNotificationsReadme" xml:space="preserve">
+		<value>notifications documentation</value>
+	</data>
+	<data name="ConfigNotifications_LblPort" xml:space="preserve">
+		<value>port</value>
+	</data>
+	<data name="ConfigNotifications_CbAcceptNotifications" xml:space="preserve">
+		<value>accept notifications</value>
+	</data>
+	<data name="ConfigNotifications_BtnSendTestNotification" xml:space="preserve">
+		<value>show test notification</value>
+	</data>
+	<data name="ConfigNotifications_BtnExecutePortReservation" xml:space="preserve">
+		<value>execute port reservation</value>
+	</data>
+	<data name="ConfigNotifications_CbNotificationsIgnoreImageCertErrors" xml:space="preserve">
+		<value>ignore certificate errors for images</value>
+	</data>
+	<data name="ConfigService_LblInfo1" xml:space="preserve">
+		<value>The satellite service allows you to run sensors and commands even when no user's logged in. 
+Use the 'satellite service' button on the main window to manage it.</value>
+	</data>
+	<data name="ConfigService_LblServiceStatusInfo" xml:space="preserve">
+		<value>service status:</value>
+	</data>
+	<data name="ConfigService_BtnStartService" xml:space="preserve">
+		<value>start service</value>
+	</data>
+	<data name="ConfigService_BtnDisableService" xml:space="preserve">
+		<value>disable service</value>
+	</data>
+	<data name="ConfigService_BtnStopService" xml:space="preserve">
+		<value>stop service</value>
+	</data>
+	<data name="ConfigService_BtnEnableService" xml:space="preserve">
+		<value>enable service</value>
+	</data>
+	<data name="ConfigService_BtnReinstallService" xml:space="preserve">
+		<value>reinstall service</value>
+	</data>
+	<data name="ConfigService_LblInfo2" xml:space="preserve">
+		<value>If you don't configure the service, it won't do anything. However, you can still decide to disable it as well.
+The installer will leave the disabled service alone (if you remove the service, the installer will reinstall it).</value>
+	</data>
+	<data name="ConfigService_LblInfo3" xml:space="preserve">
+		<value>You can try reinstalling the service if it's not working correctly.
+Your configuration and entities won't be removed.</value>
+	</data>
+	<data name="ConfigService_BtnShowLogs" xml:space="preserve">
+		<value>open service logs folder</value>
+	</data>
+	<data name="ConfigService_LblInfo4" xml:space="preserve">
+		<value>If the service still fails after reinstalling, please open a ticket and send the content of the latest log.</value>
+	</data>
+	<data name="ConfigStartup_LblInfo1" xml:space="preserve">
+		<value>HASS.Agent can start when you login by creating an entry in your user profile's registry.
+
+Since HASS.Agent is user based, if you want to launch for another user, just install and config
+HASS.Agent there.</value>
+	</data>
+	<data name="ConfigStartup_BtnSetStartOnLogin" xml:space="preserve">
+		<value>enable start-on-login</value>
+	</data>
+	<data name="ConfigStartup_LblStartOnLoginStatusInfo" xml:space="preserve">
+		<value>start-on-login status:</value>
+	</data>
+	<data name="ConfigUpdates_CbBetaUpdates" xml:space="preserve">
+		<value>notify me of beta releases as well</value>
+	</data>
+	<data name="ConfigUpdates_LblInfo2" xml:space="preserve">
+		<value>When there's an update, HASS.Agent will offer the option to open the release page. But if you
+want, HASS.Agent can also download and launch the installer for you - even less to do!
+
+The certificate of the downloaded file will get checked before execution.
+</value>
+	</data>
+	<data name="ConfigUpdates_CbExecuteUpdater" xml:space="preserve">
+		<value>offer to download and launch the installer for me</value>
+	</data>
+	<data name="ConfigUpdates_LblInfo1" xml:space="preserve">
+		<value>If you want, HASS.Agent can check for updates in the background. 
+
+You'll get a notification (once per update) , letting you know a new version is ready to be installed.</value>
+	</data>
+	<data name="ConfigUpdates_CbUpdates" xml:space="preserve">
+		<value>notify me when a new release is available</value>
+	</data>
+	<data name="OnboardingWelcome_LblInfo1" xml:space="preserve">
+		<value>It looks like this is the first time you've launched HASS.Agent.
+
+If you want, we can go through the configuration. If not, just click 'close'.
+</value>
+	</data>
+	<data name="OnboardingWelcome_LblInfo2" xml:space="preserve">
+		<value>Device name is used to identify your machine on HA. 
+It's also used as a suggested prefix for your commands and sensors.
+</value>
+	</data>
+	<data name="OnboardingWelcome_LblDeviceName" xml:space="preserve">
+		<value>device name</value>
+	</data>
+	<data name="OnboardingStartup_BtnSetLaunchOnLogin" xml:space="preserve">
+		<value>yes, enable launch-on-login</value>
+	</data>
+	<data name="OnboardingStartup_LblInfo1" xml:space="preserve">
+		<value>HASS.Agent can launch when you login to Windows, by creating a key in your user profile's
+registry.
+
+You can always remove (or recreate) this key through the Configuration window.</value>
+	</data>
+	<data name="OnboardingStartup_LblCreateInfo" xml:space="preserve">
+		<value>One sec, determining the current state ..</value>
+	</data>
+	<data name="OnboardingNotifications_LblTip1" xml:space="preserve">
+		<value>Note: 5115 is the default port, only change it if you changed it in Home Assistant.</value>
+	</data>
+	<data name="OnboardingNotifications_CbAcceptNotifications" xml:space="preserve">
+		<value>yes, accept notifications on port</value>
+	</data>
+	<data name="OnboardingNotifications_LblInfo1" xml:space="preserve">
+		<value>HASS.Agent can receive notifications from Home Assistant, using text and/or images.
+
+Do you want to enable this function?</value>
+	</data>
+	<data name="OnboardingIntegration_LblIntegration" xml:space="preserve">
+		<value>HASS.Agent-Notifier GitHub page</value>
+	</data>
+	<data name="OnboardingIntegration_LblInfo2" xml:space="preserve">
+		<value>Make sure you follow these steps:
+
+- Install HASS.Agent-Notifier integration
+- Restart Home Assistant
+- Configure a notifier entity
+- Restart Home Assistant</value>
+	</data>
+	<data name="OnboardingIntegration_LblInfo1" xml:space="preserve">
+		<value>To use notifications, you need to install and configure the HASS.Agent-notifier integration in
+Home Assistant.
+
+This is very easy using HACS, but you can also install manually. Visit the link below for more
+information.</value>
+	</data>
+	<data name="OnboardingApi_LblApiToken" xml:space="preserve">
+		<value>api token</value>
+	</data>
+	<data name="OnboardingApi_LblServerUri" xml:space="preserve">
+		<value>server uri (should be ok like this)</value>
+	</data>
+	<data name="OnboardingApi_LblInfo1" xml:space="preserve">
+		<value>To learn which entities you have configured, and to send quick actions, HASS.Agent uses
+Home Assistant's API.
+
+Please provide a long-lived access token, and the address of your Home Assistant instance.
+You can get a token through your profile page. Scroll to the bottom and click 'CREATE TOKEN'.</value>
+	</data>
+	<data name="OnboardingApi_BtnTest" xml:space="preserve">
+		<value>test connection</value>
+	</data>
+	<data name="OnboardingApi_LblTip1" xml:space="preserve">
+		<value>Tip: specialized settings can be found in the Configuration window.</value>
+	</data>
+	<data name="OnboardingMqtt_LblPassword" xml:space="preserve">
+		<value>password</value>
+	</data>
+	<data name="OnboardingMqtt_LblUsername" xml:space="preserve">
+		<value>username</value>
+	</data>
+	<data name="OnboardingMqtt_LblPort" xml:space="preserve">
+		<value>port</value>
+	</data>
+	<data name="OnboardingMqtt_LblIpAdress" xml:space="preserve">
+		<value>ip address or hostname</value>
+	</data>
+	<data name="OnboardingMqtt_LblInfo1" xml:space="preserve">
+		<value>Commands and sensors are sent through MQTT. Please provide credentials for your server.
+If you're using the HA addon, you can probably use the preset address.
+
+Leave empty if you're not going to use commands and sensors.</value>
+	</data>
+	<data name="OnboardingMqtt_LblDiscoveryPrefix" xml:space="preserve">
+		<value>discovery prefix</value>
+	</data>
+	<data name="OnboardingMqtt_LblTip1" xml:space="preserve">
+		<value>(leave default if not sure)</value>
+	</data>
+	<data name="OnboardingMqtt_LblTip2" xml:space="preserve">
+		<value>Tip: specialized settings can be found in the Configuration window.</value>
+	</data>
+	<data name="OnboardingHotKey_LblHotkeyCombo" xml:space="preserve">
+		<value>hotkey combination</value>
+	</data>
+	<data name="OnboardingHotKey_LblInfo1" xml:space="preserve">
+		<value>An easy way to pull up your quick actions is to use a global hotkey.
+
+This way, whatever you're doing on your machine, you can always interact with Home Assistant.
+</value>
+	</data>
+	<data name="OnboardingHotKey_BtnClear" xml:space="preserve">
+		<value>clear</value>
+	</data>
+	<data name="OnboardingUpdates_LblInfo1" xml:space="preserve">
+		<value>If you want, HASS.Agent can check for updates in the background.
+
+You'll get a notification (once per update) , letting you know a new version is ready to be installed.
+
+Do you want to enable this functionality?</value>
+	</data>
+	<data name="OnboardingUpdates_CbNofityOnUpdate" xml:space="preserve">
+		<value>yes, notify me on new updates</value>
+	</data>
+	<data name="OnboardingUpdates_CbExecuteUpdater" xml:space="preserve">
+		<value>yes, download and launch the installer for me</value>
+	</data>
+	<data name="OnboardingUpdates_LblInfo2" xml:space="preserve">
+		<value>When there's an update, HASS.Agent will offer the option to open the release page. But if you
+want, HASS.Agent can also download and launch the installer for you - even less to do!
+
+The certificate of the downloaded file will get checked.</value>
+	</data>
+	<data name="OnboardingDone_LblGitHub" xml:space="preserve">
+		<value>HASS.Agent GitHub page</value>
+	</data>
+	<data name="OnboardingDone_LblInfo3" xml:space="preserve">
+		<value>Thank you for using HASS.Agent, hopefully it'll be useful for you. 
+
+If you encounter any problems, please create a ticket on the GitHub page.</value>
+	</data>
+	<data name="OnboardingDone_LblInfo2" xml:space="preserve">
+		<value>HASS.Agent will now restart to activate your configuration.
+
+
+If you've enabled notifications, an elevation request will popup. This is required to allow
+HASS.Agent to listen on the specified port.</value>
+	</data>
+	<data name="OnboardingDone_LblInfo1" xml:space="preserve">
+		<value>All done!</value>
+	</data>
+	<data name="ServiceCommands_LblLowIntegrity" xml:space="preserve">
+		<value>low integrity</value>
+	</data>
+	<data name="ServiceCommands_ClmName" xml:space="preserve">
+		<value>name</value>
+	</data>
+	<data name="ServiceCommands_ClmType" xml:space="preserve">
+		<value>type</value>
+	</data>
+	<data name="ServiceCommands_BtnRemove" xml:space="preserve">
+		<value>remove</value>
+	</data>
+	<data name="ServiceCommands_BtnModify" xml:space="preserve">
+		<value>modify</value>
+	</data>
+	<data name="ServiceCommands_BtnAdd" xml:space="preserve">
+		<value>add new</value>
+	</data>
+	<data name="ServiceCommands_BtnStore" xml:space="preserve">
+		<value>send and activate commands</value>
+	</data>
+	<data name="ServiceCommands_LblStored" xml:space="preserve">
+		<value>commands stored!</value>
+	</data>
+	<data name="ServiceConnect_BtnRetryAuthId" xml:space="preserve">
+		<value>apply</value>
+	</data>
+	<data name="ServiceConnect_LblRetryAuthId" xml:space="preserve">
+		<value>auth id</value>
+	</data>
+	<data name="ServiceConnect_LblAuthenticate" xml:space="preserve">
+		<value>Authenticate</value>
+	</data>
+	<data name="ServiceConnect_LblConnect" xml:space="preserve">
+		<value>Connect with service</value>
+	</data>
+	<data name="ServiceConnect_LblLoading" xml:space="preserve">
+		<value>connecting with the satellite service, one moment please ..</value>
+	</data>
+	<data name="ServiceConnect_LblFetchConfig" xml:space="preserve">
+		<value>Fetch configuration</value>
+	</data>
+	<data name="ServiceGeneral_LblInfo1" xml:space="preserve">
+		<value>This page contains general configuration items. For MQTT settings, sensors and commands, browse the tabs on top.</value>
+	</data>
+	<data name="ServiceGeneral_LblAuthId" xml:space="preserve">
+		<value>auth id</value>
+	</data>
+	<data name="ServiceGeneral_LblDeviceName" xml:space="preserve">
+		<value>device name</value>
+	</data>
+	<data name="ServiceGeneral_LblTip1" xml:space="preserve">
+		<value>tip: doubleclick to browse</value>
+	</data>
+	<data name="ServiceGeneral_LblCustomExecBinary" xml:space="preserve">
+		<value>custom executor binary</value>
+	</data>
+	<data name="ServiceGeneral_LblCustomExecName" xml:space="preserve">
+		<value>custom executor name</value>
+	</data>
+	<data name="ServiceGeneral_LblSeconds" xml:space="preserve">
+		<value>seconds</value>
+	</data>
+	<data name="ServiceGeneral_LblDisconGrace" xml:space="preserve">
+		<value>disconnected grace period</value>
+	</data>
+	<data name="ServiceGeneral_Apply" xml:space="preserve">
+		<value>apply</value>
+	</data>
+	<data name="ServiceGeneral_LblVersionInfo" xml:space="preserve">
+		<value>version</value>
+	</data>
+	<data name="ServiceGeneral_LblTip2" xml:space="preserve">
+		<value>tip: doubleclick to generate random</value>
+	</data>
+	<data name="ServiceGeneral_Stored" xml:space="preserve">
+		<value>stored!</value>
+	</data>
+	<data name="ServiceMqtt_LblTip2" xml:space="preserve">
+		<value>(leave empty for random)</value>
+	</data>
+	<data name="ServiceMqtt_LblClientId" xml:space="preserve">
+		<value>client id</value>
+	</data>
+	<data name="ServiceMqtt_LblTip3" xml:space="preserve">
+		<value>tip: doubleclick these fields to browse</value>
+	</data>
+	<data name="ServiceMqtt_LblClientCert" xml:space="preserve">
+		<value>client certificate</value>
+	</data>
+	<data name="ServiceMqtt_LblRootCert" xml:space="preserve">
+		<value>root certificate</value>
+	</data>
+	<data name="ServiceMqtt_CbUseRetainFlag" xml:space="preserve">
+		<value>use retain flag</value>
+	</data>
+	<data name="ServiceMqtt_CbAllowUntrustedCertificates" xml:space="preserve">
+		<value>allow untrusted certificates</value>
+	</data>
+	<data name="ServiceMqtt_BtnMqttClearConfig" xml:space="preserve">
+		<value>clear config</value>
+	</data>
+	<data name="ServiceMqtt_LblTip1" xml:space="preserve">
+		<value>(leave default if not sure)</value>
+	</data>
+	<data name="ServiceMqtt_LblInfo1" xml:space="preserve">
+		<value>Commands and sensors are sent through MQTT. Please provide credentials for your server. If you're using the HA addon,
+you can probably use the preset address.</value>
+	</data>
+	<data name="ServiceMqtt_LblDiscoPrefix" xml:space="preserve">
+		<value>discovery prefix</value>
+	</data>
+	<data name="ServiceMqtt_LblBrokerPassword" xml:space="preserve">
+		<value>password</value>
+	</data>
+	<data name="ServiceMqtt_LblBrokerUsername" xml:space="preserve">
+		<value>username</value>
+	</data>
+	<data name="ServiceMqtt_LblBrokerPort" xml:space="preserve">
+		<value>port</value>
+	</data>
+	<data name="ServiceMqtt_LblBrokerIp" xml:space="preserve">
+		<value>broker ip address or hostname</value>
+	</data>
+	<data name="ServiceMqtt_BtnStore" xml:space="preserve">
+		<value>send and activate config</value>
+	</data>
+	<data name="ServiceMqtt_BtnCopy" xml:space="preserve">
+		<value>copy from hass.agent</value>
+	</data>
+	<data name="ServiceMqtt_LblStored" xml:space="preserve">
+		<value>config stored!</value>
+	</data>
+	<data name="ServiceMqtt_LblStatusInfo" xml:space="preserve">
+		<value>status</value>
+	</data>
+	<data name="ServiceMqtt_LblStatus" xml:space="preserve">
+		<value>querying ..</value>
+	</data>
+	<data name="ServiceSensors_ClmName" xml:space="preserve">
+		<value>name</value>
+	</data>
+	<data name="ServiceSensors_ClmType" xml:space="preserve">
+		<value>type</value>
+	</data>
+	<data name="ServiceSensors_LblRefresh" xml:space="preserve">
+		<value>refresh</value>
+	</data>
+	<data name="ServiceSensors_BtnRemove" xml:space="preserve">
+		<value>remove</value>
+	</data>
+	<data name="ServiceSensors_BtnAdd" xml:space="preserve">
+		<value>add new</value>
+	</data>
+	<data name="ServiceSensors_BtnModify" xml:space="preserve">
+		<value>modify</value>
+	</data>
+	<data name="ServiceSensors_BtnStore" xml:space="preserve">
+		<value>send and activate sensors</value>
+	</data>
+	<data name="ServiceSensors_LblStored" xml:space="preserve">
+		<value>sensors stored!</value>
+	</data>
+	<data name="PortReservation_LblInfo1" xml:space="preserve">
+		<value>Please wait a bit while the task is performed ..</value>
+	</data>
+	<data name="PortReservation_LblTask1" xml:space="preserve">
+		<value>Create API port binding</value>
+	</data>
+	<data name="PortReservation_LblTask2" xml:space="preserve">
+		<value>Set firewall rule</value>
+	</data>
+	<data name="PortReservation_Title" xml:space="preserve">
+		<value>HASS.Agent Port Reservation</value>
+	</data>
+	<data name="PostUpdate_LblInfo1" xml:space="preserve">
+		<value>Please wait a bit while some post-update tasks are performed ..</value>
+	</data>
+	<data name="PostUpdate_LblTask1" xml:space="preserve">
+		<value>Configuring Satellite Service</value>
+	</data>
+	<data name="PostUpdate_LblTask2" xml:space="preserve">
+		<value>Create API port binding</value>
+	</data>
+	<data name="PostUpdate_Title" xml:space="preserve">
+		<value>HASS.Agent Post Update</value>
+	</data>
+	<data name="Restart_LblInfo1" xml:space="preserve">
+		<value>Please wait a bit while HASS.Agent restarts ..</value>
+	</data>
+	<data name="Restart_LblTask1" xml:space="preserve">
+		<value>Waiting for previous instance to close</value>
+	</data>
+	<data name="Restart_LblTask2" xml:space="preserve">
+		<value>Relaunch HASS.Agent</value>
+	</data>
+	<data name="Restart_Title" xml:space="preserve">
+		<value>HASS.Agent Restarter</value>
+	</data>
+	<data name="ServiceReinstall_LblInfo1" xml:space="preserve">
+		<value>Please wait while the satellite service is reinstalled ..</value>
+	</data>
+	<data name="ServiceReinstall_LblTask1" xml:space="preserve">
+		<value>Remove Satellite Service</value>
+	</data>
+	<data name="ServiceReinstall_LblTask2" xml:space="preserve">
+		<value>Install Satellite Service</value>
+	</data>
+	<data name="ServiceReinstall_Title" xml:space="preserve">
+		<value>HASS.Agent Reinstall Satellite Service</value>
+	</data>
+	<data name="ServiceSetState_LblInfo1" xml:space="preserve">
+		<value>Please wait while the satellite service is configured ..</value>
+	</data>
+	<data name="ServiceSetState_LblTask1" xml:space="preserve">
+		<value>Enable Satellite Service</value>
+	</data>
+	<data name="ServiceSetState_Title" xml:space="preserve">
+		<value>HASS.Agent Configure Satellite Service</value>
+	</data>
+	<data name="CommandMqttTopic_BtnClose" xml:space="preserve">
+		<value>close</value>
+	</data>
+	<data name="CommandMqttTopic_LblInfo1" xml:space="preserve">
+		<value>This is the MQTT topic on which you can publish action commands:</value>
+	</data>
+	<data name="CommandMqttTopic_BtnCopyClipboard" xml:space="preserve">
+		<value>copy to clipboard</value>
+	</data>
+	<data name="CommandMqttTopic_LblHelp" xml:space="preserve">
+		<value>help and examples</value>
+	</data>
+	<data name="CommandMqttTopic_Title" xml:space="preserve">
+		<value>MQTT Action Topic</value>
+	</data>
+	<data name="CommandsConfig_BtnRemove" xml:space="preserve">
+		<value>remove</value>
+	</data>
+	<data name="CommandsConfig_BtnModify" xml:space="preserve">
+		<value>modify</value>
+	</data>
+	<data name="CommandsConfig_BtnAdd" xml:space="preserve">
+		<value>add new</value>
+	</data>
+	<data name="CommandsConfig_BtnStore" xml:space="preserve">
+		<value>store and activate commands</value>
+	</data>
+	<data name="CommandsConfig_ClmName" xml:space="preserve">
+		<value>name</value>
+	</data>
+	<data name="CommandsConfig_ClmType" xml:space="preserve">
+		<value>type</value>
+	</data>
+	<data name="CommandsConfig_LblLowIntegrity" xml:space="preserve">
+		<value>low integrity</value>
+	</data>
+	<data name="CommandsConfig_LblActionInfo" xml:space="preserve">
+		<value>action</value>
+	</data>
+	<data name="CommandsConfig_Title" xml:space="preserve">
+		<value>Commands Config</value>
+	</data>
+	<data name="CommandsMod_BtnStore" xml:space="preserve">
+		<value>store command</value>
+	</data>
+	<data name="CommandsMod_LblSetting" xml:space="preserve">
+		<value>config</value>
+	</data>
+	<data name="CommandsMod_LblName" xml:space="preserve">
+		<value>name</value>
+	</data>
+	<data name="CommandsMod_LblDescription" xml:space="preserve">
+		<value>description</value>
+	</data>
+	<data name="CommandsMod_CbRunAsLowIntegrity" xml:space="preserve">
+		<value>run as 'low integrity'</value>
+	</data>
+	<data name="CommandsMod_LblIntegrityInfo" xml:space="preserve">
+		<value>what's this?</value>
+	</data>
+	<data name="CommandsMod_ClmSensorName" xml:space="preserve">
+		<value>  type</value>
+	</data>
+	<data name="CommandsMod_LblSelectedType" xml:space="preserve">
+		<value>selected type</value>
+	</data>
+	<data name="CommandsMod_LblService" xml:space="preserve">
+		<value>service</value>
+	</data>
+	<data name="CommandsMod_LblAgent" xml:space="preserve">
+		<value>agent</value>
+	</data>
+	<data name="CommandsMod_LblSpecificClient" xml:space="preserve">
+		<value>hass.agent only!</value>
+	</data>
+	<data name="CommandsMod_LblEntityType" xml:space="preserve">
+		<value>entity type</value>
+	</data>
+	<data name="CommandsMod_LblMqttTopic" xml:space="preserve">
+		<value>show mqtt action topic</value>
+	</data>
+	<data name="CommandsMod_LblActionInfo" xml:space="preserve">
+		<value>action</value>
+	</data>
+	<data name="CommandsMod_Title" xml:space="preserve">
+		<value>Command</value>
+	</data>
+	<data name="QuickActions_LblLoading" xml:space="preserve">
+		<value>please wait while your entities are fetched ...</value>
+	</data>
+	<data name="QuickActions_Title" xml:space="preserve">
+		<value>Quick Actions</value>
+	</data>
+	<data name="QuickActionsConfig_BtnStore" xml:space="preserve">
+		<value>store quick actions</value>
+	</data>
+	<data name="QuickActionsConfig_BtnAdd" xml:space="preserve">
+		<value>add new</value>
+	</data>
+	<data name="QuickActionsConfig_BtnModify" xml:space="preserve">
+		<value>modify</value>
+	</data>
+	<data name="QuickActionsConfig_BtnRemove" xml:space="preserve">
+		<value>remove</value>
+	</data>
+	<data name="QuickActionsConfig_BtnPreview" xml:space="preserve">
+		<value>preview</value>
+	</data>
+	<data name="QuickActionsConfig_ClmDomain" xml:space="preserve">
+		<value>domain</value>
+	</data>
+	<data name="QuickActionsConfig_ClmEntity" xml:space="preserve">
+		<value>entity</value>
+	</data>
+	<data name="QuickActionsConfig_ClmAction" xml:space="preserve">
+		<value>action</value>
+	</data>
+	<data name="QuickActionsConfig_ClmHotKey" xml:space="preserve">
+		<value>hotkey</value>
+	</data>
+	<data name="QuickActionsConfig_ClmDescription" xml:space="preserve">
+		<value>description</value>
+	</data>
+	<data name="QuickActionsConfig_LblHotkey" xml:space="preserve">
+		<value>hotkey enabled</value>
+	</data>
+	<data name="QuickActionsConfig_Title" xml:space="preserve">
+		<value>Quick Actions Config</value>
+	</data>
+	<data name="QuickActionsMod_BtnStore" xml:space="preserve">
+		<value>store quick action</value>
+	</data>
+	<data name="QuickActionsMod_LblDomain" xml:space="preserve">
+		<value>domain</value>
+	</data>
+	<data name="QuickActionsMod_LblEntityInfo" xml:space="preserve">
+		<value>entity</value>
+	</data>
+	<data name="QuickActionsMod_LblAction" xml:space="preserve">
+		<value>action</value>
+	</data>
+	<data name="QuickActionsMod_LblDescription" xml:space="preserve">
+		<value>description</value>
+	</data>
+	<data name="QuickActionsMod_LblLoading" xml:space="preserve">
+		<value>please wait while your entities are fetched ...</value>
+	</data>
+	<data name="QuickActionsMod_CbEnableHotkey" xml:space="preserve">
+		<value>enable hotkey</value>
+	</data>
+	<data name="QuickActionsMod_LblHotkey" xml:space="preserve">
+		<value>hotkey combination:</value>
+	</data>
+	<data name="QuickActionsMod_LblTip1" xml:space="preserve">
+		<value>(optional, will be used instead of entity name)</value>
+	</data>
+	<data name="QuickActionsMod_Title" xml:space="preserve">
+		<value>Quick Action</value>
+	</data>
+	<data name="SensorsConfig_BtnRemove" xml:space="preserve">
+		<value>remove</value>
+	</data>
+	<data name="SensorsConfig_BtnModify" xml:space="preserve">
+		<value>modify</value>
+	</data>
+	<data name="SensorsConfig_BtnAdd" xml:space="preserve">
+		<value>add new</value>
+	</data>
+	<data name="SensorsConfig_BtnStore" xml:space="preserve">
+		<value>store and activate sensors</value>
+	</data>
+	<data name="SensorsConfig_ClmName" xml:space="preserve">
+		<value>name</value>
+	</data>
+	<data name="SensorsConfig_ClmType" xml:space="preserve">
+		<value>type</value>
+	</data>
+	<data name="SensorsConfig_LblRefresh" xml:space="preserve">
+		<value>refresh</value>
+	</data>
+	<data name="SensorsConfig_Title" xml:space="preserve">
+		<value>Sensors Config</value>
+	</data>
+	<data name="SensorsMod_BtnStore" xml:space="preserve">
+		<value>store sensor</value>
+	</data>
+	<data name="SensorsMod_LblSetting1" xml:space="preserve">
+		<value>setting 1</value>
+	</data>
+	<data name="SensorsMod_LblType" xml:space="preserve">
+		<value>selected type</value>
+	</data>
+	<data name="SensorsMod_LblName" xml:space="preserve">
+		<value>name</value>
+	</data>
+	<data name="SensorsMod_LblUpdate" xml:space="preserve">
+		<value>update every</value>
+	</data>
+	<data name="SensorsMod_LblSeconds" xml:space="preserve">
+		<value>seconds</value>
+	</data>
+	<data name="SensorsMod_LblDescription" xml:space="preserve">
+		<value>description</value>
+	</data>
+	<data name="SensorsMod_LblSetting2" xml:space="preserve">
+		<value>setting 2</value>
+	</data>
+	<data name="SensorsMod_LblSetting3" xml:space="preserve">
+		<value>setting 3</value>
+	</data>
+	<data name="SensorsMod_ClmSensorName" xml:space="preserve">
+		<value>  type</value>
+	</data>
+	<data name="SensorsMod_LblMultiValue" xml:space="preserve">
+		<value>multivalue</value>
+	</data>
+	<data name="SensorsMod_LblAgent" xml:space="preserve">
+		<value>agent</value>
+	</data>
+	<data name="SensorsMod_LblService" xml:space="preserve">
+		<value>service</value>
+	</data>
+	<data name="SensorsMod_LblSpecificClient" xml:space="preserve">
+		<value>hass.agent only!</value>
+	</data>
+	<data name="SensorsMod_Title" xml:space="preserve">
+		<value>Sensor</value>
+	</data>
+	<data name="ServiceConfig_TabGeneral" xml:space="preserve">
+		<value>     General     </value>
+	</data>
+	<data name="ServiceConfig_TabMqtt" xml:space="preserve">
+		<value>     MQTT     </value>
+	</data>
+	<data name="ServiceConfig_TabCommands" xml:space="preserve">
+		<value>     Commands     </value>
+	</data>
+	<data name="ServiceConfig_TabSensors" xml:space="preserve">
+		<value>     Sensors     </value>
+	</data>
+	<data name="ServiceConfig_Title" xml:space="preserve">
+		<value>Satellite Service Config</value>
+	</data>
+	<data name="About_BtnClose" xml:space="preserve">
+		<value>close</value>
+	</data>
+	<data name="About_LblInfo1" xml:space="preserve">
+		<value>A Windows-based client for the Home Assistant platform.</value>
+	</data>
+	<data name="About_LblInfo3" xml:space="preserve">
+		<value>This application is open source and completely free.  Please check the project
+pages of the used components for their individual licenses:</value>
+	</data>
+	<data name="About_LblInfo4" xml:space="preserve">
+		<value>A big 'thank you' to the developers of these projects, who were kind enough
+to share their hard work with the rest of us mere mortals. </value>
+	</data>
+	<data name="About_LblInfo5" xml:space="preserve">
+		<value>And of course; thanks to Paulus Shoutsen, Franck Nijhof and the entire team
+of devs that created and maintain Home Assistant :-)</value>
+	</data>
+	<data name="About_LblInfo2" xml:space="preserve">
+		<value>Created with love by</value>
+	</data>
+	<data name="About_LblInfo6" xml:space="preserve">
+		<value>Like this tool? Support us (read: keep us awake) by buying a cup of coffee:</value>
+	</data>
+	<data name="About_Title" xml:space="preserve">
+		<value>About</value>
+	</data>
+	<data name="Configuration_TabGeneral" xml:space="preserve">
+		<value>General</value>
+	</data>
+	<data name="Configuration_TabExternalTools" xml:space="preserve">
+		<value>External Tools</value>
+	</data>
+	<data name="Configuration_TabHassApi" xml:space="preserve">
+		<value>Home Assistant API</value>
+	</data>
+	<data name="Configuration_TabHotKey" xml:space="preserve">
+		<value>HotKey</value>
+	</data>
+	<data name="Configuration_TabLocalStorage" xml:space="preserve">
+		<value>Local Storage</value>
+	</data>
+	<data name="Configuration_TabLogging" xml:space="preserve">
+		<value>Logging</value>
+	</data>
+	<data name="Configuration_TabMQTT" xml:space="preserve">
+		<value>MQTT</value>
+	</data>
+	<data name="Configuration_TabNotifications" xml:space="preserve">
+		<value>Notifications</value>
+	</data>
+	<data name="Configuration_TabService" xml:space="preserve">
+		<value>Satellite Service</value>
+	</data>
+	<data name="Configuration_TabStartup" xml:space="preserve">
+		<value>Startup</value>
+	</data>
+	<data name="Configuration_TabUpdates" xml:space="preserve">
+		<value>Updates</value>
+	</data>
+	<data name="Configuration_BtnAbout" xml:space="preserve">
+		<value>about</value>
+	</data>
+	<data name="Configuration_BtnHelp" xml:space="preserve">
+		<value>help &amp;&amp; contact</value>
+	</data>
+	<data name="Configuration_BtnStore" xml:space="preserve">
+		<value>store configuration</value>
+	</data>
+	<data name="Configuration_BtnClose" xml:space="preserve">
+		<value>close without saving</value>
+	</data>
+	<data name="Configuration_Title" xml:space="preserve">
+		<value>Configuration</value>
+	</data>
+	<data name="ExitDialog_LblInfo1" xml:space="preserve">
+		<value>What would you like to do?</value>
+	</data>
+	<data name="ExitDialog_BtnRestart" xml:space="preserve">
+		<value>restart</value>
+	</data>
+	<data name="ExitDialog_BtnHide" xml:space="preserve">
+		<value>hide</value>
+	</data>
+	<data name="ExitDialog_BtnExit" xml:space="preserve">
+		<value>exit</value>
+	</data>
+	<data name="ExitDialog_Title" xml:space="preserve">
+		<value>Exit Dialog</value>
+	</data>
+	<data name="Help_BtnClose" xml:space="preserve">
+		<value>close</value>
+	</data>
+	<data name="Help_LblInfo1" xml:space="preserve">
+		<value>Stuck while using HASS.Agent, need some help integrating the
+sensors/commands or have a great idea for the next version?
+
+There are a few channels through which you can reach us:</value>
+	</data>
+	<data name="Help_LblAbout" xml:space="preserve">
+		<value>About</value>
+	</data>
+	<data name="Help_LblHAForum" xml:space="preserve">
+		<value>Home Assistant forum</value>
+	</data>
+	<data name="Help_LblGitHub" xml:space="preserve">
+		<value>GitHub tickets</value>
+	</data>
+	<data name="Help_LblHAInfo" xml:space="preserve">
+		<value>Bit of everything, with the addition that other HA users can help as well.</value>
+	</data>
+	<data name="Help_LblGitHubInfo" xml:space="preserve">
+		<value>Report bugs, feature requests, ideas, tips, ..</value>
+	</data>
+	<data name="Help_LblDiscordInfo" xml:space="preserve">
+		<value>Get help with setting up and using HASS.Agent, report bugs or just talk about whatever.</value>
+	</data>
+	<data name="Help_LblWikiInfo" xml:space="preserve">
+		<value>Documentation and usage examples.</value>
+	</data>
+	<data name="Help_Title" xml:space="preserve">
+		<value>Help</value>
+	</data>
+	<data name="Main_TsShow" xml:space="preserve">
+		<value>show hass.agent</value>
+	</data>
+	<data name="Main_TsShowQuickActions" xml:space="preserve">
+		<value>show quick actions</value>
+	</data>
+	<data name="Main_TsConfig" xml:space="preserve">
+		<value>configuration</value>
+	</data>
+	<data name="Main_TsQuickItemsConfig" xml:space="preserve">
+		<value>manage quick actions</value>
+	</data>
+	<data name="Main_TsLocalSensors" xml:space="preserve">
+		<value>manage local sensors</value>
+	</data>
+	<data name="Main_TsCommands" xml:space="preserve">
+		<value>manage commands</value>
+	</data>
+	<data name="Main_CheckForUpdates" xml:space="preserve">
+		<value>check for updates</value>
+	</data>
+	<data name="Main_TsDonate" xml:space="preserve">
+		<value>donate</value>
+	</data>
+	<data name="Main_TsHelp" xml:space="preserve">
+		<value>help &amp;&amp; contact</value>
+	</data>
+	<data name="Main_TsAbout" xml:space="preserve">
+		<value>about</value>
+	</data>
+	<data name="Main_TsExit" xml:space="preserve">
+		<value>exit</value>
+	</data>
+	<data name="Main_BtnHide" xml:space="preserve">
+		<value>hide</value>
+	</data>
+	<data name="Main_GpControls" xml:space="preserve">
+		<value>controls</value>
+	</data>
+	<data name="Main_BtnServiceManager" xml:space="preserve">
+		<value>
+satellite service</value>
+	</data>
+	<data name="Main_BtnAppSettings" xml:space="preserve">
+		<value>
+configuration</value>
+	</data>
+	<data name="Main_BtnActionsManager" xml:space="preserve">
+		<value>
+quick actions</value>
+	</data>
+	<data name="Main_BtnCommandsManager" xml:space="preserve">
+		<value>
+loading</value>
+	</data>
+	<data name="Main_BtnSensorsManager" xml:space="preserve">
+		<value>
+loading</value>
+	</data>
+	<data name="Main_GpStatus" xml:space="preserve">
+		<value>system status</value>
+	</data>
+	<data name="Main_LblService" xml:space="preserve">
+		<value>satellite service:</value>
+	</data>
+	<data name="Main_LblCommands" xml:space="preserve">
+		<value>commands:</value>
+	</data>
+	<data name="Main_LblSensors" xml:space="preserve">
+		<value>sensors:</value>
+	</data>
+	<data name="Main_LblQuickActions" xml:space="preserve">
+		<value>quick actions:</value>
+	</data>
+	<data name="Main_LblHomeAssistantApi" xml:space="preserve">
+		<value>home assistant api:</value>
+	</data>
+	<data name="Main_LblNotificationApi" xml:space="preserve">
+		<value>notification api:</value>
+	</data>
+	<data name="Onboarding_BtnNext" xml:space="preserve">
+		<value>next</value>
+	</data>
+	<data name="Onboarding_BtnClose" xml:space="preserve">
+		<value>close</value>
+	</data>
+	<data name="Onboarding_BtnPrevious" xml:space="preserve">
+		<value>previous</value>
+	</data>
+	<data name="Onboarding_Onboarding" xml:space="preserve">
+		<value>HASS.Agent Onboarding</value>
+	</data>
+	<data name="UpdatePending_BtnDownload" xml:space="preserve">
+		<value>one sec, fetching info ..</value>
+	</data>
+	<data name="UpdatePending_LblNewReleaseInfo" xml:space="preserve">
+		<value>There's a new release available:</value>
+	</data>
+	<data name="UpdatePending_LblInfo1" xml:space="preserve">
+		<value>Release notes</value>
+	</data>
+	<data name="UpdatePending_BtnIgnore" xml:space="preserve">
+		<value>ignore this update</value>
+	</data>
+	<data name="UpdatePending_LblRelease" xml:space="preserve">
+		<value>release page</value>
+	</data>
+	<data name="UpdatePending_Title" xml:space="preserve">
+		<value>HASS.Agent Update</value>
+	</data>
+	<data name="CommandsManager_CustomCommandDescription" xml:space="preserve">
+		<value>Execute a custom command.
+
+These commands run without special elevation. To run elevated, create a Scheduled Task, and use 'schtasks /Run /TN "TaskName"' as the command to execute your task.
+
+Or enable 'run as low integrity' for even stricter execution.</value>
+	</data>
+	<data name="CommandsManager_CustomExecutorCommandDescription" xml:space="preserve">
+		<value>Executes the command through the configured custom executor (in Configuration -&gt; External Tools).
+
+Your command is provided as an argument 'as is', so you have to supply your own quotes etc. if necessary.</value>
+	</data>
+	<data name="CommandsManager_HibernateCommandDescription" xml:space="preserve">
+		<value>Sets the machine in hibernation.</value>
+	</data>
+	<data name="CommandsManager_KeyCommandDescription" xml:space="preserve">
+		<value>Simulates a single keypress.
+
+You can pick any of these values: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes 
+
+If you need more keys and/or modifiers like CTRL, use the MultipleKeys command.</value>
+	</data>
+	<data name="CommandsManager_LaunchUrlCommandDescription" xml:space="preserve">
+		<value>Launches the provided URL, by default in your default browser.
+
+To use 'incognito', provide a specific browser in Configuration -&gt; External Tools.</value>
+	</data>
+	<data name="CommandsManager_LockCommandDescription" xml:space="preserve">
+		<value>Locks the current session.</value>
+	</data>
+	<data name="CommandsManager_LogOffCommandDescription" xml:space="preserve">
+		<value>Logs off the current session.</value>
+	</data>
+	<data name="CommandsManager_MediaMuteCommandDescription" xml:space="preserve">
+		<value>Simulates 'mute' key.</value>
+	</data>
+	<data name="CommandsManager_MediaNextCommandDescription" xml:space="preserve">
+		<value>Simulates 'media next' key.</value>
+	</data>
+	<data name="CommandsManager_MediaPlayPauseCommandDescription" xml:space="preserve">
+		<value>Simulates 'media playpause' key.</value>
+	</data>
+	<data name="CommandsManager_MediaPreviousCommandDescription" xml:space="preserve">
+		<value>Simulates 'media previous' key.</value>
+	</data>
+	<data name="CommandsManager_MediaVolumeDownCommandDescription" xml:space="preserve">
+		<value>Simulates 'volume down' key.</value>
+	</data>
+	<data name="CommandsManager_MediaVolumeUpCommandDescription" xml:space="preserve">
+		<value>Simulates 'volume up' key.</value>
+	</data>
+	<data name="CommandsManager_MultipleKeysCommandDescription" xml:space="preserve">
+		<value>Simulates pressing mulitple keys.
+
+You need to put [ ] between every key, otherwise HASS.Agent can't tell them apart. So say you want to press X TAB Y SHIFT-Z, it'd be [X] [{TAB}] [Y] [+Z].
+
+There are a few tricks you can use:
+
+- Special keys go between { }, like {TAB} or {UP}
+
+- Put a + in front of a key to add SHIFT, ^ for CTRL and % for ALT. So, +C is SHIFT-C. Or, +(CD) is SHIFT-C and SHIFT-D, while +CD is SHIFT-C and D
+
+- For multiple presses, use {z 15}, which means Z will get pressed 15 times.
+
+More info: https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys</value>
+	</data>
+	<data name="CommandsManager_PowershellCommandDescription" xml:space="preserve">
+		<value>Execute a Powershell command or script.
+
+You can either provide the location of a script (*.ps1), or a single-line command.
+
+This will run without special elevation.</value>
+	</data>
+	<data name="CommandsManager_PublishAllSensorsCommandDescription" xml:space="preserve">
+		<value>Resets all sensor checks, forcing all sensors to process and send their value.
+
+Useful for example if you want to force HASS.Agent to update all your sensors after a HA reboot.</value>
+	</data>
+	<data name="CommandsManager_RestartCommandDescription" xml:space="preserve">
+		<value>Restarts the machine after one minute.
+
+Tip: accidentally triggered? Run 'shutdown /a' to abort.</value>
+	</data>
+	<data name="CommandsManager_ShutdownCommandDescription" xml:space="preserve">
+		<value>Shuts down the machine after one minute.
+
+Tip: accidentally triggered? Run 'shutdown /a' to abort.</value>
+	</data>
+	<data name="CommandsManager_SleepCommandDescription" xml:space="preserve">
+		<value>Puts the machine to sleep.
+
+Note: due to a limitation in Windows, this only works if hibernation is disabled, otherwise it will just hibernate.
+
+You can use something like NirCmd (http://www.nirsoft.net/utils/nircmd.html) to circumvent this.</value>
+	</data>
+	<data name="ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox1" xml:space="preserve">
+		<value>Please enter the location of your browser's binary (.exe file).</value>
+	</data>
+	<data name="ConfigExternalTools_ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox2" xml:space="preserve">
+		<value>The provided binary isn't found.</value>
+	</data>
+	<data name="ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox3" xml:space="preserve">
+		<value>You didn't provide any incognito arguments, so the browser will probably launch normally.
+
+Do you want to continue?</value>
+	</data>
+	<data name="ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox4" xml:space="preserve">
+		<value>Something went wrong while launching your browser in incognito mode.
+
+Consult the logs for m ore info.</value>
+	</data>
+	<data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox1" xml:space="preserve">
+		<value>Please enter a valid API key.</value>
+	</data>
+	<data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox2" xml:space="preserve">
+		<value>Please enter your Home Assistant's URI.</value>
+	</data>
+	<data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox3" xml:space="preserve">
+		<value>Unable to connect, the following error was returned:
+
+{0}</value>
+	</data>
+	<data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox4" xml:space="preserve">
+		<value>Connection OK!
+
+Home Assistant version: {0}</value>
+	</data>
+	<data name="ConfigLocalStorage_BtnClearImageCache_MessageBox1" xml:space="preserve">
+		<value>Image cache has been cleared!</value>
+	</data>
+	<data name="ConfigLocalStorage_BtnClearImageCache_InfoText1" xml:space="preserve">
+		<value>cleaning ..</value>
+	</data>
+	<data name="ConfigNotifications_BtnSendTestNotification_MessageBox1" xml:space="preserve">
+		<value>Notifications are still disabled. Please enable, restart HASS.Agent and try again.</value>
+	</data>
+	<data name="ConfigNotifications_BtnSendTestNotification_MessageBox2" xml:space="preserve">
+		<value>The notification should've popped up. If not, check the logs, or check the documentation for troubleshooting tips.
+
+Note: this only tests locally whether notifications can be shown!</value>
+	</data>
+	<data name="ConfigNotifications_TestNotification" xml:space="preserve">
+		<value>This is a test notification.</value>
+	</data>
+	<data name="ConfigNotifications_BtnExecutePortReservation_Busy" xml:space="preserve">
+		<value>executing, please wait ..</value>
+	</data>
+	<data name="ConfigNotifications_BtnExecutePortReservation_MessageBox1" xml:space="preserve">
+		<value>Something went wrong!
+
+Please manually execute the required command. It has been copied onto your clipboard, you just need to paste it into an elevated command prompt.
+
+Remember to change your firewall rule's port as well.</value>
+	</data>
+	<data name="ConfigService_NotInstalled" xml:space="preserve">
+		<value>not installed</value>
+	</data>
+	<data name="ConfigService_Disabled" xml:space="preserve">
+		<value>disabled</value>
+	</data>
+	<data name="ConfigService_Running" xml:space="preserve">
+		<value>running</value>
+	</data>
+	<data name="ConfigService_Stopped" xml:space="preserve">
+		<value>stopped</value>
+	</data>
+	<data name="ConfigService_Failed" xml:space="preserve">
+		<value>failed</value>
+	</data>
+	<data name="ConfigService_BtnStopService_MessageBox1" xml:space="preserve">
+		<value>Something went wrong trying to stop the service. Did you allow the UAC prompt?
+
+Check the HASS.Agent (not the service) logs for more info.</value>
+	</data>
+	<data name="ConfigService_BtnStartService_MessageBox1" xml:space="preserve">
+		<value>The service is set to 'disabled', so it can't be started.
+
+Please enable the service first, then try again.</value>
+	</data>
+	<data name="ConfigService_BtnStartService_MessageBox2" xml:space="preserve">
+		<value>Something went wrong trying to start the service. Did you allow the UAC prompt?
+
+Check the HASS.Agent (not the service) logs for more info.</value>
+	</data>
+	<data name="ConfigService_BtnDisableService_MessageBox1" xml:space="preserve">
+		<value>Something went wrong trying to disable the service. Did you allow the UAC prompt?
+
+Check the HASS.Agent (not the service) logs for more info.</value>
+	</data>
+	<data name="ConfigService_BtnEnableService_MessageBox1" xml:space="preserve">
+		<value>Something went wrong trying to enable the service. Did you allow the UAC prompt?
+
+Check the HASS.Agent (not the service) logs for more info.</value>
+	</data>
+	<data name="ConfigService_BtnShowLogs_MessageBox1" xml:space="preserve">
+		<value>Something went wrong trying to reinstall the service. Did you allow the UAC prompt?
+
+Check the HASS.Agent (not the service) logs for more info.</value>
+	</data>
+	<data name="ConfigStartup_BtnSetStartOnLogin_MessageBox1" xml:space="preserve">
+		<value>Something went wrong while disabling start-on-login.
+
+Check the logs for more info.</value>
+	</data>
+	<data name="ConfigStartup_BtnSetStartOnLogin_MessageBox2" xml:space="preserve">
+		<value>Something went wrong while enabling start-on-login.
+
+Check the logs for more info.</value>
+	</data>
+	<data name="ConfigStartup_Enabled" xml:space="preserve">
+		<value>enabled</value>
+	</data>
+	<data name="ConfigStartup_Disable" xml:space="preserve">
+		<value>disable start-on-login</value>
+	</data>
+	<data name="ConfigStartup_Disabled" xml:space="preserve">
+		<value>disabled</value>
+	</data>
+	<data name="ConfigStartup_Enable" xml:space="preserve">
+		<value>enable start-on-login</value>
+	</data>
+	<data name="OnboardingStartup_Activated" xml:space="preserve">
+		<value>Launch-on-login succesfully activated!</value>
+	</data>
+	<data name="OnboardingStartup_EnableNow" xml:space="preserve">
+		<value>Do you want to enable launch-on-login now?</value>
+	</data>
+	<data name="OnboardingStartup_AlreadyActivated" xml:space="preserve">
+		<value>Launch-on-login is already activated, all set!</value>
+	</data>
+	<data name="OnboardingStartup_Activating" xml:space="preserve">
+		<value>activating launch-on-login, hold on ..</value>
+	</data>
+	<data name="OnboardingStartup_Failed" xml:space="preserve">
+		<value>Something went wrong. You can try again, or skip to the next page and retry after HASS.Agent's restart.</value>
+	</data>
+	<data name="OnboardingStartup_BtnSetLaunchOnLogin_2" xml:space="preserve">
+		<value>enable launch-on-login</value>
+	</data>
+	<data name="OnboardingApi_BtnTest_MessageBox1" xml:space="preserve">
+		<value>Please enter a valid API key.</value>
+	</data>
+	<data name="OnboardingApi_BtnTest_MessageBox2" xml:space="preserve">
+		<value>Please enter your Home Assistant's URI.</value>
+	</data>
+	<data name="OnboardingApi_BtnTest_MessageBox3" xml:space="preserve">
+		<value>Unable to connect, the following error was returned:
+
+{0}</value>
+	</data>
+	<data name="OnboardingApi_BtnTest_MessageBox4" xml:space="preserve">
+		<value>Connection OK!
+
+Home Assistant version: {0}</value>
+	</data>
+	<data name="OnboardingApi_BtnTest_Testing" xml:space="preserve">
+		<value>testing ..</value>
+	</data>
+	<data name="ServiceCommands_BtnStore_MessageBox1" xml:space="preserve">
+		<value>An error occured while saving the commands, check the logs for more info.</value>
+	</data>
+	<data name="ServiceCommands_BtnStore_Storing" xml:space="preserve">
+		<value>storing and registering, please wait .. </value>
+	</data>
+	<data name="ServiceConnect_Connecting" xml:space="preserve">
+		<value>connecting with the satellite service, one moment please ..</value>
+	</data>
+	<data name="ServiceConnect_Failed" xml:space="preserve">
+		<value>connecting to the service has failed</value>
+	</data>
+	<data name="ServiceConnect_FailedMessage" xml:space="preserve">
+		<value>The service hasn't been found! You can install and manage it from the configuration panel.
+
+When it's up and running, come back here to configure the commands and sensors.</value>
+	</data>
+	<data name="ServiceConnect_CommunicationFailed" xml:space="preserve">
+		<value>communicating with the service has failed</value>
+	</data>
+	<data name="ServiceConnect_CommunicationFailedMessage" xml:space="preserve">
+		<value>Unable to communicate with the service. Check the logs for more info.
+
+You can open the logs and manage the service from the configuration panel.</value>
+	</data>
+	<data name="ServiceConnect_Unauthorized" xml:space="preserve">
+		<value>unauthorized</value>
+	</data>
+	<data name="ServiceConnect_UnauthorizedMessage" xml:space="preserve">
+		<value>You are not authorized to contact the service.
+
+If you have the correct auth ID, you can set it now and try again.</value>
+	</data>
+	<data name="ServiceConnect_SettingsFailed" xml:space="preserve">
+		<value>fetching settings failed</value>
+	</data>
+	<data name="ServiceConnect_SettingsFailedMessage" xml:space="preserve">
+		<value>The service returned an error while requesting its settings. Check the logs for more info.
+
+You can open the logs and manage the service from the configuration panel.</value>
+	</data>
+	<data name="ServiceConnect_MqttFailed" xml:space="preserve">
+		<value>fetching mqtt settings failed</value>
+	</data>
+	<data name="ServiceConnect_MqttFailedMessage" xml:space="preserve">
+		<value>The service returned an error while requesting its MQTT settings. Check the logs for more info.
+
+You can open the logs and manage the service from the configuration panel.</value>
+	</data>
+	<data name="ServiceConnect_CommandsFailed" xml:space="preserve">
+		<value>fetching configured commands failed</value>
+	</data>
+	<data name="ServiceConnect_CommandsFailedMessage" xml:space="preserve">
+		<value>The service returned an error while requesting its configured commands. Check the logs for more info.
+
+You can open the logs and manage the service from the configuration panel.</value>
+	</data>
+	<data name="ServiceConnect_SensorsFailed" xml:space="preserve">
+		<value>fetching configured sensors failed</value>
+	</data>
+	<data name="ServiceConnect_SensorsFailedMessage" xml:space="preserve">
+		<value>The service returned an error while requesting its configured sensors. Check the logs for more info.
+
+You can open the logs and manage the service from the configuration panel.</value>
+	</data>
+	<data name="ServiceGeneral_TbAuthId_MessageBox1" xml:space="preserve">
+		<value>Storing an empty auth ID will allow all HASS.Agents to access the server.
+
+Are you sure you want this?</value>
+	</data>
+	<data name="ServiceGeneral_SavingFailedMessageBox" xml:space="preserve">
+		<value>An error occured while saving, check the logs for more info.</value>
+	</data>
+	<data name="ServiceGeneral_BtnStoreDeviceName_MessageBox1" xml:space="preserve">
+		<value>Please enter a devicename first.</value>
+	</data>
+	<data name="ServiceGeneral_BtnStoreCustomExecutor_MessageBox1" xml:space="preserve">
+		<value>Please select an executor first (tip: doubleclick to browse).</value>
+	</data>
+	<data name="ServiceGeneral_BtnStoreCustomExecutor_MessageBox2" xml:space="preserve">
+		<value>The selected executor isn't found. Please select a new one.</value>
+	</data>
+	<data name="ServiceGeneral_LblAuthIdInfo_MessageBox1" xml:space="preserve">
+		<value>Set an auth ID if you don't want every instance of HASS.Agent on this PC to connect with the satellite service.
+
+Only the instances that have the correct ID, can connect.
+
+Leave empty to allow all to connect.</value>
+	</data>
+	<data name="ServiceGeneral_LblDeviceNameInfo_MessageBox1" xml:space="preserve">
+		<value>This is the name with which the satellite service registers itself on Home Assistant.
+
+By default, it's your PC's name plus '-satellite'.</value>
+	</data>
+	<data name="ServiceGeneral_LblDisconGraceInfo_MessageBox1" xml:space="preserve">
+		<value>The amount of time the satellite service will wait before reporting a lost connection to the MQTT broker.</value>
+	</data>
+	<data name="ServiceMqtt_StatusError" xml:space="preserve">
+		<value>error fetching status, check logs</value>
+	</data>
+	<data name="ServiceMqtt_BtnStore_MessageBox1" xml:space="preserve">
+		<value>An error occured while saving the configuration, check the logs for more info.</value>
+	</data>
+	<data name="ServiceMqtt_BtnStore_Storing" xml:space="preserve">
+		<value>storing and registering, please wait .. </value>
+	</data>
+	<data name="ServiceSensors_BtnStore_MessageBox1" xml:space="preserve">
+		<value>An error occured while saving the sensors, check the logs for more info.</value>
+	</data>
+	<data name="ServiceSensors_BtnStore_Storing" xml:space="preserve">
+		<value>storing and registering, please wait .. </value>
+	</data>
+	<data name="PortReservation_ProcessPostUpdate_MessageBox1" xml:space="preserve">
+		<value>Not all steps completed succesfully. Please consult the logs for more information.</value>
+	</data>
+	<data name="PostUpdate_ProcessPostUpdate_MessageBox1" xml:space="preserve">
+		<value>Not all steps completed succesfully. Please consult the logs for more information.</value>
+	</data>
+	<data name="Restart_ProcessRestart_MessageBox1" xml:space="preserve">
+		<value>HASS.Agent is still active after {0} seconds. Please close all instances and restart manually.
+
+Check the logs for more info, and optionally inform the developers.</value>
+	</data>
+	<data name="ServiceReinstall_ProcessReinstall_MessageBox1" xml:space="preserve">
+		<value>Not all steps completed succesfully. Please consult the logs for more information.</value>
+	</data>
+	<data name="ServiceSetState_Enabled" xml:space="preserve">
+		<value>Enable Satellite Service</value>
+	</data>
+	<data name="ServiceSetState_Disabled" xml:space="preserve">
+		<value>Disable Satellite Service</value>
+	</data>
+	<data name="ServiceSetState_Started" xml:space="preserve">
+		<value>Start Satellite Service</value>
+	</data>
+	<data name="ServiceSetState_Stopped" xml:space="preserve">
+		<value>Stop Satellite Service</value>
+	</data>
+	<data name="ServiceSetState_ProcessState_MessageBox1" xml:space="preserve">
+		<value>Something went wrong while processing the desired service state.
+
+Please consult the logs for more information.</value>
+	</data>
+	<data name="CommandMqttTopic_BtnCopyClipboard_Copied" xml:space="preserve">
+		<value>topic copied to clipboard</value>
+	</data>
+	<data name="CommandsConfig_BtnStore_Storing" xml:space="preserve">
+		<value>storing and registering, please wait .. </value>
+	</data>
+	<data name="CommandsConfig_BtnStore_MessageBox1" xml:space="preserve">
+		<value>An error occured while saving the commands, check the logs for more info.</value>
+	</data>
+	<data name="CommandsMod_Title_NewCommand" xml:space="preserve">
+		<value>New Command</value>
+	</data>
+	<data name="CommandsMod_Title_ModCommand" xml:space="preserve">
+		<value>Mod Command</value>
+	</data>
+	<data name="CommandsMod_BtnStore_MessageBox1" xml:space="preserve">
+		<value>Select a commandtype first.</value>
+	</data>
+	<data name="CommandsMod_BtnStore_MessageBox2" xml:space="preserve">
+		<value>Select a valid commandtype first.</value>
+	</data>
+	<data name="CommandsMod_MessageBox_EntityType" xml:space="preserve">
+		<value>Select a valid entity type first.</value>
+	</data>
+	<data name="CommandsMod_MessageBox_Name" xml:space="preserve">
+		<value>Enter a name first.</value>
+	</data>
+	<data name="CommandsMod_BtnStore_MessageBox3" xml:space="preserve">
+		<value>There's already a command with that name. Are you sure you want to continue?</value>
+	</data>
+	<data name="CommandsMod_BtnStore_MessageBox4" xml:space="preserve">
+		<value>If you don't enter a command, you can only use this entity with an 'action' value through Home Assistant. Running it as-is won't do anything.
+
+Are you sure you want this?</value>
+	</data>
+	<data name="CommandsMod_MessageBox_Action" xml:space="preserve">
+		<value>If you don't enter a command or script, you can only use this entity with an 'action' value through Home Assistant. Running it as-is won't do anything.
+
+Are you sure you want this?</value>
+	</data>
+	<data name="CommandsMod_BtnStore_MessageBox5" xml:space="preserve">
+		<value>Enter a keycode first.</value>
+	</data>
+	<data name="CommandsMod_BtnStore_MessageBox6" xml:space="preserve">
+		<value>Checking keys failed: {0}</value>
+	</data>
+	<data name="CommandsMod_BtnStore_MessageBox7" xml:space="preserve">
+		<value>If you don't enter an URL, you can only use this entity with an 'action' value through Home Assistant. Running it as-is won't do anything.
+
+Are you sure you want this?</value>
+	</data>
+	<data name="CommandsMod_LblSetting_Command" xml:space="preserve">
+		<value>command</value>
+	</data>
+	<data name="CommandsMod_LblSetting_CommandScript" xml:space="preserve">
+		<value>command or script</value>
+	</data>
+	<data name="CommandsMod_LblSetting_KeyCode" xml:space="preserve">
+		<value>keycode</value>
+	</data>
+	<data name="CommandsMod_LblSetting_KeyCodes" xml:space="preserve">
+		<value>keycodes</value>
+	</data>
+	<data name="CommandsMod_CbCommandSpecific_Incognito" xml:space="preserve">
+		<value>launch in incognito mode</value>
+	</data>
+	<data name="CommandsMod_LblInfo_Browser" xml:space="preserve">
+		<value>browser: default
+
+please configure a browser to enable incognito mode</value>
+	</data>
+	<data name="CommandsMod_LblSetting_Url" xml:space="preserve">
+		<value>URL</value>
+	</data>
+	<data name="CommandsMod_LblInfo_BrowserSpecific" xml:space="preserve">
+		<value>browser: {0}</value>
+	</data>
+	<data name="CommandsMod_LblInfo_Executor" xml:space="preserve">
+		<value>executor: none
+
+please configure an executor or your command won't run</value>
+	</data>
+	<data name="CommandsMod_LblInfo_ExecutorSpecific" xml:space="preserve">
+		<value>executor: {0}</value>
+	</data>
+	<data name="CommandsMod_LblIntegrityInfo_InfoMsg1" xml:space="preserve">
+		<value>Low integrity means your command will be executed with restricted privileges.</value>
+	</data>
+	<data name="CommandsMod_LblIntegrityInfo_InfoMsg2" xml:space="preserve">
+		<value>That means it will only be able to save and modify files in certain locations,</value>
+	</data>
+	<data name="CommandsMod_LblIntegrityInfo_InfoMsg3" xml:space="preserve">
+		<value>such as the '%USERPROFILE%\AppData\LocalLow' folder or</value>
+	</data>
+	<data name="CommandsMod_LblIntegrityInfo_InfoMsg4" xml:space="preserve">
+		<value>the 'HKEY_CURRENT_USER\Software\AppDataLow' registry key.</value>
+	</data>
+	<data name="CommandsMod_LblIntegrityInfo_InfoMsg5" xml:space="preserve">
+		<value>You should test your command to make sure it's not influenced by this.</value>
+	</data>
+	<data name="CommandsMod_SpecificClient" xml:space="preserve">
+		<value>{0} only!</value>
+	</data>
+	<data name="CommandsMod_LblMqttTopic_MessageBox1" xml:space="preserve">
+		<value>The MQTT manager hasn't been setup properly, make sure you've configured MQTT and restarted afterwards.</value>
+	</data>
+	<data name="QuickActions_CheckHassManager_MessageBox1" xml:space="preserve">
+		<value>Unable to fetch your entities because of missing config, please enter the required values in the config screen.</value>
+	</data>
+	<data name="QuickActions_MessageBox_EntityFailed" xml:space="preserve">
+		<value>There was an error trying to fetch your entities.</value>
+	</data>
+	<data name="QuickActionsMod_Title_New" xml:space="preserve">
+		<value>New Quick Action</value>
+	</data>
+	<data name="QuickActionsMod_Title_Mod" xml:space="preserve">
+		<value>Mod Quick Action</value>
+	</data>
+	<data name="QuickActionsMod_CheckHassManager_MessageBox1" xml:space="preserve">
+		<value>Unable to fetch your entities because of missing config, please enter the required values in the config screen.</value>
+	</data>
+	<data name="QuickActionsMod_MessageBox_Entities" xml:space="preserve">
+		<value>There was an error trying to fetch your entities.</value>
+	</data>
+	<data name="QuickActionsMod_BtnStore_MessageBox1" xml:space="preserve">
+		<value>Select an entity first.</value>
+	</data>
+	<data name="QuickActionsMod_BtnStore_MessageBox2" xml:space="preserve">
+		<value>Unknown domain, please select a valid one.</value>
+	</data>
+	<data name="QuickActionsMod_BtnStore_MessageBox3" xml:space="preserve">
+		<value>Unknown action, please select a valid one.</value>
+	</data>
+	<data name="SensorsConfig_BtnStore_Storing" xml:space="preserve">
+		<value>storing and registering, please wait .. </value>
+	</data>
+	<data name="SensorsConfig_BtnStore_MessageBox1" xml:space="preserve">
+		<value>An error occured while saving the sensors, check the logs for more info.</value>
+	</data>
+	<data name="SensorsMod_Title_New" xml:space="preserve">
+		<value>New Sensor</value>
+	</data>
+	<data name="SensorsMod_Title_Mod" xml:space="preserve">
+		<value>Mod Sensor</value>
+	</data>
+	<data name="SensorsMod_LblSetting1_WindowName" xml:space="preserve">
+		<value>window name</value>
+	</data>
+	<data name="SensorsMod_LblSetting1_Wmi" xml:space="preserve">
+		<value>wmi query</value>
+	</data>
+	<data name="SensorsMod_LblSetting2_Wmi" xml:space="preserve">
+		<value>wmi scope (optional)</value>
+	</data>
+	<data name="SensorsMod_LblSetting1_Category" xml:space="preserve">
+		<value>category</value>
+	</data>
+	<data name="SensorsMod_LblSetting2_Counter" xml:space="preserve">
+		<value>counter</value>
+	</data>
+	<data name="SensorsMod_LblSetting3_Instance" xml:space="preserve">
+		<value>instance (optional)</value>
+	</data>
+	<data name="SensorsMod_LblSetting1_Process" xml:space="preserve">
+		<value>process</value>
+	</data>
+	<data name="SensorsMod_LblSetting1_Service" xml:space="preserve">
+		<value>service</value>
+	</data>
+	<data name="SensorsMod_BtnStore_MessageBox1" xml:space="preserve">
+		<value>Select a sensortype first.</value>
+	</data>
+	<data name="SensorsMod_BtnStore_MessageBox2" xml:space="preserve">
+		<value>Select a valid sensortype first.</value>
+	</data>
+	<data name="SensorsMod_BtnStore_MessageBox3" xml:space="preserve">
+		<value>Enter a name first.</value>
+	</data>
+	<data name="SensorsMod_BtnStore_MessageBox4" xml:space="preserve">
+		<value>There's already a single-value sensor with that name. Are you sure you want to continue?</value>
+	</data>
+	<data name="SensorsMod_BtnStore_MessageBox5" xml:space="preserve">
+		<value>There's already a multi-value sensor with that name. Are you sure you want to continue?</value>
+	</data>
+	<data name="SensorsMod_BtnStore_MessageBox6" xml:space="preserve">
+		<value>Enter an interval between 1 and 43200 (12 hours) first.</value>
+	</data>
+	<data name="SensorsMod_BtnStore_MessageBox7" xml:space="preserve">
+		<value>Enter a window name first.</value>
+	</data>
+	<data name="SensorsMod_BtnStore_MessageBox8" xml:space="preserve">
+		<value>Enter a query first.</value>
+	</data>
+	<data name="SensorsMod_BtnStore_MessageBox9" xml:space="preserve">
+		<value>Enter a category and instance first.</value>
+	</data>
+	<data name="SensorsMod_BtnStore_MessageBox10" xml:space="preserve">
+		<value>Enter the name of a process first.</value>
+	</data>
+	<data name="SensorsMod_BtnStore_MessageBox11" xml:space="preserve">
+		<value>Enter the name of a service first.</value>
+	</data>
+	<data name="SensorsMod_SpecificClient" xml:space="preserve">
+		<value>{0} only!</value>
+	</data>
+	<data name="Configuration_ProcessChanges_MessageBox1" xml:space="preserve">
+		<value>You've changed your device's name.
+
+All your sensors and commands will now be unpublished, and HASS.Agent
+will restart afterwards to republish them.
+
+They'll keep their current names, to avoid breaking automations or scripts.</value>
+	</data>
+	<data name="Configuration_ProcessChanges_MessageBox2" xml:space="preserve">
+		<value>You've changed the notification API's port. This new port needs to be reserved.
+
+You'll get an UAC request to do so, please approve.</value>
+	</data>
+	<data name="Configuration_ProcessChanges_MessageBox3" xml:space="preserve">
+		<value>Something went wrong!
+
+Please manually execute the required command. It has been copied onto your clipboard, you just need to paste it into an elevated command prompt.
+
+Remember to change your firewall rule's port as well.</value>
+	</data>
+	<data name="Configuration_ProcessChanges_MessageBox4" xml:space="preserve">
+		<value>The port has succesfully been reserved!
+
+HASS.Agent will now restart to activate the new configuration.</value>
+	</data>
+	<data name="Configuration_MessageBox_RestartManually" xml:space="preserve">
+		<value>Something went wrong while preparing to restart.
+Please restart manually.</value>
+	</data>
+	<data name="Configuration_ProcessChanges_MessageBox5" xml:space="preserve">
+		<value>Your configuration has been saved. Most changes require HASS.Agent to restart before they take effect.
+
+Do you want to restart now?</value>
+	</data>
+	<data name="Main_Load_MessageBox1" xml:space="preserve">
+		<value>Something went wrong while loading your settings.
+
+Check appsettings.json in the 'Config' subfolder, or just delete it to start fresh.</value>
+	</data>
+	<data name="Main_Load_MessageBox2" xml:space="preserve">
+		<value>There was an error launching HASS.Agent.
+Please check the logs and make a bug report on github.</value>
+	</data>
+	<data name="Main_BtnSensorsManage_Ready" xml:space="preserve">
+		<value>
+local sensors</value>
+	</data>
+	<data name="Main_BtnCommandsManager_Ready" xml:space="preserve">
+		<value>
+commands</value>
+	</data>
+	<data name="Main_Checking" xml:space="preserve">
+		<value>checking ..</value>
+	</data>
+	<data name="Main_CheckForUpdate_MessageBox1" xml:space="preserve">
+		<value>You're running the latest version: {0}{1}</value>
+	</data>
+	<data name="UpdatePending_NewBetaRelease" xml:space="preserve">
+		<value>There's a new BETA release available:</value>
+	</data>
+	<data name="UpdatePending_Title_Beta" xml:space="preserve">
+		<value>HASS.Agent BETA Update</value>
+	</data>
+	<data name="UpdatePending_LblUpdateQuestion_Download" xml:space="preserve">
+		<value>Do you want to download and launch the installer?</value>
+	</data>
+	<data name="UpdatePending_LblUpdateQuestion_Navigate" xml:space="preserve">
+		<value>Do you want to navigate to the release page?</value>
+	</data>
+	<data name="UpdatePending_InstallUpdate" xml:space="preserve">
+		<value>install update</value>
+	</data>
+	<data name="UpdatePending_InstallBetaRelease" xml:space="preserve">
+		<value>install BETA release</value>
+	</data>
+	<data name="UpdatePending_OpenReleasePage" xml:space="preserve">
+		<value>open release page</value>
+	</data>
+	<data name="UpdatePending_OpenBetaReleasePage" xml:space="preserve">
+		<value>open BETA release page</value>
+	</data>
+	<data name="UpdatePending_LblUpdateQuestion_Processing" xml:space="preserve">
+		<value>Hold on, processing your request ..</value>
+	</data>
+	<data name="UpdatePending_BtnDownload_Processing" xml:space="preserve">
+		<value>processing ..</value>
+	</data>
+	<data name="OnboardingManager_OnboardingTitle_Start" xml:space="preserve">
+		<value>HASS.Agent Onboarding: Start [{0}/{1}]</value>
+	</data>
+	<data name="OnboardingManager_OnboardingTitle_Startup" xml:space="preserve">
+		<value>HASS.Agent Onboarding: Startup [{0}/{1}]</value>
+	</data>
+	<data name="OnboardingManager_OnboardingTitle_Notifications" xml:space="preserve">
+		<value>HASS.Agent Onboarding: Notifications [{0}/{1}]</value>
+	</data>
+	<data name="OnboardingManager_OnboardingTitle_Integration" xml:space="preserve">
+		<value>HASS.Agent Onboarding: Integration [{0}/{1}]</value>
+	</data>
+	<data name="OnboardingManager_OnboardingTitle_Api" xml:space="preserve">
+		<value>HASS.Agent Onboarding: API [{0}/{1}]</value>
+	</data>
+	<data name="OnboardingManager_OnboardingTitle_Mqtt" xml:space="preserve">
+		<value>HASS.Agent Onboarding: MQTT [{0}/{1}]</value>
+	</data>
+	<data name="OnboardingManager_OnboardingTitle_HotKey" xml:space="preserve">
+		<value>HASS.Agent Onboarding: HotKey [{0}/{1}]</value>
+	</data>
+	<data name="OnboardingManager_OnboardingTitle_Updates" xml:space="preserve">
+		<value>HASS.Agent Onboarding: Updates [{0}/{1}]</value>
+	</data>
+	<data name="OnboardingManager_OnboardingTitle_Completed" xml:space="preserve">
+		<value>HASS.Agent Onboarding: Completed [{0}/{1}]</value>
+	</data>
+	<data name="OnboardingManager_ConfirmBeforeClose_MessageBox1" xml:space="preserve">
+		<value>Are you sure you want to abort the onboarding process?
+
+Your progress will not be saved, and it will not be shown again on next launch.</value>
+	</data>
+	<data name="UpdateManager_GetLatestVersionInfo_Error" xml:space="preserve">
+		<value>error fetching info, check the logs</value>
+	</data>
+	<data name="UpdateManager_DownloadAndExecuteUpdate_MessageBox1" xml:space="preserve">
+		<value>Unable to prepare downloading the update, check the logs for more info.
+
+The release page will now open instead.</value>
+	</data>
+	<data name="UpdateManager_DownloadAndExecuteUpdate_MessageBox2" xml:space="preserve">
+		<value>Unable to download the update, check the logs for more info.
+
+The release page will now open instead.</value>
+	</data>
+	<data name="UpdateManager_DownloadAndExecuteUpdate_MessageBox3" xml:space="preserve">
+		<value>The downloaded file FAILED the certificate check.
+
+This could be a technical error, but also a tampered file!
+
+Please check the logs, and post a ticket with the findings.</value>
+	</data>
+	<data name="UpdateManager_DownloadAndExecuteUpdate_MessageBox4" xml:space="preserve">
+		<value>Unable to launch the installer (did you approve the UAC prompt?), check the logs for more info.
+
+The release page will now open instead.</value>
+	</data>
+	<data name="HassApiManager_ToolTip_ConnectionSetupFailed" xml:space="preserve">
+		<value>hass api: connection setup failed</value>
+	</data>
+	<data name="HassApiManager_ToolTip_InitialConnectionFailed" xml:space="preserve">
+		<value>hass api: initial connection failed</value>
+	</data>
+	<data name="HassApiManager_ToolTip_ConnectionFailed" xml:space="preserve">
+		<value>hass api: connection failed</value>
+	</data>
+	<data name="HassApiManager_CheckHassConfig_CertNotFound" xml:space="preserve">
+		<value>client certificate file not found</value>
+	</data>
+	<data name="HassApiManager_CheckHassConfig_UnableToConnect" xml:space="preserve">
+		<value>unable to connect, check uri</value>
+	</data>
+	<data name="HassApiManager_CheckHassConfig_ConfigFailed" xml:space="preserve">
+		<value>unable to fetch config, check api key</value>
+	</data>
+	<data name="HassApiManager_ConnectionFailed" xml:space="preserve">
+		<value>unable to connect, check uri and config</value>
+	</data>
+	<data name="HassApiManager_ToolTip_QuickActionFailed" xml:space="preserve">
+		<value>quick action: action failed, check the logs for info</value>
+	</data>
+	<data name="HassApiManager_ToolTip_QuickActionFailedOnEntity" xml:space="preserve">
+		<value>quick action: action failed, entity not found</value>
+	</data>
+	<data name="MqttManager_ToolTip_ConnectionError" xml:space="preserve">
+		<value>mqtt: error while connecting</value>
+	</data>
+	<data name="MqttManager_ToolTip_ConnectionFailed" xml:space="preserve">
+		<value>mqtt: failed to connect</value>
+	</data>
+	<data name="MqttManager_ToolTip_Disconnected" xml:space="preserve">
+		<value>mqtt: disconnected</value>
+	</data>
+	<data name="NotifierManager_Initialize_MessageBox1" xml:space="preserve">
+		<value>Error trying to bind the API to port {0}.
+
+Make sure no other instance of HASS.Agent is running and the port is available and registered.</value>
+	</data>
+	<data name="SensorsManager_ActiveWindowSensorDescription" xml:space="preserve">
+		<value>Provides the title of the current active window.</value>
+	</data>
+	<data name="SensorsManager_AudioSensorsDescription" xml:space="preserve">
+		<value>Provides information various aspects of your device's audio:
+
+Current peak volume level (can be used as a simple 'is something playing' value).
+
+Default audiodevice: name, state and volume.
+
+Summary of your audio sessions: application name, muted state, volume and current peak volume.</value>
+	</data>
+	<data name="SensorsManager_BatterySensorsDescription" xml:space="preserve">
+		<value>Provides a sensor with the current charging status, estimated amount of minutes on a full charge, remaining charge in percentage, remaining charge in minutes and the powerline status.</value>
+	</data>
+	<data name="SensorsManager_CpuLoadSensorDescription" xml:space="preserve">
+		<value>Provides the current load of the first CPU as a percentage.</value>
+	</data>
+	<data name="SensorsManager_CurrentClockSpeedSensorDescription" xml:space="preserve">
+		<value>Provides the current clockspeed of the first CPU.</value>
+	</data>
+	<data name="SensorsManager_CurrentVolumeSensorDescription" xml:space="preserve">
+		<value>Provides the current volume level as a percentage.
+
+Currently takes the volume of your default device.</value>
+	</data>
+	<data name="SensorsManager_DisplaySensorsDescription" xml:space="preserve">
+		<value>Provides a sensor with the amount of displays, name of the primary display, and per display its name, resolution and bits per pixel.</value>
+	</data>
+	<data name="SensorsManager_DummySensorDescription" xml:space="preserve">
+		<value>Dummy sensor for testing purposes, sends a random integer value between 0 and 100.</value>
+	</data>
+	<data name="SensorsManager_GpuLoadSensorDescription" xml:space="preserve">
+		<value>Provides the current load of the first GPU as a percentage.</value>
+	</data>
+	<data name="SensorsManager_GpuTemperatureSensorDescription" xml:space="preserve">
+		<value>Provides the current temperature of the first GPU.</value>
+	</data>
+	<data name="SensorsManager_LastActiveSensorDescription" xml:space="preserve">
+		<value>Provides a datetime value containing the last moment the user provided any input.</value>
+	</data>
+	<data name="SensorsManager_LastBootSensorDescription" xml:space="preserve">
+		<value>Provides a datetime value containing the last moment the system (re)booted.
+
+Important: Windows' FastBoot option can throw this value off, because that's a form of hibernation. You can disable it through Power Options -&gt; 'Choose what the power buttons do' -&gt; uncheck 'Turn on fast start-up'. It doesn't make much difference for modern machines with SSDs, but disabling makes sure you get a clean state after rebooting.</value>
+	</data>
+	<data name="SensorsManager_LastSystemStateChangeSensorDescription" xml:space="preserve">
+		<value>Provides the last system state change:
+
+HassAgentStarted, Logoff, SystemShutdown, Resume, Suspend, ConsoleConnect, ConsoleDisconnect, RemoteConnect, RemoteDisconnect, SessionLock, SessionLogoff, SessionLogon, SessionRemoteControl and SessionUnlock.</value>
+	</data>
+	<data name="SensorsManager_LoggedUserSensorDescription" xml:space="preserve">
+		<value>Returns the name of the currently logged user.</value>
+	</data>
+	<data name="SensorsManager_LoggedUsersSensorDescription" xml:space="preserve">
+		<value>Returns a json-formatted list of currently logged users.</value>
+	</data>
+	<data name="SensorsManager_MemoryUsageSensorDescription" xml:space="preserve">
+		<value>Provides the amount of used memory as a percentage.</value>
+	</data>
+	<data name="SensorsManager_MicrophoneActiveSensorDescription" xml:space="preserve">
+		<value>Provides a bool value based on whether the microphone is currently being used.</value>
+	</data>
+	<data name="SensorsManager_NamedWindowSensorDescription" xml:space="preserve">
+		<value>Provides an ON/OFF value based on whether the window is currently open (doesn't have to be active).</value>
+	</data>
+	<data name="SensorsManager_NetworkSensorsDescription" xml:space="preserve">
+		<value>Provides card info, configuration, transfer- &amp; package statistics and addresses (ip, mac, dhcp, dns) of all present network cards.
+
+This is a multi-value sensor.</value>
+	</data>
+	<data name="SensorsManager_PerformanceCounterSensorDescription" xml:space="preserve">
+		<value>Provides the values of a performance counter.
+
+For example, the built-in CPU load sensor uses these values:
+
+Category: Processor
+Counter: % Processor Time
+Instance: _Total
+
+You can explore the counters through Windows' 'perfmon.exe' tool.</value>
+	</data>
+	<data name="SensorsManager_ProcessActiveSensorDescription" xml:space="preserve">
+		<value>Provides the number of active instances of the process.</value>
+	</data>
+	<data name="SensorsManager_ServiceStateSensorDescription" xml:space="preserve">
+		<value>Returns the state of the provided service: NotFound, Stopped, StartPending, StopPending, Running, ContinuePending, PausePending or Paused.
+
+Make sure to provide the 'Service name', not the 'Display name'.</value>
+	</data>
+	<data name="SensorsManager_SessionStateSensorDescription" xml:space="preserve">
+		<value>Provides the current session state:
+
+Locked, Unlocked or Unknown.
+
+Use a LastSystemStateChangeSensor to monitor session state changes.</value>
+	</data>
+	<data name="SensorsManager_StorageSensorsDescription" xml:space="preserve">
+		<value>Provides the labels, total size (MB), available space (MB), used space (MB) and file system of all present non-removable disks.</value>
+	</data>
+	<data name="SensorsManager_UserNotificationStateSensorDescription" xml:space="preserve">
+		<value>Provides the current user state:
+
+NotPresent, Busy, RunningDirect3dFullScreen, PresentationMode, AcceptsNotifications, QuietTime or RunningWindowsStoreApp.
+
+Can for instance be used to determine whether to send notifications or TTS messages.</value>
+	</data>
+	<data name="SensorsManager_WebcamActiveSensorDescription" xml:space="preserve">
+		<value>Provides a bool value based on whether the webcam is currently being used.</value>
+	</data>
+	<data name="SensorsManager_WindowsUpdatesSensorsDescription" xml:space="preserve">
+		<value>Provides a sensor with the amount of pending driver updates and a sensor with the amount of pending software updates.
+
+This is a costly request, so the recommended interval is 15 minutes (900 seconds). But it's capped at 10 minutes, if you provide a lower value, you'll get the last known list.</value>
+	</data>
+	<data name="SensorsManager_WmiQuerySensorDescription" xml:space="preserve">
+		<value>Provides the result of the WMI query.</value>
+	</data>
+	<data name="SettingsManager_LoadAppSettings_MessageBox1" xml:space="preserve">
+		<value>Error loading settings:
+
+{0}</value>
+	</data>
+	<data name="SettingsManager_StoreInitialSettings_MessageBox1" xml:space="preserve">
+		<value>Error storing initial settings:
+
+{0}</value>
+	</data>
+	<data name="SettingsManager_StoreAppSettings_MessageBox1" xml:space="preserve">
+		<value>Error storing settings:
+
+{0}</value>
+	</data>
+	<data name="StoredCommands_Load_MessageBox1" xml:space="preserve">
+		<value>Error loading commands:
+
+{0}</value>
+	</data>
+	<data name="StoredCommands_Store_MessageBox1" xml:space="preserve">
+		<value>Error storing commands:
+
+{0}</value>
+	</data>
+	<data name="StoredQuickActions_Load_MessageBox1" xml:space="preserve">
+		<value>Error loading quick actions:
+
+{0}</value>
+	</data>
+	<data name="StoredQuickActions_Store_MessageBox1" xml:space="preserve">
+		<value>Error storing quick actions:
+
+{0}</value>
+	</data>
+	<data name="StoredSensors_Load_MessageBox1" xml:space="preserve">
+		<value>Error loading sensors:
+
+{0}</value>
+	</data>
+	<data name="StoredSensors_Store_MessageBox1" xml:space="preserve">
+		<value>Error storing sensors:
+
+{0}</value>
+	</data>
+</root>

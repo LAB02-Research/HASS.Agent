@@ -11,7 +11,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <Platforms>AnyCPU;x64</Platforms>
     <DebugType>portable</DebugType>
-    <Version>2022.3.28.0</Version>
+    <Version>2022.4.1.0</Version>
     <Company>LAB02 Research</Company>
     <Authors>LAB02 Research</Authors>
     <Description>Windows-based client for Home Assistant. Provides notifications, quick actions, commands, sensors and more. </Description>
@@ -34,7 +34,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="GrpcDotNetNamedPipes" Version="1.4.4" />
-    <PackageReference Include="HASS.Agent.Shared" Version="2022.3.28" />
+    <PackageReference Include="HASS.Agent.Shared" Version="2022.3.31" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
@@ -63,28 +63,31 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Controls\Configuration\Service.cs">
+    <Compile Update="Controls\Configuration\ConfigService.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Controls\Service\Commands.cs">
+    <Compile Update="Controls\Service\ServiceCommands.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Controls\Service\Connect.cs">
+    <Compile Update="Controls\Service\ServiceConnect.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Controls\Service\MQTT.cs">
+    <Compile Update="Controls\Service\ServiceMqtt.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Controls\Service\Sensors.cs">
+    <Compile Update="Controls\Service\ServiceSensors.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Controls\Service\General.cs">
+    <Compile Update="Controls\Service\ServiceGeneral.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\ChildApplications\ServiceSetState.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\ChildApplications\ServiceReinstall.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Commands\CommandMqttTopic.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Service\ServiceConfig.cs">
@@ -95,12 +98,168 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Localization\Languages.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Languages.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Controls\Configuration\ConfigExternalTools.pt-br.resx">
+      <DependentUpon>ConfigExternalTools.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Configuration\ConfigGeneral.pt-br.resx">
+      <DependentUpon>ConfigGeneral.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Configuration\ConfigHomeAssistantApi.pt-br.resx">
+      <DependentUpon>ConfigHomeAssistantApi.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Configuration\ConfigHotKey.pt-br.resx">
+      <DependentUpon>ConfigHotKey.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Configuration\ConfigLocalStorage.pt-br.resx">
+      <DependentUpon>ConfigLocalStorage.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Configuration\ConfigLogging.pt-br.resx">
+      <DependentUpon>ConfigLogging.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Configuration\ConfigMqtt.pt-br.resx">
+      <DependentUpon>ConfigMqtt.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Configuration\ConfigNotifications.pt-br.resx">
+      <DependentUpon>ConfigNotifications.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Configuration\ConfigService.pt-br.resx">
+      <DependentUpon>ConfigService.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Configuration\ConfigStartup.pt-br.resx">
+      <DependentUpon>ConfigStartup.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Configuration\ConfigUpdates.pt-br.resx">
+      <DependentUpon>ConfigUpdates.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Onboarding\Onboarding-1-Welcome.pt-br.resx">
+      <DependentUpon>Onboarding-1-Welcome.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Onboarding\Onboarding-2-Startup.pt-br.resx">
+      <DependentUpon>Onboarding-2-Startup.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Onboarding\Onboarding-3-Notifications.pt-br.resx">
+      <DependentUpon>Onboarding-3-Notifications.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Onboarding\Onboarding-4-Integration.pt-br.resx">
+      <DependentUpon>Onboarding-4-Integration.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Onboarding\Onboarding-5-API.pt-br.resx">
+      <DependentUpon>Onboarding-5-API.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Onboarding\Onboarding-6-MQTT.pt-br.resx">
+      <DependentUpon>Onboarding-6-MQTT.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Onboarding\Onboarding-7-HotKey.pt-br.resx">
+      <DependentUpon>Onboarding-7-HotKey.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Onboarding\Onboarding-8-Updates.pt-br.resx">
+      <DependentUpon>Onboarding-8-Updates.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Onboarding\Onboarding-9-Done.pt-br.resx">
+      <DependentUpon>Onboarding-9-Done.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\QuickActionControl.pt-br.resx">
+      <DependentUpon>QuickActionControl.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Service\ServiceCommands.pt-br.resx">
+      <DependentUpon>ServiceCommands.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Service\ServiceConnect.pt-br.resx">
+      <DependentUpon>ServiceConnect.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Service\ServiceGeneral.pt-br.resx">
+      <DependentUpon>ServiceGeneral.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Service\ServiceMQTT.pt-br.resx">
+      <DependentUpon>ServiceMQTT.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\Service\ServiceSensors.pt-br.resx">
+      <DependentUpon>ServiceSensors.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\About.pt-br.resx">
+      <DependentUpon>About.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\ChildApplications\PortReservation.pt-br.resx">
+      <DependentUpon>PortReservation.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\ChildApplications\PostUpdate.pt-br.resx">
+      <DependentUpon>PostUpdate.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\ChildApplications\Restart.pt-br.resx">
+      <DependentUpon>Restart.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\ChildApplications\ServiceReinstall.pt-br.resx">
+      <DependentUpon>ServiceReinstall.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\ChildApplications\ServiceSetState.pt-br.resx">
+      <DependentUpon>ServiceSetState.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\Commands\CommandMqttTopic.pt-br.resx">
+      <DependentUpon>CommandMqttTopic.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\Commands\CommandsConfig.pt-br.resx">
+      <DependentUpon>CommandsConfig.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\Commands\CommandsMod.pt-br.resx">
+      <DependentUpon>CommandsMod.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\Configuration.pt-br.resx">
+      <DependentUpon>Configuration.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\ExitDialog.pt-br.resx">
+      <DependentUpon>ExitDialog.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\Help.pt-br.resx">
+      <DependentUpon>Help.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\Main.pt-br.resx">
+      <DependentUpon>Main.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\Onboarding.pt-br.resx">
+      <DependentUpon>Onboarding.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\QuickActions\QuickActions.pt-br.resx">
+      <DependentUpon>QuickActions.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\QuickActions\QuickActionsConfig.pt-br.resx">
+      <DependentUpon>QuickActionsConfig.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\QuickActions\QuickActionsMod.pt-br.resx">
+      <DependentUpon>QuickActionsMod.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\Sensors\SensorsConfig.pt-br.resx">
+      <DependentUpon>SensorsConfig.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\Sensors\SensorsMod.pt-br.resx">
+      <DependentUpon>SensorsMod.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\Service\ServiceConfig.pt-br.resx">
+      <DependentUpon>ServiceConfig.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\UpdatePending.pt-br.resx">
+      <DependentUpon>UpdatePending.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.pt-br.resx">
+      <DependentUpon>Resources.resx</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Localization\Languages.pt-br.resx">
+      <DependentUpon>Languages.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Localization\Languages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Languages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
@@ -108,7 +267,7 @@
     <None Update="LICENSE.rtf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\logo_128.png">
+    <None Update="Resources\Images\logo_128.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

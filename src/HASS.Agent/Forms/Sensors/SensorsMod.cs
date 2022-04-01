@@ -1,6 +1,7 @@
 ﻿using Syncfusion.Windows.Forms;
 using HASS.Agent.Functions;
 using HASS.Agent.Models.Internal;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Sensors;
 using HASS.Agent.Shared.Enums;
 using HASS.Agent.Shared.Extensions;
@@ -60,9 +61,9 @@ namespace HASS.Agent.Forms.Sensors
             foreach (var sensor in SensorsManager.SensorInfoCards.Select(x => x.Value))
             {
                 var lvSensor = new ListViewItem(sensor.Name);
-                lvSensor.SubItems.Add(sensor.MultiValue ? "√" : "");
-                lvSensor.SubItems.Add(sensor.AgentCompatible ? "√" : "");
-                lvSensor.SubItems.Add(sensor.SatelliteCompatible ? "√" : "");
+                lvSensor.SubItems.Add(sensor.MultiValue ? "√" : string.Empty);
+                lvSensor.SubItems.Add(sensor.AgentCompatible ? "√" : string.Empty);
+                lvSensor.SubItems.Add(sensor.SatelliteCompatible ? "√" : string.Empty);
                 LvSensors.Items.Add(lvSensor);
             }
             LvSensors.EndUpdate();
@@ -71,7 +72,7 @@ namespace HASS.Agent.Forms.Sensors
             if (Sensor.Id == Guid.Empty)
             {
                 Sensor.Id = Guid.NewGuid();
-                Text = "New Sensor";
+                Text = Languages.SensorsMod_Title_New;
 
                 // done
                 _loading = false;
@@ -80,7 +81,7 @@ namespace HASS.Agent.Forms.Sensors
 
             // we're modding, load it
             LoadSensor();
-            Text = "Mod Sensor";
+            Text = Languages.SensorsMod_Title_Mod;
 
             // done
             _loading = false;
@@ -230,7 +231,7 @@ namespace HASS.Agent.Forms.Sensors
             {
                 SetEmptyGui();
 
-                LblSetting1.Text = "window name";
+                LblSetting1.Text = Languages.SensorsMod_LblSetting1_WindowName;
                 LblSetting1.Visible = true;
                 TbSetting1.Visible = true;
             }));
@@ -245,11 +246,11 @@ namespace HASS.Agent.Forms.Sensors
             {
                 SetEmptyGui();
 
-                LblSetting1.Text = "wmi query";
+                LblSetting1.Text = Languages.SensorsMod_LblSetting1_Wmi;
                 LblSetting1.Visible = true;
                 TbSetting1.Visible = true;
 
-                LblSetting2.Text = "wmi scope (optional)";
+                LblSetting2.Text = Languages.SensorsMod_LblSetting2_Wmi;
                 LblSetting2.Visible = true;
                 TbSetting2.Visible = true;
             }));
@@ -262,19 +263,19 @@ namespace HASS.Agent.Forms.Sensors
         {
             Invoke(new MethodInvoker(delegate
             {
-                LblSetting1.Text = "category";
+                LblSetting1.Text = Languages.SensorsMod_LblSetting1_Category;
                 LblSetting1.Visible = true;
                 TbSetting1.Text = string.Empty;
                 TbSetting1.Visible = true;
 
-                LblSetting2.Text = "counter";
+                LblSetting2.Text = Languages.SensorsMod_LblSetting2_Counter;
                 LblSetting2.Visible = true;
                 TbSetting2.Text = string.Empty;
                 TbSetting2.Visible = true;
 
-                LblSetting3.Text = "instance (optional)";
+                LblSetting3.Text = Languages.SensorsMod_LblSetting3_Instance;
                 LblSetting3.Visible = true;
-                TbSetting3.Text = "";
+                TbSetting3.Text = string.Empty;
                 TbSetting3.Visible = true;
             }));
         }
@@ -288,7 +289,7 @@ namespace HASS.Agent.Forms.Sensors
             {
                 SetEmptyGui();
 
-                LblSetting1.Text = "process";
+                LblSetting1.Text = Languages.SensorsMod_LblSetting1_Process;
                 LblSetting1.Visible = true;
                 TbSetting1.Visible = true;
             }));
@@ -303,7 +304,7 @@ namespace HASS.Agent.Forms.Sensors
             {
                 SetEmptyGui();
 
-                LblSetting1.Text = "service";
+                LblSetting1.Text = Languages.SensorsMod_LblSetting1_Service;
                 LblSetting1.Visible = true;
                 TbSetting1.Visible = true;
             }));
@@ -351,7 +352,7 @@ namespace HASS.Agent.Forms.Sensors
         {
             if (LvSensors.SelectedItems.Count == 0)
             {
-                MessageBoxAdv.Show("Select a sensortype first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -362,7 +363,7 @@ namespace HASS.Agent.Forms.Sensors
 
             if (sensorCard == null)
             {
-                MessageBoxAdv.Show("Select a valid sensortype first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -370,7 +371,7 @@ namespace HASS.Agent.Forms.Sensors
             var name = TbName.Text.Trim();
             if (string.IsNullOrEmpty(name))
             {
-                MessageBoxAdv.Show("Enter a name first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = TbName;
                 return;
             }
@@ -378,7 +379,7 @@ namespace HASS.Agent.Forms.Sensors
             // name already used?
             if (!_serviceMode && Variables.SingleValueSensors.Any(x => string.Equals(x.Name, name, StringComparison.InvariantCultureIgnoreCase) && x.Id != Sensor.Id.ToString()))
             {
-                var confirm = MessageBoxAdv.Show("There's already a single-value sensor with that name. Are you sure you want to continue?", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var confirm = MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox4, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (confirm != DialogResult.Yes)
                 {
                     ActiveControl = TbName;
@@ -388,7 +389,7 @@ namespace HASS.Agent.Forms.Sensors
 
             if (!_serviceMode && Variables.MultiValueSensors.Any(x => string.Equals(x.Name, name, StringComparison.InvariantCultureIgnoreCase) && x.Id != Sensor.Id.ToString()))
             {
-                var confirm = MessageBoxAdv.Show("There's already a multi-value sensor with that name. Are you sure you want to continue?", "HASS.Agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var confirm = MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox5, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (confirm != DialogResult.Yes)
                 {
                     ActiveControl = TbName;
@@ -400,7 +401,7 @@ namespace HASS.Agent.Forms.Sensors
             var interval = (int)NumInterval.Value;
             if (interval is < 1 or > 43200)
             {
-                MessageBoxAdv.Show("Enter an interval between 1 and 43200 (12 hours) first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox6, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = NumInterval;
                 return;
             }
@@ -412,7 +413,7 @@ namespace HASS.Agent.Forms.Sensors
                     var window = TbSetting1.Text.Trim();
                     if (string.IsNullOrEmpty(window))
                     {
-                        MessageBoxAdv.Show("Enter a window name first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox7, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting1;
                         return;
                     }
@@ -424,7 +425,7 @@ namespace HASS.Agent.Forms.Sensors
                     var scope = TbSetting2.Text.Trim();
                     if (string.IsNullOrEmpty(query))
                     {
-                        MessageBoxAdv.Show("Enter a query first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox8, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting1;
                         return;
                     }
@@ -438,7 +439,7 @@ namespace HASS.Agent.Forms.Sensors
                     var instance = TbSetting3.Text.Trim();
                     if (string.IsNullOrEmpty(category) || string.IsNullOrEmpty(counter))
                     {
-                        MessageBoxAdv.Show("Enter a category and instance first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox9, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting1;
                         return;
                     }
@@ -451,7 +452,7 @@ namespace HASS.Agent.Forms.Sensors
                     var process = TbSetting1.Text.Trim();
                     if (string.IsNullOrEmpty(process))
                     {
-                        MessageBoxAdv.Show("Enter the name of a process first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox10, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting1;
                         return;
                     }
@@ -462,7 +463,7 @@ namespace HASS.Agent.Forms.Sensors
                     var service = TbSetting1.Text.Trim();
                     if (string.IsNullOrEmpty(service))
                     {
-                        MessageBoxAdv.Show("Enter the name of a service first.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox11, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting1;
                         return;
                     }
@@ -532,7 +533,7 @@ namespace HASS.Agent.Forms.Sensors
             _interfaceLockedWrongType = true;
 
             var requiredClient = _serviceMode ? "hass.agent" : "service";
-            LblSpecificClient.Text = $"{requiredClient} only!";
+            LblSpecificClient.Text = string.Format(Languages.SensorsMod_SpecificClient, requiredClient);
 
             LblSpecificClient.Visible = true;
 

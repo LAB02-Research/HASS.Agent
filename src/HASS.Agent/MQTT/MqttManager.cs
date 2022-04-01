@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using HASS.Agent.Enums;
 using HASS.Agent.Functions;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Settings;
 using HASS.Agent.Shared.Enums;
 using HASS.Agent.Shared.Models.HomeAssistant;
@@ -107,7 +108,7 @@ namespace HASS.Agent.MQTT
 
                 _status = MqttStatus.Error;
                 Variables.MainForm?.SetMqttStatus(ComponentStatus.Failed);
-                Variables.MainForm?.ShowToolTip("mqtt: error while connecting", true);
+                Variables.MainForm?.ShowToolTip(Languages.MqttManager_ToolTip_ConnectionError, true);
             }
         }
 
@@ -221,7 +222,7 @@ namespace HASS.Agent.MQTT
             else if (excMsg.Contains("MqttCommunicationTimedOutException")) Log.Error("[MQTT] Error while connecting: {err}", "Connection timed out");
             else Log.Fatal(ex.Exception, "[MQTT] Error while connecting: {err}", ex.Exception.Message);
 
-            Variables.MainForm?.ShowToolTip("mqtt: failed to connect", true);
+            Variables.MainForm?.ShowToolTip(Languages.MqttManager_ToolTip_ConnectionFailed, true);
         }
 
         /// <summary>
@@ -262,7 +263,7 @@ namespace HASS.Agent.MQTT
             if (_disconnectionNotified) return;
             _disconnectionNotified = true;
 
-            Variables.MainForm?.ShowToolTip("mqtt: disconnected", true);
+            Variables.MainForm?.ShowToolTip(Languages.MqttManager_ToolTip_Disconnected, true);
             Log.Warning("[MQTT] Disconnected: {reason}", e.Reason.ToString());
         }
 
@@ -469,33 +470,29 @@ namespace HASS.Agent.MQTT
         }
 
         /// <summary>
-        /// Subscribe to the provided command's topic
+        /// Subscribe to the provided command's command and action topic
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
         public async Task SubscribeAsync(AbstractCommand command)
         {
-            if (IsConnected()) await _mqttClient.SubscribeAsync(((CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig()).Command_topic);
-            else
-            {
-                while (IsConnected() == false) await Task.Delay(250);
-                await _mqttClient.SubscribeAsync(((CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig()).Command_topic);
-            }
+            if (!IsConnected()) while (IsConnected() == false) await Task.Delay(250);
+
+            await _mqttClient.SubscribeAsync(((CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig()).Command_topic);
+            await _mqttClient.SubscribeAsync(((CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig()).Action_topic);
         }
 
         /// <summary>
-        /// Unsubscribe from the provided command's topic
+        /// Unsubscribe from the provided command's command and action topic
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
         public async Task UnubscribeAsync(AbstractCommand command)
         {
-            if (IsConnected()) await _mqttClient.UnsubscribeAsync(((CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig()).Command_topic);
-            else
-            {
-                while (IsConnected() == false) await Task.Delay(250);
-                await _mqttClient.UnsubscribeAsync(((CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig()).Command_topic);
-            }
+            if (!IsConnected()) while (IsConnected() == false) await Task.Delay(250);
+
+            await _mqttClient.UnsubscribeAsync(((CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig()).Command_topic);
+            await _mqttClient.UnsubscribeAsync(((CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig()).Action_topic);
         }
 
         /// <summary>
@@ -514,7 +511,6 @@ namespace HASS.Agent.MQTT
             }
             
             // configure last will message
-            // todo: cover other domains
             var lastWillMessageBuilder = new MqttApplicationMessageBuilder()
                 .WithTopic($"{Variables.AppSettings.MqttDiscoveryPrefix}/sensor/{Variables.DeviceConfig.Name}/availability")
                 .WithPayload("offline");
@@ -569,7 +565,7 @@ namespace HASS.Agent.MQTT
                 .WithAutoReconnectDelay(TimeSpan.FromSeconds(5))
                 .WithClientOptions(clientOptionsBuilder).Build();
         }
-        
+
         /// <summary>
         /// Handle incoming messages
         /// </summary>
@@ -579,18 +575,48 @@ namespace HASS.Agent.MQTT
             if (!Variables.Commands.Any()) return;
             foreach (var command in Variables.Commands)
             {
-                if (((CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig()).Command_topic != applicationMessage.Topic) continue;
+                var commandConfig = (CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig();
 
-                switch (Encoding.UTF8.GetString(applicationMessage.Payload))
-                {
-                    case "ON":
-                        command.TurnOn();
-                        break;
-                    case "OFF":
-                        command.TurnOff();
-                        break;
-                }
+                // check for command
+                if (commandConfig.Command_topic == applicationMessage.Topic) HandleCommandReceived(applicationMessage, command);
+
+                // check for action
+                else if (commandConfig.Action_topic == applicationMessage.Topic) HandleActionReceived(applicationMessage, command);
             }
+        }
+
+        /// <summary>
+        /// Handles a command (on/off and variations)
+        /// </summary>
+        /// <param name="applicationMessage"></param>
+        /// <param name="command"></param>
+        private static void HandleCommandReceived(MqttApplicationMessage applicationMessage, AbstractCommand command)
+        {
+            var payload = Encoding.UTF8.GetString(applicationMessage.Payload).ToLower();
+            if (string.IsNullOrWhiteSpace(payload)) return;
+
+            if (payload.Contains("on")) command.TurnOn();
+            else if (payload.Contains("off")) command.TurnOff();
+            else switch (payload)
+            {
+                case "press":
+                case "lock":
+                    command.TurnOn();
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Handles an action (on + argument)
+        /// </summary>
+        /// <param name="applicationMessage"></param>
+        /// <param name="command"></param>
+        private static void HandleActionReceived(MqttApplicationMessage applicationMessage, AbstractCommand command)
+        {
+            var payload = Encoding.UTF8.GetString(applicationMessage.Payload);
+            if (string.IsNullOrWhiteSpace(payload)) return;
+
+            command.TurnOnWithAction(payload);
         }
     }
 }

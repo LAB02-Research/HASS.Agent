@@ -396,13 +396,13 @@ namespace HASS.Agent.Functions
             userBrowser.Start();
         }
 
-        private static readonly Dictionary<IntPtr, string> KnownOkInputLanguages = new()
+        private static readonly Dictionary<IntPtr, string> KnownOkInputLanguage = new()
         {
             { new IntPtr(-268367863), "United States-International" },
             { new IntPtr(-268368877), "United States-International" }
         };
 
-        private static readonly Dictionary<IntPtr, string> KnownNotOkInputLanguages = new()
+        private static readonly Dictionary<IntPtr, string> KnownNotOkInputLanguage = new()
         {
             { new IntPtr(67568647), "German" }
         };
@@ -421,13 +421,13 @@ namespace HASS.Agent.Functions
             var inputLanguage = InputLanguage.CurrentInputLanguage.Handle;
 
             // check for known OK languages
-            if (KnownOkInputLanguages.ContainsKey(inputLanguage)) return false;
+            if (KnownOkInputLanguage.ContainsKey(inputLanguage)) return false;
 
             // check for known NOT OK languages
-            if (KnownNotOkInputLanguages.ContainsKey(inputLanguage))
+            if (KnownNotOkInputLanguage.ContainsKey(inputLanguage))
             {
                 // get human-readable name
-                var langName = KnownNotOkInputLanguages[inputLanguage];
+                var langName = KnownNotOkInputLanguage[inputLanguage];
 
                 message = $"Your input language '{langName}' is known to collide with the default CTRL-ALT-Q hotkey. Please set your own.";
                 return true;

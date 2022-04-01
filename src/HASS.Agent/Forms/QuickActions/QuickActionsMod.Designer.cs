@@ -1,4 +1,6 @@
-﻿namespace HASS.Agent.Forms.QuickActions
+﻿using HASS.Agent.Resources.Localization;
+
+namespace HASS.Agent.Forms.QuickActions
 {
     partial class QuickActionsMod
     {
@@ -31,19 +33,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuickActionsMod));
             this.BtnStore = new Syncfusion.WinForms.Controls.SfButton();
             this.TbDescription = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.LblDomain = new System.Windows.Forms.Label();
+            this.LblEntityInfo = new System.Windows.Forms.Label();
+            this.LblAction = new System.Windows.Forms.Label();
+            this.LblDescription = new System.Windows.Forms.Label();
             this.LblLoading = new System.Windows.Forms.Label();
             this.LblEntity = new System.Windows.Forms.Label();
             this.TbHotkey = new System.Windows.Forms.TextBox();
             this.CbEnableHotkey = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.LblHotkey = new System.Windows.Forms.Label();
             this.CbDomain = new System.Windows.Forms.ComboBox();
             this.CbEntity = new System.Windows.Forms.ComboBox();
             this.CbAction = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.LblTip1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BtnStore
@@ -65,7 +67,7 @@
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnStore.TabIndex = 4;
-            this.BtnStore.Text = "store quick action";
+            this.BtnStore.Text = Languages.QuickActionsMod_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
@@ -80,45 +82,45 @@
             this.TbDescription.Size = new System.Drawing.Size(328, 25);
             this.TbDescription.TabIndex = 3;
             // 
-            // label1
+            // LblDomain
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(13, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "domain";
+            this.LblDomain.AutoSize = true;
+            this.LblDomain.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblDomain.Location = new System.Drawing.Point(13, 19);
+            this.LblDomain.Name = "LblDomain";
+            this.LblDomain.Size = new System.Drawing.Size(55, 19);
+            this.LblDomain.TabIndex = 3;
+            this.LblDomain.Text = Languages.QuickActionsMod_LblDomain;
             // 
-            // label2
+            // LblEntityInfo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(13, 78);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 17);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "entity";
+            this.LblEntityInfo.AutoSize = true;
+            this.LblEntityInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblEntityInfo.Location = new System.Drawing.Point(13, 78);
+            this.LblEntityInfo.Name = "LblEntityInfo";
+            this.LblEntityInfo.Size = new System.Drawing.Size(44, 19);
+            this.LblEntityInfo.TabIndex = 6;
+            this.LblEntityInfo.Text = Languages.QuickActionsMod_LblEntityInfo;
             // 
-            // label3
+            // LblAction
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(13, 209);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 17);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "action";
+            this.LblAction.AutoSize = true;
+            this.LblAction.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblAction.Location = new System.Drawing.Point(13, 209);
+            this.LblAction.Name = "LblAction";
+            this.LblAction.Size = new System.Drawing.Size(46, 19);
+            this.LblAction.TabIndex = 8;
+            this.LblAction.Text = Languages.QuickActionsMod_LblAction;
             // 
-            // label4
+            // LblDescription
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(12, 271);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 17);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "description";
+            this.LblDescription.AutoSize = true;
+            this.LblDescription.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblDescription.Location = new System.Drawing.Point(12, 271);
+            this.LblDescription.Name = "LblDescription";
+            this.LblDescription.Size = new System.Drawing.Size(76, 19);
+            this.LblDescription.TabIndex = 10;
+            this.LblDescription.Text = Languages.QuickActionsMod_LblDescription;
             // 
             // LblLoading
             // 
@@ -127,9 +129,9 @@
             this.LblLoading.ForeColor = System.Drawing.Color.MediumSpringGreen;
             this.LblLoading.Location = new System.Drawing.Point(44, 428);
             this.LblLoading.Name = "LblLoading";
-            this.LblLoading.Size = new System.Drawing.Size(264, 17);
+            this.LblLoading.Size = new System.Drawing.Size(276, 19);
             this.LblLoading.TabIndex = 7;
-            this.LblLoading.Text = "please wait while your entities are fetched ...";
+            this.LblLoading.Text = Languages.QuickActionsMod_LblLoading;
             this.LblLoading.Visible = false;
             // 
             // LblEntity
@@ -160,20 +162,20 @@
             this.CbEnableHotkey.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CbEnableHotkey.Location = new System.Drawing.Point(179, 384);
             this.CbEnableHotkey.Name = "CbEnableHotkey";
-            this.CbEnableHotkey.Size = new System.Drawing.Size(108, 21);
+            this.CbEnableHotkey.Size = new System.Drawing.Size(114, 23);
             this.CbEnableHotkey.TabIndex = 17;
-            this.CbEnableHotkey.Text = "enable hotkey";
+            this.CbEnableHotkey.Text = Languages.QuickActionsMod_CbEnableHotkey;
             this.CbEnableHotkey.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // LblHotkey
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(12, 355);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 17);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "hotkey combination:";
+            this.LblHotkey.AutoSize = true;
+            this.LblHotkey.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblHotkey.Location = new System.Drawing.Point(12, 355);
+            this.LblHotkey.Name = "LblHotkey";
+            this.LblHotkey.Size = new System.Drawing.Size(134, 19);
+            this.LblHotkey.TabIndex = 16;
+            this.LblHotkey.Text = Languages.QuickActionsMod_LblHotkey;
             // 
             // CbDomain
             // 
@@ -226,15 +228,15 @@
             this.CbAction.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.CbAction_DrawItem);
             this.CbAction.SelectedIndexChanged += new System.EventHandler(this.CbAction_SelectedIndexChanged);
             // 
-            // label6
+            // LblTip1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(92, 319);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(248, 15);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "(optional, will be used instead of entity name)";
+            this.LblTip1.AutoSize = true;
+            this.LblTip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblTip1.Location = new System.Drawing.Point(92, 319);
+            this.LblTip1.Name = "LblTip1";
+            this.LblTip1.Size = new System.Drawing.Size(248, 15);
+            this.LblTip1.TabIndex = 28;
+            this.LblTip1.Text = Languages.QuickActionsMod_LblTip1;
             // 
             // QuickActionsMod
             // 
@@ -245,21 +247,21 @@
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(352, 495);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.LblTip1);
             this.Controls.Add(this.CbAction);
             this.Controls.Add(this.CbEntity);
             this.Controls.Add(this.CbDomain);
             this.Controls.Add(this.TbHotkey);
             this.Controls.Add(this.CbEnableHotkey);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.LblHotkey);
             this.Controls.Add(this.LblEntity);
             this.Controls.Add(this.TbDescription);
             this.Controls.Add(this.LblLoading);
             this.Controls.Add(this.BtnStore);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.LblDomain);
+            this.Controls.Add(this.LblDescription);
+            this.Controls.Add(this.LblEntityInfo);
+            this.Controls.Add(this.LblAction);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -270,7 +272,7 @@
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quick Action";
+            this.Text = Languages.QuickActionsMod_Title;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuickActionsMod_FormClosing);
             this.Load += new System.EventHandler(this.QuickActionsMod_Load);
             this.ResizeEnd += new System.EventHandler(this.QuickActionsMod_ResizeEnd);
@@ -282,20 +284,20 @@
 
         #endregion
         private Syncfusion.WinForms.Controls.SfButton BtnStore;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label LblDomain;
+        private System.Windows.Forms.Label LblEntityInfo;
+        private System.Windows.Forms.Label LblAction;
+        private System.Windows.Forms.Label LblDescription;
         private System.Windows.Forms.Label LblLoading;
         private System.Windows.Forms.TextBox TbDescription;
         private System.Windows.Forms.Label LblEntity;
         private System.Windows.Forms.TextBox TbHotkey;
         private System.Windows.Forms.CheckBox CbEnableHotkey;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label LblHotkey;
         private System.Windows.Forms.ComboBox CbDomain;
         private System.Windows.Forms.ComboBox CbEntity;
         private System.Windows.Forms.ComboBox CbAction;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label LblTip1;
     }
 }
 

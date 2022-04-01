@@ -1,4 +1,6 @@
-﻿namespace HASS.Agent.Forms
+﻿using HASS.Agent.Resources.Localization;
+
+namespace HASS.Agent.Forms
 {
     partial class Onboarding
     {
@@ -53,7 +55,7 @@
             this.BtnNext.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnNext.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnNext.TabIndex = 0;
-            this.BtnNext.Text = "next";
+            this.BtnNext.Text = Languages.Onboarding_BtnNext;
             this.BtnNext.UseVisualStyleBackColor = false;
             this.BtnNext.Click += new System.EventHandler(this.BtnNext_Click);
             // 
@@ -85,7 +87,7 @@
             this.BtnClose.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnClose.TabIndex = 2;
             this.BtnClose.TabStop = false;
-            this.BtnClose.Text = "close";
+            this.BtnClose.Text = Languages.Onboarding_BtnClose;
             this.BtnClose.UseVisualStyleBackColor = false;
             this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
@@ -106,7 +108,7 @@
             this.BtnPrevious.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnPrevious.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnPrevious.TabIndex = 3;
-            this.BtnPrevious.Text = "previous";
+            this.BtnPrevious.Text = Languages.Onboarding_BtnPrevious;
             this.BtnPrevious.UseVisualStyleBackColor = false;
             this.BtnPrevious.Visible = false;
             this.BtnPrevious.Click += new System.EventHandler(this.BtnPrevious_Click);
@@ -134,7 +136,7 @@
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HASS.Agent Onboarding";
+            this.Text = Languages.Onboarding_Onboarding;
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Onboarding_FormClosing);
             this.Load += new System.EventHandler(this.Onboarding_Load);

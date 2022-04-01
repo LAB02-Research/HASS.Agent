@@ -1,5 +1,6 @@
 ﻿using HASS.Agent.Extensions;
 using HASS.Agent.Models.Internal;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Settings;
 using HASS.Agent.Shared.Enums;
 using HASS.Agent.Shared.Extensions;
@@ -331,7 +332,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             var sensorInfoCard = new SensorInfoCard(SensorType.ActiveWindowSensor,
-                "Provides the title of the current active window.",
+                Languages.SensorsManager_ActiveWindowSensorDescription,
                 15, false, true, false);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -339,7 +340,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.AudioSensors,
-                "Provides information various aspects of your device's audio:\r\n\r\nCurrent peak volume level (can be used as a simple 'is something playing' value).\r\n\r\nDefault audiodevice: name, state and volume.\r\n\r\nSummary of your audio sessions: application name, muted state, volume and current peak volume.",
+                Languages.SensorsManager_AudioSensorsDescription,
                 20, true, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -347,7 +348,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.BatterySensors,
-                "Provides a sensor with the current charging status, estimated amount of minutes on a full charge, remaining charge in percentage, remaining charge in minutes and the powerline status.",
+                Languages.SensorsManager_BatterySensorsDescription,
                 30, true, true, false);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -355,7 +356,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.CpuLoadSensor,
-                "Provides the current load of the first CPU as a percentage.",
+                Languages.SensorsManager_CpuLoadSensorDescription,
                 30, false, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -363,7 +364,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.CurrentClockSpeedSensor,
-                "Provides the current clockspeed of the first CPU.",
+                Languages.SensorsManager_CurrentClockSpeedSensorDescription,
                 300, false, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -371,7 +372,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.CurrentVolumeSensor,
-                "Provides the current volume level as a percentage.\r\n\r\nCurrently takes the volume of your default device.",
+                Languages.SensorsManager_CurrentVolumeSensorDescription,
                 15, false, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -379,7 +380,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.DisplaySensors,
-                "Provides a sensor with the amount of displays, name of the primary display, and per display its name, resolution and bits per pixel.",
+                Languages.SensorsManager_DisplaySensorsDescription,
                 15, true, true, false);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -387,7 +388,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.DummySensor,
-                "Dummy sensor for testing purposes, sends a random integer value between 0 and 100.",
+                Languages.SensorsManager_DummySensorDescription,
                 5, false, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -395,7 +396,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.GpuLoadSensor,
-                "Provides the current load of the first GPU as a percentage.",
+                Languages.SensorsManager_GpuLoadSensorDescription,
                 30, false, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -403,7 +404,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.GpuTemperatureSensor,
-                "Provides the current temperature of the first GPU.",
+                Languages.SensorsManager_GpuTemperatureSensorDescription,
                 30, false, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -411,7 +412,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.LastActiveSensor,
-                "Provides a datetime value containing the last moment the user provided any input.",
+                Languages.SensorsManager_LastActiveSensorDescription,
                 10, false, true, false);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -419,7 +420,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.LastBootSensor,
-                "Provides a datetime value containing the last moment the system (re)booted.\r\n\r\nImportant: Windows' FastBoot option can throw this value off, because that's a form of hibernation. You can disable it through Power Options -> 'Choose what the power buttons do' -> uncheck 'Turn on fast start-up'. It doesn't make much difference for modern machines with SSDs, but disabling makes sure you get a clean state after rebooting.",
+                Languages.SensorsManager_LastBootSensorDescription,
                 10, false, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -427,7 +428,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.LastSystemStateChangeSensor,
-                "Provides the last system state change:\r\n\r\nHassAgentStarted, Logoff, SystemShutdown, Resume, Suspend, ConsoleConnect, ConsoleDisconnect, RemoteConnect, RemoteDisconnect, SessionLock, SessionLogoff, SessionLogon, SessionRemoteControl and SessionUnlock.",
+                Languages.SensorsManager_LastSystemStateChangeSensorDescription,
                 10, false, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -435,7 +436,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.LoggedUserSensor,
-                "Returns the name of the currently logged user.",
+                Languages.SensorsManager_LoggedUserSensorDescription,
                 10, false, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -443,7 +444,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.LoggedUsersSensor,
-                "Returns a json-formatted list of currently logged users.",
+                Languages.SensorsManager_LoggedUsersSensorDescription,
                 30, false, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -451,7 +452,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.MemoryUsageSensor,
-                "Provides the amount of used memory as a percentage.",
+                Languages.SensorsManager_MemoryUsageSensorDescription,
                 30, false, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -459,7 +460,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.MicrophoneActiveSensor,
-                "Provides a bool value based on whether the microphone is currently being used.",
+                Languages.SensorsManager_MicrophoneActiveSensorDescription,
                 10, false, true, false);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -467,7 +468,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.NamedWindowSensor,
-                "Provides an ON/OFF value based on whether the window is currently open (doesn't have to be active).",
+                Languages.SensorsManager_NamedWindowSensorDescription,
                 30, false, true, false);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -475,7 +476,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.NetworkSensors,
-                "Provides card info, configuration, transfer- & package statistics and addresses (ip, mac, dhcp, dns) of all present network cards.\r\n\r\nThis is a multi-value sensor.",
+                Languages.SensorsManager_NetworkSensorsDescription,
                 30, true, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -483,7 +484,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.PerformanceCounterSensor,
-                "Provides the values of a performance counter.\r\n\r\nFor example, the built-in CPU load sensor uses these values:\r\n\r\nCategory: Processor\r\nCounter: % Processor Time\r\nInstance: _Total\r\n\r\nYou can explore the counters through Windows' 'perfmon.exe' tool.",
+                Languages.SensorsManager_PerformanceCounterSensorDescription,
                 30, false, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -491,7 +492,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.ProcessActiveSensor,
-                "Provides the number of active instances of the process.",
+                Languages.SensorsManager_ProcessActiveSensorDescription,
                 10, false, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -499,7 +500,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.ServiceStateSensor,
-                "Returns the state of the provided service: NotFound, Stopped, StartPending, StopPending, Running, ContinuePending, PausePending or Paused.\r\n\r\nMake sure to provide the 'Service name', not the 'Display name'.",
+                Languages.SensorsManager_ServiceStateSensorDescription,
                 10, false, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -507,7 +508,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.SessionStateSensor,
-                "Provides the current session state:\r\n\r\nLocked, Unlocked or Unknown.\r\n\r\nUse a LastSystemStateChangeSensor to monitor session state changes.",
+                Languages.SensorsManager_SessionStateSensorDescription,
                 10, false, true, false);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -515,7 +516,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.StorageSensors,
-                "Provides the labels, total size (MB), available space (MB), used space (MB) and file system of all present non-removable disks.",
+                Languages.SensorsManager_StorageSensorsDescription,
                 30, true, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -523,7 +524,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.UserNotificationStateSensor,
-                "Provides the current user state:\r\n\r\nNotPresent, Busy, RunningDirect3dFullScreen, PresentationMode, AcceptsNotifications, QuietTime or RunningWindowsStoreApp.\r\n\r\nCan for instance be used to determine whether to send notifications or TTS messages.",
+                Languages.SensorsManager_UserNotificationStateSensorDescription,
                 10, false, true, false);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -531,7 +532,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.WebcamActiveSensor,
-                "Provides a bool value based on whether the webcam is currently being used.",
+                Languages.SensorsManager_WebcamActiveSensorDescription,
                 10, false, true, false);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -540,7 +541,7 @@ namespace HASS.Agent.Sensors
 
             // Provides a sensor with the amount of pending driver updates, a sensor with the amount of pending software updates, a sensor containing all pending driver updates information (title, kb article id's, hidden, type and categories) and a sensor containing the same for pending software updates.\r\n\r\nThis is a costly request, so the recommended interval is 15 minutes (900 seconds). But it's capped at 10 minutes, if you provide a lower value, you'll get the last known list.
             sensorInfoCard = new SensorInfoCard(SensorType.WindowsUpdatesSensors,
-                "Provides a sensor with the amount of pending driver updates and a sensor with the amount of pending software updates.\r\n\r\nThis is a costly request, so the recommended interval is 15 minutes (900 seconds). But it's capped at 10 minutes, if you provide a lower value, you'll get the last known list.",
+                Languages.SensorsManager_WindowsUpdatesSensorsDescription,
                 900, true, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -548,7 +549,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.WmiQuerySensor,
-                "Provides the result of the WMI query.",
+                Languages.SensorsManager_WmiQuerySensorDescription,
                 10, false, true, true);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);

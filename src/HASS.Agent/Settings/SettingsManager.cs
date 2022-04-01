@@ -2,6 +2,7 @@
 using HASS.Agent.Enums;
 using HASS.Agent.Models.Config;
 using HASS.Agent.Models.Internal;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Sensors;
 using HASS.Agent.Shared;
 using HASS.Agent.Shared.Models.HomeAssistant.Commands;
@@ -140,7 +141,7 @@ namespace HASS.Agent.Settings
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS] Error loading app settings: {err}", ex.Message);
-                Variables.MainForm?.ShowMessageBox($"Error loading settings:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowMessageBox(string.Format(Languages.SettingsManager_LoadAppSettings_MessageBox1, ex.Message), true);
                 return false;
             }
         }
@@ -175,7 +176,7 @@ namespace HASS.Agent.Settings
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS] Error storing initial settings: {err}", ex.Message);
-                Variables.MainForm?.ShowMessageBox($"Error storing initial settings:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowMessageBox(string.Format(Languages.SettingsManager_StoreInitialSettings_MessageBox1, ex.Message), true);
                 return false;
             }
         }
@@ -235,7 +236,7 @@ namespace HASS.Agent.Settings
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS] Error storing app settings: {err}", ex.Message);
-                Variables.MainForm?.ShowMessageBox($"Error storing settings:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowMessageBox(string.Format(Languages.SettingsManager_StoreAppSettings_MessageBox1, ex.Message), true);
                 return false;
             }
         }

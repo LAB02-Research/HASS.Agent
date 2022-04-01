@@ -1,5 +1,6 @@
 ﻿
 using HASS.Agent.Controls;
+using HASS.Agent.Resources.Localization;
 
 namespace HASS.Agent.Forms.QuickActions
 {
@@ -48,7 +49,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.ClmDescription = new System.Windows.Forms.ColumnHeader();
             this.ClmEmpty = new System.Windows.Forms.ColumnHeader();
             this.ImgLv = new System.Windows.Forms.ImageList(this.components);
-            this.label8 = new System.Windows.Forms.Label();
+            this.LblHotkey = new System.Windows.Forms.Label();
             this.PbHotKey = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PbHotKey)).BeginInit();
             this.SuspendLayout();
@@ -71,7 +72,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnStore.TabIndex = 0;
-            this.BtnStore.Text = "store quick actions";
+            this.BtnStore.Text = Languages.QuickActionsConfig_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
@@ -93,7 +94,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.BtnAdd.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnAdd.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnAdd.TabIndex = 2;
-            this.BtnAdd.Text = "add new";
+            this.BtnAdd.Text = Languages.QuickActionsConfig_BtnAdd;
             this.BtnAdd.UseVisualStyleBackColor = false;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
@@ -115,7 +116,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.BtnModify.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnModify.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnModify.TabIndex = 3;
-            this.BtnModify.Text = "modify";
+            this.BtnModify.Text = Languages.QuickActionsConfig_BtnModify;
             this.BtnModify.UseVisualStyleBackColor = false;
             this.BtnModify.Click += new System.EventHandler(this.BtnModify_Click);
             // 
@@ -137,7 +138,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.BtnRemove.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnRemove.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnRemove.TabIndex = 4;
-            this.BtnRemove.Text = "remove";
+            this.BtnRemove.Text = Languages.QuickActionsConfig_BtnRemove;
             this.BtnRemove.UseVisualStyleBackColor = false;
             this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
@@ -159,7 +160,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.BtnPreview.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnPreview.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnPreview.TabIndex = 5;
-            this.BtnPreview.Text = "preview";
+            this.BtnPreview.Text = Languages.QuickActionsConfig_BtnPreview;
             this.BtnPreview.UseVisualStyleBackColor = false;
             this.BtnPreview.Click += new System.EventHandler(this.BtnPreview_Click);
             // 
@@ -201,17 +202,17 @@ namespace HASS.Agent.Forms.QuickActions
             // 
             // ClmDomain
             // 
-            this.ClmDomain.Text = "domain";
+            this.ClmDomain.Text = Languages.QuickActionsConfig_ClmDomain;
             this.ClmDomain.Width = 120;
             // 
             // ClmEntity
             // 
-            this.ClmEntity.Text = "entity";
+            this.ClmEntity.Text = Languages.QuickActionsConfig_ClmEntity;
             this.ClmEntity.Width = 200;
             // 
             // ClmAction
             // 
-            this.ClmAction.Text = "action";
+            this.ClmAction.Text = Languages.QuickActionsConfig_ClmAction;
             this.ClmAction.Width = 100;
             // 
             // ClmHotKeyEnabled
@@ -221,12 +222,12 @@ namespace HASS.Agent.Forms.QuickActions
             // 
             // ClmHotKey
             // 
-            this.ClmHotKey.Text = "hotkey";
+            this.ClmHotKey.Text = Languages.QuickActionsConfig_ClmHotKey;
             this.ClmHotKey.Width = 200;
             // 
             // ClmDescription
             // 
-            this.ClmDescription.Text = "description";
+            this.ClmDescription.Text = Languages.QuickActionsConfig_ClmDescription;
             this.ClmDescription.Width = 250;
             // 
             // ClmEmpty
@@ -241,16 +242,16 @@ namespace HASS.Agent.Forms.QuickActions
             this.ImgLv.TransparentColor = System.Drawing.Color.Transparent;
             this.ImgLv.Images.SetKeyName(0, "hotkey_16_header");
             // 
-            // label8
+            // LblHotkey
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(831, 449);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 15);
-            this.label8.TabIndex = 43;
-            this.label8.Text = "hotkey enabled";
+            this.LblHotkey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblHotkey.AutoSize = true;
+            this.LblHotkey.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblHotkey.Location = new System.Drawing.Point(831, 449);
+            this.LblHotkey.Name = "LblHotkey";
+            this.LblHotkey.Size = new System.Drawing.Size(88, 15);
+            this.LblHotkey.TabIndex = 43;
+            this.LblHotkey.Text = Languages.QuickActionsConfig_LblHotkey;
             // 
             // PbHotKey
             // 
@@ -272,7 +273,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(933, 568);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.LblHotkey);
             this.Controls.Add(this.PbHotKey);
             this.Controls.Add(this.LvQuickActions);
             this.Controls.Add(this.BtnPreview);
@@ -290,7 +291,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quick Actions Config";
+            this.Text = Languages.QuickActionsConfig_Title;
             this.Load += new System.EventHandler(this.QuickActionsConfig_Load);
             this.ResizeBegin += new System.EventHandler(this.QuickActionsConfig_ResizeBegin);
             this.ResizeEnd += new System.EventHandler(this.QuickActionsConfig_ResizeEnd);
@@ -318,7 +319,7 @@ namespace HASS.Agent.Forms.QuickActions
         private ColumnHeader ClmHotKey;
         private ColumnHeader ClmDescription;
         private ImageList ImgLv;
-        private Label label8;
+        private Label LblHotkey;
         private PictureBox PbHotKey;
     }
 }

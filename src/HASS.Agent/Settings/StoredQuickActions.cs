@@ -1,5 +1,6 @@
 ﻿using HASS.Agent.Enums;
 using HASS.Agent.Models.Internal;
+using HASS.Agent.Resources.Localization;
 using Newtonsoft.Json;
 using Serilog;
 
@@ -59,7 +60,7 @@ namespace HASS.Agent.Settings
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS_QUICKACTIONS] Error loading entities: {err}", ex.Message);
-                Variables.MainForm?.ShowMessageBox($"Error loading quick actions:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowMessageBox(string.Format(Languages.StoredQuickActions_Load_MessageBox1, ex.Message), true);
 
                 Variables.MainForm?.SetQuickActionsStatus(ComponentStatus.Failed);
                 return false;
@@ -93,7 +94,7 @@ namespace HASS.Agent.Settings
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS_QUICKACTIONS] Error storing entities: {err}", ex.Message);
-                Variables.MainForm?.ShowMessageBox($"Error storing quick actions:\r\n\r\n{ex.Message}", true);
+                Variables.MainForm?.ShowMessageBox(string.Format(Languages.StoredQuickActions_Store_MessageBox1, ex.Message), true);
 
                 Variables.MainForm?.SetQuickActionsStatus(ComponentStatus.Failed);
                 return false;

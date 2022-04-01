@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using HASS.Agent.Models.Internal;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Settings;
 using Octokit;
 using Serilog;
@@ -236,7 +237,7 @@ namespace HASS.Agent.Functions
             {
                 Log.Fatal(ex, "[UPDATER] Error getting the latest version's info: {err}", ex.Message);
 
-                pendingUpdate.ReleaseNotes = "error fetching info, check the logs";
+                pendingUpdate.ReleaseNotes = Languages.UpdateManager_GetLatestVersionInfo_Error;
                 return pendingUpdate;
             }
         }
@@ -252,8 +253,8 @@ namespace HASS.Agent.Functions
             var tempFile = await StorageManager.PrepareTempInstallerFilename();
             if (string.IsNullOrEmpty(tempFile))
             {
-                MessageBoxAdv.Show("Unable to prepare downloading the update, check the logs for more info.\r\n\r\nThe release page will now open instead.",
-                    "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(Languages.UpdateManager_DownloadAndExecuteUpdate_MessageBox1,
+                    Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 LaunchReleaseUrl(pendingUpdate);
                 return;
             }
@@ -262,8 +263,8 @@ namespace HASS.Agent.Functions
             var downloaded = await StorageManager.DownloadFileAsync(pendingUpdate.InstallerUrl, tempFile);
             if (!downloaded || !File.Exists(tempFile))
             {
-                MessageBoxAdv.Show("Unable to download the update, check the logs for more info.\r\n\r\nThe release page will now open instead.",
-                    "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(Languages.UpdateManager_DownloadAndExecuteUpdate_MessageBox2,
+                    Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 LaunchReleaseUrl(pendingUpdate);
                 return;
             }
@@ -272,8 +273,7 @@ namespace HASS.Agent.Functions
             var certCheck = HelperFunctions.ConfirmCertificate(tempFile);
             if (!certCheck)
             {
-                MessageBoxAdv.Show("The downloaded file FAILED the certificate check.\r\n\r\nThis could be a technical error, but also a tampered file!\r\n\r\n" +
-                                   "Please check the logs, and post a ticket with the findings.", "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBoxAdv.Show(Languages.UpdateManager_DownloadAndExecuteUpdate_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 LaunchReleaseUrl(pendingUpdate);
                 return;
             }
@@ -286,8 +286,7 @@ namespace HASS.Agent.Functions
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[UPDATER] Error while launching the installer: {err}", ex.Message);
-                MessageBoxAdv.Show("Unable to launch the installer (did you approve the UAC prompt?), check the logs for more info.\r\n\r\nThe release page will now open instead.",
-                    "HASS.Agent", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(Languages.UpdateManager_DownloadAndExecuteUpdate_MessageBox4, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 LaunchReleaseUrl(pendingUpdate);
             }
         }

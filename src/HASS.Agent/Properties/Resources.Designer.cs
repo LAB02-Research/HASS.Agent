@@ -63,6 +63,26 @@ namespace HASS.Agent.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap action_16 {
+            get {
+                object obj = ResourceManager.GetObject("action_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap action_16_header {
+            get {
+                object obj = ResourceManager.GetObject("action_16_header", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap agent_16 {
             get {
                 object obj = ResourceManager.GetObject("agent_16", resourceCulture);
@@ -176,16 +196,6 @@ namespace HASS.Agent.Properties {
         internal static System.Drawing.Bitmap githubsponsors {
             get {
                 object obj = ResourceManager.GetObject("githubsponsors", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap githubsponsors1 {
-            get {
-                object obj = ResourceManager.GetObject("githubsponsors1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

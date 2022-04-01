@@ -1,4 +1,6 @@
-﻿namespace HASS.Agent.Forms.ChildApplications
+﻿using HASS.Agent.Resources.Localization;
+
+namespace HASS.Agent.Forms.ChildApplications
 {
     partial class PostUpdate
     {
@@ -29,24 +31,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PostUpdate));
-            this.label1 = new System.Windows.Forms.Label();
+            this.LblInfo1 = new System.Windows.Forms.Label();
             this.PbStep1InstallSatelliteService = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LblTask1 = new System.Windows.Forms.Label();
+            this.LblTask2 = new System.Windows.Forms.Label();
             this.PbStep2PortBinding = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PbStep1InstallSatelliteService)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbStep2PortBinding)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // LblInfo1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(112, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(395, 19);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Please wait a bit while some post-update tasks are performed ..";
+            this.LblInfo1.AutoSize = true;
+            this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblInfo1.Location = new System.Drawing.Point(112, 47);
+            this.LblInfo1.Name = "LblInfo1";
+            this.LblInfo1.Size = new System.Drawing.Size(395, 19);
+            this.LblInfo1.TabIndex = 1;
+            this.LblInfo1.Text = Languages.PostUpdate_LblInfo1;
             // 
             // PbStep1InstallSatelliteService
             // 
@@ -58,25 +60,25 @@
             this.PbStep1InstallSatelliteService.TabIndex = 54;
             this.PbStep1InstallSatelliteService.TabStop = false;
             // 
-            // label2
+            // LblTask1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(245, 127);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(178, 19);
-            this.label2.TabIndex = 55;
-            this.label2.Text = "Configuring Satellite Service";
+            this.LblTask1.AutoSize = true;
+            this.LblTask1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblTask1.Location = new System.Drawing.Point(245, 127);
+            this.LblTask1.Name = "LblTask1";
+            this.LblTask1.Size = new System.Drawing.Size(178, 19);
+            this.LblTask1.TabIndex = 55;
+            this.LblTask1.Text = Languages.PostUpdate_LblTask1;
             // 
-            // label3
+            // LblTask2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(245, 194);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(154, 19);
-            this.label3.TabIndex = 57;
-            this.label3.Text = "Create API port binding";
+            this.LblTask2.AutoSize = true;
+            this.LblTask2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblTask2.Location = new System.Drawing.Point(245, 194);
+            this.LblTask2.Name = "LblTask2";
+            this.LblTask2.Size = new System.Drawing.Size(154, 19);
+            this.LblTask2.TabIndex = 57;
+            this.LblTask2.Text = Languages.PostUpdate_LblTask2;
             // 
             // PbStep2PortBinding
             // 
@@ -97,11 +99,11 @@
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(619, 284);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.LblTask2);
             this.Controls.Add(this.PbStep2PortBinding);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.LblTask1);
             this.Controls.Add(this.PbStep1InstallSatelliteService);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LblInfo1);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -112,7 +114,7 @@
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HASS.Agent Post Update";
+            this.Text = Languages.PostUpdate_Title;
             this.Load += new System.EventHandler(this.PostUpdate_Load);
             this.ResizeEnd += new System.EventHandler(this.PostUpdate_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.PbStep1InstallSatelliteService)).EndInit();
@@ -123,10 +125,10 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblInfo1;
         private System.Windows.Forms.PictureBox PbStep1InstallSatelliteService;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LblTask1;
+        private System.Windows.Forms.Label LblTask2;
         private System.Windows.Forms.PictureBox PbStep2PortBinding;
     }
 }

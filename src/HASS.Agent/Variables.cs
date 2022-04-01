@@ -23,6 +23,7 @@ namespace HASS.Agent
         /// Application info
         /// </summary>
         public static string ApplicationName { get; } = Assembly.GetExecutingAssembly().GetName().Name ?? "HASS.Agent";
+        public static string MessageBoxTitle { get; } = "HASS.Agent";
         public static string ApplicationExecutable { get; } = Assembly.GetExecutingAssembly().Location.Replace(".dll", ".exe");
         public static string Version { get; } = $"{Assembly.GetExecutingAssembly().GetName().Version?.Major}.{Assembly.GetExecutingAssembly().GetName().Version?.Minor}.{Assembly.GetExecutingAssembly().GetName().Version?.Build}.{Assembly.GetExecutingAssembly().GetName().Version?.Revision}";
         public static bool Beta { get; set; } = false;
@@ -38,7 +39,7 @@ namespace HASS.Agent
         /// Internal references
         /// </summary>
         internal static Main MainForm { get; set; }
-        internal static HttpClient HttpClient { get; } = new();
+        internal static HttpClient HttpClient { get; set; } = new();
         internal static Hotkey QuickActionsHotKey { get; set; } = new(Keys.Control | Keys.Alt, Keys.Q);
         internal static HotKeyManager HotKeyManager { get; } = new();
         internal static HotkeyListener HotKeyListener { get; set; }

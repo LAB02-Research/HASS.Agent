@@ -5,6 +5,7 @@ using Grapevine;
 using HASS.Agent.Enums;
 using HASS.Agent.Functions;
 using HASS.Agent.Models.HomeAssistant;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Shared.Functions;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Newtonsoft.Json;
@@ -34,6 +35,22 @@ namespace HASS.Agent.Notifications
 
             try
             {
+                // are we set to ignore cert errors on images?
+                if (Variables.AppSettings.NotificationsIgnoreImageCertificateErrors)
+                {
+                    Log.Information("[NOTIFIER] Ignoring certificate errors for images");
+
+                    // create a handler that drops all certificate errors
+                    var handler = new HttpClientHandler
+                    {
+                        ClientCertificateOptions = ClientCertificateOption.Manual,
+                        ServerCertificateCustomValidationCallback = (_, _, _, _) => true
+                    };
+
+                    // set a new http client with the handler
+                    Variables.HttpClient = new HttpClient(handler);
+                }
+
                 // prepare and use a new server
                 using (Variables.NotificationServer = RestServerBuilder.From<NotifierConfiguration>().Build())
                 {
@@ -72,7 +89,7 @@ namespace HASS.Agent.Notifications
                     {
                         if (Variables.ShuttingDown) return;
                         Log.Fatal(ex, "[NOTIFIER] Error trying to bind the API to port {port}: {err}", Variables.AppSettings.NotifierApiPort, ex.Message);
-                        Variables.MainForm?.ShowMessageBox($"Error trying to bind the API to port {Variables.AppSettings.NotifierApiPort}.\r\n\r\nMake sure no other instance of HASS.Agent is running and the port is available and registered.", true);
+                        Variables.MainForm?.ShowMessageBox(string.Format(Languages.NotifierManager_Initialize_MessageBox1, Variables.AppSettings.NotifierApiPort), true);
 
                         Variables.MainForm?.SetNotificationApiStatus(ComponentStatus.Failed);
                     }

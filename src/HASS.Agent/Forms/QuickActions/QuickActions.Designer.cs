@@ -1,4 +1,6 @@
 ﻿
+using HASS.Agent.Resources.Localization;
+
 namespace HASS.Agent.Forms.QuickActions
 {
     partial class QuickActions
@@ -43,7 +45,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.LblLoading.Name = "LblLoading";
             this.LblLoading.Size = new System.Drawing.Size(407, 125);
             this.LblLoading.TabIndex = 8;
-            this.LblLoading.Text = "please wait while your entities are fetched ...";
+            this.LblLoading.Text = Languages.QuickActions_LblLoading;
             this.LblLoading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.LblLoading.Visible = false;
             // 
@@ -85,7 +87,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quick Actions";
+            this.Text = Languages.QuickActions_Title;
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuickActions_FormClosing);
             this.Load += new System.EventHandler(this.QuickActions_Load);
