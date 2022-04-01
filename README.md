@@ -8,7 +8,7 @@
 [![Discord](https://img.shields.io/badge/dynamic/json?color=blue&label=Discord&logo=discord&logoColor=white&query=presence_count&suffix=%20Online&url=https://discordapp.com/api/guilds/932957721622360074/widget.json)](https://discord.gg/nMvqzwrVBU)
 
 <a href="https://github.com/LAB02-Research/HASS.Agent/">
-    <img src="https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/src/HASSAgent/Resources/logo_128.png" alt="HASS.Agent logo" title="HASS.Agent" align="right" height="128" /></a>
+    <img src="https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/src/HASS.Agent/Resources/logo_128.png" alt="HASS.Agent logo" title="HASS.Agent" align="right" height="128" /></a>
 
 # HASS.Agent
 
@@ -272,6 +272,10 @@ Example configuration of a shutdown command in Home Assistant, used in combinati
     data:
       entity_id: switch.test_w10_x64_01_cmd_shutdown
 ```
+
+Some commands have support for **actions**. You can use automations to send extra variables along with the command, for instance the exact level to which the volume has to be set, or an URL to open.
+
+There's a wiki page dedicated to these: [Command Actions Usage & Examples](https://github.com/LAB02-Research/HASS.Agent/wiki/Command-Actions-Usage-&-Examples).
 
 ----
 
