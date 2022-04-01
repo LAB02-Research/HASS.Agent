@@ -294,9 +294,11 @@ If you're using the installer, it'll launch HASS.Agent for you when it's done. B
 
 ### Helping Out
 
-The best way to help out with developing is to test as much as you can, and report any weird or failing behavior by opening a ticket. Same goes for sharing ideas for new (or improved) functions. 
+The best way to help out with developing is to test as much as you can, and report any weird or failing behavior by [opening a ticket](https://github.com/LAB02-Research/HASS.Agent/issues). 
 
-Another great way is to help translating HASS.Agent into your native language (or any language you speak fluently). There's a projectpage on POEditor that you can join on: 
+Same goes for sharing ideas for new (or improved) functions! If you want, you can [join on Discord](https://discord.gg/nMvqzwrVBU) to discuss your ideas.
+
+Another great way is to help translating HASS.Agent. It's easy thanks to POEditor - no coding knowledge required. Join on our localization project: 
 
 [POEditor Project](https://poeditor.com/join/project/R7HIVG0wie)
 
