@@ -58,13 +58,15 @@ Stuck while using HASS.Agent, need some help integrating the sensors/commands or
 
 There are a few channels through which you can reach us:
 
-[Github Tickets](https://github.com/LAB02-Research/HASS.Agent): Report bugs, feature requests, ideas, tips, ..
+* [Github Tickets](https://github.com/LAB02-Research/HASS.Agent): Report bugs, feature requests, ideas, tips, ..
 
-[Wiki](https://github.com/LAB02-Research/HASS.Agent/wiki): Installation, configuration and usage documentation, as well as examples.
+* [Wiki](https://github.com/LAB02-Research/HASS.Agent/wiki): Installation, configuration and usage documentation, as well as examples.
 
-[Discord](https://discord.gg/nMvqzwrVBU): Get help with setting up and using HASS.Agent, report bugs or just talk about whatever.
+* [Discord](https://discord.gg/nMvqzwrVBU): Get help with setting up and using HASS.Agent, report bugs or just talk about whatever.
 
-[Home Assistant forum](https://community.home-assistant.io/t/hass-agent-a-new-windows-based-client-to-receive-notifications-perform-quick-actions-and-much-more/369094): Bit of everything, with the addition that other HA users can help as well.
+* [Home Assistant forum](https://community.home-assistant.io/t/hass-agent-a-new-windows-based-client-to-receive-notifications-perform-quick-actions-and-much-more/369094): Bit of everything, with the addition that other HA users can help as well.
+
+If you want to help with the development of HASS.Agent, check out the [Helping Out](#helping-out) section for (translating) info.
 
 ----
 
