@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Globalization;
 using HASS.Agent.Enums;
 using HASS.Agent.Forms;
 using HASS.Agent.Forms.ChildApplications;
@@ -14,7 +15,7 @@ namespace HASS.Agent
         /// Main entry point
         /// </summary>
         [STAThread]
-        private static void Main(string[] args)
+        private static async Task Main(string[] args)
         {
             try
             {
@@ -23,7 +24,7 @@ namespace HASS.Agent
 
                 // get logging settings
                 Variables.ExtendedLogging = SettingsManager.GetExtendedLoggingSetting();
-
+                
                 // enable logging
                 LoggingManager.PrepareLogging();
 
@@ -33,10 +34,25 @@ namespace HASS.Agent
                     AppDomain.CurrentDomain.FirstChanceException += LoggingManager.CurrentDomainOnFirstChanceException;
                 }
                 else Log.Information("[PROGRAM] Extended logging disabled");
-
+                
                 // prepare application
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
+
+                // check if we're a child application
+                var childApp = LaunchAsChildApplication(args);
+
+                // load app settings
+                var settingsLoaded = await SettingsManager.LoadAsync(!childApp);
+                if (!settingsLoaded)
+                {
+                    Log.Error("[PROGRAM] Something went wrong while loading the settings. Check appsettings.json, or delete the file to start fresh.");
+                    Log.CloseAndFlush();
+                    return;
+                }
+
+                // set ui culture
+                LocalizationManager.Initialize();
 
                 // set scaling
                 Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled);
@@ -73,7 +89,24 @@ namespace HASS.Agent
         }
 
         /// <summary>
-        /// Checks the provided arguments to see if we need to launch as a task-specific child application
+        /// Checks whether we're asked to launch as a child application
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        internal static bool LaunchAsChildApplication(string[] args)
+        {
+            return args.Any(x => x == "update")
+                   || args.Any(x => x == "portreservation")
+                   || args.Any(x => x == "restart")
+                   || args.Any(x => x == "service_disable")
+                   || args.Any(x => x == "service_enabled")
+                   || args.Any(x => x == "service_start")
+                   || args.Any(x => x == "service_stop")
+                   || args.Any(x => x == "service_reinstall");
+        }
+
+        /// <summary>
+        /// Launches as a child application according to the provided arguments
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>

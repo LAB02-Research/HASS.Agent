@@ -123,7 +123,7 @@ namespace HASS.Agent.Forms
             BtnClose.Enabled = false;
             BtnStore.Enabled = false;
 
-            BtnStore.Text = "busy, hold on ..";
+            BtnStore.Text = Languages.Configuration_BtnStore_Busy;
 
             // store settings
             StoreSettings();
@@ -210,6 +210,7 @@ namespace HASS.Agent.Forms
             // general
             _general.TbDeviceName.Text = Variables.AppSettings.DeviceName;
             _general.NumDisconnectGrace.Value = Variables.AppSettings.DisconnectedGracePeriodSeconds;
+            
 
             // startup settings
             Task.Run(_startup.DetermineStartOnLoginStatus);
@@ -277,6 +278,9 @@ namespace HASS.Agent.Forms
             // general
             var deviceName = string.IsNullOrEmpty(_general.TbDeviceName.Text) ? HelperFunctions.GetSafeDeviceName() : _general.TbDeviceName.Text;
             Variables.AppSettings.DeviceName = deviceName;
+
+            var uiLanguage = Variables.SupportedUILanguages.Find(x => x.DisplayName == _general.CbLanguage.Text);
+            Variables.AppSettings.InterfaceLanguage = uiLanguage?.Name ?? "en";
 
             Variables.AppSettings.DisconnectedGracePeriodSeconds = (int)_general.NumDisconnectGrace.Value;
 

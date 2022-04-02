@@ -78,7 +78,7 @@ namespace HASS.Agent.Forms
             this.BtnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnClose.Location = new System.Drawing.Point(0, 598);
             this.BtnClose.Name = "BtnClose";
-            this.BtnClose.Size = new System.Drawing.Size(685, 37);
+            this.BtnClose.Size = new System.Drawing.Size(747, 37);
             this.BtnClose.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnClose.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnClose.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -87,7 +87,7 @@ namespace HASS.Agent.Forms
             this.BtnClose.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnClose.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnClose.TabIndex = 0;
-            this.BtnClose.Text = Languages.About_BtnClose;
+            this.BtnClose.Text = global::HASS.Agent.Resources.Localization.Languages.About_BtnClose;
             this.BtnClose.UseVisualStyleBackColor = false;
             this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
@@ -109,7 +109,7 @@ namespace HASS.Agent.Forms
             this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo1.Location = new System.Drawing.Point(173, 70);
             this.LblInfo1.Name = "LblInfo1";
-            this.LblInfo1.Size = new System.Drawing.Size(364, 19);
+            this.LblInfo1.Size = new System.Drawing.Size(360, 19);
             this.LblInfo1.TabIndex = 3;
             this.LblInfo1.Text = Languages.About_LblInfo1;
             // 
@@ -119,7 +119,7 @@ namespace HASS.Agent.Forms
             this.LblInfo3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo3.Location = new System.Drawing.Point(176, 134);
             this.LblInfo3.Name = "LblInfo3";
-            this.LblInfo3.Size = new System.Drawing.Size(480, 38);
+            this.LblInfo3.Size = new System.Drawing.Size(536, 38);
             this.LblInfo3.TabIndex = 4;
             this.LblInfo3.Text = Languages.About_LblInfo3;
             // 
@@ -249,7 +249,7 @@ namespace HASS.Agent.Forms
             this.LblInfo4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo4.Location = new System.Drawing.Point(176, 377);
             this.LblInfo4.Name = "LblInfo4";
-            this.LblInfo4.Size = new System.Drawing.Size(476, 38);
+            this.LblInfo4.Size = new System.Drawing.Size(530, 38);
             this.LblInfo4.TabIndex = 16;
             this.LblInfo4.Text = Languages.About_LblInfo4;
             // 
@@ -259,7 +259,7 @@ namespace HASS.Agent.Forms
             this.LblInfo5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo5.Location = new System.Drawing.Point(176, 431);
             this.LblInfo5.Name = "LblInfo5";
-            this.LblInfo5.Size = new System.Drawing.Size(476, 38);
+            this.LblInfo5.Size = new System.Drawing.Size(524, 38);
             this.LblInfo5.TabIndex = 18;
             this.LblInfo5.Text = Languages.About_LblInfo5;
             // 
@@ -278,7 +278,7 @@ namespace HASS.Agent.Forms
             this.LblLab02Research.AutoSize = true;
             this.LblLab02Research.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblLab02Research.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.LblLab02Research.Location = new System.Drawing.Point(306, 105);
+            this.LblLab02Research.Location = new System.Drawing.Point(390, 105);
             this.LblLab02Research.Name = "LblLab02Research";
             this.LblLab02Research.Size = new System.Drawing.Size(107, 19);
             this.LblLab02Research.TabIndex = 22;
@@ -321,13 +321,13 @@ namespace HASS.Agent.Forms
             // 
             // LblInfo6
             // 
-            this.LblInfo6.AutoSize = true;
             this.LblInfo6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblInfo6.Location = new System.Drawing.Point(173, 506);
+            this.LblInfo6.Location = new System.Drawing.Point(173, 483);
             this.LblInfo6.Name = "LblInfo6";
-            this.LblInfo6.Size = new System.Drawing.Size(460, 19);
+            this.LblInfo6.Size = new System.Drawing.Size(562, 42);
             this.LblInfo6.TabIndex = 28;
             this.LblInfo6.Text = Languages.About_LblInfo6;
+            this.LblInfo6.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // PbBMAC
             // 
@@ -393,17 +393,17 @@ namespace HASS.Agent.Forms
             // 
             this.LblOr.AutoSize = true;
             this.LblOr.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblOr.Location = new System.Drawing.Point(365, 550);
+            this.LblOr.Location = new System.Drawing.Point(420, 551);
             this.LblOr.Name = "LblOr";
             this.LblOr.Size = new System.Drawing.Size(22, 19);
             this.LblOr.TabIndex = 32;
-            this.LblOr.Text = "or";
+            this.LblOr.Text = Languages.About_LblOr;
             // 
             // PbGithubSponsor
             // 
             this.PbGithubSponsor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbGithubSponsor.Image = global::HASS.Agent.Properties.Resources.githubsponsors;
-            this.PbGithubSponsor.Location = new System.Drawing.Point(421, 538);
+            this.PbGithubSponsor.Location = new System.Drawing.Point(523, 538);
             this.PbGithubSponsor.Name = "PbGithubSponsor";
             this.PbGithubSponsor.Size = new System.Drawing.Size(212, 43);
             this.PbGithubSponsor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -443,7 +443,7 @@ namespace HASS.Agent.Forms
             this.CaptionBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(685, 635);
+            this.ClientSize = new System.Drawing.Size(747, 635);
             this.Controls.Add(this.LblByteSize);
             this.Controls.Add(this.LblGrpc);
             this.Controls.Add(this.PbGithubSponsor);

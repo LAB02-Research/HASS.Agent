@@ -66,7 +66,7 @@ namespace HASS.Agent.Controls.Onboarding
             this.BtnSetLaunchOnLogin.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnSetLaunchOnLogin.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnSetLaunchOnLogin.TabIndex = 0;
-            this.BtnSetLaunchOnLogin.Text = Languages.OnboardingStartup_BtnSetLaunchOnLogin;
+            this.BtnSetLaunchOnLogin.Text = global::HASS.Agent.Resources.Localization.Languages.OnboardingStartup_BtnSetLaunchOnLogin;
             this.BtnSetLaunchOnLogin.UseVisualStyleBackColor = false;
             this.BtnSetLaunchOnLogin.Click += new System.EventHandler(this.BtnSetLaunchOnLogin_Click);
             // 
@@ -89,7 +89,7 @@ namespace HASS.Agent.Controls.Onboarding
             this.LblCreateInfo.TabIndex = 6;
             this.LblCreateInfo.Text = Languages.OnboardingStartup_LblCreateInfo;
             // 
-            // Startup
+            // OnboardingStartup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -100,7 +100,7 @@ namespace HASS.Agent.Controls.Onboarding
             this.Controls.Add(this.PbHassAgentLogo);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Startup";
+            this.Name = "OnboardingStartup";
             this.Size = new System.Drawing.Size(803, 457);
             this.Load += new System.EventHandler(this.OnboardingStartup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PbHassAgentLogo)).EndInit();

@@ -61,11 +61,10 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // LblTip3
             // 
-            this.LblTip3.AutoSize = true;
             this.LblTip3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblTip3.Location = new System.Drawing.Point(413, 243);
             this.LblTip3.Name = "LblTip3";
-            this.LblTip3.Size = new System.Drawing.Size(205, 15);
+            this.LblTip3.Size = new System.Drawing.Size(268, 21);
             this.LblTip3.TabIndex = 64;
             this.LblTip3.Text = Languages.ConfigMqtt_LblTip3;
             // 
@@ -121,7 +120,7 @@ namespace HASS.Agent.Controls.Configuration
             this.CbUseRetainFlag.Name = "CbUseRetainFlag";
             this.CbUseRetainFlag.Size = new System.Drawing.Size(114, 23);
             this.CbUseRetainFlag.TabIndex = 59;
-            this.CbUseRetainFlag.Text = Languages.ConfigMqtt_CbUseRetainFlag;
+            this.CbUseRetainFlag.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigMqtt_CbUseRetainFlag;
             this.CbUseRetainFlag.UseVisualStyleBackColor = true;
             // 
             // CbAllowUntrustedCertificates
@@ -132,7 +131,7 @@ namespace HASS.Agent.Controls.Configuration
             this.CbAllowUntrustedCertificates.Name = "CbAllowUntrustedCertificates";
             this.CbAllowUntrustedCertificates.Size = new System.Drawing.Size(191, 23);
             this.CbAllowUntrustedCertificates.TabIndex = 58;
-            this.CbAllowUntrustedCertificates.Text = Languages.ConfigMqtt_CbAllowUntrustedCertificates;
+            this.CbAllowUntrustedCertificates.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigMqtt_CbAllowUntrustedCertificates;
             this.CbAllowUntrustedCertificates.UseVisualStyleBackColor = true;
             // 
             // BtnMqttClearConfig
@@ -141,7 +140,7 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnMqttClearConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnMqttClearConfig.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnMqttClearConfig.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnMqttClearConfig.Location = new System.Drawing.Point(496, 499);
+            this.BtnMqttClearConfig.Location = new System.Drawing.Point(453, 498);
             this.BtnMqttClearConfig.Name = "BtnMqttClearConfig";
             this.BtnMqttClearConfig.Size = new System.Drawing.Size(228, 31);
             this.BtnMqttClearConfig.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -152,7 +151,7 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnMqttClearConfig.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnMqttClearConfig.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnMqttClearConfig.TabIndex = 57;
-            this.BtnMqttClearConfig.Text = Languages.ConfigMqtt_BtnMqttClearConfig;
+            this.BtnMqttClearConfig.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigMqtt_BtnMqttClearConfig;
             this.BtnMqttClearConfig.UseVisualStyleBackColor = false;
             this.BtnMqttClearConfig.Click += new System.EventHandler(this.BtnMqttClearConfig_Click);
             // 
@@ -235,7 +234,7 @@ namespace HASS.Agent.Controls.Configuration
             // 
             this.CbMqttTls.AutoSize = true;
             this.CbMqttTls.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CbMqttTls.Location = new System.Drawing.Point(197, 215);
+            this.CbMqttTls.Location = new System.Drawing.Point(218, 215);
             this.CbMqttTls.Name = "CbMqttTls";
             this.CbMqttTls.Size = new System.Drawing.Size(49, 23);
             this.CbMqttTls.TabIndex = 46;
@@ -323,7 +322,7 @@ namespace HASS.Agent.Controls.Configuration
             this.NumMqttPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NumMqttPort.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.NumMqttPort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.NumMqttPort.Location = new System.Drawing.Point(91, 213);
+            this.NumMqttPort.Location = new System.Drawing.Point(108, 213);
             this.NumMqttPort.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -354,7 +353,7 @@ namespace HASS.Agent.Controls.Configuration
             this.PbShow.TabStop = false;
             this.PbShow.Click += new System.EventHandler(this.PbShow_Click);
             // 
-            // MQTT
+            // ConfigMqtt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -386,8 +385,8 @@ namespace HASS.Agent.Controls.Configuration
             this.Controls.Add(this.LblBrokerIp);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "MQTT";
-            this.Size = new System.Drawing.Size(740, 544);
+            this.Name = "ConfigMqtt";
+            this.Size = new System.Drawing.Size(700, 544);
             this.Load += new System.EventHandler(this.ConfigMqtt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NumMqttPort)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbShow)).EndInit();

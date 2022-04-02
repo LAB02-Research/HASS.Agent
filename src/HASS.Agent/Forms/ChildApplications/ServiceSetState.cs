@@ -48,10 +48,7 @@ namespace HASS.Agent.Forms.ChildApplications
 
             // give the ui time to load
             await Task.Delay(TimeSpan.FromSeconds(2));
-
-            // make sure settings are loaded
-            await SettingsManager.LoadAsync(false, false);
-
+            
             // set desired state
             var stateDone = false;
             switch (_desiredState)

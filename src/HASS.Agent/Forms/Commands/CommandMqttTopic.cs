@@ -43,7 +43,15 @@ namespace HASS.Agent.Forms.Commands
 
         private void BtnCopyClipboard_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(TbMqttTopic.Text);
+            // setting clipboard needs to be done in STA mode
+            var thread = new Thread(() => Clipboard.SetText(TbMqttTopic.Text));
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+
+            // wait for clipboard to finish
+            thread.Join(TimeSpan.FromSeconds(1));
+
+            // all done
             BtnCopyClipboard.Text = Languages.CommandMqttTopic_BtnCopyClipboard_Copied;
             BtnCopyClipboard.Enabled = false;
         }

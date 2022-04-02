@@ -131,16 +131,19 @@
 páginas dos componentes usados ​​para suas licenças individuais:</value>
   </data>
   <data name="About_LblInfo4" xml:space="preserve">
-	  <value>Um grande 'obrigado' aos desenvolvedores desses projetos, que foram gentis o
+    <value>Um grande &apos;obrigado&apos; aos desenvolvedores desses projetos, que foram gentis o
 suficiente para compartilhar seu trabalho duro com o resto de nós, meros mortais.</value>
   </data>
   <data name="About_LblInfo5" xml:space="preserve">
-	  <value>E claro; obrigado a Paulus Shoutsen, Franck Nijhof e toda a equipe de
+    <value>E claro; obrigado a Paulus Shoutsen, Franck Nijhof e toda a equipe de
 desenvolvedores que criaram e mantêm o Home Assistant :-)</value>
   </data>
   <data name="About_LblInfo6" xml:space="preserve">
-	  <value>Gostou deste programa? Apoie-nos (leia-se: mantenha-nos acordados) comprando
+    <value>Gostou deste programa? Apoie-nos (leia-se: mantenha-nos acordados) comprando
 uma xícara de café:</value>
+  </data>
+  <data name="About_LblOr" xml:space="preserve">
+    <value>ou</value>
   </data>
   <data name="About_Title" xml:space="preserve">
     <value>Sobre</value>
@@ -468,7 +471,7 @@ Consulte os logs para mais informações.</value>
     <value>Esta página permite configurar ligações com ferramentas externas.</value>
   </data>
   <data name="ConfigExternalTools_LblInfo2" xml:space="preserve">
-	  <value>Por padrão, o HASS.Agent iniciará URLs usando seu navegador padrão. Se você quiser,
+    <value>Por padrão, o HASS.Agent iniciará URLs usando seu navegador padrão. Se você quiser,
 você também pode configurar um navegador específico. Além disso, você pode configurar
 os argumentos usados ​​para iniciar em modo privado.</value>
   </data>
@@ -492,21 +495,24 @@ Use o comando &apos;custom executor&apos; para iniciar este executor.</value>
     <value>segundos</value>
   </data>
   <data name="ConfigGeneral_LblInfo1" xml:space="preserve">
-	  <value>Esta página contém itens de configuração geral. Para obter mais configurações,
+    <value>Esta página contém itens de configuração geral. Para obter mais configurações,
 navegue pelas guias à esquerda.</value>
   </data>
   <data name="ConfigGeneral_LblInfo2" xml:space="preserve">
-	  <value>O nome do dispositivo é usado para identificar sua máquina no HA. Também é usado 
+    <value>O nome do dispositivo é usado para identificar sua máquina no HA. Também é usado 
 como um prefixo para seus nomes de comando/sensor (pode ser alterado por entidade).</value>
   </data>
   <data name="ConfigGeneral_LblInfo3" xml:space="preserve">
-	  <value>Importante: se você alterar esse valor, o HASS.Agent cancelará a publicação de todos os
+    <value>Importante: se você alterar esse valor, o HASS.Agent cancelará a publicação de todos os
 seus sensores e comandos e forçará uma reinicialização, para que possam ser republicados 
 com o novo nome do dispositivo. Suas automações e scripts continuarão funcionando.</value>
   </data>
   <data name="ConfigGeneral_LblInfo4" xml:space="preserve">
-	  <value>O HASS.Agent aguardará um pouco antes de notificá-lo sobre desconexões da API do
+    <value>O HASS.Agent aguardará um pouco antes de notificá-lo sobre desconexões da API do
 MQTT ou HA. Você pode definir a quantidade de segundos aqui.</value>
+  </data>
+  <data name="ConfigGeneral_LblInterfaceLangauge" xml:space="preserve">
+    <value>idioma da interface</value>
   </data>
   <data name="ConfigHomeAssistantApi_BtnTestApi" xml:space="preserve">
     <value>teste de conexão</value>
@@ -560,7 +566,7 @@ Você pode obter um token através da sua página de perfil. Role até o final e
     <value>combinação de atalhos</value>
   </data>
   <data name="ConfigHotKey_LblInfo1" xml:space="preserve">
-	  <value>Uma maneira fácil de puxar suas ações é usar uma tecla de atalho rápido.
+    <value>Uma maneira fácil de puxar suas ações é usar uma tecla de atalho rápido.
 
 Dessa forma, independentemente do que estiver fazendo em sua máquina, você sempre
 poderá interagir com o Home Assistant.</value>
@@ -584,9 +590,9 @@ poderá interagir com o Home Assistant.</value>
     <value>local do cache de imagem</value>
   </data>
   <data name="ConfigLocalStorage_LblInfo1" xml:space="preserve">
-	  <value>As imagens mostradas nas notificações devem ser armazenadas temporariamente localmente.
+    <value>As imagens mostradas nas notificações devem ser armazenadas temporariamente localmente.
 Você pode configurar a quantidade de dias eles devem ser mantidos antes que o HASS.Agent
-os exclua. Digite '0' para mantê-los permanentemente.</value>
+os exclua. Digite &apos;0&apos; para mantê-los permanentemente.</value>
   </data>
   <data name="ConfigLogging_BtnShowLogs" xml:space="preserve">
     <value>abrir pasta de logs</value>
@@ -595,7 +601,7 @@ os exclua. Digite '0' para mantê-los permanentemente.</value>
     <value>habilitar log estendido</value>
   </data>
   <data name="ConfigLogging_LblInfo1" xml:space="preserve">
-	  <value>O log estendido fornece um log mais detalhado e detalhado, caso o log padrão não seja
+    <value>O log estendido fornece um log mais detalhado e detalhado, caso o log padrão não seja
 suficiente. Observe que habilitar isso pode fazer com que os arquivos de log fiquem grandes
 e só devem ser usado quando você suspeita que algo está errado com o próprio HASS.Agent
 ou quando solicitado pelo desenvolvedores.</value>
@@ -751,11 +757,11 @@ Verifique os logs do HASS.Agent (não do serviço) para obter mais informações
     <value>falhou</value>
   </data>
   <data name="ConfigService_LblInfo1" xml:space="preserve">
-	  <value>O serviço satélite permite que você execute sensores e comandos mesmo quando nenhum usuário
-estiver conectado. Use o botão 'serviço de satélite' na janela principal para gerenciá-lo.</value>
+    <value>O serviço satélite permite que você execute sensores e comandos mesmo quando nenhum usuário
+estiver conectado. Use o botão &apos;serviço de satélite&apos; na janela principal para gerenciá-lo.</value>
   </data>
   <data name="ConfigService_LblInfo2" xml:space="preserve">
-	  <value>Se você não configurar o serviço, ele não fará nada. No entanto, você ainda pode decidir desativá-lo 
+    <value>Se você não configurar o serviço, ele não fará nada. No entanto, você ainda pode decidir desativá-lo 
 também. O instalador deixará o serviço desativado sozinho (se você remover o serviço, o instalador
 o reinstalará).</value>
   </data>
@@ -804,7 +810,7 @@ Verifique os logs para obter mais informações.</value>
     <value>ativado</value>
   </data>
   <data name="ConfigStartup_LblInfo1" xml:space="preserve">
-	  <value>O HASS.Agent pode ser iniciado quando você efetua login criando uma entrada no registro
+    <value>O HASS.Agent pode ser iniciado quando você efetua login criando uma entrada no registro
 do seu perfil de usuário.
 
 Como o HASS.Agent é baseado no usuário, se você quiser iniciar para outro usuário, basta
@@ -823,13 +829,13 @@ instalar e configurar o HASS.Agent lá.</value>
     <value>notifique-me quando uma nova versão estiver disponível</value>
   </data>
   <data name="ConfigUpdates_LblInfo1" xml:space="preserve">
-	  <value>Se você quiser, o HASS.Agent pode verificar atualizações em segundo plano.
+    <value>Se você quiser, o HASS.Agent pode verificar atualizações em segundo plano.
 
 Você receberá uma notificação (uma vez por atualização), informando que uma
 nova versão está pronta para ser instalada.</value>
   </data>
   <data name="ConfigUpdates_LblInfo2" xml:space="preserve">
-	  <value>Quando houver uma atualização, o HASS.Agent oferecerá a opção de abrir a página
+    <value>Quando houver uma atualização, o HASS.Agent oferecerá a opção de abrir a página
 de lançamento. Mas se você quiser, o HASS.Agent também pode baixar e iniciar o
 instalador para você - menos para você fazer!
 
@@ -846,6 +852,9 @@ O certificado do arquivo baixado será verificado antes da execução.</value>
   </data>
   <data name="Configuration_BtnStore" xml:space="preserve">
     <value>guardar configuração</value>
+  </data>
+  <data name="Configuration_BtnStore_Busy" xml:space="preserve">
+    <value>ocupado, aguarde..</value>
   </data>
   <data name="Configuration_MessageBox_RestartManually" xml:space="preserve">
     <value>Algo deu errado ao se preparar para reiniciar.
@@ -882,7 +891,7 @@ O HASS.Agent agora será reiniciado para ativar a nova configuração.</value>
 Deseja reiniciar agora?</value>
   </data>
   <data name="Configuration_TabExternalTools" xml:space="preserve">
-	  <value>Ferramentas Externas</value>
+    <value>Ferramentas Externas</value>
   </data>
   <data name="Configuration_TabGeneral" xml:space="preserve">
     <value>Geral</value>
@@ -979,16 +988,19 @@ Deseja reiniciar agora?</value>
     <value>Fórum Home Assistant</value>
   </data>
   <data name="Help_LblHAInfo" xml:space="preserve">
-	  <value>Um pouco de tudo, além de que outros usuários
+    <value>Um pouco de tudo, além de que outros usuários
 do HA também podem ajudar.</value>
   </data>
   <data name="Help_LblInfo1" xml:space="preserve">
-	  <value>Gostou de usar o HASS.Agent, precisa de ajuda para integrar
+    <value>Gostou de usar o HASS.Agent, precisa de ajuda para integrar
 sensores/comandos ou tem uma grande ideia para a próxima 
 versão?
 
 Existem alguns canais pelos quais você pode entrar em contato 
 conosco:</value>
+  </data>
+  <data name="Help_LblWiki" xml:space="preserve">
+    <value>Wiki</value>
   </data>
   <data name="Help_LblWikiInfo" xml:space="preserve">
     <value>Documentação e exemplos de uso.</value>
@@ -997,34 +1009,34 @@ conosco:</value>
     <value>Ajuda</value>
   </data>
   <data name="Main_BtnActionsManager" xml:space="preserve">
-	  <value>
+    <value>
 atalho rápido</value>
   </data>
   <data name="Main_BtnAppSettings" xml:space="preserve">
-	  <value>
+    <value>
 configuração</value>
   </data>
   <data name="Main_BtnCommandsManager" xml:space="preserve">
-	  <value>
+    <value>
 carregando</value>
   </data>
   <data name="Main_BtnCommandsManager_Ready" xml:space="preserve">
-	  <value>
+    <value>
 comandos</value>
   </data>
   <data name="Main_BtnHide" xml:space="preserve">
     <value>ocultar</value>
   </data>
   <data name="Main_BtnSensorsManage_Ready" xml:space="preserve">
-	  <value>
+    <value>
 sensores locais</value>
   </data>
   <data name="Main_BtnSensorsManager" xml:space="preserve">
-	  <value>
+    <value>
 carregando</value>
   </data>
   <data name="Main_BtnServiceManager" xml:space="preserve">
-	  <value>
+    <value>
 serviço satélite</value>
   </data>
   <data name="Main_CheckForUpdate_MessageBox1" xml:space="preserve">
@@ -1047,6 +1059,9 @@ serviço satélite</value>
   </data>
   <data name="Main_LblHomeAssistantApi" xml:space="preserve">
     <value>home assistant api:</value>
+  </data>
+  <data name="Main_LblMqtt" xml:space="preserve">
+    <value>mqtt:</value>
   </data>
   <data name="Main_LblNotificationApi" xml:space="preserve">
     <value>api notificações:</value>
@@ -1151,12 +1166,12 @@ Versão do Home Assistant: {0}</value>
     <value>token api</value>
   </data>
   <data name="OnboardingApi_LblInfo1" xml:space="preserve">
-	  <value>Para saber quais entidades você configurou e enviar ações nos atalhos rápidos, o
+    <value>Para saber quais entidades você configurou e enviar ações nos atalhos rápidos, o
 HASS.Agent usa API do Home Assistant.
 
 Forneça um token de acesso de longa duração e o endereço da sua instância do Home 
 Assistant. Você pode obter um token através da sua página de perfil. Role até o final e 
-clique em 'CRIAR TOKEN'.</value>
+clique em &apos;CRIAR TOKEN&apos;.</value>
   </data>
   <data name="OnboardingApi_LblServerUri" xml:space="preserve">
     <value>server uri (deve estar bem assim)</value>
@@ -1189,13 +1204,13 @@ Se você encontrar algum problema, crie um ticket na página do GitHub.</value>
     <value>combinação de atalhos</value>
   </data>
   <data name="OnboardingHotKey_LblInfo1" xml:space="preserve">
-	  <value>Uma maneira fácil de puxar seus atalhos rápidos é usar uma tecla de atalho.
+    <value>Uma maneira fácil de puxar seus atalhos rápidos é usar uma tecla de atalho.
 
 Dessa forma, independentemente do que estiver fazendo em sua máquina, você sempre
 poderá interagir com o Home Assistant.</value>
   </data>
   <data name="OnboardingIntegration_LblInfo1" xml:space="preserve">
-	  <value>Para usar notificações, você precisa instalar e configurar a integração HASS.Agent-notifier 
+    <value>Para usar notificações, você precisa instalar e configurar a integração HASS.Agent-notifier 
 no Home Assistant.
 
 Isso é muito fácil usando o HACS, mas você também pode instalar manualmente. Acesse o 
@@ -1211,6 +1226,9 @@ link abaixo para mais informações.</value>
   </data>
   <data name="OnboardingIntegration_LblIntegration" xml:space="preserve">
     <value>Página do GitHub do HASS.Agent-Notifier</value>
+  </data>
+  <data name="OnboardingManager_BtnNext_Finish" xml:space="preserve">
+    <value>terminar</value>
   </data>
   <data name="OnboardingManager_ConfirmBeforeClose_MessageBox1" xml:space="preserve">
     <value>Tem certeza de que deseja abortar o processo de integração?
@@ -1307,7 +1325,7 @@ Deseja habilitar esta função?</value>
     <value>Um segundo, determinando o estado atual ..</value>
   </data>
   <data name="OnboardingStartup_LblInfo1" xml:space="preserve">
-	  <value>O HASS.Agent pode ser iniciado quando você faz login no Windows, criando uma chave
+    <value>O HASS.Agent pode ser iniciado quando você faz login no Windows, criando uma chave
 de registro no seu perfil de usuário.
 
 Você sempre pode remover (ou recriar) essa chave por meio da janela Configuração.</value>
@@ -1319,7 +1337,7 @@ Você sempre pode remover (ou recriar) essa chave por meio da janela Configuraç
     <value>sim, notifique-me sobre novas atualizações</value>
   </data>
   <data name="OnboardingUpdates_LblInfo1" xml:space="preserve">
-	  <value>Se você quiser, o HASS.Agent pode verificar atualizações em segundo plano.
+    <value>Se você quiser, o HASS.Agent pode verificar atualizações em segundo plano.
 
 Você receberá uma notificação (uma vez por atualização), informando que uma nova versão
 está pronta para ser instalada.
@@ -1327,7 +1345,7 @@ está pronta para ser instalada.
 Deseja habilitar esta funcionalidade?</value>
   </data>
   <data name="OnboardingUpdates_LblInfo2" xml:space="preserve">
-	  <value>Quando houver uma atualização, o HASS.Agent oferecerá a opção de abrir a página de 
+    <value>Quando houver uma atualização, o HASS.Agent oferecerá a opção de abrir a página de 
 lançamentos. Mas se você quiser, o HASS.Agent também pode baixar e iniciar o instalador 
 para você - menos para você fazer!
 
@@ -1344,6 +1362,9 @@ Se você quiser, podemos passar pela configuração. Se não, basta clicar em &a
   <data name="OnboardingWelcome_LblInfo2" xml:space="preserve">
     <value>O nome do dispositivo é usado para identificar sua máquina no HA.
 Também é usado como um prefixo sugerido para seus comandos e sensores.</value>
+  </data>
+  <data name="OnboardingWelcome_LblInterfaceLangauge" xml:space="preserve">
+    <value>idioma da interface</value>
   </data>
   <data name="PortReservation_LblInfo1" xml:space="preserve">
     <value>Aguarde um pouco enquanto a tarefa é executada ..</value>
@@ -1781,16 +1802,16 @@ Essa é uma solicitação cara, portanto, o intervalo recomendado é de 15 minut
     <value>comandos guardados!</value>
   </data>
   <data name="ServiceConfig_TabCommands" xml:space="preserve">
-	  <value>     Comandos     </value>
+    <value>     Comandos     </value>
   </data>
   <data name="ServiceConfig_TabGeneral" xml:space="preserve">
-	  <value>     Geral     </value>
+    <value>     Geral     </value>
   </data>
   <data name="ServiceConfig_TabMqtt" xml:space="preserve">
-	  <value>     MQTT     </value>
+    <value>     MQTT     </value>
   </data>
   <data name="ServiceConfig_TabSensors" xml:space="preserve">
-	  <value>     Sensores     </value>
+    <value>     Sensores     </value>
   </data>
   <data name="ServiceConfig_Title" xml:space="preserve">
     <value>Serviços Satélite Config</value>
@@ -1983,7 +2004,7 @@ Tem certeza de que quer isso?</value>
     <value>prefixo de descoberta</value>
   </data>
   <data name="ServiceMqtt_LblInfo1" xml:space="preserve">
-	  <value>Comandos e sensores são enviados através do MQTT. Forneça credenciais para o seu servidor. Se você estiver usando
+    <value>Comandos e sensores são enviados através do MQTT. Forneça credenciais para o seu servidor. Se você estiver usando
 o complemento HA, você provavelmente pode usar o endereço predefinido.</value>
   </data>
   <data name="ServiceMqtt_LblRootCert" xml:space="preserve">
@@ -2006,6 +2027,21 @@ o complemento HA, você provavelmente pode usar o endereço predefinido.</value>
   </data>
   <data name="ServiceMqtt_LblTip3" xml:space="preserve">
     <value>dica: clique duas vezes nesses campos para navegar</value>
+  </data>
+  <data name="ServiceMqtt_SetMqttStatus_ConfigError" xml:space="preserve">
+    <value>configuração ausente</value>
+  </data>
+  <data name="ServiceMqtt_SetMqttStatus_Connected" xml:space="preserve">
+    <value>conectado</value>
+  </data>
+  <data name="ServiceMqtt_SetMqttStatus_Connecting" xml:space="preserve">
+    <value>conectando ..</value>
+  </data>
+  <data name="ServiceMqtt_SetMqttStatus_Disconnected" xml:space="preserve">
+    <value>desconectado</value>
+  </data>
+  <data name="ServiceMqtt_SetMqttStatus_Error" xml:space="preserve">
+    <value>erro</value>
   </data>
   <data name="ServiceMqtt_StatusError" xml:space="preserve">
     <value>erro ao buscar o status, verifique os logs</value>
@@ -2199,11 +2235,5 @@ A página de lançamento agora será aberta.</value>
   </data>
   <data name="UpdatePending_Title_Beta" xml:space="preserve">
     <value>Atualização BETA do HASS.Agent</value>
-  </data>
-  <data name="Main_LblMqtt" xml:space="preserve">
-	  <value>mqtt:</value>
-  </data>
-  <data name="Help_LblWiki" xml:space="preserve">
-	  <value>Wiki</value>
   </data>
 </root>

@@ -71,7 +71,7 @@ namespace HASS.Agent.Forms.Commands
             this.BtnRemove.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnRemove.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnRemove.TabIndex = 10;
-            this.BtnRemove.Text = Languages.CommandsConfig_BtnRemove;
+            this.BtnRemove.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsConfig_BtnRemove;
             this.BtnRemove.UseVisualStyleBackColor = false;
             this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
@@ -93,7 +93,7 @@ namespace HASS.Agent.Forms.Commands
             this.BtnModify.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnModify.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnModify.TabIndex = 9;
-            this.BtnModify.Text = Languages.CommandsConfig_BtnModify;
+            this.BtnModify.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsConfig_BtnModify;
             this.BtnModify.UseVisualStyleBackColor = false;
             this.BtnModify.Click += new System.EventHandler(this.BtnModify_Click);
             // 
@@ -115,7 +115,7 @@ namespace HASS.Agent.Forms.Commands
             this.BtnAdd.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnAdd.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnAdd.TabIndex = 8;
-            this.BtnAdd.Text = Languages.CommandsConfig_BtnAdd;
+            this.BtnAdd.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsConfig_BtnAdd;
             this.BtnAdd.UseVisualStyleBackColor = false;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
@@ -138,7 +138,7 @@ namespace HASS.Agent.Forms.Commands
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnStore.TabIndex = 6;
-            this.BtnStore.Text = Languages.CommandsConfig_BtnStore;
+            this.BtnStore.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsConfig_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
@@ -178,12 +178,12 @@ namespace HASS.Agent.Forms.Commands
             // 
             // ClmName
             // 
-            this.ClmName.Text = Languages.CommandsConfig_ClmName;
+            this.ClmName.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsConfig_ClmName;
             this.ClmName.Width = 300;
             // 
             // ClmType
             // 
-            this.ClmType.Text = Languages.CommandsConfig_ClmType;
+            this.ClmType.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsConfig_ClmType;
             this.ClmType.Width = 190;
             // 
             // ClmLowIntegrity
@@ -212,7 +212,7 @@ namespace HASS.Agent.Forms.Commands
             this.LblLowIntegrity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LblLowIntegrity.AutoSize = true;
             this.LblLowIntegrity.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblLowIntegrity.Location = new System.Drawing.Point(487, 487);
+            this.LblLowIntegrity.Location = new System.Drawing.Point(412, 487);
             this.LblLowIntegrity.Name = "LblLowIntegrity";
             this.LblLowIntegrity.Size = new System.Drawing.Size(73, 15);
             this.LblLowIntegrity.TabIndex = 39;
@@ -222,7 +222,7 @@ namespace HASS.Agent.Forms.Commands
             // 
             this.PbLowIntegrity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PbLowIntegrity.Image = global::HASS.Agent.Properties.Resources.shield_16;
-            this.PbLowIntegrity.Location = new System.Drawing.Point(465, 486);
+            this.PbLowIntegrity.Location = new System.Drawing.Point(390, 486);
             this.PbLowIntegrity.Name = "PbLowIntegrity";
             this.PbLowIntegrity.Size = new System.Drawing.Size(16, 16);
             this.PbLowIntegrity.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -234,18 +234,18 @@ namespace HASS.Agent.Forms.Commands
             this.LblActionInfo.AutoSize = true;
             this.LblActionInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblActionInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.LblActionInfo.Location = new System.Drawing.Point(605, 487);
+            this.LblActionInfo.Location = new System.Drawing.Point(547, 487);
             this.LblActionInfo.Name = "LblActionInfo";
             this.LblActionInfo.Size = new System.Drawing.Size(40, 15);
             this.LblActionInfo.TabIndex = 45;
-            this.LblActionInfo.Text = Languages.CommandsConfig_LblActionInfo;
+            this.LblActionInfo.Text = "action";
             this.LblActionInfo.Click += new System.EventHandler(this.LblActionInfo_Click);
             // 
             // PbActionInfo
             // 
             this.PbActionInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbActionInfo.Image = global::HASS.Agent.Properties.Resources.action_16;
-            this.PbActionInfo.Location = new System.Drawing.Point(583, 486);
+            this.PbActionInfo.Location = new System.Drawing.Point(525, 486);
             this.PbActionInfo.Name = "PbActionInfo";
             this.PbActionInfo.Size = new System.Drawing.Size(16, 16);
             this.PbActionInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;

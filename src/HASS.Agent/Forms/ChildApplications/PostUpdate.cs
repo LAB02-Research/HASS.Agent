@@ -30,10 +30,7 @@ namespace HASS.Agent.Forms.ChildApplications
 
             // give the ui time to load
             await Task.Delay(TimeSpan.FromSeconds(2));
-
-            // make sure settings are loaded
-            await SettingsManager.LoadAsync(false, false);
-
+            
             // install/configure satellite service
             var serviceDone = await ConfigureSatelliteServiceAsync();
             PbStep1InstallSatelliteService.Image = serviceDone ? Properties.Resources.done_32 : Properties.Resources.failed_32;

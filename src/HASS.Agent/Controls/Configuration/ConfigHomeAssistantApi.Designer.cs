@@ -45,13 +45,13 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // LblTip1
             // 
-            this.LblTip1.AutoSize = true;
             this.LblTip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblTip1.Location = new System.Drawing.Point(471, 340);
+            this.LblTip1.Location = new System.Drawing.Point(177, 340);
             this.LblTip1.Name = "LblTip1";
-            this.LblTip1.Size = new System.Drawing.Size(191, 15);
+            this.LblTip1.Size = new System.Drawing.Size(485, 15);
             this.LblTip1.TabIndex = 57;
             this.LblTip1.Text = Languages.ConfigHomeAssistantApi_LblTip1;
+            this.LblTip1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // TbHassClientCertificate
             // 
@@ -83,7 +83,7 @@ namespace HASS.Agent.Controls.Configuration
             this.CbHassAutoClientCertificate.Name = "CbHassAutoClientCertificate";
             this.CbHassAutoClientCertificate.Size = new System.Drawing.Size(269, 23);
             this.CbHassAutoClientCertificate.TabIndex = 54;
-            this.CbHassAutoClientCertificate.Text = Languages.ConfigHomeAssistantApi_CbHassAutoClientCertificate;
+            this.CbHassAutoClientCertificate.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigHomeAssistantApi_CbHassAutoClientCertificate;
             this.CbHassAutoClientCertificate.UseVisualStyleBackColor = true;
             // 
             // BtnTestApi
@@ -103,7 +103,7 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnTestApi.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnTestApi.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnTestApi.TabIndex = 52;
-            this.BtnTestApi.Text = Languages.ConfigHomeAssistantApi_BtnTestApi;
+            this.BtnTestApi.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigHomeAssistantApi_BtnTestApi;
             this.BtnTestApi.UseVisualStyleBackColor = false;
             this.BtnTestApi.Click += new System.EventHandler(this.BtnTestApi_Click);
             // 
@@ -159,7 +159,7 @@ namespace HASS.Agent.Controls.Configuration
             this.LblServerUri.TabIndex = 50;
             this.LblServerUri.Text = Languages.ConfigHomeAssistantApi_LblServerUri;
             // 
-            // HomeAssistantApi
+            // ConfigHomeAssistantApi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -176,8 +176,8 @@ namespace HASS.Agent.Controls.Configuration
             this.Controls.Add(this.LblServerUri);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "HomeAssistantApi";
-            this.Size = new System.Drawing.Size(740, 544);
+            this.Name = "ConfigHomeAssistantApi";
+            this.Size = new System.Drawing.Size(700, 544);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -46,7 +46,7 @@ namespace HASS.Agent.Controls.Configuration
             this.CbBetaUpdates.Name = "CbBetaUpdates";
             this.CbBetaUpdates.Size = new System.Drawing.Size(229, 23);
             this.CbBetaUpdates.TabIndex = 39;
-            this.CbBetaUpdates.Text = Languages.ConfigUpdates_CbBetaUpdates;
+            this.CbBetaUpdates.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigUpdates_CbBetaUpdates;
             this.CbBetaUpdates.UseVisualStyleBackColor = true;
             // 
             // LblInfo2
@@ -67,7 +67,7 @@ namespace HASS.Agent.Controls.Configuration
             this.CbExecuteUpdater.Name = "CbExecuteUpdater";
             this.CbExecuteUpdater.Size = new System.Drawing.Size(327, 23);
             this.CbExecuteUpdater.TabIndex = 37;
-            this.CbExecuteUpdater.Text = Languages.ConfigUpdates_CbExecuteUpdater;
+            this.CbExecuteUpdater.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigUpdates_CbExecuteUpdater;
             this.CbExecuteUpdater.UseVisualStyleBackColor = true;
             // 
             // LblInfo1
@@ -88,10 +88,10 @@ namespace HASS.Agent.Controls.Configuration
             this.CbUpdates.Name = "CbUpdates";
             this.CbUpdates.Size = new System.Drawing.Size(278, 23);
             this.CbUpdates.TabIndex = 35;
-            this.CbUpdates.Text = Languages.ConfigUpdates_CbUpdates;
+            this.CbUpdates.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigUpdates_CbUpdates;
             this.CbUpdates.UseVisualStyleBackColor = true;
             // 
-            // Updates
+            // ConfigUpdates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -103,8 +103,8 @@ namespace HASS.Agent.Controls.Configuration
             this.Controls.Add(this.CbUpdates);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Updates";
-            this.Size = new System.Drawing.Size(740, 544);
+            this.Name = "ConfigUpdates";
+            this.Size = new System.Drawing.Size(700, 544);
             this.ResumeLayout(false);
             this.PerformLayout();
 

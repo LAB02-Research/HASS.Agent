@@ -1,4 +1,5 @@
 ﻿using HASS.Agent.Functions;
+using HASS.Agent.Resources.Localization;
 using Syncfusion.Windows.Forms;
 
 namespace HASS.Agent.Forms
@@ -44,6 +45,16 @@ namespace HASS.Agent.Forms
         {
             if (!_onboardingManager.ConfirmBeforeClose()) return;
             DialogResult = DialogResult.OK;
+        }
+
+        /// <summary>
+        /// Reloads the control's language
+        /// </summary>
+        internal void ReloadControlLanguage()
+        {
+            BtnNext.Text = Languages.Onboarding_BtnNext;
+            BtnClose.Text = Languages.Onboarding_BtnClose;
+            BtnPrevious.Text = Languages.Onboarding_BtnPrevious;
         }
 
         private void Onboarding_FormClosing(object sender, FormClosingEventArgs e)

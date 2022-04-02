@@ -30,10 +30,7 @@ namespace HASS.Agent.Forms.ChildApplications
 
             // give the ui time to load
             await Task.Delay(TimeSpan.FromSeconds(2));
-
-            // make sure settings are loaded
-            await SettingsManager.LoadAsync(false, false);
-
+            
             // we need additional service local paths for the service
             var ioOk = await Task.Run(ServiceManager.SetSatelliteServiceLocalStorage);
             if (!ioOk) Log.Warning("[SERVICEREINSTALL] Locating service local storage failed, installation may as well");

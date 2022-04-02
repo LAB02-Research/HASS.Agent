@@ -68,7 +68,7 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnRemove.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnRemove.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnRemove.TabIndex = 15;
-            this.BtnRemove.Text = Languages.SensorsConfig_BtnRemove;
+            this.BtnRemove.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsConfig_BtnRemove;
             this.BtnRemove.UseVisualStyleBackColor = false;
             this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
@@ -90,7 +90,7 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnModify.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnModify.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnModify.TabIndex = 14;
-            this.BtnModify.Text = Languages.SensorsConfig_BtnModify;
+            this.BtnModify.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsConfig_BtnModify;
             this.BtnModify.UseVisualStyleBackColor = false;
             this.BtnModify.Click += new System.EventHandler(this.BtnModify_Click);
             // 
@@ -112,7 +112,7 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnAdd.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnAdd.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnAdd.TabIndex = 13;
-            this.BtnAdd.Text = Languages.SensorsConfig_BtnAdd;
+            this.BtnAdd.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsConfig_BtnAdd;
             this.BtnAdd.UseVisualStyleBackColor = false;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
@@ -135,7 +135,7 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnStore.TabIndex = 11;
-            this.BtnStore.Text = Languages.SensorsConfig_BtnStore;
+            this.BtnStore.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsConfig_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
@@ -174,12 +174,12 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // ClmName
             // 
-            this.ClmName.Text = Languages.SensorsConfig_ClmName;
+            this.ClmName.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsConfig_ClmName;
             this.ClmName.Width = 300;
             // 
             // ClmType
             // 
-            this.ClmType.Text = Languages.SensorsConfig_ClmType;
+            this.ClmType.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsConfig_ClmType;
             this.ClmType.Width = 250;
             // 
             // ClmRefresh
@@ -203,7 +203,7 @@ namespace HASS.Agent.Forms.Sensors
             this.LblRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LblRefresh.AutoSize = true;
             this.LblRefresh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblRefresh.Location = new System.Drawing.Point(585, 485);
+            this.LblRefresh.Location = new System.Drawing.Point(470, 486);
             this.LblRefresh.Name = "LblRefresh";
             this.LblRefresh.Size = new System.Drawing.Size(43, 15);
             this.LblRefresh.TabIndex = 41;
@@ -213,7 +213,7 @@ namespace HASS.Agent.Forms.Sensors
             // 
             this.PbRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PbRefresh.Image = global::HASS.Agent.Properties.Resources.refresh_16;
-            this.PbRefresh.Location = new System.Drawing.Point(563, 484);
+            this.PbRefresh.Location = new System.Drawing.Point(448, 485);
             this.PbRefresh.Name = "PbRefresh";
             this.PbRefresh.Size = new System.Drawing.Size(16, 16);
             this.PbRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;

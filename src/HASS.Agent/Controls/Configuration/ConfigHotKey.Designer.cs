@@ -54,7 +54,7 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnClearHotKey.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnClearHotKey.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnClearHotKey.TabIndex = 18;
-            this.BtnClearHotKey.Text = Languages.ConfigHotKey_BtnClearHotKey;
+            this.BtnClearHotKey.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigHotKey_BtnClearHotKey;
             this.BtnClearHotKey.UseVisualStyleBackColor = false;
             // 
             // LblInfo1
@@ -86,7 +86,7 @@ namespace HASS.Agent.Controls.Configuration
             this.CbEnableQuickActionsHotkey.Name = "CbEnableQuickActionsHotkey";
             this.CbEnableQuickActionsHotkey.Size = new System.Drawing.Size(197, 23);
             this.CbEnableQuickActionsHotkey.TabIndex = 15;
-            this.CbEnableQuickActionsHotkey.Text = Languages.ConfigHotKey_CbEnableQuickActionsHotkey;
+            this.CbEnableQuickActionsHotkey.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigHotKey_CbEnableQuickActionsHotkey;
             this.CbEnableQuickActionsHotkey.UseVisualStyleBackColor = true;
             // 
             // LblHotkeyCombo
@@ -99,7 +99,7 @@ namespace HASS.Agent.Controls.Configuration
             this.LblHotkeyCombo.TabIndex = 14;
             this.LblHotkeyCombo.Text = Languages.ConfigHotKey_LblHotkeyCombo;
             // 
-            // HotKey
+            // ConfigHotKey
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -111,8 +111,8 @@ namespace HASS.Agent.Controls.Configuration
             this.Controls.Add(this.LblHotkeyCombo);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "HotKey";
-            this.Size = new System.Drawing.Size(740, 544);
+            this.Name = "ConfigHotKey";
+            this.Size = new System.Drawing.Size(700, 544);
             this.ResumeLayout(false);
             this.PerformLayout();
 

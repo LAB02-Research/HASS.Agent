@@ -67,7 +67,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnStore.TabIndex = 4;
-            this.BtnStore.Text = Languages.QuickActionsMod_BtnStore;
+            this.BtnStore.Text = global::HASS.Agent.Resources.Localization.Languages.QuickActionsMod_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
@@ -124,14 +124,14 @@ namespace HASS.Agent.Forms.QuickActions
             // 
             // LblLoading
             // 
-            this.LblLoading.AutoSize = true;
             this.LblLoading.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblLoading.ForeColor = System.Drawing.Color.MediumSpringGreen;
-            this.LblLoading.Location = new System.Drawing.Point(44, 428);
+            this.LblLoading.Location = new System.Drawing.Point(0, 410);
             this.LblLoading.Name = "LblLoading";
-            this.LblLoading.Size = new System.Drawing.Size(276, 19);
+            this.LblLoading.Size = new System.Drawing.Size(352, 41);
             this.LblLoading.TabIndex = 7;
             this.LblLoading.Text = Languages.QuickActionsMod_LblLoading;
+            this.LblLoading.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.LblLoading.Visible = false;
             // 
             // LblEntity
@@ -164,7 +164,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.CbEnableHotkey.Name = "CbEnableHotkey";
             this.CbEnableHotkey.Size = new System.Drawing.Size(114, 23);
             this.CbEnableHotkey.TabIndex = 17;
-            this.CbEnableHotkey.Text = Languages.QuickActionsMod_CbEnableHotkey;
+            this.CbEnableHotkey.Text = global::HASS.Agent.Resources.Localization.Languages.QuickActionsMod_CbEnableHotkey;
             this.CbEnableHotkey.UseVisualStyleBackColor = true;
             // 
             // LblHotkey
@@ -230,13 +230,13 @@ namespace HASS.Agent.Forms.QuickActions
             // 
             // LblTip1
             // 
-            this.LblTip1.AutoSize = true;
             this.LblTip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblTip1.Location = new System.Drawing.Point(92, 319);
+            this.LblTip1.Location = new System.Drawing.Point(12, 319);
             this.LblTip1.Name = "LblTip1";
-            this.LblTip1.Size = new System.Drawing.Size(248, 15);
+            this.LblTip1.Size = new System.Drawing.Size(328, 15);
             this.LblTip1.TabIndex = 28;
             this.LblTip1.Text = Languages.QuickActionsMod_LblTip1;
+            this.LblTip1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // QuickActionsMod
             // 

@@ -23,22 +23,11 @@ namespace HASS.Agent.Settings
         /// Load all stored settings and objects
         /// </summary>
         /// <param name="createInitialSettings"></param>
-        /// <param name="loadEntities"></param>
         /// <returns></returns>
-        internal static async Task<bool> LoadAsync(bool createInitialSettings = true, bool loadEntities = true)
+        internal static async Task<bool> LoadAsync(bool createInitialSettings = true)
         {
             Log.Information("[SETTINGS] Config storage path: {path}", Variables.ConfigPath);
-
-            // load command & sensor info cards
-            if (loadEntities)
-            {
-                await Task.Run(delegate
-                {
-                    CommandsManager.LoadCommandInfo();
-                    SensorsManager.LoadSensorInfo();
-                });
-            }
-
+            
             // check config dir
             if (!Directory.Exists(Variables.ConfigPath))
             {
@@ -65,24 +54,38 @@ namespace HASS.Agent.Settings
             var allGood = true;
 
             // load app settings
-            var ok = LoadAppSettings();
+            var ok = await Task.Run(LoadAppSettings);
+            if (!ok) allGood = false;
+            
+            // done
+            return allGood;
+        }
+
+        /// <summary>
+        /// Loads all entities (quick actions, commands and sensors)
+        /// </summary>
+        /// <returns></returns>
+        internal static async Task<bool> LoadEntitiesAsync()
+        {
+            var allGood = true;
+
+            await Task.Run(delegate
+            {
+                CommandsManager.LoadCommandInfo();
+                SensorsManager.LoadSensorInfo();
+            });
+
+            // load quick actions
+            var ok = StoredQuickActions.Load();
             if (!ok) allGood = false;
 
-            // only load other entities if we're asked to
-            if (loadEntities)
-            {
-                // load quick actions
-                ok = StoredQuickActions.Load();
-                if (!ok) allGood = false;
+            // load commands
+            ok = await StoredCommands.LoadAsync();
+            if (!ok) allGood = false;
 
-                // load commands
-                ok = await StoredCommands.LoadAsync();
-                if (!ok) allGood = false;
-
-                // load sensors
-                ok = await StoredSensors.LoadAsync();
-                if (!ok) allGood = false;
-            }
+            // load sensors
+            ok = await StoredSensors.LoadAsync();
+            if (!ok) allGood = false;
 
             // done
             return allGood;

@@ -89,12 +89,12 @@ namespace HASS.Agent.Controls.Service
             // 
             // ClmName
             // 
-            this.ClmName.Text = Languages.ServiceSensors_ClmName;
+            this.ClmName.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceSensors_ClmName;
             this.ClmName.Width = 400;
             // 
             // ClmType
             // 
-            this.ClmType.Text = Languages.ServiceSensors_ClmType;
+            this.ClmType.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceSensors_ClmType;
             this.ClmType.Width = 350;
             // 
             // ClmRefresh
@@ -111,7 +111,7 @@ namespace HASS.Agent.Controls.Service
             this.LblRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LblRefresh.AutoSize = true;
             this.LblRefresh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblRefresh.Location = new System.Drawing.Point(843, 499);
+            this.LblRefresh.Location = new System.Drawing.Point(726, 499);
             this.LblRefresh.Name = "LblRefresh";
             this.LblRefresh.Size = new System.Drawing.Size(43, 15);
             this.LblRefresh.TabIndex = 47;
@@ -121,7 +121,7 @@ namespace HASS.Agent.Controls.Service
             // 
             this.PbRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PbRefresh.Image = global::HASS.Agent.Properties.Resources.refresh_16;
-            this.PbRefresh.Location = new System.Drawing.Point(821, 498);
+            this.PbRefresh.Location = new System.Drawing.Point(704, 498);
             this.PbRefresh.Name = "PbRefresh";
             this.PbRefresh.Size = new System.Drawing.Size(16, 16);
             this.PbRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -146,7 +146,7 @@ namespace HASS.Agent.Controls.Service
             this.BtnRemove.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnRemove.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnRemove.TabIndex = 44;
-            this.BtnRemove.Text = Languages.ServiceSensors_BtnRemove;
+            this.BtnRemove.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceSensors_BtnRemove;
             this.BtnRemove.UseVisualStyleBackColor = false;
             this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
@@ -168,7 +168,7 @@ namespace HASS.Agent.Controls.Service
             this.BtnAdd.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnAdd.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnAdd.TabIndex = 42;
-            this.BtnAdd.Text = Languages.ServiceSensors_BtnAdd;
+            this.BtnAdd.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceSensors_BtnAdd;
             this.BtnAdd.UseVisualStyleBackColor = false;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
@@ -190,7 +190,7 @@ namespace HASS.Agent.Controls.Service
             this.BtnModify.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnModify.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnModify.TabIndex = 43;
-            this.BtnModify.Text = Languages.ServiceSensors_BtnModify;
+            this.BtnModify.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceSensors_BtnModify;
             this.BtnModify.UseVisualStyleBackColor = false;
             this.BtnModify.Click += new System.EventHandler(this.BtnModify_Click);
             // 
@@ -213,20 +213,20 @@ namespace HASS.Agent.Controls.Service
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnStore.TabIndex = 48;
-            this.BtnStore.Text = Languages.ServiceSensors_BtnStore;
+            this.BtnStore.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceSensors_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
             // LblStored
             // 
-            this.LblStored.AutoSize = true;
             this.LblStored.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblStored.ForeColor = System.Drawing.Color.LimeGreen;
-            this.LblStored.Location = new System.Drawing.Point(277, 523);
+            this.LblStored.Location = new System.Drawing.Point(206, 523);
             this.LblStored.Name = "LblStored";
-            this.LblStored.Size = new System.Drawing.Size(152, 30);
+            this.LblStored.Size = new System.Drawing.Size(289, 35);
             this.LblStored.TabIndex = 100;
             this.LblStored.Text = Languages.ServiceSensors_LblStored;
+            this.LblStored.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.LblStored.Visible = false;
             // 
             // ServiceSensors

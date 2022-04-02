@@ -89,7 +89,7 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnStore.TabIndex = 5;
-            this.BtnStore.Text = Languages.SensorsMod_BtnStore;
+            this.BtnStore.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsMod_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
@@ -161,7 +161,7 @@ namespace HASS.Agent.Forms.Sensors
             // 
             this.LblSeconds.AutoSize = true;
             this.LblSeconds.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblSeconds.Location = new System.Drawing.Point(750, 176);
+            this.LblSeconds.Location = new System.Drawing.Point(786, 174);
             this.LblSeconds.Name = "LblSeconds";
             this.LblSeconds.Size = new System.Drawing.Size(58, 19);
             this.LblSeconds.TabIndex = 15;
@@ -209,7 +209,7 @@ namespace HASS.Agent.Forms.Sensors
             this.LblSetting2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblSetting2.Location = new System.Drawing.Point(566, 288);
             this.LblSetting2.Name = "LblSetting2";
-            this.LblSetting2.Size = new System.Drawing.Size(59, 19);
+            this.LblSetting2.Size = new System.Drawing.Size(63, 19);
             this.LblSetting2.TabIndex = 21;
             this.LblSetting2.Text = Languages.SensorsMod_LblSetting2;
             this.LblSetting2.Visible = false;
@@ -258,7 +258,7 @@ namespace HASS.Agent.Forms.Sensors
             this.NumInterval.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NumInterval.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.NumInterval.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.NumInterval.Location = new System.Drawing.Point(661, 174);
+            this.NumInterval.Location = new System.Drawing.Point(673, 172);
             this.NumInterval.Maximum = new decimal(new int[] {
             86400,
             0,
@@ -305,7 +305,7 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // ClmSensorName
             // 
-            this.ClmSensorName.Text = Languages.SensorsMod_ClmSensorName;
+            this.ClmSensorName.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsMod_ClmSensorName;
             this.ClmSensorName.Width = 300;
             // 
             // ClmMultiValue

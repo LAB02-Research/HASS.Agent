@@ -43,7 +43,7 @@ namespace HASS.Agent.Controls.Configuration
             this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo1.Location = new System.Drawing.Point(70, 36);
             this.LblInfo1.Name = "LblInfo1";
-            this.LblInfo1.Size = new System.Drawing.Size(579, 76);
+            this.LblInfo1.Size = new System.Drawing.Size(575, 76);
             this.LblInfo1.TabIndex = 15;
             this.LblInfo1.Text = Languages.ConfigStartup_LblInfo1;
             // 
@@ -64,19 +64,19 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnSetStartOnLogin.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnSetStartOnLogin.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnSetStartOnLogin.TabIndex = 14;
-            this.BtnSetStartOnLogin.Text = Languages.ConfigStartup_BtnSetStartOnLogin;
+            this.BtnSetStartOnLogin.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigStartup_BtnSetStartOnLogin;
             this.BtnSetStartOnLogin.UseVisualStyleBackColor = false;
             this.BtnSetStartOnLogin.Click += new System.EventHandler(this.BtnSetStartOnLogin_Click);
             // 
             // LblStartOnLoginStatus
             // 
-            this.LblStartOnLoginStatus.AutoSize = true;
             this.LblStartOnLoginStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblStartOnLoginStatus.Location = new System.Drawing.Point(398, 205);
             this.LblStartOnLoginStatus.Name = "LblStartOnLoginStatus";
-            this.LblStartOnLoginStatus.Size = new System.Drawing.Size(15, 19);
+            this.LblStartOnLoginStatus.Size = new System.Drawing.Size(119, 19);
             this.LblStartOnLoginStatus.TabIndex = 13;
             this.LblStartOnLoginStatus.Text = "-";
+            this.LblStartOnLoginStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // LblStartOnLoginStatusInfo
             // 
@@ -87,8 +87,9 @@ namespace HASS.Agent.Controls.Configuration
             this.LblStartOnLoginStatusInfo.Size = new System.Drawing.Size(139, 19);
             this.LblStartOnLoginStatusInfo.TabIndex = 12;
             this.LblStartOnLoginStatusInfo.Text = Languages.ConfigStartup_LblStartOnLoginStatusInfo;
+            this.LblStartOnLoginStatusInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // Startup
+            // ConfigStartup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -99,8 +100,8 @@ namespace HASS.Agent.Controls.Configuration
             this.Controls.Add(this.LblStartOnLoginStatusInfo);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Startup";
-            this.Size = new System.Drawing.Size(740, 544);
+            this.Name = "ConfigStartup";
+            this.Size = new System.Drawing.Size(700, 544);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -68,19 +68,17 @@ namespace HASS.Agent.Controls.Service
             this.LblInfo1.Name = "LblInfo1";
             this.LblInfo1.Size = new System.Drawing.Size(717, 19);
             this.LblInfo1.TabIndex = 57;
-            this.LblInfo1.Text = "This page contains general configuration items. For MQTT settings, sensors and co" +
-    "mmands, browse the tabs on top.";
-            this.LblInfo1.Visible = false;
+            this.LblInfo1.Text = Languages.ServiceGeneral_LblInfo1;
             // 
             // LblAuthId
             // 
-            this.LblAuthId.AutoSize = true;
             this.LblAuthId.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblAuthId.Location = new System.Drawing.Point(194, 181);
+            this.LblAuthId.Location = new System.Drawing.Point(16, 181);
             this.LblAuthId.Name = "LblAuthId";
-            this.LblAuthId.Size = new System.Drawing.Size(52, 19);
+            this.LblAuthId.Size = new System.Drawing.Size(230, 19);
             this.LblAuthId.TabIndex = 61;
-            this.LblAuthId.Text = "auth id";
+            this.LblAuthId.Text = Languages.ServiceGeneral_LblAuthId;
+            this.LblAuthId.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // TbAuthId
             // 
@@ -107,14 +105,14 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblDeviceName
             // 
-            this.LblDeviceName.AutoSize = true;
             this.LblDeviceName.Cursor = System.Windows.Forms.Cursors.Help;
             this.LblDeviceName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblDeviceName.Location = new System.Drawing.Point(162, 250);
+            this.LblDeviceName.Location = new System.Drawing.Point(16, 250);
             this.LblDeviceName.Name = "LblDeviceName";
-            this.LblDeviceName.Size = new System.Drawing.Size(85, 19);
+            this.LblDeviceName.Size = new System.Drawing.Size(231, 19);
             this.LblDeviceName.TabIndex = 64;
-            this.LblDeviceName.Text = "device name";
+            this.LblDeviceName.Text = Languages.ServiceGeneral_LblDeviceName;
+            this.LblDeviceName.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // LblTip1
             // 
@@ -124,7 +122,7 @@ namespace HASS.Agent.Controls.Service
             this.LblTip1.Name = "LblTip1";
             this.LblTip1.Size = new System.Drawing.Size(143, 15);
             this.LblTip1.TabIndex = 75;
-            this.LblTip1.Text = "tip: doubleclick to browse";
+            this.LblTip1.Text = Languages.ServiceGeneral_LblTip1;
             // 
             // TbExternalExecutorBinary
             // 
@@ -140,13 +138,13 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblCustomExecBinary
             // 
-            this.LblCustomExecBinary.AutoSize = true;
             this.LblCustomExecBinary.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblCustomExecBinary.Location = new System.Drawing.Point(95, 443);
+            this.LblCustomExecBinary.Location = new System.Drawing.Point(16, 443);
             this.LblCustomExecBinary.Name = "LblCustomExecBinary";
-            this.LblCustomExecBinary.Size = new System.Drawing.Size(152, 19);
+            this.LblCustomExecBinary.Size = new System.Drawing.Size(231, 19);
             this.LblCustomExecBinary.TabIndex = 74;
-            this.LblCustomExecBinary.Text = "custom executor binary";
+            this.LblCustomExecBinary.Text = Languages.ServiceGeneral_LblCustomExecBinary;
+            this.LblCustomExecBinary.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // TbExternalExecutorName
             // 
@@ -161,13 +159,13 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblCustomExecName
             // 
-            this.LblCustomExecName.AutoSize = true;
             this.LblCustomExecName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblCustomExecName.Location = new System.Drawing.Point(99, 488);
+            this.LblCustomExecName.Location = new System.Drawing.Point(16, 488);
             this.LblCustomExecName.Name = "LblCustomExecName";
-            this.LblCustomExecName.Size = new System.Drawing.Size(148, 19);
+            this.LblCustomExecName.Size = new System.Drawing.Size(231, 19);
             this.LblCustomExecName.TabIndex = 71;
-            this.LblCustomExecName.Text = "custom executor name";
+            this.LblCustomExecName.Text = Languages.ServiceGeneral_LblCustomExecName;
+            this.LblCustomExecName.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // NumDisconnectGrace
             // 
@@ -205,18 +203,18 @@ namespace HASS.Agent.Controls.Service
             this.LblSeconds.Name = "LblSeconds";
             this.LblSeconds.Size = new System.Drawing.Size(58, 19);
             this.LblSeconds.TabIndex = 77;
-            this.LblSeconds.Text = "seconds";
+            this.LblSeconds.Text = Languages.ServiceGeneral_LblSeconds;
             // 
             // LblDisconGrace
             // 
-            this.LblDisconGrace.AutoSize = true;
             this.LblDisconGrace.Cursor = System.Windows.Forms.Cursors.Help;
             this.LblDisconGrace.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblDisconGrace.Location = new System.Drawing.Point(78, 328);
+            this.LblDisconGrace.Location = new System.Drawing.Point(16, 328);
             this.LblDisconGrace.Name = "LblDisconGrace";
-            this.LblDisconGrace.Size = new System.Drawing.Size(169, 19);
+            this.LblDisconGrace.Size = new System.Drawing.Size(231, 19);
             this.LblDisconGrace.TabIndex = 76;
-            this.LblDisconGrace.Text = "disconnected grace period";
+            this.LblDisconGrace.Text = Languages.ServiceGeneral_LblDisconGrace;
+            this.LblDisconGrace.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // BtnStoreAuthId
             // 
@@ -304,13 +302,13 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblVersionInfo
             // 
-            this.LblVersionInfo.AutoSize = true;
             this.LblVersionInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblVersionInfo.Location = new System.Drawing.Point(194, 100);
+            this.LblVersionInfo.Location = new System.Drawing.Point(16, 100);
             this.LblVersionInfo.Name = "LblVersionInfo";
-            this.LblVersionInfo.Size = new System.Drawing.Size(53, 19);
+            this.LblVersionInfo.Size = new System.Drawing.Size(231, 19);
             this.LblVersionInfo.TabIndex = 94;
-            this.LblVersionInfo.Text = "version";
+            this.LblVersionInfo.Text = Languages.ServiceGeneral_LblVersionInfo;
+            this.LblVersionInfo.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // LblVersion
             // 
@@ -325,13 +323,13 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblTip2
             // 
-            this.LblTip2.AutoSize = true;
             this.LblTip2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblTip2.Location = new System.Drawing.Point(357, 205);
+            this.LblTip2.Location = new System.Drawing.Point(285, 205);
             this.LblTip2.Name = "LblTip2";
-            this.LblTip2.Size = new System.Drawing.Size(196, 15);
+            this.LblTip2.Size = new System.Drawing.Size(268, 15);
             this.LblTip2.TabIndex = 96;
             this.LblTip2.Text = Languages.ServiceGeneral_LblTip2;
+            this.LblTip2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // LblAuthStored
             // 

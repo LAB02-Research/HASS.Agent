@@ -57,7 +57,7 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnClearImageCache.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnClearImageCache.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnClearImageCache.TabIndex = 36;
-            this.BtnClearImageCache.Text = Languages.ConfigLocalStorage_BtnClearImageCache;
+            this.BtnClearImageCache.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigLocalStorage_BtnClearImageCache;
             this.BtnClearImageCache.UseVisualStyleBackColor = false;
             this.BtnClearImageCache.Click += new System.EventHandler(this.BtnClearImageCache_Click);
             // 
@@ -78,7 +78,7 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnOpenImageCache.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnOpenImageCache.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnOpenImageCache.TabIndex = 35;
-            this.BtnOpenImageCache.Text = Languages.ConfigLocalStorage_BtnOpenImageCache;
+            this.BtnOpenImageCache.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigLocalStorage_BtnOpenImageCache;
             this.BtnOpenImageCache.UseVisualStyleBackColor = false;
             this.BtnOpenImageCache.Click += new System.EventHandler(this.BtnOpenImageCache_Click);
             // 
@@ -152,7 +152,7 @@ namespace HASS.Agent.Controls.Configuration
             0});
             this.NumImageRetention.VisualStyle = Syncfusion.Windows.Forms.VisualStyle.Metro;
             // 
-            // LocalStorage
+            // ConfigLocalStorage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -166,8 +166,8 @@ namespace HASS.Agent.Controls.Configuration
             this.Controls.Add(this.LblInfo1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "LocalStorage";
-            this.Size = new System.Drawing.Size(740, 544);
+            this.Name = "ConfigLocalStorage";
+            this.Size = new System.Drawing.Size(700, 544);
             ((System.ComponentModel.ISupportInitialize)(this.NumImageRetention)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

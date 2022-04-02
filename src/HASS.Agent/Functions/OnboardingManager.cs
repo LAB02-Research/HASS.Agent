@@ -14,7 +14,7 @@ namespace HASS.Agent.Functions
         private readonly Onboarding _onboarding;
         private Control _currentControl;
 
-        private const int _totalOnboardingSteps = 9;
+        private const int TOTAL_ONBOARDING_STEPS = 9;
 
         internal OnboardingManager(Onboarding onboarding)
         {
@@ -179,9 +179,16 @@ namespace HASS.Agent.Functions
             switch (Variables.AppSettings.OnboardingStatus)
             {
                 case OnboardingStatus.NeverDone:
-                {
-                    var obj = (OnboardingWelcome)_currentControl;
-                    return obj.Store();
+                    {
+                        var obj = (OnboardingWelcome)_currentControl;
+                        var stored = obj.Store(out var languageChanged);
+                        if (!stored) return false;
+
+                        // reload ui?
+                        if (languageChanged)  _onboarding.ReloadControlLanguage();
+
+                        // done
+                        return true;
                     }
 
                 case OnboardingStatus.Notifications:
@@ -253,13 +260,13 @@ namespace HASS.Agent.Functions
 
             const int onboardingStep = 1;
 
-            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Start, onboardingStep, _totalOnboardingSteps);
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Start, onboardingStep, TOTAL_ONBOARDING_STEPS);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.NeverDone;
 
             _currentControl = new OnboardingWelcome();
 
             _onboarding.BtnPrevious.Visible = false;
-            _onboarding.BtnNext.Text = "next";
+            _onboarding.BtnNext.Text = Languages.Onboarding_BtnNext;
 
             LoadCurrentControl();
         }
@@ -273,13 +280,13 @@ namespace HASS.Agent.Functions
 
             const int onboardingStep = 2;
 
-            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Startup, onboardingStep, _totalOnboardingSteps);
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Startup, onboardingStep, TOTAL_ONBOARDING_STEPS);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.Startup;
 
             _currentControl = new OnboardingStartup();
 
             _onboarding.BtnPrevious.Visible = true;
-            _onboarding.BtnNext.Text = "next";
+            _onboarding.BtnNext.Text = Languages.Onboarding_BtnNext;
 
             LoadCurrentControl();
         }
@@ -293,13 +300,13 @@ namespace HASS.Agent.Functions
 
             const int onboardingStep = 3;
 
-            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Notifications, onboardingStep, _totalOnboardingSteps);
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Notifications, onboardingStep, TOTAL_ONBOARDING_STEPS);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.Notifications;
 
             _currentControl = new OnboardingNotifications();
 
             _onboarding.BtnPrevious.Visible = true;
-            _onboarding.BtnNext.Text = "next";
+            _onboarding.BtnNext.Text = Languages.Onboarding_BtnNext;
 
             LoadCurrentControl();
         }
@@ -313,13 +320,13 @@ namespace HASS.Agent.Functions
 
             const int onboardingStep = 4;
 
-            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Integration, onboardingStep, _totalOnboardingSteps);
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Integration, onboardingStep, TOTAL_ONBOARDING_STEPS);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.Integration;
 
             _currentControl = new OnboardingIntegration();
 
             _onboarding.BtnPrevious.Visible = true;
-            _onboarding.BtnNext.Text = "next";
+            _onboarding.BtnNext.Text = Languages.Onboarding_BtnNext;
 
             LoadCurrentControl();
         }
@@ -334,13 +341,13 @@ namespace HASS.Agent.Functions
 
             const int onboardingStep = 5;
 
-            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Api, onboardingStep, _totalOnboardingSteps);
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Api, onboardingStep, TOTAL_ONBOARDING_STEPS);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.API;
 
             _currentControl = new OnboardingApi();
 
             _onboarding.BtnPrevious.Visible = true;
-            _onboarding.BtnNext.Text = "next";
+            _onboarding.BtnNext.Text = Languages.Onboarding_BtnNext;
 
             LoadCurrentControl();
         }
@@ -355,13 +362,13 @@ namespace HASS.Agent.Functions
 
             const int onboardingStep = 6;
 
-            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Mqtt, onboardingStep, _totalOnboardingSteps);
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Mqtt, onboardingStep, TOTAL_ONBOARDING_STEPS);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.MQTT;
 
             _currentControl = new OnboardingMqtt();
 
             _onboarding.BtnPrevious.Visible = true;
-            _onboarding.BtnNext.Text = "next";
+            _onboarding.BtnNext.Text = Languages.Onboarding_BtnNext;
 
             LoadCurrentControl();
         }
@@ -375,13 +382,13 @@ namespace HASS.Agent.Functions
 
             const int onboardingStep = 7;
 
-            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_HotKey, onboardingStep, _totalOnboardingSteps);
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_HotKey, onboardingStep, TOTAL_ONBOARDING_STEPS);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.HotKey;
 
             _currentControl = new OnboardingHotKey();
 
             _onboarding.BtnPrevious.Visible = true;
-            _onboarding.BtnNext.Text = "next";
+            _onboarding.BtnNext.Text = Languages.Onboarding_BtnNext;
 
             LoadCurrentControl();
         }
@@ -395,13 +402,13 @@ namespace HASS.Agent.Functions
 
             const int onboardingStep = 8;
 
-            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Updates, onboardingStep, _totalOnboardingSteps);
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Updates, onboardingStep, TOTAL_ONBOARDING_STEPS);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.Updates;
 
             _currentControl = new OnboardingUpdates();
 
             _onboarding.BtnPrevious.Visible = true;
-            _onboarding.BtnNext.Text = "next";
+            _onboarding.BtnNext.Text = Languages.Onboarding_BtnNext;
 
             _onboarding.BtnClose.Visible = true;
 
@@ -417,13 +424,13 @@ namespace HASS.Agent.Functions
 
             const int onboardingStep = 9;
 
-            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Completed, onboardingStep, _totalOnboardingSteps);
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Completed, onboardingStep, TOTAL_ONBOARDING_STEPS);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.Completed;
 
             _currentControl = new OnboardingDone();
 
             _onboarding.BtnPrevious.Visible = true;
-            _onboarding.BtnNext.Text = "finish";
+            _onboarding.BtnNext.Text = Languages.OnboardingManager_BtnNext_Finish;
 
             _onboarding.BtnClose.Visible = false;
 

@@ -88,7 +88,7 @@ namespace HASS.Agent.Forms.Commands
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnStore.TabIndex = 3;
-            this.BtnStore.Text = Languages.CommandsMod_BtnStore;
+            this.BtnStore.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsMod_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
@@ -180,20 +180,20 @@ namespace HASS.Agent.Forms.Commands
             this.CbRunAsLowIntegrity.Name = "CbRunAsLowIntegrity";
             this.CbRunAsLowIntegrity.Size = new System.Drawing.Size(152, 23);
             this.CbRunAsLowIntegrity.TabIndex = 26;
-            this.CbRunAsLowIntegrity.Text = Languages.CommandsMod_CbRunAsLowIntegrity;
+            this.CbRunAsLowIntegrity.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsMod_CbRunAsLowIntegrity;
             this.CbRunAsLowIntegrity.UseVisualStyleBackColor = true;
             this.CbRunAsLowIntegrity.Visible = false;
             // 
             // LblIntegrityInfo
             // 
-            this.LblIntegrityInfo.AutoSize = true;
             this.LblIntegrityInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblIntegrityInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.LblIntegrityInfo.Location = new System.Drawing.Point(739, 298);
+            this.LblIntegrityInfo.Location = new System.Drawing.Point(739, 296);
             this.LblIntegrityInfo.Name = "LblIntegrityInfo";
-            this.LblIntegrityInfo.Size = new System.Drawing.Size(68, 15);
+            this.LblIntegrityInfo.Size = new System.Drawing.Size(155, 15);
             this.LblIntegrityInfo.TabIndex = 27;
             this.LblIntegrityInfo.Text = Languages.CommandsMod_LblIntegrityInfo;
+            this.LblIntegrityInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.LblIntegrityInfo.Visible = false;
             this.LblIntegrityInfo.Click += new System.EventHandler(this.LblIntegrityInfo_Click);
             // 
@@ -247,7 +247,7 @@ namespace HASS.Agent.Forms.Commands
             // 
             // ClmSensorName
             // 
-            this.ClmSensorName.Text = Languages.CommandsMod_ClmSensorName;
+            this.ClmSensorName.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsMod_ClmSensorName;
             this.ClmSensorName.Width = 300;
             // 
             // ClmAgentCompatible

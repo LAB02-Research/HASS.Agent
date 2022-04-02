@@ -77,20 +77,29 @@ namespace HASS.Agent.Controls.Service
                 {
                     case MqttStatus.Connected:
                         LblStatus.ForeColor = Color.LimeGreen;
+                        LblStatus.Text = Languages.ServiceMqtt_SetMqttStatus_Connected;
                         break;
 
                     case MqttStatus.Connecting:
                         LblStatus.ForeColor = Color.DarkOrange;
+                        LblStatus.Text = Languages.ServiceMqtt_SetMqttStatus_Connecting;
                         break;
 
                     case MqttStatus.ConfigMissing:
+                        LblStatus.ForeColor = Color.Red;
+                        LblStatus.Text = Languages.ServiceMqtt_SetMqttStatus_ConfigError;
+                        break;
+
                     case MqttStatus.Disconnected:
+                        LblStatus.ForeColor = Color.Red;
+                        LblStatus.Text = Languages.ServiceMqtt_SetMqttStatus_Disconnected;
+                        break;
+
                     case MqttStatus.Error:
                         LblStatus.ForeColor = Color.Red;
+                        LblStatus.Text = Languages.ServiceMqtt_SetMqttStatus_Error;
                         break;
                 }
-
-                LblStatus.Text = status.ToString().ToLower();
             }));
         }
 

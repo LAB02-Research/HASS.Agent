@@ -209,7 +209,7 @@ namespace HASS.Agent.Controls.Onboarding
             this.NumMqttPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NumMqttPort.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.NumMqttPort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.NumMqttPort.Location = new System.Drawing.Point(223, 206);
+            this.NumMqttPort.Location = new System.Drawing.Point(260, 206);
             this.NumMqttPort.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -240,7 +240,7 @@ namespace HASS.Agent.Controls.Onboarding
             this.PbShow.TabStop = false;
             this.PbShow.Click += new System.EventHandler(this.PbShow_Click);
             // 
-            // MQTT
+            // OnboardingMqtt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -263,7 +263,7 @@ namespace HASS.Agent.Controls.Onboarding
             this.Controls.Add(this.PbHassAgentLogo);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "MQTT";
+            this.Name = "OnboardingMqtt";
             this.Size = new System.Drawing.Size(803, 457);
             this.Load += new System.EventHandler(this.OnboardingMqtt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PbHassAgentLogo)).EndInit();

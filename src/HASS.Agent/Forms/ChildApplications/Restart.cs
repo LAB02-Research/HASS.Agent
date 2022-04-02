@@ -10,7 +10,7 @@ namespace HASS.Agent.Forms.ChildApplications
 {
     public partial class Restart : MetroForm
     {
-        private const int MaxWaitSeconds = 20;
+        private const int MAX_WAIT_SECONDS = 20;
 
         public Restart()
         {
@@ -35,7 +35,7 @@ namespace HASS.Agent.Forms.ChildApplications
             if (!closed)
             {
                 PbStep1WaitForInstances.Image = Properties.Resources.failed_32;
-                MessageBoxAdv.Show(string.Format(Languages.Restart_ProcessRestart_MessageBox1, MaxWaitSeconds), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(string.Format(Languages.Restart_ProcessRestart_MessageBox1, MAX_WAIT_SECONDS), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 // close up
                 _ = HelperFunctions.ShutdownAsync();
@@ -68,7 +68,7 @@ namespace HASS.Agent.Forms.ChildApplications
         {
             var sw = Stopwatch.StartNew();
 
-            while (sw.Elapsed.TotalSeconds < MaxWaitSeconds)
+            while (sw.Elapsed.TotalSeconds < MAX_WAIT_SECONDS)
             {
                 var stillActive = await Task.Run(() => HelperFunctions.IsProcessActiveUnderCurrentUser(Variables.ApplicationExecutable));
                 if (!stillActive) return true;

@@ -39,13 +39,13 @@ namespace HASS.Agent.Forms.ChildApplications
             // 
             // LblInfo1
             // 
-            this.LblInfo1.AutoSize = true;
             this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblInfo1.Location = new System.Drawing.Point(150, 47);
+            this.LblInfo1.Location = new System.Drawing.Point(2, 9);
             this.LblInfo1.Name = "LblInfo1";
-            this.LblInfo1.Size = new System.Drawing.Size(322, 19);
+            this.LblInfo1.Size = new System.Drawing.Size(615, 57);
             this.LblInfo1.TabIndex = 1;
             this.LblInfo1.Text = Languages.ServiceSetState_LblInfo1;
+            this.LblInfo1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // PbStep1Configure
             // 

@@ -64,7 +64,7 @@ namespace HASS.Agent.Forms
             this.BtnDownload.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnDownload.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnDownload.TabIndex = 0;
-            this.BtnDownload.Text = Languages.UpdatePending_BtnDownload;
+            this.BtnDownload.Text = global::HASS.Agent.Resources.Localization.Languages.UpdatePending_BtnDownload;
             this.BtnDownload.UseVisualStyleBackColor = false;
             this.BtnDownload.Click += new System.EventHandler(this.BtnDownload_Click);
             // 
@@ -113,9 +113,9 @@ namespace HASS.Agent.Forms
             this.BtnIgnore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnIgnore.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnIgnore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnIgnore.Location = new System.Drawing.Point(-2, 465);
+            this.BtnIgnore.Location = new System.Drawing.Point(2, 465);
             this.BtnIgnore.Name = "BtnIgnore";
-            this.BtnIgnore.Size = new System.Drawing.Size(158, 31);
+            this.BtnIgnore.Size = new System.Drawing.Size(154, 31);
             this.BtnIgnore.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnIgnore.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnIgnore.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -124,7 +124,7 @@ namespace HASS.Agent.Forms
             this.BtnIgnore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnIgnore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnIgnore.TabIndex = 6;
-            this.BtnIgnore.Text = Languages.UpdatePending_BtnIgnore;
+            this.BtnIgnore.Text = global::HASS.Agent.Resources.Localization.Languages.UpdatePending_BtnIgnore;
             this.BtnIgnore.UseVisualStyleBackColor = false;
             this.BtnIgnore.Click += new System.EventHandler(this.BtnIgnore_Click);
             // 

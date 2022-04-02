@@ -54,7 +54,7 @@ namespace HASS.Agent.Controls.Configuration
             this.CbExtendedLogging.Name = "CbExtendedLogging";
             this.CbExtendedLogging.Size = new System.Drawing.Size(178, 23);
             this.CbExtendedLogging.TabIndex = 30;
-            this.CbExtendedLogging.Text = Languages.ConfigLogging_CbExtendedLogging;
+            this.CbExtendedLogging.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigLogging_CbExtendedLogging;
             this.CbExtendedLogging.UseVisualStyleBackColor = true;
             // 
             // BtnShowLogs
@@ -74,11 +74,11 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnShowLogs.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnShowLogs.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnShowLogs.TabIndex = 47;
-            this.BtnShowLogs.Text = Languages.ConfigLogging_BtnShowLogs;
+            this.BtnShowLogs.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigLogging_BtnShowLogs;
             this.BtnShowLogs.UseVisualStyleBackColor = false;
             this.BtnShowLogs.Click += new System.EventHandler(this.BtnShowLogs_Click);
             // 
-            // Logging
+            // ConfigLogging
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -88,8 +88,8 @@ namespace HASS.Agent.Controls.Configuration
             this.Controls.Add(this.CbExtendedLogging);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Logging";
-            this.Size = new System.Drawing.Size(740, 544);
+            this.Name = "ConfigLogging";
+            this.Size = new System.Drawing.Size(700, 544);
             this.ResumeLayout(false);
             this.PerformLayout();
 

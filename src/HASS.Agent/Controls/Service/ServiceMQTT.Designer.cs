@@ -73,7 +73,7 @@ namespace HASS.Agent.Controls.Service
             this.NumMqttPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NumMqttPort.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.NumMqttPort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.NumMqttPort.Location = new System.Drawing.Point(114, 237);
+            this.NumMqttPort.Location = new System.Drawing.Point(138, 239);
             this.NumMqttPort.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -186,7 +186,7 @@ namespace HASS.Agent.Controls.Service
             this.CbUseRetainFlag.Name = "CbUseRetainFlag";
             this.CbUseRetainFlag.Size = new System.Drawing.Size(114, 23);
             this.CbUseRetainFlag.TabIndex = 86;
-            this.CbUseRetainFlag.Text = Languages.ServiceMqtt_CbUseRetainFlag;
+            this.CbUseRetainFlag.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceMqtt_CbUseRetainFlag;
             this.CbUseRetainFlag.UseVisualStyleBackColor = true;
             // 
             // CbAllowUntrustedCertificates
@@ -197,7 +197,7 @@ namespace HASS.Agent.Controls.Service
             this.CbAllowUntrustedCertificates.Name = "CbAllowUntrustedCertificates";
             this.CbAllowUntrustedCertificates.Size = new System.Drawing.Size(191, 23);
             this.CbAllowUntrustedCertificates.TabIndex = 85;
-            this.CbAllowUntrustedCertificates.Text = Languages.ServiceMqtt_CbAllowUntrustedCertificates;
+            this.CbAllowUntrustedCertificates.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceMqtt_CbAllowUntrustedCertificates;
             this.CbAllowUntrustedCertificates.UseVisualStyleBackColor = true;
             // 
             // BtnMqttClearConfig
@@ -217,7 +217,7 @@ namespace HASS.Agent.Controls.Service
             this.BtnMqttClearConfig.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnMqttClearConfig.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnMqttClearConfig.TabIndex = 84;
-            this.BtnMqttClearConfig.Text = Languages.ServiceMqtt_BtnMqttClearConfig;
+            this.BtnMqttClearConfig.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceMqtt_BtnMqttClearConfig;
             this.BtnMqttClearConfig.UseVisualStyleBackColor = false;
             this.BtnMqttClearConfig.Click += new System.EventHandler(this.BtnMqttClearConfig_Click);
             // 
@@ -300,7 +300,7 @@ namespace HASS.Agent.Controls.Service
             // 
             this.CbMqttTls.AutoSize = true;
             this.CbMqttTls.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CbMqttTls.Location = new System.Drawing.Point(220, 239);
+            this.CbMqttTls.Location = new System.Drawing.Point(290, 237);
             this.CbMqttTls.Name = "CbMqttTls";
             this.CbMqttTls.Size = new System.Drawing.Size(49, 23);
             this.CbMqttTls.TabIndex = 73;
@@ -366,7 +366,7 @@ namespace HASS.Agent.Controls.Service
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnStore.TabIndex = 96;
-            this.BtnStore.Text = Languages.ServiceMqtt_BtnStore;
+            this.BtnStore.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceMqtt_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
@@ -387,20 +387,20 @@ namespace HASS.Agent.Controls.Service
             this.BtnCopy.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnCopy.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnCopy.TabIndex = 97;
-            this.BtnCopy.Text = Languages.ServiceMqtt_BtnCopy;
+            this.BtnCopy.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceMqtt_BtnCopy;
             this.BtnCopy.UseVisualStyleBackColor = false;
             this.BtnCopy.Click += new System.EventHandler(this.BtnCopy_Click);
             // 
             // LblStored
             // 
-            this.LblStored.AutoSize = true;
             this.LblStored.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblStored.ForeColor = System.Drawing.Color.LimeGreen;
-            this.LblStored.Location = new System.Drawing.Point(509, 529);
+            this.LblStored.Location = new System.Drawing.Point(275, 533);
             this.LblStored.Name = "LblStored";
-            this.LblStored.Size = new System.Drawing.Size(141, 30);
+            this.LblStored.Size = new System.Drawing.Size(375, 30);
             this.LblStored.TabIndex = 98;
             this.LblStored.Text = Languages.ServiceMqtt_LblStored;
+            this.LblStored.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.LblStored.Visible = false;
             // 
             // PbShow
@@ -436,7 +436,7 @@ namespace HASS.Agent.Controls.Service
             this.LblStatus.TabIndex = 101;
             this.LblStatus.Text = Languages.ServiceMqtt_LblStatus;
             // 
-            // MQTT
+            // ServiceMqtt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -473,7 +473,7 @@ namespace HASS.Agent.Controls.Service
             this.Controls.Add(this.LblBrokerIp);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "MQTT";
+            this.Name = "ServiceMqtt";
             this.Size = new System.Drawing.Size(903, 622);
             this.Load += new System.EventHandler(this.ServiceMqtt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NumMqttPort)).EndInit();

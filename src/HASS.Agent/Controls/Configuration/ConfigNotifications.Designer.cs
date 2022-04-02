@@ -68,7 +68,7 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnNotificationsReadme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnNotificationsReadme.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnNotificationsReadme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnNotificationsReadme.Location = new System.Drawing.Point(493, 497);
+            this.BtnNotificationsReadme.Location = new System.Drawing.Point(452, 497);
             this.BtnNotificationsReadme.Name = "BtnNotificationsReadme";
             this.BtnNotificationsReadme.Size = new System.Drawing.Size(228, 31);
             this.BtnNotificationsReadme.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -79,7 +79,7 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnNotificationsReadme.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnNotificationsReadme.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnNotificationsReadme.TabIndex = 35;
-            this.BtnNotificationsReadme.Text = Languages.ConfigNotifications_BtnNotificationsReadme;
+            this.BtnNotificationsReadme.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigNotifications_BtnNotificationsReadme;
             this.BtnNotificationsReadme.UseVisualStyleBackColor = false;
             this.BtnNotificationsReadme.Click += new System.EventHandler(this.BtnNotificationsReadme_Click);
             // 
@@ -87,7 +87,7 @@ namespace HASS.Agent.Controls.Configuration
             // 
             this.LblPort.AutoSize = true;
             this.LblPort.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblPort.Location = new System.Drawing.Point(220, 102);
+            this.LblPort.Location = new System.Drawing.Point(200, 102);
             this.LblPort.Name = "LblPort";
             this.LblPort.Size = new System.Drawing.Size(35, 19);
             this.LblPort.TabIndex = 34;
@@ -101,7 +101,7 @@ namespace HASS.Agent.Controls.Configuration
             this.CbAcceptNotifications.Name = "CbAcceptNotifications";
             this.CbAcceptNotifications.Size = new System.Drawing.Size(145, 23);
             this.CbAcceptNotifications.TabIndex = 33;
-            this.CbAcceptNotifications.Text = Languages.ConfigNotifications_CbAcceptNotifications;
+            this.CbAcceptNotifications.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigNotifications_CbAcceptNotifications;
             this.CbAcceptNotifications.UseVisualStyleBackColor = true;
             // 
             // NumNotificationApiPort
@@ -149,7 +149,7 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnSendTestNotification.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnSendTestNotification.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnSendTestNotification.TabIndex = 73;
-            this.BtnSendTestNotification.Text = Languages.ConfigNotifications_BtnSendTestNotification;
+            this.BtnSendTestNotification.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigNotifications_BtnSendTestNotification;
             this.BtnSendTestNotification.UseVisualStyleBackColor = false;
             this.BtnSendTestNotification.Click += new System.EventHandler(this.BtnSendTestNotification_Click);
             // 
@@ -170,7 +170,7 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnExecutePortReservation.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnExecutePortReservation.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnExecutePortReservation.TabIndex = 74;
-            this.BtnExecutePortReservation.Text = Languages.ConfigNotifications_BtnExecutePortReservation;
+            this.BtnExecutePortReservation.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigNotifications_BtnExecutePortReservation;
             this.BtnExecutePortReservation.UseVisualStyleBackColor = false;
             this.BtnExecutePortReservation.Click += new System.EventHandler(this.BtnExecutePortReservation_Click);
             // 
@@ -182,10 +182,10 @@ namespace HASS.Agent.Controls.Configuration
             this.CbNotificationsIgnoreImageCertErrors.Name = "CbNotificationsIgnoreImageCertErrors";
             this.CbNotificationsIgnoreImageCertErrors.Size = new System.Drawing.Size(237, 23);
             this.CbNotificationsIgnoreImageCertErrors.TabIndex = 75;
-            this.CbNotificationsIgnoreImageCertErrors.Text = Languages.ConfigNotifications_CbNotificationsIgnoreImageCertErrors;
+            this.CbNotificationsIgnoreImageCertErrors.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigNotifications_CbNotificationsIgnoreImageCertErrors;
             this.CbNotificationsIgnoreImageCertErrors.UseVisualStyleBackColor = true;
             // 
-            // Notifications
+            // ConfigNotifications
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -201,8 +201,8 @@ namespace HASS.Agent.Controls.Configuration
             this.Controls.Add(this.CbAcceptNotifications);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Notifications";
-            this.Size = new System.Drawing.Size(740, 544);
+            this.Name = "ConfigNotifications";
+            this.Size = new System.Drawing.Size(700, 544);
             ((System.ComponentModel.ISupportInitialize)(this.NumNotificationApiPort)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -35,6 +35,8 @@ namespace HASS.Agent.Controls.Onboarding
             this.LblInfo2 = new System.Windows.Forms.Label();
             this.TbDeviceName = new System.Windows.Forms.TextBox();
             this.LblDeviceName = new System.Windows.Forms.Label();
+            this.CbLanguage = new System.Windows.Forms.ComboBox();
+            this.LblInterfaceLangauge = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PbHassAgentLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +65,7 @@ namespace HASS.Agent.Controls.Onboarding
             // 
             this.LblInfo2.AutoSize = true;
             this.LblInfo2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblInfo2.Location = new System.Drawing.Point(180, 241);
+            this.LblInfo2.Location = new System.Drawing.Point(177, 332);
             this.LblInfo2.Name = "LblInfo2";
             this.LblInfo2.Size = new System.Drawing.Size(424, 38);
             this.LblInfo2.TabIndex = 51;
@@ -75,26 +77,55 @@ namespace HASS.Agent.Controls.Onboarding
             this.TbDeviceName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbDeviceName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TbDeviceName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbDeviceName.Location = new System.Drawing.Point(183, 196);
+            this.TbDeviceName.Location = new System.Drawing.Point(180, 287);
             this.TbDeviceName.Name = "TbDeviceName";
-            this.TbDeviceName.Size = new System.Drawing.Size(372, 25);
+            this.TbDeviceName.Size = new System.Drawing.Size(358, 25);
             this.TbDeviceName.TabIndex = 50;
             // 
             // LblDeviceName
             // 
             this.LblDeviceName.AutoSize = true;
             this.LblDeviceName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblDeviceName.Location = new System.Drawing.Point(180, 174);
+            this.LblDeviceName.Location = new System.Drawing.Point(177, 265);
             this.LblDeviceName.Name = "LblDeviceName";
             this.LblDeviceName.Size = new System.Drawing.Size(85, 19);
             this.LblDeviceName.TabIndex = 52;
             this.LblDeviceName.Text = Languages.OnboardingWelcome_LblDeviceName;
             // 
-            // Welcome
+            // CbLanguage
+            // 
+            this.CbLanguage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.CbLanguage.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CbLanguage.DropDownHeight = 300;
+            this.CbLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbLanguage.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CbLanguage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.CbLanguage.FormattingEnabled = true;
+            this.CbLanguage.IntegralHeight = false;
+            this.CbLanguage.Location = new System.Drawing.Point(180, 177);
+            this.CbLanguage.Name = "CbLanguage";
+            this.CbLanguage.Size = new System.Drawing.Size(358, 26);
+            this.CbLanguage.Sorted = true;
+            this.CbLanguage.TabIndex = 68;
+            this.CbLanguage.SelectedIndexChanged += new System.EventHandler(this.CbLanguage_SelectedIndexChanged);
+            // 
+            // LblInterfaceLangauge
+            // 
+            this.LblInterfaceLangauge.AutoSize = true;
+            this.LblInterfaceLangauge.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblInterfaceLangauge.Location = new System.Drawing.Point(177, 155);
+            this.LblInterfaceLangauge.Name = "LblInterfaceLangauge";
+            this.LblInterfaceLangauge.Size = new System.Drawing.Size(121, 19);
+            this.LblInterfaceLangauge.TabIndex = 67;
+            this.LblInterfaceLangauge.Text = Languages.OnboardingWelcome_LblInterfaceLangauge;
+            // 
+            // OnboardingWelcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.Controls.Add(this.CbLanguage);
+            this.Controls.Add(this.LblInterfaceLangauge);
             this.Controls.Add(this.LblDeviceName);
             this.Controls.Add(this.LblInfo2);
             this.Controls.Add(this.TbDeviceName);
@@ -102,7 +133,7 @@ namespace HASS.Agent.Controls.Onboarding
             this.Controls.Add(this.LblInfo1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Welcome";
+            this.Name = "OnboardingWelcome";
             this.Size = new System.Drawing.Size(803, 457);
             this.Load += new System.EventHandler(this.OnboardingWelcome_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PbHassAgentLogo)).EndInit();
@@ -117,5 +148,7 @@ namespace HASS.Agent.Controls.Onboarding
         private System.Windows.Forms.Label LblInfo2;
         private System.Windows.Forms.TextBox TbDeviceName;
         private System.Windows.Forms.Label LblDeviceName;
+        internal ComboBox CbLanguage;
+        private Label LblInterfaceLangauge;
     }
 }

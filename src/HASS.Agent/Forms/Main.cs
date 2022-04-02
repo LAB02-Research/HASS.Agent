@@ -71,8 +71,8 @@ namespace HASS.Agent.Forms
                 // create a hotkey listener
                 Variables.HotKeyListener = new HotkeyListener();
 
-                // load settings
-                var loaded = await SettingsManager.LoadAsync();
+                // load entities
+                var loaded = await SettingsManager.LoadEntitiesAsync();
                 if (!loaded)
                 {
                     MessageBoxAdv.Show(Languages.Main_Load_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -130,13 +130,21 @@ namespace HASS.Agent.Forms
         /// <summary>
         /// Checks to see if we need to launch onboarding, and if so, does that
         /// </summary>
-        private static void ProcessOnboarding()
+        private void ProcessOnboarding()
         {
-            if (Variables.AppSettings.OnboardingStatus == OnboardingStatus.Completed || Variables.AppSettings.OnboardingStatus == OnboardingStatus.Aborted) return;
+            if (Variables.AppSettings.OnboardingStatus is OnboardingStatus.Completed or OnboardingStatus.Aborted) return;
             
+            // hide ourselves
+            ShowInTaskbar = false;
+            Opacity = 0;
+
             // show onboarding
             using var onboarding = new Onboarding();
             onboarding.ShowDialog();
+
+            // show ourselves
+            ShowInTaskbar = true;
+            Opacity = 100;
         }
 
         /// <summary>

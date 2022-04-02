@@ -28,10 +28,7 @@ namespace HASS.Agent.Forms.ChildApplications
 
             // give the ui time to load
             await Task.Delay(TimeSpan.FromSeconds(2));
-
-            // make sure settings are loaded
-            await SettingsManager.LoadAsync(false, false);
-
+            
             // execute port reservation
             var portDone = await ProcessPortReservationAsync();
             PbStep1PortBinding.Image = portDone ? Properties.Resources.done_32 : Properties.Resources.failed_32;

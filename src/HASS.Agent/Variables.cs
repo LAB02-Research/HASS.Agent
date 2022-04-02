@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Reflection;
 using Grapevine;
 using HASS.Agent.Forms;
@@ -45,6 +46,12 @@ namespace HASS.Agent
         internal static HotkeyListener HotKeyListener { get; set; }
         internal static Random Rnd { get; } = new();
         internal static  Font DefaultFont { get; } = new("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+
+        /// <summary>
+        /// Localization
+        /// </summary>
+        internal static List<SupportedUILanguage> SupportedUILanguages { get; } = new();
+        internal static SupportedUILanguage CurrentUICulture { get; set; } = new(new CultureInfo("en"));
 
         /// <summary>
         /// MQTT
