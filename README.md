@@ -18,6 +18,12 @@ Click [here](https://github.com/LAB02-Research/HASS.Agent/releases/latest/downlo
 
 ----
 
+Agora o HASS.Agent está em português do Brasil para brasileiros e usuários de língua portuguesa!
+
+Clique [aqui](https://github.com/LAB02-Research/HASS.Agent/releases/tag/b2022.4.2) para baixar o instalador mais recente com a tradução! Obrigado [@LeandroIssa](https://github.com/LeandroIssa) :)
+
+----
+
 Developing this tool takes up quite a bit of time. It's completely free, and it'll stay that way without restrictions.<br/>
 However, like most developers, I run on caffeïne - so a cup of coffee is always very much appreciated! 
 
