@@ -88,8 +88,8 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This application is open source and completely free.  Please check the project
-        ///pages of the used components for their individual licenses:.
+        ///   Looks up a localized string similar to This application is open source and completely free.  Please check the project pages of 
+        ///the used components for their individual licenses:.
         /// </summary>
         internal static string About_LblInfo3 {
             get {
@@ -98,8 +98,8 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A big &apos;thank you&apos; to the developers of these projects, who were kind enough
-        ///to share their hard work with the rest of us mere mortals. .
+        ///   Looks up a localized string similar to A big &apos;thank you&apos; to the developers of these projects, who were kind enough to share
+        ///their hard work with the rest of us mere mortals. .
         /// </summary>
         internal static string About_LblInfo4 {
             get {
@@ -108,8 +108,8 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to And of course; thanks to Paulus Shoutsen, Franck Nijhof and the entire team
-        ///of devs that created and maintain Home Assistant :-).
+        ///   Looks up a localized string similar to And of course; thanks to Paulus Shoutsen, Franck Nijhof and the entire team of devs
+        ///that created and maintain Home Assistant :-).
         /// </summary>
         internal static string About_LblInfo5 {
             get {
@@ -123,6 +123,15 @@ namespace HASS.Agent.Resources.Localization {
         internal static string About_LblInfo6 {
             get {
                 return ResourceManager.GetString("About_LblInfo6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to or.
+        /// </summary>
+        internal static string About_LblOr {
+            get {
+                return ResourceManager.GetString("About_LblOr", resourceCulture);
             }
         }
         
@@ -1103,6 +1112,15 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to interface language.
+        /// </summary>
+        internal static string ConfigGeneral_LblInterfaceLangauge {
+            get {
+                return ResourceManager.GetString("ConfigGeneral_LblInterfaceLangauge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to test connection.
         /// </summary>
         internal static string ConfigHomeAssistantApi_BtnTestApi {
@@ -1995,6 +2013,15 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to busy, hold on ...
+        /// </summary>
+        internal static string Configuration_BtnStore_Busy {
+            get {
+                return ResourceManager.GetString("Configuration_BtnStore_Busy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Something went wrong while preparing to restart.
         ///Please restart manually..
         /// </summary>
@@ -2317,7 +2344,8 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get help with setting up and using HASS.Agent, report bugs or just talk about whatever..
+        ///   Looks up a localized string similar to Get help with setting up and using HASS.Agent, 
+        ///report bugs or just talk about whatever..
         /// </summary>
         internal static string Help_LblDiscordInfo {
             get {
@@ -2353,7 +2381,8 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bit of everything, with the addition that other HA users can help as well..
+        ///   Looks up a localized string similar to Bit of everything, with the addition that other
+        ///HA users can help as well..
         /// </summary>
         internal static string Help_LblHAInfo {
             get {
@@ -2370,6 +2399,15 @@ namespace HASS.Agent.Resources.Localization {
         internal static string Help_LblInfo1 {
             get {
                 return ResourceManager.GetString("Help_LblInfo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wiki.
+        /// </summary>
+        internal static string Help_LblWiki {
+            get {
+                return ResourceManager.GetString("Help_LblWiki", resourceCulture);
             }
         }
         
@@ -2530,6 +2568,15 @@ namespace HASS.Agent.Resources.Localization {
         internal static string Main_LblHomeAssistantApi {
             get {
                 return ResourceManager.GetString("Main_LblHomeAssistantApi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to mqtt:.
+        /// </summary>
+        internal static string Main_LblMqtt {
+            get {
+                return ResourceManager.GetString("Main_LblMqtt", resourceCulture);
             }
         }
         
@@ -2961,6 +3008,15 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to finish.
+        /// </summary>
+        internal static string OnboardingManager_BtnNext_Finish {
+            get {
+                return ResourceManager.GetString("OnboardingManager_BtnNext_Finish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to abort the onboarding process?
         ///
         ///Your progress will not be saved, and it will not be shown again on next launch..
@@ -3312,6 +3368,15 @@ namespace HASS.Agent.Resources.Localization {
         internal static string OnboardingWelcome_LblInfo2 {
             get {
                 return ResourceManager.GetString("OnboardingWelcome_LblInfo2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to interface language.
+        /// </summary>
+        internal static string OnboardingWelcome_LblInterfaceLangauge {
+            get {
+                return ResourceManager.GetString("OnboardingWelcome_LblInterfaceLangauge", resourceCulture);
             }
         }
         
@@ -5180,6 +5245,51 @@ namespace HASS.Agent.Resources.Localization {
         internal static string ServiceMqtt_LblTip3 {
             get {
                 return ResourceManager.GetString("ServiceMqtt_LblTip3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to configuration missing.
+        /// </summary>
+        internal static string ServiceMqtt_SetMqttStatus_ConfigError {
+            get {
+                return ResourceManager.GetString("ServiceMqtt_SetMqttStatus_ConfigError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to connected.
+        /// </summary>
+        internal static string ServiceMqtt_SetMqttStatus_Connected {
+            get {
+                return ResourceManager.GetString("ServiceMqtt_SetMqttStatus_Connected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to connecting ...
+        /// </summary>
+        internal static string ServiceMqtt_SetMqttStatus_Connecting {
+            get {
+                return ResourceManager.GetString("ServiceMqtt_SetMqttStatus_Connecting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to disconnected.
+        /// </summary>
+        internal static string ServiceMqtt_SetMqttStatus_Disconnected {
+            get {
+                return ResourceManager.GetString("ServiceMqtt_SetMqttStatus_Disconnected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to error.
+        /// </summary>
+        internal static string ServiceMqtt_SetMqttStatus_Error {
+            get {
+                return ResourceManager.GetString("ServiceMqtt_SetMqttStatus_Error", resourceCulture);
             }
         }
         

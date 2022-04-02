@@ -987,18 +987,6 @@ you can probably use the preset address.</value>
 	<data name="About_LblInfo1" xml:space="preserve">
 		<value>A Windows-based client for the Home Assistant platform.</value>
 	</data>
-	<data name="About_LblInfo3" xml:space="preserve">
-		<value>This application is open source and completely free.  Please check the project
-pages of the used components for their individual licenses:</value>
-	</data>
-	<data name="About_LblInfo4" xml:space="preserve">
-		<value>A big 'thank you' to the developers of these projects, who were kind enough
-to share their hard work with the rest of us mere mortals. </value>
-	</data>
-	<data name="About_LblInfo5" xml:space="preserve">
-		<value>And of course; thanks to Paulus Shoutsen, Franck Nijhof and the entire team
-of devs that created and maintain Home Assistant :-)</value>
-	</data>
 	<data name="About_LblInfo2" xml:space="preserve">
 		<value>Created with love by</value>
 	</data>
@@ -1074,12 +1062,6 @@ of devs that created and maintain Home Assistant :-)</value>
 	<data name="Help_BtnClose" xml:space="preserve">
 		<value>close</value>
 	</data>
-	<data name="Help_LblInfo1" xml:space="preserve">
-		<value>Stuck while using HASS.Agent, need some help integrating the
-sensors/commands or have a great idea for the next version?
-
-There are a few channels through which you can reach us:</value>
-	</data>
 	<data name="Help_LblAbout" xml:space="preserve">
 		<value>About</value>
 	</data>
@@ -1089,14 +1071,8 @@ There are a few channels through which you can reach us:</value>
 	<data name="Help_LblGitHub" xml:space="preserve">
 		<value>GitHub tickets</value>
 	</data>
-	<data name="Help_LblHAInfo" xml:space="preserve">
-		<value>Bit of everything, with the addition that other HA users can help as well.</value>
-	</data>
 	<data name="Help_LblGitHubInfo" xml:space="preserve">
 		<value>Report bugs, feature requests, ideas, tips, ..</value>
-	</data>
-	<data name="Help_LblDiscordInfo" xml:space="preserve">
-		<value>Get help with setting up and using HASS.Agent, report bugs or just talk about whatever.</value>
 	</data>
 	<data name="Help_LblWikiInfo" xml:space="preserve">
 		<value>Documentation and usage examples.</value>
@@ -2167,5 +2143,67 @@ This is a costly request, so the recommended interval is 15 minutes (900 seconds
 		<value>Error storing sensors:
 
 {0}</value>
+	</data>
+	<data name="Main_LblMqtt" xml:space="preserve">
+		<value>mqtt:</value>
+	</data>
+	<data name="Help_LblInfo1" xml:space="preserve">
+		<value>Stuck while using HASS.Agent, need some help integrating the
+sensors/commands or have a great idea for the next version?
+
+There are a few channels through which you can reach us:</value>
+	</data>
+	<data name="Help_LblHAInfo" xml:space="preserve">
+		<value>Bit of everything, with the addition that other
+HA users can help as well.</value>
+	</data>
+	<data name="Help_LblDiscordInfo" xml:space="preserve">
+		<value>Get help with setting up and using HASS.Agent, 
+report bugs or just talk about whatever.</value>
+	</data>
+	<data name="Help_LblWiki" xml:space="preserve">
+		<value>Wiki</value>
+	</data>
+	<data name="Configuration_BtnStore_Busy" xml:space="preserve">
+		<value>busy, hold on ..</value>
+	</data>
+	<data name="ConfigGeneral_LblInterfaceLangauge" xml:space="preserve">
+		<value>interface language</value>
+	</data>
+	<data name="OnboardingWelcome_LblInterfaceLangauge" xml:space="preserve">
+		<value>interface language</value>
+	</data>
+	<data name="OnboardingManager_BtnNext_Finish" xml:space="preserve">
+		<value>finish</value>
+	</data>
+	<data name="ServiceMqtt_SetMqttStatus_Connected" xml:space="preserve">
+		<value>connected</value>
+	</data>
+	<data name="ServiceMqtt_SetMqttStatus_Connecting" xml:space="preserve">
+		<value>connecting ..</value>
+	</data>
+	<data name="ServiceMqtt_SetMqttStatus_ConfigError" xml:space="preserve">
+		<value>configuration missing</value>
+	</data>
+	<data name="ServiceMqtt_SetMqttStatus_Disconnected" xml:space="preserve">
+		<value>disconnected</value>
+	</data>
+	<data name="ServiceMqtt_SetMqttStatus_Error" xml:space="preserve">
+		<value>error</value>
+	</data>
+	<data name="About_LblInfo3" xml:space="preserve">
+		<value>This application is open source and completely free.  Please check the project pages of 
+the used components for their individual licenses:</value>
+	</data>
+	<data name="About_LblInfo4" xml:space="preserve">
+		<value>A big 'thank you' to the developers of these projects, who were kind enough to share
+their hard work with the rest of us mere mortals. </value>
+	</data>
+	<data name="About_LblInfo5" xml:space="preserve">
+		<value>And of course; thanks to Paulus Shoutsen, Franck Nijhof and the entire team of devs
+that created and maintain Home Assistant :-)</value>
+	</data>
+	<data name="About_LblOr" xml:space="preserve">
+		<value>or</value>
 	</data>
 </root>

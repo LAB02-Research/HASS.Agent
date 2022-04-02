@@ -2081,4 +2081,16 @@ The release page will now open instead.</value>
 	<data name="UpdatePending_Title_Beta" xml:space="preserve">
 		<value>HASS.Agent BETA Update</value>
 	</data>
+	<data name="Main_LblMqtt" xml:space="preserve">
+		<value>mqtt:</value>
+	</data>
+	<data name="Help_LblWiki" xml:space="preserve">
+		<value>Wiki</value>
+	</data>
+	<data name="Configuration_BtnStore_Busy" xml:space="preserve">
+		<value>busy, hold on ..</value>
+	</data>
+	<data name="ConfigGeneral_LblInterfaceLangauge" xml:space="preserve">
+		<value>interface language</value>
+	</data>
 </root>
