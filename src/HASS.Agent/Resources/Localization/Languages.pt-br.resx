@@ -537,7 +537,7 @@ Versão do Home Assistant: {0}</value>
     <value>usar seleção automática de certificado de cliente</value>
   </data>
   <data name="ConfigHomeAssistantApi_LblApiToken" xml:space="preserve">
-    <value>token de API</value>
+    <value>token api</value>
   </data>
   <data name="ConfigHomeAssistantApi_LblClientCertificate" xml:space="preserve">
     <value>certificado de cliente</value>
@@ -566,7 +566,7 @@ Você pode obter um token através da sua página de perfil. Role até o final e
     <value>combinação de atalhos</value>
   </data>
   <data name="ConfigHotKey_LblInfo1" xml:space="preserve">
-    <value>Uma maneira fácil de puxar suas ações é usar uma tecla de atalho rápido.
+    <value>Uma maneira fácil de puxar suas ações é usar uma tecla de atalhos rápidos.
 
 Dessa forma, independentemente do que estiver fazendo em sua máquina, você sempre
 poderá interagir com o Home Assistant.</value>
@@ -964,10 +964,10 @@ Deseja reiniciar agora?</value>
     <value>hass api: falha na conexão inicial</value>
   </data>
   <data name="HassApiManager_ToolTip_QuickActionFailed" xml:space="preserve">
-    <value>atalho rápido: ação falhou, verifique os logs para obter informações</value>
+    <value>atalhos rápidos: ação falhou, verifique os logs para obter informações</value>
   </data>
   <data name="HassApiManager_ToolTip_QuickActionFailedOnEntity" xml:space="preserve">
-    <value>atalho rápido: ação falhou, entidade não encontrada</value>
+    <value>atalhos rápidos: ação falhou, entidade não encontrada</value>
   </data>
   <data name="Help_BtnClose" xml:space="preserve">
     <value>fechar</value>
@@ -1009,8 +1009,8 @@ conosco:</value>
     <value>Ajuda</value>
   </data>
   <data name="Main_BtnActionsManager" xml:space="preserve">
-    <value>
-atalho rápido</value>
+	  <value>
+atalhos rápidos</value>
   </data>
   <data name="Main_BtnAppSettings" xml:space="preserve">
     <value>
@@ -1064,7 +1064,7 @@ serviço satélite</value>
     <value>mqtt:</value>
   </data>
   <data name="Main_LblNotificationApi" xml:space="preserve">
-    <value>api notificações:</value>
+    <value>notificações api:</value>
   </data>
   <data name="Main_LblQuickActions" xml:space="preserve">
     <value>atalhos rápidos:</value>
@@ -1406,7 +1406,7 @@ Também é usado como um prefixo sugerido para seus comandos e sensores.</value>
     <value>Ocorreu um erro ao tentar buscar suas entidades.</value>
   </data>
   <data name="QuickActions_Title" xml:space="preserve">
-    <value>Atalhos rápidos</value>
+    <value>Atalhos Rápidos</value>
   </data>
   <data name="QuickActionsConfig_BtnAdd" xml:space="preserve">
     <value>adicionar novo</value>
@@ -1490,7 +1490,7 @@ Também é usado como um prefixo sugerido para seus comandos e sensores.</value>
     <value>Atalhos Rápidos</value>
   </data>
   <data name="QuickActionsMod_Title_Mod" xml:space="preserve">
-    <value>Atalho Rápido Mod</value>
+    <value>Atalhos Rápidos Mod</value>
   </data>
   <data name="QuickActionsMod_Title_New" xml:space="preserve">
     <value>Novo Atalho Rápido</value>
@@ -2235,5 +2235,62 @@ A página de lançamento agora será aberta.</value>
   </data>
   <data name="UpdatePending_Title_Beta" xml:space="preserve">
     <value>Atualização BETA do HASS.Agent</value>
+  </data>
+  <data name="CommandType_CustomCommand" xml:space="preserve">
+	  <value>CustomBr</value>
+  </data>
+  <data name="CommandType_CustomExecutorCommand" xml:space="preserve">
+	  <value>CustomExecutorBr</value>
+  </data>
+  <data name="CommandType_HibernateCommand" xml:space="preserve">
+	  <value>HibernateBr</value>
+  </data>
+  <data name="CommandType_KeyCommand" xml:space="preserve">
+	  <value>KeyBr</value>
+  </data>
+  <data name="CommandType_LaunchUrlCommand" xml:space="preserve">
+	  <value>LaunchUrlBr</value>
+  </data>
+  <data name="CommandType_LockCommand" xml:space="preserve">
+	  <value>LockBr</value>
+  </data>
+  <data name="CommandType_LogOffCommand" xml:space="preserve">
+	  <value>LogOffBr</value>
+  </data>
+  <data name="CommandType_MediaMuteCommand" xml:space="preserve">
+	  <value>MediaMuteBr</value>
+  </data>
+  <data name="CommandType_MediaNextCommand" xml:space="preserve">
+	  <value>MediaNextBr</value>
+  </data>
+  <data name="CommandType_MediaPlayPauseCommand" xml:space="preserve">
+	  <value>MediaPlayPauseBr</value>
+  </data>
+  <data name="CommandType_MediaPreviousCommand" xml:space="preserve">
+	  <value>MediaPreviousBr</value>
+  </data>
+  <data name="CommandType_MediaVolumeDownCommand" xml:space="preserve">
+	  <value>MediaVolumeDownBr</value>
+  </data>
+  <data name="CommandType_MediaVolumeUpCommand" xml:space="preserve">
+	  <value>MediaVolumeUpBr</value>
+  </data>
+  <data name="CommandType_MultipleKeysCommand" xml:space="preserve">
+	  <value>MultipleKeysBr</value>
+  </data>
+  <data name="CommandType_PowershellCommand" xml:space="preserve">
+	  <value>PowershellBr</value>
+  </data>
+  <data name="CommandType_PublishAllSensorsCommand" xml:space="preserve">
+	  <value>PublishAllSensorsBr</value>
+  </data>
+  <data name="CommandType_RestartCommand" xml:space="preserve">
+	  <value>RestartBr</value>
+  </data>
+  <data name="CommandType_ShutdownCommand" xml:space="preserve">
+	  <value>ShutdownBr</value>
+  </data>
+  <data name="CommandType_SleepCommand" xml:space="preserve">
+	  <value>SleepBr</value>
   </data>
 </root>

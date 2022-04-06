@@ -911,6 +911,177 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Custom.
+        /// </summary>
+        internal static string CommandType_CustomCommand {
+            get {
+                return ResourceManager.GetString("CommandType_CustomCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CustomExecutor.
+        /// </summary>
+        internal static string CommandType_CustomExecutorCommand {
+            get {
+                return ResourceManager.GetString("CommandType_CustomExecutorCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hibernate.
+        /// </summary>
+        internal static string CommandType_HibernateCommand {
+            get {
+                return ResourceManager.GetString("CommandType_HibernateCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key.
+        /// </summary>
+        internal static string CommandType_KeyCommand {
+            get {
+                return ResourceManager.GetString("CommandType_KeyCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LaunchUrl.
+        /// </summary>
+        internal static string CommandType_LaunchUrlCommand {
+            get {
+                return ResourceManager.GetString("CommandType_LaunchUrlCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lock.
+        /// </summary>
+        internal static string CommandType_LockCommand {
+            get {
+                return ResourceManager.GetString("CommandType_LockCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LogOff.
+        /// </summary>
+        internal static string CommandType_LogOffCommand {
+            get {
+                return ResourceManager.GetString("CommandType_LogOffCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MediaMute.
+        /// </summary>
+        internal static string CommandType_MediaMuteCommand {
+            get {
+                return ResourceManager.GetString("CommandType_MediaMuteCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MediaNext.
+        /// </summary>
+        internal static string CommandType_MediaNextCommand {
+            get {
+                return ResourceManager.GetString("CommandType_MediaNextCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MediaPlayPause.
+        /// </summary>
+        internal static string CommandType_MediaPlayPauseCommand {
+            get {
+                return ResourceManager.GetString("CommandType_MediaPlayPauseCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MediaPrevious.
+        /// </summary>
+        internal static string CommandType_MediaPreviousCommand {
+            get {
+                return ResourceManager.GetString("CommandType_MediaPreviousCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MediaVolumeDown.
+        /// </summary>
+        internal static string CommandType_MediaVolumeDownCommand {
+            get {
+                return ResourceManager.GetString("CommandType_MediaVolumeDownCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MediaVolumeUp.
+        /// </summary>
+        internal static string CommandType_MediaVolumeUpCommand {
+            get {
+                return ResourceManager.GetString("CommandType_MediaVolumeUpCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MultipleKeys.
+        /// </summary>
+        internal static string CommandType_MultipleKeysCommand {
+            get {
+                return ResourceManager.GetString("CommandType_MultipleKeysCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Powershell.
+        /// </summary>
+        internal static string CommandType_PowershellCommand {
+            get {
+                return ResourceManager.GetString("CommandType_PowershellCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PublishAllSensors.
+        /// </summary>
+        internal static string CommandType_PublishAllSensorsCommand {
+            get {
+                return ResourceManager.GetString("CommandType_PublishAllSensorsCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restart.
+        /// </summary>
+        internal static string CommandType_RestartCommand {
+            get {
+                return ResourceManager.GetString("CommandType_RestartCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shutdown.
+        /// </summary>
+        internal static string CommandType_ShutdownCommand {
+            get {
+                return ResourceManager.GetString("CommandType_ShutdownCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string CommandType_SleepCommand {
+            get {
+                return ResourceManager.GetString("CommandType_SleepCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to test.
         /// </summary>
         internal static string ConfigExternalTools_BtnExternalBrowserIncognitoTest {
@@ -5806,6 +5977,681 @@ namespace HASS.Agent.Resources.Localization {
         internal static string UpdatePending_Title_Beta {
             get {
                 return ResourceManager.GetString("UpdatePending_Title_Beta", resourceCulture);
+            }
+        }
+		
+		        /// <summary>
+        ///   Looks up a localized string similar to Button.
+        /// </summary>
+        internal static string CommandEntityType_Button {
+            get {
+                return ResourceManager.GetString("CommandEntityType_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light.
+        /// </summary>
+        internal static string CommandEntityType_Light {
+            get {
+                return ResourceManager.GetString("CommandEntityType_Light", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lock.
+        /// </summary>
+        internal static string CommandEntityType_Lock {
+            get {
+                return ResourceManager.GetString("CommandEntityType_Lock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Siren.
+        /// </summary>
+        internal static string CommandEntityType_Siren {
+            get {
+                return ResourceManager.GetString("CommandEntityType_Siren", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch.
+        /// </summary>
+        internal static string CommandEntityType_Switch {
+            get {
+                return ResourceManager.GetString("CommandEntityType_Switch", resourceCulture);
+            }
+        }
+		
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string HassAction_Close {
+            get {
+                return ResourceManager.GetString("HassAction_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        internal static string HassAction_Off {
+            get {
+                return ResourceManager.GetString("HassAction_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On.
+        /// </summary>
+        internal static string HassAction_On {
+            get {
+                return ResourceManager.GetString("HassAction_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        internal static string HassAction_Open {
+            get {
+                return ResourceManager.GetString("HassAction_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pause.
+        /// </summary>
+        internal static string HassAction_Pause {
+            get {
+                return ResourceManager.GetString("HassAction_Pause", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Play.
+        /// </summary>
+        internal static string HassAction_Play {
+            get {
+                return ResourceManager.GetString("HassAction_Play", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop.
+        /// </summary>
+        internal static string HassAction_Stop {
+            get {
+                return ResourceManager.GetString("HassAction_Stop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle.
+        /// </summary>
+        internal static string HassAction_Toggle {
+            get {
+                return ResourceManager.GetString("HassAction_Toggle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string HassDomain_Automation {
+            get {
+                return ResourceManager.GetString("HassDomain_Automation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string HassDomain_Climate {
+            get {
+                return ResourceManager.GetString("HassDomain_Climate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string HassDomain_Cover {
+            get {
+                return ResourceManager.GetString("HassDomain_Cover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string HassDomain_InputBoolean {
+            get {
+                return ResourceManager.GetString("HassDomain_InputBoolean", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string HassDomain_Light {
+            get {
+                return ResourceManager.GetString("HassDomain_Light", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string HassDomain_MediaPlayer {
+            get {
+                return ResourceManager.GetString("HassDomain_MediaPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string HassDomain_Scene {
+            get {
+                return ResourceManager.GetString("HassDomain_Scene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string HassDomain_Script {
+            get {
+                return ResourceManager.GetString("HassDomain_Script", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string HassDomain_Switch {
+            get {
+                return ResourceManager.GetString("HassDomain_Switch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Locked.
+        /// </summary>
+        internal static string LockState_Locked {
+            get {
+                return ResourceManager.GetString("LockState_Locked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown.
+        /// </summary>
+        internal static string LockState_Unknown {
+            get {
+                return ResourceManager.GetString("LockState_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unlocked.
+        /// </summary>
+        internal static string LockState_Unlocked {
+            get {
+                return ResourceManager.GetString("LockState_Unlocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ActiveWindow.
+        /// </summary>
+        internal static string SensorType_ActiveWindowSensor {
+            get {
+                return ResourceManager.GetString("SensorType_ActiveWindowSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Audio.
+        /// </summary>
+        internal static string SensorType_AudioSensors {
+            get {
+                return ResourceManager.GetString("SensorType_AudioSensors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Battery.
+        /// </summary>
+        internal static string SensorType_BatterySensors {
+            get {
+                return ResourceManager.GetString("SensorType_BatterySensors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CpuLoad.
+        /// </summary>
+        internal static string SensorType_CpuLoadSensor {
+            get {
+                return ResourceManager.GetString("SensorType_CpuLoadSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CurrentClockSpeed.
+        /// </summary>
+        internal static string SensorType_CurrentClockSpeedSensor {
+            get {
+                return ResourceManager.GetString("SensorType_CurrentClockSpeedSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CurrentVolume.
+        /// </summary>
+        internal static string SensorType_CurrentVolumeSensor {
+            get {
+                return ResourceManager.GetString("SensorType_CurrentVolumeSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display.
+        /// </summary>
+        internal static string SensorType_DisplaySensors {
+            get {
+                return ResourceManager.GetString("SensorType_DisplaySensors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dummy.
+        /// </summary>
+        internal static string SensorType_DummySensor {
+            get {
+                return ResourceManager.GetString("SensorType_DummySensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GpuLoad.
+        /// </summary>
+        internal static string SensorType_GpuLoadSensor {
+            get {
+                return ResourceManager.GetString("SensorType_GpuLoadSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GpuTemperature.
+        /// </summary>
+        internal static string SensorType_GpuTemperatureSensor {
+            get {
+                return ResourceManager.GetString("SensorType_GpuTemperatureSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LastActive.
+        /// </summary>
+        internal static string SensorType_LastActiveSensor {
+            get {
+                return ResourceManager.GetString("SensorType_LastActiveSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LastBoot.
+        /// </summary>
+        internal static string SensorType_LastBootSensor {
+            get {
+                return ResourceManager.GetString("SensorType_LastBootSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LastSystemStateChange.
+        /// </summary>
+        internal static string SensorType_LastSystemStateChangeSensor {
+            get {
+                return ResourceManager.GetString("SensorType_LastSystemStateChangeSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LoggedUser.
+        /// </summary>
+        internal static string SensorType_LoggedUserSensor {
+            get {
+                return ResourceManager.GetString("SensorType_LoggedUserSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LoggedUsers.
+        /// </summary>
+        internal static string SensorType_LoggedUsersSensor {
+            get {
+                return ResourceManager.GetString("SensorType_LoggedUsersSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MemoryUsage.
+        /// </summary>
+        internal static string SensorType_MemoryUsageSensor {
+            get {
+                return ResourceManager.GetString("SensorType_MemoryUsageSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MicrophoneActive.
+        /// </summary>
+        internal static string SensorType_MicrophoneActiveSensor {
+            get {
+                return ResourceManager.GetString("SensorType_MicrophoneActiveSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NamedWindow.
+        /// </summary>
+        internal static string SensorType_NamedWindowSensor {
+            get {
+                return ResourceManager.GetString("SensorType_NamedWindowSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network.
+        /// </summary>
+        internal static string SensorType_NetworkSensors {
+            get {
+                return ResourceManager.GetString("SensorType_NetworkSensors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PerformanceCounter.
+        /// </summary>
+        internal static string SensorType_PerformanceCounterSensor {
+            get {
+                return ResourceManager.GetString("SensorType_PerformanceCounterSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ProcessActive.
+        /// </summary>
+        internal static string SensorType_ProcessActiveSensor {
+            get {
+                return ResourceManager.GetString("SensorType_ProcessActiveSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ServiceState.
+        /// </summary>
+        internal static string SensorType_ServiceStateSensor {
+            get {
+                return ResourceManager.GetString("SensorType_ServiceStateSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SessionState.
+        /// </summary>
+        internal static string SensorType_SessionStateSensor {
+            get {
+                return ResourceManager.GetString("SensorType_SessionStateSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage.
+        /// </summary>
+        internal static string SensorType_StorageSensors {
+            get {
+                return ResourceManager.GetString("SensorType_StorageSensors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UserNotification.
+        /// </summary>
+        internal static string SensorType_UserNotificationStateSensor {
+            get {
+                return ResourceManager.GetString("SensorType_UserNotificationStateSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WebcamActive.
+        /// </summary>
+        internal static string SensorType_WebcamActiveSensor {
+            get {
+                return ResourceManager.GetString("SensorType_WebcamActiveSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WindowsUpdates.
+        /// </summary>
+        internal static string SensorType_WindowsUpdatesSensors {
+            get {
+                return ResourceManager.GetString("SensorType_WindowsUpdatesSensors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WmiQuery.
+        /// </summary>
+        internal static string SensorType_WmiQuerySensor {
+            get {
+                return ResourceManager.GetString("SensorType_WmiQuerySensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ConsoleConnect.
+        /// </summary>
+        internal static string SystemStateEvent_ConsoleConnect {
+            get {
+                return ResourceManager.GetString("SystemStateEvent_ConsoleConnect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ConsoleDisconnect.
+        /// </summary>
+        internal static string SystemStateEvent_ConsoleDisconnect {
+            get {
+                return ResourceManager.GetString("SystemStateEvent_ConsoleDisconnect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HassAgentSatelliteServiceStarted.
+        /// </summary>
+        internal static string SystemStateEvent_HassAgentSatelliteServiceStarted {
+            get {
+                return ResourceManager.GetString("SystemStateEvent_HassAgentSatelliteServiceStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HassAgentStarted.
+        /// </summary>
+        internal static string SystemStateEvent_HassAgentStarted {
+            get {
+                return ResourceManager.GetString("SystemStateEvent_HassAgentStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logoff.
+        /// </summary>
+        internal static string SystemStateEvent_Logoff {
+            get {
+                return ResourceManager.GetString("SystemStateEvent_Logoff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RemoteConnect.
+        /// </summary>
+        internal static string SystemStateEvent_RemoteConnect {
+            get {
+                return ResourceManager.GetString("SystemStateEvent_RemoteConnect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RemoteDisconnect.
+        /// </summary>
+        internal static string SystemStateEvent_RemoteDisconnect {
+            get {
+                return ResourceManager.GetString("SystemStateEvent_RemoteDisconnect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resume.
+        /// </summary>
+        internal static string SystemStateEvent_Resume {
+            get {
+                return ResourceManager.GetString("SystemStateEvent_Resume", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SessionLock.
+        /// </summary>
+        internal static string SystemStateEvent_SessionLock {
+            get {
+                return ResourceManager.GetString("SystemStateEvent_SessionLock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SessionLogoff.
+        /// </summary>
+        internal static string SystemStateEvent_SessionLogoff {
+            get {
+                return ResourceManager.GetString("SystemStateEvent_SessionLogoff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SessionLogon.
+        /// </summary>
+        internal static string SystemStateEvent_SessionLogon {
+            get {
+                return ResourceManager.GetString("SystemStateEvent_SessionLogon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SessionRemoteControl.
+        /// </summary>
+        internal static string SystemStateEvent_SessionRemoteControl {
+            get {
+                return ResourceManager.GetString("SystemStateEvent_SessionRemoteControl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SessionUnlock.
+        /// </summary>
+        internal static string SystemStateEvent_SessionUnlock {
+            get {
+                return ResourceManager.GetString("SystemStateEvent_SessionUnlock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suspend.
+        /// </summary>
+        internal static string SystemStateEvent_Suspend {
+            get {
+                return ResourceManager.GetString("SystemStateEvent_Suspend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SystemShutdown.
+        /// </summary>
+        internal static string SystemStateEvent_SystemShutdown {
+            get {
+                return ResourceManager.GetString("SystemStateEvent_SystemShutdown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AcceptsNotifications.
+        /// </summary>
+        internal static string UserNotificationState_AcceptsNotifications {
+            get {
+                return ResourceManager.GetString("UserNotificationState_AcceptsNotifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Busy.
+        /// </summary>
+        internal static string UserNotificationState_Busy {
+            get {
+                return ResourceManager.GetString("UserNotificationState_Busy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NotPresent.
+        /// </summary>
+        internal static string UserNotificationState_NotPresent {
+            get {
+                return ResourceManager.GetString("UserNotificationState_NotPresent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PresentationMode.
+        /// </summary>
+        internal static string UserNotificationState_PresentationMode {
+            get {
+                return ResourceManager.GetString("UserNotificationState_PresentationMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to QuietTime.
+        /// </summary>
+        internal static string UserNotificationState_QuietTime {
+            get {
+                return ResourceManager.GetString("UserNotificationState_QuietTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RunningDirect3dFullScreen.
+        /// </summary>
+        internal static string UserNotificationState_RunningDirect3dFullScreen {
+            get {
+                return ResourceManager.GetString("UserNotificationState_RunningDirect3dFullScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RunningWindowsStoreApp.
+        /// </summary>
+        internal static string UserNotificationState_RunningWindowsStoreApp {
+            get {
+                return ResourceManager.GetString("UserNotificationState_RunningWindowsStoreApp", resourceCulture);
             }
         }
     }
