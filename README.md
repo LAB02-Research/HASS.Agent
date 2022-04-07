@@ -24,8 +24,7 @@ Clique [aqui](https://github.com/LAB02-Research/HASS.Agent/releases/tag/b2022.4.
 
 ----
 
-Developing this tool takes up quite a bit of time. It's completely free, and it'll stay that way without restrictions.<br/>
-However, like most developers, I run on caffeïne - so a cup of coffee is always very much appreciated! 
+Developing and maintaining this tool and everything that surrounds it takes up a lot of time. It's completely free, and will always stay that way without restrictions. However, like most developers, I run on caffeïne - so a cup of coffee is always very much appreciated! 
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/lab02research)
 
@@ -117,7 +116,7 @@ After installing, the onboarding process will help you get everything configured
 
 [Click here to download the latest installer](https://github.com/LAB02-Research/HASS.Agent/releases/latest/download/HASS.Agent.Installer.exe)
 
-If you want to install manually, there are .zip packages available as well with every release. There's a manual [in the wiki](https://github.com/LAB02-Research/HASS.Agent/wiki/1.-Installation#2-manual).
+If you want to install manually, there are .zip packages available for every release. Read the [manual](https://github.com/LAB02-Research/HASS.Agent/wiki/1.-Installation#2-manual) for more info.
 
 ----
 
@@ -125,7 +124,7 @@ If you want to install manually, there are .zip packages available as well with 
 
 Stuck while installing or using HASS.Agent, need some help integrating the sensors/commands or have a great idea for the next version?
 
-There are a few channels through which you can reach us:
+There are a few channels through which you can reach out:
 
 * [Github Tickets](https://github.com/LAB02-Research/HASS.Agent): Report bugs, feature requests, ideas, tips, ..
 
@@ -153,11 +152,11 @@ You can try this [companion app](https://www.home-assistant.io/blog/2020/09/18/m
 
 ### Issue Tracker
 
-To centrally manage all issues; community provided (e.g. via [Discord](https://discord.gg/nMvqzwrVBU)), [GitHub tickets](https://github.com/LAB02-Research/HASS.Agent/issues) and things I come up with, I use JetBrain's excellent YouTrack platform.
+To centrally manage all issues (community provided (e.g. via [Discord](https://discord.gg/nMvqzwrVBU)), [GitHub tickets](https://github.com/LAB02-Research/HASS.Agent/issues) and things I come up with), I use JetBrain's YouTrack platform.
 
-Here you can see which issues are known (bugs, cosmetics, nice-to-have, etc) and which issues are currently worked on. You can also see some graphs (who doesn't love them) on which part of HASS.Agent has the most tickets, and what type.
+There you can see which issues are known (bugs, cosmetics, nice-to-have, etc) and which issues are currently worked on. You can also see some graphs (who doesn't love them) on which part of HASS.Agent has the most tickets, and what type.
 
-It's read-only, please use GitHub to post tickets because that's where users will first look :)
+It's read-only, please use GitHub to post tickets because that's where users will look first :)
 
 [HASS.Agent YouTrack Dashboard](https://lab02research.youtrack.cloud)
 
@@ -173,15 +172,13 @@ Another great way is to help translating HASS.Agent. It's easy thanks to POEdito
 
 [Translating](https://github.com/LAB02-Research/HASS.Agent/wiki/Translating)
 
-You can add to an existing language, or suggest a new one.
-
-Thanks to [POEditor](https://poeditor.com) for providing a free opensource license!
+You can work on an existing language, or suggest a new one.
 
 ----
 
 ### Wishlist
 
-List of things I want to add somewhere down the road (basically a personal to-do notepad):
+A summary of things I want to add somewhere down the road:
 
  * **Notifications**: add 'critical' type to attract more attention
  * **Notifications**: history window
@@ -195,7 +192,7 @@ List of things I want to add somewhere down the road (basically a personal to-do
  * **General**: a built-in way to show a Home Assistant dashboard
  * **General**: internal mDNS client/server to drop the need for IPs
 
-More community provided ideas can be found in the [issue list](https://github.com/LAB02-Research/HASS.Agent/issues). If your idea hasn't been mentioned yet, please [create a ticket](https://github.com/LAB02-Research/HASS.Agent/issues) or [discuss on Discord](https://discord.gg/nMvqzwrVBU).
+The complete list can be found on the [HASS.Agent YouTrack Dashboard](https://lab02research.youtrack.cloud). If your idea isn't on there, please [create a ticket](https://github.com/LAB02-Research/HASS.Agent/issues) or [discuss on Discord](https://discord.gg/nMvqzwrVBU).
 
 ----
 
@@ -213,7 +210,7 @@ And a big thank you to all other packages:
 
 Please consult their individual licensing if you plan to use any of their code.
 
-HASS.Agent and HASS.Agent Notifier are released under the [MIT license](https://opensource.org/licenses/MIT).
+Everything on the HASS.Agent platform is released under the [MIT license](https://opensource.org/licenses/MIT).
 
 ---
 
