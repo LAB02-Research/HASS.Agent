@@ -8,7 +8,7 @@
 [![Discord](https://img.shields.io/badge/dynamic/json?color=blue&label=Discord&logo=discord&logoColor=white&query=presence_count&suffix=%20Online&url=https://discordapp.com/api/guilds/932957721622360074/widget.json)](https://discord.gg/nMvqzwrVBU)
 
 <a href="https://github.com/LAB02-Research/HASS.Agent/">
-    <img src="https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/logo_128.png" alt="HASS.Agent logo" title="HASS.Agent" align="right" height="128" /></a>
+    <img src="https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/logo_128.png" alt="HASS.Agent logo" title="HASS.Agent" align="right" height="128" /></a>
 
 # HASS.Agent
 
@@ -114,31 +114,31 @@ You can try this [companion app](https://www.home-assistant.io/blog/2020/09/18/m
 
 Notification examples:
 
-![Image-based toast notification](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_toast_image.png)  ![Text-based toast notification](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_toast_text.png)
+![Image-based toast notification](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_toast_image.png)  ![Text-based toast notification](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_toast_text.png)
 
 This is the Quick Action window you'll see when using the hotkey. This window automatically resizes to the amount of buttons you've added:
 
-![Quick Actions](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_quickactions.png)
+![Quick Actions](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_quickactions.png)
 
 You can easily configure a new Quick Action, HASS.Agent will fetch your entities for you:
 
-![New Quick Actions](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_new_quickaction.png)
+![New Quick Actions](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_new_quickaction.png)
 
 The sensors configuration screen:
 
-![Sensors](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_sensors.png)
+![Sensors](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_sensors.png)
     
 Adding a new sensor is just as easy:
 
-![Sensors](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_new_sensor.png)
+![Sensors](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_new_sensor.png)
 
 Easily manage the satellite service through HASS.Agent:
 
-![Service](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_satellite_service.png)
+![Service](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_satellite_service.png)
 
 You'll be guided through the configuration options during onboarding:
 
-![Onboarding Task](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_onboarding_startup.png)
+![Onboarding Task](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_onboarding_startup.png)
     
 ----
 
@@ -152,7 +152,7 @@ To use notifications, you'll need to install the [HASS.Agent Notifier integratio
 
 You'll also need to open the configured port in the firewall of the receiving PC (default `5115`). During the onboarding process (or when using the Configuration window), HASS.Agent will offer to do it for you. You can always execute these steps later on through the configuration window:
 
-![Configuration screen](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_notifications_portreservation.png)
+![Configuration screen](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_notifications_portreservation.png)
 
 ----
 
@@ -162,7 +162,7 @@ When you first launch HASS.Agent, you'll be taken to the onboarding process. Thi
 
 If you don't want this, or if you want to change something later on, you can use the configuration screen: 
 
-![Configuration screen](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_configuration.png)
+![Configuration screen](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_configuration.png)
 
 Configuring HASS.Agent is split into different pages:
 
@@ -238,7 +238,7 @@ HASS.Agent resides in the system tray. Make sure it's always visible and not hid
 
 You can double-click to open the Home screen:
 
-![Main window](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_main_window.png)
+![Main window](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_main_window.png)
 
 From here, you can easily use & configure the various parts of HASS.Agent:
 
@@ -293,7 +293,7 @@ There's a wiki page dedicated to these: [Command Actions Usage & Examples](https
 
 Apart from the automatic update checker, you can check for new updates from the main window or rightclicking the systray icon and selecting 'check for updates'. If there's an update, HASS.Agent can download and install it for you.
 
-![Update window](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/Images/hass_agent_update.png)
+![Update window](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_update.png)
 
 If you're using the installer, it'll launch HASS.Agent for you when it's done. But if you've updated manually, just doubleclick `HASS.Agent.exe`.
 
