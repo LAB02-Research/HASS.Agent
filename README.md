@@ -149,11 +149,9 @@ You can try this [companion app](https://www.home-assistant.io/blog/2020/09/18/m
 
 ### Issue Tracker
 
-To centrally manage all issues (community provided (e.g. via [Discord](https://discord.gg/nMvqzwrVBU)), [GitHub tickets](https://github.com/LAB02-Research/HASS.Agent/issues), and things I come up with), I use JetBrain's YouTrack platform.
+To centrally manage all issues (community provided, [GitHub tickets](https://github.com/LAB02-Research/HASS.Agent/issues), and things I come up with), I use JetBrain's YouTrack platform.
 
-There you can see which issues are known (bugs, cosmetics, nice-to-have, etc) and which issues are currently worked on. You can also see some graphs (who doesn't love them) on which part of HASS.Agent has the most tickets, and what type.
-
-It's read-only, please use GitHub to post tickets because that's where users will look first :)
+There you can see all open issues (bugs, cosmetics, nice-to-haves, etc), and which issues are currently worked on. It's read-only, please use [GitHub](https://github.com/LAB02-Research/HASS.Agent/issues) to post tickets because that's where users will look first :)
 
 [HASS.Agent YouTrack Dashboard](https://lab02research.youtrack.cloud)
 
@@ -161,11 +159,11 @@ It's read-only, please use GitHub to post tickets because that's where users wil
 
 ### Helping Out
 
-The best way to help out with developing is to test as much as you can, and report any weird or failing behavior by [opening a ticket](https://github.com/LAB02-Research/HASS.Agent/issues). 
+The best way to help out is to test as much as you can, and report any weird or failing behavior by [opening a ticket](https://github.com/LAB02-Research/HASS.Agent/issues). 
 
-Same goes for sharing ideas for new (or improved) functions! If you want, you can [join on Discord](https://discord.gg/nMvqzwrVBU) to discuss your ideas.
+Same goes for sharing ideas for new (or improved) functionality! If you want, you can [join on Discord](https://discord.gg/nMvqzwrVBU) to discuss your ideas.
 
-Another great way is to help translating HASS.Agent. It's easy thanks to POEditor - no coding knowledge required. For more info, check out the translating wiki page:
+Another great way is to help translating HASS.Agent. It's easy thanks to POEditor - no coding knowledge required, everything's done online. For more info, check out the translating wiki page:
 
 [Translating](https://github.com/LAB02-Research/HASS.Agent/wiki/Translating)
 
@@ -197,9 +195,7 @@ The complete list can be found on the [HASS.Agent YouTrack Dashboard](https://la
 
 First: thanks to the entire team that's developing [Home Assistant](https://www.home-assistant.io) - such an amazing platform!
 
-Second: I learned a lot from sleevezipper's [HASS Workstation Service](https://github.com/sleevezipper/hass-workstation-service). Thank you for sharing your hard work!
-
-Thanks to [POEditor](https://poeditor.com) for providing a free opensource license for their excellent translation platform!
+Second: I learned a lot from sleevezipper's [HASS Workstation Service](https://github.com/sleevezipper/hass-workstation-service). Thank you for sharing your hard work. Thanks to [POEditor](https://poeditor.com) for providing a free opensource license for their excellent translation platform!
 
 And a big thank you to all other packages:
 
