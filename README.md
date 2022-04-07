@@ -48,10 +48,7 @@ Developing and maintaining this tool (and everything that surrounds it) takes up
 
 ### Why?
 
-The main reason I built this is that I wanted to receive notifications, including images, on my PC and to quickly perform actions (i.e. to toggle a lamp). There weren't any software-based solutions for this, so I set out to build one myself. 
-
-That's also the premise of this project; it's built to solve problems I encountered (or perhaps I should use the word "*nuisances*"), so it may not work for you. 
-If that's the case, feel free to open a ticket so we can discuss! 
+The main reason I built this is that I wanted to receive notifications on my PC, including images, and to quickly perform actions (e.g. to toggle a lamp). There weren't any software-based solutions for this, so I set out to build one myself. 
 
 ----
 
