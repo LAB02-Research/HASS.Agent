@@ -24,7 +24,7 @@ Clique [aqui](https://github.com/LAB02-Research/HASS.Agent/releases/tag/b2022.4.
 
 ----
 
-Developing and maintaining this tool and everything that surrounds it takes up a lot of time. It's completely free, and will always stay that way without restrictions. However, like most developers, I run on caffeïne - so a cup of coffee is always very much appreciated! 
+Developing and maintaining this tool (and everything that surrounds it) takes up a lot of time. It's completely free, and will always stay that way without restrictions. However, like most developers, I run on caffeïne - so a cup of coffee is always very much appreciated! 
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/lab02research)
 
