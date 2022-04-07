@@ -149,7 +149,7 @@ You can try this [companion app](https://www.home-assistant.io/blog/2020/09/18/m
 
 ### Issue Tracker
 
-To centrally manage all issues (community provided (e.g. via [Discord](https://discord.gg/nMvqzwrVBU)), [GitHub tickets](https://github.com/LAB02-Research/HASS.Agent/issues) and things I come up with), I use JetBrain's YouTrack platform.
+To centrally manage all issues (community provided (e.g. via [Discord](https://discord.gg/nMvqzwrVBU)), [GitHub tickets](https://github.com/LAB02-Research/HASS.Agent/issues), and things I come up with), I use JetBrain's YouTrack platform.
 
 There you can see which issues are known (bugs, cosmetics, nice-to-have, etc) and which issues are currently worked on. You can also see some graphs (who doesn't love them) on which part of HASS.Agent has the most tickets, and what type.
 
