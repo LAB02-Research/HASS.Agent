@@ -42,6 +42,7 @@ However, like most developers, I run on caffeïne - so a cup of coffee is always
  * [Configuration](#configuration)
  * [Usage](#usage)
  * [Updating](#updating)
+ * [Issue Tracker](#issue-tracker)
  * [Helping Out](#helping-out)
  * [Wishlist](#wishlist)
  * [Usage Summary](#usage-summary)
@@ -296,6 +297,18 @@ Apart from the automatic update checker, you can check for new updates from the 
 ![Update window](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_update.png)
 
 If you're using the installer, it'll launch HASS.Agent for you when it's done. But if you've updated manually, just doubleclick `HASS.Agent.exe`.
+
+----
+
+### Issue Tracker
+
+To centrally manage all issues; community provided (e.g. via [Discord](https://discord.gg/nMvqzwrVBU)), [GitHub tickets](https://github.com/LAB02-Research/HASS.Agent/issues) and things I come up with, I use JetBrain's excellent YouTrack platform.
+
+Here you can see which issues are known (bugs, cosmetics, nice-to-have, etc) and which issues are currently worked on. You can also see some graphs (who doesn't love them) on which part of HASS.Agent has the most tickets, and what type.
+
+It's read-only, please use GitHub to post tickets because that's where users will first look :)
+
+[HASS.Agent YouTrack Dashboard](https://lab02research.youtrack.cloud)
 
 ----
 
