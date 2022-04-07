@@ -2392,4 +2392,31 @@ The release page will now open instead.</value>
 	<data name="CommandEntityType_Switch" xml:space="preserve">
 		<value>Switch</value>
 	</data>
+	<data name="ComponentStatus_Connecting" xml:space="preserve">
+		<value>Connecting</value>
+	</data>
+	<data name="ComponentStatus_Disabled" xml:space="preserve">
+		<value>Disabled</value>
+	</data>
+	<data name="ComponentStatus_Failed" xml:space="preserve">
+		<value>Failed</value>
+	</data>
+	<data name="ComponentStatus_Loading" xml:space="preserve">
+		<value>Loading</value>
+	</data>
+	<data name="ComponentStatus_Ok" xml:space="preserve">
+		<value>Ok</value>
+	</data>
+	<data name="ComponentStatus_Stopped" xml:space="preserve">
+		<value>Stopped</value>
+	</data>
+	<data name="LockState_Locked" xml:space="preserve">
+		<value>Locked</value>
+	</data>
+	<data name="LockState_Unknown" xml:space="preserve">
+		<value>Unknown</value>
+	</data>
+	<data name="LockState_Unlocked" xml:space="preserve">
+		<value>Unlocked</value>
+	</data>
 </root>

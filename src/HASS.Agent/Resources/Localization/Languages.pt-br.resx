@@ -148,6 +148,21 @@ uma xícara de café:</value>
   <data name="About_Title" xml:space="preserve">
     <value>Sobre</value>
   </data>
+  <data name="CommandEntityType_Button" xml:space="preserve">
+    <value>Button</value>
+  </data>
+  <data name="CommandEntityType_Light" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="CommandEntityType_Lock" xml:space="preserve">
+    <value>Lock</value>
+  </data>
+  <data name="CommandEntityType_Siren" xml:space="preserve">
+    <value>Siren</value>
+  </data>
+  <data name="CommandEntityType_Switch" xml:space="preserve">
+    <value>Switch</value>
+  </data>
   <data name="CommandMqttTopic_BtnClose" xml:space="preserve">
     <value>fechar</value>
   </data>
@@ -435,6 +450,63 @@ Tem certeza de que quer isso?</value>
   </data>
   <data name="CommandsMod_Title_NewCommand" xml:space="preserve">
     <value>Novo Comando</value>
+  </data>
+  <data name="CommandType_CustomCommand" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="CommandType_CustomExecutorCommand" xml:space="preserve">
+	  <value>CustomExecutor</value>
+  </data>
+  <data name="CommandType_HibernateCommand" xml:space="preserve">
+    <value>Hibernate</value>
+  </data>
+  <data name="CommandType_KeyCommand" xml:space="preserve">
+    <value>Key</value>
+  </data>
+  <data name="CommandType_LaunchUrlCommand" xml:space="preserve">
+    <value>LaunchUrl</value>
+  </data>
+  <data name="CommandType_LockCommand" xml:space="preserve">
+    <value>Lock</value>
+  </data>
+  <data name="CommandType_LogOffCommand" xml:space="preserve">
+    <value>LogOff</value>
+  </data>
+  <data name="CommandType_MediaMuteCommand" xml:space="preserve">
+    <value>MediaMute</value>
+  </data>
+  <data name="CommandType_MediaNextCommand" xml:space="preserve">
+    <value>MediaNext</value>
+  </data>
+  <data name="CommandType_MediaPlayPauseCommand" xml:space="preserve">
+    <value>MediaPlayPause</value>
+  </data>
+  <data name="CommandType_MediaPreviousCommand" xml:space="preserve">
+    <value>MediaPrevious</value>
+  </data>
+  <data name="CommandType_MediaVolumeDownCommand" xml:space="preserve">
+    <value>MediaVolumeDown</value>
+  </data>
+  <data name="CommandType_MediaVolumeUpCommand" xml:space="preserve">
+    <value>MediaVolumeUp</value>
+  </data>
+  <data name="CommandType_MultipleKeysCommand" xml:space="preserve">
+    <value>MultipleKeys</value>
+  </data>
+  <data name="CommandType_PowershellCommand" xml:space="preserve">
+    <value>Powershell</value>
+  </data>
+  <data name="CommandType_PublishAllSensorsCommand" xml:space="preserve">
+    <value>PublishAllSensors</value>
+  </data>
+  <data name="CommandType_RestartCommand" xml:space="preserve">
+    <value>Restart</value>
+  </data>
+  <data name="CommandType_ShutdownCommand" xml:space="preserve">
+    <value>Shutdown</value>
+  </data>
+  <data name="CommandType_SleepCommand" xml:space="preserve">
+    <value>Sleep</value>
   </data>
   <data name="ConfigExternalTools_BtnExternalBrowserIncognitoTest" xml:space="preserve">
     <value>teste</value>
@@ -942,6 +1014,30 @@ Deseja reiniciar agora?</value>
   <data name="ExitDialog_Title" xml:space="preserve">
     <value>Sair da caixa de diálogo</value>
   </data>
+  <data name="HassAction_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="HassAction_Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="HassAction_On" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="HassAction_Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="HassAction_Pause" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="HassAction_Play" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="HassAction_Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="HassAction_Toggle" xml:space="preserve">
+    <value>Toogle</value>
+  </data>
   <data name="HassApiManager_CheckHassConfig_CertNotFound" xml:space="preserve">
     <value>arquivo de certificado do cliente não encontrado</value>
   </data>
@@ -968,6 +1064,33 @@ Deseja reiniciar agora?</value>
   </data>
   <data name="HassApiManager_ToolTip_QuickActionFailedOnEntity" xml:space="preserve">
     <value>atalhos rápidos: ação falhou, entidade não encontrada</value>
+  </data>
+  <data name="HassDomain_Automation" xml:space="preserve">
+    <value>Automation</value>
+  </data>
+  <data name="HassDomain_Climate" xml:space="preserve">
+    <value>Climate</value>
+  </data>
+  <data name="HassDomain_Cover" xml:space="preserve">
+    <value>Cover</value>
+  </data>
+  <data name="HassDomain_InputBoolean" xml:space="preserve">
+    <value>InputBoolean</value>
+  </data>
+  <data name="HassDomain_Light" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="HassDomain_MediaPlayer" xml:space="preserve">
+    <value>MediaPlayer</value>
+  </data>
+  <data name="HassDomain_Scene" xml:space="preserve">
+    <value>Scene</value>
+  </data>
+  <data name="HassDomain_Script" xml:space="preserve">
+    <value>Script</value>
+  </data>
+  <data name="HassDomain_Switch" xml:space="preserve">
+    <value>Switch</value>
   </data>
   <data name="Help_BtnClose" xml:space="preserve">
     <value>fechar</value>
@@ -1009,8 +1132,7 @@ conosco:</value>
     <value>Ajuda</value>
   </data>
   <data name="Main_BtnActionsManager" xml:space="preserve">
-	  <value>
-atalhos rápidos</value>
+    <value>atalhos rápidos</value>
   </data>
   <data name="Main_BtnAppSettings" xml:space="preserve">
     <value>
@@ -1221,7 +1343,7 @@ link abaixo para mais informações.</value>
 
 - Instale a integração HASS.Agent-Notifier
 - Reinicie o Home Assistant
-- Configurar uma entidade de notificação
+- Configure uma entidade de notificação
 - Reinicie o Home Assistant</value>
   </data>
   <data name="OnboardingIntegration_LblIntegration" xml:space="preserve">
@@ -1771,6 +1893,90 @@ Essa é uma solicitação cara, portanto, o intervalo recomendado é de 15 minut
   <data name="SensorsMod_Title_New" xml:space="preserve">
     <value>Novo Sensor</value>
   </data>
+  <data name="SensorType_ActiveWindowSensor" xml:space="preserve">
+    <value>JanelaAtiva</value>
+  </data>
+  <data name="SensorType_AudioSensors" xml:space="preserve">
+    <value>Áudio</value>
+  </data>
+  <data name="SensorType_BatterySensors" xml:space="preserve">
+    <value>Bateria</value>
+  </data>
+  <data name="SensorType_CpuLoadSensor" xml:space="preserve">
+    <value>CargaDaCpu</value>
+  </data>
+  <data name="SensorType_CurrentClockSpeedSensor" xml:space="preserve">
+    <value>VelocidadeAtualDaCpu</value>
+  </data>
+  <data name="SensorType_CurrentVolumeSensor" xml:space="preserve">
+    <value>VolumeAtual</value>
+  </data>
+  <data name="SensorType_DisplaySensors" xml:space="preserve">
+    <value>Tela</value>
+  </data>
+  <data name="SensorType_DummySensor" xml:space="preserve">
+    <value>Fictício</value>
+  </data>
+  <data name="SensorType_GpuLoadSensor" xml:space="preserve">
+    <value>CargaDaGpu</value>
+  </data>
+  <data name="SensorType_GpuTemperatureSensor" xml:space="preserve">
+    <value>TemperaturaDaGpu</value>
+  </data>
+  <data name="SensorType_LastActiveSensor" xml:space="preserve">
+    <value>ÚltimaAtividade</value>
+  </data>
+  <data name="SensorType_LastBootSensor" xml:space="preserve">
+    <value>ÚltimaInicialização</value>
+  </data>
+  <data name="SensorType_LastSystemStateChangeSensor" xml:space="preserve">
+    <value>ÚltimaMudançaDeEstadoDoSistema</value>
+  </data>
+  <data name="SensorType_LoggedUserSensor" xml:space="preserve">
+    <value>UsuárioLogado</value>
+  </data>
+  <data name="SensorType_LoggedUsersSensor" xml:space="preserve">
+    <value>UsuáriosLogados</value>
+  </data>
+  <data name="SensorType_MemoryUsageSensor" xml:space="preserve">
+    <value>UsoDeMemória</value>
+  </data>
+  <data name="SensorType_MicrophoneActiveSensor" xml:space="preserve">
+    <value>MicrofoneAtivo</value>
+  </data>
+  <data name="SensorType_NamedWindowSensor" xml:space="preserve">
+    <value>NomeDaJanela</value>
+  </data>
+  <data name="SensorType_NetworkSensors" xml:space="preserve">
+    <value>Rede</value>
+  </data>
+  <data name="SensorType_PerformanceCounterSensor" xml:space="preserve">
+    <value>ContadorDeDesempenho</value>
+  </data>
+  <data name="SensorType_ProcessActiveSensor" xml:space="preserve">
+    <value>ProcessoAtivo</value>
+  </data>
+  <data name="SensorType_ServiceStateSensor" xml:space="preserve">
+    <value>EstadoDoServiço</value>
+  </data>
+  <data name="SensorType_SessionStateSensor" xml:space="preserve">
+    <value>EstadoDaSessão</value>
+  </data>
+  <data name="SensorType_StorageSensors" xml:space="preserve">
+    <value>Armazenamento</value>
+  </data>
+  <data name="SensorType_UserNotificationStateSensor" xml:space="preserve">
+    <value>NotificaçãoDoUsuário</value>
+  </data>
+  <data name="SensorType_WebcamActiveSensor" xml:space="preserve">
+    <value>WebcamAtiva</value>
+  </data>
+  <data name="SensorType_WindowsUpdatesSensors" xml:space="preserve">
+    <value>AtualizaçõesDoWindows</value>
+  </data>
+  <data name="SensorType_WmiQuerySensor" xml:space="preserve">
+    <value>WmiQuery</value>
+  </data>
   <data name="ServiceCommands_BtnAdd" xml:space="preserve">
     <value>adicionar novo</value>
   </data>
@@ -2163,6 +2369,51 @@ Consulte os logs para obter mais informações.</value>
 
 {0}</value>
   </data>
+  <data name="SystemStateEvent_ConsoleConnect" xml:space="preserve">
+    <value>ConectarConsole</value>
+  </data>
+  <data name="SystemStateEvent_ConsoleDisconnect" xml:space="preserve">
+    <value>DesconectarConsole</value>
+  </data>
+  <data name="SystemStateEvent_HassAgentSatelliteServiceStarted" xml:space="preserve">
+    <value>ServiçoSatéliteDoHass.AgentIniciado</value>
+  </data>
+  <data name="SystemStateEvent_HassAgentStarted" xml:space="preserve">
+    <value>Hass.AgentIniciado</value>
+  </data>
+  <data name="SystemStateEvent_Logoff" xml:space="preserve">
+    <value>Sair</value>
+  </data>
+  <data name="SystemStateEvent_RemoteConnect" xml:space="preserve">
+    <value>ConexãoRemota</value>
+  </data>
+  <data name="SystemStateEvent_RemoteDisconnect" xml:space="preserve">
+    <value>DesconexãoRemota</value>
+  </data>
+  <data name="SystemStateEvent_Resume" xml:space="preserve">
+    <value>Retomar</value>
+  </data>
+  <data name="SystemStateEvent_SessionLock" xml:space="preserve">
+    <value>BloquearSessão</value>
+  </data>
+  <data name="SystemStateEvent_SessionLogoff" xml:space="preserve">
+    <value>SairDaSessão</value>
+  </data>
+  <data name="SystemStateEvent_SessionLogon" xml:space="preserve">
+    <value>EntrarNaSessão</value>
+  </data>
+  <data name="SystemStateEvent_SessionRemoteControl" xml:space="preserve">
+    <value>ControleRemotoDaSessão </value>
+  </data>
+  <data name="SystemStateEvent_SessionUnlock" xml:space="preserve">
+    <value>DesbloquearSessão</value>
+  </data>
+  <data name="SystemStateEvent_Suspend" xml:space="preserve">
+    <value>Suspender</value>
+  </data>
+  <data name="SystemStateEvent_SystemShutdown" xml:space="preserve">
+    <value>DesligarSistema</value>
+  </data>
   <data name="UpdateManager_DownloadAndExecuteUpdate_MessageBox1" xml:space="preserve">
     <value>Não foi possível preparar o download da atualização, verifique os logs para obter mais informações.
 
@@ -2236,61 +2487,25 @@ A página de lançamento agora será aberta.</value>
   <data name="UpdatePending_Title_Beta" xml:space="preserve">
     <value>Atualização BETA do HASS.Agent</value>
   </data>
-  <data name="CommandType_CustomCommand" xml:space="preserve">
-	  <value>CustomBr</value>
+  <data name="UserNotificationState_AcceptsNotifications" xml:space="preserve">
+    <value>AceitaNotificações</value>
   </data>
-  <data name="CommandType_CustomExecutorCommand" xml:space="preserve">
-	  <value>CustomExecutorBr</value>
+  <data name="UserNotificationState_Busy" xml:space="preserve">
+    <value>Ocupado</value>
   </data>
-  <data name="CommandType_HibernateCommand" xml:space="preserve">
-	  <value>HibernateBr</value>
+  <data name="UserNotificationState_NotPresent" xml:space="preserve">
+    <value>NãoPresente</value>
   </data>
-  <data name="CommandType_KeyCommand" xml:space="preserve">
-	  <value>KeyBr</value>
+  <data name="UserNotificationState_PresentationMode" xml:space="preserve">
+    <value>ModoDeApresentação</value>
   </data>
-  <data name="CommandType_LaunchUrlCommand" xml:space="preserve">
-	  <value>LaunchUrlBr</value>
+  <data name="UserNotificationState_QuietTime" xml:space="preserve">
+    <value>TempoSilenciado</value>
   </data>
-  <data name="CommandType_LockCommand" xml:space="preserve">
-	  <value>LockBr</value>
+  <data name="UserNotificationState_RunningDirect3dFullScreen" xml:space="preserve">
+    <value>ExecutandoDirect3DEmTelaCheia</value>
   </data>
-  <data name="CommandType_LogOffCommand" xml:space="preserve">
-	  <value>LogOffBr</value>
-  </data>
-  <data name="CommandType_MediaMuteCommand" xml:space="preserve">
-	  <value>MediaMuteBr</value>
-  </data>
-  <data name="CommandType_MediaNextCommand" xml:space="preserve">
-	  <value>MediaNextBr</value>
-  </data>
-  <data name="CommandType_MediaPlayPauseCommand" xml:space="preserve">
-	  <value>MediaPlayPauseBr</value>
-  </data>
-  <data name="CommandType_MediaPreviousCommand" xml:space="preserve">
-	  <value>MediaPreviousBr</value>
-  </data>
-  <data name="CommandType_MediaVolumeDownCommand" xml:space="preserve">
-	  <value>MediaVolumeDownBr</value>
-  </data>
-  <data name="CommandType_MediaVolumeUpCommand" xml:space="preserve">
-	  <value>MediaVolumeUpBr</value>
-  </data>
-  <data name="CommandType_MultipleKeysCommand" xml:space="preserve">
-	  <value>MultipleKeysBr</value>
-  </data>
-  <data name="CommandType_PowershellCommand" xml:space="preserve">
-	  <value>PowershellBr</value>
-  </data>
-  <data name="CommandType_PublishAllSensorsCommand" xml:space="preserve">
-	  <value>PublishAllSensorsBr</value>
-  </data>
-  <data name="CommandType_RestartCommand" xml:space="preserve">
-	  <value>RestartBr</value>
-  </data>
-  <data name="CommandType_ShutdownCommand" xml:space="preserve">
-	  <value>ShutdownBr</value>
-  </data>
-  <data name="CommandType_SleepCommand" xml:space="preserve">
-	  <value>SleepBr</value>
+  <data name="UserNotificationState_RunningWindowsStoreApp" xml:space="preserve">
+    <value>ExecutandoWindowsStoreApp</value>
   </data>
 </root>
