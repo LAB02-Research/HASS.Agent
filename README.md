@@ -12,7 +12,7 @@
 
 # HASS.Agent
 
-HASS.Agent is a Windows-based client application for [Home Assistant](https://www.home-assistant.io), developed in .NET 6.
+HASS.Agent is a Windows-based client (*companion*) application for [Home Assistant](https://www.home-assistant.io), developed in .NET 6.
 
 Click [here](https://github.com/LAB02-Research/HASS.Agent/releases/latest/download/HASS.Agent.Installer.exe) to download the latest installer.
 
@@ -61,9 +61,9 @@ Summary of the core functions:
 
 * **Quick Actions**: use a keyboard shortcut to quickly pull up a command interface, through which you can control Home Assistant entities - or, assign a keyboard shortcut to individual Quick Actions for even faster triggering.
 
-* **Commands**: control your PC (or other Windows based device) through Home Assistant using custom- or built-in commands.
+* **Commands** (currently **19**): control your PC (or other Windows based device) through Home Assistant using custom- or built-in commands.
 
-* **Sensors**: send your PC's sensors to Home Assistant to monitor cpu, mem, webcam usage, wmi- and performance counter data, etc.
+* **Sensors** (currently **28**): send your PC's sensors to Home Assistant to monitor every aspect of your device.
 
 * **Satellite Service**: use the service to collect sensordata and execute commands, even when you're not logged in. 
 
