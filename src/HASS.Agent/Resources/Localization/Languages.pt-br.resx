@@ -149,19 +149,19 @@ uma xícara de café:</value>
     <value>Sobre</value>
   </data>
   <data name="CommandEntityType_Button" xml:space="preserve">
-    <value>Button</value>
+    <value>Botão</value>
   </data>
   <data name="CommandEntityType_Light" xml:space="preserve">
-    <value>Light</value>
+    <value>Lâmpada</value>
   </data>
   <data name="CommandEntityType_Lock" xml:space="preserve">
-    <value>Lock</value>
+    <value>Fechadura</value>
   </data>
   <data name="CommandEntityType_Siren" xml:space="preserve">
-    <value>Siren</value>
+    <value>Sirene</value>
   </data>
   <data name="CommandEntityType_Switch" xml:space="preserve">
-    <value>Switch</value>
+    <value>Interruptor</value>
   </data>
   <data name="CommandMqttTopic_BtnClose" xml:space="preserve">
     <value>fechar</value>
@@ -452,61 +452,79 @@ Tem certeza de que quer isso?</value>
     <value>Novo Comando</value>
   </data>
   <data name="CommandType_CustomCommand" xml:space="preserve">
-    <value>Custom</value>
+    <value>Personalizado</value>
   </data>
   <data name="CommandType_CustomExecutorCommand" xml:space="preserve">
-	  <value>CustomExecutor</value>
+    <value>Executor personalizado</value>
   </data>
   <data name="CommandType_HibernateCommand" xml:space="preserve">
-    <value>Hibernate</value>
+    <value>Hibernar</value>
   </data>
   <data name="CommandType_KeyCommand" xml:space="preserve">
-    <value>Key</value>
+    <value>Chave</value>
   </data>
   <data name="CommandType_LaunchUrlCommand" xml:space="preserve">
-    <value>LaunchUrl</value>
+    <value>URL de início</value>
   </data>
   <data name="CommandType_LockCommand" xml:space="preserve">
-    <value>Lock</value>
+    <value>Fechadura</value>
   </data>
   <data name="CommandType_LogOffCommand" xml:space="preserve">
-    <value>LogOff</value>
+    <value>Deslogar</value>
   </data>
   <data name="CommandType_MediaMuteCommand" xml:space="preserve">
-    <value>MediaMute</value>
+    <value>Silenciar mídia</value>
   </data>
   <data name="CommandType_MediaNextCommand" xml:space="preserve">
-    <value>MediaNext</value>
+    <value>Próxima mídia</value>
   </data>
   <data name="CommandType_MediaPlayPauseCommand" xml:space="preserve">
-    <value>MediaPlayPause</value>
+    <value>Play/Pause mídia</value>
   </data>
   <data name="CommandType_MediaPreviousCommand" xml:space="preserve">
-    <value>MediaPrevious</value>
+    <value>Voltar mídia</value>
   </data>
   <data name="CommandType_MediaVolumeDownCommand" xml:space="preserve">
-    <value>MediaVolumeDown</value>
+    <value>Abaixar volume mídia</value>
   </data>
   <data name="CommandType_MediaVolumeUpCommand" xml:space="preserve">
-    <value>MediaVolumeUp</value>
+    <value>Aumentar volume mídia</value>
   </data>
   <data name="CommandType_MultipleKeysCommand" xml:space="preserve">
-    <value>MultipleKeys</value>
+    <value>Várias chaves</value>
   </data>
   <data name="CommandType_PowershellCommand" xml:space="preserve">
     <value>Powershell</value>
   </data>
   <data name="CommandType_PublishAllSensorsCommand" xml:space="preserve">
-    <value>PublishAllSensors</value>
+    <value>Publicar todos os sensores</value>
   </data>
   <data name="CommandType_RestartCommand" xml:space="preserve">
-    <value>Restart</value>
+    <value>Reiniciar</value>
   </data>
   <data name="CommandType_ShutdownCommand" xml:space="preserve">
-    <value>Shutdown</value>
+    <value>Desligar</value>
   </data>
   <data name="CommandType_SleepCommand" xml:space="preserve">
     <value>Sleep</value>
+  </data>
+  <data name="ComponentStatus_Connecting" xml:space="preserve">
+    <value>Conectando</value>
+  </data>
+  <data name="ComponentStatus_Disabled" xml:space="preserve">
+    <value>Desabilitado</value>
+  </data>
+  <data name="ComponentStatus_Failed" xml:space="preserve">
+    <value>Falhou</value>
+  </data>
+  <data name="ComponentStatus_Loading" xml:space="preserve">
+    <value>Carregando</value>
+  </data>
+  <data name="ComponentStatus_Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="ComponentStatus_Stopped" xml:space="preserve">
+    <value>Parou</value>
   </data>
   <data name="ConfigExternalTools_BtnExternalBrowserIncognitoTest" xml:space="preserve">
     <value>teste</value>
@@ -1131,8 +1149,18 @@ conosco:</value>
   <data name="Help_Title" xml:space="preserve">
     <value>Ajuda</value>
   </data>
+  <data name="LockState_Locked" xml:space="preserve">
+    <value>Trancado</value>
+  </data>
+  <data name="LockState_Unknown" xml:space="preserve">
+    <value>Desconhecido</value>
+  </data>
+  <data name="LockState_Unlocked" xml:space="preserve">
+    <value>Destrancado</value>
+  </data>
   <data name="Main_BtnActionsManager" xml:space="preserve">
-    <value>atalhos rápidos</value>
+	  <value>
+atalhos rápidos</value>
   </data>
   <data name="Main_BtnAppSettings" xml:space="preserve">
     <value>

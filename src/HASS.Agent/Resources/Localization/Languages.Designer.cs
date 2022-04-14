@@ -39,7 +39,7 @@ namespace HASS.Agent.Resources.Localization {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HASS.Agent.Shared.Resources.Localization.Languages", typeof(Languages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HASS.Agent.Resources.Localization.Languages", typeof(Languages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -1127,7 +1127,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Connecting.
         /// </summary>
         internal static string ComponentStatus_Connecting {
             get {
@@ -1136,7 +1136,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Disabled.
         /// </summary>
         internal static string ComponentStatus_Disabled {
             get {
@@ -1145,7 +1145,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Failed.
         /// </summary>
         internal static string ComponentStatus_Failed {
             get {
@@ -1154,7 +1154,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Loading.
         /// </summary>
         internal static string ComponentStatus_Loading {
             get {
@@ -1163,7 +1163,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Ok.
         /// </summary>
         internal static string ComponentStatus_Ok {
             get {
@@ -1172,7 +1172,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Stopped.
         /// </summary>
         internal static string ComponentStatus_Stopped {
             get {
@@ -4529,7 +4529,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provides card info, configuration, transfer- &amp; package statistics and addresses (ip, mac, dhcp, dns) of all present network cards.
+        ///   Looks up a localized string similar to Provides card info, configuration, transfer- &amp; package statistics and addresses (ip, mac, dhcp, dns) of the selected network card(s).
         ///
         ///This is a multi-value sensor..
         /// </summary>
@@ -4749,6 +4749,33 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to test.
+        /// </summary>
+        internal static string SensorsMod_BtnTest {
+            get {
+                return ResourceManager.GetString("SensorsMod_BtnTest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to test performance counter.
+        /// </summary>
+        internal static string SensorsMod_BtnTest_PerformanceCounter {
+            get {
+                return ResourceManager.GetString("SensorsMod_BtnTest_PerformanceCounter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to test wmi query.
+        /// </summary>
+        internal static string SensorsMod_BtnTest_Wmi {
+            get {
+                return ResourceManager.GetString("SensorsMod_BtnTest_Wmi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to   type.
         /// </summary>
         internal static string SensorsMod_ClmSensorName {
@@ -4947,6 +4974,72 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter a category and counter first..
+        /// </summary>
+        internal static string SensorsMod_TestPerformanceCounter_MessageBox1 {
+            get {
+                return ResourceManager.GetString("SensorsMod_TestPerformanceCounter_MessageBox1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test succesfully executed, result value:
+        ///
+        ///{0}.
+        /// </summary>
+        internal static string SensorsMod_TestPerformanceCounter_MessageBox2 {
+            get {
+                return ResourceManager.GetString("SensorsMod_TestPerformanceCounter_MessageBox2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The test failed to execute:
+        ///
+        ///{0}
+        ///
+        ///Do you want to open the logs folder?.
+        /// </summary>
+        internal static string SensorsMod_TestPerformanceCounter_MessageBox3 {
+            get {
+                return ResourceManager.GetString("SensorsMod_TestPerformanceCounter_MessageBox3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a WMI query first..
+        /// </summary>
+        internal static string SensorsMod_TestWmi_MessageBox1 {
+            get {
+                return ResourceManager.GetString("SensorsMod_TestWmi_MessageBox1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Query succesfully executed, result value:
+        ///
+        ///{0}.
+        /// </summary>
+        internal static string SensorsMod_TestWmi_MessageBox2 {
+            get {
+                return ResourceManager.GetString("SensorsMod_TestWmi_MessageBox2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The query failed to execute:
+        ///
+        ///{0}
+        ///
+        ///Do you want to open the logs folder?.
+        /// </summary>
+        internal static string SensorsMod_TestWmi_MessageBox3 {
+            get {
+                return ResourceManager.GetString("SensorsMod_TestWmi_MessageBox3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sensor.
         /// </summary>
         internal static string SensorsMod_Title {
@@ -4970,6 +5063,25 @@ namespace HASS.Agent.Resources.Localization {
         internal static string SensorsMod_Title_New {
             get {
                 return ResourceManager.GetString("SensorsMod_Title_New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It looks like your scope is malformed. It should probably start like this:
+        ///
+        ///\\.\ROOT\
+        ///
+        ///The scope you entered:
+        ///
+        ///{0}
+        ///
+        ///Tip: make sure you haven&apos;t switched the scope and query fields around.
+        ///
+        ///Do you still want to use the current values?.
+        /// </summary>
+        internal static string SensorsMod_WmiTestFailed {
+            get {
+                return ResourceManager.GetString("SensorsMod_WmiTestFailed", resourceCulture);
             }
         }
         
@@ -5042,6 +5154,15 @@ namespace HASS.Agent.Resources.Localization {
         internal static string SensorType_DummySensor {
             get {
                 return ResourceManager.GetString("SensorType_DummySensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GeoLocation.
+        /// </summary>
+        internal static string SensorType_GeoLocationSensor {
+            get {
+                return ResourceManager.GetString("SensorType_GeoLocationSensor", resourceCulture);
             }
         }
         

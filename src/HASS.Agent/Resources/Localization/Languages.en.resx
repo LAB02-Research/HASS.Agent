@@ -1472,7 +1472,7 @@ HassAgentStarted, Logoff, SystemShutdown, Resume, Suspend, ConsoleConnect, Conso
 		<value>Provides an ON/OFF value based on whether the window is currently open (doesn't have to be active).</value>
 	</data>
 	<data name="SensorsManager_NetworkSensorsDescription" xml:space="preserve">
-		<value>Provides card info, configuration, transfer- &amp; package statistics and addresses (ip, mac, dhcp, dns) of all present network cards.
+		<value>Provides card info, configuration, transfer- &amp; package statistics and addresses (ip, mac, dhcp, dns) of the selected network card(s).
 
 This is a multi-value sensor.</value>
 	</data>
@@ -2418,5 +2418,8 @@ The release page will now open instead.</value>
 	</data>
 	<data name="LockState_Unlocked" xml:space="preserve">
 		<value>Unlocked</value>
+	</data>
+	<data name="SensorType_GeoLocationSensor" xml:space="preserve">
+		<value>GeoLocation</value>
 	</data>
 </root>
