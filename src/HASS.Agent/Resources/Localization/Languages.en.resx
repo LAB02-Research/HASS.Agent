@@ -2422,4 +2422,62 @@ The release page will now open instead.</value>
 	<data name="SensorType_GeoLocationSensor" xml:space="preserve">
 		<value>GeoLocation</value>
 	</data>
+	<data name="SensorsMod_All" xml:space="preserve">
+		<value>All</value>
+	</data>
+	<data name="SensorsMod_BtnTest" xml:space="preserve">
+		<value>test</value>
+	</data>
+	<data name="SensorsMod_BtnTest_PerformanceCounter" xml:space="preserve">
+		<value>test performance counter</value>
+	</data>
+	<data name="SensorsMod_BtnTest_Wmi" xml:space="preserve">
+		<value>test wmi query</value>
+	</data>
+	<data name="SensorsMod_LblSetting1_Network" xml:space="preserve">
+		<value>network card</value>
+	</data>
+	<data name="SensorsMod_TestPerformanceCounter_MessageBox1" xml:space="preserve">
+		<value>Enter a category and counter first.</value>
+	</data>
+	<data name="SensorsMod_TestPerformanceCounter_MessageBox2" xml:space="preserve">
+		<value>Test succesfully executed, result value:
+
+{0}</value>
+	</data>
+	<data name="SensorsMod_TestPerformanceCounter_MessageBox3" xml:space="preserve">
+		<value>The test failed to execute:
+
+{0}
+
+Do you want to open the logs folder?</value>
+	</data>
+	<data name="SensorsMod_TestWmi_MessageBox1" xml:space="preserve">
+		<value>Enter a WMI query first.</value>
+	</data>
+	<data name="SensorsMod_TestWmi_MessageBox2" xml:space="preserve">
+		<value>Query succesfully executed, result value:
+
+{0}</value>
+	</data>
+	<data name="SensorsMod_TestWmi_MessageBox3" xml:space="preserve">
+		<value>The query failed to execute:
+
+{0}
+
+Do you want to open the logs folder?</value>
+	</data>
+	<data name="SensorsMod_WmiTestFailed" xml:space="preserve">
+		<value>It looks like your scope is malformed. It should probably start like this:
+
+\\.\ROOT\
+
+The scope you entered:
+
+{0}
+
+Tip: make sure you haven't switched the scope and query fields around.
+
+Do you still want to use the current values?</value>
+	</data>
 </root>
