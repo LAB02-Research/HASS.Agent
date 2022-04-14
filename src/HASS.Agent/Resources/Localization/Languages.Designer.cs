@@ -4641,6 +4641,15 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        internal static string SensorsMod_All {
+            get {
+                return ResourceManager.GetString("SensorsMod_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to store sensor.
         /// </summary>
         internal static string SensorsMod_BtnStore {
@@ -4853,6 +4862,15 @@ namespace HASS.Agent.Resources.Localization {
         internal static string SensorsMod_LblSetting1_Category {
             get {
                 return ResourceManager.GetString("SensorsMod_LblSetting1_Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to network card.
+        /// </summary>
+        internal static string SensorsMod_LblSetting1_Network {
+            get {
+                return ResourceManager.GetString("SensorsMod_LblSetting1_Network", resourceCulture);
             }
         }
         

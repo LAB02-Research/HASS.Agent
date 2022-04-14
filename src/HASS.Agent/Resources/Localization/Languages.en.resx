@@ -29,8 +29,8 @@ the used components for their individual licenses:</value>
 their hard work with the rest of us mere mortals. </value>
 	</data>
 	<data name="About_LblInfo5" xml:space="preserve">
-		<value>And of course; thanks to Paulus Shoutsen, Franck Nijhof and the entire team of devs
-that created and maintain Home Assistant :-)</value>
+		<value>And of course; thanks to Paulus Shoutsen and the entire team of devs that created
+and maintain Home Assistant :-)</value>
 	</data>
 	<data name="About_LblInfo6" xml:space="preserve">
 		<value>Like this tool? Support us (read: keep us awake) by buying a cup of coffee:</value>
