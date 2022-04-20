@@ -145,7 +145,7 @@ This question comes up a lot, understandably. However it's currently focussed on
 
 Since this is a sparetime project, next to a fulltime job, it's just not realistic. I'd love to tinker with it in the future, perhaps as a testcase for Microsoft's new MAUI platform, but it won't happen anytime soon. By focussing on Windows, I can make sure it really excels there instead of being meh everywhere.
 
-You can try this [companion app](https://www.home-assistant.io/blog/2020/09/18/mac-companion/) for macOS, or [IoPC](https://github.com/maksimkurb/IoPC) which runs on Linux. Note: I haven't tested either.
+You can use the [official companion app](https://apps.apple.com/us/app/home-assistant/id1099568401) for macOS, or [IoPC](https://github.com/maksimkurb/IoPC) which runs on Linux. Note: I haven't tested either.
 
 ----
 
