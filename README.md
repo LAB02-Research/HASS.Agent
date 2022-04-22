@@ -175,21 +175,7 @@ You can work on an existing language, or suggest a new one.
 
 ### Wishlist
 
-A summary of things I want to add somewhere down the road:
-
- * **Notifications**: add 'critical' type to attract more attention
- * **Notifications**: history window
- * **Notifications**: show a videostream for x seconds with size y (small/normal/fullscreen) on position z (bottom right, center screen, etc)
- * **Notifications**: use websockets so the integration/port reservations/firewall rules aren't needed
- * **Notifications**: broadcast to all HASS.Agents on a subnet
- * **Quick Actions**: show current state in window
- * **Quick Actions**: ability to change button size (small/medium/large)
- * **Quick Actions**: ability to define mdi icons, and/or fetch the entity-specified icon from Home Assistant
- * **Quick Actions**: add pages as tabs instead of one form, i.e. one tab with 'lights', one tab with 'switches'
- * **General**: a built-in way to show a Home Assistant dashboard
- * **General**: internal mDNS client/server to drop the need for IPs
-
-The complete list can be found on the [HASS.Agent YouTrack Dashboard](https://lab02research.youtrack.cloud). If your idea isn't on there, please [create a ticket](https://github.com/LAB02-Research/HASS.Agent/issues) or [discuss on Discord](https://discord.gg/nMvqzwrVBU).
+The wishlist has moved to the [HASS.Agent YouTrack Dashboard](https://lab02research.youtrack.cloud). You can see all open ideas (and issues) on the right column, and the ones that are actively worked on for the next release on the left. If your idea isn't on there yet, please [create a ticket](https://github.com/LAB02-Research/HASS.Agent/issues) or [discuss on Discord](https://discord.gg/nMvqzwrVBU).
 
 ----
 
