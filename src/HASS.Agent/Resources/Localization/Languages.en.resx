@@ -29,8 +29,8 @@ the used components for their individual licenses:</value>
 their hard work with the rest of us mere mortals. </value>
 	</data>
 	<data name="About_LblInfo5" xml:space="preserve">
-		<value>And of course; thanks to Paulus Shoutsen and the entire team of devs that created
-and maintain Home Assistant :-)</value>
+		<value>And of course; thanks to Paulus Shoutsen and the entire team of devs that 
+created and maintain Home Assistant :-)</value>
 	</data>
 	<data name="About_LblInfo6" xml:space="preserve">
 		<value>Like this tool? Support us (read: keep us awake) by buying a cup of coffee:</value>
@@ -732,7 +732,7 @@ The certificate of the downloaded file will get checked before execution.
 		<value>help &amp;&amp; contact</value>
 	</data>
 	<data name="Configuration_BtnStore" xml:space="preserve">
-		<value>store configuration</value>
+		<value>save configuration</value>
 	</data>
 	<data name="Configuration_MessageBox_RestartManually" xml:space="preserve">
 		<value>Something went wrong while preparing to restart.
@@ -1179,8 +1179,7 @@ Do you want to enable this function?</value>
 		<value>One sec, determining the current state ..</value>
 	</data>
 	<data name="OnboardingStartup_LblInfo1" xml:space="preserve">
-		<value>HASS.Agent can launch when you login to Windows, by creating a key in your user profile's
-registry.
+		<value>HASS.Agent can launch when you login to Windows, by creating a key in your user profile's registry.
 
 You can always remove (or recreate) this key through the Configuration window.</value>
 	</data>
@@ -2203,11 +2202,8 @@ The release page will now open instead.</value>
 	<data name="SystemStateEvent_ConsoleDisconnect" xml:space="preserve">
 		<value>ConsoleDisconnect</value>
 	</data>
-	<data name="SystemStateEvent_HassAgentSatelliteServiceStarted" xml:space="preserve">
-		<value>HassAgentSatelliteServiceStarted</value>
-	</data>
-	<data name="SystemStateEvent_HassAgentStarted" xml:space="preserve">
-		<value>HassAgentStarted</value>
+	<data name="SystemStateEvent_ApplicationStarted" xml:space="preserve">
+		<value>ApplicationStarted</value>
 	</data>
 	<data name="SystemStateEvent_Logoff" xml:space="preserve">
 		<value>Logoff</value>
@@ -2479,5 +2475,11 @@ The scope you entered:
 Tip: make sure you haven't switched the scope and query fields around.
 
 Do you still want to use the current values?</value>
+	</data>
+	<data name="ServiceGeneral_LblInfo2" xml:space="preserve">
+		<value>You can use the satellite service to run sensors and commands without having to be logged in. Not all types are available, for instance the 'LaunchUrl' command can only be added as a regular command.</value>
+	</data>
+	<data name="SensorsConfig_ClmValue" xml:space="preserve">
+		<value>last known value</value>
 	</data>
 </root>

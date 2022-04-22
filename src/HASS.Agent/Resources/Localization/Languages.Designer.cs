@@ -108,8 +108,8 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to And of course; thanks to Paulus Shoutsen, Franck Nijhof and the entire team of devs
-        ///that created and maintain Home Assistant :-).
+        ///   Looks up a localized string similar to And of course; thanks to Paulus Shoutsen and the entire team of devs that created
+        ///and maintain Home Assistant :-).
         /// </summary>
         internal static string About_LblInfo5 {
             get {
@@ -2274,7 +2274,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to store configuration.
+        ///   Looks up a localized string similar to save configuration.
         /// </summary>
         internal static string Configuration_BtnStore {
             get {
@@ -3735,8 +3735,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HASS.Agent can launch when you login to Windows, by creating a key in your user profile&apos;s
-        ///registry.
+        ///   Looks up a localized string similar to HASS.Agent can launch when you login to Windows, by creating a key in your user profile&apos;s registry.
         ///
         ///You can always remove (or recreate) this key through the Configuration window..
         /// </summary>
@@ -4333,6 +4332,15 @@ namespace HASS.Agent.Resources.Localization {
         internal static string SensorsConfig_ClmType {
             get {
                 return ResourceManager.GetString("SensorsConfig_ClmType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to last known value.
+        /// </summary>
+        internal static string SensorsConfig_ClmValue {
+            get {
+                return ResourceManager.GetString("SensorsConfig_ClmValue", resourceCulture);
             }
         }
         
@@ -5826,6 +5834,15 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You can use the satellite service to run sensors and commands without having to be logged in. Not all types are available, for instance the &apos;LaunchUrl&apos; command can only be added as a regular command..
+        /// </summary>
+        internal static string ServiceGeneral_LblInfo2 {
+            get {
+                return ResourceManager.GetString("ServiceGeneral_LblInfo2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to seconds.
         /// </summary>
         internal static string ServiceGeneral_LblSeconds {
@@ -6452,6 +6469,15 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ApplicationStarted.
+        /// </summary>
+        internal static string SystemStateEvent_ApplicationStarted {
+            get {
+                return ResourceManager.GetString("SystemStateEvent_ApplicationStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ConsoleConnect.
         /// </summary>
         internal static string SystemStateEvent_ConsoleConnect {
@@ -6466,24 +6492,6 @@ namespace HASS.Agent.Resources.Localization {
         internal static string SystemStateEvent_ConsoleDisconnect {
             get {
                 return ResourceManager.GetString("SystemStateEvent_ConsoleDisconnect", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to HassAgentSatelliteServiceStarted.
-        /// </summary>
-        internal static string SystemStateEvent_HassAgentSatelliteServiceStarted {
-            get {
-                return ResourceManager.GetString("SystemStateEvent_HassAgentSatelliteServiceStarted", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to HassAgentStarted.
-        /// </summary>
-        internal static string SystemStateEvent_HassAgentStarted {
-            get {
-                return ResourceManager.GetString("SystemStateEvent_HassAgentStarted", resourceCulture);
             }
         }
         

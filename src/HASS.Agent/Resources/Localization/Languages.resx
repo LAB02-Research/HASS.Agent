@@ -386,8 +386,7 @@ It's also used as a suggested prefix for your commands and sensors.
 		<value>yes, enable launch-on-login</value>
 	</data>
 	<data name="OnboardingStartup_LblInfo1" xml:space="preserve">
-		<value>HASS.Agent can launch when you login to Windows, by creating a key in your user profile's
-registry.
+		<value>HASS.Agent can launch when you login to Windows, by creating a key in your user profile's registry.
 
 You can always remove (or recreate) this key through the Configuration window.</value>
 	</data>
@@ -1034,9 +1033,6 @@ you can probably use the preset address.</value>
 	</data>
 	<data name="Configuration_BtnHelp" xml:space="preserve">
 		<value>help &amp;&amp; contact</value>
-	</data>
-	<data name="Configuration_BtnStore" xml:space="preserve">
-		<value>store configuration</value>
 	</data>
 	<data name="Configuration_BtnClose" xml:space="preserve">
 		<value>close without saving</value>
@@ -2200,8 +2196,8 @@ the used components for their individual licenses:</value>
 their hard work with the rest of us mere mortals. </value>
 	</data>
 	<data name="About_LblInfo5" xml:space="preserve">
-		<value>And of course; thanks to Paulus Shoutsen and the entire team of devs that created
-and maintain Home Assistant :-)</value>
+		<value>And of course; thanks to Paulus Shoutsen and the entire team of devs that 
+created and maintain Home Assistant :-)</value>
 	</data>
 	<data name="About_LblOr" xml:space="preserve">
 		<value>or</value>
@@ -2371,11 +2367,8 @@ and maintain Home Assistant :-)</value>
 	<data name="SensorType_WmiQuerySensor" xml:space="preserve">
 		<value>WmiQuery</value>
 	</data>
-	<data name="SystemStateEvent_HassAgentStarted" xml:space="preserve">
-		<value>HassAgentStarted</value>
-	</data>
-	<data name="SystemStateEvent_HassAgentSatelliteServiceStarted" xml:space="preserve">
-		<value>HassAgentSatelliteServiceStarted</value>
+	<data name="SystemStateEvent_ApplicationStarted" xml:space="preserve">
+		<value>ApplicationStarted</value>
 	</data>
 	<data name="SystemStateEvent_Logoff" xml:space="preserve">
 		<value>Logoff</value>
@@ -2566,5 +2559,14 @@ Do you want to open the logs folder?</value>
 	</data>
 	<data name="SensorsMod_LblSetting1_Network" xml:space="preserve">
 		<value>network card</value>
+	</data>
+	<data name="Configuration_BtnStore" xml:space="preserve">
+		<value>save configuration</value>
+	</data>
+	<data name="ServiceGeneral_LblInfo2" xml:space="preserve">
+		<value>You can use the satellite service to run sensors and commands without having to be logged in. Not all types are available, for instance the 'LaunchUrl' command can only be added as a regular command.</value>
+	</data>
+	<data name="SensorsConfig_ClmValue" xml:space="preserve">
+		<value>last known value</value>
 	</data>
 </root>
