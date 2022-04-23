@@ -39,6 +39,7 @@ However, developing and maintaining this tool (and everything that surrounds it)
  * [Screenshots](#screenshots)
  * [Installation](#installation)
  * [Help and Documentation](#help-and-documentation)
+ * [Articles](#articles)
  * [What it's not](#what-its-not)
  * [Issue Tracker](#issue-tracker)
  * [Helping Out](#helping-out)
@@ -134,6 +135,12 @@ There are a few channels through which you can reach out:
 * [Home Assistant forum](https://community.home-assistant.io/t/hass-agent-a-new-windows-based-client-to-receive-notifications-perform-quick-actions-and-much-more/369094): Bit of everything, with the addition that other HA users can help as well.
 
 If you want to help with the development of HASS.Agent, check out the [Helping Out](#helping-out) section for (translating) info.
+
+----
+
+### Articles
+
+Liam Alexander Colman from [Home Assistant Guide](https://home-assistant-guide.com) was kind enough to write an article about HASS.Agent: [Integrate Home Assistant with Windows using HASS.Agent](https://home-assistant-guide.com/2022/04/20/integrate-home-assistant-with-windows-using-hass-agent/). The website's full of useful articles, worth having a look :)
 
 ----
 
