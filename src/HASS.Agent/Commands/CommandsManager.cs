@@ -196,10 +196,10 @@ namespace HASS.Agent.Commands
 
                     // existing, update and re-register
                     var currentCommandIndex = Variables.Commands.FindIndex(x => x.Id == abstractCommand.Id);
-                    if (Variables.Commands[currentCommandIndex].Name != abstractCommand.Name)
+                    if (Variables.Commands[currentCommandIndex].Name != abstractCommand.Name || Variables.Commands[currentCommandIndex].EntityType != abstractCommand.EntityType)
                     {
-                        // name changed, unregister and resubscribe on new mqtt channel
-                        Log.Information("[COMMANDS] Command changed name, re-registering as new entity: {old} to {new}", Variables.Commands[currentCommandIndex].Name, abstractCommand.Name);
+                        // command changed, unregister and resubscribe on new mqtt channel
+                        Log.Information("[COMMANDS] Command changed, re-registering as new entity: {old} to {new}", Variables.Commands[currentCommandIndex].Name, abstractCommand.Name);
 
                         await Variables.Commands[currentCommandIndex].UnPublishAutoDiscoveryConfigAsync();
                         await Variables.MqttManager.UnubscribeAsync(Variables.Commands[currentCommandIndex]);
