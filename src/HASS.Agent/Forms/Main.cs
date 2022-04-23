@@ -13,6 +13,9 @@ using HASS.Agent.Sensors;
 using HASS.Agent.Service;
 using HASS.Agent.Settings;
 using HASS.Agent.Shared;
+using HASS.Agent.Shared.Enums;
+using HASS.Agent.Shared.Extensions;
+using HASS.Agent.Shared.Functions;
 using Serilog;
 using Syncfusion.Windows.Forms;
 using WK.Libraries.HotkeyListenerNS;
@@ -47,7 +50,7 @@ namespace HASS.Agent.Forms
                     Invoke(new MethodInvoker(BringToFront));
                 });
 #endif
-
+                
                 // check if we're enabling extended logging
                 if (Variables.ExtendedLogging)
                 {
@@ -84,7 +87,7 @@ namespace HASS.Agent.Forms
                     return;
                 }
 
-                // initialize hass.agent shared library
+                // initialize hass.agent's shared library
                 AgentSharedBase.Initialize(Variables.AppSettings.DeviceName, Variables.MqttManager, Variables.AppSettings.CustomExecutorBinary);
 
                 // process onboarding
@@ -437,22 +440,22 @@ namespace HASS.Agent.Forms
                         switch (update.Component)
                         {
                             case Component.NotificationApi:
-                                LblStatusNotificationApi.Text = status.ToString().ToLower();
+                                LblStatusNotificationApi.Text = status.GetLocalizedDescription().ToLower();
                                 LblStatusNotificationApi.ForeColor = status.GetColor();
                                 break;
 
                             case Component.HassApi:
-                                LblStatusHassApi.Text = status.ToString().ToLower();
+                                LblStatusHassApi.Text = status.GetLocalizedDescription().ToLower();
                                 LblStatusHassApi.ForeColor = status.GetColor();
                                 break;
 
                             case Component.Mqtt:
-                                LblStatusMqtt.Text = status.ToString().ToLower();
+                                LblStatusMqtt.Text = status.GetLocalizedDescription().ToLower();
                                 LblStatusMqtt.ForeColor = status.GetColor();
                                 break;
 
                             case Component.QuickActions:
-                                LblStatusQuickActions.Text = status.ToString().ToLower();
+                                LblStatusQuickActions.Text = status.GetLocalizedDescription().ToLower();
                                 LblStatusQuickActions.ForeColor = status.GetColor();
                                 break;
 
@@ -462,12 +465,12 @@ namespace HASS.Agent.Forms
                                     BtnSensorsManager.Text = Languages.Main_BtnSensorsManage_Ready;
                                     BtnSensorsManager.Enabled = true;
                                 }
-                                LblStatusSensors.Text = status.ToString().ToLower();
+                                LblStatusSensors.Text = status.GetLocalizedDescription().ToLower();
                                 LblStatusSensors.ForeColor = status.GetColor();
                                 break;
 
                             case Component.Service:
-                                LblStatusService.Text = status.ToString().ToLower();
+                                LblStatusService.Text = status.GetLocalizedDescription().ToLower();
                                 LblStatusService.ForeColor = status.GetColor();
                                 break;
 
@@ -477,7 +480,7 @@ namespace HASS.Agent.Forms
                                     BtnCommandsManager.Text = Languages.Main_BtnCommandsManager_Ready;
                                     BtnCommandsManager.Enabled = true;
                                 }
-                                LblStatusCommands.Text = status.ToString().ToLower();
+                                LblStatusCommands.Text = status.GetLocalizedDescription().ToLower();
                                 LblStatusCommands.ForeColor = status.GetColor();
                                 break;
                         }

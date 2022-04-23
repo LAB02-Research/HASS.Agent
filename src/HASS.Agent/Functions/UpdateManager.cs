@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using HASS.Agent.Enums;
 using HASS.Agent.Models.Internal;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Settings;
@@ -10,7 +11,7 @@ namespace HASS.Agent.Functions
 {
     internal static class UpdateManager
     {
-        private static readonly Version CurrentVersion = Version.Parse(Variables.Version);
+        private static readonly Version CurrentVersion = Version.Parse(Variables.Version.Split('-').First());
 
         /// <summary>
         /// Initialize initial and periodic update checking
@@ -95,31 +96,13 @@ namespace HASS.Agent.Functions
 
                 // check for prerelease
                 if (latestRelease.Prerelease) return (false, pendingUpdate);
-
-                // check for betas (starting with b)
-                if (latestRelease.TagName.StartsWith("b")) return (false, pendingUpdate);
-
-                // remove the leading char
-                var tagName = latestRelease.TagName.Remove(0, 1);
-
-                // check if we can parse
-                var versionParsed = Version.TryParse(tagName, out var latestGitHubVersion);
-                if (!versionParsed)
-                {
-                    Log.Error("[UPDATER] Unable to parse version tag: {v}", tagName);
-                    return (false, pendingUpdate);
-                }
-
-                // compare version
-                var versionComparison = CurrentVersion.CompareTo(latestGitHubVersion);
-                if (versionComparison >= 0)
-                {
-                    // no new version
-                    return (false, pendingUpdate);
-                }
+                
+                // check if it's newer
+                var isNewer = UpdateIsNewer(Variables.Version, latestRelease.TagName);
+                if (!isNewer) return (false, pendingUpdate);
 
                 // there's an update!
-                pendingUpdate.Version = tagName;
+                pendingUpdate.Version = latestRelease.TagName;
                 pendingUpdate.GitHubRelease = latestRelease;
 
                 return (true, pendingUpdate);
@@ -157,30 +140,15 @@ namespace HASS.Agent.Functions
                     // check for prerelease
                     if (release.Prerelease) pendingUpdate.IsBeta = true;
 
-                    // check for betas (starting with b)
-                    if (release.TagName.StartsWith("b")) pendingUpdate.IsBeta = true;
+                    // check for beta
+                    if (release.TagName.Contains('b')) pendingUpdate.IsBeta = true;
 
-                    // remove the leading char
-                    var tagName = release.TagName.Remove(0, 1);
-
-                    // check if we can parse
-                    var versionParsed = Version.TryParse(tagName, out var latestGitHubVersion);
-                    if (!versionParsed)
-                    {
-                        Log.Error("[UPDATER] Unable to parse version tag: {v}", tagName);
-                        return (false, pendingUpdate);
-                    }
-
-                    // compare version
-                    var versionComparison = CurrentVersion.CompareTo(latestGitHubVersion);
-                    if (versionComparison >= 0)
-                    {
-                        // no new version
-                        continue;
-                    }
+                    // check if it's newer
+                    var isNewer = UpdateIsNewer(Variables.Version, release.TagName, true);
+                    if (!isNewer) return (false, pendingUpdate);
 
                     // newer :)
-                    pendingUpdate.Version = tagName;
+                    pendingUpdate.Version = release.TagName;
                     latestRelease = release;
                     break;
                 }
@@ -307,6 +275,111 @@ namespace HASS.Agent.Functions
 
             // open the release's github page
             HelperFunctions.LaunchUrl(pendingUpdate.ReleaseUrl);
+        }
+
+        /// <summary>
+        /// Returns whether the available version is newer than the current
+        /// </summary>
+        /// <param name="currentVersion"></param>
+        /// <param name="availableVersion"></param>
+        /// <param name="includeBeta"></param>
+        /// <returns></returns>
+        private static bool UpdateIsNewer(string currentVersion, string availableVersion, bool includeBeta = false)
+        {
+            try
+            {
+                // check for beta?
+                if (!includeBeta && availableVersion.Contains('b')) return false;
+
+                // determine beta status
+                var currentVersionIsBeta = currentVersion.Contains('b');
+                var availableVersionIsBeta = availableVersion.Contains('b');
+
+                // backwards compatiblity
+                if (currentVersion.StartsWith('v') || currentVersion.StartsWith('b')) currentVersion = currentVersion.Remove(0 ,1);
+                if (availableVersion.StartsWith('v') || availableVersion.StartsWith('b')) availableVersion = availableVersion.Remove(0, 1);
+
+                // try to parse the versions
+                var versionParsed = Version.TryParse(currentVersion.Split('-').First(), out var currentVersionClean);
+                if (!versionParsed)
+                {
+                    Log.Error("[UPDATER] Unable to parse current version tag: {v}", currentVersion);
+                    return false;
+                }
+
+                versionParsed = Version.TryParse(availableVersion.Split('-').First(), out var availableVersionClean);
+                if (!versionParsed)
+                {
+                    Log.Error("[UPDATER] Unable to parse available version tag: {v}", currentVersion);
+                    return false;
+                }
+
+                // compare versions
+                var versionComparison = (VersionComparisonResult)currentVersionClean.CompareTo(availableVersionClean);
+                switch (versionComparison)
+                {
+                    // the available version is older, ignore
+                    case VersionComparisonResult.Older:
+                        return false;
+
+                    // the available version appears identical
+                    case VersionComparisonResult.Identical:
+                        switch (currentVersionIsBeta)
+                        {
+                            // are we going from beta to release?
+                            case true when !availableVersionIsBeta:
+                                // yep! update
+                                return true;
+
+                            // are we both beta?
+                            case true:
+                                // battle of the beta's
+                                return AvailableBetaIsNewerThanCurrentBeta(currentVersion, availableVersion);
+
+                            // nothing to do
+                            default:
+                                return false;
+                        }
+
+                    case VersionComparisonResult.Newer:
+                        // newer, beta or not
+                        return true;
+
+                    default:
+                        // nothing to do
+                        return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[UPDATER] Unable to compare version {a} with {b}: {err}", currentVersion, availableVersion, ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Returns whether the available beta version is newer than the current beta version
+        /// </summary>
+        /// <param name="currentBetaVersion"></param>
+        /// <param name="availableBetaVersion"></param>
+        /// <returns></returns>
+        private static bool AvailableBetaIsNewerThanCurrentBeta(string currentBetaVersion, string availableBetaVersion)
+        {
+            try
+            {
+                if (!currentBetaVersion.Contains('b')) return false;
+                if (!availableBetaVersion.Contains('b')) return false;
+
+                var currentBeta = int.Parse(currentBetaVersion.Split('a').Last());
+                var availableBeta = int.Parse(availableBetaVersion.Split('a').Last());
+
+                return availableBeta > currentBeta;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[UPDATER] Unable to compare beta version {a} with {b}: {err}", currentBetaVersion, availableBetaVersion, ex.Message);
+                return false;
+            }
         }
     }
 }

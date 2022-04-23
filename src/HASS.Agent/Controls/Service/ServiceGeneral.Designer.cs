@@ -57,6 +57,7 @@ namespace HASS.Agent.Controls.Service
             this.LblAuthIdInfo = new System.Windows.Forms.Label();
             this.LblDeviceNameInfo = new System.Windows.Forms.Label();
             this.LblDisconGraceInfo = new System.Windows.Forms.Label();
+            this.LblInfo2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.NumDisconnectGrace)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +65,7 @@ namespace HASS.Agent.Controls.Service
             // 
             this.LblInfo1.AutoSize = true;
             this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblInfo1.Location = new System.Drawing.Point(27, 19);
+            this.LblInfo1.Location = new System.Drawing.Point(16, 94);
             this.LblInfo1.Name = "LblInfo1";
             this.LblInfo1.Size = new System.Drawing.Size(717, 19);
             this.LblInfo1.TabIndex = 57;
@@ -73,7 +74,7 @@ namespace HASS.Agent.Controls.Service
             // LblAuthId
             // 
             this.LblAuthId.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblAuthId.Location = new System.Drawing.Point(16, 181);
+            this.LblAuthId.Location = new System.Drawing.Point(16, 219);
             this.LblAuthId.Name = "LblAuthId";
             this.LblAuthId.Size = new System.Drawing.Size(230, 19);
             this.LblAuthId.TabIndex = 61;
@@ -86,7 +87,7 @@ namespace HASS.Agent.Controls.Service
             this.TbAuthId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbAuthId.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TbAuthId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbAuthId.Location = new System.Drawing.Point(285, 177);
+            this.TbAuthId.Location = new System.Drawing.Point(285, 215);
             this.TbAuthId.Name = "TbAuthId";
             this.TbAuthId.Size = new System.Drawing.Size(268, 25);
             this.TbAuthId.TabIndex = 63;
@@ -98,7 +99,7 @@ namespace HASS.Agent.Controls.Service
             this.TbDeviceName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbDeviceName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TbDeviceName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbDeviceName.Location = new System.Drawing.Point(285, 248);
+            this.TbDeviceName.Location = new System.Drawing.Point(285, 286);
             this.TbDeviceName.Name = "TbDeviceName";
             this.TbDeviceName.Size = new System.Drawing.Size(268, 25);
             this.TbDeviceName.TabIndex = 65;
@@ -107,7 +108,7 @@ namespace HASS.Agent.Controls.Service
             // 
             this.LblDeviceName.Cursor = System.Windows.Forms.Cursors.Help;
             this.LblDeviceName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblDeviceName.Location = new System.Drawing.Point(16, 250);
+            this.LblDeviceName.Location = new System.Drawing.Point(16, 288);
             this.LblDeviceName.Name = "LblDeviceName";
             this.LblDeviceName.Size = new System.Drawing.Size(231, 19);
             this.LblDeviceName.TabIndex = 64;
@@ -118,7 +119,7 @@ namespace HASS.Agent.Controls.Service
             // 
             this.LblTip1.AutoSize = true;
             this.LblTip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblTip1.Location = new System.Drawing.Point(649, 447);
+            this.LblTip1.Location = new System.Drawing.Point(649, 485);
             this.LblTip1.Name = "LblTip1";
             this.LblTip1.Size = new System.Drawing.Size(143, 15);
             this.LblTip1.TabIndex = 75;
@@ -130,7 +131,7 @@ namespace HASS.Agent.Controls.Service
             this.TbExternalExecutorBinary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbExternalExecutorBinary.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TbExternalExecutorBinary.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbExternalExecutorBinary.Location = new System.Drawing.Point(285, 443);
+            this.TbExternalExecutorBinary.Location = new System.Drawing.Point(285, 481);
             this.TbExternalExecutorBinary.Name = "TbExternalExecutorBinary";
             this.TbExternalExecutorBinary.Size = new System.Drawing.Size(358, 25);
             this.TbExternalExecutorBinary.TabIndex = 73;
@@ -139,7 +140,7 @@ namespace HASS.Agent.Controls.Service
             // LblCustomExecBinary
             // 
             this.LblCustomExecBinary.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblCustomExecBinary.Location = new System.Drawing.Point(16, 443);
+            this.LblCustomExecBinary.Location = new System.Drawing.Point(16, 481);
             this.LblCustomExecBinary.Name = "LblCustomExecBinary";
             this.LblCustomExecBinary.Size = new System.Drawing.Size(231, 19);
             this.LblCustomExecBinary.TabIndex = 74;
@@ -152,7 +153,7 @@ namespace HASS.Agent.Controls.Service
             this.TbExternalExecutorName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbExternalExecutorName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TbExternalExecutorName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.TbExternalExecutorName.Location = new System.Drawing.Point(285, 486);
+            this.TbExternalExecutorName.Location = new System.Drawing.Point(285, 524);
             this.TbExternalExecutorName.Name = "TbExternalExecutorName";
             this.TbExternalExecutorName.Size = new System.Drawing.Size(358, 25);
             this.TbExternalExecutorName.TabIndex = 70;
@@ -160,7 +161,7 @@ namespace HASS.Agent.Controls.Service
             // LblCustomExecName
             // 
             this.LblCustomExecName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblCustomExecName.Location = new System.Drawing.Point(16, 488);
+            this.LblCustomExecName.Location = new System.Drawing.Point(16, 526);
             this.LblCustomExecName.Name = "LblCustomExecName";
             this.LblCustomExecName.Size = new System.Drawing.Size(231, 19);
             this.LblCustomExecName.TabIndex = 71;
@@ -176,7 +177,7 @@ namespace HASS.Agent.Controls.Service
             this.NumDisconnectGrace.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NumDisconnectGrace.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.NumDisconnectGrace.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.NumDisconnectGrace.Location = new System.Drawing.Point(285, 326);
+            this.NumDisconnectGrace.Location = new System.Drawing.Point(285, 364);
             this.NumDisconnectGrace.Maximum = new decimal(new int[] {
             86400,
             0,
@@ -199,7 +200,7 @@ namespace HASS.Agent.Controls.Service
             // 
             this.LblSeconds.AutoSize = true;
             this.LblSeconds.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblSeconds.Location = new System.Drawing.Point(383, 328);
+            this.LblSeconds.Location = new System.Drawing.Point(383, 366);
             this.LblSeconds.Name = "LblSeconds";
             this.LblSeconds.Size = new System.Drawing.Size(58, 19);
             this.LblSeconds.TabIndex = 77;
@@ -209,7 +210,7 @@ namespace HASS.Agent.Controls.Service
             // 
             this.LblDisconGrace.Cursor = System.Windows.Forms.Cursors.Help;
             this.LblDisconGrace.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblDisconGrace.Location = new System.Drawing.Point(16, 328);
+            this.LblDisconGrace.Location = new System.Drawing.Point(16, 366);
             this.LblDisconGrace.Name = "LblDisconGrace";
             this.LblDisconGrace.Size = new System.Drawing.Size(231, 19);
             this.LblDisconGrace.TabIndex = 76;
@@ -222,7 +223,7 @@ namespace HASS.Agent.Controls.Service
             this.BtnStoreAuthId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStoreAuthId.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnStoreAuthId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnStoreAuthId.Location = new System.Drawing.Point(564, 177);
+            this.BtnStoreAuthId.Location = new System.Drawing.Point(564, 215);
             this.BtnStoreAuthId.Name = "BtnStoreAuthId";
             this.BtnStoreAuthId.Size = new System.Drawing.Size(147, 25);
             this.BtnStoreAuthId.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -243,7 +244,7 @@ namespace HASS.Agent.Controls.Service
             this.BtnStoreDeviceName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStoreDeviceName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnStoreDeviceName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnStoreDeviceName.Location = new System.Drawing.Point(564, 248);
+            this.BtnStoreDeviceName.Location = new System.Drawing.Point(564, 286);
             this.BtnStoreDeviceName.Name = "BtnStoreDeviceName";
             this.BtnStoreDeviceName.Size = new System.Drawing.Size(147, 25);
             this.BtnStoreDeviceName.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -264,7 +265,7 @@ namespace HASS.Agent.Controls.Service
             this.BtnStoreDisconGrace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStoreDisconGrace.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnStoreDisconGrace.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnStoreDisconGrace.Location = new System.Drawing.Point(564, 326);
+            this.BtnStoreDisconGrace.Location = new System.Drawing.Point(564, 364);
             this.BtnStoreDisconGrace.Name = "BtnStoreDisconGrace";
             this.BtnStoreDisconGrace.Size = new System.Drawing.Size(147, 25);
             this.BtnStoreDisconGrace.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -285,7 +286,7 @@ namespace HASS.Agent.Controls.Service
             this.BtnStoreCustomExecutor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStoreCustomExecutor.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnStoreCustomExecutor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnStoreCustomExecutor.Location = new System.Drawing.Point(496, 526);
+            this.BtnStoreCustomExecutor.Location = new System.Drawing.Point(496, 564);
             this.BtnStoreCustomExecutor.Name = "BtnStoreCustomExecutor";
             this.BtnStoreCustomExecutor.Size = new System.Drawing.Size(147, 25);
             this.BtnStoreCustomExecutor.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -303,7 +304,7 @@ namespace HASS.Agent.Controls.Service
             // LblVersionInfo
             // 
             this.LblVersionInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblVersionInfo.Location = new System.Drawing.Point(16, 100);
+            this.LblVersionInfo.Location = new System.Drawing.Point(16, 138);
             this.LblVersionInfo.Name = "LblVersionInfo";
             this.LblVersionInfo.Size = new System.Drawing.Size(231, 19);
             this.LblVersionInfo.TabIndex = 94;
@@ -315,7 +316,7 @@ namespace HASS.Agent.Controls.Service
             this.LblVersion.AutoSize = true;
             this.LblVersion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.LblVersion.Location = new System.Drawing.Point(285, 100);
+            this.LblVersion.Location = new System.Drawing.Point(285, 138);
             this.LblVersion.Name = "LblVersion";
             this.LblVersion.Size = new System.Drawing.Size(15, 19);
             this.LblVersion.TabIndex = 95;
@@ -324,7 +325,7 @@ namespace HASS.Agent.Controls.Service
             // LblTip2
             // 
             this.LblTip2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblTip2.Location = new System.Drawing.Point(285, 205);
+            this.LblTip2.Location = new System.Drawing.Point(285, 243);
             this.LblTip2.Name = "LblTip2";
             this.LblTip2.Size = new System.Drawing.Size(268, 15);
             this.LblTip2.TabIndex = 96;
@@ -336,7 +337,7 @@ namespace HASS.Agent.Controls.Service
             this.LblAuthStored.AutoSize = true;
             this.LblAuthStored.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblAuthStored.ForeColor = System.Drawing.Color.LimeGreen;
-            this.LblAuthStored.Location = new System.Drawing.Point(717, 179);
+            this.LblAuthStored.Location = new System.Drawing.Point(717, 217);
             this.LblAuthStored.Name = "LblAuthStored";
             this.LblAuthStored.Size = new System.Drawing.Size(52, 19);
             this.LblAuthStored.TabIndex = 97;
@@ -348,7 +349,7 @@ namespace HASS.Agent.Controls.Service
             this.LblDeviceNameStored.AutoSize = true;
             this.LblDeviceNameStored.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblDeviceNameStored.ForeColor = System.Drawing.Color.LimeGreen;
-            this.LblDeviceNameStored.Location = new System.Drawing.Point(717, 250);
+            this.LblDeviceNameStored.Location = new System.Drawing.Point(717, 288);
             this.LblDeviceNameStored.Name = "LblDeviceNameStored";
             this.LblDeviceNameStored.Size = new System.Drawing.Size(52, 19);
             this.LblDeviceNameStored.TabIndex = 98;
@@ -360,7 +361,7 @@ namespace HASS.Agent.Controls.Service
             this.LblDisconGraceStored.AutoSize = true;
             this.LblDisconGraceStored.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblDisconGraceStored.ForeColor = System.Drawing.Color.LimeGreen;
-            this.LblDisconGraceStored.Location = new System.Drawing.Point(717, 328);
+            this.LblDisconGraceStored.Location = new System.Drawing.Point(717, 366);
             this.LblDisconGraceStored.Name = "LblDisconGraceStored";
             this.LblDisconGraceStored.Size = new System.Drawing.Size(52, 19);
             this.LblDisconGraceStored.TabIndex = 99;
@@ -372,7 +373,7 @@ namespace HASS.Agent.Controls.Service
             this.LblCustomExecutorStored.AutoSize = true;
             this.LblCustomExecutorStored.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblCustomExecutorStored.ForeColor = System.Drawing.Color.LimeGreen;
-            this.LblCustomExecutorStored.Location = new System.Drawing.Point(649, 530);
+            this.LblCustomExecutorStored.Location = new System.Drawing.Point(649, 568);
             this.LblCustomExecutorStored.Name = "LblCustomExecutorStored";
             this.LblCustomExecutorStored.Size = new System.Drawing.Size(52, 19);
             this.LblCustomExecutorStored.TabIndex = 100;
@@ -384,7 +385,7 @@ namespace HASS.Agent.Controls.Service
             this.LblAuthIdInfo.AutoSize = true;
             this.LblAuthIdInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblAuthIdInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LblAuthIdInfo.Location = new System.Drawing.Point(262, 178);
+            this.LblAuthIdInfo.Location = new System.Drawing.Point(262, 216);
             this.LblAuthIdInfo.Name = "LblAuthIdInfo";
             this.LblAuthIdInfo.Size = new System.Drawing.Size(17, 21);
             this.LblAuthIdInfo.TabIndex = 101;
@@ -396,7 +397,7 @@ namespace HASS.Agent.Controls.Service
             this.LblDeviceNameInfo.AutoSize = true;
             this.LblDeviceNameInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblDeviceNameInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LblDeviceNameInfo.Location = new System.Drawing.Point(262, 250);
+            this.LblDeviceNameInfo.Location = new System.Drawing.Point(262, 288);
             this.LblDeviceNameInfo.Name = "LblDeviceNameInfo";
             this.LblDeviceNameInfo.Size = new System.Drawing.Size(17, 21);
             this.LblDeviceNameInfo.TabIndex = 102;
@@ -408,18 +409,28 @@ namespace HASS.Agent.Controls.Service
             this.LblDisconGraceInfo.AutoSize = true;
             this.LblDisconGraceInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblDisconGraceInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LblDisconGraceInfo.Location = new System.Drawing.Point(262, 328);
+            this.LblDisconGraceInfo.Location = new System.Drawing.Point(262, 366);
             this.LblDisconGraceInfo.Name = "LblDisconGraceInfo";
             this.LblDisconGraceInfo.Size = new System.Drawing.Size(17, 21);
             this.LblDisconGraceInfo.TabIndex = 103;
             this.LblDisconGraceInfo.Text = "?";
             this.LblDisconGraceInfo.Click += new System.EventHandler(this.LblDisconGraceInfo_Click);
             // 
+            // LblInfo2
+            // 
+            this.LblInfo2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblInfo2.Location = new System.Drawing.Point(16, 17);
+            this.LblInfo2.Name = "LblInfo2";
+            this.LblInfo2.Size = new System.Drawing.Size(852, 58);
+            this.LblInfo2.TabIndex = 104;
+            this.LblInfo2.Text = Languages.ServiceGeneral_LblInfo2;
+            // 
             // ServiceGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.Controls.Add(this.LblInfo2);
             this.Controls.Add(this.LblDisconGraceInfo);
             this.Controls.Add(this.LblDeviceNameInfo);
             this.Controls.Add(this.LblAuthIdInfo);
@@ -486,5 +497,6 @@ namespace HASS.Agent.Controls.Service
         private Label LblAuthIdInfo;
         private Label LblDeviceNameInfo;
         private Label LblDisconGraceInfo;
+        private Label LblInfo2;
     }
 }

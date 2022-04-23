@@ -4,7 +4,9 @@ using HASS.Agent.Resources.Localization;
 using Syncfusion.Windows.Forms;
 using HASS.Agent.Sensors;
 using HASS.Agent.Settings;
+using HASS.Agent.Shared.Enums;
 using HASS.Agent.Shared.Models.Config;
+using Serilog;
 using Syncfusion.Windows.Forms.Grid;
 
 namespace HASS.Agent.Forms.Sensors
@@ -37,6 +39,9 @@ namespace HASS.Agent.Forms.Sensors
 
             // load stored sensors
             PrepareSensorsList();
+
+            // show their latest values
+            Task.Run(ReloadCurrentSensorValues);
         }
 
         /// <summary>
@@ -68,6 +73,9 @@ namespace HASS.Agent.Forms.Sensors
                 lviSensor.SubItems.Add(sensor.Name);
                 lviSensor.SubItems.Add(SensorsManager.SensorInfoCards[sensor.Type].Name);
                 lviSensor.SubItems.Add(sensor.UpdateInterval.ToString());
+
+                // pre-set infinity symbol on multivalue sensors
+                lviSensor.SubItems.Add(sensor.IsSingleValue() ? string.Empty : "∞");
 
                 LvSensors.Items.Add(lviSensor);
             }
@@ -127,6 +135,69 @@ namespace HASS.Agent.Forms.Sensors
 
             // reload the gui list
             UpdateSensorsList();
+        }
+
+        /// <summary>
+        /// Keeps reloading the current sensor values until the form closes or the user activates storing
+        /// </summary>
+        private async void ReloadCurrentSensorValues()
+        {
+            try
+            {
+                var firstRun = true;
+
+                while (!_storing)
+                {
+                    if (firstRun) firstRun = false;
+                    else await Task.Delay(TimeSpan.FromSeconds(5));
+
+                    if (IsDisposed) return;
+                    if (!IsHandleCreated) return;
+
+                    foreach (var sensor in Variables.SingleValueSensors)
+                    {
+                        if (Variables.MqttManager.GetStatus() != MqttStatus.Connected) continue;
+
+                        // get the latest value
+                        var sensorValue = sensor.PreviousPublishedState ?? "-";
+
+                        // pass it on to the gui
+                        SetSensorValue(sensor.Id, sensorValue);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[SENSORSCONFIG] Unable to reload current sensor values: {err}", ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Shows the value on the corresponding sensor
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="value"></param>
+        private void SetSensorValue(string id, string value)
+        {
+            try
+            {
+                if (IsDisposed) return;
+                if (!IsHandleCreated) return;
+
+                Invoke(new MethodInvoker(delegate
+                {
+                    foreach (ListViewItem lviSensor in LvSensors.Items)
+                    {
+                        if (lviSensor.Text != id) continue;
+                        lviSensor.SubItems[4].Text = value;
+                        break;
+                    }
+                }));
+            }
+            catch 
+            {
+                // best effort
+            }
         }
 
         /// <summary>

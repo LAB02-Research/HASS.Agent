@@ -7,7 +7,9 @@ using HASS.Agent.Resources.Localization;
 using HASS.Agent.Sensors;
 using HASS.Agent.Shared.Enums;
 using HASS.Agent.Shared.Extensions;
+using HASS.Agent.Shared.Functions;
 using HASS.Agent.Shared.Models.Config;
+using HASS.Agent.Shared.Models.Internal;
 using Newtonsoft.Json;
 
 namespace HASS.Agent.Forms.Commands
@@ -21,6 +23,8 @@ namespace HASS.Agent.Forms.Commands
 
         private bool _interfaceLockedWrongType;
         private bool _loading = true;
+
+        private readonly Dictionary<int, string> _commandEntityTypes = new();
 
         public CommandsMod(ConfiguredCommand command, bool serviceMode = false, string serviceDeviceName = "")
         {
@@ -57,21 +61,29 @@ namespace HASS.Agent.Forms.Commands
             LvCommands.DrawColumnHeader += ListViewTheme.DrawColumnHeader;
         }
 
-        private void BindComboBoxTheme() => CbEntityType.DrawItem += ComboBoxTheme.DrawItem;
+        private void BindComboBoxTheme() => CbEntityType.DrawItem += ComboBoxTheme.DrawDictionaryIntStringItem;
 
         private void CommandsMod_Load(object sender, EventArgs e)
         {
             // catch all key presses
             KeyPreview = true;
 
-            // load enums
-            CbEntityType.DataSource = Enum.GetValues(typeof(CommandEntityType));
+            // load enum info
+            foreach (CommandEntityType entityType in Enum.GetValues(typeof(CommandEntityType)))
+            {
+                var (key, description) = entityType.GetLocalizedDescriptionAndKey();
+                _commandEntityTypes.Add(key, description);
+            }
+
+            // load in gui
+            CbEntityType.DataSource = new BindingSource(_commandEntityTypes, null);
 
             // load commands
             LvCommands.BeginUpdate();
             foreach (var command in CommandsManager.CommandInfoCards.Select(x => x.Value))
             {
-                var lvCommand = new ListViewItem(command.Name);
+                var lvCommand = new ListViewItem(command.Key.ToString());
+                lvCommand.SubItems.Add(command.Name);
                 lvCommand.SubItems.Add(command.AgentCompatible ? "√" : string.Empty);
                 lvCommand.SubItems.Add(command.SatelliteCompatible ? "√" : string.Empty);
                 lvCommand.SubItems.Add(command.ActionCompatible ? "√" : string.Empty);
@@ -110,7 +122,7 @@ namespace HASS.Agent.Forms.Commands
             // select it as well
             foreach (ListViewItem lvi in LvCommands.Items)
             {
-                if (lvi.Text != commandCard.Name) continue;
+                if (lvi.Text != commandCard.Key.ToString()) continue;
                 lvi.Selected = true;
                 LvCommands.SelectedItems[0].EnsureVisible();
                 break;
@@ -125,7 +137,8 @@ namespace HASS.Agent.Forms.Commands
             if (!string.IsNullOrWhiteSpace(TbName.Text)) TbName.SelectionStart = TbName.Text.Length;
 
             // set the entity type
-            CbEntityType.Text = Command.EntityType.ToString();
+            var entityId = (int)Command.EntityType;
+            CbEntityType.SelectedItem = new KeyValuePair<int, string>(entityId, _commandEntityTypes[entityId]);
 
             // action compatible?
             LblMqttTopic.Visible = commandCard.ActionCompatible;
@@ -183,8 +196,8 @@ namespace HASS.Agent.Forms.Commands
             }
 
             // get and check type
-            var commandName = LvCommands.SelectedItems[0].Text;
-            var commandCard = CommandsManager.CommandInfoCards.Where(card => card.Value.Name == commandName)
+            var commandId = int.Parse(LvCommands.SelectedItems[0].Text);
+            var commandCard = CommandsManager.CommandInfoCards.Where(card => card.Value.Key == commandId)
                 .Select(card => card.Value).FirstOrDefault();
 
             if (commandCard == null)
@@ -194,13 +207,14 @@ namespace HASS.Agent.Forms.Commands
             }
 
             // get and check entity type
-            var parsed = Enum.TryParse<CommandEntityType>(CbEntityType.SelectedValue.ToString(), out var entityType);
-            if (!parsed)
+            if (CbEntityType.SelectedItem == null)
             {
                 MessageBoxAdv.Show(Languages.CommandsMod_MessageBox_EntityType, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ActiveControl = CbEntityType;
                 return;
             }
+
+            var item = (KeyValuePair<int, string>)CbEntityType.SelectedItem;
+            var entityType = (CommandEntityType)item.Key;
 
             // get and check name
             var name = TbName.Text.Trim();
@@ -351,8 +365,8 @@ namespace HASS.Agent.Forms.Commands
             }
 
             // find the command card
-            var commandName = LvCommands.SelectedItems[0].Text;
-            var commandCard = CommandsManager.CommandInfoCards.Where(card => card.Value.Name == commandName).Select(card => card.Value).FirstOrDefault();
+            var commandId = int.Parse(LvCommands.SelectedItems[0].Text);
+            var commandCard = CommandsManager.CommandInfoCards.Where(card => card.Value.Key == commandId).Select(card => card.Value).FirstOrDefault();
             if (commandCard == null) return false;
 
             // can the current client load this type?
@@ -727,14 +741,16 @@ namespace HASS.Agent.Forms.Commands
 
         private void LblMqttTopic_Click(object sender, EventArgs e)
         {
-            var parsed = Enum.TryParse<CommandEntityType>(CbEntityType.SelectedValue.ToString(), out var entityType);
-            if (!parsed)
+            if (CbEntityType.SelectedItem == null)
             {
                 MessageBoxAdv.Show(Languages.CommandsMod_MessageBox_EntityType, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 ActiveControl = CbEntityType;
                 return;
             }
 
+            var item = (KeyValuePair<int, string>)CbEntityType.SelectedItem;
+            var entityType = (CommandEntityType)item.Key;
+            
             var deviceConfig = Variables.MqttManager?.GetDeviceConfigModel();
             if (deviceConfig == null)
             {

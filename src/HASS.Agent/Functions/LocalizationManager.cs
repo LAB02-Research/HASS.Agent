@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HASS.Agent.Models.Internal;
+using HASS.Agent.Shared;
 using Serilog;
 
 namespace HASS.Agent.Functions
@@ -64,6 +65,10 @@ namespace HASS.Agent.Functions
                 Thread.CurrentThread.CurrentUICulture = culture;
                 Thread.CurrentThread.CurrentCulture = culture;
 
+                // set on shared
+                AgentSharedBase.SetCulture(culture);
+
+                // done
                 Log.Information("[LOCALIZATION] Selected UI culture: [{code}] {culture}", Thread.CurrentThread.CurrentUICulture.Name, Thread.CurrentThread.CurrentUICulture.DisplayName);
             }
             catch (CultureNotFoundException)
@@ -108,6 +113,10 @@ namespace HASS.Agent.Functions
                 Thread.CurrentThread.CurrentUICulture = culture;
                 Thread.CurrentThread.CurrentCulture = culture;
 
+                // set on shared
+                AgentSharedBase.SetCulture(culture);
+
+                // done
                 Log.Information("[LOCALIZATION] New UI culture: [{code}] {culture}", Thread.CurrentThread.CurrentUICulture.Name, Thread.CurrentThread.CurrentUICulture.DisplayName);
             }
             catch (CultureNotFoundException)
@@ -141,7 +150,7 @@ namespace HASS.Agent.Functions
         /// </summary>
         private static void LoadSupportedUILanguages()
         {
-            var supportedCultureList = new List<string> { "en", "pt-BR" };
+            var supportedCultureList = new List<string> { "en", "pt-BR", "sl" };
 
             foreach (var supportedUILanguage in supportedCultureList.Select(supportedCulture => new CultureInfo(supportedCulture)).Select(culture => new SupportedUILanguage(culture)))
             {

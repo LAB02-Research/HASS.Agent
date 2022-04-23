@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using HASS.Agent.Enums;
 using HASS.Agent.Models.HomeAssistant;
+using HASS.Agent.Shared.Enums;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 

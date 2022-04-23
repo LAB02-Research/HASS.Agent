@@ -1,7 +1,10 @@
 ﻿using HASS.Agent.Enums;
+using HASS.Agent.Functions;
 using HASS.Agent.HomeAssistant;
 using HASS.Agent.Models.Internal;
 using HASS.Agent.Resources.Localization;
+using HASS.Agent.Shared.Enums;
+using HASS.Agent.Shared.Functions;
 using Syncfusion.Windows.Forms;
 using WK.Libraries.HotkeyListenerNS;
 
@@ -12,16 +15,32 @@ namespace HASS.Agent.Forms.QuickActions
         private readonly HotkeySelector _hotkeySelector = new();
         internal readonly QuickAction QuickAction;
 
+        private readonly Dictionary<int, string> _hassDomainEntityTypes = new();
+        private readonly Dictionary<int, string> _hassActionEntityTypes = new();
+
         public QuickActionsMod(QuickAction quickAction)
         {
             QuickAction = quickAction;
+
             InitializeComponent();
+
+            BindComboBoxTheme();
         }
 
         public QuickActionsMod()
         {
             QuickAction = new QuickAction();
+
             InitializeComponent();
+            
+            BindComboBoxTheme();
+        }
+
+        private void BindComboBoxTheme()
+        {
+            CbDomain.DrawItem += ComboBoxTheme.DrawDictionaryIntStringItem;
+            CbEntity.DrawItem += ComboBoxTheme.DrawItem;
+            CbAction.DrawItem += ComboBoxTheme.DrawDictionaryIntStringItem;
         }
 
         private async void QuickActionsMod_Load(object sender, EventArgs e)
@@ -36,24 +55,42 @@ namespace HASS.Agent.Forms.QuickActions
                 return;
             }
 
-            // load enums
-            CbDomain.DataSource = Enum.GetValues(typeof(HassDomain));
-            CbAction.DataSource = Enum.GetValues(typeof(HassAction));
-            
-            // load or set quick action
+            // load enums info
+            foreach (HassDomain entityType in Enum.GetValues(typeof(HassDomain)))
+            {
+                var (key, description) = entityType.GetLocalizedDescriptionAndKey();
+                _hassDomainEntityTypes.Add(key, description);
+            }
+
+            foreach (HassAction entityType in Enum.GetValues(typeof(HassAction)))
+            {
+                var (key, description) = entityType.GetLocalizedDescriptionAndKey();
+                _hassActionEntityTypes.Add(key, description);
+            }
+
+            // load in gui
+            CbDomain.DataSource = new BindingSource(_hassDomainEntityTypes, null);
+            CbAction.DataSource = new BindingSource(_hassActionEntityTypes, null);
+
+            // load or new quickaction?
             if (QuickAction.Id == Guid.Empty)
             {
-                QuickAction.Id = Guid.NewGuid();
+                // new quickaction
                 Text = Languages.QuickActionsMod_Title_New;
+                QuickAction.Id = Guid.NewGuid();
 
                 _hotkeySelector.Enable(TbHotkey);
                 TbHotkey.Text = _hotkeySelector.EmptyHotkeyText;
 
+                CbDomain.SelectedIndex = 0;
+                CbEntity.SelectedIndex = 0;
+
                 return;
             }
 
-            LoadQuickAction();
+            // load existing one
             Text = Languages.QuickActionsMod_Title_Mod;
+            LoadQuickAction();
         }
 
         /// <summary>
@@ -130,15 +167,19 @@ namespace HASS.Agent.Forms.QuickActions
         /// </summary>
         private void LoadQuickAction()
         {
-            // load the domain and corresponding entity's
-            CbDomain.Text = QuickAction.Domain.ToString();
-            LoadEntityList();
+            // load the domain
+            var domainId = (int)QuickAction.Domain;
+            CbDomain.SelectedItem = new KeyValuePair<int, string>(domainId, _hassDomainEntityTypes[domainId]);
 
+            // load the corresponding entity's
+            LoadEntityList();
+            
             // set the entity
             CbEntity.Text = QuickAction.Entity;
 
             // set the action
-            CbAction.Text = QuickAction.Action.ToString();
+            var actionId = (int)QuickAction.Action;
+            CbAction.SelectedItem = new KeyValuePair<int, string>(actionId, _hassActionEntityTypes[actionId]);
 
             // set the optional description
             TbDescription.Text = QuickAction.Description;
@@ -161,7 +202,7 @@ namespace HASS.Agent.Forms.QuickActions
         private void BtnStore_Click(object sender, EventArgs e)
         {
             // get and check entity
-            var entity = CbEntity.Text;
+            var entity = CbEntity.SelectedItem.ToString();
             if (string.IsNullOrEmpty(entity))
             {
                 MessageBoxAdv.Show(Languages.QuickActionsMod_BtnStore_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -169,23 +210,13 @@ namespace HASS.Agent.Forms.QuickActions
                 return;
             }
 
-            // get and check domain
-            var parsed = Enum.TryParse<HassDomain>(CbDomain.SelectedValue.ToString(), out var domain);
-            if (!parsed)
-            {
-                MessageBoxAdv.Show(Languages.QuickActionsMod_BtnStore_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ActiveControl = CbDomain;
-                return;
-            }
+            // get domain
+            var domainItem = (KeyValuePair<int, string>)CbDomain.SelectedItem;
+            var domain = (HassDomain)domainItem.Key;
 
             // get and check action
-            parsed = Enum.TryParse<HassAction>(CbAction.SelectedValue.ToString(), out var action);
-            if (!parsed)
-            {
-                MessageBoxAdv.Show(Languages.QuickActionsMod_BtnStore_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ActiveControl = CbAction;
-                return;
-            }
+            var actionItem = (KeyValuePair<int, string>)CbAction.SelectedItem;
+            var action = (HassAction)actionItem.Key;
 
             // get and check hotkey
             var enableHotkey = CbEnableHotkey.Checked;
@@ -228,10 +259,11 @@ namespace HASS.Agent.Forms.QuickActions
             CbEntity.AutoCompleteCustomSource = new AutoCompleteStringCollection();
             CbEntity.Items.Clear();
 
-            var parsed = Enum.TryParse<HassDomain>(CbDomain.SelectedValue.ToString(), out var type);
-            if (!parsed) return;
+            // get domain
+            var domainItem = (KeyValuePair<int, string>)CbDomain.SelectedItem;
+            var domain = (HassDomain)domainItem.Key;
 
-            switch (type)
+            switch (domain)
             {
                 case HassDomain.Automation:
                     foreach (var item in HassApiManager.AutomationList)
@@ -357,47 +389,6 @@ namespace HASS.Agent.Forms.QuickActions
             {
                 // best effort
             }
-        }
-
-        private void CbDomain_DrawItem(object sender, DrawItemEventArgs e) => DrawComboBox(sender, e);
-        private void CbEntity_DrawItem(object sender, DrawItemEventArgs e) => DrawComboBox(sender, e);
-        private void CbAction_DrawItem(object sender, DrawItemEventArgs e) => DrawComboBox(sender, e);
-
-        /// <summary>
-        /// Makes sure our combobox has the right colors
-        /// <para>Source: https://stackoverflow.com/a/60421006 </para>
-        /// <para>Source: https://stackoverflow.com/a/11650321 </para>
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private static void DrawComboBox(object sender, DrawItemEventArgs e)
-        {
-            // fetch the sender
-            if (sender is not ComboBox comboBox) return;
-            if (comboBox.Items.Count <= 0) return;
-
-            // fetch the index
-            var index = e.Index >= 0 ? e.Index : 0;
-
-            // draw the control's background
-            e.DrawBackground();
-
-            // check if we have an item to process
-            if (index != -1)
-            {
-                // optionally set the item's background color as selected
-                if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
-                {
-                    e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(241, 241, 241)), e.Bounds);
-                }
-
-                // draw the string
-                var brush = (e.State & DrawItemState.Selected) > 0 ? new SolidBrush(Color.FromArgb(63, 63, 70)) : new SolidBrush(comboBox.ForeColor);
-                e.Graphics.DrawString(comboBox.Items[index].ToString(), e.Font!, brush, e.Bounds, StringFormat.GenericDefault);
-            }
-
-            // draw focus rectangle
-            e.DrawFocusRectangle();
         }
 
         private void QuickActionsMod_KeyUp(object sender, KeyEventArgs e)

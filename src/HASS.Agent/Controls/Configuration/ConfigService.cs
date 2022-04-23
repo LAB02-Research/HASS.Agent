@@ -3,6 +3,7 @@ using HASS.Agent.Enums;
 using HASS.Agent.Functions;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Service;
+using HASS.Agent.Shared.Enums;
 using HASS.Agent.Shared.Functions;
 using Serilog;
 using Syncfusion.Windows.Forms;

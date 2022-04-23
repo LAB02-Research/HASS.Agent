@@ -1,4 +1,5 @@
 ﻿using HASS.Agent.Enums;
+using HASS.Agent.Shared.Enums;
 
 namespace HASS.Agent.Models.HomeAssistant
 {

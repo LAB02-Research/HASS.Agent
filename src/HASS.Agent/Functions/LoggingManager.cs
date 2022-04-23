@@ -14,12 +14,15 @@ namespace HASS.Agent.Functions
         /// <summary>
         /// Initializes Serilog logger
         /// </summary>
-        internal static void PrepareLogging()
+        internal static void PrepareLogging(string[] args)
         {
+            var logName = string.Empty;
+            if (args.Any()) logName = $"{args.First(x => !string.IsNullOrEmpty(x))}_";
+
             // prepare a serilog logger
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Async(a =>
-                    a.File(Path.Combine(Variables.LogPath, $"[{DateTime.Now:yyyy-MM-dd}] {Variables.ApplicationName}_.log"),
+                    a.File(Path.Combine(Variables.LogPath, $"[{DateTime.Now:yyyy-MM-dd}] {Variables.ApplicationName}_{logName}.log"),
                         rollingInterval: RollingInterval.Day,
                         fileSizeLimitBytes: 10000000,
                         retainedFileCountLimit: 10,

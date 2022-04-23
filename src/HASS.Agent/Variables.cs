@@ -26,8 +26,8 @@ namespace HASS.Agent
         public static string ApplicationName { get; } = Assembly.GetExecutingAssembly().GetName().Name ?? "HASS.Agent";
         public static string MessageBoxTitle { get; } = "HASS.Agent";
         public static string ApplicationExecutable { get; } = Assembly.GetExecutingAssembly().Location.Replace(".dll", ".exe");
-        public static string Version { get; } = $"{Assembly.GetExecutingAssembly().GetName().Version?.Major}.{Assembly.GetExecutingAssembly().GetName().Version?.Minor}.{Assembly.GetExecutingAssembly().GetName().Version?.Build}.{Assembly.GetExecutingAssembly().GetName().Version?.Revision}";
-        public static bool Beta { get; set; } = false;
+        public static string Version { get; } = Application.ProductVersion;
+        public static bool Beta { get; } = Version.Contains('b');
 
         /// <summary>
         /// Constants
@@ -45,7 +45,7 @@ namespace HASS.Agent
         internal static HotKeyManager HotKeyManager { get; } = new();
         internal static HotkeyListener HotKeyListener { get; set; }
         internal static Random Rnd { get; } = new();
-        internal static  Font DefaultFont { get; } = new("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+        internal static Font DefaultFont { get; } = new("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
 
         /// <summary>
         /// Localization

@@ -21,7 +21,7 @@ namespace HASS.Agent.Functions
         /// <summary>
         /// Contains the last event that happened to the system, ie. user logged on, session locked, etc
         /// </summary>
-        internal static SystemStateEvent LastSystemStateEvent { get; private set; } = SystemStateEvent.HassAgentStarted;
+        internal static SystemStateEvent LastSystemStateEvent { get; private set; } = SystemStateEvent.ApplicationStarted;
 
         /// <summary>
         /// Initializes the systemstate manager and binds to Windows' event announcements

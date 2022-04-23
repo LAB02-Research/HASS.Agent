@@ -1,5 +1,6 @@
 ﻿using HASS.Agent.Enums;
 using HASS.Agent.Extensions;
+using HASS.Agent.Models.HomeAssistant.Sensors.GeneralSensors.SingleValue;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Shared.Enums;
 using HASS.Agent.Shared.Extensions;
@@ -162,6 +163,9 @@ namespace HASS.Agent.Settings
                 case SensorType.LoggedUserSensor:
                     abstractSensor = new LoggedUserSensor(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
                     break;
+                case SensorType.GeoLocationSensor:
+                    abstractSensor = new GeoLocationSensor(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    break;
                 default:
                     Log.Error("[SETTINGS_SENSORS] [{name}] Unknown configured single-value sensor type: {type}", sensor.Name, sensor.Type.ToString());
                     break;
@@ -185,7 +189,7 @@ namespace HASS.Agent.Settings
                     abstractSensor = new StorageSensors(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
                     break;
                 case SensorType.NetworkSensors:
-                    abstractSensor = new NetworkSensors(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    abstractSensor = new NetworkSensors(sensor.UpdateInterval, sensor.Name, sensor.Query, sensor.Id.ToString());
                     break;
                 case SensorType.WindowsUpdatesSensors:
                     abstractSensor = new WindowsUpdatesSensors(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
@@ -325,6 +329,7 @@ namespace HASS.Agent.Settings
                     {
                         Id = Guid.Parse(sensor.Id),
                         Name = sensor.Name,
+                        Query = networkSensors.NetworkCard,
                         Type = type,
                         UpdateInterval = sensor.UpdateIntervalSeconds
                     };

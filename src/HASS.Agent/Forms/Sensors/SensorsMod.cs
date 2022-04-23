@@ -1,4 +1,5 @@
-﻿using Syncfusion.Windows.Forms;
+﻿using System.Net.NetworkInformation;
+using Syncfusion.Windows.Forms;
 using HASS.Agent.Functions;
 using HASS.Agent.Models.Internal;
 using HASS.Agent.Resources.Localization;
@@ -20,6 +21,10 @@ namespace HASS.Agent.Forms.Sensors
         private bool _interfaceLockedWrongType;
         private bool _loading = true;
 
+        private readonly Dictionary<string, string> _networkCards = new();
+
+        private SensorType _selectedSensorType = SensorType.ActiveWindowSensor;
+
         public SensorsMod(ConfiguredSensor sensor, bool serviceMode = false, string serviceDeviceName = "")
         {
             Sensor = sensor;
@@ -30,6 +35,8 @@ namespace HASS.Agent.Forms.Sensors
             InitializeComponent();
 
             BindListViewTheme();
+
+            BindComboBoxTheme();
         }
 
         public SensorsMod(bool serviceMode = false, string serviceDeviceName = "")
@@ -42,6 +49,8 @@ namespace HASS.Agent.Forms.Sensors
             InitializeComponent();
 
             BindListViewTheme();
+
+            BindComboBoxTheme();
         }
 
         private void BindListViewTheme()
@@ -50,6 +59,8 @@ namespace HASS.Agent.Forms.Sensors
             LvSensors.DrawSubItem += ListViewTheme.DrawSubItem;
             LvSensors.DrawColumnHeader += ListViewTheme.DrawColumnHeader;
         }
+
+        private void BindComboBoxTheme() => CbNetworkCard.DrawItem += ComboBoxTheme.DrawDictionaryStringStringItem;
 
         private void SensorMod_Load(object sender, EventArgs e)
         {
@@ -60,13 +71,21 @@ namespace HASS.Agent.Forms.Sensors
             LvSensors.BeginUpdate();
             foreach (var sensor in SensorsManager.SensorInfoCards.Select(x => x.Value))
             {
-                var lvSensor = new ListViewItem(sensor.Name);
+                var lvSensor = new ListViewItem(sensor.Key.ToString());
+                lvSensor.SubItems.Add(sensor.Name);
                 lvSensor.SubItems.Add(sensor.MultiValue ? "√" : string.Empty);
                 lvSensor.SubItems.Add(sensor.AgentCompatible ? "√" : string.Empty);
                 lvSensor.SubItems.Add(sensor.SatelliteCompatible ? "√" : string.Empty);
                 LvSensors.Items.Add(lvSensor);
             }
             LvSensors.EndUpdate();
+
+            // load network cards
+            _networkCards.Add("*", Languages.SensorsMod_All);
+            foreach (var nic in NetworkInterface.GetAllNetworkInterfaces()) _networkCards.Add(nic.Id, nic.Name);
+
+            // load in gui
+            CbNetworkCard.DataSource = new BindingSource(_networkCards, null);
 
             // load or set sensor
             if (Sensor.Id == Guid.Empty)
@@ -95,13 +114,16 @@ namespace HASS.Agent.Forms.Sensors
             // load the card
             var sensorCard = SensorsManager.SensorInfoCards[Sensor.Type];
 
+            // set type
+            _selectedSensorType = sensorCard.SensorType;
+
             // load the type
-            TbSelectedType.Text = sensorCard.SensorType.ToString();
+            TbSelectedType.Text = _selectedSensorType.ToString();
 
             // select it as well
             foreach (ListViewItem lvi in LvSensors.Items)
             {
-                if (lvi.Text != sensorCard.Name) continue;
+                if (lvi.Text != sensorCard.Key.ToString()) continue;
                 lvi.Selected = true;
                 LvSensors.SelectedItems[0].EnsureVisible();
                 break;
@@ -119,7 +141,7 @@ namespace HASS.Agent.Forms.Sensors
             NumInterval.Text = Sensor.UpdateInterval?.ToString() ?? "10";
 
             // set optional setting
-            switch (sensorCard.SensorType)
+            switch (_selectedSensorType)
             {
                 case SensorType.NamedWindowSensor:
                     TbSetting1.Text = Sensor.WindowName;
@@ -143,6 +165,10 @@ namespace HASS.Agent.Forms.Sensors
                 case SensorType.ServiceStateSensor:
                     TbSetting1.Text = Sensor.Query;
                     break;
+
+                case SensorType.NetworkSensors:
+                    if (_networkCards.ContainsKey(Sensor.Query)) CbNetworkCard.SelectedItem = new KeyValuePair<string, string>(Sensor.Query, _networkCards[Sensor.Query]);
+                    break;
             }
         }
 
@@ -160,8 +186,8 @@ namespace HASS.Agent.Forms.Sensors
             }
 
             // find the sensor card
-            var sensorName = LvSensors.SelectedItems[0].Text;
-            var sensorCard = SensorsManager.SensorInfoCards.Where(card => card.Value.Name == sensorName)
+            var sensorId = int.Parse(LvSensors.SelectedItems[0].Text);
+            var sensorCard = SensorsManager.SensorInfoCards.Where(card => card.Value.Key == sensorId)
                 .Select(card => card.Value).FirstOrDefault();
             if (sensorCard == null) return false;
 
@@ -186,6 +212,7 @@ namespace HASS.Agent.Forms.Sensors
             {
                 TbName.Text = _serviceMode ? sensorCard.SensorType.GetSensorName(_serviceDeviceName) : sensorCard.SensorType.GetSensorName();
                 NumInterval.Text = sensorCard.RefreshTimer.ToString();
+                _selectedSensorType = sensorCard.SensorType;
             }
 
             TbSelectedType.Text = sensorCard.SensorType.ToString();
@@ -214,6 +241,10 @@ namespace HASS.Agent.Forms.Sensors
                     SetServiceStateGui();
                     break;
 
+                case SensorType.NetworkSensors:
+                    SetNetworkGui();
+                    break;
+
                 default:
                     SetEmptyGui();
                     break;
@@ -234,6 +265,8 @@ namespace HASS.Agent.Forms.Sensors
                 LblSetting1.Text = Languages.SensorsMod_LblSetting1_WindowName;
                 LblSetting1.Visible = true;
                 TbSetting1.Visible = true;
+
+                BtnTest.Visible = false;
             }));
         }
 
@@ -253,6 +286,9 @@ namespace HASS.Agent.Forms.Sensors
                 LblSetting2.Text = Languages.SensorsMod_LblSetting2_Wmi;
                 LblSetting2.Visible = true;
                 TbSetting2.Visible = true;
+
+                BtnTest.Text = Languages.SensorsMod_BtnTest_Wmi;
+                BtnTest.Visible = true;
             }));
         }
 
@@ -263,6 +299,8 @@ namespace HASS.Agent.Forms.Sensors
         {
             Invoke(new MethodInvoker(delegate
             {
+                SetEmptyGui();
+
                 LblSetting1.Text = Languages.SensorsMod_LblSetting1_Category;
                 LblSetting1.Visible = true;
                 TbSetting1.Text = string.Empty;
@@ -277,6 +315,9 @@ namespace HASS.Agent.Forms.Sensors
                 LblSetting3.Visible = true;
                 TbSetting3.Text = string.Empty;
                 TbSetting3.Visible = true;
+
+                BtnTest.Text = Languages.SensorsMod_BtnTest_PerformanceCounter;
+                BtnTest.Visible = true;
             }));
         }
 
@@ -311,6 +352,22 @@ namespace HASS.Agent.Forms.Sensors
         }
 
         /// <summary>
+        /// Change the UI to a 'network' type
+        /// </summary>
+        private void SetNetworkGui()
+        {
+            Invoke(new MethodInvoker(delegate
+            {
+                SetEmptyGui();
+
+                LblSetting1.Text = Languages.SensorsMod_LblSetting1_Network;
+                LblSetting1.Visible = true;
+
+                CbNetworkCard.Visible = true;
+            }));
+        }
+
+        /// <summary>
         /// Change the UI to a general type
         /// </summary>
         private void SetEmptyGui()
@@ -318,6 +375,9 @@ namespace HASS.Agent.Forms.Sensors
             Invoke(new MethodInvoker(delegate
             {
                 LblSetting1.Visible = false;
+
+                CbNetworkCard.Visible = false;
+
                 TbSetting1.Text = string.Empty;
                 TbSetting1.Visible = false;
 
@@ -328,6 +388,8 @@ namespace HASS.Agent.Forms.Sensors
                 LblSetting3.Visible = false;
                 TbSetting3.Text = string.Empty;
                 TbSetting3.Visible = false;
+
+                BtnTest.Visible = false;
             }));
         }
         
@@ -357,8 +419,8 @@ namespace HASS.Agent.Forms.Sensors
             }
 
             // get and check type
-            var sensorName = LvSensors.SelectedItems[0].Text;
-            var sensorCard = SensorsManager.SensorInfoCards.Where(card => card.Value.Name == sensorName)
+            var sensorId = int.Parse(LvSensors.SelectedItems[0].Text);
+            var sensorCard = SensorsManager.SensorInfoCards.Where(card => card.Value.Key == sensorId)
                 .Select(card => card.Value).FirstOrDefault();
 
             if (sensorCard == null)
@@ -423,12 +485,27 @@ namespace HASS.Agent.Forms.Sensors
                 case SensorType.WmiQuerySensor:
                     var query = TbSetting1.Text.Trim();
                     var scope = TbSetting2.Text.Trim();
+
+                    // test the query
                     if (string.IsNullOrEmpty(query))
                     {
                         MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox8, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting1;
                         return;
                     }
+
+                    // test the scope
+                    if (!string.IsNullOrEmpty(scope))
+                    {
+                        if (!HelperFunctions.CheckWmiScope(scope))
+                        {
+                            var scopeQ = MessageBoxAdv.Show(string.Format(Languages.SensorsMod_WmiTestFailed, scope),
+                                Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                            if (scopeQ != DialogResult.Yes) return;
+                        }
+                    }
+
                     Sensor.Query = query;
                     Sensor.Scope = scope;
                     break;
@@ -468,6 +545,15 @@ namespace HASS.Agent.Forms.Sensors
                         return;
                     }
                     Sensor.Query = service;
+                    break;
+
+                case SensorType.NetworkSensors:
+                    Sensor.Query = "*";
+                    if (CbNetworkCard.SelectedItem != null)
+                    {
+                        var item = (KeyValuePair<string, string>)CbNetworkCard.SelectedItem;
+                        Sensor.Query = item.Key;
+                    }
                     break;
             }
 
@@ -562,6 +648,100 @@ namespace HASS.Agent.Forms.Sensors
 
             TbName.Enabled = true;
             BtnStore.Enabled = true;
+        }
+
+        private void BtnTest_Click(object sender, EventArgs e)
+        {
+            switch (_selectedSensorType)
+            {
+                case SensorType.WmiQuerySensor:
+                    TestWmi();
+                    break;
+
+                case SensorType.PerformanceCounterSensor:
+                    TestPerformanceCounter();
+                    break;
+            }
+        }
+
+        private async void TestWmi()
+        {
+            // prepare values
+            var query = TbSetting1.Text.Trim();
+            var scope = TbSetting2.Text.Trim();
+
+            if (string.IsNullOrEmpty(query))
+            {
+                MessageBoxAdv.Show(Languages.SensorsMod_TestWmi_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                ActiveControl = TbSetting1;
+                return;
+            }
+
+            // test the scope
+            if (!string.IsNullOrEmpty(scope))
+            {
+                if (!HelperFunctions.CheckWmiScope(scope))
+                {
+                    var scopeQ = MessageBoxAdv.Show(string.Format(Languages.SensorsMod_WmiTestFailed, scope),
+                        Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                    if (scopeQ != DialogResult.Yes) return;
+                }
+            }
+
+            BtnTest.Enabled = false;
+
+            // execute the test
+            var result = await Task.Run(() => SensorTester.TestWmiQuery(query, scope));
+
+            BtnTest.Enabled = true;
+
+            if (result.Succesful)
+            {
+                MessageBoxAdv.Show(string.Format(Languages.SensorsMod_TestWmi_MessageBox2, result.ReturnValue), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // failed
+            var q = MessageBoxAdv.Show(string.Format(Languages.SensorsMod_TestWmi_MessageBox3, result.ErrorReason), Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            if (q != DialogResult.Yes) return;
+
+            // open logs
+            HelperFunctions.OpenLocalFolder(Variables.LogPath);
+        }
+
+        private async void TestPerformanceCounter()
+        {
+            // prepare values
+            var category = TbSetting1.Text.Trim();
+            var counter = TbSetting2.Text.Trim();
+            var instance = TbSetting3.Text.Trim();
+
+            if (string.IsNullOrEmpty(category) || string.IsNullOrEmpty(counter))
+            {
+                MessageBoxAdv.Show(Languages.SensorsMod_TestPerformanceCounter_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            BtnTest.Enabled = false;
+
+            // execute the test
+            var result = await Task.Run((() => SensorTester.TestPerformanceCounter(category, counter, instance)));
+
+            BtnTest.Enabled = true;
+
+            if (result.Succesful)
+            {
+                MessageBoxAdv.Show(string.Format(Languages.SensorsMod_TestPerformanceCounter_MessageBox2, result.ReturnValue), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // failed
+            var q = MessageBoxAdv.Show(string.Format(Languages.SensorsMod_TestPerformanceCounter_MessageBox3, result.ErrorReason), Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            if (q != DialogResult.Yes) return;
+
+            // open logs
+            HelperFunctions.OpenLocalFolder(Variables.LogPath);
         }
     }
 }

@@ -3,6 +3,7 @@ using HASS.Agent.Forms.QuickActions;
 using HASS.Agent.HomeAssistant;
 using HASS.Agent.Models.Internal;
 using HASS.Agent.Properties;
+using HASS.Agent.Shared.Enums;
 using Serilog;
 
 namespace HASS.Agent.Controls

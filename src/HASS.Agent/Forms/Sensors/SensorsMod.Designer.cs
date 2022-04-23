@@ -50,6 +50,7 @@ namespace HASS.Agent.Forms.Sensors
             this.TbSetting3 = new System.Windows.Forms.TextBox();
             this.NumInterval = new Syncfusion.Windows.Forms.Tools.NumericUpDownExt();
             this.LvSensors = new System.Windows.Forms.ListView();
+            this.ClmId = new System.Windows.Forms.ColumnHeader();
             this.ClmSensorName = new System.Windows.Forms.ColumnHeader();
             this.ClmMultiValue = new System.Windows.Forms.ColumnHeader("multivalue_16_header");
             this.ClmAgentCompatible = new System.Windows.Forms.ColumnHeader("agent_16_header");
@@ -64,6 +65,8 @@ namespace HASS.Agent.Forms.Sensors
             this.LblService = new System.Windows.Forms.Label();
             this.PbService = new System.Windows.Forms.PictureBox();
             this.LblSpecificClient = new System.Windows.Forms.Label();
+            this.BtnTest = new Syncfusion.WinForms.Controls.SfButton();
+            this.CbNetworkCard = new System.Windows.Forms.ComboBox();
             this.PnlDescription.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumInterval)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbMultiValue)).BeginInit();
@@ -78,7 +81,7 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnStore.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BtnStore.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnStore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnStore.Location = new System.Drawing.Point(0, 417);
+            this.BtnStore.Location = new System.Drawing.Point(0, 439);
             this.BtnStore.Name = "BtnStore";
             this.BtnStore.Size = new System.Drawing.Size(1319, 38);
             this.BtnStore.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -281,6 +284,7 @@ namespace HASS.Agent.Forms.Sensors
             // 
             this.LvSensors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.LvSensors.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ClmId,
             this.ClmSensorName,
             this.ClmMultiValue,
             this.ClmAgentCompatible,
@@ -302,6 +306,11 @@ namespace HASS.Agent.Forms.Sensors
             this.LvSensors.UseCompatibleStateImageBehavior = false;
             this.LvSensors.View = System.Windows.Forms.View.Details;
             this.LvSensors.SelectedIndexChanged += new System.EventHandler(this.LvSensors_SelectedIndexChanged);
+            // 
+            // ClmId
+            // 
+            this.ClmId.Text = "id";
+            this.ClmId.Width = 0;
             // 
             // ClmSensorName
             // 
@@ -418,6 +427,45 @@ namespace HASS.Agent.Forms.Sensors
             this.LblSpecificClient.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.LblSpecificClient.Visible = false;
             // 
+            // BtnTest
+            // 
+            this.BtnTest.AccessibleName = "Button";
+            this.BtnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnTest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnTest.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BtnTest.Location = new System.Drawing.Point(566, 402);
+            this.BtnTest.Name = "BtnTest";
+            this.BtnTest.Size = new System.Drawing.Size(328, 24);
+            this.BtnTest.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnTest.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnTest.Style.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BtnTest.Style.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BtnTest.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnTest.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BtnTest.Style.PressedForeColor = System.Drawing.Color.Black;
+            this.BtnTest.TabIndex = 40;
+            this.BtnTest.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsMod_BtnTest;
+            this.BtnTest.UseVisualStyleBackColor = false;
+            this.BtnTest.Visible = false;
+            this.BtnTest.Click += new System.EventHandler(this.BtnTest_Click);
+            // 
+            // CbNetworkCard
+            // 
+            this.CbNetworkCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.CbNetworkCard.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CbNetworkCard.DropDownHeight = 300;
+            this.CbNetworkCard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbNetworkCard.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CbNetworkCard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.CbNetworkCard.FormattingEnabled = true;
+            this.CbNetworkCard.IntegralHeight = false;
+            this.CbNetworkCard.Location = new System.Drawing.Point(566, 257);
+            this.CbNetworkCard.Name = "CbNetworkCard";
+            this.CbNetworkCard.Size = new System.Drawing.Size(328, 26);
+            this.CbNetworkCard.TabIndex = 41;
+            this.CbNetworkCard.Visible = false;
+            // 
             // SensorsMod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -426,7 +474,9 @@ namespace HASS.Agent.Forms.Sensors
             this.CaptionBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(1319, 455);
+            this.ClientSize = new System.Drawing.Size(1319, 477);
+            this.Controls.Add(this.CbNetworkCard);
+            this.Controls.Add(this.BtnTest);
             this.Controls.Add(this.LblSpecificClient);
             this.Controls.Add(this.LblService);
             this.Controls.Add(this.PbService);
@@ -509,6 +559,9 @@ namespace HASS.Agent.Forms.Sensors
         private Label LblService;
         private PictureBox PbService;
         private Label LblSpecificClient;
+        private ColumnHeader ClmId;
+        private Syncfusion.WinForms.Controls.SfButton BtnTest;
+        private ComboBox CbNetworkCard;
     }
 }
 

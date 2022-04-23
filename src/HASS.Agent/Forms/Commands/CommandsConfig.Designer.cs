@@ -60,7 +60,7 @@ namespace HASS.Agent.Forms.Commands
             this.BtnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnRemove.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnRemove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnRemove.Location = new System.Drawing.Point(0, 509);
+            this.BtnRemove.Location = new System.Drawing.Point(253, 516);
             this.BtnRemove.Name = "BtnRemove";
             this.BtnRemove.Size = new System.Drawing.Size(197, 35);
             this.BtnRemove.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -82,7 +82,7 @@ namespace HASS.Agent.Forms.Commands
             this.BtnModify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnModify.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnModify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnModify.Location = new System.Drawing.Point(245, 509);
+            this.BtnModify.Location = new System.Drawing.Point(456, 516);
             this.BtnModify.Name = "BtnModify";
             this.BtnModify.Size = new System.Drawing.Size(197, 35);
             this.BtnModify.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -104,7 +104,7 @@ namespace HASS.Agent.Forms.Commands
             this.BtnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnAdd.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnAdd.Location = new System.Drawing.Point(448, 509);
+            this.BtnAdd.Location = new System.Drawing.Point(659, 516);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(197, 35);
             this.BtnAdd.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -128,7 +128,7 @@ namespace HASS.Agent.Forms.Commands
             this.BtnStore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Location = new System.Drawing.Point(0, 557);
             this.BtnStore.Name = "BtnStore";
-            this.BtnStore.Size = new System.Drawing.Size(645, 47);
+            this.BtnStore.Size = new System.Drawing.Size(856, 47);
             this.BtnStore.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -164,7 +164,7 @@ namespace HASS.Agent.Forms.Commands
             this.LvCommands.Location = new System.Drawing.Point(0, 2);
             this.LvCommands.Name = "LvCommands";
             this.LvCommands.OwnerDraw = true;
-            this.LvCommands.Size = new System.Drawing.Size(645, 479);
+            this.LvCommands.Size = new System.Drawing.Size(856, 508);
             this.LvCommands.SmallImageList = this.ImgLv;
             this.LvCommands.TabIndex = 28;
             this.LvCommands.UseCompatibleStateImageBehavior = false;
@@ -179,12 +179,12 @@ namespace HASS.Agent.Forms.Commands
             // ClmName
             // 
             this.ClmName.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsConfig_ClmName;
-            this.ClmName.Width = 300;
+            this.ClmName.Width = 400;
             // 
             // ClmType
             // 
             this.ClmType.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsConfig_ClmType;
-            this.ClmType.Width = 190;
+            this.ClmType.Width = 300;
             // 
             // ClmLowIntegrity
             // 
@@ -212,17 +212,17 @@ namespace HASS.Agent.Forms.Commands
             this.LblLowIntegrity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LblLowIntegrity.AutoSize = true;
             this.LblLowIntegrity.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblLowIntegrity.Location = new System.Drawing.Point(412, 487);
+            this.LblLowIntegrity.Location = new System.Drawing.Point(99, 527);
             this.LblLowIntegrity.Name = "LblLowIntegrity";
             this.LblLowIntegrity.Size = new System.Drawing.Size(73, 15);
             this.LblLowIntegrity.TabIndex = 39;
-            this.LblLowIntegrity.Text = Languages.CommandsConfig_LblLowIntegrity;
+            this.LblLowIntegrity.Text = "low integrity";
             // 
             // PbLowIntegrity
             // 
             this.PbLowIntegrity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PbLowIntegrity.Image = global::HASS.Agent.Properties.Resources.shield_16;
-            this.PbLowIntegrity.Location = new System.Drawing.Point(390, 486);
+            this.PbLowIntegrity.Location = new System.Drawing.Point(77, 526);
             this.PbLowIntegrity.Name = "PbLowIntegrity";
             this.PbLowIntegrity.Size = new System.Drawing.Size(16, 16);
             this.PbLowIntegrity.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -234,7 +234,7 @@ namespace HASS.Agent.Forms.Commands
             this.LblActionInfo.AutoSize = true;
             this.LblActionInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblActionInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.LblActionInfo.Location = new System.Drawing.Point(547, 487);
+            this.LblActionInfo.Location = new System.Drawing.Point(23, 527);
             this.LblActionInfo.Name = "LblActionInfo";
             this.LblActionInfo.Size = new System.Drawing.Size(40, 15);
             this.LblActionInfo.TabIndex = 45;
@@ -245,7 +245,7 @@ namespace HASS.Agent.Forms.Commands
             // 
             this.PbActionInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbActionInfo.Image = global::HASS.Agent.Properties.Resources.action_16;
-            this.PbActionInfo.Location = new System.Drawing.Point(525, 486);
+            this.PbActionInfo.Location = new System.Drawing.Point(1, 526);
             this.PbActionInfo.Name = "PbActionInfo";
             this.PbActionInfo.Size = new System.Drawing.Size(16, 16);
             this.PbActionInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -261,7 +261,7 @@ namespace HASS.Agent.Forms.Commands
             this.CaptionBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(645, 604);
+            this.ClientSize = new System.Drawing.Size(856, 604);
             this.Controls.Add(this.LblActionInfo);
             this.Controls.Add(this.PbActionInfo);
             this.Controls.Add(this.LblLowIntegrity);
@@ -281,7 +281,7 @@ namespace HASS.Agent.Forms.Commands
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = Languages.CommandsConfig_Title;
+            this.Text = "Commands Config";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CommandsConfig_FormClosing);
             this.Load += new System.EventHandler(this.CommandsConfig_Load);
             this.ResizeBegin += new System.EventHandler(this.CommandsConfig_ResizeBegin);

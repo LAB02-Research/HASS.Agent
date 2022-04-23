@@ -153,6 +153,8 @@ namespace HASS.Agent.Forms.QuickActions
         /// <param name="e"></param>
         private void BtnStore_Click(object sender, EventArgs e)
         {
+            _storing = true;
+
             // copy our list to the main one
             Variables.QuickActions = new List<QuickAction>();
             foreach (var quickAction in _quickActions) Variables.QuickActions.Add(quickAction);

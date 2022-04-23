@@ -101,7 +101,7 @@ namespace HASS.Agent.Forms
             this.TabGeneral.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabGeneral.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabGeneral.TabIndex = 9;
-            this.TabGeneral.Text = Languages.Configuration_TabGeneral;
+            this.TabGeneral.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_TabGeneral;
             this.TabGeneral.ThemesEnabled = false;
             // 
             // TabExternalTools
@@ -117,7 +117,7 @@ namespace HASS.Agent.Forms
             this.TabExternalTools.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabExternalTools.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabExternalTools.TabIndex = 10;
-            this.TabExternalTools.Text = Languages.Configuration_TabExternalTools;
+            this.TabExternalTools.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_TabExternalTools;
             this.TabExternalTools.ThemesEnabled = false;
             // 
             // TabHassApi
@@ -133,7 +133,7 @@ namespace HASS.Agent.Forms
             this.TabHassApi.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabHassApi.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabHassApi.TabIndex = 1;
-            this.TabHassApi.Text = Languages.Configuration_TabHassApi;
+            this.TabHassApi.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_TabHassApi;
             this.TabHassApi.ThemesEnabled = false;
             // 
             // TabHotKey
@@ -149,7 +149,7 @@ namespace HASS.Agent.Forms
             this.TabHotKey.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabHotKey.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabHotKey.TabIndex = 5;
-            this.TabHotKey.Text = Languages.Configuration_TabHotKey;
+            this.TabHotKey.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_TabHotKey;
             this.TabHotKey.ThemesEnabled = false;
             // 
             // TabLocalStorage
@@ -165,7 +165,7 @@ namespace HASS.Agent.Forms
             this.TabLocalStorage.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabLocalStorage.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabLocalStorage.TabIndex = 8;
-            this.TabLocalStorage.Text = Languages.Configuration_TabLocalStorage;
+            this.TabLocalStorage.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_TabLocalStorage;
             this.TabLocalStorage.ThemesEnabled = false;
             // 
             // TabLogging
@@ -181,7 +181,7 @@ namespace HASS.Agent.Forms
             this.TabLogging.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabLogging.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabLogging.TabIndex = 7;
-            this.TabLogging.Text = Languages.Configuration_TabLogging;
+            this.TabLogging.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_TabLogging;
             this.TabLogging.ThemesEnabled = false;
             // 
             // TabMQTT
@@ -197,7 +197,7 @@ namespace HASS.Agent.Forms
             this.TabMQTT.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabMQTT.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabMQTT.TabIndex = 3;
-            this.TabMQTT.Text = Languages.Configuration_TabMQTT;
+            this.TabMQTT.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_TabMQTT;
             this.TabMQTT.ThemesEnabled = false;
             // 
             // TabNotifications
@@ -213,7 +213,7 @@ namespace HASS.Agent.Forms
             this.TabNotifications.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabNotifications.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabNotifications.TabIndex = 2;
-            this.TabNotifications.Text = Languages.Configuration_TabNotifications;
+            this.TabNotifications.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_TabNotifications;
             this.TabNotifications.ThemesEnabled = false;
             // 
             // TabService
@@ -228,7 +228,7 @@ namespace HASS.Agent.Forms
             this.TabService.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabService.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabService.TabIndex = 11;
-            this.TabService.Text = Languages.Configuration_TabService;
+            this.TabService.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_TabService;
             this.TabService.ThemesEnabled = false;
             // 
             // TabStartup
@@ -244,7 +244,7 @@ namespace HASS.Agent.Forms
             this.TabStartup.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabStartup.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabStartup.TabIndex = 4;
-            this.TabStartup.Text = Languages.Configuration_TabStartup;
+            this.TabStartup.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_TabStartup;
             this.TabStartup.ThemesEnabled = false;
             // 
             // TabUpdates
@@ -260,7 +260,7 @@ namespace HASS.Agent.Forms
             this.TabUpdates.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabUpdates.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabUpdates.TabIndex = 6;
-            this.TabUpdates.Text = Languages.Configuration_TabUpdates;
+            this.TabUpdates.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_TabUpdates;
             this.TabUpdates.ThemesEnabled = false;
             // 
             // BtnAbout
@@ -280,7 +280,7 @@ namespace HASS.Agent.Forms
             this.BtnAbout.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnAbout.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnAbout.TabIndex = 9;
-            this.BtnAbout.Text = Languages.Configuration_BtnAbout;
+            this.BtnAbout.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_BtnAbout;
             this.BtnAbout.UseVisualStyleBackColor = false;
             this.BtnAbout.Click += new System.EventHandler(this.BtnAbout_Click);
             // 
@@ -301,7 +301,7 @@ namespace HASS.Agent.Forms
             this.BtnHelp.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnHelp.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnHelp.TabIndex = 8;
-            this.BtnHelp.Text = Languages.Configuration_BtnHelp;
+            this.BtnHelp.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_BtnHelp;
             this.BtnHelp.UseVisualStyleBackColor = false;
             this.BtnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
             // 
@@ -354,7 +354,7 @@ namespace HASS.Agent.Forms
             this.BtnClose.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnClose.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnClose.TabIndex = 12;
-            this.BtnClose.Text = Languages.Configuration_BtnClose;
+            this.BtnClose.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_BtnClose;
             this.BtnClose.UseVisualStyleBackColor = false;
             this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
@@ -382,7 +382,7 @@ namespace HASS.Agent.Forms
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = Languages.Configuration_Title;
+            this.Text = "Configuration";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Configuration_FormClosing);
             this.Load += new System.EventHandler(this.Configuration_Load);
             this.ResizeEnd += new System.EventHandler(this.Configuration_ResizeEnd);

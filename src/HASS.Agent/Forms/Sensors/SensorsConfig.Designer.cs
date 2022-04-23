@@ -47,6 +47,7 @@ namespace HASS.Agent.Forms.Sensors
             this.ImgLv = new System.Windows.Forms.ImageList(this.components);
             this.LblRefresh = new System.Windows.Forms.Label();
             this.PbRefresh = new System.Windows.Forms.PictureBox();
+            this.ClmValue = new System.Windows.Forms.ColumnHeader();
             ((System.ComponentModel.ISupportInitialize)(this.PbRefresh)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +58,7 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnRemove.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnRemove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnRemove.Location = new System.Drawing.Point(0, 506);
+            this.BtnRemove.Location = new System.Drawing.Point(253, 516);
             this.BtnRemove.Name = "BtnRemove";
             this.BtnRemove.Size = new System.Drawing.Size(197, 35);
             this.BtnRemove.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -79,7 +80,7 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnModify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnModify.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnModify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnModify.Location = new System.Drawing.Point(245, 506);
+            this.BtnModify.Location = new System.Drawing.Point(456, 516);
             this.BtnModify.Name = "BtnModify";
             this.BtnModify.Size = new System.Drawing.Size(197, 35);
             this.BtnModify.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -101,7 +102,7 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnAdd.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BtnAdd.Location = new System.Drawing.Point(448, 506);
+            this.BtnAdd.Location = new System.Drawing.Point(659, 516);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(197, 35);
             this.BtnAdd.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -125,7 +126,7 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnStore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Location = new System.Drawing.Point(0, 557);
             this.BtnStore.Name = "BtnStore";
-            this.BtnStore.Size = new System.Drawing.Size(645, 47);
+            this.BtnStore.Size = new System.Drawing.Size(856, 47);
             this.BtnStore.Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.FocusedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
@@ -150,6 +151,7 @@ namespace HASS.Agent.Forms.Sensors
             this.ClmName,
             this.ClmType,
             this.ClmRefresh,
+            this.ClmValue,
             this.ClmEmpty});
             this.LvSensors.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LvSensors.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -160,7 +162,7 @@ namespace HASS.Agent.Forms.Sensors
             this.LvSensors.Location = new System.Drawing.Point(0, 2);
             this.LvSensors.Name = "LvSensors";
             this.LvSensors.OwnerDraw = true;
-            this.LvSensors.Size = new System.Drawing.Size(645, 479);
+            this.LvSensors.Size = new System.Drawing.Size(856, 508);
             this.LvSensors.SmallImageList = this.ImgLv;
             this.LvSensors.TabIndex = 27;
             this.LvSensors.UseCompatibleStateImageBehavior = false;
@@ -175,12 +177,12 @@ namespace HASS.Agent.Forms.Sensors
             // ClmName
             // 
             this.ClmName.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsConfig_ClmName;
-            this.ClmName.Width = 300;
+            this.ClmName.Width = 320;
             // 
             // ClmType
             // 
             this.ClmType.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsConfig_ClmType;
-            this.ClmType.Width = 250;
+            this.ClmType.Width = 300;
             // 
             // ClmRefresh
             // 
@@ -203,7 +205,7 @@ namespace HASS.Agent.Forms.Sensors
             this.LblRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LblRefresh.AutoSize = true;
             this.LblRefresh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblRefresh.Location = new System.Drawing.Point(470, 486);
+            this.LblRefresh.Location = new System.Drawing.Point(22, 527);
             this.LblRefresh.Name = "LblRefresh";
             this.LblRefresh.Size = new System.Drawing.Size(43, 15);
             this.LblRefresh.TabIndex = 41;
@@ -213,12 +215,17 @@ namespace HASS.Agent.Forms.Sensors
             // 
             this.PbRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PbRefresh.Image = global::HASS.Agent.Properties.Resources.refresh_16;
-            this.PbRefresh.Location = new System.Drawing.Point(448, 485);
+            this.PbRefresh.Location = new System.Drawing.Point(0, 526);
             this.PbRefresh.Name = "PbRefresh";
             this.PbRefresh.Size = new System.Drawing.Size(16, 16);
             this.PbRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.PbRefresh.TabIndex = 40;
             this.PbRefresh.TabStop = false;
+            // 
+            // ClmValue
+            // 
+            this.ClmValue.Text = Languages.SensorsConfig_ClmValue;
+            this.ClmValue.Width = 150;
             // 
             // SensorsConfig
             // 
@@ -228,7 +235,7 @@ namespace HASS.Agent.Forms.Sensors
             this.CaptionBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(645, 604);
+            this.ClientSize = new System.Drawing.Size(856, 604);
             this.Controls.Add(this.LblRefresh);
             this.Controls.Add(this.PbRefresh);
             this.Controls.Add(this.LvSensors);
@@ -274,6 +281,7 @@ namespace HASS.Agent.Forms.Sensors
         private ImageList ImgLv;
         private Label LblRefresh;
         private PictureBox PbRefresh;
+        private ColumnHeader ClmValue;
     }
 }
 

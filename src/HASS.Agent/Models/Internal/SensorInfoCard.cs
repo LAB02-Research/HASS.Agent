@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HASS.Agent.Functions;
 using HASS.Agent.Shared.Enums;
+using HASS.Agent.Shared.Functions;
 
 namespace HASS.Agent.Models.Internal
 {
@@ -17,8 +18,13 @@ namespace HASS.Agent.Models.Internal
 
         public SensorInfoCard(SensorType sensorType, string description, int refreshTimer, bool multiValue, bool agentCompatible, bool satelliteCompatible)
         {
+            var (key, name) = sensorType.GetLocalizedDescriptionAndKey();
+
             SensorType = sensorType;
-            Name = HelperFunctions.ConvertCapitalizedEntityNameToReadable(sensorType.ToString());
+
+            Key = key;
+            Name = name;
+
             Description = description;
             RefreshTimer = refreshTimer;
             MultiValue = multiValue;
@@ -27,7 +33,10 @@ namespace HASS.Agent.Models.Internal
         }
 
         public SensorType SensorType { get; set; }
+
+        public int Key { get; set; }
         public string Name { get; set; }
+
         public string Description { get; set; }
         public int RefreshTimer { get; set; }
         

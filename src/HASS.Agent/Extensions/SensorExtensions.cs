@@ -29,16 +29,5 @@ namespace HASS.Agent.Extensions
         /// <param name="sensorType"></param>
         /// <returns></returns>
         public static bool IsSingleValue(this SensorType sensorType) => !SensorsManager.SensorInfoCards[sensorType].MultiValue;
-
-        /// <summary>
-        /// Returns the name of the sensortype
-        /// </summary>
-        /// <param name="sensorType"></param>
-        /// <returns></returns>
-        public static string GetSensorName(this SensorType sensorType)
-        {
-            var sensorName = sensorType.ToString().ToLower().Replace("sensors", "").Replace("sensor", "");
-            return $"{SharedHelperFunctions.GetSafeConfiguredDeviceName()}_{sensorName}";
-        }
     }
 }

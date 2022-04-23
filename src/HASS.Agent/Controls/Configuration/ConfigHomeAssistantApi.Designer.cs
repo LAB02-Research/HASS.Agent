@@ -67,13 +67,13 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // LblClientCertificate
             // 
-            this.LblClientCertificate.AutoSize = true;
             this.LblClientCertificate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblClientCertificate.Location = new System.Drawing.Point(69, 314);
+            this.LblClientCertificate.Location = new System.Drawing.Point(3, 314);
             this.LblClientCertificate.Name = "LblClientCertificate";
-            this.LblClientCertificate.Size = new System.Drawing.Size(103, 19);
+            this.LblClientCertificate.Size = new System.Drawing.Size(169, 19);
             this.LblClientCertificate.TabIndex = 56;
             this.LblClientCertificate.Text = Languages.ConfigHomeAssistantApi_LblClientCertificate;
+            this.LblClientCertificate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // CbHassAutoClientCertificate
             // 
@@ -141,23 +141,23 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // LblApiToken
             // 
-            this.LblApiToken.AutoSize = true;
             this.LblApiToken.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblApiToken.Location = new System.Drawing.Point(106, 264);
+            this.LblApiToken.Location = new System.Drawing.Point(3, 264);
             this.LblApiToken.Name = "LblApiToken";
-            this.LblApiToken.Size = new System.Drawing.Size(66, 19);
+            this.LblApiToken.Size = new System.Drawing.Size(169, 19);
             this.LblApiToken.TabIndex = 51;
             this.LblApiToken.Text = Languages.ConfigHomeAssistantApi_LblApiToken;
+            this.LblApiToken.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // LblServerUri
             // 
-            this.LblServerUri.AutoSize = true;
             this.LblServerUri.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblServerUri.Location = new System.Drawing.Point(106, 215);
+            this.LblServerUri.Location = new System.Drawing.Point(3, 215);
             this.LblServerUri.Name = "LblServerUri";
-            this.LblServerUri.Size = new System.Drawing.Size(66, 19);
+            this.LblServerUri.Size = new System.Drawing.Size(169, 19);
             this.LblServerUri.TabIndex = 50;
             this.LblServerUri.Text = Languages.ConfigHomeAssistantApi_LblServerUri;
+            this.LblServerUri.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ConfigHomeAssistantApi
             // 

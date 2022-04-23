@@ -6,6 +6,7 @@ using HASS.Agent.Enums;
 using HASS.Agent.Functions;
 using HASS.Agent.Models.HomeAssistant;
 using HASS.Agent.Resources.Localization;
+using HASS.Agent.Shared.Enums;
 using HASS.Agent.Shared.Functions;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Newtonsoft.Json;
@@ -184,6 +185,7 @@ namespace HASS.Agent.Notifications
             {
                 using var p = new Process();
                 p.StartInfo.Verb = "runas";
+                p.StartInfo.UseShellExecute = true;
                 p.StartInfo.FileName = Variables.ApplicationExecutable;
                 p.StartInfo.Arguments = "portreservation";
 

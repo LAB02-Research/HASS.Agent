@@ -135,7 +135,7 @@ páginas dos componentes usados ​​para suas licenças individuais:</value>
 suficiente para compartilhar seu trabalho duro com o resto de nós, meros mortais.</value>
   </data>
   <data name="About_LblInfo5" xml:space="preserve">
-	  <value>E claro; obrigado a Paulus Shoutsen e toda a equipe de desenvolvedores
+    <value>E claro; obrigado a Paulus Shoutsen e toda a equipe de desenvolvedores
 que criaram e mantêm o Home Assistant :-)</value>
   </data>
   <data name="About_LblInfo6" xml:space="preserve">
@@ -1686,6 +1686,9 @@ Verifique os logs para obter mais informações e, opcionalmente, informe os des
   <data name="SensorsConfig_ClmType" xml:space="preserve">
     <value>tipo</value>
   </data>
+  <data name="SensorsConfig_ClmValue" xml:space="preserve">
+    <value>último valor conhecido</value>
+  </data>
   <data name="SensorsConfig_LblRefresh" xml:space="preserve">
     <value>atualizar</value>
   </data>
@@ -2233,6 +2236,9 @@ Por padrão, é o nome do seu PC mais &apos;-satellite&apos;.</value>
   <data name="ServiceGeneral_LblInfo1" xml:space="preserve">
     <value>Esta página contém itens de configuração geral. Para configurações, sensores e comandos do MQTT, navegue nas guias na parte superior.</value>
   </data>
+  <data name="ServiceGeneral_LblInfo2" xml:space="preserve">
+    <value>Você pode usar o serviço satélite para executar sensores e comandos sem precisar estar logado. Nem todos os tipos estão disponíveis, por exemplo, o comando &apos;Iniciar Url&apos; só pode ser adicionado como um comando regular.</value>
+  </data>
   <data name="ServiceGeneral_LblSeconds" xml:space="preserve">
     <value>segundos</value>
   </data>
@@ -2458,14 +2464,20 @@ Consulte os logs para obter mais informações.</value>
 
 {0}</value>
   </data>
+  <data name="SystemStateEvent_ApplicationStarted" xml:space="preserve">
+    <value>ApplicationStarted</value>
+  </data>
   <data name="SystemStateEvent_ConsoleConnect" xml:space="preserve">
     <value>ConectarConsole</value>
   </data>
   <data name="SystemStateEvent_ConsoleDisconnect" xml:space="preserve">
     <value>DesconectarConsole</value>
   </data>
-  <data name="SystemStateEvent_ApplicationStarted" xml:space="preserve">
-	  <value>ApplicationStarted</value>
+  <data name="SystemStateEvent_HassAgentSatelliteServiceStarted" xml:space="preserve">
+    <value>ServiçoSatéliteDoHass.AgentIniciado</value>
+  </data>
+  <data name="SystemStateEvent_HassAgentStarted" xml:space="preserve">
+    <value>Hass.AgentIniciado</value>
   </data>
   <data name="SystemStateEvent_Logoff" xml:space="preserve">
     <value>Sair</value>
@@ -2593,11 +2605,5 @@ A página de lançamento agora será aberta.</value>
   </data>
   <data name="UserNotificationState_RunningWindowsStoreApp" xml:space="preserve">
     <value>ExecutandoWindowsStoreApp</value>
-  </data>
-  <data name="ServiceGeneral_LblInfo2" xml:space="preserve">
-	  <value>You can use the satellite service to run sensors and commands without having to be logged in. Not all types are available, for instance the 'LaunchUrl' command can only be added as a regular command.</value>
-  </data>
-  <data name="SensorsConfig_ClmValue" xml:space="preserve">
-	  <value>last known value</value>
   </data>
 </root>

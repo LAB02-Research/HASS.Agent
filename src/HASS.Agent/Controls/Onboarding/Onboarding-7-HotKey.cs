@@ -30,6 +30,7 @@ namespace HASS.Agent.Controls.Onboarding
             if (!HelperFunctions.InputLanguageCheckDiffers(out var knownToCollide, out var warning))
             {
                 TbQuickActionsHotkey.Text = "Control, Alt + Q";
+                LblLanguageWarning.Visible = false;
                 return;
             }
 
@@ -42,9 +43,13 @@ namespace HASS.Agent.Controls.Onboarding
             }
 
             // the system's input language is unknown, we're presetting the default but warn the user
+            // deprecated, we're not doing this anymore
+            //TbQuickActionsHotkey.Text = "Control, Alt + Q";
+            //LblLanguageWarning.ForeColor = Color.DarkOrange;
+            //LblLanguageWarning.Text = warning;
+
             TbQuickActionsHotkey.Text = "Control, Alt + Q";
-            LblLanguageWarning.ForeColor = Color.DarkOrange;
-            LblLanguageWarning.Text = warning;
+            LblLanguageWarning.Visible = false;
         }
 
         private void LoadSetValue()
@@ -56,8 +61,7 @@ namespace HASS.Agent.Controls.Onboarding
             // the system's input language is unknown or collides with our hotkey, let the user know if it's set to default
             if (Variables.AppSettings.QuickActionsHotKey != "Control, Alt + Q") return;
 
-            if (!knownToCollide) LblLanguageWarning.ForeColor = Color.DarkOrange;
-            LblLanguageWarning.Text = warning;
+            if (knownToCollide) LblLanguageWarning.Text = warning;
         }
 
         internal bool Store()

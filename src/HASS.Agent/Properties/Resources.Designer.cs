@@ -121,6 +121,15 @@ namespace HASS.Agent.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to tip: doubleclick this field to browse.
+        /// </summary>
+        internal static string ConfigHomeAssistantApi_LblTip1 {
+            get {
+                return ResourceManager.GetString("ConfigHomeAssistantApi_LblTip1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap discord_avatar {

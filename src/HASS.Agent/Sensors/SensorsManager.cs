@@ -395,6 +395,14 @@ namespace HASS.Agent.Sensors
 
             // =================================
 
+            sensorInfoCard = new SensorInfoCard(SensorType.GeoLocationSensor,
+                "Returns your current latitude, longitude and altitude as a comma-seperated value.\r\n\r\nMake sure Windows' location services are enabled!\r\n\r\nDepending on your Windows version, this can be found in the new control panel -> 'privacy and security' -> 'location'.",
+                30, false, true, false);
+
+            SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
+
+            // =================================
+
             sensorInfoCard = new SensorInfoCard(SensorType.GpuLoadSensor,
                 Languages.SensorsManager_GpuLoadSensorDescription,
                 30, false, true, true);

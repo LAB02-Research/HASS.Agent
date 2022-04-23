@@ -20,16 +20,6 @@ using Task = System.Threading.Tasks.Task;
 
 namespace HASS.Agent.Functions
 {
-    internal static class DateTimeExtensions
-    {
-        /// <summary>
-        /// Converts the DateTime object to a timezone-containing string
-        /// </summary>
-        /// <param name="datetime"></param>
-        /// <returns></returns>
-        internal static string ToTimeZoneString(this DateTime datetime) => $"{datetime.ToUniversalTime():u}";
-    }
-
     internal static class HelperFunctions
     {
         [DllImport("advapi32.dll", SetLastError = true)]
@@ -324,37 +314,6 @@ namespace HASS.Agent.Functions
         }
 
         /// <summary>
-        /// Gets the description of the provided enum
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        internal static string GetDescription(this Enum value)
-        {
-            var fieldInfo = value.GetType().GetField(value.ToString());
-            if (fieldInfo == null) return null;
-            var attribute = (DescriptionAttribute)fieldInfo.GetCustomAttribute(typeof(DescriptionAttribute));
-            return attribute?.Description ?? "?";
-        }
-
-        /// <summary>
-        /// Gets the corresponding color for the status
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        internal static Color GetColor(this ComponentStatus value)
-        {
-            return value switch
-            {
-                ComponentStatus.Loading => Color.DodgerBlue,
-                ComponentStatus.Connecting => Color.DodgerBlue,
-                ComponentStatus.Ok => Color.LimeGreen,
-                ComponentStatus.Failed => Color.OrangeRed,
-                ComponentStatus.Stopped => Color.Yellow,
-                _ => Color.Gray
-            };
-        }
-
-        /// <summary>
         /// Checks whether the provided form is already opened
         /// </summary>
         /// <param name="formname"></param>
@@ -615,6 +574,13 @@ namespace HASS.Agent.Functions
                 return false;
             }
         }
+
+        /// <summary>
+        /// Checks whether the provided scope-string is probably indeed a WMI scope (no guarantees!)
+        /// </summary>
+        /// <param name="scope"></param>
+        /// <returns></returns>
+        internal static bool CheckWmiScope(string scope) => scope.StartsWith(@"\\");
     }
 
     public class CamelCaseJsonNamingpolicy : JsonNamingPolicy

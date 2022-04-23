@@ -51,7 +51,7 @@ namespace HASS.Agent.Controls.Configuration
             if (!await Task.Run(NotifierManager.ExecuteElevatedPortReservation))
             {
                 // failed, copy the command onto the clipboard
-                Clipboard.SetText($"http add urlacl url=http://+:{Variables.AppSettings.NotifierApiPort}/ user={Environment.UserDomainName}\\{Environment.UserName}");
+                Clipboard.SetText($"netsh http add urlacl url=http://+:{Variables.AppSettings.NotifierApiPort}/ user={Environment.UserDomainName}\\{Environment.UserName}");
 
                 // notify the user
                 MessageBoxAdv.Show(Languages.ConfigNotifications_BtnExecutePortReservation_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);

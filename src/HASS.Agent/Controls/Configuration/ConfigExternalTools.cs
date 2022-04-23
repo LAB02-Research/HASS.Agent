@@ -11,7 +11,7 @@ namespace HASS.Agent.Controls.Configuration
         {
             InitializeComponent();
         }
-
+        
         private void TbExternalBrowserBinary_DoubleClick(object sender, EventArgs e)
         {
             using var dialog = new OpenFileDialog();

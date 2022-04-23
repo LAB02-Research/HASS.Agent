@@ -5,6 +5,7 @@ using HASS.Agent.Forms;
 using HASS.Agent.Forms.ChildApplications;
 using HASS.Agent.Functions;
 using HASS.Agent.Settings;
+using HASS.Agent.Shared.Extensions;
 using Serilog;
 
 namespace HASS.Agent
@@ -15,25 +16,26 @@ namespace HASS.Agent
         /// Main entry point
         /// </summary>
         [STAThread]
-        private static async Task Main(string[] args)
+        private static void Main(string[] args)
         {
             try
             {
                 // syncfusion license
                 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(Variables.SyncfusionLicense);
-
-                // get logging settings
-                Variables.ExtendedLogging = SettingsManager.GetExtendedLoggingSetting();
                 
                 // enable logging
-                LoggingManager.PrepareLogging();
+                LoggingManager.PrepareLogging(args);
+
+                // get extended logging settings
+                Variables.ExtendedLogging = SettingsManager.GetExtendedLoggingSetting();
 
                 if (Variables.ExtendedLogging)
                 {
+                    Log.Information("[MAIN] Extended logging enabled");
+
                     // make sure we catch 'm all
                     AppDomain.CurrentDomain.FirstChanceException += LoggingManager.CurrentDomainOnFirstChanceException;
                 }
-                else Log.Information("[PROGRAM] Extended logging disabled");
                 
                 // prepare application
                 Application.EnableVisualStyles();
@@ -43,7 +45,7 @@ namespace HASS.Agent
                 var childApp = LaunchAsChildApplication(args);
 
                 // load app settings
-                var settingsLoaded = await SettingsManager.LoadAsync(!childApp);
+                var settingsLoaded = SettingsManager.LoadAsync(!childApp).GetAwaiter().GetResult();
                 if (!settingsLoaded)
                 {
                     Log.Error("[PROGRAM] Something went wrong while loading the settings. Check appsettings.json, or delete the file to start fresh.");

@@ -3,11 +3,14 @@ using System.Security.Cryptography.X509Certificates;
 using HADotNet.Core;
 using HADotNet.Core.Clients;
 using HASS.Agent.Enums;
+using HASS.Agent.Extensions;
 using HASS.Agent.Functions;
 using HASS.Agent.Models.HomeAssistant;
 using HASS.Agent.Models.Internal;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Sensors;
+using HASS.Agent.Shared.Enums;
+using HASS.Agent.Shared.Functions;
 using Serilog;
 
 namespace HASS.Agent.HomeAssistant
@@ -70,10 +73,25 @@ namespace HASS.Agent.HomeAssistant
                 }
 
                 // retrieve config
-                if (!await GetConfig())
+                var firstAttempt = true;
+                while (!await GetConfig())
                 {
-                    Variables.MainForm?.ShowToolTip(Languages.HassApiManager_ToolTip_InitialConnectionFailed, true);
-                    return ManagerStatus;
+                    // show a tooltip on the first attempt
+                    if (firstAttempt)
+                    {
+                        Variables.MainForm?.ShowToolTip(Languages.HassApiManager_ToolTip_InitialConnectionFailed, true);
+                        firstAttempt = false;
+                    }
+
+                    // are we shutting down?
+                    if (Variables.ShuttingDown) return HassManagerStatus.Failed;
+
+                    // nope, just wait a bit
+                    await Task.Delay(150);
+
+                    // reset state to let the user know we're trying
+                    Variables.MainForm?.SetHassApiStatus(ComponentStatus.Connecting);
+                    ManagerStatus = HassManagerStatus.Initialising;
                 }
 
                 // prepare clients
@@ -318,7 +336,7 @@ namespace HASS.Agent.HomeAssistant
                     ClientFactory.Initialize(uri, apiKey, handler);
                 }
                 else ClientFactory.Initialize(uri, apiKey);
-                
+
                 // check if we're initialized
                 if (!ClientFactory.IsInitialized) return (false, Languages.HassApiManager_CheckHassConfig_UnableToConnect);
 
@@ -472,8 +490,8 @@ namespace HASS.Agent.HomeAssistant
         /// <returns></returns>
         internal static async Task<bool> ProcessActionAsync(HassEntity entity, HassAction action)
         {
-            var actionVal = action.GetDescription();
-            var domainVal = entity.Domain.GetDescription();
+            var actionVal = action.GetCategory();
+            var domainVal = entity.Domain.GetCategory();
             var entityVal = entity.Entity.ToLower();
 
             try
@@ -501,19 +519,19 @@ namespace HASS.Agent.HomeAssistant
                     {
                         Log.Information("[HASS_API] [{domain}.{entity}] Entity currently ON, changing action to 'turn_off'", domainVal, entityVal);
                         action = HassAction.Off;
-                        actionVal = action.GetDescription();
+                        actionVal = action.GetCategory();
                     }
                     else if (OffStates.Contains(state.State))
                     {
                         Log.Information("[HASS_API] [{domain}.{entity}] Entity currently OFF, changing action to 'turn_on'", domainVal, entityVal);
                         action = HassAction.On;
-                        actionVal = action.GetDescription();
+                        actionVal = action.GetCategory();
                     }
                     else
                     {
                         Log.Information("[HASS_API] [{domain}.{entity}] Entity in unknown state ({state}), defaulting to 'turn_on'", domainVal, entityVal, state.State);
                         action = HassAction.On;
-                        actionVal = action.GetDescription();
+                        actionVal = action.GetCategory();
                     }
                 }
 
@@ -579,7 +597,7 @@ namespace HASS.Agent.HomeAssistant
                     {
                         var entity = quickAction.ToHassEntity();
 
-                        var domainVal = entity.Domain.GetDescription();
+                        var domainVal = entity.Domain.GetCategory();
                         var entityVal = entity.Entity.ToLower();
                         var fullEntity = $"{domainVal}.{entityVal}";
 
@@ -642,7 +660,7 @@ namespace HASS.Agent.HomeAssistant
         /// <returns></returns>
         private static string DetermineServiceForDomain(HassDomain domain, HassAction action)
         {
-            var domainValue = domain.GetDescription();
+            var domainValue = domain.GetCategory();
 
             // attempt to fix some impossible settings
             action = domain switch
@@ -654,7 +672,7 @@ namespace HASS.Agent.HomeAssistant
                 _ => action
             };
 
-            var actionValue = action.GetDescription();
+            var actionValue = action.GetCategory();
             return $"{domainValue}.{actionValue}";
         }
     }

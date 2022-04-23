@@ -191,7 +191,6 @@ namespace HASS.Agent.Forms.QuickActions
             this.CbDomain.Name = "CbDomain";
             this.CbDomain.Size = new System.Drawing.Size(328, 26);
             this.CbDomain.TabIndex = 25;
-            this.CbDomain.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.CbDomain_DrawItem);
             this.CbDomain.SelectedIndexChanged += new System.EventHandler(this.CbDomain_SelectedIndexChanged);
             // 
             // CbEntity
@@ -208,7 +207,6 @@ namespace HASS.Agent.Forms.QuickActions
             this.CbEntity.Name = "CbEntity";
             this.CbEntity.Size = new System.Drawing.Size(328, 26);
             this.CbEntity.TabIndex = 26;
-            this.CbEntity.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.CbEntity_DrawItem);
             this.CbEntity.SelectedIndexChanged += new System.EventHandler(this.CbEntity_SelectedIndexChanged);
             // 
             // CbAction
@@ -225,7 +223,6 @@ namespace HASS.Agent.Forms.QuickActions
             this.CbAction.Name = "CbAction";
             this.CbAction.Size = new System.Drawing.Size(166, 26);
             this.CbAction.TabIndex = 27;
-            this.CbAction.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.CbAction_DrawItem);
             this.CbAction.SelectedIndexChanged += new System.EventHandler(this.CbAction_SelectedIndexChanged);
             // 
             // LblTip1

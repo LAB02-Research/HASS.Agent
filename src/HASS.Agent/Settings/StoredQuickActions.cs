@@ -1,6 +1,7 @@
 ﻿using HASS.Agent.Enums;
 using HASS.Agent.Models.Internal;
 using HASS.Agent.Resources.Localization;
+using HASS.Agent.Shared.Enums;
 using Newtonsoft.Json;
 using Serilog;
 

@@ -2582,10 +2582,4 @@ Namesto tega se bo odprla stran za izdajo.</value>
   <data name="UserNotificationState_RunningWindowsStoreApp" xml:space="preserve">
     <value>Zagon aplikacije WindowsStore</value>
   </data>
-  <data name="ServiceGeneral_LblInfo2" xml:space="preserve">
-	  <value>You can use the satellite service to run sensors and commands without having to be logged in. Not all types are available, for instance the 'LaunchUrl' command can only be added as a regular command.</value>
-  </data>
-  <data name="SensorsConfig_ClmValue" xml:space="preserve">
-	  <value>last known value</value>
-  </data>
 </root>
