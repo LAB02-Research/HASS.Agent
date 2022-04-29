@@ -64,9 +64,9 @@ Summary of the core functions:
 
 * **Quick Actions**: use a keyboard shortcut to quickly pull up a command interface, through which you can control Home Assistant entities - or, assign a keyboard shortcut to individual Quick Actions for even faster triggering.
 
-* **Commands** (currently **19**): control your PC (or other Windows based device) through Home Assistant using custom- or built-in commands.
+* **Commands** (currently **20**): control your PC (or other Windows based device) through Home Assistant using custom- or built-in commands.
 
-* **Sensors** (currently **28**): send your PC's sensors to Home Assistant to monitor every aspect of your device.
+* **Sensors** (currently **29**): send your PC's sensors to Home Assistant to monitor every aspect of your device.
 
 * **Satellite Service**: use the service to collect sensordata and execute commands, even when you're not logged in. 
 
