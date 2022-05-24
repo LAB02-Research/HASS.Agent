@@ -172,11 +172,7 @@ The best way to help out is to test as much as you can (or even join the beta pr
 
 Same goes for sharing ideas for new (or improved) functionality! If you want, you can [join on Discord](https://discord.gg/nMvqzwrVBU) to discuss your ideas.
 
-Another great way is to help translating HASS.Agent. It's easy thanks to POEditor - no coding knowledge required, everything's done online. For more info, check out the translating documentation:
-
-[Translating](https://hassagent.readthedocs.io/en/latest/translating/)
-
-You can work on an existing language, or suggest a new one.
+Another great way is to help translating HASS.Agent. It's easy thanks to POEditor - no coding knowledge required, everything's done online. For more info, check out the [translating documentation](https://hassagent.readthedocs.io/en/latest/translating/). You can work on an existing language, or suggest a new one.
 
 ----
 
