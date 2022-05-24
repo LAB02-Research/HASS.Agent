@@ -122,9 +122,7 @@ If you want to install manually, there are .zip packages available for every rel
 
 ### Help and Documentation
 
-Stuck while installing or using HASS.Agent, need some help integrating the sensors/commands or have a great idea for the next version?
-
-There are a few channels through which you can reach out:
+Stuck while installing or using HASS.Agent, need some help integrating the sensors/commands or have a great idea for the next version? There are a few channels through which you can reach out:
 
 * [Github Tickets](https://github.com/LAB02-Research/HASS.Agent): Report bugs, feature requests, ideas, tips, ..
 
@@ -134,7 +132,7 @@ There are a few channels through which you can reach out:
 
 * [Home Assistant forum](https://community.home-assistant.io/t/hass-agent-a-new-windows-based-client-to-receive-notifications-perform-quick-actions-and-much-more/369094): Bit of everything, with the addition that other HA users can help as well.
 
-Starting from zero? There's now a [Commands Basics](https://hassagent.readthedocs.io/en/latest/commands/command-basics/) page that'll explain what HASS.Agent's commands are, and how to use them.
+Starting from zero? The [Commands Basics](https://hassagent.readthedocs.io/en/latest/commands/command-basics/) page explains what HASS.Agent's commands are, and how to use them.
 
 If you want to help with the development of HASS.Agent, check out the [Helping Out](#helping-out) section for (translating) info.
 
@@ -160,7 +158,7 @@ You can use the [official companion app](https://apps.apple.com/us/app/home-assi
 
 ### Issue Tracker
 
-To centrally manage all issues (community provided, [GitHub tickets](https://github.com/LAB02-Research/HASS.Agent/issues), and things I come up with), I use JetBrain's YouTrack platform.
+To centrally manage all issues (community provided, [GitHub tickets](https://github.com/LAB02-Research/HASS.Agent/issues), and things I come up with), the HASS.Agent project uses JetBrain's YouTrack platform.
 
 There you can see all open issues (bugs, cosmetics, nice-to-haves, etc), and which issues are currently worked on. It's read-only, please use [GitHub](https://github.com/LAB02-Research/HASS.Agent/issues) to post tickets because that's where users will look first :)
 
@@ -170,7 +168,7 @@ There you can see all open issues (bugs, cosmetics, nice-to-haves, etc), and whi
 
 ### Helping Out
 
-The best way to help out is to test as much as you can, and report any weird or failing behavior by [opening a ticket](https://github.com/LAB02-Research/HASS.Agent/issues). 
+The best way to help out is to test as much as you can (or even join the beta program), and report any weird or failing behavior by [opening a ticket](https://github.com/LAB02-Research/HASS.Agent/issues). 
 
 Same goes for sharing ideas for new (or improved) functionality! If you want, you can [join on Discord](https://discord.gg/nMvqzwrVBU) to discuss your ideas.
 
