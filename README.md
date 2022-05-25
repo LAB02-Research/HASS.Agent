@@ -132,7 +132,7 @@ Stuck while installing or using HASS.Agent, need some help integrating the senso
 
 * [Home Assistant forum](https://community.home-assistant.io/t/hass-agent-a-new-windows-based-client-to-receive-notifications-perform-quick-actions-and-much-more/369094): Bit of everything, with the addition that other HA users can help as well.
 
-Starting from zero? The [Commands Basics](https://hassagent.readthedocs.io/en/latest/commands/command-basics/) page explains what HASS.Agent's commands are, and how to use them.
+Starting from zero, and want to learn what HASS.Agent's about and how to start? Be sure to check the [introduction article](https://hassagent.readthedocs.io/en/latest/introduction/), and optionally the [command basics](https://hassagent.readthedocs.io/en/latest/commands/command-basics/).
 
 If you want to help with the development of HASS.Agent, check out the [Helping Out](#helping-out) section for (translating) info.
 
