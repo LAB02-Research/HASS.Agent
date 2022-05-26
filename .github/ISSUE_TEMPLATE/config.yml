@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://hassagent.readthedocs.io/en/latest/
+    about: Stuck, or need help getting started? Check the docs!
+  - name: Security vulnerabilities
+    url: https://github.com/LAB02-Research/HASS.Agent/blob/main/SECURITY.md
+    about: If you want to report a security issue, please contact us through e-mail.
