@@ -9,7 +9,7 @@ assignees: ''
 
 Please make sure your bug isn't already listed on HASS.Agent's issue tracker:
 
-https://lab02research.youtrack.cloud/
+[https://lab02research.youtrack.cloud/](https://lab02research.youtrack.cloud/)
 
 There's a list of open bugs & features on the right. On the left you can see what's being worked on, what's planned and what's ready for the next release.
 
