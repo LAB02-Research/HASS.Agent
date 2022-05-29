@@ -128,6 +128,8 @@ Stuck while installing or using HASS.Agent, need some help integrating the senso
 
 * [Documentation](https://hassagent.readthedocs.io/): Installation, configuration and usage documentation, as well as examples.
 
+* [LAB02 Research Site](https://lab02-research.org/): Release info, development backstories, misc. posts.
+
 * [Discord](https://discord.gg/nMvqzwrVBU): Get help with setting up and using HASS.Agent, report bugs or just talk about whatever.
 
 * [Home Assistant forum](https://community.home-assistant.io/t/hass-agent-a-new-windows-based-client-to-receive-notifications-perform-quick-actions-and-much-more/369094): Bit of everything, with the addition that other HA users can help as well.
