@@ -114,7 +114,9 @@ If you need more keys and/or modifiers like CTRL, use the MultipleKeys command.<
 	<data name="CommandsManager_LaunchUrlCommandDescription" xml:space="preserve">
 		<value>Launches the provided URL, by default in your default browser.
 
-To use 'incognito', provide a specific browser in Configuration -&gt; External Tools.</value>
+To use 'incognito', provide a specific browser in Configuration -&gt; External Tools.
+
+If you just want a window with a specific URL (not an entire browser), use a 'WebView' command.</value>
 	</data>
 	<data name="CommandsManager_LockCommandDescription" xml:space="preserve">
 		<value>Locks the current session.</value>
@@ -146,6 +148,8 @@ To use 'incognito', provide a specific browser in Configuration -&gt; External T
 You need to put [ ] between every key, otherwise HASS.Agent can't tell them apart. So say you want to press X TAB Y SHIFT-Z, it'd be [X] [{TAB}] [Y] [+Z].
 
 There are a few tricks you can use:
+
+- If you want a bracket pressed, escape it, so [ is [\[] and ] is [\]] 
 
 - Special keys go between { }, like {TAB} or {UP}
 
@@ -741,10 +745,11 @@ Please restart manually.</value>
 	<data name="Configuration_ProcessChanges_MessageBox1" xml:space="preserve">
 		<value>You've changed your device's name.
 
-All your sensors and commands will now be unpublished, and HASS.Agent
-will restart afterwards to republish them.
+All your sensors and commands will now be unpublished, and HASS.Agent will restart afterwards to republish them.
 
-They'll keep their current names, to avoid breaking automations or scripts.</value>
+Don't worry, they'll keep their current names, so your automations or scripts will keep working.
+
+Note: the name will get 'sanitized', which means everything except letters, digits and whitespace get replaced by an underscore. This is required by HA.</value>
 	</data>
 	<data name="Configuration_ProcessChanges_MessageBox2" xml:space="preserve">
 		<value>You've changed the notification API's port. This new port needs to be reserved.
@@ -993,7 +998,7 @@ Please check the logs and make a bug report on github.</value>
 	<data name="MqttManager_ToolTip_Disconnected" xml:space="preserve">
 		<value>mqtt: disconnected</value>
 	</data>
-	<data name="NotifierManager_Initialize_MessageBox1" xml:space="preserve">
+	<data name="LocalApiManager_Initialize_MessageBox1" xml:space="preserve">
 		<value>Error trying to bind the API to port {0}.
 
 Make sure no other instance of HASS.Agent is running and the port is available and registered.</value>
@@ -1299,9 +1304,6 @@ It's also used as a suggested prefix for your commands and sensors.
 	</data>
 	<data name="QuickActionsMod_BtnStore_MessageBox1" xml:space="preserve">
 		<value>Select an entity first.</value>
-	</data>
-	<data name="QuickActionsMod_BtnStore_MessageBox2" xml:space="preserve">
-		<value>Unknown domain, please select a valid one.</value>
 	</data>
 	<data name="QuickActionsMod_BtnStore_MessageBox3" xml:space="preserve">
 		<value>Unknown action, please select a valid one.</value>
@@ -2481,5 +2483,66 @@ Do you still want to use the current values?</value>
 	</data>
 	<data name="SensorsConfig_ClmValue" xml:space="preserve">
 		<value>last known value</value>
+	</data>
+	<data name="CommandType_SendWindowToFrontCommand" xml:space="preserve">
+		<value>SendWindowToFront</value>
+	</data>
+	<data name="CommandType_WebViewCommand" xml:space="preserve">
+		<value>WebView</value>
+	</data>
+	<data name="CommandsManager_WebViewCommandDescription" xml:space="preserve">
+		<value>Shows a window with the provided URL.
+
+This differs from the 'LaunchUrl' command in that it doesn't load a full-fledged browser, just the provided URL in its own window.
+
+You can use this to for instance quickly show Home Assistant's dashboard.
+
+By default, it stores cookies indefinitely so you only have to log in once.</value>
+	</data>
+	<data name="HassDomain_HASSAgentCommands" xml:space="preserve">
+		<value>HASS.Agent Commands</value>
+	</data>
+	<data name="CommandsManager_CommandsManager_SendWindowToFrontCommandDescription" xml:space="preserve">
+		<value>Looks for the specified process, and tries to send its main window to the front.
+
+If the application is minimized, it'll get restored.
+
+Example: if you want to send VLC to the foreground, use 'vlc'.</value>
+	</data>
+	<data name="CommandsMod_BtnStore_MessageBox8" xml:space="preserve">
+		<value>If you don't configure the command, you can only use this entity with an 'action' value through Home Assistant and it'll show using the default settings. Running it as-is won't do anything.
+
+Are you sure you want this ? </value>
+	</data>
+	<data name="ConfigLocalStorage_BtnClearAudioCache" xml:space="preserve">
+		<value>clear audio cache</value>
+	</data>
+	<data name="ConfigLocalStorage_BtnClearAudioCache_InfoText1" xml:space="preserve">
+		<value>cleaning ..</value>
+	</data>
+	<data name="ConfigLocalStorage_BtnClearAudioCache_MessageBox1" xml:space="preserve">
+		<value>Audio cache has been cleared!</value>
+	</data>
+	<data name="ConfigLocalStorage_BtnClearWebViewCache" xml:space="preserve">
+		<value>clear webview cache</value>
+	</data>
+	<data name="ConfigLocalStorage_BtnClearWebViewCache_InfoText1" xml:space="preserve">
+		<value>cleaning ..</value>
+	</data>
+	<data name="ConfigLocalStorage_BtnClearWebViewCache_MessageBox1" xml:space="preserve">
+		<value>WebView cache has been cleared!</value>
+	</data>
+	<data name="Main_CheckDpiScalingFactor_MessageBox1" xml:space="preserve">
+		<value>It looks like you're using an alternative scaling. This may result in some parts of HASS.Agent not looking as intended.
+
+Please report any unusable aspects on GitHub. Thanks!
+
+Note: this message only shows once.</value>
+	</data>
+	<data name="QuickActionsMod_BtnStore_MessageBox2" xml:space="preserve">
+		<value>Select a domain first.</value>
+	</data>
+	<data name="WebViewCommandConfig_SetStoredVariables_MessageBox1" xml:space="preserve">
+		<value>Unable to load the stored command settings, resetting to default.</value>
 	</data>
 </root>
