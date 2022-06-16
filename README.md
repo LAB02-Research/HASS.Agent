@@ -62,11 +62,16 @@ Summary of the core functions:
 * **Notifications**: receive notifications, show them using Windows builtin toast popups, and optionally attach images. 
   - *This requires the installation of the [HASS.Agent Notifier integration](https://github.com/LAB02-Research/HASS.Agent-Notifier)*.
 
+* **Media Player**: use HASS.Agent as a mediaplayer device: see and control what's playing and send text-to-speech.
+  - *This requires the installation of the [HASS.Agent MediaPlayer integration](https://github.com/LAB02-Research/HASS.Agent-MediaPlayer)*.
+
 * **Quick Actions**: use a keyboard shortcut to quickly pull up a command interface, through which you can control Home Assistant entities - or, assign a keyboard shortcut to individual Quick Actions for even faster triggering.
 
 * **Commands** (currently **20**): control your PC (or other Windows based device) through Home Assistant using custom- or built-in commands.
 
 * **Sensors** (currently **29**): send your PC's sensors to Home Assistant to monitor every aspect of your device.
+
+* **WebView**: quickly show any website, anywhere - no browser required, for instance a HA dashboard.
 
 * **Satellite Service**: use the service to collect sensordata and execute commands, even when you're not logged in. 
 
@@ -81,6 +86,10 @@ Summary of the core functions:
 Notification examples:
 
 ![Image-based toast notification](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_toast_image.png)  ![Text-based toast notification](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_toast_text.png)
+
+WebView example, showing a dashboard when right-clicking the tray icon:
+
+![WebView](https://user-images.githubusercontent.com/81011038/174068053-971adb8b-f552-43bc-a39b-6c6c4a3bda9c.png)
 
 This is the Quick Action window you'll see when using the hotkey. This window automatically resizes to the amount of buttons you've added:
 
