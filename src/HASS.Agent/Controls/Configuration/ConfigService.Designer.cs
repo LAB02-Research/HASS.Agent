@@ -48,16 +48,21 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // LblInfo1
             // 
-            this.LblInfo1.AutoSize = true;
+            this.LblInfo1.AccessibleDescription = "Service information.";
+            this.LblInfo1.AccessibleName = "Information";
+            this.LblInfo1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo1.Location = new System.Drawing.Point(70, 36);
             this.LblInfo1.Name = "LblInfo1";
-            this.LblInfo1.Size = new System.Drawing.Size(581, 38);
+            this.LblInfo1.Size = new System.Drawing.Size(581, 61);
             this.LblInfo1.TabIndex = 36;
             this.LblInfo1.Text = Languages.ConfigService_LblInfo1;
             // 
             // LblServiceStatus
             // 
+            this.LblServiceStatus.AccessibleDescription = "Current status of the Satellite Service.";
+            this.LblServiceStatus.AccessibleName = "Current status";
+            this.LblServiceStatus.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblServiceStatus.AutoSize = true;
             this.LblServiceStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblServiceStatus.Location = new System.Drawing.Point(290, 107);
@@ -68,6 +73,9 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // LblServiceStatusInfo
             // 
+            this.LblServiceStatusInfo.AccessibleDescription = "Service status description.";
+            this.LblServiceStatusInfo.AccessibleName = "Status description info";
+            this.LblServiceStatusInfo.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblServiceStatusInfo.AutoSize = true;
             this.LblServiceStatusInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblServiceStatusInfo.Location = new System.Drawing.Point(154, 107);
@@ -78,7 +86,10 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // BtnStartService
             // 
-            this.BtnStartService.AccessibleName = "Button";
+            this.BtnStartService.AccessibleDescription = "Starts the Satellite Service. This will show an UAC prompt, asking for elevation." +
+    "";
+            this.BtnStartService.AccessibleName = "Start service";
+            this.BtnStartService.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnStartService.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStartService.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnStartService.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -92,14 +103,17 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnStartService.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStartService.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStartService.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnStartService.TabIndex = 39;
+            this.BtnStartService.TabIndex = 2;
             this.BtnStartService.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigService_BtnStartService;
             this.BtnStartService.UseVisualStyleBackColor = false;
             this.BtnStartService.Click += new System.EventHandler(this.BtnStartService_Click);
             // 
             // BtnDisableService
             // 
-            this.BtnDisableService.AccessibleName = "Button";
+            this.BtnDisableService.AccessibleDescription = "Completely disables the Satellite Service. This will show an UAC prompt, asking f" +
+    "or elevation.";
+            this.BtnDisableService.AccessibleName = "Disable service";
+            this.BtnDisableService.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnDisableService.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnDisableService.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnDisableService.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -113,14 +127,16 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnDisableService.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnDisableService.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnDisableService.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnDisableService.TabIndex = 40;
+            this.BtnDisableService.TabIndex = 3;
             this.BtnDisableService.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigService_BtnDisableService;
             this.BtnDisableService.UseVisualStyleBackColor = false;
             this.BtnDisableService.Click += new System.EventHandler(this.BtnDisableService_Click);
             // 
             // BtnStopService
             // 
-            this.BtnStopService.AccessibleName = "Button";
+            this.BtnStopService.AccessibleDescription = "Stops the Satellite Service. This will show an UAC prompt, asking for elevation.";
+            this.BtnStopService.AccessibleName = "Stop service";
+            this.BtnStopService.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnStopService.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStopService.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnStopService.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -134,14 +150,17 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnStopService.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStopService.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStopService.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnStopService.TabIndex = 41;
+            this.BtnStopService.TabIndex = 1;
             this.BtnStopService.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigService_BtnStopService;
             this.BtnStopService.UseVisualStyleBackColor = false;
             this.BtnStopService.Click += new System.EventHandler(this.BtnStopService_Click);
             // 
             // BtnEnableService
             // 
-            this.BtnEnableService.AccessibleName = "Button";
+            this.BtnEnableService.AccessibleDescription = "Enables the Satellite Service. This will show an UAC prompt, asking for elevation" +
+    ".";
+            this.BtnEnableService.AccessibleName = "Enable service";
+            this.BtnEnableService.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnEnableService.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnEnableService.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnEnableService.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -155,14 +174,17 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnEnableService.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnEnableService.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnEnableService.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnEnableService.TabIndex = 42;
+            this.BtnEnableService.TabIndex = 4;
             this.BtnEnableService.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigService_BtnEnableService;
             this.BtnEnableService.UseVisualStyleBackColor = false;
             this.BtnEnableService.Click += new System.EventHandler(this.BtnEnableService_Click);
             // 
             // BtnReinstallService
             // 
-            this.BtnReinstallService.AccessibleName = "Button";
+            this.BtnReinstallService.AccessibleDescription = "Removes and then reinstalls the Satellite Service. This will show an UAC prompt, " +
+    "asking for elevation.";
+            this.BtnReinstallService.AccessibleName = "Reinstall service";
+            this.BtnReinstallService.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnReinstallService.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnReinstallService.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnReinstallService.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -176,13 +198,16 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnReinstallService.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnReinstallService.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnReinstallService.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnReinstallService.TabIndex = 43;
+            this.BtnReinstallService.TabIndex = 5;
             this.BtnReinstallService.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigService_BtnReinstallService;
             this.BtnReinstallService.UseVisualStyleBackColor = false;
             this.BtnReinstallService.Click += new System.EventHandler(this.BtnReinstallService_Click);
             // 
             // LblInfo2
             // 
+            this.LblInfo2.AccessibleDescription = "Information regarding disabling the Satellite Service.";
+            this.LblInfo2.AccessibleName = "Disable service info";
+            this.LblInfo2.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.LblInfo2.Location = new System.Drawing.Point(29, 207);
@@ -194,6 +219,9 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // LblInfo3
             // 
+            this.LblInfo3.AccessibleDescription = "Information regarding reinstalling the Satellite Service.";
+            this.LblInfo3.AccessibleName = "Reinstall info";
+            this.LblInfo3.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo3.Location = new System.Drawing.Point(29, 350);
             this.LblInfo3.Name = "LblInfo3";
@@ -204,7 +232,9 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // BtnShowLogs
             // 
-            this.BtnShowLogs.AccessibleName = "Button";
+            this.BtnShowLogs.AccessibleDescription = "Open the Satellite Service logs storage path in Explorer.";
+            this.BtnShowLogs.AccessibleName = "Open logs";
+            this.BtnShowLogs.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnShowLogs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnShowLogs.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnShowLogs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -218,14 +248,16 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnShowLogs.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnShowLogs.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnShowLogs.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnShowLogs.TabIndex = 46;
+            this.BtnShowLogs.TabIndex = 6;
             this.BtnShowLogs.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigService_BtnShowLogs;
             this.BtnShowLogs.UseVisualStyleBackColor = false;
             this.BtnShowLogs.Click += new System.EventHandler(this.BtnShowLogs_Click);
             // 
             // BtnRescanStatus
             // 
-            this.BtnRescanStatus.AccessibleName = "Button";
+            this.BtnRescanStatus.AccessibleDescription = "Refreshes the current Satellite Service status.";
+            this.BtnRescanStatus.AccessibleName = "Refresh status";
+            this.BtnRescanStatus.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnRescanStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnRescanStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnRescanStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -241,23 +273,29 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnRescanStatus.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnRescanStatus.Style.Image = global::HASS.Agent.Properties.Resources.reset_24;
             this.BtnRescanStatus.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnRescanStatus.TabIndex = 47;
+            this.BtnRescanStatus.TabIndex = 0;
             this.BtnRescanStatus.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.BtnRescanStatus.UseVisualStyleBackColor = false;
             this.BtnRescanStatus.Click += new System.EventHandler(this.BtnRescanStatus_Click);
             // 
             // LblInfo4
             // 
+            this.LblInfo4.AccessibleDescription = "Information on what to do when the Satellite Service keeps failing.";
+            this.LblInfo4.AccessibleName = "Service failing info";
+            this.LblInfo4.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblInfo4.Location = new System.Drawing.Point(29, 454);
+            this.LblInfo4.Location = new System.Drawing.Point(29, 443);
             this.LblInfo4.Name = "LblInfo4";
-            this.LblInfo4.Size = new System.Drawing.Size(644, 19);
+            this.LblInfo4.Size = new System.Drawing.Size(644, 37);
             this.LblInfo4.TabIndex = 48;
             this.LblInfo4.Text = Languages.ConfigService_LblInfo4;
-            this.LblInfo4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.LblInfo4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // ConfigService
             // 
+            this.AccessibleDescription = "Panel containing the satellite service configuration.";
+            this.AccessibleName = "Satellite service";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Pane;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));

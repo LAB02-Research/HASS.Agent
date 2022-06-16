@@ -43,18 +43,20 @@ namespace HASS.Agent.Forms.Sensors
             this.ClmName = new System.Windows.Forms.ColumnHeader("(none)");
             this.ClmType = new System.Windows.Forms.ColumnHeader("(none)");
             this.ClmRefresh = new System.Windows.Forms.ColumnHeader("refresh_16_header");
+            this.ClmValue = new System.Windows.Forms.ColumnHeader();
             this.ClmEmpty = new System.Windows.Forms.ColumnHeader();
             this.ImgLv = new System.Windows.Forms.ImageList(this.components);
             this.LblRefresh = new System.Windows.Forms.Label();
             this.PbRefresh = new System.Windows.Forms.PictureBox();
-            this.ClmValue = new System.Windows.Forms.ColumnHeader();
             ((System.ComponentModel.ISupportInitialize)(this.PbRefresh)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnRemove
             // 
-            this.BtnRemove.AccessibleName = "Button";
-            this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnRemove.AccessibleDescription = "Removes the selected sensor from the list.";
+            this.BtnRemove.AccessibleName = "Remove";
+            this.BtnRemove.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnRemove.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnRemove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -68,14 +70,16 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnRemove.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnRemove.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnRemove.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnRemove.TabIndex = 15;
-            this.BtnRemove.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsConfig_BtnRemove;
+            this.BtnRemove.TabIndex = 2;
+            this.BtnRemove.Text = Languages.SensorsConfig_BtnRemove;
             this.BtnRemove.UseVisualStyleBackColor = false;
             this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
             // BtnModify
             // 
-            this.BtnModify.AccessibleName = "Button";
+            this.BtnModify.AccessibleDescription = "Modifies the currently selected sensor.";
+            this.BtnModify.AccessibleName = "Modify";
+            this.BtnModify.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnModify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnModify.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -90,14 +94,16 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnModify.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnModify.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnModify.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnModify.TabIndex = 14;
-            this.BtnModify.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsConfig_BtnModify;
+            this.BtnModify.TabIndex = 1;
+            this.BtnModify.Text = Languages.SensorsConfig_BtnModify;
             this.BtnModify.UseVisualStyleBackColor = false;
             this.BtnModify.Click += new System.EventHandler(this.BtnModify_Click);
             // 
             // BtnAdd
             // 
-            this.BtnAdd.AccessibleName = "Button";
+            this.BtnAdd.AccessibleDescription = "Opens the \'add new sensor\' window.";
+            this.BtnAdd.AccessibleName = "Add new";
+            this.BtnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnAdd.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -112,14 +118,16 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnAdd.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnAdd.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnAdd.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnAdd.TabIndex = 13;
-            this.BtnAdd.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsConfig_BtnAdd;
+            this.BtnAdd.TabIndex = 0;
+            this.BtnAdd.Text = Languages.SensorsConfig_BtnAdd;
             this.BtnAdd.UseVisualStyleBackColor = false;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // BtnStore
             // 
-            this.BtnStore.AccessibleName = "Button";
+            this.BtnStore.AccessibleDescription = "Stores the current list of sensors, and sends them to the service.";
+            this.BtnStore.AccessibleName = "Store";
+            this.BtnStore.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnStore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BtnStore.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -135,13 +143,16 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnStore.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnStore.TabIndex = 11;
-            this.BtnStore.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsConfig_BtnStore;
+            this.BtnStore.TabIndex = 3;
+            this.BtnStore.Text = Languages.SensorsConfig_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
             // LvSensors
             // 
+            this.LvSensors.AccessibleDescription = "Contains the currently configured sensors.";
+            this.LvSensors.AccessibleName = "Stored sensors";
+            this.LvSensors.AccessibleRole = System.Windows.Forms.AccessibleRole.Table;
             this.LvSensors.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -186,11 +197,16 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // ClmRefresh
             // 
-            this.ClmRefresh.Text = "";
+            this.ClmRefresh.Text = Languages.SensorsConfig_LblRefresh;
+            // 
+            // ClmValue
+            // 
+            this.ClmValue.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsConfig_ClmValue;
+            this.ClmValue.Width = 150;
             // 
             // ClmEmpty
             // 
-            this.ClmEmpty.Text = "";
+            this.ClmEmpty.Text = "filler column";
             this.ClmEmpty.Width = 10000;
             // 
             // ImgLv
@@ -202,7 +218,10 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // LblRefresh
             // 
-            this.LblRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblRefresh.AccessibleDescription = "Refresh column description.";
+            this.LblRefresh.AccessibleName = "Refresh info";
+            this.LblRefresh.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
+            this.LblRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LblRefresh.AutoSize = true;
             this.LblRefresh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblRefresh.Location = new System.Drawing.Point(22, 527);
@@ -213,7 +232,10 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // PbRefresh
             // 
-            this.PbRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PbRefresh.AccessibleDescription = "Refresh icon image, as shown in the header of the \'refresh\' column.";
+            this.PbRefresh.AccessibleName = "Refresh icon";
+            this.PbRefresh.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
+            this.PbRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.PbRefresh.Image = global::HASS.Agent.Properties.Resources.refresh_16;
             this.PbRefresh.Location = new System.Drawing.Point(0, 526);
             this.PbRefresh.Name = "PbRefresh";
@@ -222,13 +244,11 @@ namespace HASS.Agent.Forms.Sensors
             this.PbRefresh.TabIndex = 40;
             this.PbRefresh.TabStop = false;
             // 
-            // ClmValue
-            // 
-            this.ClmValue.Text = Languages.SensorsConfig_ClmValue;
-            this.ClmValue.Width = 150;
-            // 
             // SensorsConfig
             // 
+            this.AccessibleDescription = "Contains all currently stored sensors, and the ability the configure them.";
+            this.AccessibleName = "Sensors config";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));

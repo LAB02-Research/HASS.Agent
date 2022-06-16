@@ -1,6 +1,7 @@
 ﻿using System.ServiceProcess;
+using HASS.Agent.API;
 using HASS.Agent.Functions;
-using HASS.Agent.Notifications;
+using HASS.Agent.Managers;
 using HASS.Agent.Properties;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Service;
@@ -129,7 +130,7 @@ namespace HASS.Agent.Forms.ChildApplications
                 if (!Variables.AppSettings.NotificationsEnabled) return true;
 
                 // yep, set it at the configured port
-                var portReserved = await Task.Run(async () => await NotifierManager.ExecutePortReservationAsync(Variables.AppSettings.NotifierApiPort));
+                var portReserved = await Task.Run(async () => await ApiManager.ExecutePortReservationAsync(Variables.AppSettings.NotifierApiPort));
                 if (!portReserved) Log.Error("[POSTUPDATE] Unable to execute port reservation, notifier api might fail");
                 else Log.Information("[POSTUPDATE] Port reservation completed");
 

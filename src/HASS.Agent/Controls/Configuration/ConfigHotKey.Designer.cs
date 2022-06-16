@@ -39,7 +39,9 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // BtnClearHotKey
             // 
-            this.BtnClearHotKey.AccessibleName = "Button";
+            this.BtnClearHotKey.AccessibleDescription = "Clears the hotkey combination.";
+            this.BtnClearHotKey.AccessibleName = "Clear hotkey";
+            this.BtnClearHotKey.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnClearHotKey.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnClearHotKey.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnClearHotKey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -53,22 +55,27 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnClearHotKey.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnClearHotKey.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnClearHotKey.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnClearHotKey.TabIndex = 18;
+            this.BtnClearHotKey.TabIndex = 2;
             this.BtnClearHotKey.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigHotKey_BtnClearHotKey;
             this.BtnClearHotKey.UseVisualStyleBackColor = false;
             // 
             // LblInfo1
             // 
-            this.LblInfo1.AutoSize = true;
+            this.LblInfo1.AccessibleDescription = "Hotkey information.";
+            this.LblInfo1.AccessibleName = "Information";
+            this.LblInfo1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo1.Location = new System.Drawing.Point(70, 36);
             this.LblInfo1.Name = "LblInfo1";
-            this.LblInfo1.Size = new System.Drawing.Size(594, 57);
+            this.LblInfo1.Size = new System.Drawing.Size(594, 108);
             this.LblInfo1.TabIndex = 17;
             this.LblInfo1.Text = Languages.ConfigHotKey_LblInfo1;
             // 
             // TbQuickActionsHotkey
             // 
+            this.TbQuickActionsHotkey.AccessibleDescription = "The hotkey combination that will show your Quick Actions when triggered.";
+            this.TbQuickActionsHotkey.AccessibleName = "Hotkey combination";
+            this.TbQuickActionsHotkey.AccessibleRole = System.Windows.Forms.AccessibleRole.HotkeyField;
             this.TbQuickActionsHotkey.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbQuickActionsHotkey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbQuickActionsHotkey.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -76,21 +83,27 @@ namespace HASS.Agent.Controls.Configuration
             this.TbQuickActionsHotkey.Location = new System.Drawing.Point(201, 279);
             this.TbQuickActionsHotkey.Name = "TbQuickActionsHotkey";
             this.TbQuickActionsHotkey.Size = new System.Drawing.Size(231, 25);
-            this.TbQuickActionsHotkey.TabIndex = 16;
+            this.TbQuickActionsHotkey.TabIndex = 1;
             // 
             // CbEnableQuickActionsHotkey
             // 
+            this.CbEnableQuickActionsHotkey.AccessibleDescription = "Enable the quick actions hotkey.";
+            this.CbEnableQuickActionsHotkey.AccessibleName = "Quick actions hotkey";
+            this.CbEnableQuickActionsHotkey.AccessibleRole = System.Windows.Forms.AccessibleRole.CheckButton;
             this.CbEnableQuickActionsHotkey.AutoSize = true;
             this.CbEnableQuickActionsHotkey.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CbEnableQuickActionsHotkey.Location = new System.Drawing.Point(201, 181);
             this.CbEnableQuickActionsHotkey.Name = "CbEnableQuickActionsHotkey";
             this.CbEnableQuickActionsHotkey.Size = new System.Drawing.Size(197, 23);
-            this.CbEnableQuickActionsHotkey.TabIndex = 15;
+            this.CbEnableQuickActionsHotkey.TabIndex = 0;
             this.CbEnableQuickActionsHotkey.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigHotKey_CbEnableQuickActionsHotkey;
             this.CbEnableQuickActionsHotkey.UseVisualStyleBackColor = true;
             // 
             // LblHotkeyCombo
             // 
+            this.LblHotkeyCombo.AccessibleDescription = "Hotkey textbox description";
+            this.LblHotkeyCombo.AccessibleName = "Hotkey info";
+            this.LblHotkeyCombo.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblHotkeyCombo.AutoSize = true;
             this.LblHotkeyCombo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblHotkeyCombo.Location = new System.Drawing.Point(201, 257);
@@ -101,6 +114,9 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // ConfigHotKey
             // 
+            this.AccessibleDescription = "Panel containing the hotkey configuration.";
+            this.AccessibleName = "Hotkey";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Pane;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));

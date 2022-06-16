@@ -71,7 +71,9 @@ namespace HASS.Agent.Forms
             // 
             // BtnClose
             // 
-            this.BtnClose.AccessibleName = "Button";
+            this.BtnClose.AccessibleDescription = "Closes the window.";
+            this.BtnClose.AccessibleName = "Close";
+            this.BtnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnClose.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BtnClose.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -93,6 +95,9 @@ namespace HASS.Agent.Forms
             // 
             // LblHassAgentProject
             // 
+            this.LblHassAgentProject.AccessibleDescription = "Application name.";
+            this.LblHassAgentProject.AccessibleName = "Name";
+            this.LblHassAgentProject.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblHassAgentProject.AutoSize = true;
             this.LblHassAgentProject.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblHassAgentProject.Font = new System.Drawing.Font("Segoe UI Semibold", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -105,6 +110,9 @@ namespace HASS.Agent.Forms
             // 
             // LblInfo1
             // 
+            this.LblInfo1.AccessibleDescription = "Application description.";
+            this.LblInfo1.AccessibleName = "Description";
+            this.LblInfo1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo1.AutoSize = true;
             this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo1.Location = new System.Drawing.Point(173, 70);
@@ -115,7 +123,9 @@ namespace HASS.Agent.Forms
             // 
             // LblInfo3
             // 
-            this.LblInfo3.AutoSize = true;
+            this.LblInfo3.AccessibleDescription = "Used components information.";
+            this.LblInfo3.AccessibleName = "Components info";
+            this.LblInfo3.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo3.Location = new System.Drawing.Point(176, 134);
             this.LblInfo3.Name = "LblInfo3";
@@ -125,6 +135,9 @@ namespace HASS.Agent.Forms
             // 
             // LblCoreAudio
             // 
+            this.LblCoreAudio.AccessibleDescription = "Opens the \'CoreAudio\' website.";
+            this.LblCoreAudio.AccessibleName = "CoreAudio";
+            this.LblCoreAudio.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblCoreAudio.AutoSize = true;
             this.LblCoreAudio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblCoreAudio.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -137,6 +150,9 @@ namespace HASS.Agent.Forms
             // 
             // LblGrapevine
             // 
+            this.LblGrapevine.AccessibleDescription = "Opens the \'Grapevine\' website.";
+            this.LblGrapevine.AccessibleName = "Grapevine";
+            this.LblGrapevine.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblGrapevine.AutoSize = true;
             this.LblGrapevine.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblGrapevine.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -149,6 +165,9 @@ namespace HASS.Agent.Forms
             // 
             // LblHADotNet
             // 
+            this.LblHADotNet.AccessibleDescription = "Opens the \'HADotNet\' website.";
+            this.LblHADotNet.AccessibleName = "HADotNet";
+            this.LblHADotNet.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblHADotNet.AutoSize = true;
             this.LblHADotNet.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblHADotNet.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -161,6 +180,9 @@ namespace HASS.Agent.Forms
             // 
             // LblMicrosoftToolkitUwpNotifications
             // 
+            this.LblMicrosoftToolkitUwpNotifications.AccessibleDescription = "Opens the \'Microsoft.Toolkit.Uwp.Notifications\' website.";
+            this.LblMicrosoftToolkitUwpNotifications.AccessibleName = "MicrosoftToolkitUwpNotifications";
+            this.LblMicrosoftToolkitUwpNotifications.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblMicrosoftToolkitUwpNotifications.AutoSize = true;
             this.LblMicrosoftToolkitUwpNotifications.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblMicrosoftToolkitUwpNotifications.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -173,6 +195,9 @@ namespace HASS.Agent.Forms
             // 
             // LblLibreHardwareMonitor
             // 
+            this.LblLibreHardwareMonitor.AccessibleDescription = "Opens the \'LibreHardwareMonitor\' website.";
+            this.LblLibreHardwareMonitor.AccessibleName = "LibreHardwareMonitor";
+            this.LblLibreHardwareMonitor.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblLibreHardwareMonitor.AutoSize = true;
             this.LblLibreHardwareMonitor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblLibreHardwareMonitor.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -185,6 +210,9 @@ namespace HASS.Agent.Forms
             // 
             // LblHotkeyListener
             // 
+            this.LblHotkeyListener.AccessibleDescription = "Opens the \'HotkeyListener\' website.";
+            this.LblHotkeyListener.AccessibleName = "HotkeyListener";
+            this.LblHotkeyListener.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblHotkeyListener.AutoSize = true;
             this.LblHotkeyListener.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblHotkeyListener.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -197,6 +225,9 @@ namespace HASS.Agent.Forms
             // 
             // LblSerilog
             // 
+            this.LblSerilog.AccessibleDescription = "Opens the \'Serilog\' website.";
+            this.LblSerilog.AccessibleName = "Serilog";
+            this.LblSerilog.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblSerilog.AutoSize = true;
             this.LblSerilog.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblSerilog.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -209,6 +240,9 @@ namespace HASS.Agent.Forms
             // 
             // LblNewtonsoftJson
             // 
+            this.LblNewtonsoftJson.AccessibleDescription = "Opens the \'NewtonsoftJson\' website.";
+            this.LblNewtonsoftJson.AccessibleName = "NewtonsoftJson";
+            this.LblNewtonsoftJson.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblNewtonsoftJson.AutoSize = true;
             this.LblNewtonsoftJson.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblNewtonsoftJson.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -221,6 +255,9 @@ namespace HASS.Agent.Forms
             // 
             // LblMQTTnet
             // 
+            this.LblMQTTnet.AccessibleDescription = "Opens the \'MQTTnet\' website.";
+            this.LblMQTTnet.AccessibleName = "MQTTnet";
+            this.LblMQTTnet.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblMQTTnet.AutoSize = true;
             this.LblMQTTnet.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblMQTTnet.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -233,6 +270,9 @@ namespace HASS.Agent.Forms
             // 
             // LblSyncfusion
             // 
+            this.LblSyncfusion.AccessibleDescription = "Opens the \'Syncfusion\' website.";
+            this.LblSyncfusion.AccessibleName = "Syncfusion";
+            this.LblSyncfusion.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblSyncfusion.AutoSize = true;
             this.LblSyncfusion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblSyncfusion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -245,26 +285,33 @@ namespace HASS.Agent.Forms
             // 
             // LblInfo4
             // 
-            this.LblInfo4.AutoSize = true;
+            this.LblInfo4.AccessibleDescription = "Components thanks message.";
+            this.LblInfo4.AccessibleName = "Components thanks";
+            this.LblInfo4.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo4.Location = new System.Drawing.Point(176, 377);
             this.LblInfo4.Name = "LblInfo4";
-            this.LblInfo4.Size = new System.Drawing.Size(530, 38);
+            this.LblInfo4.Size = new System.Drawing.Size(536, 38);
             this.LblInfo4.TabIndex = 16;
             this.LblInfo4.Text = Languages.About_LblInfo4;
             // 
             // LblInfo5
             // 
-            this.LblInfo5.AutoSize = true;
+            this.LblInfo5.AccessibleDescription = "Home Assistant thanks message.";
+            this.LblInfo5.AccessibleName = "HA thanks";
+            this.LblInfo5.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo5.Location = new System.Drawing.Point(176, 431);
             this.LblInfo5.Name = "LblInfo5";
-            this.LblInfo5.Size = new System.Drawing.Size(524, 38);
+            this.LblInfo5.Size = new System.Drawing.Size(536, 38);
             this.LblInfo5.TabIndex = 18;
             this.LblInfo5.Text = Languages.About_LblInfo5;
             // 
             // LblInfo2
             // 
+            this.LblInfo2.AccessibleDescription = "Created info.";
+            this.LblInfo2.AccessibleName = "Created info";
+            this.LblInfo2.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo2.AutoSize = true;
             this.LblInfo2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo2.Location = new System.Drawing.Point(173, 105);
@@ -275,6 +322,9 @@ namespace HASS.Agent.Forms
             // 
             // LblLab02Research
             // 
+            this.LblLab02Research.AccessibleDescription = "Created by link. Opens the LAB02 Research webpage.";
+            this.LblLab02Research.AccessibleName = "Created by";
+            this.LblLab02Research.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblLab02Research.AutoSize = true;
             this.LblLab02Research.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblLab02Research.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -287,6 +337,9 @@ namespace HASS.Agent.Forms
             // 
             // LblVersion
             // 
+            this.LblVersion.AccessibleDescription = "HASS.Agent\'s current version.";
+            this.LblVersion.AccessibleName = "Version";
+            this.LblVersion.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblVersion.AutoSize = true;
             this.LblVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblVersion.Location = new System.Drawing.Point(12, 154);
@@ -297,6 +350,9 @@ namespace HASS.Agent.Forms
             // 
             // LblOctokit
             // 
+            this.LblOctokit.AccessibleDescription = "Opens the \'Octokit\' website.";
+            this.LblOctokit.AccessibleName = "Octokit";
+            this.LblOctokit.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblOctokit.AutoSize = true;
             this.LblOctokit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblOctokit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -309,6 +365,9 @@ namespace HASS.Agent.Forms
             // 
             // LblCliWrap
             // 
+            this.LblCliWrap.AccessibleDescription = "Opens the \'CliWrap\' website.";
+            this.LblCliWrap.AccessibleName = "CliWrap";
+            this.LblCliWrap.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblCliWrap.AutoSize = true;
             this.LblCliWrap.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblCliWrap.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -321,6 +380,9 @@ namespace HASS.Agent.Forms
             // 
             // LblInfo6
             // 
+            this.LblInfo6.AccessibleDescription = "Donating for HASS.Agent message.";
+            this.LblInfo6.AccessibleName = "Donating info";
+            this.LblInfo6.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo6.Location = new System.Drawing.Point(173, 483);
             this.LblInfo6.Name = "LblInfo6";
@@ -331,6 +393,9 @@ namespace HASS.Agent.Forms
             // 
             // PbBMAC
             // 
+            this.PbBMAC.AccessibleDescription = "Opens the \'buy me a coffee\' donation website.";
+            this.PbBMAC.AccessibleName = "BMAC donation";
+            this.PbBMAC.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.PbBMAC.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbBMAC.Image = global::HASS.Agent.Properties.Resources.bmac_logo;
             this.PbBMAC.Location = new System.Drawing.Point(176, 538);
@@ -343,6 +408,9 @@ namespace HASS.Agent.Forms
             // 
             // PbHassLogo
             // 
+            this.PbHassLogo.AccessibleDescription = "Home Assistant logo.";
+            this.PbHassLogo.AccessibleName = "HA logo";
+            this.PbHassLogo.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbHassLogo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbHassLogo.Image = global::HASS.Agent.Properties.Resources.hass_avatar;
             this.PbHassLogo.Location = new System.Drawing.Point(12, 453);
@@ -355,6 +423,9 @@ namespace HASS.Agent.Forms
             // 
             // PbHassAgentLogo
             // 
+            this.PbHassAgentLogo.AccessibleDescription = "HASS.Agent logo.";
+            this.PbHassAgentLogo.AccessibleName = "HASS.Agent logo";
+            this.PbHassAgentLogo.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbHassAgentLogo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbHassAgentLogo.Image = global::HASS.Agent.Properties.Resources.logo_128;
             this.PbHassAgentLogo.Location = new System.Drawing.Point(12, 23);
@@ -367,6 +438,9 @@ namespace HASS.Agent.Forms
             // 
             // LblCassia
             // 
+            this.LblCassia.AccessibleDescription = "Opens the \'Cassia\' website.";
+            this.LblCassia.AccessibleName = "Cassia";
+            this.LblCassia.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblCassia.AutoSize = true;
             this.LblCassia.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblCassia.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -379,6 +453,9 @@ namespace HASS.Agent.Forms
             // 
             // LblGrpcDotNetNamedPipes
             // 
+            this.LblGrpcDotNetNamedPipes.AccessibleDescription = "Opens the \'GrpcDotNetNamedPipes\' website.";
+            this.LblGrpcDotNetNamedPipes.AccessibleName = "GrpcDotNetNamedPipes";
+            this.LblGrpcDotNetNamedPipes.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblGrpcDotNetNamedPipes.AutoSize = true;
             this.LblGrpcDotNetNamedPipes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblGrpcDotNetNamedPipes.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -391,6 +468,9 @@ namespace HASS.Agent.Forms
             // 
             // LblOr
             // 
+            this.LblOr.AccessibleDescription = "Just the word \'or\' to split the donation options.";
+            this.LblOr.AccessibleName = "Or";
+            this.LblOr.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblOr.AutoSize = true;
             this.LblOr.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblOr.Location = new System.Drawing.Point(420, 551);
@@ -401,6 +481,9 @@ namespace HASS.Agent.Forms
             // 
             // PbGithubSponsor
             // 
+            this.PbGithubSponsor.AccessibleDescription = "Opens the \'sponsor on gituhb\' donation website.";
+            this.PbGithubSponsor.AccessibleName = "GitHub donation";
+            this.PbGithubSponsor.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.PbGithubSponsor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbGithubSponsor.Image = global::HASS.Agent.Properties.Resources.githubsponsors;
             this.PbGithubSponsor.Location = new System.Drawing.Point(523, 538);
@@ -413,6 +496,9 @@ namespace HASS.Agent.Forms
             // 
             // LblGrpc
             // 
+            this.LblGrpc.AccessibleDescription = "Opens the \'gRPC\' website.";
+            this.LblGrpc.AccessibleName = "Grpc";
+            this.LblGrpc.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblGrpc.AutoSize = true;
             this.LblGrpc.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblGrpc.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -425,6 +511,9 @@ namespace HASS.Agent.Forms
             // 
             // LblByteSize
             // 
+            this.LblByteSize.AccessibleDescription = "Opens the \'ByteSize\' website.";
+            this.LblByteSize.AccessibleName = "ByteSize";
+            this.LblByteSize.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblByteSize.AutoSize = true;
             this.LblByteSize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblByteSize.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -437,6 +526,9 @@ namespace HASS.Agent.Forms
             // 
             // About
             // 
+            this.AccessibleDescription = "General info about HASS.Agent.";
+            this.AccessibleName = "About";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));

@@ -39,17 +39,22 @@ namespace HASS.Agent.Forms
             // 
             // LblInfo1
             // 
-            this.LblInfo1.AutoSize = true;
+            this.LblInfo1.AccessibleDescription = "Question about the user\'s intention.";
+            this.LblInfo1.AccessibleName = "Question";
+            this.LblInfo1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LblInfo1.Location = new System.Drawing.Point(80, 18);
+            this.LblInfo1.Location = new System.Drawing.Point(12, 9);
             this.LblInfo1.Name = "LblInfo1";
-            this.LblInfo1.Size = new System.Drawing.Size(219, 21);
+            this.LblInfo1.Size = new System.Drawing.Size(355, 43);
             this.LblInfo1.TabIndex = 1;
             this.LblInfo1.Text = Languages.ExitDialog_LblInfo1;
+            this.LblInfo1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BtnRestart
             // 
-            this.BtnRestart.AccessibleName = "Button";
+            this.BtnRestart.AccessibleDescription = "Restart HASS.Agent.";
+            this.BtnRestart.AccessibleName = "Restart";
+            this.BtnRestart.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnRestart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnRestart.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnRestart.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -66,7 +71,7 @@ namespace HASS.Agent.Forms
             this.BtnRestart.Style.Image = global::HASS.Agent.Properties.Resources.restart_32;
             this.BtnRestart.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnRestart.TabIndex = 1;
-            this.BtnRestart.Text = Languages.ExitDialog_BtnRestart;
+            this.BtnRestart.Text = global::HASS.Agent.Resources.Localization.Languages.ExitDialog_BtnRestart;
             this.BtnRestart.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnRestart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BtnRestart.UseVisualStyleBackColor = false;
@@ -74,7 +79,9 @@ namespace HASS.Agent.Forms
             // 
             // BtnHide
             // 
-            this.BtnHide.AccessibleName = "Button";
+            this.BtnHide.AccessibleDescription = "Hide HASS.Agent in the system tray, next to the clock.";
+            this.BtnHide.AccessibleName = "Hide";
+            this.BtnHide.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnHide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnHide.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnHide.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -92,7 +99,7 @@ namespace HASS.Agent.Forms
             this.BtnHide.Style.Image = global::HASS.Agent.Properties.Resources.hide_32;
             this.BtnHide.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnHide.TabIndex = 0;
-            this.BtnHide.Text = Languages.ExitDialog_BtnHide;
+            this.BtnHide.Text = global::HASS.Agent.Resources.Localization.Languages.ExitDialog_BtnHide;
             this.BtnHide.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnHide.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BtnHide.UseVisualStyleBackColor = false;
@@ -100,7 +107,9 @@ namespace HASS.Agent.Forms
             // 
             // BtnExit
             // 
-            this.BtnExit.AccessibleName = "Button";
+            this.BtnExit.AccessibleDescription = "Completely close HASS.Agent.";
+            this.BtnExit.AccessibleName = "Exit";
+            this.BtnExit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnExit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -117,7 +126,7 @@ namespace HASS.Agent.Forms
             this.BtnExit.Style.Image = global::HASS.Agent.Properties.Resources.exit_32;
             this.BtnExit.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnExit.TabIndex = 2;
-            this.BtnExit.Text = Languages.ExitDialog_BtnExit;
+            this.BtnExit.Text = global::HASS.Agent.Resources.Localization.Languages.ExitDialog_BtnExit;
             this.BtnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BtnExit.UseVisualStyleBackColor = false;
@@ -125,6 +134,9 @@ namespace HASS.Agent.Forms
             // 
             // ExitDialog
             // 
+            this.AccessibleDescription = "Exit, restart or hide HASS.Agent.";
+            this.AccessibleName = "Exit";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
@@ -151,7 +163,6 @@ namespace HASS.Agent.Forms
             this.ResizeEnd += new System.EventHandler(this.ExitDialog_ResizeEnd);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ExitDialog_KeyUp);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

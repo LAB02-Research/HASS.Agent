@@ -58,7 +58,7 @@ namespace HASS.Agent.Controls.Service
 
                 // reload data
                 LvCommands.Items.Clear();
-
+                
                 foreach (var command in _commands)
                 {
                     var lviCommand = new ListViewItem(command.Id.ToString());
@@ -70,6 +70,8 @@ namespace HASS.Agent.Controls.Service
                 }
 
                 LvCommands.EndUpdate();
+
+                Refresh();
             }
             catch (NullReferenceException)
             {

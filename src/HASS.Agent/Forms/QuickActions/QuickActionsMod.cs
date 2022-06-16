@@ -25,6 +25,8 @@ namespace HASS.Agent.Forms.QuickActions
             InitializeComponent();
 
             BindComboBoxTheme();
+
+            BindListViewTheme();
         }
 
         public QuickActionsMod()
@@ -34,22 +36,30 @@ namespace HASS.Agent.Forms.QuickActions
             InitializeComponent();
             
             BindComboBoxTheme();
+
+            BindListViewTheme();
         }
 
         private void BindComboBoxTheme()
         {
-            CbDomain.DrawItem += ComboBoxTheme.DrawDictionaryIntStringItem;
             CbEntity.DrawItem += ComboBoxTheme.DrawItem;
             CbAction.DrawItem += ComboBoxTheme.DrawDictionaryIntStringItem;
+        }
+
+        private void BindListViewTheme()
+        {
+            LvDomain.DrawItem += ListViewTheme.DrawItem;
+            LvDomain.DrawSubItem += ListViewTheme.DrawSubItem;
+            LvDomain.DrawColumnHeader += ListViewTheme.DrawColumnHeader;
         }
 
         private async void QuickActionsMod_Load(object sender, EventArgs e)
         {
             // catch all key presses
             KeyPreview = true;
-
+            
             // check hass manager status
-            if (!await CheckHassManagerAsync())
+            if (!await Task.Run(async () => await CheckHassManagerAsync()))
             {
                 DialogResult = DialogResult.Abort;
                 return;
@@ -69,8 +79,16 @@ namespace HASS.Agent.Forms.QuickActions
             }
 
             // load in gui
-            CbDomain.DataSource = new BindingSource(_hassDomainEntityTypes, null);
             CbAction.DataSource = new BindingSource(_hassActionEntityTypes, null);
+            
+            LvDomain.BeginUpdate();
+            foreach (var domain in _hassDomainEntityTypes)
+            {
+                var lvDomain = new ListViewItem(domain.Key.ToString());
+                lvDomain.SubItems.Add(domain.Value);
+                LvDomain.Items.Add(lvDomain);
+            }
+            LvDomain.EndUpdate();
 
             // load or new quickaction?
             if (QuickAction.Id == Guid.Empty)
@@ -82,8 +100,8 @@ namespace HASS.Agent.Forms.QuickActions
                 _hotkeySelector.Enable(TbHotkey);
                 TbHotkey.Text = _hotkeySelector.EmptyHotkeyText;
 
-                CbDomain.SelectedIndex = 0;
-                CbEntity.SelectedIndex = 0;
+                LvDomain.Items[0].Selected = true;
+                if (CbEntity.Items.Count > 0) CbEntity.SelectedIndex = 0;
 
                 return;
             }
@@ -155,7 +173,7 @@ namespace HASS.Agent.Forms.QuickActions
                 LblLoading.Visible = loading;
                 BtnStore.Enabled = !loading;
 
-                CbDomain.Enabled = !loading;
+                LvDomain.Enabled = !loading;
                 CbEntity.Enabled = !loading;
                 CbAction.Enabled = !loading;
                 TbDescription.Enabled = !loading;
@@ -169,7 +187,14 @@ namespace HASS.Agent.Forms.QuickActions
         {
             // load the domain
             var domainId = (int)QuickAction.Domain;
-            CbDomain.SelectedItem = new KeyValuePair<int, string>(domainId, _hassDomainEntityTypes[domainId]);
+            var domainIdStr = domainId.ToString();
+            foreach (ListViewItem lvDomain in LvDomain.Items)
+            {
+                if (lvDomain.Text != domainIdStr) continue;
+                lvDomain.Selected = true;
+                LvDomain.SelectedItems[0].EnsureVisible();
+                break;
+            }
 
             // load the corresponding entity's
             LoadEntityList();
@@ -210,9 +235,16 @@ namespace HASS.Agent.Forms.QuickActions
                 return;
             }
 
+            if (LvDomain.SelectedItems.Count == 0)
+            {
+                MessageBoxAdv.Show(Languages.QuickActionsMod_BtnStore_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ActiveControl = LvDomain;
+                return;
+            }
+
             // get domain
-            var domainItem = (KeyValuePair<int, string>)CbDomain.SelectedItem;
-            var domain = (HassDomain)domainItem.Key;
+            var domainId = int.Parse(LvDomain.SelectedItems[0].Text);
+            var domain = (HassDomain)domainId;
 
             // get and check action
             var actionItem = (KeyValuePair<int, string>)CbAction.SelectedItem;
@@ -241,14 +273,17 @@ namespace HASS.Agent.Forms.QuickActions
             // done
             DialogResult = DialogResult.OK;
         }
-        
-        private void CbDomain_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void LvDomain_SelectedIndexChanged(object sender, EventArgs e)
         {
             // set focus to entity list
             ActiveControl = CbEntity;
 
             // load entities
             LoadEntityList();
+
+            // select the first
+            if (CbEntity.Items.Count > 0) CbEntity.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -256,13 +291,22 @@ namespace HASS.Agent.Forms.QuickActions
         /// </summary>
         private void LoadEntityList()
         {
+            if (LvDomain.SelectedItems.Count == 0)
+            {
+                CbEntity.Items.Clear();
+                return;
+            }
+
             CbEntity.AutoCompleteCustomSource = new AutoCompleteStringCollection();
             CbEntity.Items.Clear();
 
             // get domain
-            var domainItem = (KeyValuePair<int, string>)CbDomain.SelectedItem;
-            var domain = (HassDomain)domainItem.Key;
+            var domainId = int.Parse(LvDomain.SelectedItems[0].Text);
+            
+            // nope, HA domain
+            var domain = (HassDomain)domainId;
 
+            // load relevant entities
             switch (domain)
             {
                 case HassDomain.Automation:
@@ -336,23 +380,24 @@ namespace HASS.Agent.Forms.QuickActions
                         CbEntity.Items.Add(item);
                     }
                     break;
+
+                case HassDomain.HASSAgentCommands:
+                    foreach (var item in Variables.Commands)
+                    {
+                        CbEntity.AutoCompleteCustomSource.Add(item.Name);
+                        CbEntity.Items.Add(item.Name);
+                    }
+                    break;
             }
         }
 
         private void CbEntity_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CbEntity.SelectedIndex == -1)
-            {
-                LblEntity.Text = string.Empty;
-                return;
-            }
+            if (CbEntity.SelectedIndex == -1) return;
 
             // set focus to description
             ActiveControl = TbDescription;
             if (!string.IsNullOrWhiteSpace(TbDescription.Text)) TbDescription.SelectionStart = TbDescription.Text.Length;
-
-            // load entity name
-            LblEntity.Text = CbEntity.Text;
         }
 
         private void QuickActionsMod_FormClosing(object sender, FormClosingEventArgs e)
@@ -383,6 +428,9 @@ namespace HASS.Agent.Forms.QuickActions
 
             try
             {
+                // hide the pesky horizontal scrollbar
+                ListViewTheme.ShowScrollBar(LvDomain.Handle, ListViewTheme.SB_HORZ, false);
+
                 Refresh();
             }
             catch
@@ -402,6 +450,12 @@ namespace HASS.Agent.Forms.QuickActions
             // set focus to description
             ActiveControl = TbDescription;
             if (!string.IsNullOrWhiteSpace(TbDescription.Text)) TbDescription.SelectionStart = TbDescription.Text.Length;
+        }
+
+        private void QuickActionsMod_Layout(object sender, LayoutEventArgs e)
+        {
+            // hide the pesky horizontal scrollbar
+            ListViewTheme.ShowScrollBar(LvDomain.Handle, ListViewTheme.SB_HORZ, false);
         }
     }
 }

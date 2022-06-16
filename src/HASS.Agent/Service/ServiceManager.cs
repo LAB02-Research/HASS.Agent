@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HASS.Agent.Enums;
 using HASS.Agent.Functions;
+using HASS.Agent.Managers;
 using HASS.Agent.Shared.Enums;
 using HASS.Agent.Shared.Functions;
 using Microsoft.Win32;

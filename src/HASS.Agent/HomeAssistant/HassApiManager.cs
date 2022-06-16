@@ -595,12 +595,18 @@ namespace HASS.Agent.HomeAssistant
                 {
                     try
                     {
+                        // don't process internal domain
+                        if (quickAction.Domain == HassDomain.HASSAgentCommands) continue;
+
+                        // get the entity
                         var entity = quickAction.ToHassEntity();
 
+                        // get full entity name
                         var domainVal = entity.Domain.GetCategory();
                         var entityVal = entity.Entity.ToLower();
                         var fullEntity = $"{domainVal}.{entityVal}";
 
+                        // get its state
                         _ = await _statesClient.GetState(fullEntity);
 
                         if (Variables.ShuttingDown) return;

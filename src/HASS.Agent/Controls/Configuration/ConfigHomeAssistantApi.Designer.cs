@@ -45,6 +45,9 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // LblTip1
             // 
+            this.LblTip1.AccessibleDescription = "Contains a usage tip.";
+            this.LblTip1.AccessibleName = "Client certificate tip";
+            this.LblTip1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblTip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblTip1.Location = new System.Drawing.Point(177, 340);
             this.LblTip1.Name = "LblTip1";
@@ -55,6 +58,9 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // TbHassClientCertificate
             // 
+            this.TbHassClientCertificate.AccessibleDescription = "Optional client certificate to use when connecting.";
+            this.TbHassClientCertificate.AccessibleName = "Client certificate";
+            this.TbHassClientCertificate.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbHassClientCertificate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbHassClientCertificate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbHassClientCertificate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -62,11 +68,14 @@ namespace HASS.Agent.Controls.Configuration
             this.TbHassClientCertificate.Location = new System.Drawing.Point(177, 312);
             this.TbHassClientCertificate.Name = "TbHassClientCertificate";
             this.TbHassClientCertificate.Size = new System.Drawing.Size(484, 25);
-            this.TbHassClientCertificate.TabIndex = 55;
+            this.TbHassClientCertificate.TabIndex = 2;
             this.TbHassClientCertificate.DoubleClick += new System.EventHandler(this.TbHassClientCertificate_DoubleClick);
             // 
             // LblClientCertificate
             // 
+            this.LblClientCertificate.AccessibleDescription = "Client certificate textbox description";
+            this.LblClientCertificate.AccessibleName = "Client certificate info";
+            this.LblClientCertificate.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblClientCertificate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblClientCertificate.Location = new System.Drawing.Point(3, 314);
             this.LblClientCertificate.Name = "LblClientCertificate";
@@ -77,18 +86,23 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // CbHassAutoClientCertificate
             // 
+            this.CbHassAutoClientCertificate.AccessibleDescription = "Enable automatically selecting the client certificate.";
+            this.CbHassAutoClientCertificate.AccessibleName = "Client certificate selection";
+            this.CbHassAutoClientCertificate.AccessibleRole = System.Windows.Forms.AccessibleRole.CheckButton;
             this.CbHassAutoClientCertificate.AutoSize = true;
             this.CbHassAutoClientCertificate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CbHassAutoClientCertificate.Location = new System.Drawing.Point(177, 378);
             this.CbHassAutoClientCertificate.Name = "CbHassAutoClientCertificate";
             this.CbHassAutoClientCertificate.Size = new System.Drawing.Size(269, 23);
-            this.CbHassAutoClientCertificate.TabIndex = 54;
+            this.CbHassAutoClientCertificate.TabIndex = 3;
             this.CbHassAutoClientCertificate.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigHomeAssistantApi_CbHassAutoClientCertificate;
             this.CbHassAutoClientCertificate.UseVisualStyleBackColor = true;
             // 
             // BtnTestApi
             // 
-            this.BtnTestApi.AccessibleName = "Button";
+            this.BtnTestApi.AccessibleDescription = "Performs a connection test, using the provided configuration.";
+            this.BtnTestApi.AccessibleName = "Test connection";
+            this.BtnTestApi.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnTestApi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnTestApi.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnTestApi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -102,23 +116,28 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnTestApi.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnTestApi.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnTestApi.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnTestApi.TabIndex = 52;
+            this.BtnTestApi.TabIndex = 4;
             this.BtnTestApi.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigHomeAssistantApi_BtnTestApi;
             this.BtnTestApi.UseVisualStyleBackColor = false;
             this.BtnTestApi.Click += new System.EventHandler(this.BtnTestApi_Click);
             // 
             // LblInfo1
             // 
-            this.LblInfo1.AutoSize = true;
+            this.LblInfo1.AccessibleDescription = "Home Assistant API information.";
+            this.LblInfo1.AccessibleName = "Information";
+            this.LblInfo1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo1.Location = new System.Drawing.Point(70, 36);
             this.LblInfo1.Name = "LblInfo1";
-            this.LblInfo1.Size = new System.Drawing.Size(584, 114);
+            this.LblInfo1.Size = new System.Drawing.Size(584, 147);
             this.LblInfo1.TabIndex = 53;
             this.LblInfo1.Text = Languages.ConfigHomeAssistantApi_LblInfo1;
             // 
             // TbHassApiToken
             // 
+            this.TbHassApiToken.AccessibleDescription = "The API token to use when connecting to your Home Assistant instance.";
+            this.TbHassApiToken.AccessibleName = "API token";
+            this.TbHassApiToken.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbHassApiToken.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbHassApiToken.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbHassApiToken.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -126,10 +145,13 @@ namespace HASS.Agent.Controls.Configuration
             this.TbHassApiToken.Location = new System.Drawing.Point(177, 262);
             this.TbHassApiToken.Name = "TbHassApiToken";
             this.TbHassApiToken.Size = new System.Drawing.Size(484, 25);
-            this.TbHassApiToken.TabIndex = 49;
+            this.TbHassApiToken.TabIndex = 1;
             // 
             // TbHassIp
             // 
+            this.TbHassIp.AccessibleDescription = "The URI on which your Home Assistant can be reached.";
+            this.TbHassIp.AccessibleName = "Server URI";
+            this.TbHassIp.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbHassIp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbHassIp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbHassIp.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -137,10 +159,13 @@ namespace HASS.Agent.Controls.Configuration
             this.TbHassIp.Location = new System.Drawing.Point(178, 213);
             this.TbHassIp.Name = "TbHassIp";
             this.TbHassIp.Size = new System.Drawing.Size(484, 25);
-            this.TbHassIp.TabIndex = 48;
+            this.TbHassIp.TabIndex = 0;
             // 
             // LblApiToken
             // 
+            this.LblApiToken.AccessibleDescription = "API token textbox description";
+            this.LblApiToken.AccessibleName = "API token info";
+            this.LblApiToken.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblApiToken.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblApiToken.Location = new System.Drawing.Point(3, 264);
             this.LblApiToken.Name = "LblApiToken";
@@ -151,6 +176,9 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // LblServerUri
             // 
+            this.LblServerUri.AccessibleDescription = "Server URI textbox description";
+            this.LblServerUri.AccessibleName = "Server URI info";
+            this.LblServerUri.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblServerUri.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblServerUri.Location = new System.Drawing.Point(3, 215);
             this.LblServerUri.Name = "LblServerUri";
@@ -161,6 +189,9 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // ConfigHomeAssistantApi
             // 
+            this.AccessibleDescription = "Panel containing the Home Assistant API configuration.";
+            this.AccessibleName = "Home Assistant API";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Pane;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));

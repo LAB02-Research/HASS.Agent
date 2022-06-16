@@ -2,8 +2,12 @@
 using System.Diagnostics;
 using System.Globalization;
 using HASS.Agent.Functions;
+using HASS.Agent.Managers;
 using HASS.Agent.Resources.Localization;
+using HASS.Agent.Shared.Functions;
 using Microsoft.VisualBasic.Logging;
+using Syncfusion.Windows.Forms;
+using DialogResult = System.Windows.Forms.DialogResult;
 
 namespace HASS.Agent.Controls.Onboarding
 {
@@ -42,8 +46,23 @@ namespace HASS.Agent.Controls.Onboarding
         {
             languageChanged = false;
 
+            // make sure there's a device name
+            if (string.IsNullOrWhiteSpace(TbDeviceName.Text)) TbDeviceName.Text = SharedHelperFunctions.GetSafeDeviceName();
+
+            // sanitize devicename
+            var deviceName = SharedHelperFunctions.GetSafeValue(TbDeviceName.Text);
+
+            // different?
+            if (deviceName != TbDeviceName.Text)
+            {
+                var q = MessageBoxAdv.Show(string.Format(Languages.OnboardingWelcome_Store_MessageBox1, deviceName),
+                    Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (q != DialogResult.Yes) return false;
+            }
+
             // store devicename
-            Variables.AppSettings.DeviceName = TbDeviceName.Text;
+            Variables.AppSettings.DeviceName = deviceName;
 
             // store ui language
             var uiLanguage = Variables.SupportedUILanguages.Find(x => x.DisplayName == CbLanguage.Text);

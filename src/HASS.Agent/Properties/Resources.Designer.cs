@@ -121,15 +121,6 @@ namespace HASS.Agent.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to tip: doubleclick this field to browse.
-        /// </summary>
-        internal static string ConfigHomeAssistantApi_LblTip1 {
-            get {
-                return ResourceManager.GetString("ConfigHomeAssistantApi_LblTip1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap discord_avatar {
@@ -245,6 +236,26 @@ namespace HASS.Agent.Properties {
         internal static System.Drawing.Bitmap hotkey_16_header {
             get {
                 object obj = ResourceManager.GetObject("hotkey_16_header", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap info_32 {
+            get {
+                object obj = ResourceManager.GetObject("info_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap line {
+            get {
+                object obj = ResourceManager.GetObject("line", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -422,6 +433,16 @@ namespace HASS.Agent.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap readthedocs_avatar {
+            get {
+                object obj = ResourceManager.GetObject("readthedocs_avatar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap refresh_16 {
             get {
                 object obj = ResourceManager.GetObject("refresh_16", resourceCulture);
@@ -485,6 +506,16 @@ namespace HASS.Agent.Properties {
         internal static System.Drawing.Bitmap service_16_header {
             get {
                 object obj = ResourceManager.GetObject("service_16_header", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap service_32 {
+            get {
+                object obj = ResourceManager.GetObject("service_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

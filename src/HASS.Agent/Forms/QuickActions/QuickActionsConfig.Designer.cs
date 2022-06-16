@@ -56,7 +56,9 @@ namespace HASS.Agent.Forms.QuickActions
             // 
             // BtnStore
             // 
-            this.BtnStore.AccessibleName = "Button";
+            this.BtnStore.AccessibleDescription = "Stores and activates the current list of quick actions.";
+            this.BtnStore.AccessibleName = "Store";
+            this.BtnStore.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnStore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BtnStore.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -71,14 +73,16 @@ namespace HASS.Agent.Forms.QuickActions
             this.BtnStore.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnStore.TabIndex = 0;
+            this.BtnStore.TabIndex = 4;
             this.BtnStore.Text = Languages.QuickActionsConfig_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
             // BtnAdd
             // 
-            this.BtnAdd.AccessibleName = "Button";
+            this.BtnAdd.AccessibleDescription = "Opens the \'add new hotkey\' window.";
+            this.BtnAdd.AccessibleName = "Add new";
+            this.BtnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnAdd.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -93,14 +97,16 @@ namespace HASS.Agent.Forms.QuickActions
             this.BtnAdd.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnAdd.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnAdd.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnAdd.TabIndex = 2;
+            this.BtnAdd.TabIndex = 0;
             this.BtnAdd.Text = Languages.QuickActionsConfig_BtnAdd;
             this.BtnAdd.UseVisualStyleBackColor = false;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // BtnModify
             // 
-            this.BtnModify.AccessibleName = "Button";
+            this.BtnModify.AccessibleDescription = "Modifies the currently selected quick action.";
+            this.BtnModify.AccessibleName = "Modify";
+            this.BtnModify.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnModify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnModify.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -115,14 +121,16 @@ namespace HASS.Agent.Forms.QuickActions
             this.BtnModify.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnModify.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnModify.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnModify.TabIndex = 3;
+            this.BtnModify.TabIndex = 1;
             this.BtnModify.Text = Languages.QuickActionsConfig_BtnModify;
             this.BtnModify.UseVisualStyleBackColor = false;
             this.BtnModify.Click += new System.EventHandler(this.BtnModify_Click);
             // 
             // BtnRemove
             // 
-            this.BtnRemove.AccessibleName = "Button";
+            this.BtnRemove.AccessibleDescription = "Removes the selected quick action from the list.";
+            this.BtnRemove.AccessibleName = "Remove";
+            this.BtnRemove.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnRemove.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -137,14 +145,16 @@ namespace HASS.Agent.Forms.QuickActions
             this.BtnRemove.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnRemove.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnRemove.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnRemove.TabIndex = 4;
+            this.BtnRemove.TabIndex = 2;
             this.BtnRemove.Text = Languages.QuickActionsConfig_BtnRemove;
             this.BtnRemove.UseVisualStyleBackColor = false;
             this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
             // BtnPreview
             // 
-            this.BtnPreview.AccessibleName = "Button";
+            this.BtnPreview.AccessibleDescription = "Opens a window containing the quick actions that are currently in the list.";
+            this.BtnPreview.AccessibleName = "Preview";
+            this.BtnPreview.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnPreview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnPreview.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -159,13 +169,16 @@ namespace HASS.Agent.Forms.QuickActions
             this.BtnPreview.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnPreview.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnPreview.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnPreview.TabIndex = 5;
+            this.BtnPreview.TabIndex = 3;
             this.BtnPreview.Text = Languages.QuickActionsConfig_BtnPreview;
             this.BtnPreview.UseVisualStyleBackColor = false;
             this.BtnPreview.Click += new System.EventHandler(this.BtnPreview_Click);
             // 
             // LvQuickActions
             // 
+            this.LvQuickActions.AccessibleDescription = "Contains the currently configured quick actions.";
+            this.LvQuickActions.AccessibleName = "Stored quick actions";
+            this.LvQuickActions.AccessibleRole = System.Windows.Forms.AccessibleRole.Table;
             this.LvQuickActions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -202,37 +215,37 @@ namespace HASS.Agent.Forms.QuickActions
             // 
             // ClmDomain
             // 
-            this.ClmDomain.Text = Languages.QuickActionsConfig_ClmDomain;
+            this.ClmDomain.Text = global::HASS.Agent.Resources.Localization.Languages.QuickActionsConfig_ClmDomain;
             this.ClmDomain.Width = 120;
             // 
             // ClmEntity
             // 
-            this.ClmEntity.Text = Languages.QuickActionsConfig_ClmEntity;
+            this.ClmEntity.Text = global::HASS.Agent.Resources.Localization.Languages.QuickActionsConfig_ClmEntity;
             this.ClmEntity.Width = 200;
             // 
             // ClmAction
             // 
-            this.ClmAction.Text = Languages.QuickActionsConfig_ClmAction;
+            this.ClmAction.Text = global::HASS.Agent.Resources.Localization.Languages.QuickActionsConfig_ClmAction;
             this.ClmAction.Width = 100;
             // 
             // ClmHotKeyEnabled
             // 
-            this.ClmHotKeyEnabled.Text = "";
+            this.ClmHotKeyEnabled.Text = Languages.QuickActionsConfig_LblHotkey;
             this.ClmHotKeyEnabled.Width = 40;
             // 
             // ClmHotKey
             // 
-            this.ClmHotKey.Text = Languages.QuickActionsConfig_ClmHotKey;
+            this.ClmHotKey.Text = global::HASS.Agent.Resources.Localization.Languages.QuickActionsConfig_ClmHotKey;
             this.ClmHotKey.Width = 200;
             // 
             // ClmDescription
             // 
-            this.ClmDescription.Text = Languages.QuickActionsConfig_ClmDescription;
+            this.ClmDescription.Text = global::HASS.Agent.Resources.Localization.Languages.QuickActionsConfig_ClmDescription;
             this.ClmDescription.Width = 250;
             // 
             // ClmEmpty
             // 
-            this.ClmEmpty.Text = "";
+            this.ClmEmpty.Text = "filler column";
             this.ClmEmpty.Width = 10000;
             // 
             // ImgLv
@@ -244,6 +257,9 @@ namespace HASS.Agent.Forms.QuickActions
             // 
             // LblHotkey
             // 
+            this.LblHotkey.AccessibleDescription = "Hotkey column description.";
+            this.LblHotkey.AccessibleName = "Hotkey info";
+            this.LblHotkey.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblHotkey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LblHotkey.AutoSize = true;
             this.LblHotkey.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -255,6 +271,9 @@ namespace HASS.Agent.Forms.QuickActions
             // 
             // PbHotKey
             // 
+            this.PbHotKey.AccessibleDescription = "Hotkey icon image, as shown in the header of the \'hotkey enabled\' column.";
+            this.PbHotKey.AccessibleName = "Hotkey icon";
+            this.PbHotKey.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbHotKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PbHotKey.Image = global::HASS.Agent.Properties.Resources.hotkey_16;
             this.PbHotKey.Location = new System.Drawing.Point(809, 448);
@@ -266,6 +285,9 @@ namespace HASS.Agent.Forms.QuickActions
             // 
             // QuickActionsConfig
             // 
+            this.AccessibleDescription = "Contains all currently stored quick actions, and the ability the configure them.";
+            this.AccessibleName = "Quick actions config";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));

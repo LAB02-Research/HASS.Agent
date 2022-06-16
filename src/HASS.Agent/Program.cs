@@ -4,6 +4,7 @@ using HASS.Agent.Enums;
 using HASS.Agent.Forms;
 using HASS.Agent.Forms.ChildApplications;
 using HASS.Agent.Functions;
+using HASS.Agent.Managers;
 using HASS.Agent.Settings;
 using HASS.Agent.Shared.Extensions;
 using Serilog;
@@ -57,7 +58,7 @@ namespace HASS.Agent
                 LocalizationManager.Initialize();
 
                 // set scaling
-                Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled);
+                Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
 
                 // set default font
                 Application.SetDefaultFont(Variables.DefaultFont);

@@ -47,10 +47,17 @@ namespace HASS.Agent.Controls.Configuration
             this.LblTip1 = new System.Windows.Forms.Label();
             this.LblTip2 = new System.Windows.Forms.Label();
             this.BtnExternalBrowserIncognitoTest = new Syncfusion.WinForms.Controls.SfButton();
+            this.PbLine1 = new System.Windows.Forms.PictureBox();
+            this.PbLine2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.PbLine1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PbLine2)).BeginInit();
             this.SuspendLayout();
             // 
             // LblInfo1
             // 
+            this.LblInfo1.AccessibleDescription = "External tools information.";
+            this.LblInfo1.AccessibleName = "Information";
+            this.LblInfo1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo1.AutoSize = true;
             this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo1.Location = new System.Drawing.Point(70, 36);
@@ -61,6 +68,9 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // TbExternalBrowserName
             // 
+            this.TbExternalBrowserName.AccessibleDescription = "The name of the custom browser.";
+            this.TbExternalBrowserName.AccessibleName = "Custom browser name";
+            this.TbExternalBrowserName.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbExternalBrowserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbExternalBrowserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbExternalBrowserName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -68,10 +78,13 @@ namespace HASS.Agent.Controls.Configuration
             this.TbExternalBrowserName.Location = new System.Drawing.Point(73, 238);
             this.TbExternalBrowserName.Name = "TbExternalBrowserName";
             this.TbExternalBrowserName.Size = new System.Drawing.Size(358, 25);
-            this.TbExternalBrowserName.TabIndex = 55;
+            this.TbExternalBrowserName.TabIndex = 1;
             // 
             // LblBrowserName
             // 
+            this.LblBrowserName.AccessibleDescription = "Custom browser name textbox description.";
+            this.LblBrowserName.AccessibleName = "Custom browser name info";
+            this.LblBrowserName.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblBrowserName.AutoSize = true;
             this.LblBrowserName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblBrowserName.Location = new System.Drawing.Point(70, 216);
@@ -82,7 +95,10 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // LblInfo2
             // 
-            this.LblInfo2.AutoSize = true;
+            this.LblInfo2.AccessibleDescription = "Info about the use and configuration of a custom browser, instead of the system d" +
+    "efault.";
+            this.LblInfo2.AccessibleName = "Custom browser info";
+            this.LblInfo2.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo2.Location = new System.Drawing.Point(70, 89);
             this.LblInfo2.Name = "LblInfo2";
@@ -92,6 +108,9 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // TbExternalBrowserBinary
             // 
+            this.TbExternalBrowserBinary.AccessibleDescription = "The location of the custom browser\'s binary.";
+            this.TbExternalBrowserBinary.AccessibleName = "Custom browser binary";
+            this.TbExternalBrowserBinary.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbExternalBrowserBinary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbExternalBrowserBinary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbExternalBrowserBinary.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -99,11 +118,14 @@ namespace HASS.Agent.Controls.Configuration
             this.TbExternalBrowserBinary.Location = new System.Drawing.Point(73, 180);
             this.TbExternalBrowserBinary.Name = "TbExternalBrowserBinary";
             this.TbExternalBrowserBinary.Size = new System.Drawing.Size(358, 25);
-            this.TbExternalBrowserBinary.TabIndex = 59;
+            this.TbExternalBrowserBinary.TabIndex = 0;
             this.TbExternalBrowserBinary.DoubleClick += new System.EventHandler(this.TbExternalBrowserBinary_DoubleClick);
             // 
             // LblBrowserBinary
             // 
+            this.LblBrowserBinary.AccessibleDescription = "Custom browser binary textbox description.";
+            this.LblBrowserBinary.AccessibleName = "Custom browser binary info";
+            this.LblBrowserBinary.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblBrowserBinary.AutoSize = true;
             this.LblBrowserBinary.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblBrowserBinary.Location = new System.Drawing.Point(70, 158);
@@ -114,6 +136,9 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // TbExternalBrowserIncognito
             // 
+            this.TbExternalBrowserIncognito.AccessibleDescription = "Arguments to launch the custom browser in incognito mode.";
+            this.TbExternalBrowserIncognito.AccessibleName = "Custom browser incognito arguments info";
+            this.TbExternalBrowserIncognito.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbExternalBrowserIncognito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbExternalBrowserIncognito.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbExternalBrowserIncognito.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -121,10 +146,13 @@ namespace HASS.Agent.Controls.Configuration
             this.TbExternalBrowserIncognito.Location = new System.Drawing.Point(73, 301);
             this.TbExternalBrowserIncognito.Name = "TbExternalBrowserIncognito";
             this.TbExternalBrowserIncognito.Size = new System.Drawing.Size(358, 25);
-            this.TbExternalBrowserIncognito.TabIndex = 61;
+            this.TbExternalBrowserIncognito.TabIndex = 2;
             // 
             // LblLaunchIncogArg
             // 
+            this.LblLaunchIncogArg.AccessibleDescription = "Custom browser incognito arguments textbox description.";
+            this.LblLaunchIncogArg.AccessibleName = "Custom browser incognito arguments info";
+            this.LblLaunchIncogArg.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblLaunchIncogArg.AutoSize = true;
             this.LblLaunchIncogArg.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblLaunchIncogArg.Location = new System.Drawing.Point(70, 279);
@@ -135,6 +163,9 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // TbExternalExecutorBinary
             // 
+            this.TbExternalExecutorBinary.AccessibleDescription = "The location of the custom executor\'s binary.";
+            this.TbExternalExecutorBinary.AccessibleName = "Custom executor binary";
+            this.TbExternalExecutorBinary.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbExternalExecutorBinary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbExternalExecutorBinary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbExternalExecutorBinary.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -142,11 +173,14 @@ namespace HASS.Agent.Controls.Configuration
             this.TbExternalExecutorBinary.Location = new System.Drawing.Point(73, 471);
             this.TbExternalExecutorBinary.Name = "TbExternalExecutorBinary";
             this.TbExternalExecutorBinary.Size = new System.Drawing.Size(358, 25);
-            this.TbExternalExecutorBinary.TabIndex = 66;
+            this.TbExternalExecutorBinary.TabIndex = 4;
             this.TbExternalExecutorBinary.DoubleClick += new System.EventHandler(this.TbExternalExecutorBinary_DoubleClick);
             // 
             // LblCustomExecutorBinary
             // 
+            this.LblCustomExecutorBinary.AccessibleDescription = "Custom executor binary textbox description.";
+            this.LblCustomExecutorBinary.AccessibleName = "Custom executor binary info";
+            this.LblCustomExecutorBinary.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblCustomExecutorBinary.AutoSize = true;
             this.LblCustomExecutorBinary.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblCustomExecutorBinary.Location = new System.Drawing.Point(70, 449);
@@ -157,16 +191,21 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // LblInfo3
             // 
-            this.LblInfo3.AutoSize = true;
+            this.LblInfo3.AccessibleDescription = "Info about the use and configuration of a custom executor.";
+            this.LblInfo3.AccessibleName = "Custom executor info";
+            this.LblInfo3.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo3.Location = new System.Drawing.Point(70, 399);
             this.LblInfo3.Name = "LblInfo3";
-            this.LblInfo3.Size = new System.Drawing.Size(477, 38);
+            this.LblInfo3.Size = new System.Drawing.Size(579, 38);
             this.LblInfo3.TabIndex = 65;
             this.LblInfo3.Text = Languages.ConfigExternalTools_LblInfo3;
             // 
             // TbExternalExecutorName
             // 
+            this.TbExternalExecutorName.AccessibleDescription = "The name of the custom executor.";
+            this.TbExternalExecutorName.AccessibleName = "Custom executor name";
+            this.TbExternalExecutorName.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbExternalExecutorName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbExternalExecutorName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbExternalExecutorName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -174,10 +213,13 @@ namespace HASS.Agent.Controls.Configuration
             this.TbExternalExecutorName.Location = new System.Drawing.Point(73, 531);
             this.TbExternalExecutorName.Name = "TbExternalExecutorName";
             this.TbExternalExecutorName.Size = new System.Drawing.Size(358, 25);
-            this.TbExternalExecutorName.TabIndex = 63;
+            this.TbExternalExecutorName.TabIndex = 5;
             // 
             // LblCustomExecutorName
             // 
+            this.LblCustomExecutorName.AccessibleDescription = "Custom executor name textbox description.";
+            this.LblCustomExecutorName.AccessibleName = "Custom executor name info";
+            this.LblCustomExecutorName.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblCustomExecutorName.AutoSize = true;
             this.LblCustomExecutorName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblCustomExecutorName.Location = new System.Drawing.Point(70, 509);
@@ -188,6 +230,9 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // LblTip1
             // 
+            this.LblTip1.AccessibleDescription = "Contains a usage tip.";
+            this.LblTip1.AccessibleName = "Custom browser binary tip";
+            this.LblTip1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblTip1.AutoSize = true;
             this.LblTip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblTip1.Location = new System.Drawing.Point(437, 184);
@@ -198,6 +243,9 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // LblTip2
             // 
+            this.LblTip2.AccessibleDescription = "Contains a usage tip.";
+            this.LblTip2.AccessibleName = "Custom executor binary tip";
+            this.LblTip2.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblTip2.AutoSize = true;
             this.LblTip2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblTip2.Location = new System.Drawing.Point(437, 475);
@@ -208,7 +256,9 @@ namespace HASS.Agent.Controls.Configuration
             // 
             // BtnExternalBrowserIncognitoTest
             // 
-            this.BtnExternalBrowserIncognitoTest.AccessibleName = "Button";
+            this.BtnExternalBrowserIncognitoTest.AccessibleDescription = "Tests the provided custom browser incognito arguments.";
+            this.BtnExternalBrowserIncognitoTest.AccessibleName = "Custom browser test";
+            this.BtnExternalBrowserIncognitoTest.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnExternalBrowserIncognitoTest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnExternalBrowserIncognitoTest.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnExternalBrowserIncognitoTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -223,16 +273,47 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnExternalBrowserIncognitoTest.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnExternalBrowserIncognitoTest.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnExternalBrowserIncognitoTest.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnExternalBrowserIncognitoTest.TabIndex = 70;
-            this.BtnExternalBrowserIncognitoTest.Text = Languages.ConfigExternalTools_BtnExternalBrowserIncognitoTest;
+            this.BtnExternalBrowserIncognitoTest.TabIndex = 3;
+            this.BtnExternalBrowserIncognitoTest.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigExternalTools_BtnExternalBrowserIncognitoTest;
             this.BtnExternalBrowserIncognitoTest.UseVisualStyleBackColor = false;
             this.BtnExternalBrowserIncognitoTest.Click += new System.EventHandler(this.BtnExternalBrowserIncognitoTest_Click);
             // 
-            // ExternalTools
+            // PbLine1
             // 
+            this.PbLine1.AccessibleDescription = "Seperator line.";
+            this.PbLine1.AccessibleName = "Seperator";
+            this.PbLine1.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
+            this.PbLine1.Image = global::HASS.Agent.Properties.Resources.line;
+            this.PbLine1.Location = new System.Drawing.Point(73, 76);
+            this.PbLine1.Name = "PbLine1";
+            this.PbLine1.Size = new System.Drawing.Size(576, 1);
+            this.PbLine1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PbLine1.TabIndex = 71;
+            this.PbLine1.TabStop = false;
+            // 
+            // PbLine2
+            // 
+            this.PbLine2.AccessibleDescription = "Seperator line.";
+            this.PbLine2.AccessibleName = "Seperator";
+            this.PbLine2.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
+            this.PbLine2.Image = global::HASS.Agent.Properties.Resources.line;
+            this.PbLine2.Location = new System.Drawing.Point(73, 368);
+            this.PbLine2.Name = "PbLine2";
+            this.PbLine2.Size = new System.Drawing.Size(576, 1);
+            this.PbLine2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PbLine2.TabIndex = 72;
+            this.PbLine2.TabStop = false;
+            // 
+            // ConfigExternalTools
+            // 
+            this.AccessibleDescription = "Panel containing the configuration of the \'external tools\'.";
+            this.AccessibleName = "External tools";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Pane;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.Controls.Add(this.PbLine2);
+            this.Controls.Add(this.PbLine1);
             this.Controls.Add(this.BtnExternalBrowserIncognitoTest);
             this.Controls.Add(this.LblTip2);
             this.Controls.Add(this.LblTip1);
@@ -251,8 +332,10 @@ namespace HASS.Agent.Controls.Configuration
             this.Controls.Add(this.LblBrowserName);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "ExternalTools";
+            this.Name = "ConfigExternalTools";
             this.Size = new System.Drawing.Size(700, 592);
+            ((System.ComponentModel.ISupportInitialize)(this.PbLine1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PbLine2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,5 +358,7 @@ namespace HASS.Agent.Controls.Configuration
         private System.Windows.Forms.Label LblTip1;
         private System.Windows.Forms.Label LblTip2;
         internal Syncfusion.WinForms.Controls.SfButton BtnExternalBrowserIncognitoTest;
+        private PictureBox PbLine1;
+        private PictureBox PbLine2;
     }
 }

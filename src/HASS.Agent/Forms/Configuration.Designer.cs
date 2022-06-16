@@ -36,12 +36,15 @@ namespace HASS.Agent.Forms
             this.TabExternalTools = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.TabHassApi = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.TabHotKey = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.TablLocalApi = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.TabLocalStorage = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.TabLogging = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.TabMediaPlayer = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.TabMQTT = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.TabNotifications = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.TabService = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.TabStartup = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.TabTrayIcon = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.TabUpdates = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.BtnAbout = new Syncfusion.WinForms.Controls.SfButton();
             this.BtnHelp = new Syncfusion.WinForms.Controls.SfButton();
@@ -55,7 +58,9 @@ namespace HASS.Agent.Forms
             // 
             // ConfigTabs
             // 
-            this.ConfigTabs.AccessibleDescription = "2328";
+            this.ConfigTabs.AccessibleDescription = "Various tabs for configuring HASS.Agent.";
+            this.ConfigTabs.AccessibleName = "Tabs";
+            this.ConfigTabs.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTabList;
             this.ConfigTabs.ActiveTabColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.ConfigTabs.Alignment = System.Windows.Forms.TabAlignment.Left;
             this.ConfigTabs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
@@ -65,12 +70,15 @@ namespace HASS.Agent.Forms
             this.ConfigTabs.Controls.Add(this.TabExternalTools);
             this.ConfigTabs.Controls.Add(this.TabHassApi);
             this.ConfigTabs.Controls.Add(this.TabHotKey);
+            this.ConfigTabs.Controls.Add(this.TablLocalApi);
             this.ConfigTabs.Controls.Add(this.TabLocalStorage);
             this.ConfigTabs.Controls.Add(this.TabLogging);
+            this.ConfigTabs.Controls.Add(this.TabMediaPlayer);
             this.ConfigTabs.Controls.Add(this.TabMQTT);
             this.ConfigTabs.Controls.Add(this.TabNotifications);
             this.ConfigTabs.Controls.Add(this.TabService);
             this.ConfigTabs.Controls.Add(this.TabStartup);
+            this.ConfigTabs.Controls.Add(this.TabTrayIcon);
             this.ConfigTabs.Controls.Add(this.TabUpdates);
             this.ConfigTabs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConfigTabs.FixedSingleBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -90,6 +98,9 @@ namespace HASS.Agent.Forms
             // 
             // TabGeneral
             // 
+            this.TabGeneral.AccessibleDescription = "Contains the \'general configuration\' controls.";
+            this.TabGeneral.AccessibleName = "General";
+            this.TabGeneral.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTab;
             this.TabGeneral.AutoScroll = true;
             this.TabGeneral.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TabGeneral.Image = null;
@@ -106,6 +117,9 @@ namespace HASS.Agent.Forms
             // 
             // TabExternalTools
             // 
+            this.TabExternalTools.AccessibleDescription = "Contains the \'external tools\' controls.";
+            this.TabExternalTools.AccessibleName = "External tools";
+            this.TabExternalTools.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTab;
             this.TabExternalTools.AutoScroll = true;
             this.TabExternalTools.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TabExternalTools.Image = null;
@@ -122,6 +136,9 @@ namespace HASS.Agent.Forms
             // 
             // TabHassApi
             // 
+            this.TabHassApi.AccessibleDescription = "Contains the \'Home Assistant API\' controls.";
+            this.TabHassApi.AccessibleName = "HA API";
+            this.TabHassApi.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTab;
             this.TabHassApi.AutoScroll = true;
             this.TabHassApi.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TabHassApi.Image = null;
@@ -138,6 +155,9 @@ namespace HASS.Agent.Forms
             // 
             // TabHotKey
             // 
+            this.TabHotKey.AccessibleDescription = "Contains the \'hotkey\' controls.";
+            this.TabHotKey.AccessibleName = "Hotkey";
+            this.TabHotKey.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTab;
             this.TabHotKey.AutoScroll = true;
             this.TabHotKey.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TabHotKey.Image = null;
@@ -152,8 +172,28 @@ namespace HASS.Agent.Forms
             this.TabHotKey.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_TabHotKey;
             this.TabHotKey.ThemesEnabled = false;
             // 
+            // TablLocalApi
+            // 
+            this.TablLocalApi.AccessibleDescription = "Contains the \'local API\' controls.";
+            this.TablLocalApi.AccessibleName = "Local API";
+            this.TablLocalApi.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTab;
+            this.TablLocalApi.Image = null;
+            this.TablLocalApi.ImageSize = new System.Drawing.Size(16, 16);
+            this.TablLocalApi.Location = new System.Drawing.Point(142, 2);
+            this.TablLocalApi.Name = "TablLocalApi";
+            this.TablLocalApi.ShowCloseButton = true;
+            this.TablLocalApi.Size = new System.Drawing.Size(740, 544);
+            this.TablLocalApi.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.TablLocalApi.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.TablLocalApi.TabIndex = 13;
+            this.TablLocalApi.Text = Languages.Configuration_TablLocalApi;
+            this.TablLocalApi.ThemesEnabled = false;
+            // 
             // TabLocalStorage
             // 
+            this.TabLocalStorage.AccessibleDescription = "Contains the \'local storage\' controls.";
+            this.TabLocalStorage.AccessibleName = "Local storage";
+            this.TabLocalStorage.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTab;
             this.TabLocalStorage.AutoScroll = true;
             this.TabLocalStorage.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TabLocalStorage.Image = null;
@@ -170,6 +210,9 @@ namespace HASS.Agent.Forms
             // 
             // TabLogging
             // 
+            this.TabLogging.AccessibleDescription = "Contains the \'logging\' controls.";
+            this.TabLogging.AccessibleName = "Logging";
+            this.TabLogging.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTab;
             this.TabLogging.AutoScroll = true;
             this.TabLogging.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TabLogging.Image = null;
@@ -184,8 +227,28 @@ namespace HASS.Agent.Forms
             this.TabLogging.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_TabLogging;
             this.TabLogging.ThemesEnabled = false;
             // 
+            // TabMediaPlayer
+            // 
+            this.TabMediaPlayer.AccessibleDescription = "Contains the \'mediaplayer\' controls.";
+            this.TabMediaPlayer.AccessibleName = "Mediaplayer";
+            this.TabMediaPlayer.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTab;
+            this.TabMediaPlayer.Image = null;
+            this.TabMediaPlayer.ImageSize = new System.Drawing.Size(16, 16);
+            this.TabMediaPlayer.Location = new System.Drawing.Point(142, 2);
+            this.TabMediaPlayer.Name = "TabMediaPlayer";
+            this.TabMediaPlayer.ShowCloseButton = true;
+            this.TabMediaPlayer.Size = new System.Drawing.Size(740, 544);
+            this.TabMediaPlayer.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.TabMediaPlayer.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.TabMediaPlayer.TabIndex = 12;
+            this.TabMediaPlayer.Text = Languages.Configuration_TabMediaPlayer;
+            this.TabMediaPlayer.ThemesEnabled = false;
+            // 
             // TabMQTT
             // 
+            this.TabMQTT.AccessibleDescription = "Contains the \'MQTT configuration\' controls.";
+            this.TabMQTT.AccessibleName = "MQTT";
+            this.TabMQTT.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTab;
             this.TabMQTT.AutoScroll = true;
             this.TabMQTT.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TabMQTT.Image = null;
@@ -202,6 +265,9 @@ namespace HASS.Agent.Forms
             // 
             // TabNotifications
             // 
+            this.TabNotifications.AccessibleDescription = "Contains the \'notifications\' controls.";
+            this.TabNotifications.AccessibleName = "Notifications";
+            this.TabNotifications.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTab;
             this.TabNotifications.AutoScroll = true;
             this.TabNotifications.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TabNotifications.Image = null;
@@ -218,6 +284,9 @@ namespace HASS.Agent.Forms
             // 
             // TabService
             // 
+            this.TabService.AccessibleDescription = "Contains the \'satellite service\' controls.";
+            this.TabService.AccessibleName = "Satellite service";
+            this.TabService.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTab;
             this.TabService.AutoScroll = true;
             this.TabService.Image = null;
             this.TabService.ImageSize = new System.Drawing.Size(16, 16);
@@ -233,6 +302,9 @@ namespace HASS.Agent.Forms
             // 
             // TabStartup
             // 
+            this.TabStartup.AccessibleDescription = "Contains the \'startup\' controls.";
+            this.TabStartup.AccessibleName = "Startup";
+            this.TabStartup.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTab;
             this.TabStartup.AutoScroll = true;
             this.TabStartup.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TabStartup.Image = null;
@@ -247,8 +319,28 @@ namespace HASS.Agent.Forms
             this.TabStartup.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_TabStartup;
             this.TabStartup.ThemesEnabled = false;
             // 
+            // TabTrayIcon
+            // 
+            this.TabTrayIcon.AccessibleDescription = "Contains the \'tray icon\' controls.";
+            this.TabTrayIcon.AccessibleName = "Tray icon";
+            this.TabTrayIcon.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTab;
+            this.TabTrayIcon.Image = null;
+            this.TabTrayIcon.ImageSize = new System.Drawing.Size(16, 16);
+            this.TabTrayIcon.Location = new System.Drawing.Point(142, 2);
+            this.TabTrayIcon.Name = "TabTrayIcon";
+            this.TabTrayIcon.ShowCloseButton = true;
+            this.TabTrayIcon.Size = new System.Drawing.Size(740, 544);
+            this.TabTrayIcon.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.TabTrayIcon.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.TabTrayIcon.TabIndex = 14;
+            this.TabTrayIcon.Text = Languages.Configuration_TabTrayIcon;
+            this.TabTrayIcon.ThemesEnabled = false;
+            // 
             // TabUpdates
             // 
+            this.TabUpdates.AccessibleDescription = "Contains the \'updates\' controls.";
+            this.TabUpdates.AccessibleName = "Updates";
+            this.TabUpdates.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTab;
             this.TabUpdates.AutoScroll = true;
             this.TabUpdates.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TabUpdates.Image = null;
@@ -265,7 +357,9 @@ namespace HASS.Agent.Forms
             // 
             // BtnAbout
             // 
-            this.BtnAbout.AccessibleName = "Button";
+            this.BtnAbout.AccessibleDescription = "Opens the about window.";
+            this.BtnAbout.AccessibleName = "About";
+            this.BtnAbout.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnAbout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnAbout.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnAbout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -279,14 +373,16 @@ namespace HASS.Agent.Forms
             this.BtnAbout.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnAbout.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnAbout.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnAbout.TabIndex = 9;
-            this.BtnAbout.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_BtnAbout;
+            this.BtnAbout.TabIndex = 3;
+            this.BtnAbout.Text = Languages.Configuration_BtnAbout;
             this.BtnAbout.UseVisualStyleBackColor = false;
             this.BtnAbout.Click += new System.EventHandler(this.BtnAbout_Click);
             // 
             // BtnHelp
             // 
-            this.BtnHelp.AccessibleName = "Button";
+            this.BtnHelp.AccessibleDescription = "Opens the help and contact window.";
+            this.BtnHelp.AccessibleName = "Help";
+            this.BtnHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnHelp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnHelp.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -300,14 +396,17 @@ namespace HASS.Agent.Forms
             this.BtnHelp.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnHelp.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnHelp.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnHelp.TabIndex = 8;
-            this.BtnHelp.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_BtnHelp;
+            this.BtnHelp.TabIndex = 2;
+            this.BtnHelp.Text = Languages.Configuration_BtnHelp;
             this.BtnHelp.UseVisualStyleBackColor = false;
             this.BtnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
             // 
             // BtnStore
             // 
-            this.BtnStore.AccessibleName = "Button";
+            this.BtnStore.AccessibleDescription = "Saves your settings and closes the window. Might show a messagebox with additiona" +
+    "l info.";
+            this.BtnStore.AccessibleName = "Save and close";
+            this.BtnStore.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnStore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnStore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -322,13 +421,16 @@ namespace HASS.Agent.Forms
             this.BtnStore.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnStore.TabIndex = 10;
+            this.BtnStore.TabIndex = 0;
             this.BtnStore.Text = Languages.Configuration_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
             // PnlTabs
             // 
+            this.PnlTabs.AccessibleDescription = "Contains the tabs control.";
+            this.PnlTabs.AccessibleName = "Tab pane";
+            this.PnlTabs.AccessibleRole = System.Windows.Forms.AccessibleRole.Pane;
             this.PnlTabs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PnlTabs.Controls.Add(this.ConfigTabs);
             this.PnlTabs.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -339,7 +441,9 @@ namespace HASS.Agent.Forms
             // 
             // BtnClose
             // 
-            this.BtnClose.AccessibleName = "Button";
+            this.BtnClose.AccessibleDescription = "Closes the window without saving your changes.";
+            this.BtnClose.AccessibleName = "Close no save";
+            this.BtnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnClose.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -353,13 +457,16 @@ namespace HASS.Agent.Forms
             this.BtnClose.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnClose.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnClose.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnClose.TabIndex = 12;
-            this.BtnClose.Text = global::HASS.Agent.Resources.Localization.Languages.Configuration_BtnClose;
+            this.BtnClose.TabIndex = 1;
+            this.BtnClose.Text = Languages.Configuration_BtnClose;
             this.BtnClose.UseVisualStyleBackColor = false;
             this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // Configuration
             // 
+            this.AccessibleDescription = "Contains the various configuration panels for HASS.Agent.";
+            this.AccessibleName = "Configuration";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
@@ -382,7 +489,7 @@ namespace HASS.Agent.Forms
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Configuration";
+            this.Text = Languages.Configuration_Title;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Configuration_FormClosing);
             this.Load += new System.EventHandler(this.Configuration_Load);
             this.ResizeEnd += new System.EventHandler(this.Configuration_ResizeEnd);
@@ -413,6 +520,9 @@ namespace HASS.Agent.Forms
         private Syncfusion.Windows.Forms.Tools.TabPageAdv TabExternalTools;
         private Syncfusion.Windows.Forms.Tools.TabPageAdv TabService;
         private Syncfusion.WinForms.Controls.SfButton BtnClose;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv TablLocalApi;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv TabMediaPlayer;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv TabTrayIcon;
     }
 }
 

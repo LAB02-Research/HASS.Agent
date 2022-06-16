@@ -55,7 +55,9 @@ namespace HASS.Agent.Forms.Service
             // 
             // ServiceTabs
             // 
-            this.ServiceTabs.AccessibleDescription = "2328";
+            this.ServiceTabs.AccessibleDescription = "Various tabs for configuring the satellite service.";
+            this.ServiceTabs.AccessibleName = "Tabs";
+            this.ServiceTabs.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTabList;
             this.ServiceTabs.ActiveTabColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.ServiceTabs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.ServiceTabs.BeforeTouchSize = new System.Drawing.Size(907, 651);
@@ -82,6 +84,9 @@ namespace HASS.Agent.Forms.Service
             // 
             // TabGeneral
             // 
+            this.TabGeneral.AccessibleDescription = "Contains the \'general configuration\' controls.";
+            this.TabGeneral.AccessibleName = "General";
+            this.TabGeneral.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTab;
             this.TabGeneral.AutoScroll = true;
             this.TabGeneral.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TabGeneral.Image = null;
@@ -93,11 +98,13 @@ namespace HASS.Agent.Forms.Service
             this.TabGeneral.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TabGeneral.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabGeneral.TabIndex = 9;
-            this.TabGeneral.Text = Languages.ServiceConfig_TabGeneral;
+            this.TabGeneral.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceConfig_TabGeneral;
             this.TabGeneral.ThemesEnabled = false;
             // 
             // TabMqtt
             // 
+            this.TabMqtt.AccessibleDescription = "Contains the \'mqtt configuration\' controls.";
+            this.TabMqtt.AccessibleName = "MQTT";
             this.TabMqtt.Image = null;
             this.TabMqtt.ImageSize = new System.Drawing.Size(16, 16);
             this.TabMqtt.Location = new System.Drawing.Point(2, 27);
@@ -108,11 +115,14 @@ namespace HASS.Agent.Forms.Service
             this.TabMqtt.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabMqtt.TabIndex = 11;
             this.TabMqtt.TabVisible = false;
-            this.TabMqtt.Text = Languages.ServiceConfig_TabMqtt;
+            this.TabMqtt.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceConfig_TabMqtt;
             this.TabMqtt.ThemesEnabled = false;
             // 
             // TabCommands
             // 
+            this.TabCommands.AccessibleDescription = "Contains the \'commands\' controls.";
+            this.TabCommands.AccessibleName = "Commands";
+            this.TabCommands.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTab;
             this.TabCommands.AutoScroll = true;
             this.TabCommands.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TabCommands.Image = null;
@@ -125,11 +135,14 @@ namespace HASS.Agent.Forms.Service
             this.TabCommands.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabCommands.TabIndex = 1;
             this.TabCommands.TabVisible = false;
-            this.TabCommands.Text = Languages.ServiceConfig_TabCommands;
+            this.TabCommands.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceConfig_TabCommands;
             this.TabCommands.ThemesEnabled = false;
             // 
             // TabSensors
             // 
+            this.TabSensors.AccessibleDescription = "Contains the \'sensors\' controls.";
+            this.TabSensors.AccessibleName = "Sensors";
+            this.TabSensors.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTab;
             this.TabSensors.AutoScroll = true;
             this.TabSensors.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TabSensors.Image = null;
@@ -142,11 +155,14 @@ namespace HASS.Agent.Forms.Service
             this.TabSensors.TabForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.TabSensors.TabIndex = 10;
             this.TabSensors.TabVisible = false;
-            this.TabSensors.Text = Languages.ServiceConfig_TabSensors;
+            this.TabSensors.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceConfig_TabSensors;
             this.TabSensors.ThemesEnabled = false;
             // 
             // ServiceConfig
             // 
+            this.AccessibleDescription = "Contains the various configuration panels for the satellite service.";
+            this.AccessibleName = "Satellite service config";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));

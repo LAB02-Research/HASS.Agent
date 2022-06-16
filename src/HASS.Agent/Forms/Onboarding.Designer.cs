@@ -39,7 +39,9 @@ namespace HASS.Agent.Forms
             // 
             // BtnNext
             // 
-            this.BtnNext.AccessibleName = "Button";
+            this.BtnNext.AccessibleDescription = "Shows the next onboarding step, or, completes the onboarding process.";
+            this.BtnNext.AccessibleName = "Next";
+            this.BtnNext.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnNext.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnNext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -61,6 +63,9 @@ namespace HASS.Agent.Forms
             // 
             // GpOnboardingControl
             // 
+            this.GpOnboardingControl.AccessibleDescription = "Contains the onboarding control for the current step.";
+            this.GpOnboardingControl.AccessibleName = "Onboarding controls";
+            this.GpOnboardingControl.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
             this.GpOnboardingControl.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.GpOnboardingControl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.GpOnboardingControl.Location = new System.Drawing.Point(0, 6);
@@ -71,7 +76,9 @@ namespace HASS.Agent.Forms
             // 
             // BtnClose
             // 
-            this.BtnClose.AccessibleName = "Button";
+            this.BtnClose.AccessibleDescription = "Closes the window, aborting the onboarding. Will ask for confirmation.";
+            this.BtnClose.AccessibleName = "Close";
+            this.BtnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnClose.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -93,7 +100,9 @@ namespace HASS.Agent.Forms
             // 
             // BtnPrevious
             // 
-            this.BtnPrevious.AccessibleName = "Button";
+            this.BtnPrevious.AccessibleDescription = "Shows the previous onboarding step.";
+            this.BtnPrevious.AccessibleName = "Previous";
+            this.BtnPrevious.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnPrevious.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnPrevious.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnPrevious.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -107,7 +116,7 @@ namespace HASS.Agent.Forms
             this.BtnPrevious.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnPrevious.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnPrevious.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnPrevious.TabIndex = 3;
+            this.BtnPrevious.TabIndex = 1;
             this.BtnPrevious.Text = Languages.Onboarding_BtnPrevious;
             this.BtnPrevious.UseVisualStyleBackColor = false;
             this.BtnPrevious.Visible = false;
@@ -115,6 +124,9 @@ namespace HASS.Agent.Forms
             // 
             // Onboarding
             // 
+            this.AccessibleDescription = "Step by step onboarding assistant.";
+            this.AccessibleName = "Onboarding";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
@@ -136,7 +148,7 @@ namespace HASS.Agent.Forms
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = Languages.Onboarding_Onboarding;
+            this.Text = Languages.Onboarding_Title;
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Onboarding_FormClosing);
             this.Load += new System.EventHandler(this.Onboarding_Load);

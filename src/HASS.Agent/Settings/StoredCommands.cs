@@ -1,12 +1,13 @@
 ﻿using HASS.Agent.Enums;
-using HASS.Agent.Models.HomeAssistant.Commands.InternalCommands;
+using HASS.Agent.HomeAssistant.Commands.InternalCommands;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Shared.Enums;
+using HASS.Agent.Shared.HomeAssistant.Commands;
+using HASS.Agent.Shared.HomeAssistant.Commands.CustomCommands;
+using HASS.Agent.Shared.HomeAssistant.Commands.InternalCommands;
+using HASS.Agent.Shared.HomeAssistant.Commands.KeyCommands;
 using HASS.Agent.Shared.Models.Config;
-using HASS.Agent.Shared.Models.HomeAssistant.Commands;
-using HASS.Agent.Shared.Models.HomeAssistant.Commands.CustomCommands;
-using HASS.Agent.Shared.Models.HomeAssistant.Commands.InternalCommands;
-using HASS.Agent.Shared.Models.HomeAssistant.Commands.KeyCommands;
+using HASS.Agent.Shared.Models.HomeAssistant;
 using Newtonsoft.Json;
 using Serilog;
 
@@ -148,6 +149,12 @@ namespace HASS.Agent.Settings
                     break;
                 case CommandType.MultipleKeysCommand:
                     abstractCommand = new MultipleKeysCommand(command.Keys, command.Name, command.EntityType, command.Id.ToString());
+                    break;
+                case CommandType.SendWindowToFrontCommand:
+                    abstractCommand = new SendWindowToFrontCommand(command.Name, command.Command, command.EntityType, command.Id.ToString());
+                    break;
+                case CommandType.WebViewCommand:
+                    abstractCommand = new WebViewCommand(command.Name, command.Command, command.EntityType, command.Id.ToString());
                     break;
                 default:
                     Log.Error("[SETTINGS_COMMANDS] [{name}] Unknown configured command type: {type}", command.Name, command.Type.ToString());

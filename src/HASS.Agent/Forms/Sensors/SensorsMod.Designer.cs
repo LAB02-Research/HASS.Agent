@@ -76,7 +76,9 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // BtnStore
             // 
-            this.BtnStore.AccessibleName = "Button";
+            this.BtnStore.AccessibleDescription = "Stores the sensor in the sensor list. This does not yet activates it.";
+            this.BtnStore.AccessibleName = "Store";
+            this.BtnStore.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnStore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BtnStore.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -91,24 +93,30 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnStore.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnStore.TabIndex = 5;
-            this.BtnStore.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsMod_BtnStore;
+            this.BtnStore.TabIndex = 7;
+            this.BtnStore.Text = Languages.SensorsMod_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
             // LblSetting1
             // 
+            this.LblSetting1.AccessibleDescription = "Sensor specific setting 1 description.";
+            this.LblSetting1.AccessibleName = "Setting 1 description";
+            this.LblSetting1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblSetting1.AutoSize = true;
             this.LblSetting1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblSetting1.Location = new System.Drawing.Point(566, 235);
             this.LblSetting1.Name = "LblSetting1";
             this.LblSetting1.Size = new System.Drawing.Size(63, 19);
             this.LblSetting1.TabIndex = 12;
-            this.LblSetting1.Text = Languages.SensorsMod_LblSetting1;
+            this.LblSetting1.Text = "setting 1";
             this.LblSetting1.Visible = false;
             // 
             // TbSetting1
             // 
+            this.TbSetting1.AccessibleDescription = "Sensor specific configuration.";
+            this.TbSetting1.AccessibleName = "Setting 1";
+            this.TbSetting1.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbSetting1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbSetting1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbSetting1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -121,6 +129,9 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // LblType
             // 
+            this.LblType.AccessibleDescription = "Selected sensor type textbox description.";
+            this.LblType.AccessibleName = "Selected sensor description";
+            this.LblType.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblType.AutoSize = true;
             this.LblType.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblType.Location = new System.Drawing.Point(566, 18);
@@ -131,6 +142,9 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // LblName
             // 
+            this.LblName.AccessibleDescription = "Sensor name textbox description";
+            this.LblName.AccessibleName = "Sensor name description";
+            this.LblName.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblName.AutoSize = true;
             this.LblName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblName.Location = new System.Drawing.Point(566, 91);
@@ -141,6 +155,10 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // TbName
             // 
+            this.TbName.AccessibleDescription = "The name as which the sensor will show up in Home Assistant. This has to be uniqu" +
+    "e!";
+            this.TbName.AccessibleName = "Sensor name";
+            this.TbName.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -152,6 +170,9 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // LblUpdate
             // 
+            this.LblUpdate.AccessibleDescription = "Update interval numeric textbox description.";
+            this.LblUpdate.AccessibleName = "Update interval description";
+            this.LblUpdate.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblUpdate.AutoSize = true;
             this.LblUpdate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblUpdate.Location = new System.Drawing.Point(566, 174);
@@ -162,6 +183,9 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // LblSeconds
             // 
+            this.LblSeconds.AccessibleDescription = "Update interval time unit.";
+            this.LblSeconds.AccessibleName = "Update interval time unit";
+            this.LblSeconds.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblSeconds.AutoSize = true;
             this.LblSeconds.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblSeconds.Location = new System.Drawing.Point(786, 174);
@@ -172,6 +196,9 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // LblDescription
             // 
+            this.LblDescription.AccessibleDescription = "Sensor description textbox description.";
+            this.LblDescription.AccessibleName = "Sensor description description";
+            this.LblDescription.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblDescription.AutoSize = true;
             this.LblDescription.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblDescription.Location = new System.Drawing.Point(955, 17);
@@ -182,6 +209,9 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // TbDescription
             // 
+            this.TbDescription.AccessibleDescription = "Contains a description and extra information regarding the selected sensor.";
+            this.TbDescription.AccessibleName = "Sensor description";
+            this.TbDescription.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.TbDescription.AutoWordSelection = true;
             this.TbDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TbDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -198,6 +228,8 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // PnlDescription
             // 
+            this.PnlDescription.AccessibleDescription = "Contains the description textbox.";
+            this.PnlDescription.AccessibleName = "Description panel";
             this.PnlDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PnlDescription.Controls.Add(this.TbDescription);
             this.PnlDescription.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -208,17 +240,23 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // LblSetting2
             // 
+            this.LblSetting2.AccessibleDescription = "Sensor specific setting 2 description.";
+            this.LblSetting2.AccessibleName = "Setting 2 description";
+            this.LblSetting2.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblSetting2.AutoSize = true;
             this.LblSetting2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblSetting2.Location = new System.Drawing.Point(566, 288);
             this.LblSetting2.Name = "LblSetting2";
             this.LblSetting2.Size = new System.Drawing.Size(63, 19);
             this.LblSetting2.TabIndex = 21;
-            this.LblSetting2.Text = Languages.SensorsMod_LblSetting2;
+            this.LblSetting2.Text = "setting 2";
             this.LblSetting2.Visible = false;
             // 
             // TbSetting2
             // 
+            this.TbSetting2.AccessibleDescription = "Sensor specific configuration.";
+            this.TbSetting2.AccessibleName = "Setting 2";
+            this.TbSetting2.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbSetting2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbSetting2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbSetting2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -226,22 +264,28 @@ namespace HASS.Agent.Forms.Sensors
             this.TbSetting2.Location = new System.Drawing.Point(566, 310);
             this.TbSetting2.Name = "TbSetting2";
             this.TbSetting2.Size = new System.Drawing.Size(328, 25);
-            this.TbSetting2.TabIndex = 3;
+            this.TbSetting2.TabIndex = 4;
             this.TbSetting2.Visible = false;
             // 
             // LblSetting3
             // 
+            this.LblSetting3.AccessibleDescription = "Sensor specific setting 3 description.";
+            this.LblSetting3.AccessibleName = "Setting 3 description";
+            this.LblSetting3.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblSetting3.AutoSize = true;
             this.LblSetting3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblSetting3.Location = new System.Drawing.Point(566, 341);
             this.LblSetting3.Name = "LblSetting3";
             this.LblSetting3.Size = new System.Drawing.Size(63, 19);
             this.LblSetting3.TabIndex = 23;
-            this.LblSetting3.Text = Languages.SensorsMod_LblSetting3;
+            this.LblSetting3.Text = "setting 3";
             this.LblSetting3.Visible = false;
             // 
             // TbSetting3
             // 
+            this.TbSetting3.AccessibleDescription = "Sensor specific configuration.";
+            this.TbSetting3.AccessibleName = "Setting 3";
+            this.TbSetting3.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbSetting3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbSetting3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbSetting3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -249,11 +293,15 @@ namespace HASS.Agent.Forms.Sensors
             this.TbSetting3.Location = new System.Drawing.Point(566, 363);
             this.TbSetting3.Name = "TbSetting3";
             this.TbSetting3.Size = new System.Drawing.Size(328, 25);
-            this.TbSetting3.TabIndex = 4;
+            this.TbSetting3.TabIndex = 5;
             this.TbSetting3.Visible = false;
             // 
             // NumInterval
             // 
+            this.NumInterval.AccessibleDescription = "The amount of seconds between the updates of this sensor\'s value. Only accepts nu" +
+    "meric values.";
+            this.NumInterval.AccessibleName = "Update interval";
+            this.NumInterval.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.NumInterval.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.NumInterval.BeforeTouchSize = new System.Drawing.Size(83, 25);
             this.NumInterval.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
@@ -271,7 +319,7 @@ namespace HASS.Agent.Forms.Sensors
             this.NumInterval.MetroColor = System.Drawing.SystemColors.WindowFrame;
             this.NumInterval.Name = "NumInterval";
             this.NumInterval.Size = new System.Drawing.Size(83, 25);
-            this.NumInterval.TabIndex = 25;
+            this.NumInterval.TabIndex = 2;
             this.NumInterval.ThemeName = "Metro";
             this.NumInterval.Value = new decimal(new int[] {
             10,
@@ -282,6 +330,9 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // LvSensors
             // 
+            this.LvSensors.AccessibleDescription = "List of available sensor types.";
+            this.LvSensors.AccessibleName = "Sensor types";
+            this.LvSensors.AccessibleRole = System.Windows.Forms.AccessibleRole.Table;
             this.LvSensors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.LvSensors.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ClmId,
@@ -319,19 +370,19 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // ClmMultiValue
             // 
-            this.ClmMultiValue.Text = "";
+            this.ClmMultiValue.Text = Languages.SensorsMod_LblMultiValue;
             // 
             // ClmAgentCompatible
             // 
-            this.ClmAgentCompatible.Text = "";
+            this.ClmAgentCompatible.Text = "agent compatible";
             // 
             // ClmSatelliteCompatible
             // 
-            this.ClmSatelliteCompatible.Text = "";
+            this.ClmSatelliteCompatible.Text = "satellite compatible";
             // 
             // ClmEmpty
             // 
-            this.ClmEmpty.Text = "";
+            this.ClmEmpty.Text = "filler column";
             this.ClmEmpty.Width = 500;
             // 
             // ImgLv
@@ -345,6 +396,9 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // TbSelectedType
             // 
+            this.TbSelectedType.AccessibleDescription = "Selected sensor type.";
+            this.TbSelectedType.AccessibleName = "Selected sensor";
+            this.TbSelectedType.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.TbSelectedType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TbSelectedType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbSelectedType.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -353,10 +407,13 @@ namespace HASS.Agent.Forms.Sensors
             this.TbSelectedType.Name = "TbSelectedType";
             this.TbSelectedType.ReadOnly = true;
             this.TbSelectedType.Size = new System.Drawing.Size(328, 25);
-            this.TbSelectedType.TabIndex = 27;
+            this.TbSelectedType.TabIndex = 0;
             // 
             // PbMultiValue
             // 
+            this.PbMultiValue.AccessibleDescription = "Multivalue icon image, as shown in the header of the \'multivalue\' column.";
+            this.PbMultiValue.AccessibleName = "Multivalue icon";
+            this.PbMultiValue.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbMultiValue.Image = global::HASS.Agent.Properties.Resources.multivalue_16;
             this.PbMultiValue.Location = new System.Drawing.Point(273, 392);
             this.PbMultiValue.Name = "PbMultiValue";
@@ -367,6 +424,9 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // LblMultiValue
             // 
+            this.LblMultiValue.AccessibleDescription = "Multivalue column description.";
+            this.LblMultiValue.AccessibleName = "Multivalue info";
+            this.LblMultiValue.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblMultiValue.AutoSize = true;
             this.LblMultiValue.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblMultiValue.Location = new System.Drawing.Point(295, 393);
@@ -377,6 +437,9 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // LblAgent
             // 
+            this.LblAgent.AccessibleDescription = "Agent column description.";
+            this.LblAgent.AccessibleName = "Agent info";
+            this.LblAgent.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblAgent.AutoSize = true;
             this.LblAgent.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblAgent.Location = new System.Drawing.Point(403, 393);
@@ -387,6 +450,9 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // PbAgent
             // 
+            this.PbAgent.AccessibleDescription = "Agent icon image, as shown in the header of the \'agent\' column.";
+            this.PbAgent.AccessibleName = "Agent icon";
+            this.PbAgent.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbAgent.Image = global::HASS.Agent.Properties.Resources.agent_16;
             this.PbAgent.Location = new System.Drawing.Point(381, 392);
             this.PbAgent.Name = "PbAgent";
@@ -397,6 +463,9 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // LblService
             // 
+            this.LblService.AccessibleDescription = "Service column description.";
+            this.LblService.AccessibleName = "Service info";
+            this.LblService.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblService.AutoSize = true;
             this.LblService.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblService.Location = new System.Drawing.Point(485, 393);
@@ -407,6 +476,9 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // PbService
             // 
+            this.PbService.AccessibleDescription = "Service icon image, as shown in the header of the \'service\' column.";
+            this.PbService.AccessibleName = "Service icon";
+            this.PbService.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbService.Image = global::HASS.Agent.Properties.Resources.service_16;
             this.PbService.Location = new System.Drawing.Point(463, 392);
             this.PbService.Name = "PbService";
@@ -417,6 +489,10 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // LblSpecificClient
             // 
+            this.LblSpecificClient.AccessibleDescription = "Warning message that the selected sensor is only available for the HASS.Agent, no" +
+    "t the satellite service.";
+            this.LblSpecificClient.AccessibleName = "Compatibility warning";
+            this.LblSpecificClient.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblSpecificClient.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LblSpecificClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.LblSpecificClient.Location = new System.Drawing.Point(739, 18);
@@ -429,7 +505,9 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // BtnTest
             // 
-            this.BtnTest.AccessibleName = "Button";
+            this.BtnTest.AccessibleDescription = "Tests the provided values to see if they return the expected value.";
+            this.BtnTest.AccessibleName = "Test";
+            this.BtnTest.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnTest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnTest.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -444,14 +522,17 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnTest.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnTest.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnTest.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnTest.TabIndex = 40;
-            this.BtnTest.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsMod_BtnTest;
+            this.BtnTest.TabIndex = 6;
+            this.BtnTest.Text = Languages.SensorsMod_BtnTest;
             this.BtnTest.UseVisualStyleBackColor = false;
             this.BtnTest.Visible = false;
             this.BtnTest.Click += new System.EventHandler(this.BtnTest_Click);
             // 
             // CbNetworkCard
             // 
+            this.CbNetworkCard.AccessibleDescription = "List of available network cards.";
+            this.CbNetworkCard.AccessibleName = "Network cards";
+            this.CbNetworkCard.AccessibleRole = System.Windows.Forms.AccessibleRole.DropList;
             this.CbNetworkCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.CbNetworkCard.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.CbNetworkCard.DropDownHeight = 300;
@@ -460,14 +541,17 @@ namespace HASS.Agent.Forms.Sensors
             this.CbNetworkCard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.CbNetworkCard.FormattingEnabled = true;
             this.CbNetworkCard.IntegralHeight = false;
-            this.CbNetworkCard.Location = new System.Drawing.Point(566, 257);
+            this.CbNetworkCard.Location = new System.Drawing.Point(566, 258);
             this.CbNetworkCard.Name = "CbNetworkCard";
             this.CbNetworkCard.Size = new System.Drawing.Size(328, 26);
-            this.CbNetworkCard.TabIndex = 41;
+            this.CbNetworkCard.TabIndex = 3;
             this.CbNetworkCard.Visible = false;
             // 
             // SensorsMod
             // 
+            this.AccessibleDescription = "Create or modify a sensor.";
+            this.AccessibleName = "Sensor mod";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));

@@ -1,5 +1,6 @@
 ﻿using HASS.Agent.Forms.Service;
 using HASS.Agent.Functions;
+using HASS.Agent.Managers;
 using HASS.Agent.Properties;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Service;

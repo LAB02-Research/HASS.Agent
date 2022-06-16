@@ -1,5 +1,6 @@
 ﻿using Syncfusion.Windows.Forms;
 using HASS.Agent.Functions;
+using HASS.Agent.Managers;
 using HASS.Agent.Models.Internal;
 using HASS.Agent.Resources.Localization;
 

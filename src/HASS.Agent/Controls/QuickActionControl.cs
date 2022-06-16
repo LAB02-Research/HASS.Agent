@@ -1,4 +1,5 @@
-﻿using HASS.Agent.Enums;
+﻿using HASS.Agent.Commands;
+using HASS.Agent.Enums;
 using HASS.Agent.Forms.QuickActions;
 using HASS.Agent.HomeAssistant;
 using HASS.Agent.Models.Internal;
@@ -61,6 +62,7 @@ namespace HASS.Agent.Controls
                 HassDomain.Scene => Properties.Resources.qa_scene_225,
                 HassDomain.Switch => Properties.Resources.qa_switch_225,
                 HassDomain.Light => Properties.Resources.qa_light_225,
+                HassDomain.HASSAgentCommands => Properties.Resources.logo_256,
                 _ => Properties.Resources.hass_avatar
             };
         }
@@ -70,9 +72,18 @@ namespace HASS.Agent.Controls
         /// </summary>
         private void ExecuteCommand()
         {
-            // execute the command (don't wait)
-            Task.Run(() => HassApiManager.ProcessQuickActionAsync(_quickAction));
-
+            // is it an internal command?
+            if (_quickAction.Domain == HassDomain.HASSAgentCommands)
+            {
+                // execute local command
+                Task.Run(() => CommandsManager.ExecuteCommandByName(_quickAction.Entity));
+            }
+            else
+            {
+                // execute the command through HA
+                Task.Run(() => HassApiManager.ProcessQuickActionAsync(_quickAction));
+            }
+            
             // close our parent window
             _quickActionsForm?.CloseWindow();
         }

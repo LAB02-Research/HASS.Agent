@@ -41,6 +41,9 @@ namespace HASS.Agent.Controls.Onboarding
             // 
             // PbHassAgentLogo
             // 
+            this.PbHassAgentLogo.AccessibleDescription = "HASS Agent logo image.";
+            this.PbHassAgentLogo.AccessibleName = "HASS Agent logo";
+            this.PbHassAgentLogo.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbHassAgentLogo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbHassAgentLogo.Image = global::HASS.Agent.Properties.Resources.logo_128;
             this.PbHassAgentLogo.Location = new System.Drawing.Point(24, 20);
@@ -52,6 +55,9 @@ namespace HASS.Agent.Controls.Onboarding
             // 
             // TbQuickActionsHotkey
             // 
+            this.TbQuickActionsHotkey.AccessibleDescription = "The hotkey to press if you want to pull up the quick action window.";
+            this.TbQuickActionsHotkey.AccessibleName = "Hotkey";
+            this.TbQuickActionsHotkey.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbQuickActionsHotkey.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbQuickActionsHotkey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbQuickActionsHotkey.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -63,6 +69,9 @@ namespace HASS.Agent.Controls.Onboarding
             // 
             // LblHotkeyCombo
             // 
+            this.LblHotkeyCombo.AccessibleDescription = "Hotkey combination textbox description.";
+            this.LblHotkeyCombo.AccessibleName = "Hotkey info";
+            this.LblHotkeyCombo.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblHotkeyCombo.AutoSize = true;
             this.LblHotkeyCombo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblHotkeyCombo.Location = new System.Drawing.Point(180, 175);
@@ -73,17 +82,21 @@ namespace HASS.Agent.Controls.Onboarding
             // 
             // LblInfo1
             // 
-            this.LblInfo1.AutoSize = true;
+            this.LblInfo1.AccessibleDescription = "Hotkey information.";
+            this.LblInfo1.AccessibleName = "Information";
+            this.LblInfo1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo1.Location = new System.Drawing.Point(180, 20);
             this.LblInfo1.Name = "LblInfo1";
-            this.LblInfo1.Size = new System.Drawing.Size(594, 57);
+            this.LblInfo1.Size = new System.Drawing.Size(594, 128);
             this.LblInfo1.TabIndex = 11;
             this.LblInfo1.Text = Languages.OnboardingHotKey_LblInfo1;
             // 
             // BtnClear
             // 
-            this.BtnClear.AccessibleName = "Button";
+            this.BtnClear.AccessibleDescription = "Clears the hotkey, disabling the functionality.";
+            this.BtnClear.AccessibleName = "Clear hotkey";
+            this.BtnClear.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnClear.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnClear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -98,12 +111,15 @@ namespace HASS.Agent.Controls.Onboarding
             this.BtnClear.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnClear.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnClear.TabIndex = 1;
-            this.BtnClear.Text = Languages.OnboardingHotKey_BtnClear;
+            this.BtnClear.Text = global::HASS.Agent.Resources.Localization.Languages.OnboardingHotKey_BtnClear;
             this.BtnClear.UseVisualStyleBackColor = false;
             this.BtnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
             // LblLanguageWarning
             // 
+            this.LblLanguageWarning.AccessibleDescription = "Shows a warning if Window\'s UI language isn\'t supported.";
+            this.LblLanguageWarning.AccessibleName = "UI language warning label";
+            this.LblLanguageWarning.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblLanguageWarning.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblLanguageWarning.ForeColor = System.Drawing.Color.OrangeRed;
             this.LblLanguageWarning.Location = new System.Drawing.Point(180, 247);
@@ -111,8 +127,11 @@ namespace HASS.Agent.Controls.Onboarding
             this.LblLanguageWarning.Size = new System.Drawing.Size(401, 89);
             this.LblLanguageWarning.TabIndex = 13;
             // 
-            // HotKey
+            // OnboardingHotKey
             // 
+            this.AccessibleDescription = "Panel containing the onboarding hotkey configuration.";
+            this.AccessibleName = "Hotkey";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Pane;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
@@ -124,7 +143,7 @@ namespace HASS.Agent.Controls.Onboarding
             this.Controls.Add(this.PbHassAgentLogo);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "HotKey";
+            this.Name = "OnboardingHotKey";
             this.Size = new System.Drawing.Size(803, 457);
             this.Load += new System.EventHandler(this.OnboardingHotKey_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PbHassAgentLogo)).EndInit();

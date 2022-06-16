@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using HASS.Agent.API;
 using HASS.Agent.Commands;
 using HASS.Agent.Enums;
 using HASS.Agent.Forms.Commands;
@@ -6,8 +7,9 @@ using HASS.Agent.Forms.Sensors;
 using HASS.Agent.Forms.Service;
 using HASS.Agent.Functions;
 using HASS.Agent.HomeAssistant;
+using HASS.Agent.Managers;
+using HASS.Agent.Media;
 using HASS.Agent.Models.Internal;
-using HASS.Agent.Notifications;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Sensors;
 using HASS.Agent.Service;
@@ -36,6 +38,7 @@ namespace HASS.Agent.Forms
             InitializeComponent();
         }
 
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         private async void Main_Load(object sender, EventArgs e)
         {
             try
@@ -63,7 +66,7 @@ namespace HASS.Agent.Forms
                 KeyPreview = true;
                 
                 // set all statuses to loading
-                SetNotificationApiStatus(ComponentStatus.Loading);
+                SetLocalApiStatus(ComponentStatus.Loading);
                 SetHassApiStatus(ComponentStatus.Loading);
                 SetQuickActionsStatus(ComponentStatus.Loading);
                 SetServiceStatus(ComponentStatus.Loading);
@@ -73,6 +76,9 @@ namespace HASS.Agent.Forms
 
                 // create a hotkey listener
                 Variables.HotKeyListener = new HotkeyListener();
+
+                // check for dpi scaling
+                CheckDpiScalingFactor();
 
                 // load entities
                 var loaded = await SettingsManager.LoadEntitiesAsync();
@@ -95,12 +101,15 @@ namespace HASS.Agent.Forms
 
                 // if we're shutting down, no point continuing
                 if (Variables.ShuttingDown) return;
+
+                // prepare the tray icon config
+                ProcessTrayIcon();
                 
                 // initialize hotkeys
                 InitializeHotkeys();
 
                 // initialize managers
-                _ = Task.Run(NotifierManager.Initialize);
+                _ = Task.Run(ApiManager.Initialize);
                 _ = Task.Run(HassApiManager.InitializeAsync);
                 _ = Task.Run(Variables.MqttManager.Initialize);
                 _ = Task.Run(SensorsManager.Initialize);
@@ -109,6 +118,8 @@ namespace HASS.Agent.Forms
                 _ = Task.Run(UpdateManager.Initialize);
                 _ = Task.Run(SystemStateManager.Initialize);
                 _ = Task.Run(CacheManager.Initialize);
+                _ = Task.Run(NotificationManager.Initialize);
+                _ = Task.Run(MediaManager.Initialize);
             }
             catch (Exception ex)
             {
@@ -148,6 +159,43 @@ namespace HASS.Agent.Forms
             // show ourselves
             ShowInTaskbar = true;
             Opacity = 100;
+        }
+
+        /// <summary>
+        /// Checks whether the user has a non-default DPI scaling
+        /// </summary>
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
+        private void CheckDpiScalingFactor()
+        {
+            var (scalingFactor, dpiScalingFactor) = HelperFunctions.GetScalingFactors();
+            if (scalingFactor == 1 && dpiScalingFactor == 1) return;
+
+            // already shown warning?
+            if (SettingsManager.GetDpiWarningShown()) return;
+
+            // nope, flag it as shown
+            SettingsManager.SetDpiWarningShown(true);
+
+            // and show it
+            MessageBoxAdv.Show(Languages.Main_CheckDpiScalingFactor_MessageBox1,
+                Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private void ProcessTrayIcon()
+        {
+            // are we set to show the webview and keep it loaded?
+            if (!Variables.AppSettings.TrayIconShowWebView) return;
+            if (!Variables.AppSettings.TrayIconWebViewBackgroundLoading) return;
+
+            // yep, check the url
+            if (string.IsNullOrEmpty(Variables.AppSettings.TrayIconWebViewUrl))
+            {
+                Log.Warning("[MAIN] Unable to prepare tray icon webview for background loading: no URL set");
+                return;
+            }
+
+            // prepare the tray icon's webview
+            HelperFunctions.PrepareTrayIconWebView();
         }
 
         /// <summary>
@@ -379,10 +427,10 @@ namespace HASS.Agent.Forms
         }
 
         /// <summary>
-        /// Change the status of the Notification API
+        /// Change the status of the local API
         /// </summary>
         /// <param name="status"></param>
-        internal void SetNotificationApiStatus(ComponentStatus status) => SetComponentStatus(new ComponentStatusUpdate(Component.NotificationApi, status));
+        internal void SetLocalApiStatus(ComponentStatus status) => SetComponentStatus(new ComponentStatusUpdate(Component.LocalApi, status));
 
         /// <summary>
         /// Change the status of the HASS API manager
@@ -439,9 +487,9 @@ namespace HASS.Agent.Forms
 
                         switch (update.Component)
                         {
-                            case Component.NotificationApi:
-                                LblStatusNotificationApi.Text = status.GetLocalizedDescription().ToLower();
-                                LblStatusNotificationApi.ForeColor = status.GetColor();
+                            case Component.LocalApi:
+                                LblStatusLocalApi.Text = status.GetLocalizedDescription().ToLower();
+                                LblStatusLocalApi.ForeColor = status.GetColor();
                                 break;
 
                             case Component.HassApi:
@@ -565,6 +613,8 @@ namespace HASS.Agent.Forms
 
         private void TsCommands_Click(object sender, EventArgs e) => ShowCommandsManager();
 
+        private void TsSatelliteService_Click(object sender, EventArgs e) => ShowServiceManager();
+
         private void TsExit_Click(object sender, EventArgs e) => Exit();
 
         private async void TsAbout_Click(object sender, EventArgs e)
@@ -683,5 +733,31 @@ namespace HASS.Agent.Forms
         }
 
         private void TsDonate_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://www.buymeacoffee.com/lab02research");
+
+        private void NotifyIcon_MouseClick(object sender, MouseEventArgs e)
+        {
+            // we're only interested if we need to show the webview
+            if (e.Button != MouseButtons.Right || !Variables.AppSettings.TrayIconShowWebView) return;
+            
+            CmTrayIcon.Close();
+
+            // yep, check the url
+            if (string.IsNullOrEmpty(Variables.AppSettings.TrayIconWebViewUrl))
+            {
+                MessageBoxAdv.Show("No URL has been set! Please configure the webview through Configuration -> Tray Icon.", Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            // prepare the webview
+            var webView = new WebViewInfo
+            {
+                Url = Variables.AppSettings.TrayIconWebViewUrl,
+                Height = Variables.AppSettings.TrayIconWebViewHeight,
+                Width = Variables.AppSettings.TrayIconWebViewWidth,
+            };
+
+            // show it
+            HelperFunctions.LaunchTrayIconWebView(webView);
+        }
     }
 }

@@ -40,6 +40,12 @@ namespace HASS.Agent.Functions
         private static readonly Color ForeColor = Color.FromArgb(241, 241, 241);
         private static readonly Color HeaderColor = Color.FromArgb(45, 45, 48);
 
+        private static readonly List<string> IgnorableHeaders = new List<string>
+        {
+            "low integrity", "filler column", "action", "refresh", "hotkey enabled", "multivalue",
+            "agent compatible", "satellite compatible"
+        };
+
         internal static void DrawItem(object sender, DrawListViewItemEventArgs e)
         {
             // only relevant for listviews in detail mode
@@ -116,10 +122,20 @@ namespace HASS.Agent.Functions
             {
                 e.Graphics.FillRectangle(backBrush, e.Bounds);
             }
-
-            // draw the text
-            using var foreBrush = new SolidBrush(ForeColor);
-            e.Graphics.DrawString(e.Header.Text, e.Font, foreBrush, new Rectangle(e.Bounds.X + 6, e.Bounds.Y + 2, e.Bounds.Width, e.Bounds.Height));
+            
+            // draw the text in the right color
+            if (!IgnorableHeaders.Contains(e.Header.Text))
+            {
+                // regular
+                using var foreBrush = new SolidBrush(ForeColor);
+                e.Graphics.DrawString(e.Header.Text, e.Font, foreBrush, new Rectangle(e.Bounds.X + 6, e.Bounds.Y + 2, e.Bounds.Width, e.Bounds.Height));
+            }
+            else
+            {
+                // hidden (but written, for accessibility)
+                using var foreBrush = new SolidBrush(HeaderColor);
+                e.Graphics.DrawString(e.Header.Text, e.Font, foreBrush, new Rectangle(e.Bounds.X + 6, e.Bounds.Y + 2, e.Bounds.Width, e.Bounds.Height));
+            }
 
             // check if there's an image set
             if (string.IsNullOrEmpty(e.Header.ImageKey) || e.Header.ImageKey == "(none)" || e.Header.ImageList == null) return;

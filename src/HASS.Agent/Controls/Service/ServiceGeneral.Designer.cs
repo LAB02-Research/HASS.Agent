@@ -63,16 +63,21 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblInfo1
             // 
-            this.LblInfo1.AutoSize = true;
+            this.LblInfo1.AccessibleDescription = "MQTT configuration pointer.";
+            this.LblInfo1.AccessibleName = "Pointer info";
+            this.LblInfo1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo1.Location = new System.Drawing.Point(16, 94);
             this.LblInfo1.Name = "LblInfo1";
-            this.LblInfo1.Size = new System.Drawing.Size(717, 19);
+            this.LblInfo1.Size = new System.Drawing.Size(852, 44);
             this.LblInfo1.TabIndex = 57;
             this.LblInfo1.Text = Languages.ServiceGeneral_LblInfo1;
             // 
             // LblAuthId
             // 
+            this.LblAuthId.AccessibleDescription = "Auth ID textbox description.";
+            this.LblAuthId.AccessibleName = "Auth ID info";
+            this.LblAuthId.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblAuthId.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblAuthId.Location = new System.Drawing.Point(16, 219);
             this.LblAuthId.Name = "LblAuthId";
@@ -83,6 +88,10 @@ namespace HASS.Agent.Controls.Service
             // 
             // TbAuthId
             // 
+            this.TbAuthId.AccessibleDescription = "Auth ID, used to authentica with the satellite service. Mostly relevant when you " +
+    "don\'t want other users to communicate with the service.";
+            this.TbAuthId.AccessibleName = "Auth ID";
+            this.TbAuthId.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbAuthId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbAuthId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbAuthId.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -90,11 +99,15 @@ namespace HASS.Agent.Controls.Service
             this.TbAuthId.Location = new System.Drawing.Point(285, 215);
             this.TbAuthId.Name = "TbAuthId";
             this.TbAuthId.Size = new System.Drawing.Size(268, 25);
-            this.TbAuthId.TabIndex = 63;
+            this.TbAuthId.TabIndex = 0;
             this.TbAuthId.DoubleClick += new System.EventHandler(this.TbAuthId_DoubleClick);
             // 
             // TbDeviceName
             // 
+            this.TbDeviceName.AccessibleDescription = "The name with which the satellite service will show up in your Home Assistant ins" +
+    "tance.";
+            this.TbDeviceName.AccessibleName = "Device name";
+            this.TbDeviceName.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbDeviceName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbDeviceName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbDeviceName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -102,10 +115,13 @@ namespace HASS.Agent.Controls.Service
             this.TbDeviceName.Location = new System.Drawing.Point(285, 286);
             this.TbDeviceName.Name = "TbDeviceName";
             this.TbDeviceName.Size = new System.Drawing.Size(268, 25);
-            this.TbDeviceName.TabIndex = 65;
+            this.TbDeviceName.TabIndex = 2;
             // 
             // LblDeviceName
             // 
+            this.LblDeviceName.AccessibleDescription = "Device name textbox description.";
+            this.LblDeviceName.AccessibleName = "Device name info";
+            this.LblDeviceName.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblDeviceName.Cursor = System.Windows.Forms.Cursors.Help;
             this.LblDeviceName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblDeviceName.Location = new System.Drawing.Point(16, 288);
@@ -117,6 +133,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblTip1
             // 
+            this.LblTip1.AccessibleDescription = "Contains a usage tip.";
+            this.LblTip1.AccessibleName = "Custom executor binary tip";
+            this.LblTip1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblTip1.AutoSize = true;
             this.LblTip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblTip1.Location = new System.Drawing.Point(649, 485);
@@ -127,6 +146,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // TbExternalExecutorBinary
             // 
+            this.TbExternalExecutorBinary.AccessibleDescription = "The local executable to use when executing a custom executor command.";
+            this.TbExternalExecutorBinary.AccessibleName = "Custom executor binary";
+            this.TbExternalExecutorBinary.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbExternalExecutorBinary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbExternalExecutorBinary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbExternalExecutorBinary.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -134,11 +156,14 @@ namespace HASS.Agent.Controls.Service
             this.TbExternalExecutorBinary.Location = new System.Drawing.Point(285, 481);
             this.TbExternalExecutorBinary.Name = "TbExternalExecutorBinary";
             this.TbExternalExecutorBinary.Size = new System.Drawing.Size(358, 25);
-            this.TbExternalExecutorBinary.TabIndex = 73;
+            this.TbExternalExecutorBinary.TabIndex = 6;
             this.TbExternalExecutorBinary.DoubleClick += new System.EventHandler(this.TbExternalExecutorBinary_DoubleClick);
             // 
             // LblCustomExecBinary
             // 
+            this.LblCustomExecBinary.AccessibleDescription = "Custom executor binary textbox description.";
+            this.LblCustomExecBinary.AccessibleName = "Custom executor binary info";
+            this.LblCustomExecBinary.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblCustomExecBinary.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblCustomExecBinary.Location = new System.Drawing.Point(16, 481);
             this.LblCustomExecBinary.Name = "LblCustomExecBinary";
@@ -149,6 +174,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // TbExternalExecutorName
             // 
+            this.TbExternalExecutorName.AccessibleDescription = "The name of the custom executor.";
+            this.TbExternalExecutorName.AccessibleName = "Custom executor name";
+            this.TbExternalExecutorName.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbExternalExecutorName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbExternalExecutorName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbExternalExecutorName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -156,10 +184,13 @@ namespace HASS.Agent.Controls.Service
             this.TbExternalExecutorName.Location = new System.Drawing.Point(285, 524);
             this.TbExternalExecutorName.Name = "TbExternalExecutorName";
             this.TbExternalExecutorName.Size = new System.Drawing.Size(358, 25);
-            this.TbExternalExecutorName.TabIndex = 70;
+            this.TbExternalExecutorName.TabIndex = 7;
             // 
             // LblCustomExecName
             // 
+            this.LblCustomExecName.AccessibleDescription = "Custom executor textbox description.";
+            this.LblCustomExecName.AccessibleName = "Custom executor info";
+            this.LblCustomExecName.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblCustomExecName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblCustomExecName.Location = new System.Drawing.Point(16, 526);
             this.LblCustomExecName.Name = "LblCustomExecName";
@@ -170,6 +201,10 @@ namespace HASS.Agent.Controls.Service
             // 
             // NumDisconnectGrace
             // 
+            this.NumDisconnectGrace.AccessibleDescription = "The amount of seconds the service waits before logging a disconnect. Only accepts" +
+    " numeric values.";
+            this.NumDisconnectGrace.AccessibleName = "Disconnected grace period";
+            this.NumDisconnectGrace.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.NumDisconnectGrace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.NumDisconnectGrace.BeforeTouchSize = new System.Drawing.Size(92, 25);
             this.NumDisconnectGrace.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
@@ -187,7 +222,7 @@ namespace HASS.Agent.Controls.Service
             this.NumDisconnectGrace.MetroColor = System.Drawing.SystemColors.WindowFrame;
             this.NumDisconnectGrace.Name = "NumDisconnectGrace";
             this.NumDisconnectGrace.Size = new System.Drawing.Size(92, 25);
-            this.NumDisconnectGrace.TabIndex = 78;
+            this.NumDisconnectGrace.TabIndex = 4;
             this.NumDisconnectGrace.ThemeName = "Metro";
             this.NumDisconnectGrace.Value = new decimal(new int[] {
             60,
@@ -198,6 +233,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblSeconds
             // 
+            this.LblSeconds.AccessibleDescription = "Disconnected grace period time unit.";
+            this.LblSeconds.AccessibleName = "Disconnected grace period time unit";
+            this.LblSeconds.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblSeconds.AutoSize = true;
             this.LblSeconds.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblSeconds.Location = new System.Drawing.Point(383, 366);
@@ -208,6 +246,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblDisconGrace
             // 
+            this.LblDisconGrace.AccessibleDescription = "Disconnected grace period textbox description.";
+            this.LblDisconGrace.AccessibleName = "Disconnected grace period info";
+            this.LblDisconGrace.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblDisconGrace.Cursor = System.Windows.Forms.Cursors.Help;
             this.LblDisconGrace.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblDisconGrace.Location = new System.Drawing.Point(16, 366);
@@ -219,7 +260,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // BtnStoreAuthId
             // 
-            this.BtnStoreAuthId.AccessibleName = "Button";
+            this.BtnStoreAuthId.AccessibleDescription = "Applies the new auth ID.";
+            this.BtnStoreAuthId.AccessibleName = "Apply auth ID";
+            this.BtnStoreAuthId.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnStoreAuthId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStoreAuthId.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnStoreAuthId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -233,14 +276,16 @@ namespace HASS.Agent.Controls.Service
             this.BtnStoreAuthId.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStoreAuthId.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStoreAuthId.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnStoreAuthId.TabIndex = 85;
+            this.BtnStoreAuthId.TabIndex = 1;
             this.BtnStoreAuthId.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceGeneral_Apply;
             this.BtnStoreAuthId.UseVisualStyleBackColor = false;
             this.BtnStoreAuthId.Click += new System.EventHandler(this.BtnStoreAuthId_Click);
             // 
             // BtnStoreDeviceName
             // 
-            this.BtnStoreDeviceName.AccessibleName = "Button";
+            this.BtnStoreDeviceName.AccessibleDescription = "Applies the new device name.";
+            this.BtnStoreDeviceName.AccessibleName = "Apply device name";
+            this.BtnStoreDeviceName.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnStoreDeviceName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStoreDeviceName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnStoreDeviceName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -254,14 +299,16 @@ namespace HASS.Agent.Controls.Service
             this.BtnStoreDeviceName.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStoreDeviceName.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStoreDeviceName.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnStoreDeviceName.TabIndex = 86;
+            this.BtnStoreDeviceName.TabIndex = 3;
             this.BtnStoreDeviceName.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceGeneral_Apply;
             this.BtnStoreDeviceName.UseVisualStyleBackColor = false;
             this.BtnStoreDeviceName.Click += new System.EventHandler(this.BtnStoreDeviceName_Click);
             // 
             // BtnStoreDisconGrace
             // 
-            this.BtnStoreDisconGrace.AccessibleName = "Button";
+            this.BtnStoreDisconGrace.AccessibleDescription = "Applies the new disconnected grace period.";
+            this.BtnStoreDisconGrace.AccessibleName = "Apply grace period";
+            this.BtnStoreDisconGrace.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnStoreDisconGrace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStoreDisconGrace.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnStoreDisconGrace.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -275,14 +322,16 @@ namespace HASS.Agent.Controls.Service
             this.BtnStoreDisconGrace.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStoreDisconGrace.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStoreDisconGrace.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnStoreDisconGrace.TabIndex = 87;
+            this.BtnStoreDisconGrace.TabIndex = 5;
             this.BtnStoreDisconGrace.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceGeneral_Apply;
             this.BtnStoreDisconGrace.UseVisualStyleBackColor = false;
             this.BtnStoreDisconGrace.Click += new System.EventHandler(this.BtnStoreDisconGrace_Click);
             // 
             // BtnStoreCustomExecutor
             // 
-            this.BtnStoreCustomExecutor.AccessibleName = "Button";
+            this.BtnStoreCustomExecutor.AccessibleDescription = "Applies the custom executor configuration.";
+            this.BtnStoreCustomExecutor.AccessibleName = "Apply custom executor";
+            this.BtnStoreCustomExecutor.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnStoreCustomExecutor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStoreCustomExecutor.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnStoreCustomExecutor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -296,15 +345,18 @@ namespace HASS.Agent.Controls.Service
             this.BtnStoreCustomExecutor.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStoreCustomExecutor.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStoreCustomExecutor.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnStoreCustomExecutor.TabIndex = 88;
+            this.BtnStoreCustomExecutor.TabIndex = 8;
             this.BtnStoreCustomExecutor.Text = global::HASS.Agent.Resources.Localization.Languages.ServiceGeneral_Apply;
             this.BtnStoreCustomExecutor.UseVisualStyleBackColor = false;
             this.BtnStoreCustomExecutor.Click += new System.EventHandler(this.BtnStoreCustomExecutor_Click);
             // 
             // LblVersionInfo
             // 
+            this.LblVersionInfo.AccessibleDescription = "Version description.";
+            this.LblVersionInfo.AccessibleName = "Version description info";
+            this.LblVersionInfo.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblVersionInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblVersionInfo.Location = new System.Drawing.Point(16, 138);
+            this.LblVersionInfo.Location = new System.Drawing.Point(16, 149);
             this.LblVersionInfo.Name = "LblVersionInfo";
             this.LblVersionInfo.Size = new System.Drawing.Size(231, 19);
             this.LblVersionInfo.TabIndex = 94;
@@ -313,10 +365,13 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblVersion
             // 
+            this.LblVersion.AccessibleDescription = "The current version of the satellite service.";
+            this.LblVersion.AccessibleName = "Version";
+            this.LblVersion.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblVersion.AutoSize = true;
             this.LblVersion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.LblVersion.Location = new System.Drawing.Point(285, 138);
+            this.LblVersion.Location = new System.Drawing.Point(285, 149);
             this.LblVersion.Name = "LblVersion";
             this.LblVersion.Size = new System.Drawing.Size(15, 19);
             this.LblVersion.TabIndex = 95;
@@ -324,6 +379,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblTip2
             // 
+            this.LblTip2.AccessibleDescription = "Contains a usage tip.";
+            this.LblTip2.AccessibleName = "Auth ID tip";
+            this.LblTip2.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblTip2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblTip2.Location = new System.Drawing.Point(285, 243);
             this.LblTip2.Name = "LblTip2";
@@ -334,6 +392,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblAuthStored
             // 
+            this.LblAuthStored.AccessibleDescription = "Briefly shows a \'succesfully stored\' message for the auth ID.";
+            this.LblAuthStored.AccessibleName = "Auth ID stored info";
+            this.LblAuthStored.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblAuthStored.AutoSize = true;
             this.LblAuthStored.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblAuthStored.ForeColor = System.Drawing.Color.LimeGreen;
@@ -341,11 +402,14 @@ namespace HASS.Agent.Controls.Service
             this.LblAuthStored.Name = "LblAuthStored";
             this.LblAuthStored.Size = new System.Drawing.Size(52, 19);
             this.LblAuthStored.TabIndex = 97;
-            this.LblAuthStored.Text = Languages.ServiceGeneral_Stored;
+            this.LblAuthStored.Text = Languages.ServiceGeneral_LblAuthStored;
             this.LblAuthStored.Visible = false;
             // 
             // LblDeviceNameStored
             // 
+            this.LblDeviceNameStored.AccessibleDescription = "Briefly shows a \'succesfully stored\' message for the device name.";
+            this.LblDeviceNameStored.AccessibleName = "Device name stored info";
+            this.LblDeviceNameStored.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblDeviceNameStored.AutoSize = true;
             this.LblDeviceNameStored.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblDeviceNameStored.ForeColor = System.Drawing.Color.LimeGreen;
@@ -353,11 +417,14 @@ namespace HASS.Agent.Controls.Service
             this.LblDeviceNameStored.Name = "LblDeviceNameStored";
             this.LblDeviceNameStored.Size = new System.Drawing.Size(52, 19);
             this.LblDeviceNameStored.TabIndex = 98;
-            this.LblDeviceNameStored.Text = Languages.ServiceGeneral_Stored;
+            this.LblDeviceNameStored.Text = Languages.ServiceGeneral_LblAuthStored;
             this.LblDeviceNameStored.Visible = false;
             // 
             // LblDisconGraceStored
             // 
+            this.LblDisconGraceStored.AccessibleDescription = "Briefly shows a \'succesfully stored\' message for the disconnected grace period.";
+            this.LblDisconGraceStored.AccessibleName = "Grace period stored info";
+            this.LblDisconGraceStored.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblDisconGraceStored.AutoSize = true;
             this.LblDisconGraceStored.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblDisconGraceStored.ForeColor = System.Drawing.Color.LimeGreen;
@@ -365,11 +432,14 @@ namespace HASS.Agent.Controls.Service
             this.LblDisconGraceStored.Name = "LblDisconGraceStored";
             this.LblDisconGraceStored.Size = new System.Drawing.Size(52, 19);
             this.LblDisconGraceStored.TabIndex = 99;
-            this.LblDisconGraceStored.Text = Languages.ServiceGeneral_Stored;
+            this.LblDisconGraceStored.Text = Languages.ServiceGeneral_LblAuthStored;
             this.LblDisconGraceStored.Visible = false;
             // 
             // LblCustomExecutorStored
             // 
+            this.LblCustomExecutorStored.AccessibleDescription = "Briefly shows a \'succesfully stored\' message for the custom executor.";
+            this.LblCustomExecutorStored.AccessibleName = "Custom executor stored info";
+            this.LblCustomExecutorStored.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblCustomExecutorStored.AutoSize = true;
             this.LblCustomExecutorStored.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblCustomExecutorStored.ForeColor = System.Drawing.Color.LimeGreen;
@@ -377,11 +447,14 @@ namespace HASS.Agent.Controls.Service
             this.LblCustomExecutorStored.Name = "LblCustomExecutorStored";
             this.LblCustomExecutorStored.Size = new System.Drawing.Size(52, 19);
             this.LblCustomExecutorStored.TabIndex = 100;
-            this.LblCustomExecutorStored.Text = Languages.ServiceGeneral_Stored;
+            this.LblCustomExecutorStored.Text = Languages.ServiceGeneral_LblAuthStored;
             this.LblCustomExecutorStored.Visible = false;
             // 
             // LblAuthIdInfo
             // 
+            this.LblAuthIdInfo.AccessibleDescription = "Shows extra info regarding the auth ID when clicked.";
+            this.LblAuthIdInfo.AccessibleName = "Auth ID extra info";
+            this.LblAuthIdInfo.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.LblAuthIdInfo.AutoSize = true;
             this.LblAuthIdInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblAuthIdInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -394,6 +467,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblDeviceNameInfo
             // 
+            this.LblDeviceNameInfo.AccessibleDescription = "Shows extra info regarding the device name when clicked.";
+            this.LblDeviceNameInfo.AccessibleName = "Device name extra info";
+            this.LblDeviceNameInfo.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.LblDeviceNameInfo.AutoSize = true;
             this.LblDeviceNameInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblDeviceNameInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -406,6 +482,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblDisconGraceInfo
             // 
+            this.LblDisconGraceInfo.AccessibleDescription = "Shows extra info regarding the disconnected grace period when clicked.";
+            this.LblDisconGraceInfo.AccessibleName = "Grace period extra info";
+            this.LblDisconGraceInfo.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.LblDisconGraceInfo.AutoSize = true;
             this.LblDisconGraceInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblDisconGraceInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -418,15 +497,21 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblInfo2
             // 
+            this.LblInfo2.AccessibleDescription = "General satellite service information.";
+            this.LblInfo2.AccessibleName = "Information";
+            this.LblInfo2.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo2.Location = new System.Drawing.Point(16, 17);
             this.LblInfo2.Name = "LblInfo2";
-            this.LblInfo2.Size = new System.Drawing.Size(852, 58);
+            this.LblInfo2.Size = new System.Drawing.Size(852, 63);
             this.LblInfo2.TabIndex = 104;
             this.LblInfo2.Text = Languages.ServiceGeneral_LblInfo2;
             // 
             // ServiceGeneral
             // 
+            this.AccessibleDescription = "Panel showing general service configuration.";
+            this.AccessibleName = "General";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Pane;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));

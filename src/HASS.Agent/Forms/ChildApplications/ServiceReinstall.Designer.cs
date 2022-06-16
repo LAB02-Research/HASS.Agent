@@ -42,6 +42,9 @@ namespace HASS.Agent.Forms.ChildApplications
             // 
             // LblInfo1
             // 
+            this.LblInfo1.AccessibleDescription = "Information about the task that\'s being performed.";
+            this.LblInfo1.AccessibleName = "Task information";
+            this.LblInfo1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo1.Location = new System.Drawing.Point(3, 9);
             this.LblInfo1.Name = "LblInfo1";
@@ -52,6 +55,9 @@ namespace HASS.Agent.Forms.ChildApplications
             // 
             // PbStep1Remove
             // 
+            this.PbStep1Remove.AccessibleDescription = "Step one status visualisation.";
+            this.PbStep1Remove.AccessibleName = "Step one status";
+            this.PbStep1Remove.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbStep1Remove.Image = global::HASS.Agent.Properties.Resources.todo_32;
             this.PbStep1Remove.Location = new System.Drawing.Point(207, 121);
             this.PbStep1Remove.Name = "PbStep1Remove";
@@ -62,6 +68,9 @@ namespace HASS.Agent.Forms.ChildApplications
             // 
             // LblTask1
             // 
+            this.LblTask1.AccessibleDescription = "Step one description.";
+            this.LblTask1.AccessibleName = "Step one description";
+            this.LblTask1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblTask1.AutoSize = true;
             this.LblTask1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblTask1.Location = new System.Drawing.Point(257, 127);
@@ -72,6 +81,9 @@ namespace HASS.Agent.Forms.ChildApplications
             // 
             // LblTask2
             // 
+            this.LblTask2.AccessibleDescription = "Step two description.";
+            this.LblTask2.AccessibleName = "Step two description";
+            this.LblTask2.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblTask2.AutoSize = true;
             this.LblTask2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblTask2.Location = new System.Drawing.Point(257, 194);
@@ -82,6 +94,9 @@ namespace HASS.Agent.Forms.ChildApplications
             // 
             // PbStep2Install
             // 
+            this.PbStep2Install.AccessibleDescription = "Step two status visualisation.";
+            this.PbStep2Install.AccessibleName = "Step one status";
+            this.PbStep2Install.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbStep2Install.Image = global::HASS.Agent.Properties.Resources.todo_32;
             this.PbStep2Install.Location = new System.Drawing.Point(207, 187);
             this.PbStep2Install.Name = "PbStep2Install";
@@ -92,6 +107,9 @@ namespace HASS.Agent.Forms.ChildApplications
             // 
             // ServiceReinstall
             // 
+            this.AccessibleDescription = "Removes and then reinstalls the satellite service.";
+            this.AccessibleName = "Reinstall satellite service";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));

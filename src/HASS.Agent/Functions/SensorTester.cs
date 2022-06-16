@@ -5,7 +5,7 @@ using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 using HASS.Agent.Models.Internal;
-using HASS.Agent.Shared.Models.HomeAssistant.Sensors;
+using HASS.Agent.Shared.HomeAssistant.Sensors;
 using Serilog;
 
 namespace HASS.Agent.Functions

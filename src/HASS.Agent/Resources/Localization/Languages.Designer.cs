@@ -742,7 +742,7 @@ namespace HASS.Agent.Resources.Localization {
         /// <summary>
         ///   Looks up a localized string similar to browser: default
         ///
-        ///please configure a browser to enable incognito mode.
+        ///please configure a custom browser to enable incognito mode.
         /// </summary>
         internal static string CommandsMod_LblInfo_Browser {
             get {
@@ -1541,7 +1541,7 @@ namespace HASS.Agent.Resources.Localization {
         ///
         ///Please provide a long-lived access token, and the address of your Home Assistant instance.
         ///
-        ///You can get a token through your profile page.Scroll to the bottom and click &apos;CREATE TOKEN&apos;..
+        ///You can get a token through your profile page. Scroll to the bottom and click &apos;CREATE TOKEN&apos;..
         /// </summary>
         internal static string ConfigHomeAssistantApi_LblInfo1 {
             get {
@@ -1633,7 +1633,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To be able to listen to the requests, HASS.Agents needs to have its port reserved and opened in your firewall. You can use this button to have it done for you..
+        ///   Looks up a localized string similar to To be able to listen to the requests, HASS.Agent needs to have its port reserved and opened in your firewall. You can use this button to have it done for you..
         /// </summary>
         internal static string ConfigLocalApi_LblInfo2 {
             get {
@@ -1905,7 +1905,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to the local API is disabled, but the media player needs it to work .
+        ///   Looks up a localized string similar to the local API is disabled, but the media player needs it to work.
         /// </summary>
         internal static string ConfigMediaPlayer_LblLocalApiDisabled {
             get {
@@ -2169,7 +2169,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to the local API is disabled, but the media player needs it to work .
+        ///   Looks up a localized string similar to the local API is disabled, but the media player needs it to work.
         /// </summary>
         internal static string ConfigNotifications_LblLocalApiDisabled {
             get {
@@ -2689,7 +2689,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You&apos;ve changed the notification API&apos;s port. This new port needs to be reserved.
+        ///   Looks up a localized string similar to You&apos;ve changed the local API&apos;s port. This new port needs to be reserved.
         ///
         ///You&apos;ll get an UAC request to do so, please approve..
         /// </summary>
@@ -3592,7 +3592,7 @@ namespace HASS.Agent.Resources.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Something went wrong while loading your settings.
         ///
-        ///Check appsettings.json in the &apos;Config&apos; subfolder, or just delete it to start fresh..
+        ///Check appsettings.json in the &apos;config&apos; subfolder, or just delete it to start fresh..
         /// </summary>
         internal static string Main_Load_MessageBox1 {
             get {
@@ -3602,7 +3602,7 @@ namespace HASS.Agent.Resources.Localization {
         
         /// <summary>
         ///   Looks up a localized string similar to There was an error launching HASS.Agent.
-        ///Please check the logs and make a bug report on github..
+        ///Please check the logs and make a bug report on GitHub..
         /// </summary>
         internal static string Main_Load_MessageBox2 {
             get {
@@ -3853,7 +3853,7 @@ namespace HASS.Agent.Resources.Localization {
         ///Home Assistant&apos;s API.
         ///
         ///Please provide a long-lived access token, and the address of your Home Assistant instance.
-        ///You can get a token through your profile page.Scroll to the bottom and click &apos;CREATE TOKEN&apos;..
+        ///You can get a token through your profile page. Scroll to the bottom and click &apos;CREATE TOKEN&apos;..
         /// </summary>
         internal static string OnboardingApi_LblInfo1 {
             get {
@@ -3994,7 +3994,7 @@ namespace HASS.Agent.Resources.Localization {
         ///   Looks up a localized string similar to To use notifications, you need to install and configure the HASS.Agent-notifier integration in
         ///Home Assistant.
         ///
-        ///This is very easy using HACS, but you can also install manually.Visit the link below for more
+        ///This is very easy using HACS, but you can also install manually. Visit the link below for more
         ///information..
         /// </summary>
         internal static string OnboardingIntegrations_LblInfo1 {
@@ -4006,7 +4006,7 @@ namespace HASS.Agent.Resources.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Make sure you follow these steps:
         ///
-        ///- Install the HASS.Agent - Notifier and / or HASS.Agent - MediaPlayer integration
+        ///- Install the HASS.Agent-Notifier and / or HASS.Agent-MediaPlayer integration
         ///- Restart Home Assistant
         ///-Configure a notifier and / or media_player entity
         ///-Restart Home Assistant.
@@ -4418,9 +4418,9 @@ namespace HASS.Agent.Resources.Localization {
         /// <summary>
         ///   Looks up a localized string similar to If you want, HASS.Agent can check for updates in the background.
         ///
-        ///You&apos;ll get a notification (once per update) , letting you know a new version is ready to be installed.
+        ///You&apos;ll get a notification (once per update), letting you know a new version is ready to be installed.
         ///
-        ///Do you want to enable this functionality ? .
+        ///Do you want to enable this functionality?.
         /// </summary>
         internal static string OnboardingUpdates_LblInfo1 {
             get {
@@ -4430,7 +4430,7 @@ namespace HASS.Agent.Resources.Localization {
         
         /// <summary>
         ///   Looks up a localized string similar to When there&apos;s an update, HASS.Agent will offer the option to open the release page. But if you
-        ///want, HASS.Agent can also download and launch the installer for you - even less to do !
+        ///want, HASS.Agent can also download and launch the installer for you - even less to do!
         ///
         ///The certificate of the downloaded file will get checked. And you&apos;ll still see a page with the release notes, ánd you still need to manually approve - nothing is done without your consent..
         /// </summary>
@@ -5052,7 +5052,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provides a sensor with the current charging status, estimated amount of minutes on a full charge, remaining charge in percentage, remaining charge in minutes and the powerline status..
+        ///   Looks up a localized string similar to Provides a sensor with the current charging status, estimated amount of minutes on a full charge, remaining charge as a percentage, remaining charge in minutes and the powerline status..
         /// </summary>
         internal static string SensorsManager_BatterySensorsDescription {
             get {
@@ -5148,7 +5148,7 @@ namespace HASS.Agent.Resources.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Provides the last system state change:
         ///
-        ///HassAgentStarted, Logoff, SystemShutdown, Resume, Suspend, ConsoleConnect, ConsoleDisconnect, RemoteConnect, RemoteDisconnect, SessionLock, SessionLogoff, SessionLogon, SessionRemoteControl and SessionUnlock..
+        ///ApplicationStarted, Logoff, SystemShutdown, Resume, Suspend, ConsoleConnect, ConsoleDisconnect, RemoteConnect, RemoteDisconnect, SessionLock, SessionLogoff, SessionLogon, SessionRemoteControl and SessionUnlock..
         /// </summary>
         internal static string SensorsManager_LastSystemStateChangeSensorDescription {
             get {
@@ -6412,7 +6412,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to auth id.
+        ///   Looks up a localized string similar to auth &amp;id.
         /// </summary>
         internal static string ServiceGeneral_LblAuthId {
             get {
@@ -6571,7 +6571,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Storing an empty auth ID will allow all HASS.Agents to access the server.
+        ///   Looks up a localized string similar to Storing an empty auth ID will allow all HASS.Agent to access the service.
         ///
         ///Are you sure you want this?.
         /// </summary>

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -8,15 +9,18 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using HASS.Agent.API;
 using HASS.Agent.Commands;
 using HASS.Agent.Enums;
+using HASS.Agent.Forms;
 using HASS.Agent.Models.Internal;
-using HASS.Agent.Notifications;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Sensors;
 using HASS.Agent.Shared.Functions;
 using Serilog;
 using Syncfusion.Windows.Forms;
 using Task = System.Threading.Tasks.Task;
+using MediaManager = HASS.Agent.Media.MediaManager;
 
 namespace HASS.Agent.Functions
 {
@@ -46,6 +50,18 @@ namespace HASS.Agent.Functions
         [DllImport("USER32.DLL")]
         private static extern IntPtr GetShellWindow();
 
+        [DllImport("gdi32.dll")]
+        private static extern int GetDeviceCaps(IntPtr hdc, int nIndex);
+        [SuppressMessage("ReSharper", "InconsistentNaming")]
+        private enum DeviceCap
+        {
+            VERTRES = 10,
+            DESKTOPVERTRES = 117,
+            LOGPIXELSY = 90
+
+            // http://pinvoke.net/default.aspx/gdi32/GetDeviceCaps.html
+        }
+
         private static bool _shutdownCalled = false;
 
         /// <summary>
@@ -73,7 +89,43 @@ namespace HASS.Agent.Functions
             MessageBoxAdv.DetailsFont = font;
             MessageBoxAdv.MessageFont = font;
         }
-        
+
+        /// <summary>
+        /// Returns the scaling and dpi scaling factors
+        /// Based on https://stackoverflow.com/a/33791877
+        /// </summary>
+        /// <returns></returns>
+        internal static (float scalingFactor, float dpiScalingFactor) GetScalingFactors()
+        {
+            try
+            {
+                using var g = Graphics.FromHwnd(IntPtr.Zero);
+
+                // get desktop handle
+                var desktop = g.GetHdc();
+
+                // get size variables
+                var logicalScreenHeight = GetDeviceCaps(desktop, (int)DeviceCap.VERTRES);
+                var physicalScreenHeight = GetDeviceCaps(desktop, (int)DeviceCap.DESKTOPVERTRES);
+                var logpixelsy = GetDeviceCaps(desktop, (int)DeviceCap.LOGPIXELSY);
+
+                // determine the scaling factors
+                var screenScalingFactor = (float)physicalScreenHeight / (float)logicalScreenHeight;
+                var dpiScalingFactor = (float)logpixelsy / (float)96;
+
+                // release the handle
+                g.ReleaseHdc(desktop);
+
+                // done
+                return (screenScalingFactor, dpiScalingFactor);
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[SYSTEM] Unable to determine scaling factors: {err}", ex.Message);
+                return (1, 1);
+            }
+        }
+
         /// <summary>
         /// Restarts HASS.Agent through a temporary bat file
         /// </summary>
@@ -156,10 +208,13 @@ namespace HASS.Agent.Functions
                     }));
 
                     // stop notifier api
-                    NotifierManager.Stop();
+                    ApiManager.Stop();
 
                     // process disposables
                     Variables.HttpClient?.Dispose();
+
+                    // stop media manager
+                    MediaManager.Stop();
 
                     // stop entity managers
                     CommandsManager.Stop();
@@ -205,16 +260,21 @@ namespace HASS.Agent.Functions
                 // any value?
                 if (string.IsNullOrWhiteSpace(keyString))
                 {
-                    errorMsg = "no keys found";
+                    errorMsg = Languages.HelperFunctions_ParseMultipleKeys_ErrorMsg1;
                     return false;
                 }
 
                 // any brackets?
                 if (!keyString.Contains('[') || !keyString.Contains(']'))
                 {
-                    errorMsg = "brackets missing, start and close all keys with [ ]";
+                    errorMsg = Languages.HelperFunctions_ParseMultipleKeys_ErrorMsg2;
                     return false;
                 }
+
+                // replace all escaped brackets
+                // todo: ugly, let regex do that
+                keyString = keyString.Replace(@"\[", "left_bracket");
+                keyString = keyString.Replace(@"\]", "right_bracket");
 
                 // lets see if the brackets corresponds
                 var leftBrackets = keyString.Count(x => x == '[');
@@ -222,7 +282,7 @@ namespace HASS.Agent.Functions
 
                 if (leftBrackets != rightBrackets)
                 {
-                    errorMsg = $"the number of '[' brackets don't correspond to the ']' ones ({leftBrackets} to {rightBrackets})";
+                    errorMsg = string.Format(Languages.HelperFunctions_ParseMultipleKeys_ErrorMsg4, leftBrackets, rightBrackets);
                     return false;
                 }
 
@@ -231,12 +291,19 @@ namespace HASS.Agent.Functions
                 var matches = Regex.Matches(keyString, pattern);
                 keys.AddRange(from Match m in matches select m.Groups[1].ToString());
 
+                // restore escaped brackets
+                for (var i = 0; i < keys.Count; i++)
+                {
+                    if (keys[i] == "left_bracket") keys[i] = "[";
+                    if (keys[i] == "right_bracket") keys[i] = "]";
+                }
+
                 // done
                 return true;
             }
             catch (Exception ex)
             {
-                errorMsg = "error while parsing keys, check the log for more info";
+                errorMsg = Languages.HelperFunctions_ParseMultipleKeys_ErrorMsg3;
                 Log.Error("[PARSER] Error parsing multiple keys: {msg}", ex.Message);
                 return false;
             }
@@ -292,7 +359,7 @@ namespace HASS.Agent.Functions
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "Unable to determine a proper row/column count for the quickactions: {err}", ex.Message);
+                Log.Fatal(ex, "[HF] Unable to determine a proper row/column count for the quickactions: {err}", ex.Message);
                 return (0, 0);
             }
         }
@@ -356,6 +423,101 @@ namespace HASS.Agent.Functions
             userBrowser.Start();
         }
 
+        /// <summary>
+        /// Shows a new webview form with the provided config
+        /// </summary>
+        /// <param name="webViewInfo"></param>
+        /// <param name="url"></param>
+        internal static void LaunchWebView(WebViewInfo webViewInfo, string url = "")
+        {
+            // optionally set an alternative url
+            if (!string.IsNullOrEmpty(url)) webViewInfo.Url = url;
+
+            // show it from within the UI thread
+            Variables.MainForm.Invoke(new MethodInvoker(delegate
+            {
+                var webView = new WebView(webViewInfo);
+                webView.Opacity = 0;
+                webView.Show();
+            }));
+        }
+
+        /// <summary>
+        /// Prepares and loadsthe tray icon's webview
+        /// </summary>
+        internal static void PrepareTrayIconWebView()
+        {
+            // prepare the webview info
+            var webViewInfo = new WebViewInfo
+            {
+                Url = Variables.AppSettings.TrayIconWebViewUrl,
+                Height = Variables.AppSettings.TrayIconWebViewHeight,
+                Width = Variables.AppSettings.TrayIconWebViewWidth,
+            };
+
+            var x = Screen.PrimaryScreen.WorkingArea.Width - webViewInfo.Width;
+            var y = Screen.PrimaryScreen.WorkingArea.Height - webViewInfo.Height;
+
+            webViewInfo.X = x;
+            webViewInfo.Y = y;
+
+            webViewInfo.TopMost = true;
+            webViewInfo.ShowTitleBar = false;
+            webViewInfo.CenterScreen = false;
+            webViewInfo.IsTrayIconWebView = true;
+
+            // prepare the webview
+            Variables.MainForm.Invoke(new MethodInvoker(delegate
+            {
+                Variables.TrayIconWebView = new WebView(webViewInfo);
+                Variables.TrayIconWebView.Opacity = 0;
+                Variables.TrayIconWebView.Show();
+            }));
+        }
+
+        /// <summary>
+        /// Shows a new webview form near the tray icon
+        /// </summary>
+        /// <param name="webViewInfo"></param>
+        internal static void LaunchTrayIconWebView(WebViewInfo webViewInfo)
+        {
+            // is background loading enabled?
+            if (Variables.AppSettings.TrayIconWebViewBackgroundLoading)
+            {
+                // yep
+                Variables.MainForm.Invoke(new MethodInvoker(delegate
+                {
+                    // make sure it's ready
+                    if (Variables.TrayIconWebView == null) PrepareTrayIconWebView();
+
+                    // show it
+                    Variables.TrayIconWebView?.MakeVisible();
+                }));
+
+                // done
+                return;
+            }
+
+            // show a new webview from within the UI thread
+            Variables.MainForm.Invoke(new MethodInvoker(delegate
+            {
+                var x = Screen.PrimaryScreen.WorkingArea.Width - webViewInfo.Width;
+                var y = Screen.PrimaryScreen.WorkingArea.Height - webViewInfo.Height;
+
+                webViewInfo.X = x;
+                webViewInfo.Y = y;
+
+                webViewInfo.TopMost = true;
+                webViewInfo.ShowTitleBar = false;
+                webViewInfo.CenterScreen = false;
+                webViewInfo.IsTrayIconWebView = true;
+
+                var webView = new WebView(webViewInfo);
+                webView.Opacity = 0;
+                webView.Show();
+            }));
+        }
+
         private static readonly Dictionary<IntPtr, string> KnownOkInputLanguage = new()
         {
             { new IntPtr(-268367863), "United States-International" },
@@ -389,14 +551,14 @@ namespace HASS.Agent.Functions
                 // get human-readable name
                 var langName = KnownNotOkInputLanguage[inputLanguage];
 
-                message = $"Your input language '{langName}' is known to collide with the default CTRL-ALT-Q hotkey. Please set your own.";
+                message = string.Format(Languages.HelperFunctions_InputLanguageCheckDiffers_ErrorMsg1, langName);
                 return true;
             }
 
             // unknown
             knownToCollide = false;
             var layoutName = $"{InputLanguage.CurrentInputLanguage.Culture.DisplayName} - {InputLanguage.CurrentInputLanguage.LayoutName}";
-            message = $"Your input language '{layoutName}' is unknown, and might collide with the default CTRL-ALT-Q hotkey. Please check to be sure. If it does, consider opening a ticket on GitHub so it can be added to the list.";
+            message = string.Format(Languages.HelperFunctions_InputLanguageCheckDiffers_ErrorMsg2, layoutName);
             return true;
         }
 
@@ -479,56 +641,15 @@ namespace HASS.Agent.Functions
                 return false;
             }
         }
-
-        /// <summary>
-        /// Returns a safe version of this machine's name
-        /// </summary>
-        /// <returns></returns>
-        internal static string GetSafeDeviceName() => Regex.Replace(Environment.MachineName.ToLower(), "[^a-zA-Z0-9_-]", "_");
-
+        
         /// <summary>
         /// Returns the configured device name, or a safe version of the machinename if nothing's stored
         /// </summary>
         /// <returns></returns>
         internal static string GetConfiguredDeviceName() =>
             string.IsNullOrEmpty(Variables.AppSettings?.DeviceName) 
-                ? GetSafeDeviceName() 
-                : Variables.AppSettings.DeviceName;
-
-        /// <summary>
-        /// Converts an entity name like 'SessionStateSensor' to 'Sensor State'
-        /// </summary>
-        /// <param name="entityName"></param>
-        /// <returns></returns>
-        internal static string ConvertCapitalizedEntityNameToReadable(string entityName)
-        {
-            if (entityName.EndsWith("Sensor")) entityName = entityName.Replace("Sensor", "");
-            else if (entityName.EndsWith("Sensors")) entityName = entityName.Replace("Sensors", "");
-            else if (entityName.EndsWith("Command")) entityName = entityName.Replace("Command", "");
-            else if (entityName.EndsWith("Commands")) entityName = entityName.Replace("Commands", "");
-
-            var regex = new Regex(@"
-                (?<=[A-Z])(?=[A-Z][a-z]) |
-                 (?<=[^A-Z])(?=[A-Z]) |
-                 (?<=[A-Za-z])(?=[^A-Za-z])", RegexOptions.IgnorePatternWhitespace);
-
-            return regex.Replace(entityName, " ");
-        }
-
-        /// <summary>
-        /// Returns the safe variant of the configured device name, or a safe version of the machinename if nothing's stored
-        /// </summary>
-        /// <returns></returns>
-        internal static string GetSafeConfiguredDeviceName() =>
-            string.IsNullOrEmpty(Variables.AppSettings?.DeviceName)
-                ? GetSafeDeviceName()
-                : Regex.Replace(Variables.AppSettings.DeviceName.ToLower(), "[^a-zA-Z0-9_-]", "_");
-
-        /// <summary>
-        /// Returns a safe (lowercase) version of the provided value
-        /// </summary>
-        /// <returns></returns>
-        internal static string GetSafeValue(string value) => Regex.Replace(value.ToLower(), "[^a-zA-Z0-9_-]", "_");
+                ? SharedHelperFunctions.GetSafeDeviceName() 
+                : SharedHelperFunctions.GetSafeValue(Variables.AppSettings.DeviceName);
         
         /// <summary>
         /// Checks whether the process is currently running under the current user, by default ignoring the current process

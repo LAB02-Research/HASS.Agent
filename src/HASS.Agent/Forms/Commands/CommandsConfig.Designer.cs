@@ -55,8 +55,10 @@ namespace HASS.Agent.Forms.Commands
             // 
             // BtnRemove
             // 
-            this.BtnRemove.AccessibleName = "Button";
-            this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnRemove.AccessibleDescription = "Removes the selected command from the list.";
+            this.BtnRemove.AccessibleName = "Remove";
+            this.BtnRemove.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnRemove.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnRemove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -70,14 +72,16 @@ namespace HASS.Agent.Forms.Commands
             this.BtnRemove.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnRemove.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnRemove.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnRemove.TabIndex = 10;
-            this.BtnRemove.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsConfig_BtnRemove;
+            this.BtnRemove.TabIndex = 2;
+            this.BtnRemove.Text = Languages.CommandsConfig_BtnRemove;
             this.BtnRemove.UseVisualStyleBackColor = false;
             this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
             // BtnModify
             // 
-            this.BtnModify.AccessibleName = "Button";
+            this.BtnModify.AccessibleDescription = "Modifies the currently selected command.";
+            this.BtnModify.AccessibleName = "Modify";
+            this.BtnModify.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnModify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnModify.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -92,14 +96,16 @@ namespace HASS.Agent.Forms.Commands
             this.BtnModify.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnModify.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnModify.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnModify.TabIndex = 9;
-            this.BtnModify.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsConfig_BtnModify;
+            this.BtnModify.TabIndex = 1;
+            this.BtnModify.Text = Languages.CommandsConfig_BtnModify;
             this.BtnModify.UseVisualStyleBackColor = false;
             this.BtnModify.Click += new System.EventHandler(this.BtnModify_Click);
             // 
             // BtnAdd
             // 
-            this.BtnAdd.AccessibleName = "Button";
+            this.BtnAdd.AccessibleDescription = "Opens the \'add new command\' window.";
+            this.BtnAdd.AccessibleName = "Add new";
+            this.BtnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnAdd.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -114,14 +120,16 @@ namespace HASS.Agent.Forms.Commands
             this.BtnAdd.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnAdd.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnAdd.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnAdd.TabIndex = 8;
-            this.BtnAdd.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsConfig_BtnAdd;
+            this.BtnAdd.TabIndex = 0;
+            this.BtnAdd.Text = Languages.CommandsConfig_BtnAdd;
             this.BtnAdd.UseVisualStyleBackColor = false;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // BtnStore
             // 
-            this.BtnStore.AccessibleName = "Button";
+            this.BtnStore.AccessibleDescription = "Stores the current list of commands, and sends them to Home Assistant.";
+            this.BtnStore.AccessibleName = "Store";
+            this.BtnStore.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnStore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BtnStore.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -137,13 +145,16 @@ namespace HASS.Agent.Forms.Commands
             this.BtnStore.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnStore.TabIndex = 6;
-            this.BtnStore.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsConfig_BtnStore;
+            this.BtnStore.TabIndex = 3;
+            this.BtnStore.Text = Languages.CommandsConfig_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
             // LvCommands
             // 
+            this.LvCommands.AccessibleDescription = "Contains the currently configured commands.";
+            this.LvCommands.AccessibleName = "Stored commands";
+            this.LvCommands.AccessibleRole = System.Windows.Forms.AccessibleRole.Table;
             this.LvCommands.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -188,15 +199,15 @@ namespace HASS.Agent.Forms.Commands
             // 
             // ClmLowIntegrity
             // 
-            this.ClmLowIntegrity.Text = "";
+            this.ClmLowIntegrity.Text = Languages.CommandsConfig_LblLowIntegrity;
             // 
             // ClmAction
             // 
-            this.ClmAction.Text = "";
+            this.ClmAction.Text = Languages.CommandsConfig_LblActionInfo;
             // 
             // ClmEmpty
             // 
-            this.ClmEmpty.Text = "";
+            this.ClmEmpty.Text = "filler column";
             this.ClmEmpty.Width = 10000;
             // 
             // ImgLv
@@ -209,18 +220,24 @@ namespace HASS.Agent.Forms.Commands
             // 
             // LblLowIntegrity
             // 
-            this.LblLowIntegrity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblLowIntegrity.AccessibleDescription = "Low integrity column description.";
+            this.LblLowIntegrity.AccessibleName = "Low integrity info";
+            this.LblLowIntegrity.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
+            this.LblLowIntegrity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LblLowIntegrity.AutoSize = true;
             this.LblLowIntegrity.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblLowIntegrity.Location = new System.Drawing.Point(99, 527);
             this.LblLowIntegrity.Name = "LblLowIntegrity";
             this.LblLowIntegrity.Size = new System.Drawing.Size(73, 15);
             this.LblLowIntegrity.TabIndex = 39;
-            this.LblLowIntegrity.Text = "low integrity";
+            this.LblLowIntegrity.Text = Languages.CommandsConfig_LblLowIntegrity;
             // 
             // PbLowIntegrity
             // 
-            this.PbLowIntegrity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PbLowIntegrity.AccessibleDescription = "Low integrity icon image, as shown in the header of the \'low integrity\' column.";
+            this.PbLowIntegrity.AccessibleName = "Low integrity icon";
+            this.PbLowIntegrity.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
+            this.PbLowIntegrity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.PbLowIntegrity.Image = global::HASS.Agent.Properties.Resources.shield_16;
             this.PbLowIntegrity.Location = new System.Drawing.Point(77, 526);
             this.PbLowIntegrity.Name = "PbLowIntegrity";
@@ -231,6 +248,10 @@ namespace HASS.Agent.Forms.Commands
             // 
             // LblActionInfo
             // 
+            this.LblActionInfo.AccessibleDescription = "Action column description. Click to open the examples webpage.";
+            this.LblActionInfo.AccessibleName = "Action info";
+            this.LblActionInfo.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
+            this.LblActionInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LblActionInfo.AutoSize = true;
             this.LblActionInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblActionInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -238,11 +259,15 @@ namespace HASS.Agent.Forms.Commands
             this.LblActionInfo.Name = "LblActionInfo";
             this.LblActionInfo.Size = new System.Drawing.Size(40, 15);
             this.LblActionInfo.TabIndex = 45;
-            this.LblActionInfo.Text = "action";
+            this.LblActionInfo.Text = Languages.CommandsConfig_LblActionInfo;
             this.LblActionInfo.Click += new System.EventHandler(this.LblActionInfo_Click);
             // 
             // PbActionInfo
             // 
+            this.PbActionInfo.AccessibleDescription = "Action icon image, as shown in the header of the \'action\' column.";
+            this.PbActionInfo.AccessibleName = "Action icon";
+            this.PbActionInfo.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
+            this.PbActionInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.PbActionInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbActionInfo.Image = global::HASS.Agent.Properties.Resources.action_16;
             this.PbActionInfo.Location = new System.Drawing.Point(1, 526);
@@ -255,6 +280,9 @@ namespace HASS.Agent.Forms.Commands
             // 
             // CommandsConfig
             // 
+            this.AccessibleDescription = "Contains all currently stored commands, and the ability the configure them.";
+            this.AccessibleName = "Commands config";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
@@ -281,7 +309,7 @@ namespace HASS.Agent.Forms.Commands
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Commands Config";
+            this.Text = Languages.CommandsConfig_Title;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CommandsConfig_FormClosing);
             this.Load += new System.EventHandler(this.CommandsConfig_Load);
             this.ResizeBegin += new System.EventHandler(this.CommandsConfig_ResizeBegin);

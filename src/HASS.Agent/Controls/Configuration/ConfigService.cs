@@ -1,6 +1,7 @@
 ﻿using System.ServiceProcess;
 using HASS.Agent.Enums;
 using HASS.Agent.Functions;
+using HASS.Agent.Managers;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Service;
 using HASS.Agent.Shared.Enums;

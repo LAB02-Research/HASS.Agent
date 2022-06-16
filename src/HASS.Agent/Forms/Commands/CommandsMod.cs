@@ -1,6 +1,7 @@
 ﻿using Syncfusion.Windows.Forms;
 using System.Text;
 using HASS.Agent.Commands;
+using HASS.Agent.Forms.Commands.CommandConfig;
 using HASS.Agent.Functions;
 using HASS.Agent.Models.Internal;
 using HASS.Agent.Resources.Localization;
@@ -177,6 +178,14 @@ namespace HASS.Agent.Forms.Commands
                 case CommandType.CustomExecutorCommand:
                     TbSetting.Text = Command.Command;
                     break;
+
+                case CommandType.SendWindowToFrontCommand:
+                    TbSetting.Text = Command.Command;
+                    break;
+
+                case CommandType.WebViewCommand:
+                    TbSetting.Text = Command.Command;
+                    break;
             }
 
             CbRunAsLowIntegrity.CheckState = Command.RunAsLowIntegrity ? CheckState.Checked : CheckState.Unchecked;
@@ -326,6 +335,36 @@ namespace HASS.Agent.Forms.Commands
                     }
                     Command.Command = executorCommand;
                     break;
+
+                case CommandType.SendWindowToFrontCommand:
+                    var procName = TbSetting.Text.Trim();
+                    if (string.IsNullOrEmpty(procName))
+                    {
+                        var q = MessageBoxAdv.Show(Languages.CommandsMod_MessageBox_Action, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (q != DialogResult.Yes)
+                        {
+                            ActiveControl = TbSetting;
+                            return;
+                        }
+                    }
+                    Command.Command = procName;
+                    break;
+
+                case CommandType.WebViewCommand:
+                    var webview = TbSetting.Text.Trim();
+                    if (string.IsNullOrEmpty(webview))
+                    {
+                        var q = MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox8, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (q != DialogResult.Yes)
+                        {
+                            ActiveControl = BtnConfigureCommand;
+                            return;
+                        }
+
+                        Command.Command = string.Empty;
+                    }
+                    else Command.Command = webview;
+                    break;
             }
 
             Command.RunAsLowIntegrity = CbRunAsLowIntegrity.CheckState == CheckState.Checked;
@@ -427,6 +466,14 @@ namespace HASS.Agent.Forms.Commands
                     SetCustomExecutorUi();
                     break;
 
+                case CommandType.SendWindowToFrontCommand:
+                    SetSendWindowToFrontUi();
+                    break;
+
+                case CommandType.WebViewCommand:
+                    SetWebViewUi();
+                    break;
+
                 default:
                     SetEmptyGui();
                     break;
@@ -442,6 +489,8 @@ namespace HASS.Agent.Forms.Commands
         {
             Invoke(new MethodInvoker(delegate
             {
+                SetEmptyGui();
+
                 LblSetting.Text = Languages.CommandsMod_LblSetting_Command;
                 LblSetting.Visible = true;
 
@@ -450,12 +499,6 @@ namespace HASS.Agent.Forms.Commands
 
                 CbRunAsLowIntegrity.Visible = true;
                 LblIntegrityInfo.Visible = true;
-
-                CbCommandSpecific.CheckState = CheckState.Unchecked;
-                CbCommandSpecific.Visible = false;
-
-                LblInfo.Text = string.Empty;
-                LblInfo.Visible = false;
             }));
         }
 
@@ -466,21 +509,13 @@ namespace HASS.Agent.Forms.Commands
         {
             Invoke(new MethodInvoker(delegate
             {
+                SetEmptyGui();
+
                 LblSetting.Text = Languages.CommandsMod_LblSetting_CommandScript;
                 LblSetting.Visible = true;
 
                 TbSetting.Text = string.Empty;
                 TbSetting.Visible = true;
-
-                CbRunAsLowIntegrity.CheckState = CheckState.Unchecked;
-                CbRunAsLowIntegrity.Visible = false;
-                LblIntegrityInfo.Visible = false;
-
-                CbCommandSpecific.CheckState = CheckState.Unchecked;
-                CbCommandSpecific.Visible = false;
-
-                LblInfo.Text = string.Empty;
-                LblInfo.Visible = false;
             }));
         }
 
@@ -491,21 +526,13 @@ namespace HASS.Agent.Forms.Commands
         {
             Invoke(new MethodInvoker(delegate
             {
+                SetEmptyGui();
+
                 LblSetting.Text = Languages.CommandsMod_LblSetting_KeyCode;
                 LblSetting.Visible = true;
 
                 TbSetting.Text = string.Empty;
                 TbSetting.Visible = true;
-
-                CbRunAsLowIntegrity.CheckState = CheckState.Unchecked;
-                CbRunAsLowIntegrity.Visible = false;
-                LblIntegrityInfo.Visible = false;
-
-                CbCommandSpecific.CheckState = CheckState.Unchecked;
-                CbCommandSpecific.Visible = false;
-
-                LblInfo.Text = string.Empty;
-                LblInfo.Visible = false;
             }));
         }
 
@@ -516,21 +543,13 @@ namespace HASS.Agent.Forms.Commands
         {
             Invoke(new MethodInvoker(delegate
             {
+                SetEmptyGui();
+
                 LblSetting.Text = Languages.CommandsMod_LblSetting_KeyCodes;
                 LblSetting.Visible = true;
 
                 TbSetting.Text = string.Empty;
                 TbSetting.Visible = true;
-
-                CbRunAsLowIntegrity.CheckState = CheckState.Unchecked;
-                CbRunAsLowIntegrity.Visible = false;
-                LblIntegrityInfo.Visible = false;
-
-                CbCommandSpecific.CheckState = CheckState.Unchecked;
-                CbCommandSpecific.Visible = false;
-
-                LblInfo.Text = string.Empty;
-                LblInfo.Visible = false;
             }));
         }
 
@@ -541,15 +560,13 @@ namespace HASS.Agent.Forms.Commands
         {
             Invoke(new MethodInvoker(delegate
             {
+                SetEmptyGui();
+
                 LblSetting.Text = Languages.CommandsMod_LblSetting_Url;
                 LblSetting.Visible = true;
 
                 TbSetting.Text = string.Empty;
                 TbSetting.Visible = true;
-
-                CbRunAsLowIntegrity.CheckState = CheckState.Unchecked;
-                CbRunAsLowIntegrity.Visible = false;
-                LblIntegrityInfo.Visible = false;
                 
                 CbCommandSpecific.CheckState = CheckState.Unchecked;
                 CbCommandSpecific.Text = Languages.CommandsMod_CbCommandSpecific_Incognito;
@@ -583,18 +600,13 @@ namespace HASS.Agent.Forms.Commands
         {
             Invoke(new MethodInvoker(delegate
             {
+                SetEmptyGui();
+
                 LblSetting.Text = Languages.CommandsMod_LblSetting_CommandScript;
                 LblSetting.Visible = true;
 
                 TbSetting.Text = string.Empty;
                 TbSetting.Visible = true;
-
-                CbRunAsLowIntegrity.CheckState = CheckState.Unchecked;
-                CbRunAsLowIntegrity.Visible = false;
-                LblIntegrityInfo.Visible = false;
-
-                CbCommandSpecific.CheckState = CheckState.Unchecked;
-                CbCommandSpecific.Visible = false;
 
                 if (string.IsNullOrEmpty(Variables.AppSettings.CustomExecutorBinary)) LblInfo.Text = Languages.CommandsMod_LblInfo_Executor;
                 else
@@ -607,6 +619,36 @@ namespace HASS.Agent.Forms.Commands
                 }
 
                 LblInfo.Visible = true;
+            }));
+        }
+
+        /// <summary>
+        /// Change the UI to a 'sendwindowtofront' type
+        /// </summary>
+        private void SetSendWindowToFrontUi()
+        {
+            Invoke(new MethodInvoker(delegate
+            {
+                SetEmptyGui();
+
+                LblSetting.Text = "process";
+                LblSetting.Visible = true;
+
+                TbSetting.Text = string.Empty;
+                TbSetting.Visible = true;
+            }));
+        }
+
+        /// <summary>
+        /// Change the UI to a 'webview' type
+        /// </summary>
+        private void SetWebViewUi()
+        {
+            Invoke(new MethodInvoker(delegate
+            {
+                SetEmptyGui();
+
+                BtnConfigureCommand.Visible = true;
             }));
         }
 
@@ -631,6 +673,8 @@ namespace HASS.Agent.Forms.Commands
 
                 LblInfo.Text = string.Empty;
                 LblInfo.Visible = false;
+
+                BtnConfigureCommand.Visible = false;
             }));
         }
 
@@ -775,8 +819,31 @@ namespace HASS.Agent.Forms.Commands
             form.Show(this);
         }
 
-        private void LblActionInfo_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent/wiki/Command-Actions-Usage-&-Examples");
+        private void LblActionInfo_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://hassagent.readthedocs.io/en/latest/commands/actions-usage-and-examples/");
 
-        private void PbActionInfo_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent/wiki/Command-Actions-Usage-&-Examples");
+        private void PbActionInfo_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://hassagent.readthedocs.io/en/latest/commands/actions-usage-and-examples/");
+
+        private void BtnConfigureCommand_Click(object sender, EventArgs e)
+        {
+            // find the command card
+            var commandId = int.Parse(LvCommands.SelectedItems[0].Text);
+            var commandCard = CommandsManager.CommandInfoCards.Where(card => card.Value.Key == commandId).Select(card => card.Value).FirstOrDefault();
+            if (commandCard == null) return;
+
+            switch (commandCard.CommandType)
+            {
+                case CommandType.WebViewCommand:
+                    using (var webviewConfig = new WebViewCommandConfig(TbSetting.Text))
+                    {
+                        webviewConfig.Opacity = 0;
+
+                        var ret = webviewConfig.ShowDialog();
+                        if (ret != DialogResult.OK) return;
+
+                        TbSetting.Text = JsonConvert.SerializeObject(webviewConfig.WebViewInfo);
+                    }
+                    break;
+            }
+        }
     }
 }

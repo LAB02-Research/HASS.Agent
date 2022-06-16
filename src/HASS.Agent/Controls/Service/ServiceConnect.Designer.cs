@@ -48,7 +48,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // BtnRetryAuthId
             // 
-            this.BtnRetryAuthId.AccessibleName = "Button";
+            this.BtnRetryAuthId.AccessibleDescription = "Applies the new auth ID, and tries to reconnect.";
+            this.BtnRetryAuthId.AccessibleName = "Apply auth ID";
+            this.BtnRetryAuthId.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnRetryAuthId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnRetryAuthId.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnRetryAuthId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -62,7 +64,7 @@ namespace HASS.Agent.Controls.Service
             this.BtnRetryAuthId.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnRetryAuthId.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnRetryAuthId.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnRetryAuthId.TabIndex = 98;
+            this.BtnRetryAuthId.TabIndex = 1;
             this.BtnRetryAuthId.Text = Languages.ServiceConnect_BtnRetryAuthId;
             this.BtnRetryAuthId.UseVisualStyleBackColor = false;
             this.BtnRetryAuthId.Visible = false;
@@ -70,6 +72,11 @@ namespace HASS.Agent.Controls.Service
             // 
             // TbRetryAuthId
             // 
+            this.TbRetryAuthId.AccessibleDescription = "Auth ID, used to authentica with the satellite service. The ID is relevant when a" +
+    " non-default ID has been configured previously. Only enter this if the connectio" +
+    "n failed.";
+            this.TbRetryAuthId.AccessibleName = "Auth ID";
+            this.TbRetryAuthId.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbRetryAuthId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbRetryAuthId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbRetryAuthId.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -77,11 +84,14 @@ namespace HASS.Agent.Controls.Service
             this.TbRetryAuthId.Location = new System.Drawing.Point(286, 524);
             this.TbRetryAuthId.Name = "TbRetryAuthId";
             this.TbRetryAuthId.Size = new System.Drawing.Size(268, 25);
-            this.TbRetryAuthId.TabIndex = 97;
+            this.TbRetryAuthId.TabIndex = 0;
             this.TbRetryAuthId.Visible = false;
             // 
             // LblRetryAuthId
             // 
+            this.LblRetryAuthId.AccessibleDescription = "Auth ID textbox description";
+            this.LblRetryAuthId.AccessibleName = "Auth ID info";
+            this.LblRetryAuthId.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblRetryAuthId.AutoSize = true;
             this.LblRetryAuthId.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblRetryAuthId.Location = new System.Drawing.Point(196, 526);
@@ -93,6 +103,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblConnectionMessage
             // 
+            this.LblConnectionMessage.AccessibleDescription = "Informational message showing how to handle when a connection failed.";
+            this.LblConnectionMessage.AccessibleName = "Connection failed label";
+            this.LblConnectionMessage.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblConnectionMessage.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblConnectionMessage.Location = new System.Drawing.Point(16, 399);
             this.LblConnectionMessage.Name = "LblConnectionMessage";
@@ -102,6 +115,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblAuthenticate
             // 
+            this.LblAuthenticate.AccessibleDescription = "Status \'authenticate\' description.";
+            this.LblAuthenticate.AccessibleName = "Authenticating info";
+            this.LblAuthenticate.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblAuthenticate.AutoSize = true;
             this.LblAuthenticate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblAuthenticate.Location = new System.Drawing.Point(399, 254);
@@ -112,6 +128,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // PbStep2Authenticate
             // 
+            this.PbStep2Authenticate.AccessibleDescription = "Informational graphic showing the state of the authenticating step.";
+            this.PbStep2Authenticate.AccessibleName = "Authenticating";
+            this.PbStep2Authenticate.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbStep2Authenticate.Image = global::HASS.Agent.Properties.Resources.todo_32;
             this.PbStep2Authenticate.Location = new System.Drawing.Point(349, 247);
             this.PbStep2Authenticate.Name = "PbStep2Authenticate";
@@ -122,6 +141,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblConnect
             // 
+            this.LblConnect.AccessibleDescription = "Status \'connect with service\' description.";
+            this.LblConnect.AccessibleName = "Connecting info";
+            this.LblConnect.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblConnect.AutoSize = true;
             this.LblConnect.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblConnect.Location = new System.Drawing.Point(399, 192);
@@ -132,6 +154,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // PbStep1Connect
             // 
+            this.PbStep1Connect.AccessibleDescription = "Informational graphic showing the state of the connecting step.";
+            this.PbStep1Connect.AccessibleName = "Connecting";
+            this.PbStep1Connect.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbStep1Connect.Image = global::HASS.Agent.Properties.Resources.todo_32;
             this.PbStep1Connect.Location = new System.Drawing.Point(349, 185);
             this.PbStep1Connect.Name = "PbStep1Connect";
@@ -142,6 +167,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblLoading
             // 
+            this.LblLoading.AccessibleDescription = "Information about the current state, while the connection is being created.";
+            this.LblLoading.AccessibleName = "Connection status info";
+            this.LblLoading.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblLoading.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblLoading.Location = new System.Drawing.Point(16, 71);
             this.LblLoading.Name = "LblLoading";
@@ -152,6 +180,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // LblFetchConfig
             // 
+            this.LblFetchConfig.AccessibleDescription = "Status \'fetch configuration\' description.";
+            this.LblFetchConfig.AccessibleName = "Configuration info";
+            this.LblFetchConfig.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblFetchConfig.AutoSize = true;
             this.LblFetchConfig.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblFetchConfig.Location = new System.Drawing.Point(399, 316);
@@ -162,6 +193,9 @@ namespace HASS.Agent.Controls.Service
             // 
             // PbStep3Config
             // 
+            this.PbStep3Config.AccessibleDescription = "Informational graphic showing the state of the configuration step.";
+            this.PbStep3Config.AccessibleName = "Configuration";
+            this.PbStep3Config.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbStep3Config.Image = global::HASS.Agent.Properties.Resources.todo_32;
             this.PbStep3Config.Location = new System.Drawing.Point(349, 309);
             this.PbStep3Config.Name = "PbStep3Config";
@@ -170,8 +204,11 @@ namespace HASS.Agent.Controls.Service
             this.PbStep3Config.TabIndex = 100;
             this.PbStep3Config.TabStop = false;
             // 
-            // Connect
+            // ServiceConnect
             // 
+            this.AccessibleDescription = "Panel showing the \'connecting with service\' status.";
+            this.AccessibleName = "Connect";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Pane;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
@@ -188,7 +225,7 @@ namespace HASS.Agent.Controls.Service
             this.Controls.Add(this.LblLoading);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Connect";
+            this.Name = "ServiceConnect";
             this.Size = new System.Drawing.Size(903, 622);
             this.Load += new System.EventHandler(this.ServiceConnect_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PbStep2Authenticate)).EndInit();

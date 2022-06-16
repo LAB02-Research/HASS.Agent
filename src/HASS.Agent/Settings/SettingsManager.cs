@@ -5,8 +5,9 @@ using HASS.Agent.Models.Internal;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Sensors;
 using HASS.Agent.Shared;
-using HASS.Agent.Shared.Models.HomeAssistant.Commands;
-using HASS.Agent.Shared.Models.HomeAssistant.Sensors;
+using HASS.Agent.Shared.HomeAssistant.Commands;
+using HASS.Agent.Shared.HomeAssistant.Sensors;
+using HASS.Agent.Shared.Models.HomeAssistant;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using Serilog;
@@ -277,6 +278,42 @@ namespace HASS.Agent.Settings
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS] Error storing extended logging setting: {err}", ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Gets the 'dpi warning shown' setting from registry
+        /// </summary>
+        /// <returns></returns>
+        internal static bool GetDpiWarningShown()
+        {
+            try
+            {
+                var setting = (string)Registry.GetValue(Variables.RootRegKey, "DpiWarningShown", "0");
+                if (string.IsNullOrEmpty(setting)) return false;
+
+                return setting == "1";
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[SETTINGS] Error retrieving dpi-warning-shown setting: {err}", ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Stores the 'dpi warning shown' setting in registry
+        /// </summary>
+        /// <param name="shown"></param>
+        internal static void SetDpiWarningShown(bool shown)
+        {
+            try
+            {
+                Registry.SetValue(Variables.RootRegKey, "DpiWarningShown", shown ? "1" : "0", RegistryValueKind.String);
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[SETTINGS] Error storing dpi-warning-shown setting: {err}", ex.Message);
             }
         }
     }

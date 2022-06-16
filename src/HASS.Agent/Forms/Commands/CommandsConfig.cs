@@ -236,8 +236,8 @@ namespace HASS.Agent.Forms.Commands
             ListViewTheme.ShowScrollBar(LvCommands.Handle, ListViewTheme.SB_HORZ, false);
         }
 
-        private void PbActionInfo_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent/wiki/Command-Actions-Usage-&-Examples");
+        private void PbActionInfo_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://hassagent.readthedocs.io/en/latest/commands/actions-usage-and-examples/");
 
-        private void LblActionInfo_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://github.com/LAB02-Research/HASS.Agent/wiki/Command-Actions-Usage-&-Examples");
+        private void LblActionInfo_Click(object sender, EventArgs e) => HelperFunctions.LaunchUrl("https://hassagent.readthedocs.io/en/latest/commands/actions-usage-and-examples/");
     }
 }

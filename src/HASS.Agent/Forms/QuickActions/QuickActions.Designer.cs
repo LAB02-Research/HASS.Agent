@@ -38,6 +38,8 @@ namespace HASS.Agent.Forms.QuickActions
             // 
             // LblLoading
             // 
+            this.LblLoading.AccessibleDescription = "Notification that your entities are still being fetched from Home Assistant.";
+            this.LblLoading.AccessibleName = "Loading notification";
             this.LblLoading.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LblLoading.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblLoading.ForeColor = System.Drawing.Color.MediumSpringGreen;
@@ -66,6 +68,9 @@ namespace HASS.Agent.Forms.QuickActions
             // 
             // QuickActions
             // 
+            this.AccessibleDescription = "Easily trigger any quick action.";
+            this.AccessibleName = "Quick Actions";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));

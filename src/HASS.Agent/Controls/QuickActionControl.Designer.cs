@@ -37,6 +37,9 @@ namespace HASS.Agent.Controls
             // 
             // PbImage
             // 
+            this.PbImage.AccessibleDescription = "The entity\'s icon.";
+            this.PbImage.AccessibleName = "Entity icon";
+            this.PbImage.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbImage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbImage.Image = global::HASS.Agent.Properties.Resources.hass_avatar;
             this.PbImage.Location = new System.Drawing.Point(12, 13);
@@ -49,6 +52,9 @@ namespace HASS.Agent.Controls
             // 
             // LblEntity
             // 
+            this.LblEntity.AccessibleDescription = "The entity\'s name or description.";
+            this.LblEntity.AccessibleName = "Entity name";
+            this.LblEntity.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblEntity.BackColor = System.Drawing.Color.Transparent;
             this.LblEntity.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblEntity.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -62,6 +68,9 @@ namespace HASS.Agent.Controls
             // 
             // LblAction
             // 
+            this.LblAction.AccessibleDescription = "The action that will be performed on the entity.";
+            this.LblAction.AccessibleName = "Action";
+            this.LblAction.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblAction.BackColor = System.Drawing.Color.Transparent;
             this.LblAction.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblAction.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -76,6 +85,9 @@ namespace HASS.Agent.Controls
             // 
             // QuickActionControl
             // 
+            this.AccessibleDescription = "Quick Action control for a specified entity.";
+            this.AccessibleName = "Quick Action";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Pane;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));

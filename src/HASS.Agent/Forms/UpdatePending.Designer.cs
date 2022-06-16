@@ -47,7 +47,10 @@ namespace HASS.Agent.Forms
             // 
             // BtnDownload
             // 
-            this.BtnDownload.AccessibleName = "Button";
+            this.BtnDownload.AccessibleDescription = "Continues the update process. Either opens the release page, or downloads and lau" +
+    "nches the updater, depending on your update settings.";
+            this.BtnDownload.AccessibleName = "Continue";
+            this.BtnDownload.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnDownload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnDownload.Enabled = false;
             this.BtnDownload.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -70,6 +73,9 @@ namespace HASS.Agent.Forms
             // 
             // LblNewReleaseInfo
             // 
+            this.LblNewReleaseInfo.AccessibleDescription = "New release version description.";
+            this.LblNewReleaseInfo.AccessibleName = "Version description";
+            this.LblNewReleaseInfo.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblNewReleaseInfo.AutoSize = true;
             this.LblNewReleaseInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblNewReleaseInfo.Location = new System.Drawing.Point(22, 26);
@@ -80,6 +86,9 @@ namespace HASS.Agent.Forms
             // 
             // LblVersion
             // 
+            this.LblVersion.AccessibleDescription = "The new release version.";
+            this.LblVersion.AccessibleName = "Version";
+            this.LblVersion.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblVersion.AutoSize = true;
             this.LblVersion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LblVersion.Location = new System.Drawing.Point(280, 24);
@@ -90,6 +99,9 @@ namespace HASS.Agent.Forms
             // 
             // LblInfo1
             // 
+            this.LblInfo1.AccessibleDescription = "Release notes description.";
+            this.LblInfo1.AccessibleName = "Release notes description";
+            this.LblInfo1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo1.AutoSize = true;
             this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo1.Location = new System.Drawing.Point(1, 82);
@@ -100,6 +112,9 @@ namespace HASS.Agent.Forms
             // 
             // LblUpdateQuestion
             // 
+            this.LblUpdateQuestion.AccessibleDescription = "Next step in the update process question.";
+            this.LblUpdateQuestion.AccessibleName = "Question";
+            this.LblUpdateQuestion.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblUpdateQuestion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblUpdateQuestion.Location = new System.Drawing.Point(165, 437);
             this.LblUpdateQuestion.Name = "LblUpdateQuestion";
@@ -109,7 +124,10 @@ namespace HASS.Agent.Forms
             // 
             // BtnIgnore
             // 
-            this.BtnIgnore.AccessibleName = "Button";
+            this.BtnIgnore.AccessibleDescription = "Closes the window and ignores this version. Will show a new notification when the" +
+    "re\'s a next version.";
+            this.BtnIgnore.AccessibleName = "Ignore";
+            this.BtnIgnore.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnIgnore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnIgnore.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnIgnore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -123,13 +141,16 @@ namespace HASS.Agent.Forms
             this.BtnIgnore.Style.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnIgnore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnIgnore.Style.PressedForeColor = System.Drawing.Color.Black;
-            this.BtnIgnore.TabIndex = 6;
-            this.BtnIgnore.Text = global::HASS.Agent.Resources.Localization.Languages.UpdatePending_BtnIgnore;
+            this.BtnIgnore.TabIndex = 1;
+            this.BtnIgnore.Text = Languages.UpdatePending_BtnIgnore;
             this.BtnIgnore.UseVisualStyleBackColor = false;
             this.BtnIgnore.Click += new System.EventHandler(this.BtnIgnore_Click);
             // 
             // PbUpdate
             // 
+            this.PbUpdate.AccessibleDescription = "Celebration picture.";
+            this.PbUpdate.AccessibleName = "Celebrate";
+            this.PbUpdate.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbUpdate.Image = global::HASS.Agent.Properties.Resources.update;
             this.PbUpdate.Location = new System.Drawing.Point(541, 12);
             this.PbUpdate.Name = "PbUpdate";
@@ -140,6 +161,9 @@ namespace HASS.Agent.Forms
             // 
             // LblRelease
             // 
+            this.LblRelease.AccessibleDescription = "Opens the new release\'s github webpage.";
+            this.LblRelease.AccessibleName = "Release page";
+            this.LblRelease.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblRelease.AutoSize = true;
             this.LblRelease.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblRelease.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -152,6 +176,9 @@ namespace HASS.Agent.Forms
             // 
             // TbReleaseNotes
             // 
+            this.TbReleaseNotes.AccessibleDescription = "The release notes for the new version.";
+            this.TbReleaseNotes.AccessibleName = "Release notes";
+            this.TbReleaseNotes.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.TbReleaseNotes.AutoWordSelection = true;
             this.TbReleaseNotes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbReleaseNotes.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -178,6 +205,9 @@ namespace HASS.Agent.Forms
             // 
             // UpdatePending
             // 
+            this.AccessibleDescription = "Information about a pending update.";
+            this.AccessibleName = "Update pending";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));

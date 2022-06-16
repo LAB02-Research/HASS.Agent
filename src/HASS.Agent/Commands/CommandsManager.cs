@@ -151,6 +151,39 @@ namespace HASS.Agent.Commands
         }
 
         /// <summary>
+        /// Looks for the command by name, and executes it
+        /// </summary>
+        /// <param name="name"></param>
+        internal static void ExecuteCommandByName(string name)
+        {
+            try
+            {
+                // do we have commands?
+                if (!CommandsPresent())
+                {
+                    Log.Warning("[COMMANDSMANAGER] [{command}] No commands configured, unable to execute", name);
+                    return;
+                }
+
+                if (Variables.Commands.All(x => x.Name != name))
+                {
+                    Log.Warning("[COMMANDSMANAGER] [{command}] Command not found, unable to execute", name);
+                    return;
+                }
+
+                // fetch the command
+                var command = Variables.Commands.First(x => x.Name == name);
+
+                // execute it
+                command.TurnOn();
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[COMMANDSMANAGER] [{command}] Error while executing: {err}", name, ex.Message);
+            }
+        }
+
+        /// <summary>
         /// Stores the provided commands, and (re)publishes them
         /// </summary>
         /// <param name="commands"></param>
@@ -389,6 +422,14 @@ namespace HASS.Agent.Commands
 
             // =================================
 
+            commandInfoCard = new CommandInfoCard(CommandType.SendWindowToFrontCommand,
+                Languages.CommandsManager_CommandsManager_SendWindowToFrontCommandDescription,
+                true, false, true);
+
+            CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
+
+            // =================================
+
             commandInfoCard = new CommandInfoCard(CommandType.ShutdownCommand,
                 Languages.CommandsManager_ShutdownCommandDescription,
                 true, true, false);
@@ -400,6 +441,14 @@ namespace HASS.Agent.Commands
             commandInfoCard = new CommandInfoCard(CommandType.SleepCommand,
                 Languages.CommandsManager_SleepCommandDescription,
                 true, true, false);
+
+            CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
+
+            // =================================
+
+            commandInfoCard = new CommandInfoCard(CommandType.WebViewCommand,
+                Languages.CommandsManager_WebViewCommandDescription,
+                true, false, true);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
         }

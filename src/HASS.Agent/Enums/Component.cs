@@ -5,7 +5,7 @@
         Commands,
         HassApi,
         Mqtt,
-        NotificationApi,
+        LocalApi,
         QuickActions,
         Sensors,
         Service

@@ -44,6 +44,9 @@ namespace HASS.Agent.Controls.Onboarding
             // 
             // PbHassAgentLogo
             // 
+            this.PbHassAgentLogo.AccessibleDescription = "HASS Agent logo image.";
+            this.PbHassAgentLogo.AccessibleName = "HASS Agent logo";
+            this.PbHassAgentLogo.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbHassAgentLogo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbHassAgentLogo.Image = global::HASS.Agent.Properties.Resources.logo_128;
             this.PbHassAgentLogo.Location = new System.Drawing.Point(24, 20);
@@ -55,6 +58,9 @@ namespace HASS.Agent.Controls.Onboarding
             // 
             // TbHassApiToken
             // 
+            this.TbHassApiToken.AccessibleDescription = "The API token to use when connecting to your Home Assistant instance.";
+            this.TbHassApiToken.AccessibleName = "API token";
+            this.TbHassApiToken.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbHassApiToken.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbHassApiToken.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbHassApiToken.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -66,6 +72,9 @@ namespace HASS.Agent.Controls.Onboarding
             // 
             // TbHassIp
             // 
+            this.TbHassIp.AccessibleDescription = "The URI of your Home Assistant instance. The default should be okay.";
+            this.TbHassIp.AccessibleName = "HA URI";
+            this.TbHassIp.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.TbHassIp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.TbHassIp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbHassIp.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -78,6 +87,9 @@ namespace HASS.Agent.Controls.Onboarding
             // 
             // LblApiToken
             // 
+            this.LblApiToken.AccessibleDescription = "API token textbox description.";
+            this.LblApiToken.AccessibleName = "API token info";
+            this.LblApiToken.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblApiToken.AutoSize = true;
             this.LblApiToken.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblApiToken.Location = new System.Drawing.Point(180, 275);
@@ -88,6 +100,9 @@ namespace HASS.Agent.Controls.Onboarding
             // 
             // LblServerUri
             // 
+            this.LblServerUri.AccessibleDescription = "Home Assistant server URI textbox label";
+            this.LblServerUri.AccessibleName = "URI info";
+            this.LblServerUri.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblServerUri.AutoSize = true;
             this.LblServerUri.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblServerUri.Location = new System.Drawing.Point(180, 187);
@@ -98,17 +113,21 @@ namespace HASS.Agent.Controls.Onboarding
             // 
             // LblInfo1
             // 
-            this.LblInfo1.AutoSize = true;
+            this.LblInfo1.AccessibleDescription = "Home Assistant API information.";
+            this.LblInfo1.AccessibleName = "Information";
+            this.LblInfo1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo1.Location = new System.Drawing.Point(180, 20);
             this.LblInfo1.Name = "LblInfo1";
-            this.LblInfo1.Size = new System.Drawing.Size(564, 114);
+            this.LblInfo1.Size = new System.Drawing.Size(584, 141);
             this.LblInfo1.TabIndex = 13;
             this.LblInfo1.Text = Languages.OnboardingApi_LblInfo1;
             // 
             // BtnTest
             // 
-            this.BtnTest.AccessibleName = "Button";
+            this.BtnTest.AccessibleDescription = "Perform a test connection with your Home Assistant instance.";
+            this.BtnTest.AccessibleName = "Test connection";
+            this.BtnTest.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnTest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnTest.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -123,12 +142,15 @@ namespace HASS.Agent.Controls.Onboarding
             this.BtnTest.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnTest.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnTest.TabIndex = 2;
-            this.BtnTest.Text = Languages.OnboardingApi_BtnTest;
+            this.BtnTest.Text = global::HASS.Agent.Resources.Localization.Languages.OnboardingApi_BtnTest;
             this.BtnTest.UseVisualStyleBackColor = false;
             this.BtnTest.Click += new System.EventHandler(this.BtnTest_Click);
             // 
             // LblTip1
             // 
+            this.LblTip1.AccessibleDescription = "Contains a configuration tip.";
+            this.LblTip1.AccessibleName = "Configuration tip";
+            this.LblTip1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblTip1.AutoSize = true;
             this.LblTip1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblTip1.Location = new System.Drawing.Point(180, 416);
@@ -137,8 +159,11 @@ namespace HASS.Agent.Controls.Onboarding
             this.LblTip1.TabIndex = 36;
             this.LblTip1.Text = Languages.OnboardingApi_LblTip1;
             // 
-            // API
+            // OnboardingApi
             // 
+            this.AccessibleDescription = "Panel containing the onboarding Home Assistant API configuration.";
+            this.AccessibleName = "Home Assistant API";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Pane;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
@@ -152,7 +177,7 @@ namespace HASS.Agent.Controls.Onboarding
             this.Controls.Add(this.PbHassAgentLogo);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "API";
+            this.Name = "OnboardingApi";
             this.Size = new System.Drawing.Size(803, 457);
             this.Load += new System.EventHandler(this.OnboardingApi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PbHassAgentLogo)).EndInit();

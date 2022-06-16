@@ -1,16 +1,20 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Reflection;
+using Windows.Media.Playback;
+using CoreAudio;
 using Grapevine;
 using HASS.Agent.Forms;
 using HASS.Agent.Functions;
+using HASS.Agent.Managers;
 using HASS.Agent.Models.Config;
 using HASS.Agent.Models.Internal;
 using HASS.Agent.MQTT;
 using HASS.Agent.Service;
+using HASS.Agent.Shared.HomeAssistant;
+using HASS.Agent.Shared.HomeAssistant.Commands;
+using HASS.Agent.Shared.HomeAssistant.Sensors;
 using HASS.Agent.Shared.Models.HomeAssistant;
-using HASS.Agent.Shared.Models.HomeAssistant.Commands;
-using HASS.Agent.Shared.Models.HomeAssistant.Sensors;
 using HASS.Agent.Shared.Mqtt;
 using MQTTnet;
 using WK.Libraries.HotkeyListenerNS;
@@ -32,7 +36,7 @@ namespace HASS.Agent
         /// <summary>
         /// Constants
         /// </summary>
-        internal const string SyncfusionLicense = "NTk0MzAyQDMxMzkyZTM0MmUzMGpOM2NCRmROQWpybDZPYnBBa0twMWdqTFFRMGRUTERqa1laazRST2N6N1E9";
+        internal const string SyncfusionLicense = "NjMwOTQxQDMyMzAyZTMxMmUzMEdCeXVEL2FGOUZvTHdTOTRTakxMbHZoRm9iRFBVMGNpZVBYOFlwdEhIVnc9";
         internal const string RootRegKey = @"HKEY_CURRENT_USER\SOFTWARE\LAB02Research\HASSAgent";
         internal const string CertificateHash = "E4C76406BD0AC3937014764596B1697E4EB4A953";
         
@@ -46,6 +50,7 @@ namespace HASS.Agent
         internal static HotkeyListener HotKeyListener { get; set; }
         internal static Random Rnd { get; } = new();
         internal static Font DefaultFont { get; } = new("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+        internal static WebView TrayIconWebView { get; set; } = null;
 
         /// <summary>
         /// Localization
@@ -86,6 +91,8 @@ namespace HASS.Agent
         internal static string StartupPath { get; } = Path.GetDirectoryName(Application.ExecutablePath);
         internal static string CachePath { get; } = Path.Combine(StartupPath, "cache");
         internal static string ImageCachePath { get; } = Path.Combine(CachePath, "images");
+        internal static string AudioCachePath { get; } = Path.Combine(CachePath, "audio");
+        internal static string WebViewCachePath { get; } = Path.Combine(CachePath, "webview");
         internal static string LogPath { get; } = Path.Combine(StartupPath, "logs");
         internal static string ConfigPath { get; } = Path.Combine(StartupPath, "config");
         internal static string AppSettingsFile { get; } = Path.Combine(ConfigPath, "appsettings.json");
@@ -94,9 +101,15 @@ namespace HASS.Agent
         internal static string SensorsFile { get; } = Path.Combine(ConfigPath, "sensors.json");
 
         /// <summary>
-        /// Notifier API
+        /// Local API
         /// </summary>
-        internal static IRestServer NotificationServer { get; set; } = null;
+        internal static IRestServer LocalApiServer { get; set; } = null;
+
+        /// <summary>
+        /// Media
+        /// </summary>
+        internal static MMDeviceEnumerator AudioDeviceEnumerator { get; } = new();
+        internal static MediaPlayer MediaPlayer { get; } = new();
 
         /// <summary>
         /// Config

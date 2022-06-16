@@ -1,0 +1,2873 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ConfigExternalTools_LblInfo1" xml:space="preserve">
+    <value>Op deze pagina kun je koppelingen met externe programma&apos;s configureren.</value>
+  </data>
+  <data name="ConfigExternalTools_LblBrowserName" xml:space="preserve">
+    <value>browser naam</value>
+  </data>
+  <data name="ConfigExternalTools_LblInfo2" xml:space="preserve">
+    <value>‎Standaard start HASS.Agent URL&apos;s met je standaardbrowser. Als je wilt, kun je ook een specifieke browser configureren. Daarnaast kan je de argumenten configureren die worden gebruikt om in privémodus te starten.‎</value>
+  </data>
+  <data name="ConfigExternalTools_LblBrowserBinary" xml:space="preserve">
+    <value>browser binary</value>
+  </data>
+  <data name="ConfigExternalTools_LblLaunchIncogArg" xml:space="preserve">
+    <value>start privémodus args</value>
+  </data>
+  <data name="ConfigExternalTools_LblCustomExecutorBinary" xml:space="preserve">
+    <value>eigen uitvoerder binary</value>
+  </data>
+  <data name="ConfigExternalTools_LblInfo3" xml:space="preserve">
+    <value>Je kunt HASS.Agent configureren om een eigen uitvoerder te gebruiken, zoals perl of python.
+Gebruik het &apos;eigen uitvoerder&apos; commando om &apos;m te starten.</value>
+  </data>
+  <data name="ConfigExternalTools_LblCustomExecutorName" xml:space="preserve">
+    <value>eigen uitvoerder naam</value>
+  </data>
+  <data name="ConfigExternalTools_LblTip1" xml:space="preserve">
+    <value>tip: dubbelklik om te bladeren</value>
+  </data>
+  <data name="ConfigExternalTools_BtnExternalBrowserIncognitoTest" xml:space="preserve">
+    <value>&amp;test</value>
+  </data>
+  <data name="ConfigGeneral_LblInfo4" xml:space="preserve">
+    <value>HASS.Agent wacht even voordat je een bericht krijgt over een verbroken verbinding met MQTT of HA&apos;s API.
+Je kunt het aantal seconden hier instellen.</value>
+  </data>
+  <data name="ConfigGeneral_LblDisconGraceSeconds" xml:space="preserve">
+    <value>seconden</value>
+  </data>
+  <data name="ConfigGeneral_LblDisconGracePeriod" xml:space="preserve">
+    <value>verbroken verbinding wacht &amp;periode</value>
+  </data>
+  <data name="ConfigGeneral_LblInfo3" xml:space="preserve">
+    <value>‎Belangrijk: als je deze waarde wijzigt, maakt HASS.Agent de publicatie van al je sensoren en opdrachten ongedaan en dwingt zichzelf opnieuw op te starten, zodat ze opnieuw kunnen worden gepubliceerd onder de nieuwe apparaatnaam. 
+Je automatiseringen en scripts blijven werken.‎</value>
+  </data>
+  <data name="ConfigGeneral_LblInfo2" xml:space="preserve">
+    <value>‎Apparaatnaam wordt gebruikt om je apparaat op HA te identificeren. Het wordt ook gebruikt als een voorvoegsel voor je commando/sensor namen (kan per entiteit worden gewijzigd).‎</value>
+  </data>
+  <data name="ConfigGeneral_LblInfo1" xml:space="preserve">
+    <value>‎Deze pagina bevat algemene configuratie-items. Blader voor meer instellingen door de tabbladen aan de linkerkant.‎</value>
+  </data>
+  <data name="ConfigGeneral_LblDeviceName" xml:space="preserve">
+    <value>apparaat&amp;naam</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="ConfigHomeAssistantApi_LblTip1" xml:space="preserve">
+    <value>tip: dubbelklik op dit veld om te bladeren</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_LblClientCertificate" xml:space="preserve">
+    <value>client &amp;certificaat</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="ConfigHomeAssistantApi_CbHassAutoClientCertificate" xml:space="preserve">
+    <value>gebruik &amp;automatisch cliënt certificaat selectie</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi" xml:space="preserve">
+    <value>&amp;test verbinding</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_LblInfo1" xml:space="preserve">
+    <value>Om te leren welke entiteiten je geconfigureerd hebt, en om snelle acties te versturen, gebruikt HASS.Agent Home Assistant&apos;s API.
+
+Geef een &apos;long-lived access token&apos; op, en het adres van je Home Assistant installatie.
+
+Je kunt zo&apos;n token krijgen via je profiel pagina. Blader naar onderaan de pagina en klik op &apos;TOKEN AANMAKEN&apos;.</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_LblApiToken" xml:space="preserve">
+    <value>&amp;api token</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_LblServerUri" xml:space="preserve">
+    <value>server &amp;uri</value>
+  </data>
+  <data name="ConfigHotKey_BtnClearHotKey" xml:space="preserve">
+    <value>leegmaken</value>
+  </data>
+  <data name="ConfigHotKey_LblInfo1" xml:space="preserve">
+    <value>Een makkelijke manier om je snelle acties te tonen is via een globale sneltoets.
+
+Op deze manier kun je, wat je ook aan het doen bent op je machine, altijd communiceren met Home Assistant.</value>
+  </data>
+  <data name="ConfigHotKey_CbEnableQuickActionsHotkey" xml:space="preserve">
+    <value>sn&amp;elle acties sneltoets inschakelen</value>
+  </data>
+  <data name="ConfigHotKey_LblHotkeyCombo" xml:space="preserve">
+    <value>&amp;sneltoets combinatie</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnClearImageCache" xml:space="preserve">
+    <value>afbeeldingen cache leegmaken</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnOpenImageCache" xml:space="preserve">
+    <value>map openen</value>
+  </data>
+  <data name="ConfigLocalStorage_LblCacheLocations" xml:space="preserve">
+    <value>afbeeldingen cache locatie</value>
+  </data>
+  <data name="ConfigLocalStorage_LblCacheDays" xml:space="preserve">
+    <value>dagen</value>
+  </data>
+  <data name="ConfigLocalStorage_LblInfo1" xml:space="preserve">
+    <value>Sommige objecten, zoals afbeeldingen getoond in notificaties, moeten tijdelijk lokaal opgeslagen worden. Je kunt het aantal dagen dat ze bewaard worden instellen, voordat HASS.Agent ze verwijdert.
+
+Voer &apos;0&apos; in om ze permanent te behouden.</value>
+  </data>
+  <data name="ConfigLogging_LblInfo1" xml:space="preserve">
+    <value>Uitgebreide logging biedt uitgebreidere logging, voor het geval dat de standaard logging niet voldoende is. Het is belangrijk te weten dat het inschakelen hiervan ervoor zorgt dat de logbestanden flink groeien, en zou dus alleen gebruikt moeten worden als je vermoedt dat er iets mis is met HASS.Agent of als een ontwikkelaar het vraagt.</value>
+  </data>
+  <data name="ConfigLogging_CbExtendedLogging" xml:space="preserve">
+    <value>uitg&amp;ebreide logging inschakelen</value>
+  </data>
+  <data name="ConfigLogging_BtnShowLogs" xml:space="preserve">
+    <value>logs map &amp;openen</value>
+  </data>
+  <data name="ConfigMqtt_LblTip3" xml:space="preserve">
+    <value>tip: dubbelklik op deze velden om te bladeren</value>
+  </data>
+  <data name="ConfigMqtt_LblClientCert" xml:space="preserve">
+    <value>cliënt certificaat</value>
+  </data>
+  <data name="ConfigMqtt_LblRootCert" xml:space="preserve">
+    <value>root certificaat</value>
+  </data>
+  <data name="ConfigMqtt_CbUseRetainFlag" xml:space="preserve">
+    <value>gebruik &amp;retain vlag</value>
+  </data>
+  <data name="ConfigMqtt_CbAllowUntrustedCertificates" xml:space="preserve">
+    <value>onvertrouwde certific&amp;aten toestaan</value>
+  </data>
+  <data name="ConfigMqtt_BtnMqttClearConfig" xml:space="preserve">
+    <value>&amp;config leegmaken</value>
+  </data>
+  <data name="ConfigMqtt_LblTip1" xml:space="preserve">
+    <value>(leeglaten bij twijfel)</value>
+  </data>
+  <data name="ConfigMqtt_LblInfo1" xml:space="preserve">
+    <value>Commando&apos;s en sensoren worden verstuurd via MQTT. Geef hier de inloggegevens van je server op. Als je de HA addon gebruikt, kun je waarschijnlijk de vooringevulde gegevens gebruiken.</value>
+  </data>
+  <data name="ConfigMqtt_LblDiscoPrefix" xml:space="preserve">
+    <value>discovery voorvoegsel</value>
+  </data>
+  <data name="ConfigMqtt_LblBrokerPassword" xml:space="preserve">
+    <value>wachtwoord</value>
+  </data>
+  <data name="ConfigMqtt_LblBrokerUsername" xml:space="preserve">
+    <value>gebruikersnaam</value>
+  </data>
+  <data name="ConfigMqtt_LblBrokerPort" xml:space="preserve">
+    <value>poort</value>
+  </data>
+  <data name="ConfigMqtt_LblBrokerIp" xml:space="preserve">
+    <value>broker ip adres of hostname</value>
+  </data>
+  <data name="ConfigMqtt_LblTip2" xml:space="preserve">
+    <value>(leeglaten voor willekeurig)</value>
+  </data>
+  <data name="ConfigMqtt_LblClientId" xml:space="preserve">
+    <value>cliënt id</value>
+  </data>
+  <data name="ConfigNotifications_LblInfo2" xml:space="preserve">
+    <value>Als iets niet werkt, controleer of je de volgende stappen hebt doorlopen:
+
+- HASS.Agent-Notifier integratie installeren
+- Home Assistant herstarten
+- Een notifier entiteit configureren
+- Home Assistant herstarten</value>
+  </data>
+  <data name="ConfigNotifications_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent kan notificaties ontvangen van Home Assistant, met tekst en/of afbeeldingen. De lokale API moet ingeschakeld zijn om dit te laten werken.</value>
+  </data>
+  <data name="ConfigNotifications_BtnNotificationsReadme" xml:space="preserve">
+    <value>notificaties &amp;documentatie</value>
+  </data>
+  <data name="ConfigNotifications_LblPort" xml:space="preserve">
+    <value>poort</value>
+  </data>
+  <data name="ConfigNotifications_CbAcceptNotifications" xml:space="preserve">
+    <value>notificaties &amp;accepteren</value>
+  </data>
+  <data name="ConfigNotifications_BtnSendTestNotification" xml:space="preserve">
+    <value>test notificatie tonen</value>
+  </data>
+  <data name="ConfigNotifications_BtnExecutePortReservation" xml:space="preserve">
+    <value>poort reservering uitvoeren</value>
+  </data>
+  <data name="ConfigNotifications_CbNotificationsIgnoreImageCertErrors" xml:space="preserve">
+    <value>cert&amp;ificaat fouten voor afbeeldingen negeren</value>
+  </data>
+  <data name="ConfigService_LblInfo1" xml:space="preserve">
+    <value>De satelliet service laat je sensoren en commando&apos;s uitvoeren, zelfs wanneer er geen gebruiker ingelogd is.
+Gebruik de &apos;satelliet service&apos; knop in het hoofdscherm om &apos;m te beheren.</value>
+  </data>
+  <data name="ConfigService_LblServiceStatusInfo" xml:space="preserve">
+    <value>service status:</value>
+  </data>
+  <data name="ConfigService_BtnStartService" xml:space="preserve">
+    <value>s&amp;tart service</value>
+  </data>
+  <data name="ConfigService_BtnDisableService" xml:space="preserve">
+    <value>service uitschakelen</value>
+  </data>
+  <data name="ConfigService_BtnStopService" xml:space="preserve">
+    <value>&amp;stop service</value>
+  </data>
+  <data name="ConfigService_BtnEnableService" xml:space="preserve">
+    <value>s&amp;ervice inschakelen</value>
+  </data>
+  <data name="ConfigService_BtnReinstallService" xml:space="preserve">
+    <value>se&amp;rvice herinstalleren</value>
+  </data>
+  <data name="ConfigService_LblInfo2" xml:space="preserve">
+    <value>Als je de service niet configureert, doet hij niks. Je kunt alsnog kiezen om &apos;m helemaal uit te schakelen.
+De installer zal de uitgeschakelde service met rust laten (als je &apos;m verwijdert, zal de installer hem terugzetten).</value>
+  </data>
+  <data name="ConfigService_LblInfo3" xml:space="preserve">
+    <value>Je kunt proberen om de service opnieuw te installeren als hij niet goed werkt. 
+Je configuratie en entiteiten blijven bewaard.</value>
+  </data>
+  <data name="ConfigService_BtnShowLogs" xml:space="preserve">
+    <value>open service &amp;logs map</value>
+  </data>
+  <data name="ConfigService_LblInfo4" xml:space="preserve">
+    <value>Als de service nog steeds faalt na herinstallatie, open dan een ticket en stuur de inhoud van de laatste log.</value>
+  </data>
+  <data name="ConfigStartup_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent kan starten als je inlogt via het register van je gebruikersprofiel.
+
+Aangezien HASS.Agent gebruiker-gebaseerd is, als je &apos;m voor een andere gebruiker wilt starten, kun je daar de configuratie uitvoeren.</value>
+  </data>
+  <data name="ConfigStartup_BtnSetStartOnLogin" xml:space="preserve">
+    <value>start-bij-inlogg&amp;en inschakelen</value>
+  </data>
+  <data name="ConfigStartup_LblStartOnLoginStatusInfo" xml:space="preserve">
+    <value>start-bij-inloggen status:</value>
+  </data>
+  <data name="ConfigUpdates_CbBetaUpdates" xml:space="preserve">
+    <value>laat het me ook weten als er een &amp;beta release is</value>
+  </data>
+  <data name="ConfigUpdates_LblInfo2" xml:space="preserve">
+    <value>Wanneer er een update is, zal HASS.Agent je aanbieden om de release pagina te openen. Als je wilt, kan HASS.Agent de installer voor je downloaden en starten - hoef je zelf nog minder te doen!
+
+Het certificaat van het gedownloade bestand wordt gecontroleerd vóór uitvoering.</value>
+  </data>
+  <data name="ConfigUpdates_CbExecuteUpdater" xml:space="preserve">
+    <value>aanbieden om de installer voor mij te &amp;downloaden en starten</value>
+  </data>
+  <data name="ConfigUpdates_LblInfo1" xml:space="preserve">
+    <value>Als je wilt, kan HASS.Agent op de achtergrond controleren op updates.
+
+Je krijgt een notificatie (eenmalig per update) om je te laten weten dat er een nieuwe versie klaar staat.</value>
+  </data>
+  <data name="ConfigUpdates_CbUpdates" xml:space="preserve">
+    <value>laat het me weten wanneer er een nieuwe &amp;release is</value>
+  </data>
+  <data name="OnboardingWelcome_LblInfo1" xml:space="preserve">
+    <value>Het lijkt erop dat dit de eerste keer is dat je HASS.Agent start.
+
+Als je wilt, kunnen we de configuratie doorlopen. Zo niet, klik dan op &apos;sluiten&apos;.</value>
+  </data>
+  <data name="OnboardingWelcome_LblInfo2" xml:space="preserve">
+    <value>Apparaatnaam wordt gebruikt om je machine te identificeren binnen HA.
+Het wordt ook gebruikt om een voorvoegsel voor te stellen voor je commando&apos;s en sensoren.</value>
+  </data>
+  <data name="OnboardingWelcome_LblDeviceName" xml:space="preserve">
+    <value>apparaat&amp;naam</value>
+  </data>
+  <data name="OnboardingStartup_BtnSetLaunchOnLogin" xml:space="preserve">
+    <value>ja, schak&amp;el start-bij-inloggen in</value>
+  </data>
+  <data name="OnboardingStartup_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent kan starten als je inlogt via het register van je gebruikersprofiel.
+
+Je kunt deze sleutel altijd verwijderen (of aanmaken) via het Configuratie scherm.</value>
+  </data>
+  <data name="OnboardingStartup_LblCreateInfo" xml:space="preserve">
+    <value>Even geduld, huidige staat bepalen ..</value>
+  </data>
+  <data name="OnboardingNotifications_LblTip1" xml:space="preserve">
+    <value>Ter info: 5115 is de standaard poort, pas dit alleen aan als je het ook in Home Assistant aangepast hebt.</value>
+  </data>
+  <data name="OnboardingNotifications_CbAcceptNotifications" xml:space="preserve">
+    <value>ja, accepteer notificaties op poort</value>
+  </data>
+  <data name="OnboardingNotifications_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent kan notificaties ontvangen van Home Assistant, met tekst en/of afbeeldingen.
+
+Wil je deze functionaliteit inschakelen?</value>
+  </data>
+  <data name="OnboardingIntegration_LblIntegration" xml:space="preserve">
+    <value>HASS.Agent-Notifier GitHub pagina</value>
+  </data>
+  <data name="OnboardingIntegration_LblInfo2" xml:space="preserve">
+    <value>Controleer of je deze stappen gevolgd hebt:
+
+- HASS.Agent-Notifier integratie installeren
+- Home Assistant herstarten
+- Een notifier entiteit configureren
+- Home Assistant herstarten</value>
+  </data>
+  <data name="OnboardingIntegration_LblInfo1" xml:space="preserve">
+    <value>Om notificaties te gebruiken, moet je de HASS.Agent-Notifier integratie installeren en configureren in Home Assistant.
+
+Dit is simpel met HACS, maar je kunt &apos;m ook handmatig installeren.
+Bezoek de onderstaande link voor meer informatie.</value>
+  </data>
+  <data name="OnboardingApi_LblApiToken" xml:space="preserve">
+    <value>api &amp;token</value>
+  </data>
+  <data name="OnboardingApi_LblServerUri" xml:space="preserve">
+    <value>server &amp;uri (zou al goed moeten zijn)</value>
+  </data>
+  <data name="OnboardingApi_LblInfo1" xml:space="preserve">
+    <value>Om te leren welke entiteiten je geconfigureerd hebt, en om snelle acties te versturen, gebruikt HASS.Agent Home Assistant&apos;s API.
+
+Geef een &apos;long-lived access token&apos; op, en het adres van je Home Assistant installatie.
+
+Je kunt zo&apos;n token krijgen via je profiel pagina. Blader naar onderaan de pagina en klik op &apos;TOKEN AANMAKEN&apos;.</value>
+  </data>
+  <data name="OnboardingApi_BtnTest" xml:space="preserve">
+    <value>test verbinding</value>
+  </data>
+  <data name="OnboardingApi_LblTip1" xml:space="preserve">
+    <value>Tip: specialistische instellingen kunnen in het Configuratie scherm worden gevonden.</value>
+  </data>
+  <data name="OnboardingMqtt_LblPassword" xml:space="preserve">
+    <value>wachtwoord</value>
+  </data>
+  <data name="OnboardingMqtt_LblUsername" xml:space="preserve">
+    <value>gebruikersnaam</value>
+  </data>
+  <data name="OnboardingMqtt_LblPort" xml:space="preserve">
+    <value>poort</value>
+  </data>
+  <data name="OnboardingMqtt_LblIpAdress" xml:space="preserve">
+    <value>ip adres of hostname</value>
+  </data>
+  <data name="OnboardingMqtt_LblInfo1" xml:space="preserve">
+    <value>Commando&apos;s en sensoren worden via MQTT verstuurd. Geef hier de inloggegevens van je server op.
+Als je de HA addon gebruikt, zijn de vooringevulde gegevens waarschijnlijk goed.
+
+Je kunt het leeglaten als je geen commando&apos;s of sensoren gaat gebruiken.</value>
+  </data>
+  <data name="OnboardingMqtt_LblDiscoveryPrefix" xml:space="preserve">
+    <value>discovery voorvoegsel</value>
+  </data>
+  <data name="OnboardingMqtt_LblTip1" xml:space="preserve">
+    <value>(bij twijfel leeglaten)</value>
+  </data>
+  <data name="OnboardingMqtt_LblTip2" xml:space="preserve">
+    <value>Tip: specialistische instellingen kunnen in het Configuratie scherm worden gevonden.</value>
+  </data>
+  <data name="OnboardingHotKey_LblHotkeyCombo" xml:space="preserve">
+    <value>&amp;sneltoets combinatie</value>
+  </data>
+  <data name="OnboardingHotKey_LblInfo1" xml:space="preserve">
+    <value>Een makkelijke manier om je snelle acties te tonen is via een globale sneltoets.
+
+Op deze manier kun je, wat je ook aan het doen bent op je machine, altijd communiceren met Home Assistant.</value>
+  </data>
+  <data name="OnboardingHotKey_BtnClear" xml:space="preserve">
+    <value>leegmaken</value>
+  </data>
+  <data name="OnboardingUpdates_LblInfo1" xml:space="preserve">
+    <value>Als je wilt, kan HASS.Agent op de achtegrond controleren of er updates zijn.
+
+Je krijgt een melding (één per update) om je te laten weten dat er een nieuwe versie klaarstaat.
+
+Wil je deze functionaliteit activeren?</value>
+  </data>
+  <data name="OnboardingUpdates_CbNofityOnUpdate" xml:space="preserve">
+    <value>ja, laat het me weten als er een &amp;update is</value>
+  </data>
+  <data name="OnboardingUpdates_CbExecuteUpdater" xml:space="preserve">
+    <value>ja, &amp;download en start de installer voor me</value>
+  </data>
+  <data name="OnboardingUpdates_LblInfo2" xml:space="preserve">
+    <value>Wanneer er een update is, zal HASS.Agent je aanbieden om de release pagina te openen. Als je wilt, kan HASS.Agent de installer voor je downloaden en starten - hoef je zelf nog minder te doen!
+
+Het certificaat van het gedownloade bestand wordt gecontroleerd vóór uitvoering. En je ziet nog steeds een pagina met de release notes, én je moet nog steeds handmatige goedkeuring geven - niks wordt gedaan zonder jouw instemming.</value>
+  </data>
+  <data name="OnboardingDone_LblGitHub" xml:space="preserve">
+    <value>HASS.Agent GitHub pagina</value>
+  </data>
+  <data name="OnboardingDone_LblInfo3" xml:space="preserve">
+    <value>Tip: er is nog véél meer om aan te sleutelen, dus bekijk zeker ook het configuratie scherm!
+
+
+Bedankt voor het gebruiken van HASS.Agent, hopelijk heb je er wat aan :-)
+
+En als je problemen tegenkomt, maak dan gerust een ticket aan op de GitHub pagina.</value>
+  </data>
+  <data name="OnboardingDone_LblInfo2" xml:space="preserve">
+    <value>HASS.Agent zal nu herstarten om je configuratie te activeren.
+
+
+Als je notificaties ingeschakeld hebt, zal je een UAC verzoek te zien krijgen. 
+Dit is nodig om HASS.Agent toe te staan op de opgegeven poort te luisteren.</value>
+  </data>
+  <data name="OnboardingDone_LblInfo1" xml:space="preserve">
+    <value>Helemaal klaar!</value>
+  </data>
+  <data name="ServiceCommands_LblLowIntegrity" xml:space="preserve">
+    <value>verlaagde integriteit</value>
+  </data>
+  <data name="ServiceCommands_ClmName" xml:space="preserve">
+    <value>naam</value>
+  </data>
+  <data name="ServiceCommands_ClmType" xml:space="preserve">
+    <value>type</value>
+  </data>
+  <data name="ServiceCommands_BtnRemove" xml:space="preserve">
+    <value>ve&amp;rwijderen</value>
+  </data>
+  <data name="ServiceCommands_BtnModify" xml:space="preserve">
+    <value>aanpassen</value>
+  </data>
+  <data name="ServiceCommands_BtnAdd" xml:space="preserve">
+    <value>nieuwe toevoegen</value>
+  </data>
+  <data name="ServiceCommands_BtnStore" xml:space="preserve">
+    <value>ver&amp;stuur en activeer commando&apos;s</value>
+  </data>
+  <data name="ServiceCommands_LblStored" xml:space="preserve">
+    <value>commando&apos;s opgeslagen!</value>
+  </data>
+  <data name="ServiceConnect_BtnRetryAuthId" xml:space="preserve">
+    <value>toep&amp;assen</value>
+  </data>
+  <data name="ServiceConnect_LblRetryAuthId" xml:space="preserve">
+    <value>auth &amp;id</value>
+  </data>
+  <data name="ServiceConnect_LblAuthenticate" xml:space="preserve">
+    <value>Authenticeren</value>
+  </data>
+  <data name="ServiceConnect_LblConnect" xml:space="preserve">
+    <value>Verbinden met service</value>
+  </data>
+  <data name="ServiceConnect_LblLoading" xml:space="preserve">
+    <value>aan het verbinden met de satelliet service, even geduld ..</value>
+  </data>
+  <data name="ServiceConnect_LblFetchConfig" xml:space="preserve">
+    <value>Configuratie ophalen</value>
+  </data>
+  <data name="ServiceGeneral_LblInfo1" xml:space="preserve">
+    <value>Deze pagina bevat generieke configuratie opties. Blader door de tabbladen bovenaan voor MQTT instellingen, sensoren en commando&apos;s.</value>
+  </data>
+  <data name="ServiceGeneral_LblAuthId" xml:space="preserve">
+    <value>auth id</value>
+  </data>
+  <data name="ServiceGeneral_LblDeviceName" xml:space="preserve">
+    <value>apparaat&amp;naam</value>
+  </data>
+  <data name="ServiceGeneral_LblTip1" xml:space="preserve">
+    <value>tip: dubbelklik om te bladeren</value>
+  </data>
+  <data name="ServiceGeneral_LblCustomExecBinary" xml:space="preserve">
+    <value>eigen uitvoerder &amp;binary</value>
+  </data>
+  <data name="ServiceGeneral_LblCustomExecName" xml:space="preserve">
+    <value>&amp;eigen uitvoerder naam</value>
+  </data>
+  <data name="ServiceGeneral_LblSeconds" xml:space="preserve">
+    <value>seconden</value>
+  </data>
+  <data name="ServiceGeneral_LblDisconGrace" xml:space="preserve">
+    <value>verbroken verbinding wachttijd</value>
+  </data>
+  <data name="ServiceGeneral_Apply" xml:space="preserve">
+    <value>toepassen</value>
+  </data>
+  <data name="ServiceGeneral_LblVersionInfo" xml:space="preserve">
+    <value>versie</value>
+  </data>
+  <data name="ServiceGeneral_LblTip2" xml:space="preserve">
+    <value>tip: dubbelklik om willekeurig te genereren</value>
+  </data>
+  <data name="ServiceGeneral_Stored" xml:space="preserve">
+    <value>opgeslagen!</value>
+  </data>
+  <data name="ServiceMqtt_LblTip2" xml:space="preserve">
+    <value>(leeglaten voor willekeurig)</value>
+  </data>
+  <data name="ServiceMqtt_LblClientId" xml:space="preserve">
+    <value>cliënt id</value>
+  </data>
+  <data name="ServiceMqtt_LblTip3" xml:space="preserve">
+    <value>tip: dubbelklik op deze velden om te bladeren</value>
+  </data>
+  <data name="ServiceMqtt_LblClientCert" xml:space="preserve">
+    <value>cliënt certificaat</value>
+  </data>
+  <data name="ServiceMqtt_LblRootCert" xml:space="preserve">
+    <value>root certificaat</value>
+  </data>
+  <data name="ServiceMqtt_CbUseRetainFlag" xml:space="preserve">
+    <value>gebruik &amp;retain vlag</value>
+  </data>
+  <data name="ServiceMqtt_CbAllowUntrustedCertificates" xml:space="preserve">
+    <value>onvertrouwde certificaten toest&amp;aan</value>
+  </data>
+  <data name="ServiceMqtt_BtnMqttClearConfig" xml:space="preserve">
+    <value>&amp;config leegmaken</value>
+  </data>
+  <data name="ServiceMqtt_LblTip1" xml:space="preserve">
+    <value>(leeglaten bij twijfel)</value>
+  </data>
+  <data name="ServiceMqtt_LblInfo1" xml:space="preserve">
+    <value>Commando&apos;s en sensoren worden verstuurd via MQTT. Geef de inloggegevens op voor je server. Als je de HA addon gebruikt, kan je waarschijnlijk het vooringevulde adres gebruiken.</value>
+  </data>
+  <data name="ServiceMqtt_LblDiscoPrefix" xml:space="preserve">
+    <value>discovery voorvoegsel</value>
+  </data>
+  <data name="ServiceMqtt_LblBrokerPassword" xml:space="preserve">
+    <value>wachtwoord</value>
+  </data>
+  <data name="ServiceMqtt_LblBrokerUsername" xml:space="preserve">
+    <value>gebruikersnaam</value>
+  </data>
+  <data name="ServiceMqtt_LblBrokerPort" xml:space="preserve">
+    <value>poort</value>
+  </data>
+  <data name="ServiceMqtt_LblBrokerIp" xml:space="preserve">
+    <value>broker ip adres of hostname</value>
+  </data>
+  <data name="ServiceMqtt_BtnStore" xml:space="preserve">
+    <value>&amp;stuur en activeer config</value>
+  </data>
+  <data name="ServiceMqtt_BtnCopy" xml:space="preserve">
+    <value>kopieer van &amp;hass.agent</value>
+  </data>
+  <data name="ServiceMqtt_LblStored" xml:space="preserve">
+    <value>config opgeslagen!</value>
+  </data>
+  <data name="ServiceMqtt_LblStatusInfo" xml:space="preserve">
+    <value>status</value>
+  </data>
+  <data name="ServiceMqtt_LblStatus" xml:space="preserve">
+    <value>opvragen ..</value>
+  </data>
+  <data name="ServiceSensors_ClmName" xml:space="preserve">
+    <value>naam</value>
+  </data>
+  <data name="ServiceSensors_ClmType" xml:space="preserve">
+    <value>type</value>
+  </data>
+  <data name="ServiceSensors_LblRefresh" xml:space="preserve">
+    <value>verversen</value>
+  </data>
+  <data name="ServiceSensors_BtnRemove" xml:space="preserve">
+    <value>ve&amp;rwijderen</value>
+  </data>
+  <data name="ServiceSensors_BtnAdd" xml:space="preserve">
+    <value>nieuwe toevoegen</value>
+  </data>
+  <data name="ServiceSensors_BtnModify" xml:space="preserve">
+    <value>aanpassen</value>
+  </data>
+  <data name="ServiceSensors_BtnStore" xml:space="preserve">
+    <value>&amp;stuur en activeer sensoren</value>
+  </data>
+  <data name="ServiceSensors_LblStored" xml:space="preserve">
+    <value>sensoren opgeslagen!</value>
+  </data>
+  <data name="PortReservation_LblInfo1" xml:space="preserve">
+    <value>Ogenblik geduld terwijl de taak uitgevoerd wordt ..</value>
+  </data>
+  <data name="PortReservation_LblTask1" xml:space="preserve">
+    <value>API poort koppeling aanmaken</value>
+  </data>
+  <data name="PortReservation_LblTask2" xml:space="preserve">
+    <value>Firewall regel aanmaken</value>
+  </data>
+  <data name="PortReservation_Title" xml:space="preserve">
+    <value>HASS.Agent Poort Reservatie</value>
+  </data>
+  <data name="PostUpdate_LblInfo1" xml:space="preserve">
+    <value>Ogenblik geduld terwijl een aantal post-update taken uitgevoerd worden ..</value>
+  </data>
+  <data name="PostUpdate_LblTask1" xml:space="preserve">
+    <value>Satelliet Service configureren</value>
+  </data>
+  <data name="PostUpdate_LblTask2" xml:space="preserve">
+    <value>API poort koppeling aanmaken</value>
+  </data>
+  <data name="PostUpdate_Title" xml:space="preserve">
+    <value>HASS.Agent Post Update</value>
+  </data>
+  <data name="Restart_LblInfo1" xml:space="preserve">
+    <value>Ogenblik geduld terwijl HASS.Agent herstart ..</value>
+  </data>
+  <data name="Restart_LblTask1" xml:space="preserve">
+    <value>Wachten tot de vorige instantie gesloten is</value>
+  </data>
+  <data name="Restart_LblTask2" xml:space="preserve">
+    <value>HASS.Agent herstarten</value>
+  </data>
+  <data name="Restart_Title" xml:space="preserve">
+    <value>HASS.Agent Herstarter</value>
+  </data>
+  <data name="ServiceReinstall_LblInfo1" xml:space="preserve">
+    <value>Ogenblik geduld terwijl de satelliet service opnieuw geïnstalleerd wordt ..</value>
+  </data>
+  <data name="ServiceReinstall_LblTask1" xml:space="preserve">
+    <value>Satelliet Service verwijderen</value>
+  </data>
+  <data name="ServiceReinstall_LblTask2" xml:space="preserve">
+    <value>Satelliet Service installeren</value>
+  </data>
+  <data name="ServiceReinstall_Title" xml:space="preserve">
+    <value>HASS.Agent Satelliet Service Herinstallatie</value>
+  </data>
+  <data name="ServiceSetState_LblInfo1" xml:space="preserve">
+    <value>Ogenblik geduld terwijl de satelliet service geconfigureerd wordt ..</value>
+  </data>
+  <data name="ServiceSetState_LblTask1" xml:space="preserve">
+    <value>Satelliet Service inschakelen</value>
+  </data>
+  <data name="ServiceSetState_Title" xml:space="preserve">
+    <value>HASS.Agent Configureer Satelliet Service</value>
+  </data>
+  <data name="CommandMqttTopic_BtnClose" xml:space="preserve">
+    <value>sluiten</value>
+  </data>
+  <data name="CommandMqttTopic_LblInfo1" xml:space="preserve">
+    <value>Dit is de MQTT topic waarop je commando-acties kunt publiceren:</value>
+  </data>
+  <data name="CommandMqttTopic_BtnCopyClipboard" xml:space="preserve">
+    <value>kopiëren naar klembord</value>
+  </data>
+  <data name="CommandMqttTopic_LblHelp" xml:space="preserve">
+    <value>help en voorbeelden</value>
+  </data>
+  <data name="CommandMqttTopic_Title" xml:space="preserve">
+    <value>MQTT Actie Topic</value>
+  </data>
+  <data name="CommandsConfig_BtnRemove" xml:space="preserve">
+    <value>ve&amp;rwijderen</value>
+  </data>
+  <data name="CommandsConfig_BtnModify" xml:space="preserve">
+    <value>aanpassen</value>
+  </data>
+  <data name="CommandsConfig_BtnAdd" xml:space="preserve">
+    <value>nieuwe toevoegen</value>
+  </data>
+  <data name="CommandsConfig_BtnStore" xml:space="preserve">
+    <value>op&amp;slaan en activeren commando&apos;s</value>
+  </data>
+  <data name="CommandsConfig_ClmName" xml:space="preserve">
+    <value>naam</value>
+  </data>
+  <data name="CommandsConfig_ClmType" xml:space="preserve">
+    <value>type</value>
+  </data>
+  <data name="CommandsConfig_LblLowIntegrity" xml:space="preserve">
+    <value>verlaagde integriteit</value>
+  </data>
+  <data name="CommandsConfig_LblActionInfo" xml:space="preserve">
+    <value>actie</value>
+  </data>
+  <data name="CommandsConfig_Title" xml:space="preserve">
+    <value>Commando&apos;s Config</value>
+  </data>
+  <data name="CommandsMod_BtnStore" xml:space="preserve">
+    <value>commando op&amp;slaan</value>
+  </data>
+  <data name="CommandsMod_LblSetting" xml:space="preserve">
+    <value>&amp;config</value>
+  </data>
+  <data name="CommandsMod_LblName" xml:space="preserve">
+    <value>&amp;naam</value>
+  </data>
+  <data name="CommandsMod_LblDescription" xml:space="preserve">
+    <value>omschrijving</value>
+  </data>
+  <data name="CommandsMod_CbRunAsLowIntegrity" xml:space="preserve">
+    <value>uitvoe&amp;ren als &apos;verlaagde integriteit&apos;</value>
+  </data>
+  <data name="CommandsMod_LblIntegrityInfo" xml:space="preserve">
+    <value>wat is dit?</value>
+  </data>
+  <data name="CommandsMod_ClmSensorName" xml:space="preserve">
+    <value>  type</value>
+  </data>
+  <data name="CommandsMod_LblSelectedType" xml:space="preserve">
+    <value>geselecteerde type</value>
+  </data>
+  <data name="CommandsMod_LblService" xml:space="preserve">
+    <value>service</value>
+  </data>
+  <data name="CommandsMod_LblAgent" xml:space="preserve">
+    <value>agent</value>
+  </data>
+  <data name="CommandsMod_LblSpecificClient" xml:space="preserve">
+    <value>alleen hass.agent!</value>
+  </data>
+  <data name="CommandsMod_LblEntityType" xml:space="preserve">
+    <value>&amp;entiteit type</value>
+  </data>
+  <data name="CommandsMod_LblMqttTopic" xml:space="preserve">
+    <value>toon mqtt actie topic</value>
+  </data>
+  <data name="CommandsMod_LblActionInfo" xml:space="preserve">
+    <value>actie</value>
+  </data>
+  <data name="CommandsMod_Title" xml:space="preserve">
+    <value>Commando</value>
+  </data>
+  <data name="QuickActions_LblLoading" xml:space="preserve">
+    <value>ogenblik geduld terwijl je entiteiten opgehaald worden ..</value>
+  </data>
+  <data name="QuickActions_Title" xml:space="preserve">
+    <value>Snelle Acties</value>
+  </data>
+  <data name="QuickActionsConfig_BtnStore" xml:space="preserve">
+    <value>&amp;snelle acties opslaan</value>
+  </data>
+  <data name="QuickActionsConfig_BtnAdd" xml:space="preserve">
+    <value>nieuwe toevoegen</value>
+  </data>
+  <data name="QuickActionsConfig_BtnModify" xml:space="preserve">
+    <value>aanpassen</value>
+  </data>
+  <data name="QuickActionsConfig_BtnRemove" xml:space="preserve">
+    <value>ve&amp;rwijderen</value>
+  </data>
+  <data name="QuickActionsConfig_BtnPreview" xml:space="preserve">
+    <value>voorbeeld</value>
+  </data>
+  <data name="QuickActionsConfig_ClmDomain" xml:space="preserve">
+    <value>domein</value>
+  </data>
+  <data name="QuickActionsConfig_ClmEntity" xml:space="preserve">
+    <value>entiteit</value>
+  </data>
+  <data name="QuickActionsConfig_ClmAction" xml:space="preserve">
+    <value>actie</value>
+  </data>
+  <data name="QuickActionsConfig_ClmHotKey" xml:space="preserve">
+    <value>sneltoets</value>
+  </data>
+  <data name="QuickActionsConfig_ClmDescription" xml:space="preserve">
+    <value>omschrijving</value>
+  </data>
+  <data name="QuickActionsConfig_LblHotkey" xml:space="preserve">
+    <value>sneltoets ingeschakeld</value>
+  </data>
+  <data name="QuickActionsConfig_Title" xml:space="preserve">
+    <value>Snelle Acties Config</value>
+  </data>
+  <data name="QuickActionsMod_BtnStore" xml:space="preserve">
+    <value>&amp;snelle actie opslaan</value>
+  </data>
+  <data name="QuickActionsMod_LblDomain" xml:space="preserve">
+    <value>domein</value>
+  </data>
+  <data name="QuickActionsMod_LblEntityInfo" xml:space="preserve">
+    <value>&amp;entiteit</value>
+  </data>
+  <data name="QuickActionsMod_LblAction" xml:space="preserve">
+    <value>gewenste &amp;actie</value>
+  </data>
+  <data name="QuickActionsMod_LblDescription" xml:space="preserve">
+    <value>omschrijving</value>
+  </data>
+  <data name="QuickActionsMod_LblLoading" xml:space="preserve">
+    <value>ogenblik geduld terwijl je entiteiten opgehaald worden ..</value>
+  </data>
+  <data name="QuickActionsMod_CbEnableHotkey" xml:space="preserve">
+    <value>sneltoets inschakelen</value>
+  </data>
+  <data name="QuickActionsMod_LblHotkey" xml:space="preserve">
+    <value>sneltoets combinatie</value>
+  </data>
+  <data name="QuickActionsMod_LblTip1" xml:space="preserve">
+    <value>(optioneel, wordt gebruikt in plaats van de entiteit naam)</value>
+  </data>
+  <data name="QuickActionsMod_Title" xml:space="preserve">
+    <value>Snelle Actie</value>
+  </data>
+  <data name="SensorsConfig_BtnRemove" xml:space="preserve">
+    <value>ve&amp;rdwijderen</value>
+  </data>
+  <data name="SensorsConfig_BtnModify" xml:space="preserve">
+    <value>aanpassen</value>
+  </data>
+  <data name="SensorsConfig_BtnAdd" xml:space="preserve">
+    <value>nieuwe toevoegen</value>
+  </data>
+  <data name="SensorsConfig_BtnStore" xml:space="preserve">
+    <value>op&amp;slaan en activeren sensoren</value>
+  </data>
+  <data name="SensorsConfig_ClmName" xml:space="preserve">
+    <value>naam</value>
+  </data>
+  <data name="SensorsConfig_ClmType" xml:space="preserve">
+    <value>type</value>
+  </data>
+  <data name="SensorsConfig_LblRefresh" xml:space="preserve">
+    <value>verversen</value>
+  </data>
+  <data name="SensorsConfig_Title" xml:space="preserve">
+    <value>Sensoren Config</value>
+  </data>
+  <data name="SensorsMod_BtnStore" xml:space="preserve">
+    <value>&amp;sensor opslaan</value>
+  </data>
+  <data name="SensorsMod_LblSetting1" xml:space="preserve">
+    <value>instelling 1</value>
+  </data>
+  <data name="SensorsMod_LblType" xml:space="preserve">
+    <value>geselecteerde type</value>
+  </data>
+  <data name="SensorsMod_LblName" xml:space="preserve">
+    <value>&amp;naam</value>
+  </data>
+  <data name="SensorsMod_LblUpdate" xml:space="preserve">
+    <value>&amp;update elke</value>
+  </data>
+  <data name="SensorsMod_LblSeconds" xml:space="preserve">
+    <value>seconden</value>
+  </data>
+  <data name="SensorsMod_LblDescription" xml:space="preserve">
+    <value>omschrijving</value>
+  </data>
+  <data name="SensorsMod_LblSetting2" xml:space="preserve">
+    <value>instelling 2</value>
+  </data>
+  <data name="SensorsMod_LblSetting3" xml:space="preserve">
+    <value>instelling 3</value>
+  </data>
+  <data name="SensorsMod_ClmSensorName" xml:space="preserve">
+    <value>  type</value>
+  </data>
+  <data name="SensorsMod_LblMultiValue" xml:space="preserve">
+    <value>multiwaarde</value>
+  </data>
+  <data name="SensorsMod_LblAgent" xml:space="preserve">
+    <value>agent</value>
+  </data>
+  <data name="SensorsMod_LblService" xml:space="preserve">
+    <value>service</value>
+  </data>
+  <data name="SensorsMod_LblSpecificClient" xml:space="preserve">
+    <value>alleen hass.agent!</value>
+  </data>
+  <data name="SensorsMod_Title" xml:space="preserve">
+    <value>Sensor</value>
+  </data>
+  <data name="ServiceConfig_TabGeneral" xml:space="preserve">
+    <value>     Generiek     </value>
+  </data>
+  <data name="ServiceConfig_TabMqtt" xml:space="preserve">
+    <value>     MQTT     </value>
+  </data>
+  <data name="ServiceConfig_TabCommands" xml:space="preserve">
+    <value>     Commando&apos;s     </value>
+  </data>
+  <data name="ServiceConfig_TabSensors" xml:space="preserve">
+    <value>     Sensoren     </value>
+  </data>
+  <data name="ServiceConfig_Title" xml:space="preserve">
+    <value>Satelliet Service Config</value>
+  </data>
+  <data name="About_BtnClose" xml:space="preserve">
+    <value>sluiten</value>
+  </data>
+  <data name="About_LblInfo1" xml:space="preserve">
+    <value>Een Windows-gebaseerde cliënt voor het Home Assistant platform.</value>
+  </data>
+  <data name="About_LblInfo3" xml:space="preserve">
+    <value>Deze applicatie is open source en volledig gratis. Bekijk de project-pagina&apos;s van de gebruikte componenten voor hun individuele licenties.</value>
+  </data>
+  <data name="About_LblInfo4" xml:space="preserve">
+    <value>Een oprechte &apos;bedankt&apos; voor de ontwikkelaars van deze projecten, die zo aardig waren om hun harde werken te delen met de rest van de stervelingen ..</value>
+  </data>
+  <data name="About_LblInfo5" xml:space="preserve">
+    <value>En natuurlijk; bedankt Paulus Shoutsen en het hele team van ontwikkelaars dat Home Assistant gebouwd hebben en onderhouden :-)</value>
+  </data>
+  <data name="About_LblInfo2" xml:space="preserve">
+    <value>Gemaakt met liefde door</value>
+  </data>
+  <data name="About_LblInfo6" xml:space="preserve">
+    <value>Bevalt dit programma? Ondersteun ons (lees: hou ons wakker) door een kopje koffie te doneren:</value>
+  </data>
+  <data name="About_Title" xml:space="preserve">
+    <value>Over</value>
+  </data>
+  <data name="Configuration_TabGeneral" xml:space="preserve">
+    <value>Algemeen</value>
+  </data>
+  <data name="Configuration_TabExternalTools" xml:space="preserve">
+    <value>Externe Applicaties</value>
+  </data>
+  <data name="Configuration_TabHassApi" xml:space="preserve">
+    <value>Home Assistant API</value>
+  </data>
+  <data name="Configuration_TabHotKey" xml:space="preserve">
+    <value>Sneltoets</value>
+  </data>
+  <data name="Configuration_TabLocalStorage" xml:space="preserve">
+    <value>Lokale Opslag</value>
+  </data>
+  <data name="Configuration_TabLogging" xml:space="preserve">
+    <value>Logging</value>
+  </data>
+  <data name="Configuration_TabMQTT" xml:space="preserve">
+    <value>MQTT</value>
+  </data>
+  <data name="Configuration_TabNotifications" xml:space="preserve">
+    <value>Notificaties</value>
+  </data>
+  <data name="Configuration_TabService" xml:space="preserve">
+    <value>Satelliet Service</value>
+  </data>
+  <data name="Configuration_TabStartup" xml:space="preserve">
+    <value>Opstarten</value>
+  </data>
+  <data name="Configuration_TabUpdates" xml:space="preserve">
+    <value>Updates</value>
+  </data>
+  <data name="Configuration_BtnAbout" xml:space="preserve">
+    <value>over</value>
+  </data>
+  <data name="Configuration_BtnHelp" xml:space="preserve">
+    <value>&amp;help &amp;&amp; contact</value>
+  </data>
+  <data name="Configuration_BtnStore" xml:space="preserve">
+    <value>configuratie op&amp;slaan</value>
+  </data>
+  <data name="Configuration_BtnClose" xml:space="preserve">
+    <value>sluiten zonder opslaan</value>
+  </data>
+  <data name="Configuration_Title" xml:space="preserve">
+    <value>Configuratie</value>
+  </data>
+  <data name="ExitDialog_LblInfo1" xml:space="preserve">
+    <value>Wat wil je doen?</value>
+  </data>
+  <data name="ExitDialog_BtnRestart" xml:space="preserve">
+    <value>he&amp;rstarten</value>
+  </data>
+  <data name="ExitDialog_BtnHide" xml:space="preserve">
+    <value>verbergen</value>
+  </data>
+  <data name="ExitDialog_BtnExit" xml:space="preserve">
+    <value>sluiten</value>
+  </data>
+  <data name="ExitDialog_Title" xml:space="preserve">
+	  <value>Afsluiten Dialoog</value>
+  </data>
+  <data name="Help_BtnClose" xml:space="preserve">
+    <value>sluiten</value>
+  </data>
+  <data name="Help_LblInfo1" xml:space="preserve">
+    <value>Zit je vast tijdens het gebruik van HASS.Agent, heb je hulp nodig bij het integreren van sensoren/commando&apos;s of heb je een top idee voor de volgende versie?
+
+Er zijn een paar kanalen waar je ons kunt bereiken:</value>
+  </data>
+  <data name="Help_LblAbout" xml:space="preserve">
+    <value>Over</value>
+  </data>
+  <data name="Help_LblHAForum" xml:space="preserve">
+    <value>Home Assistant forum</value>
+  </data>
+  <data name="Help_LblGitHub" xml:space="preserve">
+    <value>GitHub tickets</value>
+  </data>
+  <data name="Help_LblHAInfo" xml:space="preserve">
+    <value>Beetje van alles, met de toevoeging dat andere HA gebruikers ook kunnen helpen.</value>
+  </data>
+  <data name="Help_LblGitHubInfo" xml:space="preserve">
+    <value>Rapporteer bugs, functionaliteit verzoeken, ideeën, tips, ..</value>
+  </data>
+  <data name="Help_LblDiscordInfo" xml:space="preserve">
+    <value>Krijg hulp bij het opzetten en gebruik van HASS.Agent, rapporteer bugs of praat over wat dan ook.</value>
+  </data>
+  <data name="Help_LblWikiInfo" xml:space="preserve">
+    <value>Documentatie en gebruiksvoorbeelden.</value>
+  </data>
+  <data name="Help_Title" xml:space="preserve">
+    <value>Hulp</value>
+  </data>
+  <data name="Main_TsShow" xml:space="preserve">
+    <value>toon hass.agent</value>
+  </data>
+  <data name="Main_TsShowQuickActions" xml:space="preserve">
+    <value>toon snelle acties</value>
+  </data>
+  <data name="Main_TsConfig" xml:space="preserve">
+    <value>configuratie</value>
+  </data>
+  <data name="Main_TsQuickItemsConfig" xml:space="preserve">
+    <value>snelle acties beheren</value>
+  </data>
+  <data name="Main_TsLocalSensors" xml:space="preserve">
+    <value>lokale sensoren beheren</value>
+  </data>
+  <data name="Main_TsCommands" xml:space="preserve">
+    <value>commando&apos;s beheren</value>
+  </data>
+  <data name="Main_CheckForUpdates" xml:space="preserve">
+    <value>controleren op updates</value>
+  </data>
+  <data name="Main_TsDonate" xml:space="preserve">
+    <value>doneren</value>
+  </data>
+  <data name="Main_TsHelp" xml:space="preserve">
+    <value>help &amp;&amp; contact</value>
+  </data>
+  <data name="Main_TsAbout" xml:space="preserve">
+    <value>over</value>
+  </data>
+  <data name="Main_TsExit" xml:space="preserve">
+    <value>afsluiten</value>
+  </data>
+  <data name="Main_BtnHide" xml:space="preserve">
+    <value>verbergen</value>
+  </data>
+  <data name="Main_GpControls" xml:space="preserve">
+    <value>bediening</value>
+  </data>
+  <data name="Main_BtnServiceManager" xml:space="preserve">
+    <value>
+s&amp;atelliet service</value>
+  </data>
+  <data name="Main_BtnAppSettings" xml:space="preserve">
+    <value>
+c&amp;onfiguratie</value>
+  </data>
+  <data name="Main_BtnActionsManager" xml:space="preserve">
+    <value>
+snelle acties</value>
+  </data>
+  <data name="Main_BtnCommandsManager" xml:space="preserve">
+    <value>
+laden</value>
+  </data>
+  <data name="Main_BtnSensorsManager" xml:space="preserve">
+    <value>
+laden</value>
+  </data>
+  <data name="Main_GpStatus" xml:space="preserve">
+    <value>systeem status</value>
+  </data>
+  <data name="Main_LblService" xml:space="preserve">
+    <value>satelliet service:</value>
+  </data>
+  <data name="Main_LblCommands" xml:space="preserve">
+    <value>commando&apos;s:</value>
+  </data>
+  <data name="Main_LblSensors" xml:space="preserve">
+    <value>sensoren:</value>
+  </data>
+  <data name="Main_LblQuickActions" xml:space="preserve">
+    <value>snelle acties:</value>
+  </data>
+  <data name="Main_LblHomeAssistantApi" xml:space="preserve">
+    <value>home assistant api:</value>
+  </data>
+  <data name="Main_LblNotificationApi" xml:space="preserve">
+    <value>notificaties api:</value>
+  </data>
+  <data name="Onboarding_BtnNext" xml:space="preserve">
+    <value>volge&amp;nde</value>
+  </data>
+  <data name="Onboarding_BtnClose" xml:space="preserve">
+    <value>sluiten</value>
+  </data>
+  <data name="Onboarding_BtnPrevious" xml:space="preserve">
+    <value>vorige</value>
+  </data>
+  <data name="Onboarding_Onboarding" xml:space="preserve">
+    <value>HASS.Agent Onboarding</value>
+  </data>
+  <data name="UpdatePending_BtnDownload" xml:space="preserve">
+    <value>ogenblik geduld, info ophalen ..</value>
+  </data>
+  <data name="UpdatePending_LblNewReleaseInfo" xml:space="preserve">
+    <value>Er is een nieuwe versie berschikbaar:</value>
+  </data>
+  <data name="UpdatePending_LblInfo1" xml:space="preserve">
+    <value>Release notitites</value>
+  </data>
+  <data name="UpdatePending_BtnIgnore" xml:space="preserve">
+    <value>negeer deze update</value>
+  </data>
+  <data name="UpdatePending_LblRelease" xml:space="preserve">
+    <value>release pagina</value>
+  </data>
+  <data name="UpdatePending_Title" xml:space="preserve">
+    <value>HASS.Agent Update</value>
+  </data>
+  <data name="CommandsManager_CustomCommandDescription" xml:space="preserve">
+    <value>Een eigen commando uitvoeren.
+
+Deze commando&apos;s draaien zonder speciale privileges. Om met verhoogde privileges uit te voeren, maak een Geplande Taak en gebruik &apos;schtasks /Run /TN &quot;TaskName&quot;&apos; als commando om the taak uit te voeren.
+
+Of schakel &apos;uitvoeren met verlaagde integriteit&apos; in voor een strictere uitvoering.</value>
+  </data>
+  <data name="CommandsManager_CustomExecutorCommandDescription" xml:space="preserve">
+    <value>Voert het commando uit via de geconfigureerde eigen executor (in Configuratie -&gt; Externe Programma&apos;s).
+
+Je commando wordt onveranderd toegevoegd als argument, dus je moet je eigen haakjes etc. toevoegen indien nodig.</value>
+  </data>
+  <data name="CommandsManager_HibernateCommandDescription" xml:space="preserve">
+    <value>Zet de machine in hibernation modus.</value>
+  </data>
+  <data name="CommandsManager_KeyCommandDescription" xml:space="preserve">
+    <value>Simuleert een enkele toetsaanslag.
+
+Je kunt één van deze opties kiezen: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+
+Als je meer toetsen nodig hebt en/of extra opties zoals CTRL, gebruik dan de MeerdereToetsen commando.</value>
+  </data>
+  <data name="CommandsManager_LaunchUrlCommandDescription" xml:space="preserve">
+    <value>Opent de opgegeven URL, normaliter in je standaard browser.
+
+Om &apos;privémodus&apos; te gebruiken, moet je een specifieke browser toevoegen in Configuratie -&gt; Externe Programma&apos;s.
+
+Als je alleen een scherm wilt met een specifieke URL (niet een complete browser), gebruik dan een &apos;WebView&apos; commando.</value>
+  </data>
+  <data name="CommandsManager_LockCommandDescription" xml:space="preserve">
+    <value>Vergrendelt de huidige sessie.</value>
+  </data>
+  <data name="CommandsManager_LogOffCommandDescription" xml:space="preserve">
+    <value>Logt de huidige sessie uit.</value>
+  </data>
+  <data name="CommandsManager_MediaMuteCommandDescription" xml:space="preserve">
+    <value>Simuleert de &apos;demp&apos; (mute) knop.</value>
+  </data>
+  <data name="CommandsManager_MediaNextCommandDescription" xml:space="preserve">
+    <value>Simuleert de &apos;media volgende&apos; knop.</value>
+  </data>
+  <data name="CommandsManager_MediaPlayPauseCommandDescription" xml:space="preserve">
+    <value>Simuleert de &apos;media afspelen/pauze&apos; knop.</value>
+  </data>
+  <data name="CommandsManager_MediaPreviousCommandDescription" xml:space="preserve">
+    <value>Simuleert de &apos;media vorige&apos; knop.</value>
+  </data>
+  <data name="CommandsManager_MediaVolumeDownCommandDescription" xml:space="preserve">
+    <value>Simuleert de &apos;volume lager&apos; knop.</value>
+  </data>
+  <data name="CommandsManager_MediaVolumeUpCommandDescription" xml:space="preserve">
+    <value>Simuleert de &apos;volume hoger&apos; knop.</value>
+  </data>
+  <data name="CommandsManager_MultipleKeysCommandDescription" xml:space="preserve">
+    <value>Simuleert het indrukken van meerdere toetsen:
+
+Je moet [ ] om elke toets heen zetten, anders kan HASS.Agent ze niet onderscheiden. Dus stel dat je X TAB Y SHIFT-Z wilt indrukken, dan is dat [X] [{TAB}] [Y] [+Z].
+
+Er zijn een paar trucs die je kunt gebruiken:
+
+- Als je een haakje wilt indrukken, &apos;escape&apos; die dan, dus [ is [\[] en ] is [\]]
+
+- Speciale tekens moeten tussen { }, zoals {TAB} of {UP}
+
+- Voeg een + aan een toets toe om SHIFT toe te voegen, ^ voor CTRL en % voor ALT. Dus, +C is SHIFT-C. Of, +(CD) is SHIFT-C en SHIFT-D, en +CD is SHIFT-C en D
+
+- Voor meerdere toetsen kan je {z 15} gebruiken, wat betekent dat Z 15 keer ingedrukt wordt.
+
+Meer info: https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys</value>
+  </data>
+  <data name="CommandsManager_PowershellCommandDescription" xml:space="preserve">
+    <value>Voert een Powershell commando of script uit.
+
+Je kunt de locatie van een script (*.ps1) opgeven, of een enkele-regel commando.
+
+Dit draait zonder speciale rechten.</value>
+  </data>
+  <data name="CommandsManager_PublishAllSensorsCommandDescription" xml:space="preserve">
+    <value>Reset alle sensor controles, wat de sensoren forceert om hun waarde opnieuw te bepalen en verzenden.
+
+Handig om bijvoorbeeld HASS.Agent te forceren om al je sensoren te updaten na een HA herstart.</value>
+  </data>
+  <data name="CommandsManager_RestartCommandDescription" xml:space="preserve">
+    <value>Herstart de machine na één minuut.
+
+Tip: per ongeluk geactiveerd? Voer &apos;shutdown /a&apos; uit om te annuleren.</value>
+  </data>
+  <data name="CommandsManager_ShutdownCommandDescription" xml:space="preserve">
+    <value>Sluit de machine af na één minuut.
+
+Tip: per ongeluk geactiveerd? Voer &apos;shutdown /a&apos; uit om te annuleren.</value>
+  </data>
+  <data name="CommandsManager_SleepCommandDescription" xml:space="preserve">
+    <value>Zet de machine in slaap modus.
+
+Info: vanwege een limiet van Windows, werkt dit alleen als hibernation uitgeschakeld is, anders gaat hij in hibernation modus.
+
+Je kunt iets als NirCmd (http://www.nirsoft.net/utils/nircmd.html) gebruiken om dit te omzeilen.</value>
+  </data>
+  <data name="ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox1" xml:space="preserve">
+    <value>Voer de locatie van je browser&apos;s binary in (.exe bestand).</value>
+  </data>
+  <data name="ConfigExternalTools_ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox2" xml:space="preserve">
+    <value>De opgegeven binary is niet gevonden.</value>
+  </data>
+  <data name="ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox3" xml:space="preserve">
+    <value>Je hebt geen privémodus argumenten opgegeven, dus de browser start waarschijnlijk normaal.
+
+Wil je doorgaan?</value>
+  </data>
+  <data name="ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox4" xml:space="preserve">
+    <value>Er is iets misgegaan tijdens het starten van je browser in privémodus.
+
+Controleer de logs voor meer info.</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox1" xml:space="preserve">
+    <value>Voer een geldige API sleutel in.</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox2" xml:space="preserve">
+    <value>Voeg je Home Assistant&apos;s URI in.</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox3" xml:space="preserve">
+    <value>Kan niet verbinden, de volgende error werd opgegeven:
+
+{0}</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox4" xml:space="preserve">
+    <value>Verbinding OK!
+
+Home Assistant versie: {0}</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnClearImageCache_MessageBox1" xml:space="preserve">
+    <value>Afbeeldingen cache leeggemaakt!</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnClearImageCache_InfoText1" xml:space="preserve">
+    <value>opschonen ..</value>
+  </data>
+  <data name="ConfigNotifications_BtnSendTestNotification_MessageBox1" xml:space="preserve">
+    <value>Notificaties zijn nog uitgeschakeld. Schakel deze in, herstart HASS.Agent en probeer opnieuw.</value>
+  </data>
+  <data name="ConfigNotifications_BtnSendTestNotification_MessageBox2" xml:space="preserve">
+    <value>De notificatie zou getoond moeten zijn. Zo niet, controleer dan de logs, of raadpleeg de documentatie voor probleemoplossende tips.
+
+Ter info: dit test alleen of lokaal notificaties getoond kunnen worden!</value>
+  </data>
+  <data name="ConfigNotifications_TestNotification" xml:space="preserve">
+    <value>Dit is een test notificatie.</value>
+  </data>
+  <data name="ConfigNotifications_BtnExecutePortReservation_Busy" xml:space="preserve">
+    <value>uitvoeren, ogenblik geduld ..</value>
+  </data>
+  <data name="ConfigNotifications_BtnExecutePortReservation_MessageBox1" xml:space="preserve">
+    <value>Er ging iets mis!
+
+Probeer handmatig het vereiste commando uit te voeren. Die is gekopieerd naar je klembord, je hoeft &apos;m alleen maar te plakken in een &apos;command prompt&apos; met verhoogde privileges.
+
+Vergeet niet om de poort van je firewall regel ook aan te passen.</value>
+  </data>
+  <data name="ConfigService_NotInstalled" xml:space="preserve">
+    <value>niet geïnstalleerd</value>
+  </data>
+  <data name="ConfigService_Disabled" xml:space="preserve">
+    <value>uitgeschakeld</value>
+  </data>
+  <data name="ConfigService_Running" xml:space="preserve">
+    <value>actief</value>
+  </data>
+  <data name="ConfigService_Stopped" xml:space="preserve">
+    <value>gestopt</value>
+  </data>
+  <data name="ConfigService_Failed" xml:space="preserve">
+    <value>gefaald</value>
+  </data>
+  <data name="ConfigService_BtnStopService_MessageBox1" xml:space="preserve">
+    <value>Er ging iets mis tijdens het stoppen van de service. Heb je het UAC verzoek toegestaan?
+
+Controleer de HASS.Agent (niet de service) logs voor meer info.</value>
+  </data>
+  <data name="ConfigService_BtnStartService_MessageBox1" xml:space="preserve">
+    <value>De service staat op &apos;uitgeschakeld&apos;, dus kan niet gestart worden.
+
+Schakel eerst de service in, en probeer het dan opnieuw.</value>
+  </data>
+  <data name="ConfigService_BtnStartService_MessageBox2" xml:space="preserve">
+    <value>Er ging iets mis bij het starten van de service. Heb je het UAC verzoek toegestaan?
+
+Controleer de HASS.Agent (niet die van de service) logs voor meer info.</value>
+  </data>
+  <data name="ConfigService_BtnDisableService_MessageBox1" xml:space="preserve">
+    <value>Er ging iets mis bij het uitschakelen van de service. Heb je het UAC verzoek toegestaan?
+
+Controleer de HASS.Agent (niet die van de service) logs voor meer info.</value>
+  </data>
+  <data name="ConfigService_BtnEnableService_MessageBox1" xml:space="preserve">
+    <value>Er ging iets mis bij het inschakelen van de service. Heb je het UAC verzoek toegestaan?
+
+Controleer de HASS.Agent (niet die van de service) logs voor meer info.</value>
+  </data>
+  <data name="ConfigService_BtnShowLogs_MessageBox1" xml:space="preserve">
+    <value>Er ging iets mis bij het herinstalleren van de service. Heb je het UAC verzoek toegestaan?
+
+Controleer de HASS.Agent (niet die van de service) logs voor meer info.</value>
+  </data>
+  <data name="ConfigStartup_BtnSetStartOnLogin_MessageBox1" xml:space="preserve">
+    <value>Er ging iets mis bij het uitschakelen van start-bij-inloggen.
+
+Controleer de logs voor meer info.</value>
+  </data>
+  <data name="ConfigStartup_BtnSetStartOnLogin_MessageBox2" xml:space="preserve">
+    <value>Er ging iets mis bij het activeren van start-bij-inloggen.
+
+Controleer de logs voor meer info.</value>
+  </data>
+  <data name="ConfigStartup_Enabled" xml:space="preserve">
+    <value>ingeschakeld</value>
+  </data>
+  <data name="ConfigStartup_Disable" xml:space="preserve">
+    <value>start-bij-inloggen uitschakelen</value>
+  </data>
+  <data name="ConfigStartup_Disabled" xml:space="preserve">
+    <value>uitgeschakeld</value>
+  </data>
+  <data name="ConfigStartup_Enable" xml:space="preserve">
+    <value>start-bij-inloggen inschakelen</value>
+  </data>
+  <data name="OnboardingStartup_Activated" xml:space="preserve">
+    <value>Start-bij-inloggen succesvol geactiveerd!</value>
+  </data>
+  <data name="OnboardingStartup_EnableNow" xml:space="preserve">
+    <value>Wil je start-bij-inloggen nu inschakelen?</value>
+  </data>
+  <data name="OnboardingStartup_AlreadyActivated" xml:space="preserve">
+    <value>Start-bij-inloggen is al geactiveerd, helemaal klaar!</value>
+  </data>
+  <data name="OnboardingStartup_Activating" xml:space="preserve">
+    <value>start-bij-inloggen activeren, ogenblik geduld ..</value>
+  </data>
+  <data name="OnboardingStartup_Failed" xml:space="preserve">
+    <value>Er ging iets mis. Je kunt het nog een keer proberen, of naar de volgende pagina gaan en het opnieuw proberen nadat HASS.Agent herstart is.</value>
+  </data>
+  <data name="OnboardingStartup_BtnSetLaunchOnLogin_2" xml:space="preserve">
+    <value>start-bij-inloggen inschakelen</value>
+  </data>
+  <data name="OnboardingApi_BtnTest_MessageBox1" xml:space="preserve">
+    <value>Vul een geldige API sleutel in.</value>
+  </data>
+  <data name="OnboardingApi_BtnTest_MessageBox2" xml:space="preserve">
+    <value>Vul Home Assistant&apos;s URI in.</value>
+  </data>
+  <data name="OnboardingApi_BtnTest_MessageBox3" xml:space="preserve">
+    <value>Kan niet verbinden, de volgende error was teruggegeven:
+
+{0}</value>
+  </data>
+  <data name="OnboardingApi_BtnTest_MessageBox4" xml:space="preserve">
+    <value>Verbinding OK!
+
+Home Assistant versie: {0}</value>
+  </data>
+  <data name="OnboardingApi_BtnTest_Testing" xml:space="preserve">
+    <value>testen ..</value>
+  </data>
+  <data name="ServiceCommands_BtnStore_MessageBox1" xml:space="preserve">
+    <value>Er is iets mis gegaan bij het opslaan van de commando&apos;s, controleer de logs voor meer info.</value>
+  </data>
+  <data name="ServiceCommands_BtnStore_Storing" xml:space="preserve">
+    <value>opslaan en registreren, ogenblik geduld ..</value>
+  </data>
+  <data name="ServiceConnect_Connecting" xml:space="preserve">
+    <value>verbinden met de satelliet service, ogenblik geduld ..</value>
+  </data>
+  <data name="ServiceConnect_Failed" xml:space="preserve">
+    <value>verbinden met de service is gefaald</value>
+  </data>
+  <data name="ServiceConnect_FailedMessage" xml:space="preserve">
+    <value>The service is niet gevonden! Je kunt &apos;m installeren en beheren vanuit het configuratie paneel.
+
+Wanneer hij weer draait, kun je hier terugkomen om de commando&apos;s en sensoren te configureren.</value>
+  </data>
+  <data name="ServiceConnect_CommunicationFailed" xml:space="preserve">
+    <value>communiceren met de service is gefaald</value>
+  </data>
+  <data name="ServiceConnect_CommunicationFailedMessage" xml:space="preserve">
+    <value>Kan niet communiceren met de service. Controleer de logs voor meer info.
+
+Je kunt de logs openen en de service beheren vanuit het configuratie paneel.</value>
+  </data>
+  <data name="ServiceConnect_Unauthorized" xml:space="preserve">
+    <value>onbevoegd</value>
+  </data>
+  <data name="ServiceConnect_UnauthorizedMessage" xml:space="preserve">
+    <value>Je bent onbevoegd om met de service te verbinden.
+
+Als je de juiste auth ID hebt, kun je die nu invoeren en opnieuw proberen.</value>
+  </data>
+  <data name="ServiceConnect_SettingsFailed" xml:space="preserve">
+    <value>ophalen instellingen gefaald</value>
+  </data>
+  <data name="ServiceConnect_SettingsFailedMessage" xml:space="preserve">
+    <value>De service heeft een fout teruggegeven tijdens het ophalen van de instellingen. Controleer de logs voor meer info.
+
+Je kunt de logs openen en de service beheren via het configuratie paneel.</value>
+  </data>
+  <data name="ServiceConnect_MqttFailed" xml:space="preserve">
+    <value>ophalen mqtt instellingen gefaald</value>
+  </data>
+  <data name="ServiceConnect_MqttFailedMessage" xml:space="preserve">
+    <value>De service heeft een fout teruggegeven tijdens het ophalen van de MQTT instellingen. Controleer de logs voor meer info.
+
+Je kunt de logs openen en de service beheren via het configuratie paneel.</value>
+  </data>
+  <data name="ServiceConnect_CommandsFailed" xml:space="preserve">
+    <value>ophalen geconfigureerde commando&apos;s gefaald</value>
+  </data>
+  <data name="ServiceConnect_CommandsFailedMessage" xml:space="preserve">
+    <value>De service heeft een fout teruggegeven tijdens het ophalen van de opgeslagen commando&apos;s. Controleer de logs voor meer info.
+
+Je kunt de logs openen en de service beheren via het configuratie paneel.</value>
+  </data>
+  <data name="ServiceConnect_SensorsFailed" xml:space="preserve">
+    <value>ophalen opgeslagen sensoren gefaald</value>
+  </data>
+  <data name="ServiceConnect_SensorsFailedMessage" xml:space="preserve">
+    <value>De service heeft een fout teruggegeven tijdens het ophalen van de opgeslagen sensoren. Controleer de logs voor meer info.
+
+Je kunt de logs openen en de service beheren via het configuratie paneel.</value>
+  </data>
+  <data name="ServiceGeneral_TbAuthId_MessageBox1" xml:space="preserve">
+    <value>Het opslaan van een lege auth ID zorgt ervoor dat alle HASS.Agents toegang hebben tot de service.
+
+Weet je zeker dat je dit wilt?</value>
+  </data>
+  <data name="ServiceGeneral_SavingFailedMessageBox" xml:space="preserve">
+    <value>Er is iets misgegaan bij het opslaan, controleer de logs voor meer info.</value>
+  </data>
+  <data name="ServiceGeneral_BtnStoreDeviceName_MessageBox1" xml:space="preserve">
+    <value>Vul eerst een apparaatnaam in.</value>
+  </data>
+  <data name="ServiceGeneral_BtnStoreCustomExecutor_MessageBox1" xml:space="preserve">
+    <value>Selecteer eerst een executor (tip: dubbelklik om te bladeren).</value>
+  </data>
+  <data name="ServiceGeneral_BtnStoreCustomExecutor_MessageBox2" xml:space="preserve">
+    <value>De geselecteerde executor is niet gevonden. Selecteer een andere.</value>
+  </data>
+  <data name="ServiceGeneral_LblAuthIdInfo_MessageBox1" xml:space="preserve">
+    <value>Stel een auth ID in als je niet wilt dat elke instantie van HASS.Agent op deze PC verbinding kan maken met de satelliet service.
+
+Alleen de instanties met de juiste ID, kunnen verbinden.
+
+Leeglaten om ze allemaal te laten verbinden.</value>
+  </data>
+  <data name="ServiceGeneral_LblDeviceNameInfo_MessageBox1" xml:space="preserve">
+    <value>Met deze naam registreert de satelliet service zichzelf bij Home Assistant.
+
+Standaard is het je PC naam plus &apos;-satellite&apos;.</value>
+  </data>
+  <data name="ServiceGeneral_LblDisconGraceInfo_MessageBox1" xml:space="preserve">
+    <value>De hoeveelheid tijd dat de satelliet service wacht voordat hij een verbroken verbinding met de MQTT broker meldt.</value>
+  </data>
+  <data name="ServiceMqtt_StatusError" xml:space="preserve">
+    <value>fout tijdens ophalen status, controleer de logs</value>
+  </data>
+  <data name="ServiceMqtt_BtnStore_MessageBox1" xml:space="preserve">
+    <value>Er is iets misgegaan bij het opslaan van de configuratie, controleer de logs voor meer info.</value>
+  </data>
+  <data name="ServiceMqtt_BtnStore_Storing" xml:space="preserve">
+    <value>opslaan en registreren, even geduld ..</value>
+  </data>
+  <data name="ServiceSensors_BtnStore_MessageBox1" xml:space="preserve">
+    <value>Er is iets mis gegaan bij het opslaan van de sensoren, controleer de logs voor meer info.</value>
+  </data>
+  <data name="ServiceSensors_BtnStore_Storing" xml:space="preserve">
+    <value>opslaan en registreren, ogenblik geduld ..</value>
+  </data>
+  <data name="PortReservation_ProcessPostUpdate_MessageBox1" xml:space="preserve">
+    <value>Niet alle stappen zijn succesvol voltooid. Controleer de logs voor meer informatie.</value>
+  </data>
+  <data name="PostUpdate_ProcessPostUpdate_MessageBox1" xml:space="preserve">
+    <value>Niet alle stappen zijn succesvol voltooid. Controleer de logs voor meer informatie.</value>
+  </data>
+  <data name="Restart_ProcessRestart_MessageBox1" xml:space="preserve">
+    <value>HASS.Agent is nog steeds actief na {0} seconden. Sluit alle instanties af en herstart handmatig.
+
+Controleer de logs voor meer info, en licht eventueel de ontwikkelaars in.</value>
+  </data>
+  <data name="ServiceReinstall_ProcessReinstall_MessageBox1" xml:space="preserve">
+    <value>Niet alle stappen zijn succesvol voltooid. Controleer de logs voor meer informatie.</value>
+  </data>
+  <data name="ServiceSetState_Enabled" xml:space="preserve">
+    <value>Satelliet Service inschakelen</value>
+  </data>
+  <data name="ServiceSetState_Disabled" xml:space="preserve">
+    <value>Satelliet Service uitschakelen</value>
+  </data>
+  <data name="ServiceSetState_Started" xml:space="preserve">
+    <value>Satelliet Service starten</value>
+  </data>
+  <data name="ServiceSetState_Stopped" xml:space="preserve">
+    <value>Satelliet Service stoppen</value>
+  </data>
+  <data name="ServiceSetState_ProcessState_MessageBox1" xml:space="preserve">
+    <value>Er is iets misgegaan bij het verwerken van de gewenste service staat.
+
+Controleer de logs voor meer informatie.</value>
+  </data>
+  <data name="CommandMqttTopic_BtnCopyClipboard_Copied" xml:space="preserve">
+    <value>topic gekopieerd naar het klembord</value>
+  </data>
+  <data name="CommandsConfig_BtnStore_Storing" xml:space="preserve">
+    <value>opslaan en registreren, ogenblik geduld ..</value>
+  </data>
+  <data name="CommandsConfig_BtnStore_MessageBox1" xml:space="preserve">
+    <value>Er is iets mis gegaan bij het opslaan van de commando&apos;s, controleer de logs voor meer info.</value>
+  </data>
+  <data name="CommandsMod_Title_NewCommand" xml:space="preserve">
+    <value>Nieuwe Commando</value>
+  </data>
+  <data name="CommandsMod_Title_ModCommand" xml:space="preserve">
+    <value>Commando Aanpassen</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox1" xml:space="preserve">
+    <value>Selecteer eerst een commandotype.</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox2" xml:space="preserve">
+    <value>Selecteer eerst een geldig commandotype.</value>
+  </data>
+  <data name="CommandsMod_MessageBox_EntityType" xml:space="preserve">
+    <value>Selecteer eerst een geldig entiteitstype.</value>
+  </data>
+  <data name="CommandsMod_MessageBox_Name" xml:space="preserve">
+    <value>Voer eerst een naam in.</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox3" xml:space="preserve">
+    <value>Er is al een commando met die naam. Weet je zeker dat je door wilt gaan?</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox4" xml:space="preserve">
+    <value>Als je geen commando invult, kun je deze entiteit alleen gebruiken met een &apos;actie&apos; waarde via Home Assistant. Uitvoeren in de huidige vorm doet niks.
+
+Weet je zeker dat je dit wilt?</value>
+  </data>
+  <data name="CommandsMod_MessageBox_Action" xml:space="preserve">
+    <value>Als je geen commando of script invult, kun je deze entiteit alleen gebruiken met een &apos;actie&apos; waarde via Home Assistant. Uitvoeren in de huidige vorm doet niks.
+
+Weet je zeker dat je dit wilt?</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox5" xml:space="preserve">
+    <value>Vul eerst een keycode in.</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox6" xml:space="preserve">
+    <value>Controleer van keys gefaald: {0}</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox7" xml:space="preserve">
+    <value>Als je geen URL invult, kun je deze entiteit alleen gebruiken met een &apos;actie&apos; waarde via Home Assistant. Uitvoeren in de huidige vorm doet niks.
+
+Weet je zeker dat je dit wilt?</value>
+  </data>
+  <data name="CommandsMod_LblSetting_Command" xml:space="preserve">
+    <value>commando</value>
+  </data>
+  <data name="CommandsMod_LblSetting_CommandScript" xml:space="preserve">
+    <value>commando of script</value>
+  </data>
+  <data name="CommandsMod_LblSetting_KeyCode" xml:space="preserve">
+    <value>keycode</value>
+  </data>
+  <data name="CommandsMod_LblSetting_KeyCodes" xml:space="preserve">
+    <value>keycodes</value>
+  </data>
+  <data name="CommandsMod_CbCommandSpecific_Incognito" xml:space="preserve">
+    <value>lanceren in privémodus</value>
+  </data>
+  <data name="CommandsMod_LblInfo_Browser" xml:space="preserve">
+    <value>browser: standaard
+
+configureer een eigen browser om privémodus te activeren</value>
+  </data>
+  <data name="CommandsMod_LblSetting_Url" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="CommandsMod_LblInfo_BrowserSpecific" xml:space="preserve">
+    <value>browser: {0}</value>
+  </data>
+  <data name="CommandsMod_LblInfo_Executor" xml:space="preserve">
+    <value>executor: geen
+
+configureer een executor, anders kan het commando niet uitvoeren</value>
+  </data>
+  <data name="CommandsMod_LblInfo_ExecutorSpecific" xml:space="preserve">
+    <value>executor: {0}</value>
+  </data>
+  <data name="CommandsMod_LblIntegrityInfo_InfoMsg1" xml:space="preserve">
+    <value>Verlaagde integriteit betekent dat je commando uitgevoerd wordt met beperkte privileges.</value>
+  </data>
+  <data name="CommandsMod_LblIntegrityInfo_InfoMsg2" xml:space="preserve">
+    <value>Dat betekent dat het alleen bestanden kan opslaan en aanpassen op bepaalde plekken,</value>
+  </data>
+  <data name="CommandsMod_LblIntegrityInfo_InfoMsg3" xml:space="preserve">
+    <value>zoals de &apos;%USERPROFILE%\AppData\LocalLow&apos; map of</value>
+  </data>
+  <data name="CommandsMod_LblIntegrityInfo_InfoMsg4" xml:space="preserve">
+    <value>de &apos;HKEY_CURRENT_USER\Software\AppDataLow&apos; register sleutel.</value>
+  </data>
+  <data name="CommandsMod_LblIntegrityInfo_InfoMsg5" xml:space="preserve">
+    <value>Je kunt het beste je commando testen om zeker te weten dat hij hier niet door wordt beïnvloed.</value>
+  </data>
+  <data name="CommandsMod_SpecificClient" xml:space="preserve">
+    <value>alleen {0}!</value>
+  </data>
+  <data name="CommandsMod_LblMqttTopic_MessageBox1" xml:space="preserve">
+    <value>De MQTT beheerder is nog niet goed ingesteld, controleer dat je MQTT hebt geconfigureerd en herstart.</value>
+  </data>
+  <data name="QuickActions_CheckHassManager_MessageBox1" xml:space="preserve">
+    <value>Kan je entiteiten niet ophalen vanwege ontbrekende configuratie, vul de vereiste waardes in bij het configuratie scherm.</value>
+  </data>
+  <data name="QuickActions_MessageBox_EntityFailed" xml:space="preserve">
+    <value>Er is iets misgegaan bij het ophalen van je entiteiten.</value>
+  </data>
+  <data name="QuickActionsMod_Title_New" xml:space="preserve">
+    <value>Nieuwe Snelle Actie</value>
+  </data>
+  <data name="QuickActionsMod_Title_Mod" xml:space="preserve">
+    <value>Snelle Actie Aanpassen</value>
+  </data>
+  <data name="QuickActionsMod_CheckHassManager_MessageBox1" xml:space="preserve">
+    <value>Kan je entiteiten niet ophalen vanwege ontbrekende configuratie, vul de vereiste waardes in bij het configuratie scherm.</value>
+  </data>
+  <data name="QuickActionsMod_MessageBox_Entities" xml:space="preserve">
+    <value>Er is iets misgegaan bij het ophalen van je entiteiten.</value>
+  </data>
+  <data name="QuickActionsMod_BtnStore_MessageBox1" xml:space="preserve">
+    <value>Selecteer eerst een entiteit.</value>
+  </data>
+  <data name="QuickActionsMod_BtnStore_MessageBox2" xml:space="preserve">
+    <value>Selecteer eerst een domein.</value>
+  </data>
+  <data name="QuickActionsMod_BtnStore_MessageBox3" xml:space="preserve">
+    <value>Onbekende actie, selecteer een geldige.</value>
+  </data>
+  <data name="SensorsConfig_BtnStore_Storing" xml:space="preserve">
+    <value>opslaan en registreren, ogenblik geduld ..</value>
+  </data>
+  <data name="SensorsConfig_BtnStore_MessageBox1" xml:space="preserve">
+    <value>Er is iets misgegaan bij het opslaan van de sensoren, controleer de logs voor meer info.</value>
+  </data>
+  <data name="SensorsMod_Title_New" xml:space="preserve">
+    <value>Nieuwe Sensor</value>
+  </data>
+  <data name="SensorsMod_Title_Mod" xml:space="preserve">
+    <value>Sensor Aanpassen</value>
+  </data>
+  <data name="SensorsMod_LblSetting1_WindowName" xml:space="preserve">
+    <value>schermnaam</value>
+  </data>
+  <data name="SensorsMod_LblSetting1_Wmi" xml:space="preserve">
+    <value>wmi query</value>
+  </data>
+  <data name="SensorsMod_LblSetting2_Wmi" xml:space="preserve">
+    <value>wmi scope (optioneel)</value>
+  </data>
+  <data name="SensorsMod_LblSetting1_Category" xml:space="preserve">
+    <value>categorie</value>
+  </data>
+  <data name="SensorsMod_LblSetting2_Counter" xml:space="preserve">
+    <value>teller</value>
+  </data>
+  <data name="SensorsMod_LblSetting3_Instance" xml:space="preserve">
+    <value>instance (optioneel)</value>
+  </data>
+  <data name="SensorsMod_LblSetting1_Process" xml:space="preserve">
+    <value>proces</value>
+  </data>
+  <data name="SensorsMod_LblSetting1_Service" xml:space="preserve">
+    <value>service</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox1" xml:space="preserve">
+    <value>Selecteer eerst een sensortype.</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox2" xml:space="preserve">
+    <value>Selecteer eerst een geldig sensortype.</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox3" xml:space="preserve">
+    <value>Voer eerst een naam in.</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox4" xml:space="preserve">
+    <value>Er is al een enkele-waarde sensor met die naam. Weet je zeker dat je door wilt gaan?</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox5" xml:space="preserve">
+    <value>Er is al een multi-waarde sensor met die naam. Weet je zeker dat je door wilt gaan?</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox6" xml:space="preserve">
+    <value>Vul eerst een interval in tussen de 1 en 43200 (12 uur).</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox7" xml:space="preserve">
+    <value>Vul eerst een schermnaam in.</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox8" xml:space="preserve">
+    <value>Vul eerst een query in.</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox9" xml:space="preserve">
+    <value>Vul eerst een categorie en instance in.</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox10" xml:space="preserve">
+    <value>Vul eerst de naam van een proces in.</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox11" xml:space="preserve">
+    <value>Vul eerst de naam van een service in.</value>
+  </data>
+  <data name="SensorsMod_SpecificClient" xml:space="preserve">
+    <value>alleen {0}!</value>
+  </data>
+  <data name="Configuration_ProcessChanges_MessageBox1" xml:space="preserve">
+    <value>Je hebt je apparaatnaam aangepast.
+
+Al je sensoren en commando&apos;s worden nu ongepubliceerd, waarna HASS.Agent zal herstarten en ze daarna opnieuw zal publiceren.
+
+Geen zorgen, ze behouden hun huidige namen, dus al je automatiseringen en scripts blijven werken.
+
+Ter info: de naam zal &apos;opgeschoond&apos; worden, wat betekent dat alles behalve letters, cijfers en spaties wordt omgezet naar een laag streepje. Dit is vereist door HA.</value>
+  </data>
+  <data name="Configuration_ProcessChanges_MessageBox2" xml:space="preserve">
+    <value>Je hebt de poort van de lokale API aangepast. Deze nieuwe poort moet gereserveerd wordt.
+
+Je krijgt een UAC verzoek te zien om dat te doen, deze graag toestemming geven.</value>
+  </data>
+  <data name="Configuration_ProcessChanges_MessageBox3" xml:space="preserve">
+    <value>Er is iets misgegaan!
+
+Voer het vereiste commando handmatig uit. Hij is gekopieerd naar je klembord, je hoeft &apos;m alleen maar te plakken in een &apos;command prompt&apos; met verhoogde privileges.
+
+Vergeet niet om de poort van je firewall regel ook aan te passen.</value>
+  </data>
+  <data name="Configuration_ProcessChanges_MessageBox4" xml:space="preserve">
+    <value>De poort is succesvol gereserveerd!
+
+HASS.Agent zal nu herstarten om je nieuwe configuratie te activeren.</value>
+  </data>
+  <data name="Configuration_MessageBox_RestartManually" xml:space="preserve">
+    <value>Er is iets misgegaan bij het voorbereiden van de herstart.
+Graag handmatig herstarten.</value>
+  </data>
+  <data name="Configuration_ProcessChanges_MessageBox5" xml:space="preserve">
+    <value>Je configuratie is opgeslagen. De meeste aanpassingen vereisen een HASS.Agent herstart voordat ze actief worden.
+
+Wil je nu herstarten?</value>
+  </data>
+  <data name="Main_Load_MessageBox1" xml:space="preserve">
+    <value>Er is iets misgegaan bij het laden van je instellingen.
+
+Controleer appsettings.json in de &apos;config&apos; subfolder, or verwijder &apos;m gewoon om schoon te starten.</value>
+  </data>
+  <data name="Main_Load_MessageBox2" xml:space="preserve">
+    <value>Er is iets misgegaan bij het starten van HASS.Agent.
+Controleer de logs en rapporteer eventuele bugs op GitHub.</value>
+  </data>
+  <data name="Main_BtnSensorsManage_Ready" xml:space="preserve">
+	  <value>
+&amp;sensoren</value>
+  </data>
+  <data name="Main_BtnCommandsManager_Ready" xml:space="preserve">
+    <value>
+&amp;commando&apos;s</value>
+  </data>
+  <data name="Main_Checking" xml:space="preserve">
+    <value>controleren ..</value>
+  </data>
+  <data name="Main_CheckForUpdate_MessageBox1" xml:space="preserve">
+    <value>Je draait de laatste versie: {0}{1}</value>
+  </data>
+  <data name="UpdatePending_NewBetaRelease" xml:space="preserve">
+    <value>Er is een nieuwe BETA versie beschikbaar:</value>
+  </data>
+  <data name="UpdatePending_Title_Beta" xml:space="preserve">
+    <value>HASS.Agent BETA Update</value>
+  </data>
+  <data name="UpdatePending_LblUpdateQuestion_Download" xml:space="preserve">
+    <value>Wil je de installer &amp;downloaden en starten?</value>
+  </data>
+  <data name="UpdatePending_LblUpdateQuestion_Navigate" xml:space="preserve">
+    <value>Wil je &amp;navigeren naar de release pagina?</value>
+  </data>
+  <data name="UpdatePending_InstallUpdate" xml:space="preserve">
+    <value>update installeren</value>
+  </data>
+  <data name="UpdatePending_InstallBetaRelease" xml:space="preserve">
+    <value>BETA versie installeren</value>
+  </data>
+  <data name="UpdatePending_OpenReleasePage" xml:space="preserve">
+    <value>release pagina openen</value>
+  </data>
+  <data name="UpdatePending_OpenBetaReleasePage" xml:space="preserve">
+    <value>BETA release pagina openen</value>
+  </data>
+  <data name="UpdatePending_LblUpdateQuestion_Processing" xml:space="preserve">
+    <value>Ogenblik geduld, bezig je verzoek te verwerken ..</value>
+  </data>
+  <data name="UpdatePending_BtnDownload_Processing" xml:space="preserve">
+    <value>verwerken ..</value>
+  </data>
+  <data name="OnboardingManager_OnboardingTitle_Start" xml:space="preserve">
+    <value>HASS.Agent Onboarding: Start [{0}/{1}]</value>
+  </data>
+  <data name="OnboardingManager_OnboardingTitle_Startup" xml:space="preserve">
+    <value>HASS.Agent Onboarding: Opstarten [{0}/{1}]</value>
+  </data>
+  <data name="OnboardingManager_OnboardingTitle_Notifications" xml:space="preserve">
+    <value>HASS.Agent Onboarding: Notificaties [{0}/{1}]</value>
+  </data>
+  <data name="OnboardingManager_OnboardingTitle_Integration" xml:space="preserve">
+    <value>HASS.Agent Onboarding: Integraties [{0}/{1}]</value>
+  </data>
+  <data name="OnboardingManager_OnboardingTitle_Api" xml:space="preserve">
+    <value>HASS.Agent Onboarding: API [{0}/{1}]</value>
+  </data>
+  <data name="OnboardingManager_OnboardingTitle_Mqtt" xml:space="preserve">
+    <value>HASS.Agent Onboarding: MQTT [{0}/{1}]</value>
+  </data>
+  <data name="OnboardingManager_OnboardingTitle_HotKey" xml:space="preserve">
+    <value>HASS.Agent Onboarding: SnelToets [{0}/{1}]</value>
+  </data>
+  <data name="OnboardingManager_OnboardingTitle_Updates" xml:space="preserve">
+    <value>HASS.Agent Onboarding: Updates [{0}/{1}]</value>
+  </data>
+  <data name="OnboardingManager_OnboardingTitle_Completed" xml:space="preserve">
+    <value>HASS.Agent Onboarding: Voltooid [{0}/{1}]</value>
+  </data>
+  <data name="OnboardingManager_ConfirmBeforeClose_MessageBox1" xml:space="preserve">
+    <value>Weet je zeker dat je het onboarding proces wilt afbreken?
+
+Je voortgang wordt niet opgeslagen, en het wordt de volgende keer niet meer getoond.</value>
+  </data>
+  <data name="UpdateManager_GetLatestVersionInfo_Error" xml:space="preserve">
+    <value>fout tijdens ophalen info, controleer de logs</value>
+  </data>
+  <data name="UpdateManager_DownloadAndExecuteUpdate_MessageBox1" xml:space="preserve">
+    <value>Kan het downloaden van de update niet voorbereiden, controleer de logs voor meer info.
+
+De release pagina zal nu geopend worden.</value>
+  </data>
+  <data name="UpdateManager_DownloadAndExecuteUpdate_MessageBox2" xml:space="preserve">
+    <value>Kan de update niet downloaden, controleer de logs voor meer info.
+
+De release pagina zal nu geopend worden.</value>
+  </data>
+  <data name="UpdateManager_DownloadAndExecuteUpdate_MessageBox3" xml:space="preserve">
+    <value>Het gedownloade bestand is GEZAKT voor de certificaat controle.
+
+Dit kan een technische fout zijn, maar ook een gemodificeerd bestand!
+
+Controleer de logs, en maak een ticket aan met je bevindingen.</value>
+  </data>
+  <data name="UpdateManager_DownloadAndExecuteUpdate_MessageBox4" xml:space="preserve">
+    <value>Kan de installer niet lanceren (heb je het UAC verzoek toegestaan?), controleer de logs voor meer info.
+
+De release pagina zal nu geopend worden.</value>
+  </data>
+  <data name="HassApiManager_ToolTip_ConnectionSetupFailed" xml:space="preserve">
+    <value>hass api: verbindingsconfiguratie gefaald</value>
+  </data>
+  <data name="HassApiManager_ToolTip_InitialConnectionFailed" xml:space="preserve">
+    <value>hass api: intiële verbinding gefaald</value>
+  </data>
+  <data name="HassApiManager_ToolTip_ConnectionFailed" xml:space="preserve">
+    <value>hass api: verbinding gefaald</value>
+  </data>
+  <data name="HassApiManager_CheckHassConfig_CertNotFound" xml:space="preserve">
+    <value>cliënt certificaatbestand niet gevonden</value>
+  </data>
+  <data name="HassApiManager_CheckHassConfig_UnableToConnect" xml:space="preserve">
+    <value>kan niet verbinden, controleer de uri</value>
+  </data>
+  <data name="HassApiManager_CheckHassConfig_ConfigFailed" xml:space="preserve">
+    <value>kan de configuratie niet ophalen, controleer api sleutel</value>
+  </data>
+  <data name="HassApiManager_ConnectionFailed" xml:space="preserve">
+    <value>kan niet verbinden, controleer uri en configuratie</value>
+  </data>
+  <data name="HassApiManager_ToolTip_QuickActionFailed" xml:space="preserve">
+    <value>snelle actie: actie gefaald, controleer de logs voor meer info</value>
+  </data>
+  <data name="HassApiManager_ToolTip_QuickActionFailedOnEntity" xml:space="preserve">
+    <value>snelle actie: actie gefaald, entiteit niet gevonden</value>
+  </data>
+  <data name="MqttManager_ToolTip_ConnectionError" xml:space="preserve">
+    <value>mqtt: fout tijdens verbinden</value>
+  </data>
+  <data name="MqttManager_ToolTip_ConnectionFailed" xml:space="preserve">
+    <value>mqtt: verbinden gefaald</value>
+  </data>
+  <data name="MqttManager_ToolTip_Disconnected" xml:space="preserve">
+    <value>mqtt: verbinding verbroken</value>
+  </data>
+  <data name="NotifierManager_Initialize_MessageBox1" xml:space="preserve">
+    <value>Fout tijdens het binden van de API aan poort {0}.
+
+Controleer of er niet nog een andere instantie van HASS.Agent actief is, en of de poort beschikbaar en geregistreerd is.</value>
+  </data>
+  <data name="SensorsManager_ActiveWindowSensorDescription" xml:space="preserve">
+    <value>Geeft de titel van het huidige actieve scherm.</value>
+  </data>
+  <data name="SensorsManager_AudioSensorsDescription" xml:space="preserve">
+    <value>Geeft informatie over meerdere aspecten van het geluid van je apparaat:
+
+Huidige piek volumeniveau (kan gebruikt worden als een simpele &apos;speelt er iets&apos; waarde).
+
+Standaard geluidsapparaat: naam, status en volume.
+
+Overzicht van je audio sessies: applicatienaam, gedempt (mute) status, volume en huidig piek volumeniveau.</value>
+  </data>
+  <data name="SensorsManager_BatterySensorsDescription" xml:space="preserve">
+    <value>Geeft een sensor met de huidige opladen status, geschat aantal minuten tot een volledige lading, resterende lading als percentage, resterende lading in minuten en de spanningslijn status.</value>
+  </data>
+  <data name="SensorsManager_CpuLoadSensorDescription" xml:space="preserve">
+    <value>Geeft de huidige belasting van de eerste CPU als percentage.</value>
+  </data>
+  <data name="SensorsManager_CurrentClockSpeedSensorDescription" xml:space="preserve">
+    <value>Geeft de huidige kloksnelheid van de eerste CPU.</value>
+  </data>
+  <data name="SensorsManager_CurrentVolumeSensorDescription" xml:space="preserve">
+    <value>Geeft het huidige volumeniveau als een percentage.
+
+Pakt momenteel het volume van je standaardapparaat.</value>
+  </data>
+  <data name="SensorsManager_DisplaySensorsDescription" xml:space="preserve">
+    <value>Geeft een sensor met het aantal schermen, naam van het primaire scherm, en per display de naam, resolutie en bits per pixel.</value>
+  </data>
+  <data name="SensorsManager_DummySensorDescription" xml:space="preserve">
+    <value>Dummy sensor om te testen, stuurt een willekeurig getal tussen 0 en 100.</value>
+  </data>
+  <data name="SensorsManager_GpuLoadSensorDescription" xml:space="preserve">
+    <value>Geeft de huidige belasting van de eerste GPU als een percentage.</value>
+  </data>
+  <data name="SensorsManager_GpuTemperatureSensorDescription" xml:space="preserve">
+    <value>Geeft de huidige temperatuur van de eerste GPU.</value>
+  </data>
+  <data name="SensorsManager_LastActiveSensorDescription" xml:space="preserve">
+    <value>Geeft een datetime waarde met het laatste moment dat de gebruiker invoer geleverd heeft.</value>
+  </data>
+  <data name="SensorsManager_LastBootSensorDescription" xml:space="preserve">
+    <value>Geeft een datetime waarde met het laatste moment dat het systeem (her)startte.
+
+Belangrijk: Windows&apos; FastBoot optie kan deze waarde beïnvloeden, omdat dat een vorm van hibernation is. Je kunt het uitschakelen via Energiebeheer. Het maakt niet veel verschil voor moderne machines met SSDs, maar het uitschakelen ervan zorgt ervoor dat je altijd een schone lei hebt na een herstart.</value>
+  </data>
+  <data name="SensorsManager_LastSystemStateChangeSensorDescription" xml:space="preserve">
+    <value>Geeft de volgende systeemstatus veranderingen:
+
+ApplicatieGestart, Afmelden, SysteemAfsluiten, Hervatten, Opschorten, ConsoleVerbonden, ConsoleVerbroken, RemoteVerbonden, RemoteVerbroken, SessieVergendelen, SessieAfmelden, SessieAanmelden, SessionRemoteBeheer en SessieOntgrendelen.</value>
+  </data>
+  <data name="SensorsManager_LoggedUserSensorDescription" xml:space="preserve">
+    <value>Geeft de naam van de huidige ingelogde gebruiker.</value>
+  </data>
+  <data name="SensorsManager_LoggedUsersSensorDescription" xml:space="preserve">
+    <value>Geeft een json-geformatteerde lijst van momenteel ingelogde gebruikers.</value>
+  </data>
+  <data name="SensorsManager_MemoryUsageSensorDescription" xml:space="preserve">
+    <value>Geeft de hoeveelheid gebruikte geheugen als een percentage.</value>
+  </data>
+  <data name="SensorsManager_MicrophoneActiveSensorDescription" xml:space="preserve">
+    <value>Geeft een bool waarde gebaseerd op of de microfoon momenteel in gebruik is.</value>
+  </data>
+  <data name="SensorsManager_NamedWindowSensorDescription" xml:space="preserve">
+    <value>Geeft een ON/OFF waarde gebaseerd op of het scherm momenteel open is (hoeft niet actief te zijn).</value>
+  </data>
+  <data name="SensorsManager_NetworkSensorsDescription" xml:space="preserve">
+    <value>Geeft kaart info, configuratie, verbinding- &amp; pakketten statistieken en adressen (ip, mac, dhcp, dns) van de geselecteerde netwerkkaart(en).
+
+Dit is een multi-waarde sensor.</value>
+  </data>
+  <data name="SensorsManager_PerformanceCounterSensorDescription" xml:space="preserve">
+    <value>Geeft de waardes van een prestatieteller.
+
+Bijvoorbeeld, de ingebouwde CPU belasting sensor gebruikt deze waardes:
+
+Categorie: Processor
+Teller: % Processor Time
+Instance: _Total
+
+Je kunt de tellers verkennen via Windows&apos; &apos;perfmon.exe&apos; applicatie.</value>
+  </data>
+  <data name="SensorsManager_ProcessActiveSensorDescription" xml:space="preserve">
+    <value>Geeft het aantal actieve instanties van het proces.</value>
+  </data>
+  <data name="SensorsManager_ServiceStateSensorDescription" xml:space="preserve">
+    <value>Geeft de staat van de opgegeven service: NotFound, Stopped, StartPending, StopPending, Running, ContinuePending, PausePending or Paused.
+
+Zorg dat je de &apos;Service naam&apos; geeft, niet de &apos;Weergavenaam&apos;.</value>
+  </data>
+  <data name="SensorsManager_SessionStateSensorDescription" xml:space="preserve">
+    <value>Geeft de huidige sessie staat:
+
+Vergrendeld, Ontgrendeld of Onbekend.
+
+Gebruik een LastSystemStateChangeSensor om sessiestaat veranderingen te monitoren.</value>
+  </data>
+  <data name="SensorsManager_StorageSensorsDescription" xml:space="preserve">
+    <value>Geeft de labels, totale grootte (MB), beschikbare ruimte (MB), gebruikte ruimte (MB) en bestandssysteem van alle aanwezige niet-verwijderbare schijven.</value>
+  </data>
+  <data name="SensorsManager_UserNotificationStateSensorDescription" xml:space="preserve">
+    <value>Geeft de huidige gebruikersstaat:
+
+NietAanwezig, Bezig, DraaitDirect3dFullScreen, PresentatieModus, AccepteertNotificaties, StilteTijd of DraaitWindowsStoreApp.
+
+Kan bijvoorbeeld gebruikt worden om te bepalen of notificaties en TTS berichten verstuurd moeten worden.</value>
+  </data>
+  <data name="SensorsManager_WebcamActiveSensorDescription" xml:space="preserve">
+    <value>Geeft een bool waarde gebaseerd op of de webcam momenteel in gebruik is.</value>
+  </data>
+  <data name="SensorsManager_WindowsUpdatesSensorsDescription" xml:space="preserve">
+    <value>Geeft een sensor met het aantal beschikbare driver updates en een sensor met het aantal beschikbare software updates.
+
+Dit is een duur verzoek, dus de aanbevolen interval is 15 minuten (900 seconden). Maar de ondergrens is 10 minuten, als je een lagere waarde geeft krijg je de laatst-bekende lijst terug.</value>
+  </data>
+  <data name="SensorsManager_WmiQuerySensorDescription" xml:space="preserve">
+    <value>Geeft het resultaat van een WMI query.</value>
+  </data>
+  <data name="SettingsManager_LoadAppSettings_MessageBox1" xml:space="preserve">
+    <value>Fout tijdens laden instellingen:
+
+{0}</value>
+  </data>
+  <data name="SettingsManager_StoreInitialSettings_MessageBox1" xml:space="preserve">
+    <value>Fout tijdens opslaan initiële instellingen:
+
+{0}</value>
+  </data>
+  <data name="SettingsManager_StoreAppSettings_MessageBox1" xml:space="preserve">
+    <value>Fout tijdens opslaan instellingen:
+
+{0}</value>
+  </data>
+  <data name="StoredCommands_Load_MessageBox1" xml:space="preserve">
+    <value>Fout tijdens laden commando&apos;s:
+
+{0}</value>
+  </data>
+  <data name="StoredCommands_Store_MessageBox1" xml:space="preserve">
+    <value>Fout tijdens opslaan commando&apos;s:
+
+{0}</value>
+  </data>
+  <data name="StoredQuickActions_Load_MessageBox1" xml:space="preserve">
+    <value>Fout tijdens laden snelle acties:
+
+{0}</value>
+  </data>
+  <data name="StoredQuickActions_Store_MessageBox1" xml:space="preserve">
+    <value>Fout tijdens opslaan snelle acties:
+
+{0}</value>
+  </data>
+  <data name="StoredSensors_Load_MessageBox1" xml:space="preserve">
+    <value>Fout tijdens laden sensoren:
+
+{0}</value>
+  </data>
+  <data name="StoredSensors_Store_MessageBox1" xml:space="preserve">
+    <value>Fout tijdens opslaan sensoren:
+
+{0}</value>
+  </data>
+  <data name="Main_LblMqtt" xml:space="preserve">
+    <value>mqtt:</value>
+  </data>
+  <data name="Help_LblWiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="Configuration_BtnStore_Busy" xml:space="preserve">
+    <value>bezig, ogenblik geduld ..</value>
+  </data>
+  <data name="ConfigGeneral_LblInterfaceLangauge" xml:space="preserve">
+    <value>interface taa&amp;l</value>
+  </data>
+  <data name="About_LblOr" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="OnboardingManager_BtnNext_Finish" xml:space="preserve">
+    <value>voltooien</value>
+  </data>
+  <data name="OnboardingWelcome_LblInterfaceLangauge" xml:space="preserve">
+    <value>interface taa&amp;l</value>
+  </data>
+  <data name="ServiceMqtt_SetMqttStatus_ConfigError" xml:space="preserve">
+    <value>configuratie ontbreekt</value>
+  </data>
+  <data name="ServiceMqtt_SetMqttStatus_Connected" xml:space="preserve">
+    <value>verbonden</value>
+  </data>
+  <data name="ServiceMqtt_SetMqttStatus_Connecting" xml:space="preserve">
+    <value>verbinden ..</value>
+  </data>
+  <data name="ServiceMqtt_SetMqttStatus_Disconnected" xml:space="preserve">
+    <value>niet verbonden</value>
+  </data>
+  <data name="ServiceMqtt_SetMqttStatus_Error" xml:space="preserve">
+    <value>fout</value>
+  </data>
+  <data name="CommandType_CustomCommand" xml:space="preserve">
+    <value>Eigen</value>
+  </data>
+  <data name="CommandType_CustomExecutorCommand" xml:space="preserve">
+    <value>EigenExecutor</value>
+  </data>
+  <data name="CommandType_HibernateCommand" xml:space="preserve">
+    <value>Hibernate</value>
+  </data>
+  <data name="CommandType_KeyCommand" xml:space="preserve">
+    <value>Sleutel</value>
+  </data>
+  <data name="CommandType_LaunchUrlCommand" xml:space="preserve">
+    <value>LanceerUrl</value>
+  </data>
+  <data name="CommandType_LockCommand" xml:space="preserve">
+    <value>Vergrendel</value>
+  </data>
+  <data name="CommandType_LogOffCommand" xml:space="preserve">
+    <value>Uitloggen</value>
+  </data>
+  <data name="CommandType_MediaMuteCommand" xml:space="preserve">
+    <value>MediaDempen</value>
+  </data>
+  <data name="CommandType_MediaNextCommand" xml:space="preserve">
+    <value>MediaVolgende</value>
+  </data>
+  <data name="CommandType_MediaPlayPauseCommand" xml:space="preserve">
+    <value>MediaAfspelenPauze</value>
+  </data>
+  <data name="CommandType_MediaPreviousCommand" xml:space="preserve">
+    <value>MediaVorige</value>
+  </data>
+  <data name="CommandType_MediaVolumeDownCommand" xml:space="preserve">
+    <value>MediaVolumeLager</value>
+  </data>
+  <data name="CommandType_MediaVolumeUpCommand" xml:space="preserve">
+    <value>MediaVolumeHoger</value>
+  </data>
+  <data name="CommandType_MultipleKeysCommand" xml:space="preserve">
+    <value>MeerdereToetsen</value>
+  </data>
+  <data name="CommandType_PowershellCommand" xml:space="preserve">
+    <value>Powershell</value>
+  </data>
+  <data name="CommandType_PublishAllSensorsCommand" xml:space="preserve">
+    <value>PubliceerAlleSensoren</value>
+  </data>
+  <data name="CommandType_RestartCommand" xml:space="preserve">
+    <value>Herstart</value>
+  </data>
+  <data name="CommandType_ShutdownCommand" xml:space="preserve">
+    <value>Afsluiten</value>
+  </data>
+  <data name="CommandType_SleepCommand" xml:space="preserve">
+    <value>Slaapmodus</value>
+  </data>
+  <data name="UserNotificationState_AcceptsNotifications" xml:space="preserve">
+    <value>AccepteertNotificaties</value>
+  </data>
+  <data name="UserNotificationState_Busy" xml:space="preserve">
+    <value>Bezig</value>
+  </data>
+  <data name="UserNotificationState_NotPresent" xml:space="preserve">
+    <value>NietAanwezig</value>
+  </data>
+  <data name="UserNotificationState_PresentationMode" xml:space="preserve">
+    <value>PresentatieModus</value>
+  </data>
+  <data name="UserNotificationState_QuietTime" xml:space="preserve">
+    <value>StilteTijd</value>
+  </data>
+  <data name="UserNotificationState_RunningDirect3dFullScreen" xml:space="preserve">
+    <value>DraaitDirect3dVolledigScherm</value>
+  </data>
+  <data name="UserNotificationState_RunningWindowsStoreApp" xml:space="preserve">
+    <value>DraaitWindowsStoreApp</value>
+  </data>
+  <data name="SystemStateEvent_ConsoleConnect" xml:space="preserve">
+    <value>ConsoleVerbonden</value>
+  </data>
+  <data name="SystemStateEvent_ConsoleDisconnect" xml:space="preserve">
+    <value>ConsoleVerbroken</value>
+  </data>
+  <data name="SystemStateEvent_HassAgentSatelliteServiceStarted" xml:space="preserve">
+    <value>HassAgentSatellietServiceGestart</value>
+  </data>
+  <data name="SystemStateEvent_HassAgentStarted" xml:space="preserve">
+    <value>HassAgentGestart</value>
+  </data>
+  <data name="SystemStateEvent_Logoff" xml:space="preserve">
+    <value>Uitloggen</value>
+  </data>
+  <data name="SystemStateEvent_RemoteConnect" xml:space="preserve">
+    <value>RemoteVerbonden</value>
+  </data>
+  <data name="SystemStateEvent_RemoteDisconnect" xml:space="preserve">
+    <value>RemoteVerbroken</value>
+  </data>
+  <data name="SystemStateEvent_Resume" xml:space="preserve">
+    <value>Hervatten</value>
+  </data>
+  <data name="SystemStateEvent_SessionLock" xml:space="preserve">
+    <value>SessieLock</value>
+  </data>
+  <data name="SystemStateEvent_SessionLogoff" xml:space="preserve">
+    <value>SessieAfmelden</value>
+  </data>
+  <data name="SystemStateEvent_SessionLogon" xml:space="preserve">
+    <value>SessieAanmelden</value>
+  </data>
+  <data name="SystemStateEvent_SessionRemoteControl" xml:space="preserve">
+    <value>SessieRemoteBeheer</value>
+  </data>
+  <data name="SystemStateEvent_SessionUnlock" xml:space="preserve">
+    <value>SessieOntgrendelen</value>
+  </data>
+  <data name="SystemStateEvent_Suspend" xml:space="preserve">
+    <value>Opschorten</value>
+  </data>
+  <data name="SystemStateEvent_SystemShutdown" xml:space="preserve">
+    <value>SysteemAfsluiten</value>
+  </data>
+  <data name="SensorType_ActiveWindowSensor" xml:space="preserve">
+    <value>ActiefScherm</value>
+  </data>
+  <data name="SensorType_AudioSensors" xml:space="preserve">
+    <value>Geluid</value>
+  </data>
+  <data name="SensorType_BatterySensors" xml:space="preserve">
+    <value>Batterij</value>
+  </data>
+  <data name="SensorType_CpuLoadSensor" xml:space="preserve">
+    <value>CpuBelasting</value>
+  </data>
+  <data name="SensorType_CurrentClockSpeedSensor" xml:space="preserve">
+    <value>HuidigeKlokSnelheid</value>
+  </data>
+  <data name="SensorType_CurrentVolumeSensor" xml:space="preserve">
+    <value>HuidigVolume</value>
+  </data>
+  <data name="SensorType_DisplaySensors" xml:space="preserve">
+    <value>Scherm</value>
+  </data>
+  <data name="SensorType_DummySensor" xml:space="preserve">
+    <value>Dummy</value>
+  </data>
+  <data name="SensorType_GpuLoadSensor" xml:space="preserve">
+    <value>GpuBelasting</value>
+  </data>
+  <data name="SensorType_GpuTemperatureSensor" xml:space="preserve">
+    <value>GpuTemperatuur</value>
+  </data>
+  <data name="SensorType_LastActiveSensor" xml:space="preserve">
+    <value>LaatstActief</value>
+  </data>
+  <data name="SensorType_LastBootSensor" xml:space="preserve">
+    <value>LaatstOpgestart</value>
+  </data>
+  <data name="SensorType_LastSystemStateChangeSensor" xml:space="preserve">
+    <value>LaatsteSysteemStatusVerandering</value>
+  </data>
+  <data name="SensorType_LoggedUserSensor" xml:space="preserve">
+    <value>IngelogdeGebruiker</value>
+  </data>
+  <data name="SensorType_LoggedUsersSensor" xml:space="preserve">
+    <value>IngelogdeGebruikers</value>
+  </data>
+  <data name="SensorType_MemoryUsageSensor" xml:space="preserve">
+    <value>GeheugenGebruik</value>
+  </data>
+  <data name="SensorType_MicrophoneActiveSensor" xml:space="preserve">
+    <value>MicrofoonActief</value>
+  </data>
+  <data name="SensorType_NamedWindowSensor" xml:space="preserve">
+    <value>SchermNaam</value>
+  </data>
+  <data name="SensorType_NetworkSensors" xml:space="preserve">
+    <value>Netwerk</value>
+  </data>
+  <data name="SensorType_PerformanceCounterSensor" xml:space="preserve">
+    <value>PrestatieTeller</value>
+  </data>
+  <data name="SensorType_ProcessActiveSensor" xml:space="preserve">
+    <value>ProcesActief</value>
+  </data>
+  <data name="SensorType_ServiceStateSensor" xml:space="preserve">
+    <value>ServiceStaat</value>
+  </data>
+  <data name="SensorType_SessionStateSensor" xml:space="preserve">
+    <value>SessieStaat</value>
+  </data>
+  <data name="SensorType_StorageSensors" xml:space="preserve">
+    <value>Opslag</value>
+  </data>
+  <data name="SensorType_UserNotificationStateSensor" xml:space="preserve">
+    <value>GebruikerNotificatie</value>
+  </data>
+  <data name="SensorType_WebcamActiveSensor" xml:space="preserve">
+    <value>WebcamActief</value>
+  </data>
+  <data name="SensorType_WindowsUpdatesSensors" xml:space="preserve">
+    <value>WindowsUpdates</value>
+  </data>
+  <data name="SensorType_WmiQuerySensor" xml:space="preserve">
+    <value>WmiQuery</value>
+  </data>
+  <data name="HassDomain_Automation" xml:space="preserve">
+    <value>Automatisering</value>
+  </data>
+  <data name="HassDomain_Climate" xml:space="preserve">
+    <value>Klimaat</value>
+  </data>
+  <data name="HassDomain_Cover" xml:space="preserve">
+    <value>Bekleding</value>
+  </data>
+  <data name="HassDomain_InputBoolean" xml:space="preserve">
+    <value>InputBoolean</value>
+  </data>
+  <data name="HassDomain_Light" xml:space="preserve">
+    <value>Licht</value>
+  </data>
+  <data name="HassDomain_MediaPlayer" xml:space="preserve">
+    <value>MediaSpeler</value>
+  </data>
+  <data name="HassDomain_Scene" xml:space="preserve">
+    <value>Scène</value>
+  </data>
+  <data name="HassDomain_Script" xml:space="preserve">
+    <value>Script</value>
+  </data>
+  <data name="HassDomain_Switch" xml:space="preserve">
+    <value>Schakelaar</value>
+  </data>
+  <data name="HassAction_Close" xml:space="preserve">
+    <value>Sluit</value>
+  </data>
+  <data name="HassAction_Off" xml:space="preserve">
+    <value>Uit</value>
+  </data>
+  <data name="HassAction_On" xml:space="preserve">
+    <value>Aan</value>
+  </data>
+  <data name="HassAction_Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="HassAction_Pause" xml:space="preserve">
+    <value>Pauze</value>
+  </data>
+  <data name="HassAction_Play" xml:space="preserve">
+    <value>Afspelen</value>
+  </data>
+  <data name="HassAction_Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="HassAction_Toggle" xml:space="preserve">
+    <value>Wissel</value>
+  </data>
+  <data name="CommandEntityType_Button" xml:space="preserve">
+    <value>Knop</value>
+  </data>
+  <data name="CommandEntityType_Light" xml:space="preserve">
+    <value>Licht</value>
+  </data>
+  <data name="CommandEntityType_Lock" xml:space="preserve">
+    <value>Vergrendeling</value>
+  </data>
+  <data name="CommandEntityType_Siren" xml:space="preserve">
+    <value>Sirene</value>
+  </data>
+  <data name="CommandEntityType_Switch" xml:space="preserve">
+    <value>Schakelaar</value>
+  </data>
+  <data name="ComponentStatus_Connecting" xml:space="preserve">
+    <value>Verbinden</value>
+  </data>
+  <data name="ComponentStatus_Disabled" xml:space="preserve">
+    <value>Uitgeschakeld</value>
+  </data>
+  <data name="ComponentStatus_Failed" xml:space="preserve">
+    <value>Gefaald</value>
+  </data>
+  <data name="ComponentStatus_Loading" xml:space="preserve">
+    <value>Laden</value>
+  </data>
+  <data name="ComponentStatus_Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="ComponentStatus_Stopped" xml:space="preserve">
+    <value>Gestopt</value>
+  </data>
+  <data name="LockState_Locked" xml:space="preserve">
+    <value>Vergrendeld</value>
+  </data>
+  <data name="LockState_Unknown" xml:space="preserve">
+    <value>Onbekend</value>
+  </data>
+  <data name="LockState_Unlocked" xml:space="preserve">
+    <value>Ontgrendeld</value>
+  </data>
+  <data name="SensorType_GeoLocationSensor" xml:space="preserve">
+    <value>GeoLocatie</value>
+  </data>
+  <data name="SensorsMod_All" xml:space="preserve">
+    <value>Alles</value>
+  </data>
+  <data name="SensorsMod_BtnTest" xml:space="preserve">
+    <value>&amp;testen</value>
+  </data>
+  <data name="SensorsMod_BtnTest_PerformanceCounter" xml:space="preserve">
+    <value>test prestatieteller</value>
+  </data>
+  <data name="SensorsMod_BtnTest_Wmi" xml:space="preserve">
+    <value>test wmi query</value>
+  </data>
+  <data name="SensorsMod_LblSetting1_Network" xml:space="preserve">
+    <value>netwerkkaart</value>
+  </data>
+  <data name="SensorsMod_TestPerformanceCounter_MessageBox1" xml:space="preserve">
+    <value>Vul eerst een categorie en teller in.</value>
+  </data>
+  <data name="SensorsMod_TestPerformanceCounter_MessageBox2" xml:space="preserve">
+    <value>Test succesvol uitgevoerd, resultaat:
+
+{0}</value>
+  </data>
+  <data name="SensorsMod_TestPerformanceCounter_MessageBox3" xml:space="preserve">
+    <value>Niet gelukt om test uit te voeren:
+
+{0}
+
+Wil je de logs folder openen?</value>
+  </data>
+  <data name="SensorsMod_TestWmi_MessageBox1" xml:space="preserve">
+    <value>Vul eerst een WI query in.</value>
+  </data>
+  <data name="SensorsMod_TestWmi_MessageBox2" xml:space="preserve">
+    <value>Query succesvol uitgevoerd, resultaat:
+
+{0}</value>
+  </data>
+  <data name="SensorsMod_TestWmi_MessageBox3" xml:space="preserve">
+    <value>Uitvoeren query gefaald:
+
+{0}
+
+Wil je de logs folder openen?</value>
+  </data>
+  <data name="SensorsMod_WmiTestFailed" xml:space="preserve">
+    <value>Het lijkt erop dat je scope ongeldige opmaak heeft. Hij moet waarschijnlijk als volgt starten:
+
+\\.\ROOT\
+
+De scope die jij opgaf:
+
+{0}
+
+Tip: controleer of je de scope en query velden niet omgewisseld hebt.
+
+Wil je alsnog met de huidige waardes testen?</value>
+  </data>
+  <data name="SystemStateEvent_ApplicationStarted" xml:space="preserve">
+    <value>ApplicatieGestart</value>
+  </data>
+  <data name="ServiceGeneral_LblInfo2" xml:space="preserve">
+    <value>Je kunt de satelliet service gebruiken om sensoren en commando&apos;s uit te voeren zonder ingelogd te hoeven zijn. Niet alle types zijn beschikbaar, bijvoorbeeld het &apos;LanceerUrl&apos; commando kan alleen als regulier commando toegevoegd worden.</value>
+  </data>
+  <data name="SensorsConfig_ClmValue" xml:space="preserve">
+    <value>laatst bekende waarde</value>
+  </data>
+  <data name="LocalApiManager_Initialize_MessageBox1" xml:space="preserve">
+    <value>Fout tijdens het binden van de API aan poort {0}.
+
+Controleer of er geen andere HASS.Agent instanties actief zijn, en of de poort beschikbaar en geregistreerd is.</value>
+  </data>
+  <data name="CommandType_SendWindowToFrontCommand" xml:space="preserve">
+    <value>StuurSchermNaarVoorgrond</value>
+  </data>
+  <data name="CommandType_WebViewCommand" xml:space="preserve">
+    <value>WebView</value>
+  </data>
+  <data name="CommandsManager_WebViewCommandDescription" xml:space="preserve">
+    <value>Toont een scherm met de opgegeven URL.
+
+Dit wijkt af van het &apos;LanceerUrl&apos; commando in dat het geen volledige browser laadt, alleen de opgegeven URL in een eigen scherm.
+
+Je kunt dit bijvoorbeeld gebruiken om snel een dashboard van Home Assistant te tonen.
+
+Standaard slaat hij cookies oneindig op, dus je hoeft maar één keer in te loggen.</value>
+  </data>
+  <data name="HassDomain_HASSAgentCommands" xml:space="preserve">
+    <value>HASS.Agent Commando&apos;s</value>
+  </data>
+  <data name="CommandsManager_CommandsManager_SendWindowToFrontCommandDescription" xml:space="preserve">
+    <value>Zoekt het opgegeven proces, en probeert z&apos;n hoofdscherm naar de voorgrond te halen.
+
+Als de applicatie geminimaliseerd is, wordt hij hersteld.
+
+Voorbeeld: als je VLC naar de voorgrond wilt sturen, gebruik dan &apos;vlc&apos;.</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox8" xml:space="preserve">
+    <value>Als je het commando niet configureert, kan je deze entiteit alleen gebruiken met een &apos;actie&apos; waarde via Home Assistant en hij toont met de standaard instellingen. Uitvoeren zonder een actie doet niks.
+
+Weet je zeker dat je dit wilt?</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnClearAudioCache" xml:space="preserve">
+    <value>audio cache legen</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnClearAudioCache_InfoText1" xml:space="preserve">
+    <value>opschonen ..</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnClearAudioCache_MessageBox1" xml:space="preserve">
+    <value>Audio cache opgeschoond!</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnClearWebViewCache" xml:space="preserve">
+    <value>webview cache legen</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnClearWebViewCache_InfoText1" xml:space="preserve">
+    <value>opschonen ..</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnClearWebViewCache_MessageBox1" xml:space="preserve">
+    <value>WebView cache opgeschoond!</value>
+  </data>
+  <data name="Main_CheckDpiScalingFactor_MessageBox1" xml:space="preserve">
+    <value>Het lijkt erop dat je een alternatieve schaling gebruikt. Dat kan ervoor zorgen dat sommige delen van HASS.Agent niet tonen zoals bedoeld.
+
+Geef onbruikbare delen graag door via GitHub. Bedankt!
+
+Ter info: deze melding toont éénmalig.</value>
+  </data>
+  <data name="WebViewCommandConfig_SetStoredVariables_MessageBox1" xml:space="preserve">
+    <value>Kan de opgeslagen commando instellingen niet laden, teruggevallen op de standaard.</value>
+  </data>
+  <data name="CommandsMod_BtnConfigureCommand" xml:space="preserve">
+    <value>configureer commando &amp;parameters</value>
+  </data>
+  <data name="ConfigLocalApi_BtnExecutePortReservation" xml:space="preserve">
+    <value>voer poort &amp;reservering uit</value>
+  </data>
+  <data name="ConfigLocalApi_CbLocalApiActive" xml:space="preserve">
+    <value>lokal&amp;e api uitvoeren</value>
+  </data>
+  <data name="ConfigLocalApi_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent heeft z&apos;n eigen lokale API, zodat Home Assistant verzoeken kan sturen (bijvoorbeeld om een notificatie te versturen). Je kunt hem hier globlaal configureren, en daarna kun je de afhankelijke onderdelen configureren (momenteel notificaties en mediaspeler).</value>
+  </data>
+  <data name="ConfigLocalApi_LblInfo2" xml:space="preserve">
+    <value>Om het mogelijk te maken om naar verzoeken te luisteren, moet HASS.Agent de poort gereserveerd hebben en geopend in de firewall. Je kunt deze knop gebruiken om dat voor jou te doen.</value>
+  </data>
+  <data name="ConfigLocalApi_LblPort" xml:space="preserve">
+    <value>&amp;poort</value>
+  </data>
+  <data name="ConfigLocalStorage_LblAudioCacheLocation" xml:space="preserve">
+    <value>audio cache locatie</value>
+  </data>
+  <data name="ConfigLocalStorage_LblImageCacheDays" xml:space="preserve">
+    <value>dagen</value>
+  </data>
+  <data name="ConfigLocalStorage_LblImageCacheLocation" xml:space="preserve">
+    <value>image cache locatie</value>
+  </data>
+  <data name="ConfigLocalStorage_LblKeepAudio" xml:space="preserve">
+    <value>bewaar audio gedurende</value>
+  </data>
+  <data name="ConfigLocalStorage_LblKeepImages" xml:space="preserve">
+    <value>bewaar afbeeldingen gedurende</value>
+  </data>
+  <data name="ConfigLocalStorage_LblKeepWebView" xml:space="preserve">
+    <value>leeg cache elke</value>
+  </data>
+  <data name="ConfigLocalStorage_LblWebViewCacheLocation" xml:space="preserve">
+    <value>webview cache locatie</value>
+  </data>
+  <data name="ConfigMediaPlayer_BtnMediaPlayerReadme" xml:space="preserve">
+    <value>mediaspeler &amp;documentatie</value>
+  </data>
+  <data name="ConfigMediaPlayer_CbEnableMediaPlayer" xml:space="preserve">
+    <value>mediasp&amp;eler functionaliteit inschakelen</value>
+  </data>
+  <data name="ConfigMediaPlayer_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent kan fungeren als een mediaspeler voor Home Assistant, zodat je alle spelende media kunt bedienen en text-naar-spraak kunt sturen. De lokale API moet hiervoor ingeschakeld zijn.</value>
+  </data>
+  <data name="ConfigMediaPlayer_LblInfo2" xml:space="preserve">
+    <value>Als iets niet werkt, controleer dan of je deze stappen uitgevoerd hebt:
+
+- Installeren HASS.Agent-MediaPlayer integratie
+- Herstarten Home Assistant
+- Configureren van een media_player entiteit
+- Herstarten Home Assistant</value>
+  </data>
+  <data name="ConfigMediaPlayer_LblLocalApiDisabled" xml:space="preserve">
+    <value>de lokale API is uitgeschakeld, maar de mediaspeler heeft &apos;m nodig om te functioneren</value>
+  </data>
+  <data name="ConfigMqtt_CbMqttTls" xml:space="preserve">
+    <value>&amp;TLS</value>
+  </data>
+  <data name="ConfigNotifications_LblLocalApiDisabled" xml:space="preserve">
+    <value>de lokale API is uitgeschakeld, maar de mediaspeler heeft &apos;m nodig om te functioneren</value>
+  </data>
+  <data name="ConfigTrayIcon_BtnShowWebViewPreview" xml:space="preserve">
+    <value>toon voorbeeld</value>
+  </data>
+  <data name="ConfigTrayIcon_CbDefaultMenu" xml:space="preserve">
+    <value>toon stan&amp;daard menu</value>
+  </data>
+  <data name="ConfigTrayIcon_CbShowWebView" xml:space="preserve">
+    <value>toon &amp;webview</value>
+  </data>
+  <data name="ConfigTrayIcon_CbWebViewKeepLoaded" xml:space="preserve">
+    <value>hou pagina geladen in de achtergrond</value>
+  </data>
+  <data name="ConfigTrayIcon_LblInfo1" xml:space="preserve">
+    <value>Beheer de manier waarop de systeemvak pictogram zich gedraagt bij een rechtermuisknop klik.</value>
+  </data>
+  <data name="ConfigTrayIcon_LblInfo2" xml:space="preserve">
+    <value>dit gebruikt wat resources, maar verlaagt de laadtijd</value>
+  </data>
+  <data name="ConfigTrayIcon_LblWebViewSize" xml:space="preserve">
+    <value>grootte</value>
+  </data>
+  <data name="ConfigTrayIcon_LblWebViewUrl" xml:space="preserve">
+    <value>&amp;url om te tonen (bijvoorbeeld een Home Assistant dashboard)</value>
+  </data>
+  <data name="Configuration_TablLocalApi" xml:space="preserve">
+    <value>Lokale API</value>
+  </data>
+  <data name="Configuration_TabMediaPlayer" xml:space="preserve">
+    <value>MediaSpeler</value>
+  </data>
+  <data name="Configuration_TabTrayIcon" xml:space="preserve">
+    <value>Systeemvak Pictogram</value>
+  </data>
+  <data name="HelperFunctions_InputLanguageCheckDiffers_ErrorMsg1" xml:space="preserve">
+    <value>Je invoertaal &apos;{0}&apos; staat erom bekend te botsen met de standaard CTRL-ALT-Q sneltoets. Stel daarom je eigen in.</value>
+  </data>
+  <data name="HelperFunctions_InputLanguageCheckDiffers_ErrorMsg2" xml:space="preserve">
+    <value>Je invoertaal &apos;{0}&apos; is onbekend, en kan botsen met de standaard CTRL-ALT-Q sneltoets. Controleer dit voor de zekerheid. Als het zo is, overweeg dan een ticket te openen op GitHub om &apos;m aan de lijst toe te laten voegen.</value>
+  </data>
+  <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg1" xml:space="preserve">
+    <value>geen toetsen gevonden</value>
+  </data>
+  <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg2" xml:space="preserve">
+    <value>haakjes missen, start en sluit alle toetsen met [ ]</value>
+  </data>
+  <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg3" xml:space="preserve">
+    <value>fout tijdens verwerken toetsen, controleer de logs voor meer info</value>
+  </data>
+  <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg4" xml:space="preserve">
+    <value>het aantal &apos;[&apos; haakjes komt niet overeen met het aantal &apos;]&apos; haakjes ({0} tegenover {1})</value>
+  </data>
+  <data name="Help_LblDocumentation" xml:space="preserve">
+    <value>Documentatie</value>
+  </data>
+  <data name="Help_LblDocumentationInfo" xml:space="preserve">
+    <value>Documentatie en gebruiksvoorbeelden.</value>
+  </data>
+  <data name="Main_BtnCheckForUpdate" xml:space="preserve">
+    <value>controleer op &amp;updates</value>
+  </data>
+  <data name="Main_LblLocalApi" xml:space="preserve">
+    <value>lokale api:</value>
+  </data>
+  <data name="Main_TsSatelliteService" xml:space="preserve">
+    <value>beheer satalliet service</value>
+  </data>
+  <data name="OnboardingIntegrations_LblInfo1" xml:space="preserve">
+    <value>Om notificaties te gebruiken, moet je de HASS.Agent integratie installeren en configureren in Home Assistant.
+
+Dit is makkelijk via HACS, maar je kunt ook handmatig installeren. Bezoek de link hieronder voor meer informatie.</value>
+  </data>
+  <data name="OnboardingIntegrations_LblInfo2" xml:space="preserve">
+    <value>Controleer of je deze stappen doorlopen hebt:
+
+- Installeer de HASS.Agent-Notifier en / of HASS.Agent-MediaPlayer integratie
+- Herstart Home Assistant
+- Configureer een notifier en / of media_player entiteit
+- Herstart Home Assistant</value>
+  </data>
+  <data name="OnboardingIntegrations_LblInfo3" xml:space="preserve">
+    <value>Hetzelfde geld voor de mediaspeler. Deze integratie biedt de mogelijkheid om je apparaat als een media_player entiteit te bedienen, te zien wat er speelt en het sturen van tekst-naar-spraak.</value>
+  </data>
+  <data name="OnboardingIntegrations_LblMediaPlayerIntegration" xml:space="preserve">
+    <value>HASS.Agent-MediaPlayer GitHub pagina</value>
+  </data>
+  <data name="OnboardingIntegrations_LblNotifierIntegration" xml:space="preserve">
+    <value>HASS.Agent-Notifier GitHub pagina</value>
+  </data>
+  <data name="OnboardingLocalApi_CbEnableLocalApi" xml:space="preserve">
+    <value>ja, schak&amp;el de local api in op poort</value>
+  </data>
+  <data name="OnboardingLocalApi_CbEnableMediaPlayer" xml:space="preserve">
+    <value>activeer de &amp;mediaspeler en tekst-naar-spraak</value>
+  </data>
+  <data name="OnboardingLocalApi_CbEnableNotifications" xml:space="preserve">
+    <value>activeer &amp;notificaties</value>
+  </data>
+  <data name="OnboardingLocalApi_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent gebruikt z&apos;n eigen ingebouwde API, zodat Home Assistant verzoeken kan sturen (zoals notificaties of tekst-naar-spraak).
+
+Wil je dit activeren?</value>
+  </data>
+  <data name="OnboardingLocalApi_LblInfo2" xml:space="preserve">
+    <value>Je kunt kiezen welke modules te wilt activeren. Ze vereisen HA integraties, maar geen zorgen, de volgende pagina geeft je meer info over hoe je ze in kunt stellen.</value>
+  </data>
+  <data name="OnboardingLocalApi_LblTip1" xml:space="preserve">
+    <value>Ter info: 5115 is de standaard poort, verander &apos;m alleen als je dit ook in Home Assistant hebt gedaan.</value>
+  </data>
+  <data name="OnboardingMqtt_CbMqttTls" xml:space="preserve">
+    <value>&amp;TLS</value>
+  </data>
+  <data name="OnboardingWelcome_Store_MessageBox1" xml:space="preserve">
+    <value>Je apparaatnaam bevat tekens die niet toegestaan zijn door HA (alleen letters, cijfers en spaties).
+
+De uiteindelijke naam is: {0}
+
+Wil je die versie gebruiken?</value>
+  </data>
+  <data name="Onboarding_Title" xml:space="preserve">
+    <value>HASS.Agent Onboarding</value>
+  </data>
+  <data name="ServiceGeneral_LblAuthStored" xml:space="preserve">
+    <value>opgeslagen!</value>
+  </data>
+  <data name="ServiceMqtt_CbMqttTls" xml:space="preserve">
+    <value>&amp;TLS</value>
+  </data>
+  <data name="WebViewCommandConfig_BtnSave" xml:space="preserve">
+    <value>op&amp;slaan</value>
+  </data>
+  <data name="WebViewCommandConfig_CbCenterScreen" xml:space="preserve">
+    <value>&amp;altijd gecentreerd in het scherm tonen</value>
+  </data>
+  <data name="WebViewCommandConfig_CbShowTitleBar" xml:space="preserve">
+    <value>toon de &amp;titelbalk van het scherm</value>
+  </data>
+  <data name="WebViewCommandConfig_CbTopMost" xml:space="preserve">
+    <value>s&amp;tel het scherm in als altijd-bovenaan</value>
+  </data>
+  <data name="WebViewCommandConfig_LblInfo1" xml:space="preserve">
+    <value>Sleep en wijzig het formaat van dit scherm om de grootte en locatie van je webview commando in te stellen.</value>
+  </data>
+  <data name="WebViewCommandConfig_LblLocation" xml:space="preserve">
+    <value>locatie</value>
+  </data>
+  <data name="WebViewCommandConfig_LblSize" xml:space="preserve">
+    <value>grootte</value>
+  </data>
+  <data name="WebViewCommandConfig_LblTip1" xml:space="preserve">
+    <value>tip: druk op &apos;esc&apos; om een webview te sluiten</value>
+  </data>
+  <data name="WebViewCommandConfig_LblUrl" xml:space="preserve">
+    <value>&amp;URL</value>
+  </data>
+  <data name="WebViewCommandConfig_Title" xml:space="preserve">
+    <value>WebView Configuratie</value>
+  </data>
+  <data name="WebView_Title" xml:space="preserve">
+    <value>WebView</value>
+  </data>
+</root>

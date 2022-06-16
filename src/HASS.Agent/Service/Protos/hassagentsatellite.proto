@@ -141,4 +141,5 @@ message RpcConfiguredServerCommand {
   string command = 3;
   bool runAsLowIntegrity = 4;
   string name = 5;
+  int32 commandEntityType = 6;
 }

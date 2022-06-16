@@ -33,7 +33,8 @@ namespace HASS.Agent.Extensions
                 Id = Guid.Parse(rpcConfiguredCommand.Id),
                 Name = rpcConfiguredCommand.Name,
                 Command = rpcConfiguredCommand.Command,
-                RunAsLowIntegrity = rpcConfiguredCommand.RunAsLowIntegrity
+                RunAsLowIntegrity = rpcConfiguredCommand.RunAsLowIntegrity,
+                EntityType = (CommandEntityType)rpcConfiguredCommand.CommandEntityType
             };
             return configuredCommand;
         }
@@ -63,7 +64,8 @@ namespace HASS.Agent.Extensions
                 Id = configuredCommand.Id.ToString(),
                 Command = configuredCommand.Command ?? string.Empty,
                 RunAsLowIntegrity = configuredCommand.RunAsLowIntegrity,
-                Name = configuredCommand.Name
+                Name = configuredCommand.Name,
+                CommandEntityType = (int)configuredCommand.EntityType
             };
             return configuredRpcCommand;
         }

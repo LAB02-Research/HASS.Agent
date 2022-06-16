@@ -1,15 +1,16 @@
-﻿using Syncfusion.Windows.Forms;
+﻿using HASS.Agent.API;
+using Syncfusion.Windows.Forms;
 using HASS.Agent.Commands;
 using HASS.Agent.Controls.Configuration;
 using HASS.Agent.Functions;
-using HASS.Agent.Notifications;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Sensors;
 using HASS.Agent.Settings;
 using HASS.Agent.Shared;
+using HASS.Agent.Shared.Functions;
 using WK.Libraries.HotkeyListenerNS;
 using Task = System.Threading.Tasks.Task;
-using SatelliteService = HASS.Agent.Controls.Configuration.ConfigService;
+using ConfigSatelliteService = HASS.Agent.Controls.Configuration.ConfigService;
 
 namespace HASS.Agent.Forms
 {
@@ -31,7 +32,10 @@ namespace HASS.Agent.Forms
         private readonly ConfigLocalStorage _localStorage = new();
         private readonly ConfigLogging _logging = new();
         private readonly ConfigExternalTools _externalTools = new();
-        private readonly SatelliteService _service = new();
+        private readonly ConfigSatelliteService _service = new();
+        private readonly ConfigLocalApi _localApi = new();
+        private readonly ConfigMediaPlayer _mediaPlayer = new();
+        private readonly ConfigTrayIcon _trayIcon = new();
 
         private bool _initializing = true;
 
@@ -60,6 +64,9 @@ namespace HASS.Agent.Forms
             TabLogging.Controls.Add(_logging);
             TabExternalTools.Controls.Add(_externalTools);
             TabService.Controls.Add(_service);
+            TablLocalApi.Controls.Add(_localApi);
+            TabMediaPlayer.Controls.Add(_mediaPlayer);
+            TabTrayIcon.Controls.Add(_trayIcon);
 
             // bind events
             BindEvents();
@@ -93,6 +100,9 @@ namespace HASS.Agent.Forms
             _logging.Dispose();
             _externalTools.Dispose();
             _service.Dispose();
+            _localApi.Dispose();
+            _mediaPlayer.Dispose();
+            _trayIcon.Dispose();
         }
 
         private void BindEvents()
@@ -124,6 +134,9 @@ namespace HASS.Agent.Forms
             BtnStore.Enabled = false;
 
             BtnStore.Text = Languages.Configuration_BtnStore_Busy;
+
+            // sanitize device name
+            _general.TbDeviceName.Text = SharedHelperFunctions.GetSafeValue(_general.TbDeviceName.Text);
 
             // store settings
             StoreSettings();
@@ -162,10 +175,10 @@ namespace HASS.Agent.Forms
                 MessageBoxAdv.Show(Languages.Configuration_ProcessChanges_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // try to reserve elevated
-                if (!NotifierManager.ExecuteElevatedPortReservation())
+                if (!ApiManager.ExecuteElevatedPortReservation())
                 {
                     // failed, copy the command onto the clipboard
-                    Clipboard.SetText($"netsh http add urlacl url=http://+:{Variables.AppSettings.NotifierApiPort}/ user={Environment.UserDomainName}\\{Environment.UserName}");
+                    Clipboard.SetText($"netsh http add urlacl url=http://+:{Variables.AppSettings.NotifierApiPort}/ user=\"{Environment.UserDomainName}\\{Environment.UserName}\"");
 
                     // notify the user
                     MessageBoxAdv.Show(Languages.Configuration_ProcessChanges_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -211,13 +224,15 @@ namespace HASS.Agent.Forms
             _general.TbDeviceName.Text = Variables.AppSettings.DeviceName;
             _general.NumDisconnectGrace.Value = Variables.AppSettings.DisconnectedGracePeriodSeconds;
             
-
             // startup settings
             Task.Run(_startup.DetermineStartOnLoginStatus);
 
+            // local api
+            _localApi.NumLocalApiPort.Value = Variables.AppSettings.LocalApiPort;
+            _localApi.CbLocalApiActive.CheckState = Variables.AppSettings.LocalApiEnabled ? CheckState.Checked : CheckState.Unchecked;
+
             // notifications
             _notifications.CbAcceptNotifications.CheckState = Variables.AppSettings.NotificationsEnabled ? CheckState.Checked : CheckState.Unchecked;
-            _notifications.NumNotificationApiPort.Value = Variables.AppSettings.NotifierApiPort;
             _notifications.CbNotificationsIgnoreImageCertErrors.CheckState = Variables.AppSettings.NotificationsIgnoreImageCertificateErrors ? CheckState.Checked : CheckState.Unchecked;
 
             // hass settings
@@ -255,6 +270,8 @@ namespace HASS.Agent.Forms
             // cache
             _localStorage.TbImageCacheLocation.Text = Variables.ImageCachePath;
             _localStorage.NumImageRetention.Value = Variables.AppSettings.ImageCacheRetentionDays;
+            _localStorage.TbAudioCacheLocation.Text = Variables.AudioCachePath;
+            _localStorage.NumAudioRetention.Value = Variables.AppSettings.AudioCacheRetentionDays;
 
             // logging
             _logging.CbExtendedLogging.CheckState = SettingsManager.GetExtendedLoggingSetting() ? CheckState.Checked : CheckState.Unchecked;
@@ -266,6 +283,17 @@ namespace HASS.Agent.Forms
             _externalTools.TbExternalExecutorName.Text = Variables.AppSettings.CustomExecutorName;
             _externalTools.TbExternalExecutorBinary.Text = Variables.AppSettings.CustomExecutorBinary;
 
+            // mediaplayer
+            _mediaPlayer.CbEnableMediaPlayer.CheckState = Variables.AppSettings.MediaPlayerEnabled ? CheckState.Checked : CheckState.Unchecked;
+
+            // tray icon
+            _trayIcon.CbDefaultMenu.CheckState = Variables.AppSettings.TrayIconShowDefaultMenu ? CheckState.Checked : CheckState.Unchecked;
+            _trayIcon.CbShowWebView.CheckState = Variables.AppSettings.TrayIconShowWebView ? CheckState.Checked : CheckState.Unchecked;
+            _trayIcon.NumWebViewWidth.Value = Variables.AppSettings.TrayIconWebViewWidth;
+            _trayIcon.NumWebViewHeight.Value = Variables.AppSettings.TrayIconWebViewHeight;
+            _trayIcon.TbWebViewUrl.Text = Variables.AppSettings.TrayIconWebViewUrl;
+            _trayIcon.CbWebViewKeepLoaded.CheckState = Variables.AppSettings.TrayIconWebViewBackgroundLoading ? CheckState.Checked : CheckState.Unchecked;
+
             // done
             _initializing = false;
         }
@@ -276,7 +304,7 @@ namespace HASS.Agent.Forms
         private void StoreSettings()
         {
             // general
-            var deviceName = string.IsNullOrEmpty(_general.TbDeviceName.Text) ? HelperFunctions.GetSafeDeviceName() : _general.TbDeviceName.Text;
+            var deviceName = string.IsNullOrEmpty(_general.TbDeviceName.Text) ? SharedHelperFunctions.GetSafeDeviceName() : _general.TbDeviceName.Text;
             Variables.AppSettings.DeviceName = deviceName;
 
             var uiLanguage = Variables.SupportedUILanguages.Find(x => x.DisplayName == _general.CbLanguage.Text);
@@ -284,9 +312,12 @@ namespace HASS.Agent.Forms
 
             Variables.AppSettings.DisconnectedGracePeriodSeconds = (int)_general.NumDisconnectGrace.Value;
 
+            // local api
+            Variables.AppSettings.LocalApiPort = (int)_localApi.NumLocalApiPort.Value;
+            Variables.AppSettings.LocalApiEnabled = _localApi.CbLocalApiActive.CheckState == CheckState.Checked;
+
             // notifications
             Variables.AppSettings.NotificationsEnabled = _notifications.CbAcceptNotifications.CheckState == CheckState.Checked;
-            Variables.AppSettings.NotifierApiPort = (int)_notifications.NumNotificationApiPort.Value;
             Variables.AppSettings.NotificationsIgnoreImageCertificateErrors = _notifications.CbNotificationsIgnoreImageCertErrors.CheckState == CheckState.Checked;
 
             // hass settings
@@ -332,6 +363,7 @@ namespace HASS.Agent.Forms
 
             // cache
             Variables.AppSettings.ImageCacheRetentionDays = (int)_localStorage.NumImageRetention.Value;
+            Variables.AppSettings.AudioCacheRetentionDays = (int)_localStorage.NumAudioRetention.Value;
 
             // logging
             SettingsManager.SetExtendedLoggingSetting(_logging.CbExtendedLogging.CheckState == CheckState.Checked);
@@ -345,6 +377,17 @@ namespace HASS.Agent.Forms
 
             // set shared config
             AgentSharedBase.SetCustomExecutorBinary(Variables.AppSettings.CustomExecutorBinary);
+
+            // mediaplayer
+            Variables.AppSettings.MediaPlayerEnabled = _mediaPlayer.CbEnableMediaPlayer.CheckState == CheckState.Checked;
+
+            // tray icon
+            Variables.AppSettings.TrayIconShowDefaultMenu = _trayIcon.CbDefaultMenu.CheckState == CheckState.Checked;
+            Variables.AppSettings.TrayIconShowWebView = _trayIcon.CbShowWebView.CheckState == CheckState.Checked;
+            Variables.AppSettings.TrayIconWebViewWidth = (int)_trayIcon.NumWebViewWidth.Value;
+            Variables.AppSettings.TrayIconWebViewHeight = (int)_trayIcon.NumWebViewHeight.Value;
+            Variables.AppSettings.TrayIconWebViewUrl = _trayIcon.TbWebViewUrl.Text;
+            Variables.AppSettings.TrayIconWebViewBackgroundLoading = _trayIcon.CbWebViewKeepLoaded.CheckState == CheckState.Checked;
 
             // save to file
             SettingsManager.StoreAppSettings();

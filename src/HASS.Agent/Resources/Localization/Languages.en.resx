@@ -240,7 +240,7 @@ Are you sure you want this?</value>
 	<data name="CommandsMod_LblInfo_Browser" xml:space="preserve">
 		<value>browser: default
 
-please configure a browser to enable incognito mode</value>
+please configure a custom browser to enable incognito mode</value>
 	</data>
 	<data name="CommandsMod_LblInfo_BrowserSpecific" xml:space="preserve">
 		<value>browser: {0}</value>
@@ -438,7 +438,7 @@ Home Assistant's API.
 
 Please provide a long-lived access token, and the address of your Home Assistant instance.
 
-You can get a token through your profile page.Scroll to the bottom and click 'CREATE TOKEN'.</value>
+You can get a token through your profile page. Scroll to the bottom and click 'CREATE TOKEN'.</value>
 	</data>
 	<data name="ConfigHomeAssistantApi_LblServerUri" xml:space="preserve">
 		<value>server &amp;uri</value>
@@ -753,7 +753,7 @@ Don't worry, they'll keep their current names, so your automations or scripts wi
 Note: the name will get 'sanitized', which means everything except letters, digits and whitespace get replaced by an underscore. This is required by HA.</value>
 	</data>
 	<data name="Configuration_ProcessChanges_MessageBox2" xml:space="preserve">
-		<value>You've changed the notification API's port. This new port needs to be reserved.
+		<value>You've changed the local API's port. This new port needs to be reserved.
 
 You'll get an UAC request to do so, please approve.</value>
 	</data>
@@ -954,11 +954,11 @@ s&amp;atellite service</value>
 	<data name="Main_Load_MessageBox1" xml:space="preserve">
 		<value>Something went wrong while loading your settings.
 
-Check appsettings.json in the 'Config' subfolder, or just delete it to start fresh.</value>
+Check appsettings.json in the 'config' subfolder, or just delete it to start fresh.</value>
 	</data>
 	<data name="Main_Load_MessageBox2" xml:space="preserve">
 		<value>There was an error launching HASS.Agent.
-Please check the logs and make a bug report on github.</value>
+Please check the logs and make a bug report on GitHub.</value>
 	</data>
 	<data name="Main_TsAbout" xml:space="preserve">
 		<value>about</value>
@@ -1034,7 +1034,7 @@ Home Assistant version: {0}</value>
 Home Assistant's API.
 
 Please provide a long-lived access token, and the address of your Home Assistant instance.
-You can get a token through your profile page.Scroll to the bottom and click 'CREATE TOKEN'.</value>
+You can get a token through your profile page. Scroll to the bottom and click 'CREATE TOKEN'.</value>
 	</data>
 	<data name="OnboardingApi_LblServerUri" xml:space="preserve">
 		<value>server &amp;uri (should be ok like this)</value>
@@ -1201,13 +1201,13 @@ You can always remove (or recreate) this key through the Configuration window.</
 	<data name="OnboardingUpdates_LblInfo1" xml:space="preserve">
 		<value>If you want, HASS.Agent can check for updates in the background.
 
-You'll get a notification (once per update) , letting you know a new version is ready to be installed.
+You'll get a notification (once per update), letting you know a new version is ready to be installed.
 
-Do you want to enable this functionality ? </value>
+Do you want to enable this functionality?</value>
 	</data>
 	<data name="OnboardingUpdates_LblInfo2" xml:space="preserve">
 		<value>When there's an update, HASS.Agent will offer the option to open the release page. But if you
-want, HASS.Agent can also download and launch the installer for you - even less to do !
+want, HASS.Agent can also download and launch the installer for you - even less to do!
 
 The certificate of the downloaded file will get checked. And you'll still see a page with the release notes, ánd you still need to manually approve - nothing is done without your consent.</value>
 	</data>
@@ -1423,7 +1423,7 @@ Default audiodevice: name, state and volume.
 Summary of your audio sessions: application name, muted state, volume and current peak volume.</value>
 	</data>
 	<data name="SensorsManager_BatterySensorsDescription" xml:space="preserve">
-		<value>Provides a sensor with the current charging status, estimated amount of minutes on a full charge, remaining charge in percentage, remaining charge in minutes and the powerline status.</value>
+		<value>Provides a sensor with the current charging status, estimated amount of minutes on a full charge, remaining charge as a percentage, remaining charge in minutes and the powerline status.</value>
 	</data>
 	<data name="SensorsManager_CpuLoadSensorDescription" xml:space="preserve">
 		<value>Provides the current load of the first CPU as a percentage.</value>
@@ -1459,7 +1459,7 @@ Important: Windows' FastBoot option can throw this value off, because that's a f
 	<data name="SensorsManager_LastSystemStateChangeSensorDescription" xml:space="preserve">
 		<value>Provides the last system state change:
 
-HassAgentStarted, Logoff, SystemShutdown, Resume, Suspend, ConsoleConnect, ConsoleDisconnect, RemoteConnect, RemoteDisconnect, SessionLock, SessionLogoff, SessionLogon, SessionRemoteControl and SessionUnlock.</value>
+ApplicationStarted, Logoff, SystemShutdown, Resume, Suspend, ConsoleConnect, ConsoleDisconnect, RemoteConnect, RemoteDisconnect, SessionLock, SessionLogoff, SessionLogon, SessionRemoteControl and SessionUnlock.</value>
 	</data>
 	<data name="SensorsManager_LoggedUserSensorDescription" xml:space="preserve">
 		<value>Returns the name of the currently logged user.</value>
@@ -1825,7 +1825,7 @@ By default, it's your PC's name plus '-satellite'.</value>
 		<value>stored!</value>
 	</data>
 	<data name="ServiceGeneral_TbAuthId_MessageBox1" xml:space="preserve">
-		<value>Storing an empty auth ID will allow all HASS.Agents to access the server.
+		<value>Storing an empty auth ID will allow all HASS.Agent to access the service.
 
 Are you sure you want this?</value>
 	</data>
@@ -2562,7 +2562,7 @@ Note: this message only shows once.</value>
 		<value>HASS.Agent has its own local API, so Home Assistant can send requests (for instance to send a notification). You can configure it globally here, and afterwards you can configure the dependent sections (currently notifications and mediaplayer).</value>
 	</data>
 	<data name="ConfigLocalApi_LblInfo2" xml:space="preserve">
-		<value>To be able to listen to the requests, HASS.Agents needs to have its port reserved and opened in your firewall. You can use this button to have it done for you.</value>
+		<value>To be able to listen to the requests, HASS.Agent needs to have its port reserved and opened in your firewall. You can use this button to have it done for you.</value>
 	</data>
 	<data name="ConfigLocalApi_LblPort" xml:space="preserve">
 		<value>&amp;port</value>
@@ -2606,13 +2606,13 @@ Note: this message only shows once.</value>
 - Restart Home Assistant</value>
 	</data>
 	<data name="ConfigMediaPlayer_LblLocalApiDisabled" xml:space="preserve">
-		<value>the local API is disabled, but the media player needs it to work </value>
+		<value>the local API is disabled, but the media player needs it to work</value>
 	</data>
 	<data name="ConfigMqtt_CbMqttTls" xml:space="preserve">
 		<value>&amp;TLS</value>
 	</data>
 	<data name="ConfigNotifications_LblLocalApiDisabled" xml:space="preserve">
-		<value>the local API is disabled, but the media player needs it to work </value>
+		<value>the local API is disabled, but the media player needs it to work</value>
 	</data>
 	<data name="ConfigTrayIcon_BtnShowWebViewPreview" xml:space="preserve">
 		<value>show &amp;preview</value>
@@ -2684,13 +2684,13 @@ Note: this message only shows once.</value>
 		<value>To use notifications, you need to install and configure the HASS.Agent-notifier integration in
 Home Assistant.
 
-This is very easy using HACS, but you can also install manually.Visit the link below for more
+This is very easy using HACS, but you can also install manually. Visit the link below for more
 information.</value>
 	</data>
 	<data name="OnboardingIntegrations_LblInfo2" xml:space="preserve">
 		<value>Make sure you follow these steps:
 
-- Install the HASS.Agent - Notifier and / or HASS.Agent - MediaPlayer integration
+- Install the HASS.Agent-Notifier and / or HASS.Agent-MediaPlayer integration
 - Restart Home Assistant
 -Configure a notifier and / or media_player entity
 -Restart Home Assistant</value>

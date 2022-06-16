@@ -39,6 +39,9 @@ namespace HASS.Agent.Controls.Onboarding
             // 
             // PbHassAgentLogo
             // 
+            this.PbHassAgentLogo.AccessibleDescription = "HASS Agent logo image.";
+            this.PbHassAgentLogo.AccessibleName = "HASS Agent logo";
+            this.PbHassAgentLogo.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbHassAgentLogo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbHassAgentLogo.Image = global::HASS.Agent.Properties.Resources.logo_128;
             this.PbHassAgentLogo.Location = new System.Drawing.Point(24, 20);
@@ -50,7 +53,9 @@ namespace HASS.Agent.Controls.Onboarding
             // 
             // BtnSetLaunchOnLogin
             // 
-            this.BtnSetLaunchOnLogin.AccessibleName = "Button";
+            this.BtnSetLaunchOnLogin.AccessibleDescription = "Enables (when disabled) launching HASS.Agent when you login to Windows.";
+            this.BtnSetLaunchOnLogin.AccessibleName = "Enable launch on login";
+            this.BtnSetLaunchOnLogin.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnSetLaunchOnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnSetLaunchOnLogin.Enabled = false;
             this.BtnSetLaunchOnLogin.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -72,16 +77,21 @@ namespace HASS.Agent.Controls.Onboarding
             // 
             // LblInfo1
             // 
-            this.LblInfo1.AutoSize = true;
+            this.LblInfo1.AccessibleDescription = "Startup information.";
+            this.LblInfo1.AccessibleName = "Information";
+            this.LblInfo1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo1.Location = new System.Drawing.Point(180, 20);
             this.LblInfo1.Name = "LblInfo1";
-            this.LblInfo1.Size = new System.Drawing.Size(565, 76);
+            this.LblInfo1.Size = new System.Drawing.Size(570, 128);
             this.LblInfo1.TabIndex = 5;
             this.LblInfo1.Text = Languages.OnboardingStartup_LblInfo1;
             // 
             // LblCreateInfo
             // 
+            this.LblCreateInfo.AccessibleDescription = "Label containing the current \"launch on login\" state. Content changes.";
+            this.LblCreateInfo.AccessibleName = "Startup state info";
+            this.LblCreateInfo.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblCreateInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblCreateInfo.Location = new System.Drawing.Point(180, 190);
             this.LblCreateInfo.Name = "LblCreateInfo";
@@ -91,6 +101,9 @@ namespace HASS.Agent.Controls.Onboarding
             // 
             // OnboardingStartup
             // 
+            this.AccessibleDescription = "Panel containing the onboarding startup configuration.";
+            this.AccessibleName = "Startup";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Pane;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));

@@ -46,19 +46,21 @@ namespace HASS.Agent.Forms
             this.PbGitHub = new System.Windows.Forms.PictureBox();
             this.PbHAForum = new System.Windows.Forms.PictureBox();
             this.PbHassAgentLogo = new System.Windows.Forms.PictureBox();
-            this.PbWiki = new System.Windows.Forms.PictureBox();
-            this.LblWikiInfo = new System.Windows.Forms.Label();
-            this.LblWiki = new System.Windows.Forms.Label();
+            this.PbDocumentation = new System.Windows.Forms.PictureBox();
+            this.LblDocumentationInfo = new System.Windows.Forms.Label();
+            this.LblDocumentation = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PbDiscord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbGitHub)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbHAForum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbHassAgentLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PbWiki)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PbDocumentation)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnClose
             // 
-            this.BtnClose.AccessibleName = "Button";
+            this.BtnClose.AccessibleDescription = "Closes the window.";
+            this.BtnClose.AccessibleName = "Close";
+            this.BtnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.BtnClose.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BtnClose.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -74,22 +76,27 @@ namespace HASS.Agent.Forms
             this.BtnClose.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnClose.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnClose.TabIndex = 0;
-            this.BtnClose.Text = Languages.Help_BtnClose;
+            this.BtnClose.Text = global::HASS.Agent.Resources.Localization.Languages.Help_BtnClose;
             this.BtnClose.UseVisualStyleBackColor = false;
             this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // LblInfo1
             // 
-            this.LblInfo1.AutoSize = true;
+            this.LblInfo1.AccessibleDescription = "Introduction text.";
+            this.LblInfo1.AccessibleName = "Introduction";
+            this.LblInfo1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo1.Location = new System.Drawing.Point(171, 23);
             this.LblInfo1.Name = "LblInfo1";
-            this.LblInfo1.Size = new System.Drawing.Size(390, 76);
+            this.LblInfo1.Size = new System.Drawing.Size(443, 76);
             this.LblInfo1.TabIndex = 3;
             this.LblInfo1.Text = Languages.Help_LblInfo1;
             // 
             // LblAbout
             // 
+            this.LblAbout.AccessibleDescription = "Opens the \'about\' window.";
+            this.LblAbout.AccessibleName = "About";
+            this.LblAbout.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblAbout.AutoSize = true;
             this.LblAbout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblAbout.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -102,6 +109,9 @@ namespace HASS.Agent.Forms
             // 
             // LblVersion
             // 
+            this.LblVersion.AccessibleDescription = "HASS.Agent\'s current version.";
+            this.LblVersion.AccessibleName = "Version";
+            this.LblVersion.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblVersion.AutoSize = true;
             this.LblVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblVersion.Location = new System.Drawing.Point(12, 154);
@@ -112,6 +122,9 @@ namespace HASS.Agent.Forms
             // 
             // LblHAForum
             // 
+            this.LblHAForum.AccessibleDescription = "Opens the Home Assistant forum topic for HASS.Agent.";
+            this.LblHAForum.AccessibleName = "HA forum";
+            this.LblHAForum.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblHAForum.AutoSize = true;
             this.LblHAForum.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblHAForum.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -124,6 +137,9 @@ namespace HASS.Agent.Forms
             // 
             // LblGitHub
             // 
+            this.LblGitHub.AccessibleDescription = "Opens the \'github tickets\' webpage.";
+            this.LblGitHub.AccessibleName = "GitHub tickets";
+            this.LblGitHub.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblGitHub.AutoSize = true;
             this.LblGitHub.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblGitHub.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -136,6 +152,9 @@ namespace HASS.Agent.Forms
             // 
             // LblDiscord
             // 
+            this.LblDiscord.AccessibleDescription = "Opens the discord invite link.";
+            this.LblDiscord.AccessibleName = "Discord";
+            this.LblDiscord.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
             this.LblDiscord.AutoSize = true;
             this.LblDiscord.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblDiscord.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
@@ -148,6 +167,9 @@ namespace HASS.Agent.Forms
             // 
             // LblHAInfo
             // 
+            this.LblHAInfo.AccessibleDescription = "Home Assistant forum information.";
+            this.LblHAInfo.AccessibleName = "HA forum info";
+            this.LblHAInfo.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblHAInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblHAInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblHAInfo.Location = new System.Drawing.Point(258, 503);
@@ -159,6 +181,9 @@ namespace HASS.Agent.Forms
             // 
             // LblGitHubInfo
             // 
+            this.LblGitHubInfo.AccessibleDescription = "GitHub tickets information.";
+            this.LblGitHubInfo.AccessibleName = "GitHub info";
+            this.LblGitHubInfo.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblGitHubInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblGitHubInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblGitHubInfo.Location = new System.Drawing.Point(258, 193);
@@ -170,6 +195,9 @@ namespace HASS.Agent.Forms
             // 
             // LblDiscordInfo
             // 
+            this.LblDiscordInfo.AccessibleDescription = "Discord information.";
+            this.LblDiscordInfo.AccessibleName = "Discord info";
+            this.LblDiscordInfo.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblDiscordInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblDiscordInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblDiscordInfo.Location = new System.Drawing.Point(258, 399);
@@ -181,6 +209,9 @@ namespace HASS.Agent.Forms
             // 
             // PbDiscord
             // 
+            this.PbDiscord.AccessibleDescription = "Discord logo.";
+            this.PbDiscord.AccessibleName = "Discord logo";
+            this.PbDiscord.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbDiscord.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbDiscord.Image = global::HASS.Agent.Properties.Resources.discord_avatar;
             this.PbDiscord.Location = new System.Drawing.Point(171, 369);
@@ -193,6 +224,9 @@ namespace HASS.Agent.Forms
             // 
             // PbGitHub
             // 
+            this.PbGitHub.AccessibleDescription = "GitHub logo.";
+            this.PbGitHub.AccessibleName = "GitHub logo";
+            this.PbGitHub.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbGitHub.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbGitHub.Image = global::HASS.Agent.Properties.Resources.github_avatar;
             this.PbGitHub.Location = new System.Drawing.Point(171, 163);
@@ -205,6 +239,9 @@ namespace HASS.Agent.Forms
             // 
             // PbHAForum
             // 
+            this.PbHAForum.AccessibleDescription = "Home Assistant logo.";
+            this.PbHAForum.AccessibleName = "HA logo";
+            this.PbHAForum.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbHAForum.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbHAForum.Image = global::HASS.Agent.Properties.Resources.hass_avatar;
             this.PbHAForum.Location = new System.Drawing.Point(171, 472);
@@ -217,6 +254,9 @@ namespace HASS.Agent.Forms
             // 
             // PbHassAgentLogo
             // 
+            this.PbHassAgentLogo.AccessibleDescription = "HASS.Agent logo.";
+            this.PbHassAgentLogo.AccessibleName = "HASS.Agent logo";
+            this.PbHassAgentLogo.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbHassAgentLogo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbHassAgentLogo.Image = global::HASS.Agent.Properties.Resources.logo_128;
             this.PbHassAgentLogo.Location = new System.Drawing.Point(12, 23);
@@ -227,43 +267,55 @@ namespace HASS.Agent.Forms
             this.PbHassAgentLogo.TabStop = false;
             this.PbHassAgentLogo.Click += new System.EventHandler(this.PbHassAgentLogo_Click);
             // 
-            // PbWiki
+            // PbDocumentation
             // 
-            this.PbWiki.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PbWiki.Image = global::HASS.Agent.Properties.Resources.github_avatar;
-            this.PbWiki.Location = new System.Drawing.Point(171, 266);
-            this.PbWiki.Name = "PbWiki";
-            this.PbWiki.Size = new System.Drawing.Size(65, 65);
-            this.PbWiki.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PbWiki.TabIndex = 36;
-            this.PbWiki.TabStop = false;
-            this.PbWiki.Click += new System.EventHandler(this.PbWiki_Click);
+            this.PbDocumentation.AccessibleDescription = "Read The Docs logo.";
+            this.PbDocumentation.AccessibleName = "Read The Docs logo";
+            this.PbDocumentation.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
+            this.PbDocumentation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PbDocumentation.Image = global::HASS.Agent.Properties.Resources.readthedocs_avatar;
+            this.PbDocumentation.Location = new System.Drawing.Point(171, 266);
+            this.PbDocumentation.Name = "PbDocumentation";
+            this.PbDocumentation.Size = new System.Drawing.Size(65, 65);
+            this.PbDocumentation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PbDocumentation.TabIndex = 36;
+            this.PbDocumentation.TabStop = false;
+            this.PbDocumentation.Click += new System.EventHandler(this.PbDocumentation_Click);
             // 
-            // LblWikiInfo
+            // LblDocumentationInfo
             // 
-            this.LblWikiInfo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblWikiInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblWikiInfo.Location = new System.Drawing.Point(258, 296);
-            this.LblWikiInfo.Name = "LblWikiInfo";
-            this.LblWikiInfo.Size = new System.Drawing.Size(356, 61);
-            this.LblWikiInfo.TabIndex = 38;
-            this.LblWikiInfo.Text = Languages.Help_LblWikiInfo;
-            this.LblWikiInfo.Click += new System.EventHandler(this.LblWikiInfo_Click);
+            this.LblDocumentationInfo.AccessibleDescription = "Documentation information.";
+            this.LblDocumentationInfo.AccessibleName = "Documentation info";
+            this.LblDocumentationInfo.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
+            this.LblDocumentationInfo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LblDocumentationInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblDocumentationInfo.Location = new System.Drawing.Point(258, 296);
+            this.LblDocumentationInfo.Name = "LblDocumentationInfo";
+            this.LblDocumentationInfo.Size = new System.Drawing.Size(356, 61);
+            this.LblDocumentationInfo.TabIndex = 38;
+            this.LblDocumentationInfo.Text = Languages.Help_LblDocumentationInfo;
+            this.LblDocumentationInfo.Click += new System.EventHandler(this.LblDocumentationInfo_Click);
             // 
-            // LblWiki
+            // LblDocumentation
             // 
-            this.LblWiki.AutoSize = true;
-            this.LblWiki.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblWiki.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.LblWiki.Location = new System.Drawing.Point(258, 266);
-            this.LblWiki.Name = "LblWiki";
-            this.LblWiki.Size = new System.Drawing.Size(35, 19);
-            this.LblWiki.TabIndex = 37;
-            this.LblWiki.Text = Languages.Help_LblWiki;
-            this.LblWiki.Click += new System.EventHandler(this.LblWiki_Click);
+            this.LblDocumentation.AccessibleDescription = "Opens the documentation webpage.";
+            this.LblDocumentation.AccessibleName = "Documentation";
+            this.LblDocumentation.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
+            this.LblDocumentation.AutoSize = true;
+            this.LblDocumentation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LblDocumentation.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.LblDocumentation.Location = new System.Drawing.Point(258, 266);
+            this.LblDocumentation.Name = "LblDocumentation";
+            this.LblDocumentation.Size = new System.Drawing.Size(104, 19);
+            this.LblDocumentation.TabIndex = 37;
+            this.LblDocumentation.Text = Languages.Help_LblDocumentation;
+            this.LblDocumentation.Click += new System.EventHandler(this.LblDocumentation_Click);
             // 
             // Help
             // 
+            this.AccessibleDescription = "Pointers to various support resources.";
+            this.AccessibleName = "Help";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
@@ -271,9 +323,9 @@ namespace HASS.Agent.Forms
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(626, 606);
-            this.Controls.Add(this.LblWikiInfo);
-            this.Controls.Add(this.LblWiki);
-            this.Controls.Add(this.PbWiki);
+            this.Controls.Add(this.LblDocumentationInfo);
+            this.Controls.Add(this.LblDocumentation);
+            this.Controls.Add(this.PbDocumentation);
             this.Controls.Add(this.LblDiscordInfo);
             this.Controls.Add(this.LblGitHubInfo);
             this.Controls.Add(this.LblHAInfo);
@@ -306,7 +358,7 @@ namespace HASS.Agent.Forms
             ((System.ComponentModel.ISupportInitialize)(this.PbGitHub)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbHAForum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbHassAgentLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PbWiki)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PbDocumentation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -327,9 +379,9 @@ namespace HASS.Agent.Forms
         private System.Windows.Forms.Label LblHAInfo;
         private System.Windows.Forms.Label LblGitHubInfo;
         private System.Windows.Forms.Label LblDiscordInfo;
-        private System.Windows.Forms.PictureBox PbWiki;
-        private System.Windows.Forms.Label LblWikiInfo;
-        private System.Windows.Forms.Label LblWiki;
+        private System.Windows.Forms.PictureBox PbDocumentation;
+        private System.Windows.Forms.Label LblDocumentationInfo;
+        private System.Windows.Forms.Label LblDocumentation;
     }
 }
 
