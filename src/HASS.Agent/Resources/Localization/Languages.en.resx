@@ -888,35 +888,28 @@ There are a few channels through which you can reach us:</value>
 		<value>Help</value>
 	</data>
 	<data name="Main_BtnActionsManager" xml:space="preserve">
-		<value>
-&amp;quick actions</value>
+		<value>&amp;quick actions</value>
 	</data>
 	<data name="Main_BtnAppSettings" xml:space="preserve">
-		<value>
-c&amp;onfiguration</value>
+		<value>c&amp;onfiguration</value>
 	</data>
 	<data name="Main_BtnCommandsManager" xml:space="preserve">
-		<value>
-loading</value>
+		<value>loading</value>
 	</data>
 	<data name="Main_BtnCommandsManager_Ready" xml:space="preserve">
-		<value>
-&amp;commands</value>
+		<value>&amp;commands</value>
 	</data>
 	<data name="Main_BtnHide" xml:space="preserve">
 		<value>&amp;hide</value>
 	</data>
 	<data name="Main_BtnSensorsManager" xml:space="preserve">
-		<value>
-loading</value>
+		<value>loading</value>
 	</data>
 	<data name="Main_BtnSensorsManage_Ready" xml:space="preserve">
-		<value>
-local &amp;sensors</value>
+		<value>local &amp;sensors</value>
 	</data>
 	<data name="Main_BtnServiceManager" xml:space="preserve">
-		<value>
-s&amp;atellite service</value>
+		<value>s&amp;atellite service</value>
 	</data>
 	<data name="Main_CheckForUpdates" xml:space="preserve">
 		<value>check for updates</value>
@@ -1774,7 +1767,7 @@ If you have the correct auth ID, you can set it now and try again.</value>
 		<value>Please enter a devicename first.</value>
 	</data>
 	<data name="ServiceGeneral_LblAuthId" xml:space="preserve">
-		<value>auth id</value>
+		<value>auth &amp;id</value>
 	</data>
 	<data name="ServiceGeneral_LblAuthIdInfo_MessageBox1" xml:space="preserve">
 		<value>Set an auth ID if you don't want every instance of HASS.Agent on this PC to connect with the satellite service.
@@ -2775,5 +2768,31 @@ Do you want to use that version?</value>
 	</data>
 	<data name="WebView_Title" xml:space="preserve">
 		<value>WebView</value>
+	</data>
+	<data name="CommandsMod_BtnStore_MessageBox9" xml:space="preserve">
+		<value>Your keycode doesn't seem to be a valid number.
+
+Please make sure the keycode field has focus, then press the key you want simulated. The keycode should then be generated for you.</value>
+	</data>
+	<data name="ConfigGeneral_CbEnableDeviceNameSanitation" xml:space="preserve">
+		<value>enable device name &amp;sanitation</value>
+	</data>
+	<data name="ConfigGeneral_CbEnableStateNotifications" xml:space="preserve">
+		<value>enable state notifications</value>
+	</data>
+	<data name="ConfigGeneral_LblInfo5" xml:space="preserve">
+		<value>HASS.Agent will sanitize your device name, to make sure HA will accept it. You can overrule this if you're sure that your name will be accepted as-is.</value>
+	</data>
+	<data name="ConfigGeneral_LblInfo6" xml:space="preserve">
+		<value>If you want, you can disable the state notifications all together. HASS.Agent won't show you when a connection was lost or restored.</value>
+	</data>
+	<data name="Configuration_ProcessChanges_MessageBox6" xml:space="preserve">
+		<value>You've changed your device's name.
+
+All your sensors and commands will now be unpublished, and HASS.Agent will restart afterwards to republish them.
+
+Don't worry, they'll keep their current names, so your automations or scripts will keep working.
+
+Note: you disabled sanitation, so make sure your device name is accepted by Home Assistant.</value>
 	</data>
 </root>

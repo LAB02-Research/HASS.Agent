@@ -677,6 +677,17 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your keycode doesn&apos;t seem to be a valid number.
+        ///
+        ///Please make sure the keycode field has focus, then press the key you want simulated. The keycode should then be generated for you..
+        /// </summary>
+        internal static string CommandsMod_BtnStore_MessageBox9 {
+            get {
+                return ResourceManager.GetString("CommandsMod_BtnStore_MessageBox9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to launch in incognito mode.
         /// </summary>
         internal static string CommandsMod_CbCommandSpecific_Incognito {
@@ -1384,6 +1395,24 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to enable device name &amp;sanitation.
+        /// </summary>
+        internal static string ConfigGeneral_CbEnableDeviceNameSanitation {
+            get {
+                return ResourceManager.GetString("ConfigGeneral_CbEnableDeviceNameSanitation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to enable state notifications.
+        /// </summary>
+        internal static string ConfigGeneral_CbEnableStateNotifications {
+            get {
+                return ResourceManager.GetString("ConfigGeneral_CbEnableStateNotifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to device &amp;name.
         /// </summary>
         internal static string ConfigGeneral_LblDeviceName {
@@ -1447,6 +1476,24 @@ namespace HASS.Agent.Resources.Localization {
         internal static string ConfigGeneral_LblInfo4 {
             get {
                 return ResourceManager.GetString("ConfigGeneral_LblInfo4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HASS.Agent will sanitize your device name, to make sure HA will accept it. You can overrule this if you&apos;re sure that your name will be accepted as-is..
+        /// </summary>
+        internal static string ConfigGeneral_LblInfo5 {
+            get {
+                return ResourceManager.GetString("ConfigGeneral_LblInfo5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you want, you can disable the state notifications all together. HASS.Agent won&apos;t show you when a connection was lost or restored..
+        /// </summary>
+        internal static string ConfigGeneral_LblInfo6 {
+            get {
+                return ResourceManager.GetString("ConfigGeneral_LblInfo6", resourceCulture);
             }
         }
         
@@ -2735,6 +2782,21 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You&apos;ve changed your device&apos;s name.
+        ///
+        ///All your sensors and commands will now be unpublished, and HASS.Agent will restart afterwards to republish them.
+        ///
+        ///Don&apos;t worry, they&apos;ll keep their current names, so your automations or scripts will keep working.
+        ///
+        ///Note: you disabled sanitation, so make sure your device name is accepted by Home Assistant..
+        /// </summary>
+        internal static string Configuration_ProcessChanges_MessageBox6 {
+            get {
+                return ResourceManager.GetString("Configuration_ProcessChanges_MessageBox6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to External Tools.
         /// </summary>
         internal static string Configuration_TabExternalTools {
@@ -3372,8 +3434,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///&amp;quick actions.
+        ///   Looks up a localized string similar to &amp;quick actions.
         /// </summary>
         internal static string Main_BtnActionsManager {
             get {
@@ -3382,8 +3443,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///c&amp;onfiguration.
+        ///   Looks up a localized string similar to c&amp;onfiguration.
         /// </summary>
         internal static string Main_BtnAppSettings {
             get {
@@ -3401,8 +3461,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///loading.
+        ///   Looks up a localized string similar to loading.
         /// </summary>
         internal static string Main_BtnCommandsManager {
             get {
@@ -3411,8 +3470,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///&amp;commands.
+        ///   Looks up a localized string similar to &amp;commands.
         /// </summary>
         internal static string Main_BtnCommandsManager_Ready {
             get {
@@ -3430,8 +3488,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///local &amp;sensors.
+        ///   Looks up a localized string similar to local &amp;sensors.
         /// </summary>
         internal static string Main_BtnSensorsManage_Ready {
             get {
@@ -3440,8 +3497,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///loading.
+        ///   Looks up a localized string similar to loading.
         /// </summary>
         internal static string Main_BtnSensorsManager {
             get {
@@ -3450,8 +3506,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///s&amp;atellite service.
+        ///   Looks up a localized string similar to s&amp;atellite service.
         /// </summary>
         internal static string Main_BtnServiceManager {
             get {
