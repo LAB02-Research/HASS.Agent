@@ -1073,7 +1073,7 @@ Dit is nodig om HASS.Agent toe te staan op de opgegeven poort te luisteren.</val
     <value>sluiten</value>
   </data>
   <data name="ExitDialog_Title" xml:space="preserve">
-	  <value>Afsluiten Dialoog</value>
+    <value>Afsluiten Dialoog</value>
   </data>
   <data name="Help_BtnClose" xml:space="preserve">
     <value>sluiten</value>
@@ -1147,24 +1147,19 @@ Er zijn een paar kanalen waar je ons kunt bereiken:</value>
     <value>bediening</value>
   </data>
   <data name="Main_BtnServiceManager" xml:space="preserve">
-    <value>
-s&amp;atelliet service</value>
+    <value>s&amp;atelliet service</value>
   </data>
   <data name="Main_BtnAppSettings" xml:space="preserve">
-    <value>
-c&amp;onfiguratie</value>
+    <value>c&amp;onfiguratie</value>
   </data>
   <data name="Main_BtnActionsManager" xml:space="preserve">
-    <value>
-snelle acties</value>
+    <value>snelle acties</value>
   </data>
   <data name="Main_BtnCommandsManager" xml:space="preserve">
-    <value>
-laden</value>
+    <value>laden</value>
   </data>
   <data name="Main_BtnSensorsManager" xml:space="preserve">
-    <value>
-laden</value>
+    <value>laden</value>
   </data>
   <data name="Main_GpStatus" xml:space="preserve">
     <value>systeem status</value>
@@ -1872,12 +1867,10 @@ Controleer appsettings.json in de &apos;config&apos; subfolder, or verwijder &ap
 Controleer de logs en rapporteer eventuele bugs op GitHub.</value>
   </data>
   <data name="Main_BtnSensorsManage_Ready" xml:space="preserve">
-	  <value>
-&amp;sensoren</value>
+    <value>lokale &amp;sensoren</value>
   </data>
   <data name="Main_BtnCommandsManager_Ready" xml:space="preserve">
-    <value>
-&amp;commando&apos;s</value>
+    <value>&amp;commando&apos;s</value>
   </data>
   <data name="Main_Checking" xml:space="preserve">
     <value>controleren ..</value>
