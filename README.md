@@ -30,6 +30,8 @@ However, developing and maintaining this tool (and everything that surrounds it)
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/lab02research)
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L3L0DHHGD)
+
 ----
 
 ### Contents
