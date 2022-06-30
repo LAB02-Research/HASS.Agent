@@ -28,11 +28,8 @@ HASS.Agent is **completely free**, and will always stay that way without restric
 
 However, developing and maintaining this tool (and everything that surrounds it) takes up a lot of time. Like most developers, I run on caffeïne - so a cup of coffee is always very much appreciated! 
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/lab02research)
-
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/lab02research)
-
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=5YL6UP94AQSPC)
+| [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/lab02research) |  [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/lab02research) | [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=5YL6UP94AQSPC) |
+|:---:|---|---|
 
 ----
 
