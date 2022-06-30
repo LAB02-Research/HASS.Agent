@@ -32,7 +32,7 @@ However, developing and maintaining this tool (and everything that surrounds it)
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/lab02research)
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)]([https://www.paypal.me/AbdennourT/10](https://www.paypal.com/donate/?hosted_button_id=5YL6UP94AQSPC))
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)]([https://www.paypal.me/AbdennourT/10)
 
 ----
 
