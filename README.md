@@ -146,6 +146,8 @@ Stuck while installing or using HASS.Agent, need some help integrating the senso
 
 Starting from zero, and want to learn what HASS.Agent's about and how to start? Be sure to check the [introduction article](https://hassagent.readthedocs.io/en/latest/introduction/), and optionally the [command basics](https://hassagent.readthedocs.io/en/latest/commands/command-basics/).
 
+EverythingSmartHome's youtube video is a great guide as well: [Control Your Windows PC With Home Assistant!](https://www.youtube.com/watch?v=B4SnJPVbSXc)
+
 If you want to help with the development of HASS.Agent, check out the [Helping Out](#helping-out) section for (translating) info.
 
 ----
