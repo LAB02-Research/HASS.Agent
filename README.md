@@ -154,6 +154,8 @@ If you want to help with the development of HASS.Agent, check out the [Helping O
 
 Liam Alexander Colman from [Home Assistant Guide](https://home-assistant-guide.com) was kind enough to write an article about HASS.Agent: [Integrate Home Assistant with Windows using HASS.Agent](https://home-assistant-guide.com/2022/04/20/integrate-home-assistant-with-windows-using-hass-agent/). The website's full of useful articles, worth having a look :)
 
+Youtuber EverythingSmartHome made a great video about HASS.Agent: [Control Your Windows PC With Home Assistant!](https://www.youtube.com/watch?v=B4SnJPVbSXc). I recommend having a look at his other videos as well, great stuff!
+
 ----
 
 ### What it's not
