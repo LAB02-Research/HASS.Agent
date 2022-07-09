@@ -190,7 +190,7 @@ Same goes for sharing ideas for new (or improved) functionality! If you want, yo
 
 Another great way is to help translating HASS.Agent. It's easy thanks to POEditor - no coding knowledge required, everything's done online. For more info, check out the [translating documentation](https://hassagent.readthedocs.io/en/latest/translating/). You can work on an existing language, or suggest a new one.
 
-If you want to tinker with the source code, you can get some initial info from [these docs](https://hassagent.readthedocs.io/en/latest/development/introduction).
+If you want to tinker with the source code, awesome, please start by reading the dev docs: [these docs](https://hassagent.readthedocs.io/en/latest/development/introduction).
 
 ----
 
