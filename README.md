@@ -54,7 +54,7 @@ However, developing and maintaining this tool (and everything that surrounds it)
 
 ### Sponsors
 
-I'd like to thank everyone that's been [donating](https://www.buymeacoffee.com/lab02research)! It's not always easy to pick up work for HASS.Agent (next to a full time job), but people taking the time to donate really motivates a lot. It says that they enjoy the work I've been putting in, and makes the trouble worthwhile :)
+I'd like to thank everyone that's been [donating](https://www.buymeacoffee.com/lab02research)! It's not always easy to pick up work for HASS.Agent (next to a full time job), but people taking the time to donate really motivates a lot. It says that you enjoy the work I've been putting in, and makes the trouble worthwhile :)
 
 A big big thank you to the [monthly sponsors](https://github.com/sponsors/LAB02-Admin), you absolutely rock :heart:
 
