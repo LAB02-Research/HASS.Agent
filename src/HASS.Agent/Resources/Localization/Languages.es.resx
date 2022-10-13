@@ -1265,27 +1265,22 @@ reportar errores o simplemente hablar de lo que sea.</value>
     <value>control S</value>
   </data>
   <data name="Main_BtnServiceManager" xml:space="preserve">
-    <value>
-servicio satelital</value>
+    <value>servicio satelital</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnAppSettings" xml:space="preserve">
-    <value>
-configuración</value>
+    <value>configuración</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnActionsManager" xml:space="preserve">
-    <value>
-acciones rapidas</value>
+    <value>acciones rapidas</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnCommandsManager" xml:space="preserve">
-    <value>
-cargando</value>
+    <value>cargando</value>
   </data>
   <data name="Main_BtnSensorsManager" xml:space="preserve">
-    <value>
-cargando</value>
+    <value>cargando</value>
   </data>
   <data name="Main_GpStatus" xml:space="preserve">
     <value>estado del sistema</value>
@@ -1995,13 +1990,11 @@ Verifique appsettings.json en la subcarpeta &apos;Config&apos;, o simplemente el
 Verifique los registros y haga un informe de error en github.</value>
   </data>
   <data name="Main_BtnSensorsManage_Ready" xml:space="preserve">
-    <value>
-sensores locales</value>
+    <value>sensores locales</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnCommandsManager_Ready" xml:space="preserve">
-    <value>
-comandos</value>
+    <value>comandos</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_Checking" xml:space="preserve">
@@ -2425,6 +2418,12 @@ Esta es una solicitud costosa, por lo que el intervalo recomendado es de 15 minu
   <data name="SystemStateEvent_ConsoleDisconnect" xml:space="preserve">
     <value>ConsolaDesconectar</value>
   </data>
+  <data name="SystemStateEvent_HassAgentSatelliteServiceStarted" xml:space="preserve">
+    <value>HassAgentSatelliteServiceStarted</value>
+  </data>
+  <data name="SystemStateEvent_HassAgentStarted" xml:space="preserve">
+    <value>HassAgentIniciado</value>
+  </data>
   <data name="SystemStateEvent_Logoff" xml:space="preserve">
     <value>Desconectarse</value>
   </data>
@@ -2707,293 +2706,319 @@ Sugerencia: asegúrese de no haber cambiado el alcance y los campos de consulta.
     <value>último valor conocido</value>
   </data>
   <data name="LocalApiManager_Initialize_MessageBox1" xml:space="preserve">
-    <value>Error trying to bind the API to port {0}.
+    <value>Error al intentar vincular la API al puerto {0}.
 
-Make sure no other instance of HASS.Agent is running and the port is available and registered.</value>
+Asegúrese de que no se esté ejecutando ninguna otra instancia de HASS.Agent y que el puerto esté disponible y registrado.</value>
   </data>
   <data name="CommandType_SendWindowToFrontCommand" xml:space="preserve">
-    <value>SendWindowToFront</value>
+    <value>EnviarVentanaAlFrente</value>
   </data>
   <data name="CommandType_WebViewCommand" xml:space="preserve">
     <value>WebView</value>
   </data>
   <data name="CommandsManager_WebViewCommandDescription" xml:space="preserve">
-    <value>Shows a window with the provided URL.
+    <value>Muestra una ventana con la URL proporcionada.
 
-This differs from the &apos;LaunchUrl&apos; command in that it doesn&apos;t load a full-fledged browser, just the provided URL in its own window.
+Esto difiere del comando &apos;LaunchUrl&apos; en que no carga un navegador completo, solo la URL provista en su propia ventana.
 
-You can use this to for instance quickly show Home Assistant&apos;s dashboard.
+Puede usar esto para, por ejemplo, mostrar rápidamente el panel de Home Assistant.
 
-By default, it stores cookies indefinitely so you only have to log in once.</value>
+De forma predeterminada, almacena cookies de forma indefinida, por lo que solo tiene que iniciar sesión una vez.</value>
   </data>
   <data name="HassDomain_HASSAgentCommands" xml:space="preserve">
-    <value>HASS.Agent Commands</value>
+    <value>Comandos HASS.Agent</value>
   </data>
   <data name="CommandsManager_CommandsManager_SendWindowToFrontCommandDescription" xml:space="preserve">
-    <value>Looks for the specified process, and tries to send its main window to the front.
+    <value>Busca el proceso especificado e intenta enviar su ventana principal al frente.
 
-If the application is minimized, it&apos;ll get restored.
+Si la aplicación está minimizada, se restaurará.
 
-Example: if you want to send VLC to the foreground, use &apos;vlc&apos;.</value>
+Ejemplo: si desea enviar VLC al primer plano, use &apos;vlc&apos;.</value>
   </data>
   <data name="CommandsMod_BtnStore_MessageBox8" xml:space="preserve">
-    <value>If you don&apos;t configure the command, you can only use this entity with an &apos;action&apos; value through Home Assistant and it&apos;ll show using the default settings. Running it as-is won&apos;t do anything.
+    <value>Si no configura el comando, solo puede usar esta entidad con un valor de &apos;acción&apos; a través de Home Assistant y se mostrará con la configuración predeterminada. Ejecutarlo como está no hará nada.
 
-Are you sure you want this ? </value>
+¿Estás seguro de que quieres esto? </value>
   </data>
   <data name="ConfigLocalStorage_BtnClearAudioCache" xml:space="preserve">
-    <value>clear audio cache</value>
+    <value>borrar caché de audio</value>
   </data>
   <data name="ConfigLocalStorage_BtnClearAudioCache_InfoText1" xml:space="preserve">
-    <value>cleaning ..</value>
+    <value>limpieza ..</value>
   </data>
   <data name="ConfigLocalStorage_BtnClearAudioCache_MessageBox1" xml:space="preserve">
-    <value>Audio cache has been cleared!</value>
+    <value>¡Se ha borrado la memoria caché de audio!</value>
   </data>
   <data name="ConfigLocalStorage_BtnClearWebViewCache" xml:space="preserve">
-    <value>clear webview cache</value>
+    <value>borrar caché de vista web</value>
   </data>
   <data name="ConfigLocalStorage_BtnClearWebViewCache_InfoText1" xml:space="preserve">
-    <value>cleaning ..</value>
+    <value>limpieza ..</value>
   </data>
   <data name="ConfigLocalStorage_BtnClearWebViewCache_MessageBox1" xml:space="preserve">
-    <value>WebView cache has been cleared!</value>
+    <value>¡Se ha borrado la caché de WebView!</value>
   </data>
   <data name="Main_CheckDpiScalingFactor_MessageBox1" xml:space="preserve">
-    <value>It looks like you&apos;re using an alternative scaling. This may result in some parts of HASS.Agent not looking as intended.
+    <value>Parece que estás usando una escala alternativa. Esto puede provocar que algunas partes de HASS.Agent no se vean como se esperaba.
 
-Please report any unusable aspects on GitHub. Thanks!
+Informe cualquier aspecto inutilizable en GitHub. ¡Gracias!
 
-Note: this message only shows once.</value>
+Nota: este mensaje solo se muestra una vez.</value>
   </data>
   <data name="WebViewCommandConfig_SetStoredVariables_MessageBox1" xml:space="preserve">
-    <value>Unable to load the stored command settings, resetting to default.</value>
+    <value>No se puede cargar la configuración del comando almacenado, restableciéndose a los valores predeterminados.</value>
   </data>
   <data name="CommandsMod_BtnConfigureCommand" xml:space="preserve">
-    <value>configure command &amp;parameters</value>
+    <value>configurar comandos y parámetros</value>
   </data>
   <data name="ConfigLocalApi_BtnExecutePortReservation" xml:space="preserve">
-    <value>execute port &amp;reservation</value>
+    <value>ejecutar puerto y reserva</value>
   </data>
   <data name="ConfigLocalApi_CbLocalApiActive" xml:space="preserve">
-    <value>&amp;enable local api</value>
+    <value>&amp;habilitar API local</value>
   </data>
   <data name="ConfigLocalApi_LblInfo1" xml:space="preserve">
-    <value>HASS.Agent has its own local API, so Home Assistant can send requests (for instance to send a notification). You can configure it globally here, and afterwards you can configure the dependent sections (currently notifications and mediaplayer).</value>
+    <value>HASS.Agent tiene su propia API local, por lo que Home Assistant puede enviar solicitudes (por ejemplo, para enviar una notificación). Puede configurarlo globalmente aquí, y luego puede configurar las secciones dependientes (actualmente notificaciones y reproductor multimedia).</value>
   </data>
   <data name="ConfigLocalApi_LblInfo2" xml:space="preserve">
-    <value>To be able to listen to the requests, HASS.Agents needs to have its port reserved and opened in your firewall. You can use this button to have it done for you.</value>
+    <value>Para poder escuchar las solicitudes, HASS.Agents necesita tener su puerto reservado y abierto en su firewall. Puede usar este botón para que lo haga por usted.</value>
   </data>
   <data name="ConfigLocalApi_LblPort" xml:space="preserve">
-    <value>&amp;port</value>
+    <value>&amp;Puerto</value>
   </data>
   <data name="ConfigLocalStorage_LblAudioCacheLocation" xml:space="preserve">
-    <value>audio cache location</value>
+    <value>ubicación de caché de audio</value>
   </data>
   <data name="ConfigLocalStorage_LblImageCacheDays" xml:space="preserve">
-    <value>days</value>
+    <value>días</value>
   </data>
   <data name="ConfigLocalStorage_LblImageCacheLocation" xml:space="preserve">
-    <value>image cache location</value>
+    <value>ubicación de caché de imagen</value>
   </data>
   <data name="ConfigLocalStorage_LblKeepAudio" xml:space="preserve">
-    <value>keep audio for</value>
+    <value>mantener el audio para</value>
   </data>
   <data name="ConfigLocalStorage_LblKeepImages" xml:space="preserve">
-    <value>keep images for</value>
+    <value>guardar imágenes para</value>
   </data>
   <data name="ConfigLocalStorage_LblKeepWebView" xml:space="preserve">
-    <value>clear cache every</value>
+    <value>borrar caché cada</value>
   </data>
   <data name="ConfigLocalStorage_LblWebViewCacheLocation" xml:space="preserve">
-    <value>webview cache location</value>
+    <value>ubicación de caché de vista web</value>
   </data>
   <data name="ConfigMediaPlayer_BtnMediaPlayerReadme" xml:space="preserve">
-    <value>media player &amp;documentation</value>
+    <value>reproductor multimedia y documentación</value>
   </data>
   <data name="ConfigMediaPlayer_CbEnableMediaPlayer" xml:space="preserve">
-    <value>&amp;enable media player functionality</value>
+    <value>&amp;activar la funcionalidad del reproductor multimedia</value>
   </data>
   <data name="ConfigMediaPlayer_LblInfo1" xml:space="preserve">
-    <value>HASS.Agent can act as a media player for Home Assistant, so you&apos;ll be able to control any media that&apos;s playing and send text-to-speech. The Local API needs to be enabled for this to work.</value>
+    <value>HASS.Agent puede actuar como un reproductor multimedia para Home Assistant, por lo que podrá controlar cualquier medio que se esté reproduciendo y enviar texto a voz. La API local debe estar habilitada para que esto funcione.</value>
   </data>
   <data name="ConfigMediaPlayer_LblInfo2" xml:space="preserve">
-    <value>If something&apos;s not working, make sure you followed these steps:
+    <value>Si algo no funciona, asegúrese de haber seguido estos pasos:
 
-- Install HASS.Agent-MediaPlayer integration
-- Restart Home Assistant
-- Configure a media_player entity
-- Restart Home Assistant</value>
+- Instalar la integración HASS.Agent-MediaPlayer
+- Reiniciar Asistente de inicio
+- Configurar una entidad media_player
+- Reiniciar Asistente de inicio</value>
   </data>
   <data name="ConfigMediaPlayer_LblLocalApiDisabled" xml:space="preserve">
-    <value>the local API is disabled, but the media player needs it to work </value>
+    <value>la API local está deshabilitada, pero el reproductor multimedia la necesita para funcionar </value>
   </data>
   <data name="ConfigMqtt_CbMqttTls" xml:space="preserve">
     <value>&amp;TLS</value>
   </data>
   <data name="ConfigNotifications_LblLocalApiDisabled" xml:space="preserve">
-    <value>the local API is disabled, but the media player needs it to work </value>
+    <value>la API local está deshabilitada, pero el reproductor multimedia la necesita para funcionar </value>
   </data>
   <data name="ConfigTrayIcon_BtnShowWebViewPreview" xml:space="preserve">
-    <value>show &amp;preview</value>
+    <value>Mostrar vista previa</value>
   </data>
   <data name="ConfigTrayIcon_CbDefaultMenu" xml:space="preserve">
-    <value>show &amp;default menu</value>
+    <value>mostrar &amp;menú predeterminado</value>
   </data>
   <data name="ConfigTrayIcon_CbShowWebView" xml:space="preserve">
-    <value>show &amp;webview</value>
+    <value>Mostrar &amp; vista web</value>
   </data>
   <data name="ConfigTrayIcon_CbWebViewKeepLoaded" xml:space="preserve">
-    <value>&amp;keep page loaded in the background</value>
+    <value>&amp;mantener la página cargada en segundo plano</value>
   </data>
   <data name="ConfigTrayIcon_LblInfo1" xml:space="preserve">
-    <value>Control the way the tray icon behaves on a right mousebutton click.</value>
+    <value>Controle el comportamiento del icono de la bandeja con un clic del botón derecho del ratón.</value>
   </data>
   <data name="ConfigTrayIcon_LblInfo2" xml:space="preserve">
-    <value>this uses some resources, but reduces loading time</value>
+    <value>esto usa algunos recursos, pero reduce el tiempo de carga</value>
   </data>
   <data name="ConfigTrayIcon_LblWebViewSize" xml:space="preserve">
-    <value>size</value>
+    <value>Talla</value>
   </data>
   <data name="ConfigTrayIcon_LblWebViewUrl" xml:space="preserve">
-    <value>&amp;url to show (for instance an Home Assistant dashboard)</value>
+    <value>&amp;url para mostrar (por ejemplo, un panel de Home Assistant)</value>
   </data>
   <data name="Configuration_TablLocalApi" xml:space="preserve">
-    <value>Local API</value>
+    <value>API locales</value>
   </data>
   <data name="Configuration_TabMediaPlayer" xml:space="preserve">
-    <value>Media Player</value>
+    <value>Reproductor multimedia</value>
   </data>
   <data name="Configuration_TabTrayIcon" xml:space="preserve">
-    <value>Tray Icon</value>
+    <value>Icono de bandeja</value>
   </data>
   <data name="HelperFunctions_InputLanguageCheckDiffers_ErrorMsg1" xml:space="preserve">
-    <value>Your input language &apos;{0}&apos; is known to collide with the default CTRL-ALT-Q hotkey. Please set your own.</value>
+    <value>Se sabe que su idioma de entrada &apos;{0}&apos; colisiona con la tecla de acceso directo predeterminada CTRL-ALT-Q. Establezca el suyo propio.</value>
   </data>
   <data name="HelperFunctions_InputLanguageCheckDiffers_ErrorMsg2" xml:space="preserve">
-    <value>Your input language &apos;{0}&apos; is unknown, and might collide with the default CTRL-ALT-Q hotkey. Please check to be sure. If it does, consider opening a ticket on GitHub so it can be added to the list.</value>
+    <value>Su idioma de entrada &apos;{0}&apos; es desconocido y podría colisionar con la tecla de acceso directo predeterminada CTRL-ALT-Q. Por favor verifique para estar seguro. Si es así, considere abrir un ticket en GitHub para que pueda agregarse a la lista.</value>
   </data>
   <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg1" xml:space="preserve">
-    <value>no keys found</value>
+    <value>no se encontraron llaves</value>
   </data>
   <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg2" xml:space="preserve">
-    <value>brackets missing, start and close all keys with [ ]</value>
+    <value>faltan corchetes, inicie y cierre todas las teclas con [ ]</value>
   </data>
   <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg3" xml:space="preserve">
-    <value>error while parsing keys, check the log for more info</value>
+    <value>error al analizar las claves, verifique el registro para obtener más información</value>
   </data>
   <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg4" xml:space="preserve">
-    <value>the number of &apos;[&apos; brackets don&apos;t correspond to the &apos;]&apos; ones ({0} to {1})</value>
+    <value>el número de corchetes &apos;[&apos; no corresponde a los &apos;]&apos; ({0} a {1})</value>
   </data>
   <data name="Help_LblDocumentation" xml:space="preserve">
-    <value>Documentation</value>
+    <value>Documentación</value>
   </data>
   <data name="Help_LblDocumentationInfo" xml:space="preserve">
-    <value>Documentation and usage examples.</value>
+    <value>Documentación y ejemplos de uso.</value>
   </data>
   <data name="Main_BtnCheckForUpdate" xml:space="preserve">
-    <value>check for &amp;updates</value>
+    <value>buscar &amp;actualizaciones</value>
   </data>
   <data name="Main_LblLocalApi" xml:space="preserve">
-    <value>local api:</value>
+    <value>API locales:</value>
   </data>
   <data name="Main_TsSatelliteService" xml:space="preserve">
-    <value>manage satellite service</value>
+    <value>gestionar servicio satelital</value>
   </data>
   <data name="OnboardingIntegrations_LblInfo1" xml:space="preserve">
-    <value>To use notifications, you need to install and configure the HASS.Agent-notifier integration in
-Home Assistant.
+    <value>Para usar notificaciones, debe instalar y configurar la integración HASS.Agent-notifier en
+Asistente de hogar.
 
-This is very easy using HACS, but you can also install manually.Visit the link below for more
-information.</value>
+Esto es muy fácil usando HACS, pero también puede instalarlo manualmente. Visite el enlace a continuación para obtener más información.
+información.</value>
   </data>
   <data name="OnboardingIntegrations_LblInfo2" xml:space="preserve">
-    <value>Make sure you follow these steps:
+    <value>Asegúrate de seguir estos pasos:
 
-- Install the HASS.Agent - Notifier and / or HASS.Agent - MediaPlayer integration
-- Restart Home Assistant
--Configure a notifier and / or media_player entity
--Restart Home Assistant</value>
+- Instalar HASS.Agent - Notifier y/o HASS.Agent - Integración de MediaPlayer
+- Reiniciar Asistente de inicio
+-Configurar una entidad notificadora y/o media_player
+-Reiniciar Asistente de inicio</value>
   </data>
   <data name="OnboardingIntegrations_LblInfo3" xml:space="preserve">
-    <value>The same goes for the mediaplayer. This integration allows you to control your device as a media_player entity, see what&apos;s playing and send text-to-speech.</value>
+    <value>Lo mismo ocurre con el reproductor multimedia. Esta integración le permite controlar su dispositivo como una entidad media_player, ver lo que se está reproduciendo y enviar texto a voz.</value>
   </data>
   <data name="OnboardingIntegrations_LblMediaPlayerIntegration" xml:space="preserve">
-    <value>HASS.Agent-MediaPlayer GitHub page</value>
+    <value>Página HASS.Agent-MediaPlayer GitHub</value>
   </data>
   <data name="OnboardingIntegrations_LblNotifierIntegration" xml:space="preserve">
-    <value>HASS.Agent-Notifier GitHub page</value>
+    <value>Página HASS.Agent-Notifier GitHub</value>
   </data>
   <data name="OnboardingLocalApi_CbEnableLocalApi" xml:space="preserve">
-    <value>yes, &amp;enable the local api on port</value>
+    <value>sí, habilitar la API local en el puerto</value>
   </data>
   <data name="OnboardingLocalApi_CbEnableMediaPlayer" xml:space="preserve">
-    <value>enable &amp;mediaplayer and text-to-speech</value>
+    <value>habilitar &amp;mediaplayer y texto a voz</value>
   </data>
   <data name="OnboardingLocalApi_CbEnableNotifications" xml:space="preserve">
-    <value>enable &amp;notifications</value>
+    <value>permitir notificaciones</value>
   </data>
   <data name="OnboardingLocalApi_LblInfo1" xml:space="preserve">
-    <value>HASS.Agent has its own internal API, so Home Assistant can send requests (like notifications or text-to-speech).
+    <value>HASS.Agent tiene su propia API interna, por lo que Home Assistant puede enviar solicitudes (como notificaciones o texto a voz).
 
-Do you want to enable it?</value>
+Quieres habilitarlo?</value>
   </data>
   <data name="OnboardingLocalApi_LblInfo2" xml:space="preserve">
-    <value>You can choose what modules you want to enable. They require HA integrations, but don&apos;t worry, the next page will give you more info on how to set them up.</value>
+    <value>Puede elegir qué módulos desea habilitar. Requieren integraciones HA, pero no se preocupe, la siguiente página le dará más información sobre cómo configurarlas.</value>
   </data>
   <data name="OnboardingLocalApi_LblTip1" xml:space="preserve">
-    <value>Note: 5115 is the default port, only change it if you changed it in Home Assistant.</value>
+    <value>Nota: 5115 es el puerto predeterminado, solo cámbialo si lo cambiaste en Home Assistant.</value>
   </data>
   <data name="OnboardingMqtt_CbMqttTls" xml:space="preserve">
     <value>&amp;TLS</value>
   </data>
   <data name="OnboardingWelcome_Store_MessageBox1" xml:space="preserve">
-    <value>Your devicename contained some characters that aren&apos;t allowed by HA (only letters, digits and whitespace).
+    <value>El nombre de su dispositivo contenía algunos caracteres que HA no permite (solo letras, dígitos y espacios en blanco).
 
-The final name is: {0}
+El nombre final es: {0}
 
-Do you want to use that version?</value>
+¿Quieres usar esa versión?</value>
   </data>
   <data name="Onboarding_Title" xml:space="preserve">
-    <value>HASS.Agent Onboarding</value>
+    <value>Incorporación de HASS.Agent</value>
   </data>
   <data name="ServiceGeneral_LblAuthStored" xml:space="preserve">
-    <value>stored!</value>
+    <value>almacenado!</value>
   </data>
   <data name="ServiceMqtt_CbMqttTls" xml:space="preserve">
     <value>&amp;TLS</value>
   </data>
   <data name="WebViewCommandConfig_BtnSave" xml:space="preserve">
-    <value>&amp;save</value>
+    <value>&amp;ahorrar</value>
   </data>
   <data name="WebViewCommandConfig_CbCenterScreen" xml:space="preserve">
-    <value>&amp;always show centered in screen</value>
+    <value>&amp;mostrar siempre centrado en la pantalla</value>
   </data>
   <data name="WebViewCommandConfig_CbShowTitleBar" xml:space="preserve">
-    <value>show the window&apos;s &amp;title bar</value>
+    <value>mostrar la barra de &amp;título de la ventana</value>
   </data>
   <data name="WebViewCommandConfig_CbTopMost" xml:space="preserve">
-    <value>set window as always on &amp;top</value>
+    <value>establecer ventana como siempre en &amp;arriba</value>
   </data>
   <data name="WebViewCommandConfig_LblInfo1" xml:space="preserve">
-    <value>Drag and resize this window to set the size and location of your webview command.</value>
+    <value>Arrastre y cambie el tamaño de esta ventana para establecer el tamaño y la ubicación de su comando de vista web.</value>
   </data>
   <data name="WebViewCommandConfig_LblLocation" xml:space="preserve">
-    <value>location</value>
+    <value>ubicación</value>
   </data>
   <data name="WebViewCommandConfig_LblSize" xml:space="preserve">
-    <value>size</value>
+    <value>Talla</value>
   </data>
   <data name="WebViewCommandConfig_LblTip1" xml:space="preserve">
-    <value>tip: press &apos;esc&apos; to close a webview</value>
+    <value>consejo: presione &apos;esc&apos; para cerrar una vista web</value>
   </data>
   <data name="WebViewCommandConfig_LblUrl" xml:space="preserve">
     <value>&amp;URL</value>
   </data>
   <data name="WebViewCommandConfig_Title" xml:space="preserve">
-    <value>WebView Configuration</value>
+    <value>Configuración de WebView</value>
   </data>
   <data name="WebView_Title" xml:space="preserve">
     <value>WebView</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox9" xml:space="preserve">
+    <value>Su código clave no parece ser un número válido.
+
+Asegúrese de que el campo del código clave tenga el foco, luego presione la tecla que desea simular. A continuación, se debe generar el código clave para usted.</value>
+  </data>
+  <data name="ConfigGeneral_CbEnableDeviceNameSanitation" xml:space="preserve">
+    <value>habilitar el nombre del dispositivo y el saneamiento</value>
+  </data>
+  <data name="ConfigGeneral_CbEnableStateNotifications" xml:space="preserve">
+    <value>habilitar notificaciones de estado</value>
+  </data>
+  <data name="ConfigGeneral_LblInfo5" xml:space="preserve">
+    <value>HASS.Agent desinfectará el nombre de su dispositivo para asegurarse de que HA lo acepte. Puede anular esto si está seguro de que su nombre se aceptará tal cual.</value>
+  </data>
+  <data name="ConfigGeneral_LblInfo6" xml:space="preserve">
+    <value>Si lo desea, puede deshabilitar todas las notificaciones de estado. HASS.Agent no le mostrará cuándo se perdió o restableció una conexión.</value>
+  </data>
+  <data name="Configuration_ProcessChanges_MessageBox6" xml:space="preserve">
+    <value>Has cambiado el nombre de tu dispositivo.
+
+Todos sus sensores y comandos ahora no se publicarán, y HASS.Agent se reiniciará después para volver a publicarlos.
+
+No se preocupe, mantendrán sus nombres actuales, por lo que sus automatizaciones o scripts seguirán funcionando.
+
+Nota: deshabilitó el saneamiento, así que asegúrese de que Home Assistant acepte el nombre de su dispositivo.</value>
   </data>
 </root>

@@ -2902,4 +2902,30 @@ Home Assistant.
   <data name="WebView_Title" xml:space="preserve">
     <value>WebView</value>
   </data>
+  <data name="CommandsMod_BtnStore_MessageBox9" xml:space="preserve">
+    <value>Your keycode doesn&apos;t seem to be a valid number.
+
+Please make sure the keycode field has focus, then press the key you want simulated. The keycode should then be generated for you.</value>
+  </data>
+  <data name="ConfigGeneral_CbEnableDeviceNameSanitation" xml:space="preserve">
+    <value>enable device name &amp;sanitation</value>
+  </data>
+  <data name="ConfigGeneral_CbEnableStateNotifications" xml:space="preserve">
+    <value>enable state notifications</value>
+  </data>
+  <data name="ConfigGeneral_LblInfo5" xml:space="preserve">
+    <value>HASS.Agent will sanitize your device name, to make sure HA will accept it. You can overrule this if you&apos;re sure that your name will be accepted as-is.</value>
+  </data>
+  <data name="ConfigGeneral_LblInfo6" xml:space="preserve">
+    <value>If you want, you can disable the state notifications all together. HASS.Agent won&apos;t show you when a connection was lost or restored.</value>
+  </data>
+  <data name="Configuration_ProcessChanges_MessageBox6" xml:space="preserve">
+    <value>You&apos;ve changed your device&apos;s name.
+
+All your sensors and commands will now be unpublished, and HASS.Agent will restart afterwards to republish them.
+
+Don&apos;t worry, they&apos;ll keep their current names, so your automations or scripts will keep working.
+
+Note: you disabled sanitation, so make sure your device name is accepted by Home Assistant.</value>
+  </data>
 </root>

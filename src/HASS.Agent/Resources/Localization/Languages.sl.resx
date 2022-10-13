@@ -370,6 +370,11 @@ Ste prepričani, da želite to?</value>
 
 Are you sure you want this ? </value>
   </data>
+  <data name="CommandsMod_BtnStore_MessageBox9" xml:space="preserve">
+    <value>Your keycode doesn&apos;t seem to be a valid number.
+
+Please make sure the keycode field has focus, then press the key you want simulated. The keycode should then be generated for you.</value>
+  </data>
   <data name="CommandsMod_CbCommandSpecific_Incognito" xml:space="preserve">
     <value>zagon v načinu brez beleženja zgodovine</value>
   </data>
@@ -619,6 +624,12 @@ Za zagon tega izvajalca uporabite ukaz &apos;custom executor&apos;.</value>
   <data name="ConfigExternalTools_LblTip1" xml:space="preserve">
     <value>nasvet: dvokliknite za brskanje</value>
   </data>
+  <data name="ConfigGeneral_CbEnableDeviceNameSanitation" xml:space="preserve">
+    <value>enable device name &amp;sanitation</value>
+  </data>
+  <data name="ConfigGeneral_CbEnableStateNotifications" xml:space="preserve">
+    <value>enable state notifications</value>
+  </data>
   <data name="ConfigGeneral_LblDeviceName" xml:space="preserve">
     <value>ime naprave</value>
     <comment>Fuzzy</comment>
@@ -645,6 +656,12 @@ Vaše avtomatizacije in skripti bodo še naprej delovali.</value>
   <data name="ConfigGeneral_LblInfo4" xml:space="preserve">
     <value>HASS.Agent bo počakal nekaj časa, preden vas bo obvestil o prekinitvah povezave z MQTT ali API-jem HA.
 Tukaj lahko nastavite količino sekund.</value>
+  </data>
+  <data name="ConfigGeneral_LblInfo5" xml:space="preserve">
+    <value>HASS.Agent will sanitize your device name, to make sure HA will accept it. You can overrule this if you&apos;re sure that your name will be accepted as-is.</value>
+  </data>
+  <data name="ConfigGeneral_LblInfo6" xml:space="preserve">
+    <value>If you want, you can disable the state notifications all together. HASS.Agent won&apos;t show you when a connection was lost or restored.</value>
   </data>
   <data name="ConfigGeneral_LblInterfaceLangauge" xml:space="preserve">
     <value>jezik vmesnika</value>
@@ -1162,6 +1179,15 @@ HASS.Agent se bo zdaj znova zagnal, da bo aktiviral novo konfiguracijo.</value>
 
 Ali želite zdaj znova zagnati?</value>
   </data>
+  <data name="Configuration_ProcessChanges_MessageBox6" xml:space="preserve">
+    <value>You&apos;ve changed your device&apos;s name.
+
+All your sensors and commands will now be unpublished, and HASS.Agent will restart afterwards to republish them.
+
+Don&apos;t worry, they&apos;ll keep their current names, so your automations or scripts will keep working.
+
+Note: you disabled sanitation, so make sure your device name is accepted by Home Assistant.</value>
+  </data>
   <data name="Configuration_TabExternalTools" xml:space="preserve">
     <value>Zunanja orodja</value>
   </data>
@@ -1384,25 +1410,21 @@ Make sure no other instance of HASS.Agent is running and the port is available a
     <value>Odklenjeno</value>
   </data>
   <data name="Main_BtnActionsManager" xml:space="preserve">
-    <value>
-hitra dejanja</value>
+    <value>hitra dejanja</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnAppSettings" xml:space="preserve">
-    <value>
-konfiguracijo</value>
+    <value>konfiguracijo</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnCheckForUpdate" xml:space="preserve">
     <value>check for &amp;updates</value>
   </data>
   <data name="Main_BtnCommandsManager" xml:space="preserve">
-    <value>
-nalaganje</value>
+    <value>nalaganje</value>
   </data>
   <data name="Main_BtnCommandsManager_Ready" xml:space="preserve">
-    <value>
-ukazov</value>
+    <value>ukazov</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnHide" xml:space="preserve">
@@ -1410,17 +1432,14 @@ ukazov</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnSensorsManage_Ready" xml:space="preserve">
-    <value>
-lokalni senzorji</value>
+    <value>lokalni senzorji</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnSensorsManager" xml:space="preserve">
-    <value>
-nalaganje</value>
+    <value>nalaganje</value>
   </data>
   <data name="Main_BtnServiceManager" xml:space="preserve">
-    <value>
-satelitsko storitev</value>
+    <value>satelitsko storitev</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_CheckDpiScalingFactor_MessageBox1" xml:space="preserve">
@@ -2834,6 +2853,12 @@ Za več informacij si oglejte dnevnike.</value>
   </data>
   <data name="SystemStateEvent_ConsoleDisconnect" xml:space="preserve">
     <value>ConsoleDisconnect</value>
+  </data>
+  <data name="SystemStateEvent_HassAgentSatelliteServiceStarted" xml:space="preserve">
+    <value>HassAgentSatelliteService je zagnan</value>
+  </data>
+  <data name="SystemStateEvent_HassAgentStarted" xml:space="preserve">
+    <value>HassAgent Started</value>
   </data>
   <data name="SystemStateEvent_Logoff" xml:space="preserve">
     <value>Odjava</value>

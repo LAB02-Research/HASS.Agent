@@ -39,7 +39,7 @@ namespace HASS.Agent.Resources.Localization {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HASS.Agent.Resources.Localization.Languages", typeof(Languages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Localization.Languages", typeof(Languages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -391,7 +391,7 @@ namespace HASS.Agent.Resources.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Simulates a single keypress.
         ///
-        ///You can pick any of these values: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes 
+        ///Click on the &apos;keycode&apos; textbox and press the key you want simulated. The corresponding keycode will be entered for you.
         ///
         ///If you need more keys and/or modifiers like CTRL, use the MultipleKeys command..
         /// </summary>
@@ -487,6 +487,24 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Puts all monitors in sleep (low power) mode..
+        /// </summary>
+        internal static string CommandsManager_MonitorSleepCommandDescription {
+            get {
+                return ResourceManager.GetString("CommandsManager_MonitorSleepCommandDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tries to wake up all monitors by simulating a &apos;arrow up&apos; keypress..
+        /// </summary>
+        internal static string CommandsManager_MonitorWakeCommandDescription {
+            get {
+                return ResourceManager.GetString("CommandsManager_MonitorWakeCommandDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Simulates pressing mulitple keys.
         ///
         ///You need to put [ ] between every key, otherwise HASS.Agent can&apos;t tell them apart. So say you want to press X TAB Y SHIFT-Z, it&apos;d be [X] [{TAB}] [Y] [+Z].
@@ -538,6 +556,15 @@ namespace HASS.Agent.Resources.Localization {
         internal static string CommandsManager_RestartCommandDescription {
             get {
                 return ResourceManager.GetString("CommandsManager_RestartCommandDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sets the volume of the current default audiodevice to the specified level..
+        /// </summary>
+        internal static string CommandsManager_SetVolumeCommandDescription {
+            get {
+                return ResourceManager.GetString("CommandsManager_SetVolumeCommandDescription", resourceCulture);
             }
         }
         
@@ -604,6 +631,15 @@ namespace HASS.Agent.Resources.Localization {
         internal static string CommandsMod_BtnStore_MessageBox1 {
             get {
                 return ResourceManager.GetString("CommandsMod_BtnStore_MessageBox1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a value between 0 and 100 as the desired volume level..
+        /// </summary>
+        internal static string CommandsMod_BtnStore_MessageBox10 {
+            get {
+                return ResourceManager.GetString("CommandsMod_BtnStore_MessageBox10", resourceCulture);
             }
         }
         
@@ -711,6 +747,15 @@ namespace HASS.Agent.Resources.Localization {
         internal static string CommandsMod_ClmSensorName {
             get {
                 return ResourceManager.GetString("CommandsMod_ClmSensorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Command.
+        /// </summary>
+        internal static string CommandsMod_CommandsMod {
+            get {
+                return ResourceManager.GetString("CommandsMod_CommandsMod", resourceCulture);
             }
         }
         
@@ -854,7 +899,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The MQTT manager hasn&apos;t been setup properly, make sure you&apos;ve configured MQTT and restarted afterwards..
+        ///   Looks up a localized string similar to The MQTT manager hasn&apos;t been configured properly, or hasn&apos;t yet completed its startup..
         /// </summary>
         internal static string CommandsMod_LblMqttTopic_MessageBox1 {
             get {
@@ -964,6 +1009,17 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to If you don&apos;t enter a volume value, you can only use this entity with an &apos;action&apos; value through Home Assistant. Running it as-is won&apos;t do anything.
+        ///
+        ///Are you sure you want this?.
+        /// </summary>
+        internal static string CommandsMod_MessageBox_Action2 {
+            get {
+                return ResourceManager.GetString("CommandsMod_MessageBox_Action2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select a valid entity type first..
         /// </summary>
         internal static string CommandsMod_MessageBox_EntityType {
@@ -978,6 +1034,19 @@ namespace HASS.Agent.Resources.Localization {
         internal static string CommandsMod_MessageBox_Name {
             get {
                 return ResourceManager.GetString("CommandsMod_MessageBox_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name you provided contains unsupported characters and won&apos;t work. The suggested version is:
+        ///
+        ///{0}
+        ///
+        ///Do you want to use this version?.
+        /// </summary>
+        internal static string CommandsMod_MessageBox_Sanitize {
+            get {
+                return ResourceManager.GetString("CommandsMod_MessageBox_Sanitize", resourceCulture);
             }
         }
         
@@ -1135,6 +1204,24 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MonitorSleep.
+        /// </summary>
+        internal static string CommandType_MonitorSleepCommand {
+            get {
+                return ResourceManager.GetString("CommandType_MonitorSleepCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MonitorWake.
+        /// </summary>
+        internal static string CommandType_MonitorWakeCommand {
+            get {
+                return ResourceManager.GetString("CommandType_MonitorWakeCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MultipleKeys.
         /// </summary>
         internal static string CommandType_MultipleKeysCommand {
@@ -1176,6 +1263,15 @@ namespace HASS.Agent.Resources.Localization {
         internal static string CommandType_SendWindowToFrontCommand {
             get {
                 return ResourceManager.GetString("CommandType_SendWindowToFrontCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SetVolume.
+        /// </summary>
+        internal static string CommandType_SetVolumeCommand {
+            get {
+                return ResourceManager.GetString("CommandType_SetVolumeCommand", resourceCulture);
             }
         }
         
@@ -1556,6 +1652,38 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your API token doesn&apos;t look right. Make sure you selected the entire token (don&apos;t use CTRL+A or doubleclick).
+        ///It should contain three sections (seperated by two dots).
+        ///
+        ///Are you sure you want to use it like this?.
+        /// </summary>
+        internal static string ConfigHomeAssistantApi_BtnTestApi_MessageBox5 {
+            get {
+                return ResourceManager.GetString("ConfigHomeAssistantApi_BtnTestApi_MessageBox5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your URI doesn&apos;t look right. It should look something like &apos;http://homeassistant.local:8123&apos; or &apos;http://192.168.0.1:8123&apos;.
+        ///
+        ///Are you sure you want to use it like this?.
+        /// </summary>
+        internal static string ConfigHomeAssistantApi_BtnTestApi_MessageBox6 {
+            get {
+                return ResourceManager.GetString("ConfigHomeAssistantApi_BtnTestApi_MessageBox6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to testing ...
+        /// </summary>
+        internal static string ConfigHomeAssistantApi_BtnTestApi_Testing {
+            get {
+                return ResourceManager.GetString("ConfigHomeAssistantApi_BtnTestApi_Testing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to use &amp;automatic client certificate selection.
         /// </summary>
         internal static string ConfigHomeAssistantApi_CbHassAutoClientCertificate {
@@ -1671,7 +1799,9 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HASS.Agent has its own local API, so Home Assistant can send requests (for instance to send a notification). You can configure it globally here, and afterwards you can configure the dependent sections (currently notifications and mediaplayer)..
+        ///   Looks up a localized string similar to HASS.Agent has its own local API, so Home Assistant can send requests (for instance to send a notification). You can configure it globally here, and afterwards you can configure the dependent sections (currently notifications and mediaplayer).
+        ///
+        ///Note: this is not required for the new integration to function. Only enable and use it if you don&apos;t use MQTT..
         /// </summary>
         internal static string ConfigLocalApi_LblInfo1 {
             get {
@@ -1900,7 +2030,7 @@ namespace HASS.Agent.Resources.Localization {
         
         /// <summary>
         ///   Looks up a localized string similar to Extended logging provides more verbose and in-depth logging, in case the default logging isn&apos;t
-        ///sufficient.Please note that enabling this can cause the logfiles to grow large, and should only be
+        ///sufficient. Please note that enabling this can cause the logfiles to grow large, and should only be
         ///used when you suspect something&apos;s wrong with HASS.Agent itself or when asked by the
         ///developers..
         /// </summary>
@@ -1929,7 +2059,16 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HASS.Agent can act as a media player for Home Assistant, so you&apos;ll be able to control any media that&apos;s playing and send text-to-speech. The Local API needs to be enabled for this to work..
+        ///   Looks up a localized string similar to both the local API and MQTT are disabled, but the integration needs at least one for it to work.
+        /// </summary>
+        internal static string ConfigMediaPlayer_LblConnectivityDisabled {
+            get {
+                return ResourceManager.GetString("ConfigMediaPlayer_LblConnectivityDisabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HASS.Agent can act as a media player for Home Assistant, so you&apos;ll be able to see and control any media that&apos;s playing, and send text-to-speech. If you have MQTT enabled, your device will automatically get added. Otherwise, manually configure the integration to use the local API..
         /// </summary>
         internal static string ConfigMediaPlayer_LblInfo1 {
             get {
@@ -1940,10 +2079,11 @@ namespace HASS.Agent.Resources.Localization {
         /// <summary>
         ///   Looks up a localized string similar to If something&apos;s not working, make sure you followed these steps:
         ///
-        ///- Install HASS.Agent-MediaPlayer integration
+        ///- Install the HASS.Agent integration
         ///- Restart Home Assistant
-        ///- Configure a media_player entity
-        ///- Restart Home Assistant.
+        ///- Make sure HASS.Agent is active with MQTT enabled
+        ///- Your device will get detected!
+        ///- Optionally: manually add it, using the local API.
         /// </summary>
         internal static string ConfigMediaPlayer_LblInfo2 {
             get {
@@ -1975,6 +2115,15 @@ namespace HASS.Agent.Resources.Localization {
         internal static string ConfigMqtt_CbAllowUntrustedCertificates {
             get {
                 return ResourceManager.GetString("ConfigMqtt_CbAllowUntrustedCertificates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to enable mqtt.
+        /// </summary>
+        internal static string ConfigMqtt_CbEnableMqtt {
+            get {
+                return ResourceManager.GetString("ConfigMqtt_CbEnableMqtt", resourceCulture);
             }
         }
         
@@ -2060,12 +2209,24 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Commands and sensors are sent through MQTT. Please provide credentials for your server. If
-        ///you&apos;re using the HA addon, you can probably use the preset address..
+        ///   Looks up a localized string similar to Commands and sensors use MQTT, as well as notifications and mediaplayer functions when using the new integration. 
+        ///
+        ///Please provide credentials for your broker. If you&apos;re using the HA Mosquitto addon, you can probably use the preset address.
+        ///
+        ///Note: these settings (except the client id) will be applied to the satellite service as well..
         /// </summary>
         internal static string ConfigMqtt_LblInfo1 {
             get {
                 return ResourceManager.GetString("ConfigMqtt_LblInfo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to without mqtt, commands and sensors will not work!.
+        /// </summary>
+        internal static string ConfigMqtt_LblMqttDisabledWarning {
+            get {
+                return ResourceManager.GetString("ConfigMqtt_LblMqttDisabledWarning", resourceCulture);
             }
         }
         
@@ -2193,7 +2354,16 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HASS.Agent can receive notifications from Home Assistant, using text and/or images. The Local API needs to be enabled for this to work..
+        ///   Looks up a localized string similar to both the local API and MQTT are disabled, but the integration needs at least one for it to work.
+        /// </summary>
+        internal static string ConfigNotifications_LblConnectivityDisabled {
+            get {
+                return ResourceManager.GetString("ConfigNotifications_LblConnectivityDisabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HASS.Agent can receive notifications from Home Assistant, using text, images and actions. If you have MQTT enabled, your device will automatically get added. Otherwise, manually configure the integration to use the local API..
         /// </summary>
         internal static string ConfigNotifications_LblInfo1 {
             get {
@@ -2204,10 +2374,11 @@ namespace HASS.Agent.Resources.Localization {
         /// <summary>
         ///   Looks up a localized string similar to If something&apos;s not working, make sure you followed these steps:
         ///
-        ///- Install HASS.Agent-Notifier integration
+        ///- Install the HASS.Agent integration
         ///- Restart Home Assistant
-        ///- Configure a notifier entity
-        ///- Restart Home Assistant.
+        ///- Make sure HASS.Agent is active with MQTT enabled
+        ///- Your device will get detected!
+        ///- Optionally: manually add it, using the local API.
         /// </summary>
         internal static string ConfigNotifications_LblInfo2 {
             get {
@@ -2279,6 +2450,26 @@ namespace HASS.Agent.Resources.Localization {
         internal static string ConfigService_BtnEnableService_MessageBox1 {
             get {
                 return ResourceManager.GetString("ConfigService_BtnEnableService_MessageBox1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;manage service.
+        /// </summary>
+        internal static string ConfigService_BtnManageService {
+            get {
+                return ResourceManager.GetString("ConfigService_BtnManageService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The service is currently in stopped state, so you won&apos;t be able to configure it.
+        ///
+        ///Make sure you have it up and running first..
+        /// </summary>
+        internal static string ConfigService_BtnManageService_MessageBox1 {
+            get {
+                return ResourceManager.GetString("ConfigService_BtnManageService_MessageBox1", resourceCulture);
             }
         }
         
@@ -2416,6 +2607,15 @@ namespace HASS.Agent.Resources.Localization {
         internal static string ConfigService_LblInfo4 {
             get {
                 return ResourceManager.GetString("ConfigService_LblInfo4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you want to manage the service (add commands and sensor, change settings) you can do so here, or by using the &apos;satellite service&apos; button on the main window..
+        /// </summary>
+        internal static string ConfigService_LblInfo5 {
+            get {
+                return ResourceManager.GetString("ConfigService_LblInfo5", resourceCulture);
             }
         }
         
@@ -2580,6 +2780,15 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to show default menu on left mousebutton click.
+        /// </summary>
+        internal static string ConfigTrayIcon_CbWebViewShowMenuOnLeftClick {
+            get {
+                return ResourceManager.GetString("ConfigTrayIcon_CbWebViewShowMenuOnLeftClick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Control the way the tray icon behaves on a right mousebutton click..
         /// </summary>
         internal static string ConfigTrayIcon_LblInfo1 {
@@ -2707,6 +2916,40 @@ namespace HASS.Agent.Resources.Localization {
         internal static string Configuration_BtnStore_Busy {
             get {
                 return ResourceManager.GetString("Configuration_BtnStore_Busy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Home Assistant API token doesn&apos;t look right. Make sure you selected the entire token (don&apos;t use CTRL+A or doubleclick).
+        ///It should contain three sections (seperated by two dots).
+        ///
+        ///Are you sure you want to use it like this?.
+        /// </summary>
+        internal static string Configuration_CheckValues_MessageBox1 {
+            get {
+                return ResourceManager.GetString("Configuration_CheckValues_MessageBox1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Home Assistant URI doesn&apos;t look right. It should look something like &apos;http://homeassistant.local:8123&apos; or &apos;https://192.168.0.1:8123&apos;.
+        ///
+        ///Are you sure you want to use it like this?.
+        /// </summary>
+        internal static string Configuration_CheckValues_MessageBox2 {
+            get {
+                return ResourceManager.GetString("Configuration_CheckValues_MessageBox2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your MQTT broker URI doesn&apos;t look right. It should look something like &apos;homeassistant.local&apos; or &apos;192.168.0.1&apos;.
+        ///
+        ///Are you sure you want to use it like this?.
+        /// </summary>
+        internal static string Configuration_CheckValues_MessageBox3 {
+            get {
+                return ResourceManager.GetString("Configuration_CheckValues_MessageBox3", resourceCulture);
             }
         }
         
@@ -2928,6 +3171,46 @@ namespace HASS.Agent.Resources.Localization {
         internal static string Configuration_Title {
             get {
                 return ResourceManager.GetString("Configuration_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;close.
+        /// </summary>
+        internal static string Donate_BtnClose {
+            get {
+                return ResourceManager.GetString("Donate_BtnClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I already donated, hide the button on the main window..
+        /// </summary>
+        internal static string Donate_CbHideDonateButton {
+            get {
+                return ResourceManager.GetString("Donate_CbHideDonateButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HASS.Agent is completely free, and will always stay that way without restrictions!
+        ///
+        ///However, developing and maintaining this tool (and everything that surrounds it, like support and the docs) takes up a lot of time. 
+        ///
+        ///Like most developers, I run on caffeïne - so if you can spare it, a cup of coffee is always very much appreciated!.
+        /// </summary>
+        internal static string Donate_LblInfo {
+            get {
+                return ResourceManager.GetString("Donate_LblInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Donate.
+        /// </summary>
+        internal static string Donate_Title {
+            get {
+                return ResourceManager.GetString("Donate_Title", resourceCulture);
             }
         }
         
@@ -3666,11 +3949,29 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No URL has been set! Please configure the webview through Configuration -&gt; Tray Icon..
+        /// </summary>
+        internal static string Main_NotifyIcon_MouseClick_MessageBox1 {
+            get {
+                return ResourceManager.GetString("Main_NotifyIcon_MouseClick_MessageBox1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to about.
         /// </summary>
         internal static string Main_TsAbout {
             get {
                 return ResourceManager.GetString("Main_TsAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to check for updates.
+        /// </summary>
+        internal static string Main_TsCheckForUpdates {
+            get {
+                return ResourceManager.GetString("Main_TsCheckForUpdates", resourceCulture);
             }
         }
         
@@ -3765,6 +4066,42 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dimmed.
+        /// </summary>
+        internal static string MonitorPowerEvent_Dimmed {
+            get {
+                return ResourceManager.GetString("MonitorPowerEvent_Dimmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PowerOff.
+        /// </summary>
+        internal static string MonitorPowerEvent_PowerOff {
+            get {
+                return ResourceManager.GetString("MonitorPowerEvent_PowerOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PowerOn.
+        /// </summary>
+        internal static string MonitorPowerEvent_PowerOn {
+            get {
+                return ResourceManager.GetString("MonitorPowerEvent_PowerOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown.
+        /// </summary>
+        internal static string MonitorPowerEvent_Unknown {
+            get {
+                return ResourceManager.GetString("MonitorPowerEvent_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to mqtt: error while connecting.
         /// </summary>
         internal static string MqttManager_ToolTip_ConnectionError {
@@ -3788,6 +4125,15 @@ namespace HASS.Agent.Resources.Localization {
         internal static string MqttManager_ToolTip_Disconnected {
             get {
                 return ResourceManager.GetString("MqttManager_ToolTip_Disconnected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string NotifierManager_Initialize_MessageBox1 {
+            get {
+                return ResourceManager.GetString("NotifierManager_Initialize_MessageBox1", resourceCulture);
             }
         }
         
@@ -3886,6 +4232,29 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your API token doesn&apos;t look right. Make sure you selected the entire token (don&apos;t use CTRL+A or doubleclick).
+        ///It should contain three sections (seperated by two dots).
+        ///
+        ///Are you sure you want to use it like this?.
+        /// </summary>
+        internal static string OnboardingApi_BtnTest_MessageBox5 {
+            get {
+                return ResourceManager.GetString("OnboardingApi_BtnTest_MessageBox5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your URI doesn&apos;t look right. It should look something like &apos;http://homeassistant.local:8123&apos; or &apos;http://192.168.0.1:8123&apos;.
+        ///
+        ///Are you sure you want to use it like this?.
+        /// </summary>
+        internal static string OnboardingApi_BtnTest_MessageBox6 {
+            get {
+                return ResourceManager.GetString("OnboardingApi_BtnTest_MessageBox6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to testing ...
         /// </summary>
         internal static string OnboardingApi_BtnTest_Testing {
@@ -3944,7 +4313,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All done!.
+        ///   Looks up a localized string similar to Yay, done!.
         /// </summary>
         internal static string OnboardingDone_LblInfo1 {
             get {
@@ -3953,11 +4322,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HASS.Agent will now restart to activate your configuration.
-        ///
-        ///
-        ///If you&apos;ve enabled notifications, an elevation request will popup. This is required to allow
-        ///HASS.Agent to listen on the specified port..
+        ///   Looks up a localized string similar to HASS.Agent will now restart to activate your configuration..
         /// </summary>
         internal static string OnboardingDone_LblInfo2 {
             get {
@@ -3966,16 +4331,33 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tip: there&apos;s a lót more to tinker with, so make sure you take a look at the configuration window!
+        ///   Looks up a localized string similar to There&apos;s a lót more to tinker with, so make sure you take a look at the Configuration window!
         ///
         ///
         ///Thank you for using HASS.Agent, hopefully it&apos;ll be useful for you :-)
-        ///
-        ///And if you encounter any problems, please create a ticket on the GitHub page..
+        ///.
         /// </summary>
         internal static string OnboardingDone_LblInfo3 {
             get {
                 return ResourceManager.GetString("OnboardingDone_LblInfo3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Developing and maintaining this tool (and everything that surrounds it) takes up a lot of time. Like most developers, I run on caffeïne - so if you can spare it, a cup of coffee is always very much appreciated!.
+        /// </summary>
+        internal static string OnboardingDone_LblInfo6 {
+            get {
+                return ResourceManager.GetString("OnboardingDone_LblInfo6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tip: other donation methods are available on the About window..
+        /// </summary>
+        internal static string OnboardingDone_LblTip2 {
+            get {
+                return ResourceManager.GetString("OnboardingDone_LblTip2", resourceCulture);
             }
         }
         
@@ -4046,6 +4428,24 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to enable &amp;mediaplayer (including text-to-speech).
+        /// </summary>
+        internal static string OnboardingIntegrations_CbEnableMediaPlayer {
+            get {
+                return ResourceManager.GetString("OnboardingIntegrations_CbEnableMediaPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to enable &amp;notifications.
+        /// </summary>
+        internal static string OnboardingIntegrations_CbEnableNotifications {
+            get {
+                return ResourceManager.GetString("OnboardingIntegrations_CbEnableNotifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To use notifications, you need to install and configure the HASS.Agent-notifier integration in
         ///Home Assistant.
         ///
@@ -4091,7 +4491,7 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HASS.Agent-Notifier GitHub page.
+        ///   Looks up a localized string similar to HASS.Agent-Integration GitHub page.
         /// </summary>
         internal static string OnboardingIntegrations_LblNotifierIntegration {
             get {
@@ -4257,6 +4657,15 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to enable mqtt.
+        /// </summary>
+        internal static string OnboardingMqtt_CbEnableMqtt {
+            get {
+                return ResourceManager.GetString("OnboardingMqtt_CbEnableMqtt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;TLS.
         /// </summary>
         internal static string OnboardingMqtt_CbMqttTls {
@@ -4275,10 +4684,10 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Commands and sensors are sent through MQTT. Please provide credentials for your server.
-        ///If you&apos;re using the HA addon, you can probably use the preset address.
+        ///   Looks up a localized string similar to Commands and sensors are sent through MQTT. The notifications- and mediaplayer integration uses it as well. 
         ///
-        ///Leave empty if you&apos;re not going to use commands and sensors..
+        ///Tip: if you&apos;re using the HA addon, you can probably use the preset address - just provide credentials.
+        ///.
         /// </summary>
         internal static string OnboardingMqtt_LblInfo1 {
             get {
@@ -4618,6 +5027,15 @@ namespace HASS.Agent.Resources.Localization {
         internal static string PostUpdate_LblTask2 {
             get {
                 return ResourceManager.GetString("PostUpdate_LblTask2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HASS.Agent Post Update.
+        /// </summary>
+        internal static string PostUpdate_PostUpdate {
+            get {
+                return ResourceManager.GetString("PostUpdate_PostUpdate", resourceCulture);
             }
         }
         
@@ -5116,6 +5534,30 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Provides a sensor with the amount of bluetooth devices found.
+        ///
+        ///The devices and their connected state are added as attributes..
+        /// </summary>
+        internal static string SensorsManager_BluetoothDevicesSensorDescription {
+            get {
+                return ResourceManager.GetString("SensorsManager_BluetoothDevicesSensorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provides a sensors with the amount of bluetooth LE devices found.
+        ///
+        ///The devices and their connected state are added as attributes.
+        ///
+        ///Only shows devices that were seen since the last report, ie. when the sensor publishes, the list clears..
+        /// </summary>
+        internal static string SensorsManager_BluetoothLeDevicesSensorDescription {
+            get {
+                return ResourceManager.GetString("SensorsManager_BluetoothLeDevicesSensorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Provides the current load of the first CPU as a percentage..
         /// </summary>
         internal static string SensorsManager_CpuLoadSensorDescription {
@@ -5159,6 +5601,19 @@ namespace HASS.Agent.Resources.Localization {
         internal static string SensorsManager_DummySensorDescription {
             get {
                 return ResourceManager.GetString("SensorsManager_DummySensorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Returns your current latitude, longitude and altitude as a comma-seperated value.
+        ///
+        ///Make sure Windows&apos; location services are enabled!
+        ///
+        ///Depending on your Windows version, this can be found in the new control panel -&gt; &apos;privacy and security&apos; -&gt; &apos;location&apos;..
+        /// </summary>
+        internal static string SensorsManager_GeoLocationSensorDescription {
+            get {
+                return ResourceManager.GetString("SensorsManager_GeoLocationSensorDescription", resourceCulture);
             }
         }
         
@@ -5239,11 +5694,35 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provides a bool value based on whether the microphone is currently being used..
+        ///   Looks up a localized string similar to Provides a bool value based on whether the microphone is currently being used.
+        ///
+        ///Note: if used in the satellite service, it won&apos;t detect userspace applications..
         /// </summary>
         internal static string SensorsManager_MicrophoneActiveSensorDescription {
             get {
                 return ResourceManager.GetString("SensorsManager_MicrophoneActiveSensorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provides the name of the process that&apos;s currently using the microphone.
+        ///
+        ///Note: if used in the satellite service, it won&apos;t detect userspace applications..
+        /// </summary>
+        internal static string SensorsManager_MicrophoneProcessSensorDescription {
+            get {
+                return ResourceManager.GetString("SensorsManager_MicrophoneProcessSensorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provides the last monitor power state change:
+        ///
+        ///Dimmed, PowerOff, PowerOn and Unkown..
+        /// </summary>
+        internal static string SensorsManager_MonitorPowerStateSensorDescription {
+            get {
+                return ResourceManager.GetString("SensorsManager_MonitorPowerStateSensorDescription", resourceCulture);
             }
         }
         
@@ -5281,6 +5760,26 @@ namespace HASS.Agent.Resources.Localization {
         internal static string SensorsManager_PerformanceCounterSensorDescription {
             get {
                 return ResourceManager.GetString("SensorsManager_PerformanceCounterSensorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Returns the result of the provided Powershell command or script.
+        ///
+        ///Converts the outcome to text..
+        /// </summary>
+        internal static string SensorsManager_PowershellSensorDescription {
+            get {
+                return ResourceManager.GetString("SensorsManager_PowershellSensorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provides information about all installed printers and their queues..
+        /// </summary>
+        internal static string SensorsManager_PrintersSensorsDescription {
+            get {
+                return ResourceManager.GetString("SensorsManager_PrintersSensorsDescription", resourceCulture);
             }
         }
         
@@ -5340,7 +5839,9 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provides a bool value based on whether the webcam is currently being used..
+        ///   Looks up a localized string similar to Provides a bool value based on whether the webcam is currently being used.
+        ///
+        ///Note: if used in the satellite service, it won&apos;t detect userspace applications..
         /// </summary>
         internal static string SensorsManager_WebcamActiveSensorDescription {
             get {
@@ -5349,7 +5850,29 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provides a sensor with the amount of pending driver updates and a sensor with the amount of pending software updates.
+        ///   Looks up a localized string similar to Provides the name of the process that&apos;s currently using the webcam.
+        ///
+        ///Note: if used in the satellite service, it won&apos;t detect userspace applications..
+        /// </summary>
+        internal static string SensorsManager_WebcamProcessSensorDescription {
+            get {
+                return ResourceManager.GetString("SensorsManager_WebcamProcessSensorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provides the current state of the process&apos; window:
+        ///
+        ///Hidden, Maximized, Minimized, Normal and Unknown..
+        /// </summary>
+        internal static string SensorsManager_WindowStateSensorDescription {
+            get {
+                return ResourceManager.GetString("SensorsManager_WindowStateSensorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provides a sensor with the amount of pending driver updates, a sensor with the amount of pending software updates, a sensor containing all pending driver updates information (title, kb article id&apos;s, hidden, type and categories) and a sensor containing the same for pending software updates.
         ///
         ///This is a costly request, so the recommended interval is 15 minutes (900 seconds). But it&apos;s capped at 10 minutes, if you provide a lower value, you&apos;ll get the last known list..
         /// </summary>
@@ -5603,6 +6126,15 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to powershell command or script.
+        /// </summary>
+        internal static string SensorsMod_LblSetting1_Powershell {
+            get {
+                return ResourceManager.GetString("SensorsMod_LblSetting1_Powershell", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to process.
         /// </summary>
         internal static string SensorsMod_LblSetting1_Process {
@@ -5711,6 +6243,28 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The name you provided contains unsupported characters and won&apos;t work. The suggested version is:
+        ///
+        ///{0}
+        ///
+        ///Do you want to use this version?.
+        /// </summary>
+        internal static string SensorsMod_MessageBox_Sanitize {
+            get {
+                return ResourceManager.GetString("SensorsMod_MessageBox_Sanitize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to test command or script.
+        /// </summary>
+        internal static string SensorsMod_SensorsMod_BtnTest_Powershell {
+            get {
+                return ResourceManager.GetString("SensorsMod_SensorsMod_BtnTest_Powershell", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} only!.
         /// </summary>
         internal static string SensorsMod_SpecificClient {
@@ -5749,6 +6303,39 @@ namespace HASS.Agent.Resources.Localization {
         internal static string SensorsMod_TestPerformanceCounter_MessageBox3 {
             get {
                 return ResourceManager.GetString("SensorsMod_TestPerformanceCounter_MessageBox3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a command or script first.
+        /// </summary>
+        internal static string SensorsMod_TestPowershell_MessageBox1 {
+            get {
+                return ResourceManager.GetString("SensorsMod_TestPowershell_MessageBox1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test succesfully executed, result value:
+        ///
+        ///{0}.
+        /// </summary>
+        internal static string SensorsMod_TestPowershell_MessageBox2 {
+            get {
+                return ResourceManager.GetString("SensorsMod_TestPowershell_MessageBox2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The test failed to execute:
+        ///
+        ///{0}
+        ///
+        ///Do you want to open the logs folder?.
+        /// </summary>
+        internal static string SensorsMod_TestPowershell_MessageBox3 {
+            get {
+                return ResourceManager.GetString("SensorsMod_TestPowershell_MessageBox3", resourceCulture);
             }
         }
         
@@ -5855,6 +6442,24 @@ namespace HASS.Agent.Resources.Localization {
         internal static string SensorType_BatterySensors {
             get {
                 return ResourceManager.GetString("SensorType_BatterySensors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BluetoothDevices.
+        /// </summary>
+        internal static string SensorType_BluetoothDevicesSensor {
+            get {
+                return ResourceManager.GetString("SensorType_BluetoothDevicesSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BluetoothLeDevices.
+        /// </summary>
+        internal static string SensorType_BluetoothLeDevicesSensor {
+            get {
+                return ResourceManager.GetString("SensorType_BluetoothLeDevicesSensor", resourceCulture);
             }
         }
         
@@ -5994,6 +6599,24 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MicrophoneProcess.
+        /// </summary>
+        internal static string SensorType_MicrophoneProcessSensor {
+            get {
+                return ResourceManager.GetString("SensorType_MicrophoneProcessSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MonitorPowerState.
+        /// </summary>
+        internal static string SensorType_MonitorPowerStateSensor {
+            get {
+                return ResourceManager.GetString("SensorType_MonitorPowerStateSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NamedWindow.
         /// </summary>
         internal static string SensorType_NamedWindowSensor {
@@ -6017,6 +6640,24 @@ namespace HASS.Agent.Resources.Localization {
         internal static string SensorType_PerformanceCounterSensor {
             get {
                 return ResourceManager.GetString("SensorType_PerformanceCounterSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PowershellSensor.
+        /// </summary>
+        internal static string SensorType_PowershellSensor {
+            get {
+                return ResourceManager.GetString("SensorType_PowershellSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Printers.
+        /// </summary>
+        internal static string SensorType_PrintersSensors {
+            get {
+                return ResourceManager.GetString("SensorType_PrintersSensors", resourceCulture);
             }
         }
         
@@ -6071,6 +6712,24 @@ namespace HASS.Agent.Resources.Localization {
         internal static string SensorType_WebcamActiveSensor {
             get {
                 return ResourceManager.GetString("SensorType_WebcamActiveSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WebcamProcess.
+        /// </summary>
+        internal static string SensorType_WebcamProcessSensor {
+            get {
+                return ResourceManager.GetString("SensorType_WebcamProcessSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WindowState.
+        /// </summary>
+        internal static string SensorType_WindowStateSensor {
+            get {
+                return ResourceManager.GetString("SensorType_WindowStateSensor", resourceCulture);
             }
         }
         
@@ -6431,6 +7090,33 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to fatal error, check logs.
+        /// </summary>
+        internal static string ServiceControllerManager_Error_Fatal {
+            get {
+                return ResourceManager.GetString("ServiceControllerManager_Error_Fatal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to timeout expired.
+        /// </summary>
+        internal static string ServiceControllerManager_Error_Timeout {
+            get {
+                return ResourceManager.GetString("ServiceControllerManager_Error_Timeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unknown reason.
+        /// </summary>
+        internal static string ServiceControllerManager_Error_Unknown {
+            get {
+                return ResourceManager.GetString("ServiceControllerManager_Error_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to apply.
         /// </summary>
         internal static string ServiceGeneral_Apply {
@@ -6633,6 +7319,42 @@ namespace HASS.Agent.Resources.Localization {
         internal static string ServiceGeneral_TbAuthId_MessageBox1 {
             get {
                 return ResourceManager.GetString("ServiceGeneral_TbAuthId_MessageBox1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unable to open servicemanager.
+        /// </summary>
+        internal static string ServiceHelper_ChangeStartMode_Error1 {
+            get {
+                return ResourceManager.GetString("ServiceHelper_ChangeStartMode_Error1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unable to open service.
+        /// </summary>
+        internal static string ServiceHelper_ChangeStartMode_Error2 {
+            get {
+                return ResourceManager.GetString("ServiceHelper_ChangeStartMode_Error2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to error configuring startup mode, check logs.
+        /// </summary>
+        internal static string ServiceHelper_ChangeStartMode_Error3 {
+            get {
+                return ResourceManager.GetString("ServiceHelper_ChangeStartMode_Error3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to error setting startup mode, check logs.
+        /// </summary>
+        internal static string ServiceHelper_ChangeStartMode_Error4 {
+            get {
+                return ResourceManager.GetString("ServiceHelper_ChangeStartMode_Error4", resourceCulture);
             }
         }
         
@@ -7595,6 +8317,26 @@ namespace HASS.Agent.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Microsoft&apos;s WebView2 runtime isn&apos;t found on your machine. Usually this is handled by the installer, but you can install it manually.
+        ///
+        ///Do you want to download the runtime installer?.
+        /// </summary>
+        internal static string WebView_InitializeAsync_MessageBox1 {
+            get {
+                return ResourceManager.GetString("WebView_InitializeAsync_MessageBox1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something went wrong while initializing the WebView. Please check your logs and open a GitHub ticket to get help..
+        /// </summary>
+        internal static string WebView_InitializeAsync_MessageBox2 {
+            get {
+                return ResourceManager.GetString("WebView_InitializeAsync_MessageBox2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WebView.
         /// </summary>
         internal static string WebView_Title {
@@ -7699,6 +8441,51 @@ namespace HASS.Agent.Resources.Localization {
         internal static string WebViewCommandConfig_Title {
             get {
                 return ResourceManager.GetString("WebViewCommandConfig_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hidden.
+        /// </summary>
+        internal static string WindowState_Hidden {
+            get {
+                return ResourceManager.GetString("WindowState_Hidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximized.
+        /// </summary>
+        internal static string WindowState_Maximized {
+            get {
+                return ResourceManager.GetString("WindowState_Maximized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimized.
+        /// </summary>
+        internal static string WindowState_Minimized {
+            get {
+                return ResourceManager.GetString("WindowState_Minimized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Normal.
+        /// </summary>
+        internal static string WindowState_Normal {
+            get {
+                return ResourceManager.GetString("WindowState_Normal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown.
+        /// </summary>
+        internal static string WindowState_Unknown {
+            get {
+                return ResourceManager.GetString("WindowState_Unknown", resourceCulture);
             }
         }
     }
