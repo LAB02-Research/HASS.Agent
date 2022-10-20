@@ -59,6 +59,7 @@ I'd like to thank everyone that's been [donating](https://www.buymeacoffee.com/l
 A big big thank you to the [monthly sponsors](https://github.com/sponsors/LAB02-Admin), you absolutely rock :heart:
 
 <a href="https://github.com/jdiegmueller/"><img src="https://github.com/jdiegmueller.png" width="60" height="60"></a>
+<a href="https://github.com/ewonais/"><img src="https://github.com/ewonais.png" width="60" height="60"></a>
 
 ----
 
