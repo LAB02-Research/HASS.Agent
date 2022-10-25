@@ -124,7 +124,7 @@ namespace HASS.Agent.Functions
             }
             
             // draw the text in the right color
-            if (!IgnorableHeaders.Contains(e.Header.Text))
+            if (!IgnorableHeaders.Contains(e.Header.Text.ToLower()))
             {
                 // regular
                 using var foreBrush = new SolidBrush(ForeColor);

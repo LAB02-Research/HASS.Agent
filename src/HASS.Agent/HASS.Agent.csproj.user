@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>F:\Documents\GIT\HASS.Agent.Staging\src\HASS.Agent.Staging\HASS.Agent\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Controls\Configuration\ConfigExternalTools.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Configuration\ConfigGeneral.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Configuration\ConfigHomeAssistantApi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Configuration\ConfigHotKey.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Configuration\ConfigLocalStorage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Configuration\ConfigLogging.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Configuration\ConfigMqtt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Configuration\ConfigNotifications.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Configuration\ConfigStartup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Configuration\ConfigUpdates.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\CustomGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\Onboarding\Onboarding-1-Welcome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Onboarding\Onboarding-2-Startup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Onboarding\Onboarding-5-Integrations.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Onboarding\Onboarding-3-API.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Onboarding\Onboarding-4-MQTT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Onboarding\Onboarding-6-HotKey.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Onboarding\Onboarding-7-Updates.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Onboarding\Onboarding-8-Done.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\QuickActionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ChildApplications\PortReservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ChildApplications\PostUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ChildApplications\Restart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Commands\CommandsConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Commands\CommandsMod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Configuration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ExitDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Onboarding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\QuickActions\QuickActions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\QuickActions\QuickActionsConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\QuickActions\QuickActionsMod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Sensors\SensorsConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Sensors\SensorsMod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\UpdatePending.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Localization\Languages.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

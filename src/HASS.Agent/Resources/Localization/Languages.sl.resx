@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About_BtnClose" xml:space="preserve">
-    <value>blizu</value>
+    <value>&amp;zapri</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="About_LblInfo1" xml:space="preserve">
@@ -128,8 +128,8 @@
     <value>Z ljubeznijo ustvaril</value>
   </data>
   <data name="About_LblInfo3" xml:space="preserve">
-    <value>Ta aplikacija je odprtokodna in popolnoma brezplačna. Preverite strani projekta na
-uporabljene komponente za njihove posamezne licence:</value>
+    <value>Ta aplikacija je odprtokodna in popolnoma brezplačna. Preverite strani projektov pri
+uporabljenih komponentah za njihove posamezne licence:</value>
   </data>
   <data name="About_LblInfo4" xml:space="preserve">
     <value>Velika &apos;hvala&apos; razvijalcem teh projektov, ki so bili dovolj prijazni, da so jih delili
@@ -143,10 +143,10 @@ je ustvarila in vzdržujte Home Assistant :-)</value>
     <value>Vam je všeč to orodje? Podprite nas (beri: pusti nas budne) z nakupom skodelice kave:</value>
   </data>
   <data name="About_LblOr" xml:space="preserve">
-    <value>oz</value>
+    <value>ali</value>
   </data>
   <data name="About_Title" xml:space="preserve">
-    <value>O</value>
+    <value>Vizitka</value>
   </data>
   <data name="CommandEntityType_Button" xml:space="preserve">
     <value>Gumb</value>
@@ -161,14 +161,14 @@ je ustvarila in vzdržujte Home Assistant :-)</value>
     <value>Sirena</value>
   </data>
   <data name="CommandEntityType_Switch" xml:space="preserve">
-    <value>Preklopi</value>
+    <value>Stikalo</value>
   </data>
   <data name="CommandMqttTopic_BtnClose" xml:space="preserve">
     <value>blizu</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="CommandMqttTopic_BtnCopyClipboard" xml:space="preserve">
-    <value>kopirati v odložišče</value>
+    <value>kopiraj v odložišče</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="CommandMqttTopic_BtnCopyClipboard_Copied" xml:space="preserve">
@@ -188,7 +188,7 @@ je ustvarila in vzdržujte Home Assistant :-)</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="CommandsConfig_BtnModify" xml:space="preserve">
-    <value>spremeniti</value>
+    <value>spremeni</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="CommandsConfig_BtnRemove" xml:space="preserve">
@@ -196,7 +196,7 @@ je ustvarila in vzdržujte Home Assistant :-)</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="CommandsConfig_BtnStore" xml:space="preserve">
-    <value>shranjevanje in aktiviranje ukazov</value>
+    <value>shrani in aktiviraj ukaze</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="CommandsConfig_BtnStore_MessageBox1" xml:space="preserve">
@@ -221,16 +221,16 @@ je ustvarila in vzdržujte Home Assistant :-)</value>
     <value>Konfiguracija ukazov</value>
   </data>
   <data name="CommandsManager_CommandsManager_SendWindowToFrontCommandDescription" xml:space="preserve">
-    <value>Looks for the specified process, and tries to send its main window to the front.
+    <value>Išče naveden proces in ga poskuša poslati v ospredje.
 
-If the application is minimized, it&apos;ll get restored.
+Če je aplikacija minimirana jo poveča.
 
-Example: if you want to send VLC to the foreground, use &apos;vlc&apos;.</value>
+Primer: če želite v ospredje poslati VLC uporabite &apos;vlc&apos;</value>
   </data>
   <data name="CommandsManager_CustomCommandDescription" xml:space="preserve">
     <value>Izvedite ukaz po meri.
 
-Ti ukazi se izvajajo brez posebne višine. Če želite zagnati povišano, ustvarite načrtovano opravilo in uporabite &apos;schtasks /Run /TN &quot;TaskName&quot;&apos; kot ukaz za izvedbo vaše naloge.
+Ti ukazi se izvajajo brez posebnih pravic. Če želite zagnati z večjimi pravicami, ustvarite načrtovano opravilo in uporabite &apos;schtasks /Run /TN &quot;TaskName&quot;&apos; kot ukaz za izvedbo vaše naloge.
 
 Ali pa omogočite &apos;zaženi z nizko integriteto&apos; za še strožjo izvedbo.</value>
   </data>
@@ -240,19 +240,22 @@ Ali pa omogočite &apos;zaženi z nizko integriteto&apos; za še strožjo izvedb
 Vaš ukaz je podan kot argument &apos;tako kot je&apos;, zato morate po potrebi navesti svoje narekovaje itd.</value>
   </data>
   <data name="CommandsManager_HibernateCommandDescription" xml:space="preserve">
-    <value>Preklopi stroj v stanje mirovanja.</value>
+    <value>Preklopi napravo v stanje mirovanja.</value>
   </data>
   <data name="CommandsManager_KeyCommandDescription" xml:space="preserve">
     <value>Simulira en sam pritisk na tipko.
 
-Izberete lahko katero koli od teh vrednosti: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+Kliknite na &apos;keycode&apos; in pritisnite tipko, ki jo želite simulirati. Koda tipke bo avtomatično vpisana.
 
 Če potrebujete več tipk in/ali modifikatorjev, kot je CTRL, uporabite ukaz MultipleKeys.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="CommandsManager_LaunchUrlCommandDescription" xml:space="preserve">
     <value>Zažene navedeni URL, privzeto v privzetem brskalniku.
 
-Če želite uporabljati &apos;brez beleženja zgodovine&apos;, navedite določen brskalnik v Konfiguracija -&gt; Zunanja orodja.</value>
+Če želite uporabljati &apos;brez beleženja zgodovine&apos;, navedite določen brskalnik v Konfiguracija -&gt; Zunanja orodja.
+
+Če želite samo okno z določenim URL (ne cel brskalnik) uporabite ukaz &apos;WebView&apos;.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="CommandsManager_LockCommandDescription" xml:space="preserve">
@@ -278,6 +281,12 @@ Izberete lahko katero koli od teh vrednosti: https://docs.microsoft.com/en-us/wi
   </data>
   <data name="CommandsManager_MediaVolumeUpCommandDescription" xml:space="preserve">
     <value>Simulira tipko za povečanje glasnosti.</value>
+  </data>
+  <data name="CommandsManager_MonitorSleepCommandDescription" xml:space="preserve">
+    <value>Nastavi vse monitorje na spanje (low power).</value>
+  </data>
+  <data name="CommandsManager_MonitorWakeCommandDescription" xml:space="preserve">
+    <value>Poskusi zbuditi vse monitorje tako, da simulira pritisk tipke &apos;gor&apos;.</value>
   </data>
   <data name="CommandsManager_MultipleKeysCommandDescription" xml:space="preserve">
     <value>Simulira pritiskanje več tipk.
@@ -308,40 +317,46 @@ To bo potekalo brez posebne višine.</value>
 Uporabno na primer, če želite prisiliti HASS.Agent, da posodobi vse vaše senzorje po ponovnem zagonu HA.</value>
   </data>
   <data name="CommandsManager_RestartCommandDescription" xml:space="preserve">
-    <value>Po eni minuti znova zažene stroj.
+    <value>Po eni minuti znova zažene napravo.
 
 Nasvet: slučajno sprožen? Zaženite &apos;shutdown /a&apos; za prekinitev.</value>
   </data>
+  <data name="CommandsManager_SetVolumeCommandDescription" xml:space="preserve">
+    <value>Nastavi glasnost trenutno privzete avdio naprave na nastavljeno vrednost.</value>
+  </data>
   <data name="CommandsManager_ShutdownCommandDescription" xml:space="preserve">
-    <value>Po eni minuti izklopi stroj.
+    <value>Po eni minuti izklopi napravo.
 
 Nasvet: slučajno sprožen? Zaženite &apos;shutdown /a&apos; za prekinitev.</value>
   </data>
   <data name="CommandsManager_SleepCommandDescription" xml:space="preserve">
-    <value>Preklopi stroj v stanje spanja.
+    <value>Preklopi napravo v stanje spanja.
 
 Opomba: zaradi omejitve v sistemu Windows to deluje samo, če je mirovanje onemogočeno, sicer bo samo prešlo v stanje mirovanja.
 
 Lahko uporabite nekaj, kot je NirCmd (http://www.nirsoft.net/utils/nircmd.html), da to zaobidete.</value>
   </data>
   <data name="CommandsManager_WebViewCommandDescription" xml:space="preserve">
-    <value>Shows a window with the provided URL.
+    <value>Prikaže okno z vpisanim URL.
 
-This differs from the &apos;LaunchUrl&apos; command in that it doesn&apos;t load a full-fledged browser, just the provided URL in its own window.
+Tole se razlikuje od ukaza &apos;LaunchUrl&apos; tkao, da se ne naloži v polnem brskalniku, ampak samo naveden URL v svojem oknu.
 
-You can use this to for instance quickly show Home Assistant&apos;s dashboard.
+To lahko uporabite npr. za hitri prikaz glavnega okna Home Assistant.
 
-By default, it stores cookies indefinitely so you only have to log in once.</value>
+Privzeto so piškotki shranjeni za vedno, zato se morate vpisati samo enkrat.</value>
   </data>
   <data name="CommandsMod_BtnConfigureCommand" xml:space="preserve">
-    <value>configure command &amp;parameters</value>
+    <value>nastavi ukaz in parametre</value>
   </data>
   <data name="CommandsMod_BtnStore" xml:space="preserve">
-    <value>ukaz za shranjevanje</value>
+    <value>&amp;shrani ukaz</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="CommandsMod_BtnStore_MessageBox1" xml:space="preserve">
     <value>Najprej izberite vrsto ukaza.</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox10" xml:space="preserve">
+    <value>Prosim vpišite vrednost med 0 in 100 kot željeno vrednost glasnosti.</value>
   </data>
   <data name="CommandsMod_BtnStore_MessageBox2" xml:space="preserve">
     <value>Najprej izberite veljavno vrsto ukaza.</value>
@@ -366,24 +381,27 @@ Ste prepričani, da želite to?</value>
 Ste prepričani, da želite to?</value>
   </data>
   <data name="CommandsMod_BtnStore_MessageBox8" xml:space="preserve">
-    <value>If you don&apos;t configure the command, you can only use this entity with an &apos;action&apos; value through Home Assistant and it&apos;ll show using the default settings. Running it as-is won&apos;t do anything.
+    <value>Če ukaza ne skonfigurirate ga lahko uporabite samo kot &apos;akcija&apos; preko Home Assistant, prikazana pa bo samo privzeta vrednost. Zagon &apos;kot je&apos; ne bo naredil ničesar.
 
-Are you sure you want this ? </value>
+Ali ste prepričani, da želite to?</value>
   </data>
   <data name="CommandsMod_BtnStore_MessageBox9" xml:space="preserve">
-    <value>Your keycode doesn&apos;t seem to be a valid number.
+    <value>Zdi se, da vaša koda ključa ni veljavna številka.
 
-Please make sure the keycode field has focus, then press the key you want simulated. The keycode should then be generated for you.</value>
+Prepričajte se, da je polje kode tipke v fokusu, nato pritisnite tipko, ki jo želite simulirati. Nato bi morala biti za vas ustvarjena ključna koda.</value>
   </data>
   <data name="CommandsMod_CbCommandSpecific_Incognito" xml:space="preserve">
     <value>zagon v načinu brez beleženja zgodovine</value>
   </data>
   <data name="CommandsMod_CbRunAsLowIntegrity" xml:space="preserve">
-    <value>teči kot &apos;nizka integriteta&apos;</value>
+    <value>&amp;zaženi kot &apos;nizka integriteta&apos;</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="CommandsMod_ClmSensorName" xml:space="preserve">
     <value>  tip</value>
+  </data>
+  <data name="CommandsMod_CommandsMod" xml:space="preserve">
+    <value>Ukaz</value>
   </data>
   <data name="CommandsMod_LblActionInfo" xml:space="preserve">
     <value>dejanje</value>
@@ -402,6 +420,7 @@ Please make sure the keycode field has focus, then press the key you want simula
     <value>brskalnik: privzeto
 
 prosimo, konfigurirajte brskalnik, da omogočite način brez beleženja zgodovine</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="CommandsMod_LblInfo_BrowserSpecific" xml:space="preserve">
     <value>brskalnik: {0}</value>
@@ -437,19 +456,20 @@ prosimo, konfigurirajte izvajalca, sicer se vaš ukaz ne bo zagnal</value>
   </data>
   <data name="CommandsMod_LblMqttTopic_MessageBox1" xml:space="preserve">
     <value>Upravitelj MQTT ni bil pravilno nastavljen, preverite, ali ste konfigurirali MQTT in ga nato znova zagnali.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="CommandsMod_LblName" xml:space="preserve">
     <value>ime</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="CommandsMod_LblSelectedType" xml:space="preserve">
-    <value>izbrana vrsta</value>
+    <value>izbran tip</value>
   </data>
   <data name="CommandsMod_LblService" xml:space="preserve">
     <value>storitev</value>
   </data>
   <data name="CommandsMod_LblSetting" xml:space="preserve">
-    <value>konfigur</value>
+    <value>konfiguracija</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="CommandsMod_LblSetting_Command" xml:space="preserve">
@@ -468,18 +488,30 @@ prosimo, konfigurirajte izvajalca, sicer se vaš ukaz ne bo zagnal</value>
     <value>URL</value>
   </data>
   <data name="CommandsMod_LblSpecificClient" xml:space="preserve">
-    <value>hass.agent samo!</value>
+    <value>samo hass.agent!</value>
   </data>
   <data name="CommandsMod_MessageBox_Action" xml:space="preserve">
     <value>Če ne vnesete ukaza ali skripta, lahko to entiteto uporabite samo z vrednostjo »action« prek Home Assistant. Če ga zaženete kot je, ne boste naredili ničesar.
 
 Ste prepričani, da želite to?</value>
   </data>
+  <data name="CommandsMod_MessageBox_Action2" xml:space="preserve">
+    <value>Če ne vpišete vrednosti za glasnost boste to entiteto lahko uporabljali samo kot &apos;akcijsko&apos; vrednost preko Home Assistant-a. Zagon &apos;tako, kot je&apos; ne bo naredil ničesar.
+
+Ali ste prepričani v to?</value>
+  </data>
   <data name="CommandsMod_MessageBox_EntityType" xml:space="preserve">
     <value>Najprej izberite veljavno vrsto entitete.</value>
   </data>
   <data name="CommandsMod_MessageBox_Name" xml:space="preserve">
     <value>Najprej vnesite ime.</value>
+  </data>
+  <data name="CommandsMod_MessageBox_Sanitize" xml:space="preserve">
+    <value>Vpisano ime vsebuje nepodprte znake, zato ne bo delovalo. Priporočena verzija je:
+
+{0}
+
+Ali želite uporabiti to verzijo?</value>
   </data>
   <data name="CommandsMod_SpecificClient" xml:space="preserve">
     <value>Samo {0}!</value>
@@ -524,13 +556,19 @@ Ste prepričani, da želite to?</value>
     <value>MediaPlayPause</value>
   </data>
   <data name="CommandType_MediaPreviousCommand" xml:space="preserve">
-    <value>MediaPrejšnji</value>
+    <value>MediaPrevious</value>
   </data>
   <data name="CommandType_MediaVolumeDownCommand" xml:space="preserve">
     <value>MediaVolumeDown</value>
   </data>
   <data name="CommandType_MediaVolumeUpCommand" xml:space="preserve">
     <value>MediaVolumeUp</value>
+  </data>
+  <data name="CommandType_MonitorSleepCommand" xml:space="preserve">
+    <value>MonitorSleep</value>
+  </data>
+  <data name="CommandType_MonitorWakeCommand" xml:space="preserve">
+    <value>MonitorWake</value>
   </data>
   <data name="CommandType_MultipleKeysCommand" xml:space="preserve">
     <value>Več tipk</value>
@@ -547,11 +585,14 @@ Ste prepričani, da želite to?</value>
   <data name="CommandType_SendWindowToFrontCommand" xml:space="preserve">
     <value>SendWindowToFront</value>
   </data>
+  <data name="CommandType_SetVolumeCommand" xml:space="preserve">
+    <value>NastaviJakost</value>
+  </data>
   <data name="CommandType_ShutdownCommand" xml:space="preserve">
-    <value>Ugasniti</value>
+    <value>Ugasni</value>
   </data>
   <data name="CommandType_SleepCommand" xml:space="preserve">
-    <value>spi</value>
+    <value>Spanje</value>
   </data>
   <data name="CommandType_WebViewCommand" xml:space="preserve">
     <value>WebView</value>
@@ -572,7 +613,7 @@ Ste prepričani, da želite to?</value>
     <value>V redu</value>
   </data>
   <data name="ComponentStatus_Stopped" xml:space="preserve">
-    <value>Ustavil se</value>
+    <value>Ustavljeno</value>
   </data>
   <data name="ConfigExternalTools_BtnExternalBrowserIncognitoTest" xml:space="preserve">
     <value>test</value>
@@ -607,7 +648,7 @@ Za več informacij si oglejte dnevnike.</value>
     <value>ime izvajalca po meri</value>
   </data>
   <data name="ConfigExternalTools_LblInfo1" xml:space="preserve">
-    <value>Ta stran vam omogoča, da konfigurirate vezi z zunanjimi orodji.</value>
+    <value>Ta stran vam omogoča, da konfigurirate poveave z zunanjimi orodji.</value>
   </data>
   <data name="ConfigExternalTools_LblInfo2" xml:space="preserve">
     <value>HASS.Agent bo privzeto zagnal URLje s privzetim brskalnikom.
@@ -625,17 +666,17 @@ Za zagon tega izvajalca uporabite ukaz &apos;custom executor&apos;.</value>
     <value>nasvet: dvokliknite za brskanje</value>
   </data>
   <data name="ConfigGeneral_CbEnableDeviceNameSanitation" xml:space="preserve">
-    <value>enable device name &amp;sanitation</value>
+    <value>omogoči ime naprave in higieno</value>
   </data>
   <data name="ConfigGeneral_CbEnableStateNotifications" xml:space="preserve">
-    <value>enable state notifications</value>
+    <value>omogoči obvestila o stanju</value>
   </data>
   <data name="ConfigGeneral_LblDeviceName" xml:space="preserve">
     <value>ime naprave</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigGeneral_LblDisconGracePeriod" xml:space="preserve">
-    <value>prekinjena milostna doba</value>
+    <value>prekinjena brezplačna doba</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigGeneral_LblDisconGraceSeconds" xml:space="preserve">
@@ -658,10 +699,10 @@ Vaše avtomatizacije in skripti bodo še naprej delovali.</value>
 Tukaj lahko nastavite količino sekund.</value>
   </data>
   <data name="ConfigGeneral_LblInfo5" xml:space="preserve">
-    <value>HASS.Agent will sanitize your device name, to make sure HA will accept it. You can overrule this if you&apos;re sure that your name will be accepted as-is.</value>
+    <value>HASS.Agent bo očistil ime vaše naprave, da se prepriča, da ga bo HA sprejela. To lahko preglasite, če ste prepričani, da bo vaše ime sprejeto takšno, kot je.</value>
   </data>
   <data name="ConfigGeneral_LblInfo6" xml:space="preserve">
-    <value>If you want, you can disable the state notifications all together. HASS.Agent won&apos;t show you when a connection was lost or restored.</value>
+    <value>Če želite, lahko vsa obvestila o stanju onemogočite. HASS.Agent vam ne bo pokazal, kdaj je bila povezava izgubljena ali vzpostavljena.</value>
   </data>
   <data name="ConfigGeneral_LblInterfaceLangauge" xml:space="preserve">
     <value>jezik vmesnika</value>
@@ -675,7 +716,7 @@ Tukaj lahko nastavite količino sekund.</value>
     <value>Vnesite veljaven ključ API.</value>
   </data>
   <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox2" xml:space="preserve">
-    <value>Vnesite URI domačega pomočnika.</value>
+    <value>Vnesite URI naslov za Home Assistant.</value>
   </data>
   <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox3" xml:space="preserve">
     <value>Povezave ni bilo mogoče vzpostaviti, vrnjena je bila naslednja napaka:
@@ -685,7 +726,21 @@ Tukaj lahko nastavite količino sekund.</value>
   <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox4" xml:space="preserve">
     <value>Povezava OK!
 
-Različica domačega pomočnika: {0}</value>
+Različica Home Assistant: {0}</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox5" xml:space="preserve">
+    <value>Vaš API žeton ne izgleda v redu. Prepričajte se, da ste izbrali celoten žeton (ne uporabljajte CTRL+A ali dvoklika).
+Žeton mora vsebovati tri sekcije (ločene s piko).
+
+Ali ste prepričani, da ga želite uporabiti takole?</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox6" xml:space="preserve">
+    <value>Vaš URI naslov ne izgleda v redu. Izgledati bi moral nekako takole: &apos;http://homeassistant.local:8123&apos; or &apos;http://192.168.0.1:8123&apos;.
+
+Ali ste prepričani, da ga želite uporabiti takole?</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi_Testing" xml:space="preserve">
+    <value>testiranje..</value>
   </data>
   <data name="ConfigHomeAssistantApi_CbHassAutoClientCertificate" xml:space="preserve">
     <value>uporabite samodejno izbiro potrdil odjemalca</value>
@@ -701,11 +756,11 @@ Različica domačega pomočnika: {0}</value>
   </data>
   <data name="ConfigHomeAssistantApi_LblInfo1" xml:space="preserve">
     <value>Če želite izvedeti, katere entitete ste konfigurirali, in za pošiljanje hitrih dejanj uporablja HASS.Agent
-API domačega pomočnika.
+API Home Assistant.
 
 Navedite dolgotrajni žeton za dostop in naslov svojega primerka Home Assistant.
 
-Žeton lahko dobite na strani profila. Pomaknite se do dna in kliknite &apos;USTVARI ŽETEN&apos;.</value>
+Žeton lahko dobite na strani vašega profila. Pomaknite se do dna in kliknite &apos;USTVARI ŽETON&apos;.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigHomeAssistantApi_LblServerUri" xml:space="preserve">
@@ -716,7 +771,7 @@ Navedite dolgotrajni žeton za dostop in naslov svojega primerka Home Assistant.
     <value>nasvet: dvokliknite to polje za brskanje</value>
   </data>
   <data name="ConfigHotKey_BtnClearHotKey" xml:space="preserve">
-    <value>počisti</value>
+    <value>&amp;počisti</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigHotKey_CbEnableQuickActionsHotkey" xml:space="preserve">
@@ -733,28 +788,32 @@ Navedite dolgotrajni žeton za dostop in naslov svojega primerka Home Assistant.
 Na ta način lahko vedno sodelujete z Home Assistantom, karkoli že počnete na svojem računalniku.</value>
   </data>
   <data name="ConfigLocalApi_BtnExecutePortReservation" xml:space="preserve">
-    <value>execute port &amp;reservation</value>
+    <value>Izvedi &amp;rezervacijo vrat</value>
   </data>
   <data name="ConfigLocalApi_CbLocalApiActive" xml:space="preserve">
-    <value>&amp;enable local api</value>
+    <value>&amp;omogoči lokalni api</value>
   </data>
   <data name="ConfigLocalApi_LblInfo1" xml:space="preserve">
-    <value>HASS.Agent has its own local API, so Home Assistant can send requests (for instance to send a notification). You can configure it globally here, and afterwards you can configure the dependent sections (currently notifications and mediaplayer).</value>
+    <value>HASS.Agent ima svoj lastni lokalni API, tako da Home Assistant lahko pošilja ukaze (npr. za prikaz obvestil). Tukaj ga konfigurirate globalno, potem pa nastavljate odvisne sektorje (trenutno obvestila in medijski predvajalnik).
+
+Opomba: za delovanje nove integracije to ni nujno. Omogočite in uporabljajte ga samo, če ne uporabljate MQTT</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigLocalApi_LblInfo2" xml:space="preserve">
-    <value>To be able to listen to the requests, HASS.Agents needs to have its port reserved and opened in your firewall. You can use this button to have it done for you.</value>
+    <value>Da bi lahko poslušal zahteve mora imeti HASS.Agent rezervirana vrata in jih imeti odprta v požarnem zidu. S tem gumbom lahko to naredite.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigLocalApi_LblPort" xml:space="preserve">
-    <value>&amp;port</value>
+    <value>&amp;vrata</value>
   </data>
   <data name="ConfigLocalStorage_BtnClearAudioCache" xml:space="preserve">
-    <value>clear audio cache</value>
+    <value>izbriši audio cache</value>
   </data>
   <data name="ConfigLocalStorage_BtnClearAudioCache_InfoText1" xml:space="preserve">
-    <value>cleaning ..</value>
+    <value>brisanje ..</value>
   </data>
   <data name="ConfigLocalStorage_BtnClearAudioCache_MessageBox1" xml:space="preserve">
-    <value>Audio cache has been cleared!</value>
+    <value>Audio cache je bil izbrisan!</value>
   </data>
   <data name="ConfigLocalStorage_BtnClearImageCache" xml:space="preserve">
     <value>počisti predpomnilnik slik</value>
@@ -766,19 +825,19 @@ Na ta način lahko vedno sodelujete z Home Assistantom, karkoli že počnete na 
     <value>Predpomnilnik slik je bil počiščen!</value>
   </data>
   <data name="ConfigLocalStorage_BtnClearWebViewCache" xml:space="preserve">
-    <value>clear webview cache</value>
+    <value>izbriši webview cache</value>
   </data>
   <data name="ConfigLocalStorage_BtnClearWebViewCache_InfoText1" xml:space="preserve">
-    <value>cleaning ..</value>
+    <value>brisanje ..</value>
   </data>
   <data name="ConfigLocalStorage_BtnClearWebViewCache_MessageBox1" xml:space="preserve">
-    <value>WebView cache has been cleared!</value>
+    <value>WebView cache je bil izbrisan!</value>
   </data>
   <data name="ConfigLocalStorage_BtnOpenImageCache" xml:space="preserve">
     <value>odpri mapo</value>
   </data>
   <data name="ConfigLocalStorage_LblAudioCacheLocation" xml:space="preserve">
-    <value>audio cache location</value>
+    <value>lokacija audio cache</value>
   </data>
   <data name="ConfigLocalStorage_LblCacheDays" xml:space="preserve">
     <value>dni</value>
@@ -787,70 +846,82 @@ Na ta način lahko vedno sodelujete z Home Assistantom, karkoli že počnete na 
     <value>mesto predpomnilnika slik</value>
   </data>
   <data name="ConfigLocalStorage_LblImageCacheDays" xml:space="preserve">
-    <value>days</value>
+    <value>dni</value>
   </data>
   <data name="ConfigLocalStorage_LblImageCacheLocation" xml:space="preserve">
-    <value>image cache location</value>
+    <value>lokacija cache-ja slik</value>
   </data>
   <data name="ConfigLocalStorage_LblInfo1" xml:space="preserve">
-    <value>Slike, prikazane v obvestilih, je treba začasno shraniti lokalno. Konfigurirate lahko količino
-dni jih je treba hraniti, preden jih HASS.Agent izbriše. Vnesite &apos;0&apos;, da jih obdržite za vedno.</value>
+    <value>Slike, prikazane v obvestilih, je treba začasno shraniti lokalno. Konfigurirate lahko koliko
+dni jih je treba hraniti, preden jih HASS.Agent izbriše. 
+
+Vnesite &apos;0&apos;, da jih obdržite za vedno.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigLocalStorage_LblKeepAudio" xml:space="preserve">
-    <value>keep audio for</value>
+    <value>ohrani avdio </value>
   </data>
   <data name="ConfigLocalStorage_LblKeepImages" xml:space="preserve">
-    <value>keep images for</value>
+    <value>ohrani slike </value>
   </data>
   <data name="ConfigLocalStorage_LblKeepWebView" xml:space="preserve">
-    <value>clear cache every</value>
+    <value>izbriši cache vsakih</value>
   </data>
   <data name="ConfigLocalStorage_LblWebViewCacheLocation" xml:space="preserve">
-    <value>webview cache location</value>
+    <value>lokacija webview cache</value>
   </data>
   <data name="ConfigLogging_BtnShowLogs" xml:space="preserve">
     <value>odpri mapo dnevnikov</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigLogging_CbExtendedLogging" xml:space="preserve">
-    <value>omogoči detajlno beleženje</value>
+    <value>omogoči podrobno beleženje</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigLogging_LblInfo1" xml:space="preserve">
     <value>Razširjeno beleženje zagotavlja bolj podrobno in poglobljeno beleženje, če privzeto beleženje ni
-dovolj. Upoštevajte, da lahko s tem omogočite, da se dnevniške datoteke povečajo, kar bi moralo biti samo
-uporablja, ko sumite, da je nekaj narobe s samim HASS.Agentom ali na vprašanje
-razvijalci.</value>
+dovolj. Upoštevajte, da lahko s tem omogočite, da se dnevniške datoteke povečajo, in naj bi se 
+uporabljalo samo, ko sumite, da je nekaj narobe s samim HASS.Agentom ali na zahtevo
+razvijalcev.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigMediaPlayer_BtnMediaPlayerReadme" xml:space="preserve">
-    <value>media player &amp;documentation</value>
+    <value>&amp;dokumentacija medijskega predvajalnika</value>
   </data>
   <data name="ConfigMediaPlayer_CbEnableMediaPlayer" xml:space="preserve">
-    <value>&amp;enable media player functionality</value>
+    <value>&amp;omogoči funkcionalnost media predvajalnika</value>
+  </data>
+  <data name="ConfigMediaPlayer_LblConnectivityDisabled" xml:space="preserve">
+    <value>API in MQTT sta oba izključena, toda integracija potrebuje vsaj enega, da deluje</value>
   </data>
   <data name="ConfigMediaPlayer_LblInfo1" xml:space="preserve">
-    <value>HASS.Agent can act as a media player for Home Assistant, so you&apos;ll be able to control any media that&apos;s playing and send text-to-speech. The Local API needs to be enabled for this to work.</value>
+    <value>HASS.Agent lahko deluje kot medijski predvajalnik za Home Assistant, tako lahko vidite in nadzirate kaj se predvaja in pošiljate tekst-v-govor. Če imate MQTT vključen bo vaša naprava samodejno dodana, sicer pa jo lahko ročno dokdate z uporabo lokalnega API.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigMediaPlayer_LblInfo2" xml:space="preserve">
-    <value>If something&apos;s not working, make sure you followed these steps:
+    <value>Če kaj ne deluje se prepričajte, da ste storili tole:
 
-- Install HASS.Agent-MediaPlayer integration
-- Restart Home Assistant
-- Configure a media_player entity
-- Restart Home Assistant</value>
+- namestili HASS.Agent-MediaPlayer integracijo
+- Restartali Home Assistant
+- da je HASS.Agent aktiven in MQTT vključen
+- tako bo vaša naprava zaznana!
+- opcijsko: dodate jo ročno z uporabo lokalnega API</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigMediaPlayer_LblLocalApiDisabled" xml:space="preserve">
-    <value>the local API is disabled, but the media player needs it to work </value>
+    <value>lokalni API je onemogočen, toda medijski predvajalnik ga potrebuje za delovanje</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigMqtt_BtnMqttClearConfig" xml:space="preserve">
-    <value>jasno konfiguracijo</value>
+    <value>Izbriši konfiguracijo</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigMqtt_CbAllowUntrustedCertificates" xml:space="preserve">
     <value>dovolite zaupanja vredna potrdila</value>
     <comment>Fuzzy</comment>
+  </data>
+  <data name="ConfigMqtt_CbEnableMqtt" xml:space="preserve">
+    <value>omogoči mqtt</value>
   </data>
   <data name="ConfigMqtt_CbMqttTls" xml:space="preserve">
     <value>&amp;TLS</value>
@@ -881,8 +952,15 @@ razvijalci.</value>
     <value>predpona odkritja</value>
   </data>
   <data name="ConfigMqtt_LblInfo1" xml:space="preserve">
-    <value>Ukazi in senzorji se pošiljajo prek MQTT. Prosimo, navedite poverilnice za vaš strežnik. Če
-če uporabljate dodatek HA, verjetno lahko uporabite prednastavljen naslov.</value>
+    <value>Ukazi in senzorji se pošiljajo prek MQTT, kot tudi obvestila in medijske funkcije, ko uporabite novo integracijo.
+
+Prosimo, navedite poverilnice za vaš strežnik. Č uporabljate dodatek HA Mosquitto, verjetno lahko uporabite prednastavljen naslov.
+
+Opomba: te nastavitve (razen client id) bodo uporaljene tudi za satelitkso storitev.</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="ConfigMqtt_LblMqttDisabledWarning" xml:space="preserve">
+    <value>brez mqtt ukazi in senzorji ne bodo delovali!</value>
   </data>
   <data name="ConfigMqtt_LblRootCert" xml:space="preserve">
     <value>korenski certifikat</value>
@@ -910,7 +988,7 @@ Prosimo, ročno izvedite zahtevani ukaz. Kopiran je bil v odložišče, samo ga 
 Ne pozabite spremeniti tudi vrat pravila požarnega zidu.</value>
   </data>
   <data name="ConfigNotifications_BtnNotificationsReadme" xml:space="preserve">
-    <value>dokumentacija obvestil</value>
+    <value>&amp;dokumentacija obvestil</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigNotifications_BtnSendTestNotification" xml:space="preserve">
@@ -932,8 +1010,11 @@ Opomba: s tem se preverja samo lokalno, ali je mogoče prikazati obvestila!</val
     <value>ignoriraj napake certifikatov za slike</value>
     <comment>Fuzzy</comment>
   </data>
+  <data name="ConfigNotifications_LblConnectivityDisabled" xml:space="preserve">
+    <value>API in MQTT sta oba izključena, integracija pa potrebuje vsaj enega, da deluje</value>
+  </data>
   <data name="ConfigNotifications_LblInfo1" xml:space="preserve">
-    <value>HASS.Agent lahko prejema obvestila iz Home Assistanta kot besedilo in/ali slike.</value>
+    <value>HASS.Agent lahko prejema obvestila iz Home Assistanta kot besedilo in/ali slike in akcije. Če imate MQTT vključen bo vaša naprava samodejno dodana. V nasprotnem primeru jo dodajte ročno z uporabo lokalnega API.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigNotifications_LblInfo2" xml:space="preserve">
@@ -941,11 +1022,14 @@ Opomba: s tem se preverja samo lokalno, ali je mogoče prikazati obvestila!</val
 
 - Namestite integracijo HASS.Agent-Notifier
 - Znova zaženite Home Assistant
-- Konfigurirajte entiteto prijavitelja
-- Znova zaženite Home Assistant</value>
+- prepričajte se, da HASS.Agent delujez vključenim MQTT
+- Vaša naprava bo zaznana!
+- Opcijsko: dodajte jo ročno z uporabo lokalnega API</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigNotifications_LblLocalApiDisabled" xml:space="preserve">
-    <value>the local API is disabled, but the media player needs it to work </value>
+    <value>lokalni API je onemogočen, toda medijski predvajalnik ga potrebuje za delovanje</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigNotifications_LblPort" xml:space="preserve">
     <value>vrata</value>
@@ -971,6 +1055,14 @@ Za več informacij preverite dnevnike HASS.Agent (ne storitve).</value>
 
 Za več informacij preverite dnevnike HASS.Agent (ne storitve).</value>
   </data>
+  <data name="ConfigService_BtnManageService" xml:space="preserve">
+    <value>&amp;uredi storitev</value>
+  </data>
+  <data name="ConfigService_BtnManageService_MessageBox1" xml:space="preserve">
+    <value>Storitev je trenutno ustavljena, zato je ne boste mogli urediti.
+
+Najprej jo zaženite in se prepričajte, da teče.</value>
+  </data>
   <data name="ConfigService_BtnReinstallService" xml:space="preserve">
     <value>znova namesti servis</value>
     <comment>Fuzzy</comment>
@@ -989,7 +1081,7 @@ Za več informacij preverite dnevnike HASS.Agent (ne storitve).</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigService_BtnStartService_MessageBox1" xml:space="preserve">
-    <value>Storitev je nastavljena na &quot;onemogočena&quot;, zato je ni mogoče zagnati.
+    <value>Storitev je nastavljena na &apos;onemogočena&apos;, zato je ni mogoče zagnati.
 
 Najprej omogočite storitev, nato poskusite znova.</value>
   </data>
@@ -1029,6 +1121,9 @@ Konfiguracija in entitete ne bodo odstranjene.</value>
   <data name="ConfigService_LblInfo4" xml:space="preserve">
     <value>Če storitev po ponovni namestitvi še vedno ne uspe, odprite vstopnico in pošljite vsebino najnovejšega dnevnika.</value>
   </data>
+  <data name="ConfigService_LblInfo5" xml:space="preserve">
+    <value>Če želite upravljati storitev (dodajanje ukazov, senzorjev, spremembe) lahko to storite tukaj, ali pa z uporabo gumba &apos;satelitska storitev&apos; v glavnem oknu.</value>
+  </data>
   <data name="ConfigService_LblServiceStatusInfo" xml:space="preserve">
     <value>stanje servisa:</value>
   </data>
@@ -1036,10 +1131,10 @@ Konfiguracija in entitete ne bodo odstranjene.</value>
     <value>ni nameščeno</value>
   </data>
   <data name="ConfigService_Running" xml:space="preserve">
-    <value>tek</value>
+    <value>teče</value>
   </data>
   <data name="ConfigService_Stopped" xml:space="preserve">
-    <value>ustavil</value>
+    <value>ustavljeno</value>
   </data>
   <data name="ConfigStartup_BtnSetStartOnLogin" xml:space="preserve">
     <value>omogoči zagon ob prijavi</value>
@@ -1056,13 +1151,13 @@ Za več informacij preverite dnevnike.</value>
 Za več informacij preverite dnevnike.</value>
   </data>
   <data name="ConfigStartup_Disable" xml:space="preserve">
-    <value>onemogočiti zagon ob prijavi</value>
+    <value>onemogoči zagon ob prijavi</value>
   </data>
   <data name="ConfigStartup_Disabled" xml:space="preserve">
     <value>onemogočeno</value>
   </data>
   <data name="ConfigStartup_Enable" xml:space="preserve">
-    <value>omogočiti zagon ob prijavi</value>
+    <value>omogoči zagon ob prijavi</value>
   </data>
   <data name="ConfigStartup_Enabled" xml:space="preserve">
     <value>omogočeno</value>
@@ -1077,28 +1172,31 @@ HASS. Agent tam.</value>
     <value>stanje zagona ob prijavi:</value>
   </data>
   <data name="ConfigTrayIcon_BtnShowWebViewPreview" xml:space="preserve">
-    <value>show &amp;preview</value>
+    <value>prikaži predogled</value>
   </data>
   <data name="ConfigTrayIcon_CbDefaultMenu" xml:space="preserve">
-    <value>show &amp;default menu</value>
+    <value>prikaži privzeti meni</value>
   </data>
   <data name="ConfigTrayIcon_CbShowWebView" xml:space="preserve">
-    <value>show &amp;webview</value>
+    <value>prikaži webview</value>
   </data>
   <data name="ConfigTrayIcon_CbWebViewKeepLoaded" xml:space="preserve">
-    <value>&amp;keep page loaded in the background</value>
+    <value>ohrani stran naložena v ozadju</value>
+  </data>
+  <data name="ConfigTrayIcon_CbWebViewShowMenuOnLeftClick" xml:space="preserve">
+    <value>ob levem kliku miške prikaži privzeti meni</value>
   </data>
   <data name="ConfigTrayIcon_LblInfo1" xml:space="preserve">
-    <value>Control the way the tray icon behaves on a right mousebutton click.</value>
+    <value>Nastavite obnašanje ikon ob desnem kliku miške.</value>
   </data>
   <data name="ConfigTrayIcon_LblInfo2" xml:space="preserve">
-    <value>this uses some resources, but reduces loading time</value>
+    <value>tole porabi nekaj sredstev, ampak zmanjša čas nalaganja</value>
   </data>
   <data name="ConfigTrayIcon_LblWebViewSize" xml:space="preserve">
-    <value>size</value>
+    <value>velikost</value>
   </data>
   <data name="ConfigTrayIcon_LblWebViewUrl" xml:space="preserve">
-    <value>&amp;url to show (for instance an Home Assistant dashboard)</value>
+    <value>&amp;url za prikaz (npr. Home Assistant glavni pogled)</value>
   </data>
   <data name="ConfigUpdates_CbBetaUpdates" xml:space="preserve">
     <value>obvesti me tudi o beta verzijah</value>
@@ -1118,19 +1216,19 @@ HASS. Agent tam.</value>
 Prejeli boste obvestilo (enkrat na posodobitev) , s katerim boste vedeli, da je nova različica pripravljena za namestitev.</value>
   </data>
   <data name="ConfigUpdates_LblInfo2" xml:space="preserve">
-    <value>Ko bo posodobitev, bo HASS.Agent ponudil možnost odpiranja strani za izdajo. Ampak če ti
-hočeš, lahko HASS.Agent tudi prenese in zažene namestitveni program namesto vas - še manj dela!
+    <value>Ko bo posodobitev, bo HASS.Agent ponudil možnost odpiranja strani za izdajo. Ampak če
+želite lahko HASS.Agent tudi prenese in zažene namestitveni program namesto vas - še manj dela!
 
 Potrdilo prenesene datoteke bo preverjeno pred izvedbo.
 </value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Configuration_BtnAbout" xml:space="preserve">
-    <value>približno</value>
+    <value>&amp;vizitka</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Configuration_BtnClose" xml:space="preserve">
-    <value>zaprite brez shranjevanja</value>
+    <value>zapri brez shranjevanja</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Configuration_BtnHelp" xml:space="preserve">
@@ -1138,11 +1236,27 @@ Potrdilo prenesene datoteke bo preverjeno pred izvedbo.
     <comment>Fuzzy</comment>
   </data>
   <data name="Configuration_BtnStore" xml:space="preserve">
-    <value>konfiguracijo trgovine</value>
+    <value>Shrani konfiguracijo</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Configuration_BtnStore_Busy" xml:space="preserve">
     <value>zaposlen, počakaj..</value>
+  </data>
+  <data name="Configuration_CheckValues_MessageBox1" xml:space="preserve">
+    <value>Vaš Home Assistant žeton ne izgleda v redu. Prepričajte se, da ste kopirali celoten žeton (ne uporabljajte CTRL+A ali dvoklika).
+Vsebovati mora tri sekcije (ločene s pikami).
+
+Ali ste prepričani, da ga želite uporabiti takole?</value>
+  </data>
+  <data name="Configuration_CheckValues_MessageBox2" xml:space="preserve">
+    <value>Vaša povezava do Home Assistant-a ne izgleda v redu. Morala bi biti nekako takole: &apos;http://homeassistant.local:8123&apos; ali &apos;https://192.168.0.1:8123&apos;.
+
+Ali ste prepričani, da jo želite uporabiti takole?</value>
+  </data>
+  <data name="Configuration_CheckValues_MessageBox3" xml:space="preserve">
+    <value>Vaša povezava do MQTT strežnika ne izgleda v redu. Morala bi biti nekako takole: &apos;homeassistant.local&apos; ali &apos;192.168.0.1&apos;.
+
+Ali ste prepričani, da jo želite uporabiti takole?</value>
   </data>
   <data name="Configuration_MessageBox_RestartManually" xml:space="preserve">
     <value>Pri pripravi na ponovni zagon je šlo nekaj narobe.
@@ -1152,15 +1266,18 @@ Ponovno zaženite ročno.</value>
     <value>Spremenili ste ime svoje naprave.
 
 Vsi vaši senzorji in ukazi bodo zdaj preklicani in HASS.Agent
-se bodo nato znova zagnali, da jih bodo znova objavili.
+se bo nato znova zagnal, da jih bo znova objavil.
 
-Ohranili bodo svoja trenutna imena, da bi se izognili zlomu avtomatizacije ali skriptov.</value>
+Ne skrbite, ohranili bodo svoja trenutna imena, tako da bodo vaše avtomatizacije ali skripti normalno delovali.
+
+Opomba: ime se bo &apos;očistilo&apos;, kar pomeni, da bo vse, razen črk, številk in presledkov nadomeščeno s podčrtajem. To je zahteva Home Assistant.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Configuration_ProcessChanges_MessageBox2" xml:space="preserve">
     <value>Spremenili ste vrata API-ja za obveščanje. Ta nova vrata je treba rezervirati.
 
 Za to boste prejeli zahtevo UAC, prosimo, odobrite.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="Configuration_ProcessChanges_MessageBox3" xml:space="preserve">
     <value>Nekaj je šlo narobe!
@@ -1170,7 +1287,7 @@ Prosimo, ročno izvedite zahtevani ukaz. Kopiran je bil v odložišče, samo ga 
 Ne pozabite spremeniti tudi vrat pravila požarnega zidu.</value>
   </data>
   <data name="Configuration_ProcessChanges_MessageBox4" xml:space="preserve">
-    <value>Pristanišče je uspešno rezervirano!
+    <value>Vrata so uspešno rezervirana!
 
 HASS.Agent se bo zdaj znova zagnal, da bo aktiviral novo konfiguracijo.</value>
   </data>
@@ -1180,37 +1297,37 @@ HASS.Agent se bo zdaj znova zagnal, da bo aktiviral novo konfiguracijo.</value>
 Ali želite zdaj znova zagnati?</value>
   </data>
   <data name="Configuration_ProcessChanges_MessageBox6" xml:space="preserve">
-    <value>You&apos;ve changed your device&apos;s name.
+    <value>Spremenili ste ime svoje naprave.
 
-All your sensors and commands will now be unpublished, and HASS.Agent will restart afterwards to republish them.
+Vsi vaši senzorji in ukazi bodo zdaj neobjavljeni, HASS.Agent pa se bo nato znova zagnal, da jih ponovno objavi.
 
-Don&apos;t worry, they&apos;ll keep their current names, so your automations or scripts will keep working.
+Ne skrbite, obdržali bodo trenutna imena, tako da bodo vaše avtomatizacije ali skripti še naprej delovali.
 
-Note: you disabled sanitation, so make sure your device name is accepted by Home Assistant.</value>
+Opomba: onemogočili ste sanitarije, zato poskrbite, da Home Assistant sprejme ime vaše naprave.</value>
   </data>
   <data name="Configuration_TabExternalTools" xml:space="preserve">
     <value>Zunanja orodja</value>
   </data>
   <data name="Configuration_TabGeneral" xml:space="preserve">
-    <value>General</value>
+    <value>Splošno</value>
   </data>
   <data name="Configuration_TabHassApi" xml:space="preserve">
     <value>Home Assistant API</value>
   </data>
   <data name="Configuration_TabHotKey" xml:space="preserve">
-    <value>HotKey</value>
+    <value>Bližnjica</value>
   </data>
   <data name="Configuration_TablLocalApi" xml:space="preserve">
-    <value>Local API</value>
+    <value>Lokalni API</value>
   </data>
   <data name="Configuration_TabLocalStorage" xml:space="preserve">
     <value>Lokalna shramba</value>
   </data>
   <data name="Configuration_TabLogging" xml:space="preserve">
-    <value>Sečnja</value>
+    <value>Logiranje</value>
   </data>
   <data name="Configuration_TabMediaPlayer" xml:space="preserve">
-    <value>Media Player</value>
+    <value>Media Predvajalnik</value>
   </data>
   <data name="Configuration_TabMQTT" xml:space="preserve">
     <value>MQTT</value>
@@ -1222,16 +1339,32 @@ Note: you disabled sanitation, so make sure your device name is accepted by Home
     <value>Satelitska storitev</value>
   </data>
   <data name="Configuration_TabStartup" xml:space="preserve">
-    <value>Začeti</value>
+    <value>Zagon</value>
   </data>
   <data name="Configuration_TabTrayIcon" xml:space="preserve">
-    <value>Tray Icon</value>
+    <value>ikona tray-u</value>
   </data>
   <data name="Configuration_TabUpdates" xml:space="preserve">
     <value>Posodobitve</value>
   </data>
   <data name="Configuration_Title" xml:space="preserve">
     <value>Konfiguracija</value>
+  </data>
+  <data name="Donate_BtnClose" xml:space="preserve">
+    <value>&amp;zapri</value>
+  </data>
+  <data name="Donate_CbHideDonateButton" xml:space="preserve">
+    <value>Sem že doniral, skrij gumb na glavnem oknu.</value>
+  </data>
+  <data name="Donate_LblInfo" xml:space="preserve">
+    <value>HASS.Agent je popolnoma brezplačen in bo vedno ostal tak, brez omejitev!
+
+Ampak, razvoj in vzdrževanje tega dodatka (in vsega, kar spada zraven, kot je podpora, navodila) vzame veliko časa.
+
+Kot večina razvijalcev tudi jaz delam na kofein - zato bi bil zelo hvaležen kake skodelice kave, če jo lahko pogrešate!</value>
+  </data>
+  <data name="Donate_Title" xml:space="preserve">
+    <value>Doniraj</value>
   </data>
   <data name="ExitDialog_BtnExit" xml:space="preserve">
     <value>izhod</value>
@@ -1249,7 +1382,7 @@ Note: you disabled sanitation, so make sure your device name is accepted by Home
     <value>Kaj bi rad počel?</value>
   </data>
   <data name="ExitDialog_Title" xml:space="preserve">
-    <value>Pogovorno okno za izhod</value>
+    <value>Izhod iz dialoga</value>
   </data>
   <data name="HassAction_Close" xml:space="preserve">
     <value>Zapri</value>
@@ -1264,13 +1397,13 @@ Note: you disabled sanitation, so make sure your device name is accepted by Home
     <value>Odprto</value>
   </data>
   <data name="HassAction_Pause" xml:space="preserve">
-    <value>Pavza</value>
+    <value>Premor</value>
   </data>
   <data name="HassAction_Play" xml:space="preserve">
-    <value>Igraj</value>
+    <value>Predvajaj</value>
   </data>
   <data name="HassAction_Stop" xml:space="preserve">
-    <value>Ustavi se</value>
+    <value>Ustavi</value>
   </data>
   <data name="HassAction_Toggle" xml:space="preserve">
     <value>Preklopi</value>
@@ -1306,19 +1439,19 @@ Note: you disabled sanitation, so make sure your device name is accepted by Home
     <value>Avtomatizacija</value>
   </data>
   <data name="HassDomain_Climate" xml:space="preserve">
-    <value>Podnebje</value>
+    <value>Klimatizacija</value>
   </data>
   <data name="HassDomain_Cover" xml:space="preserve">
-    <value>Pokrov</value>
+    <value>Senčila</value>
   </data>
   <data name="HassDomain_HASSAgentCommands" xml:space="preserve">
-    <value>HASS.Agent Commands</value>
+    <value>HASS.Agent ukazi</value>
   </data>
   <data name="HassDomain_InputBoolean" xml:space="preserve">
     <value>InputBoolean</value>
   </data>
   <data name="HassDomain_Light" xml:space="preserve">
-    <value>Svetloba</value>
+    <value>Osvetlitev</value>
   </data>
   <data name="HassDomain_MediaPlayer" xml:space="preserve">
     <value>Medijski predvajalnik</value>
@@ -1330,27 +1463,27 @@ Note: you disabled sanitation, so make sure your device name is accepted by Home
     <value>Skripta</value>
   </data>
   <data name="HassDomain_Switch" xml:space="preserve">
-    <value>Preklopi</value>
+    <value>Stikalo</value>
   </data>
   <data name="Help_BtnClose" xml:space="preserve">
-    <value>blizu</value>
+    <value>&amp;zapri</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Help_LblAbout" xml:space="preserve">
-    <value>O</value>
+    <value>Vizitka</value>
   </data>
   <data name="Help_LblDiscordInfo" xml:space="preserve">
     <value>Poiščite pomoč pri nastavitvi in uporabi HASS.Agent,
 poročaj o napakah ali se samo pogovori o čemerkoli.</value>
   </data>
   <data name="Help_LblDocumentation" xml:space="preserve">
-    <value>Documentation</value>
+    <value>Dokumentacija</value>
   </data>
   <data name="Help_LblDocumentationInfo" xml:space="preserve">
-    <value>Documentation and usage examples.</value>
+    <value>Dokumentacija in primeri uporabe</value>
   </data>
   <data name="Help_LblGitHub" xml:space="preserve">
-    <value>Vstopnice za GitHub</value>
+    <value>GitHub pomoč</value>
   </data>
   <data name="Help_LblGitHubInfo" xml:space="preserve">
     <value>Prijavite napake, zahteve po funkcijah, ideje, nasvete, ...</value>
@@ -1363,8 +1496,8 @@ poročaj o napakah ali se samo pogovori o čemerkoli.</value>
 Pomagajo lahko tudi uporabniki HA.</value>
   </data>
   <data name="Help_LblInfo1" xml:space="preserve">
-    <value>Zataknjen med uporabo HASS.Agent, potrebujem pomoč pri integraciji
-senzorji/ukazi ali imate odlično idejo za naslednjo različico?
+    <value>Težave med uporabo HASS.Agent, potrebuješ pomoč pri integraciji
+senzorji/ukazi ali imatš odlično idejo za naslednjo različico?
 
 Obstaja nekaj kanalov, preko katerih nas lahko dosežete:</value>
   </data>
@@ -1375,30 +1508,30 @@ Obstaja nekaj kanalov, preko katerih nas lahko dosežete:</value>
     <value>Dokumentacija in primeri uporabe.</value>
   </data>
   <data name="Help_Title" xml:space="preserve">
-    <value>Pomagaj</value>
+    <value>Pomoč</value>
   </data>
   <data name="HelperFunctions_InputLanguageCheckDiffers_ErrorMsg1" xml:space="preserve">
-    <value>Your input language &apos;{0}&apos; is known to collide with the default CTRL-ALT-Q hotkey. Please set your own.</value>
+    <value>Vaš vhodni jezik &apos;{0}&apos; je znan, da je v konfliktu s privzeto bližnjivo CTRL-ALT-Q. Prosim, nastavite svojo.</value>
   </data>
   <data name="HelperFunctions_InputLanguageCheckDiffers_ErrorMsg2" xml:space="preserve">
-    <value>Your input language &apos;{0}&apos; is unknown, and might collide with the default CTRL-ALT-Q hotkey. Please check to be sure. If it does, consider opening a ticket on GitHub so it can be added to the list.</value>
+    <value>Vaš vhodni jezik &apos;{0}&apos;  je neznan in je lahko v konfliktu s privzeto bližnjivo CTRL-ALT-Q. Prosim, preverite. Če je v konfliktu odprite pomoč v GitHub, da bo dodan na seznam.</value>
   </data>
   <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg1" xml:space="preserve">
-    <value>no keys found</value>
+    <value>Ni najdenih ključev</value>
   </data>
   <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg2" xml:space="preserve">
-    <value>brackets missing, start and close all keys with [ ]</value>
+    <value>manjkajo oklepaji, začetek in konec mora biti  [  ]</value>
   </data>
   <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg3" xml:space="preserve">
-    <value>error while parsing keys, check the log for more info</value>
+    <value>napaka pri razčlenjevanju ključev, glejte dnevnik</value>
   </data>
   <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg4" xml:space="preserve">
-    <value>the number of &apos;[&apos; brackets don&apos;t correspond to the &apos;]&apos; ones ({0} to {1})</value>
+    <value>število oklepajev &apos;[&apos; ne ustreza številu oklepajev  &apos;]&apos;  ({0} do {1})</value>
   </data>
   <data name="LocalApiManager_Initialize_MessageBox1" xml:space="preserve">
-    <value>Error trying to bind the API to port {0}.
+    <value>Napaka pri povezovanju API z vrati {0}.
 
-Make sure no other instance of HASS.Agent is running and the port is available and registered.</value>
+Prepričajte se, da ne teče več kopij HASS.Agent-a in da so vrata na voljo in registrirana.</value>
   </data>
   <data name="LockState_Locked" xml:space="preserve">
     <value>Zaklenjeno</value>
@@ -1414,17 +1547,18 @@ Make sure no other instance of HASS.Agent is running and the port is available a
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnAppSettings" xml:space="preserve">
-    <value>konfiguracijo</value>
+    <value>konfiguracija</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnCheckForUpdate" xml:space="preserve">
-    <value>check for &amp;updates</value>
+    <value>preveri za &amp;posodobitve</value>
   </data>
   <data name="Main_BtnCommandsManager" xml:space="preserve">
     <value>nalaganje</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnCommandsManager_Ready" xml:space="preserve">
-    <value>ukazov</value>
+    <value>&amp;ukazi</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnHide" xml:space="preserve">
@@ -1437,17 +1571,18 @@ Make sure no other instance of HASS.Agent is running and the port is available a
   </data>
   <data name="Main_BtnSensorsManager" xml:space="preserve">
     <value>nalaganje</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnServiceManager" xml:space="preserve">
-    <value>satelitsko storitev</value>
+    <value>satelitska storitev</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_CheckDpiScalingFactor_MessageBox1" xml:space="preserve">
-    <value>It looks like you&apos;re using an alternative scaling. This may result in some parts of HASS.Agent not looking as intended.
+    <value>Izgleda, da uporabljate alternativno povečavo. To lahko povzroči, da HASS.Agent ne bo izgledal pravilno.
 
-Please report any unusable aspects on GitHub. Thanks!
+Prosim, poročajte o nepravilnem prikazu na GitHub. Hvala!
 
-Note: this message only shows once.</value>
+Opomba: to sporočilo bo prikazano samo enkrat.</value>
   </data>
   <data name="Main_CheckForUpdate_MessageBox1" xml:space="preserve">
     <value>Uporabljate najnovejšo različico: {0}{1}</value>
@@ -1471,7 +1606,7 @@ Note: this message only shows once.</value>
     <value>domači pomočnik API:</value>
   </data>
   <data name="Main_LblLocalApi" xml:space="preserve">
-    <value>local api:</value>
+    <value>lokalni api:</value>
   </data>
   <data name="Main_LblMqtt" xml:space="preserve">
     <value>mqtt:</value>
@@ -1492,22 +1627,30 @@ Note: this message only shows once.</value>
     <value>Pri nalaganju nastavitev je šlo nekaj narobe.
 
 Preverite appsettings.json v podmapi &apos;Config&apos; ali jo preprosto izbrišite, da začnete znova.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="Main_Load_MessageBox2" xml:space="preserve">
     <value>Pri zagonu HASS.Agent je prišlo do napake.
 Prosimo, preverite dnevnike in naredite poročilo o napakah na githubu.</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="Main_NotifyIcon_MouseClick_MessageBox1" xml:space="preserve">
+    <value>URL ni bil nastavljen! Prosim nastavite spletni pogled na Konfiguracija -&gt; Ikona opravilne vrstice</value>
   </data>
   <data name="Main_TsAbout" xml:space="preserve">
-    <value>približno</value>
+    <value>vizitka</value>
+  </data>
+  <data name="Main_TsCheckForUpdates" xml:space="preserve">
+    <value>preveri za posodobitve</value>
   </data>
   <data name="Main_TsCommands" xml:space="preserve">
-    <value>upravljajte ukaze</value>
+    <value>upravljaj ukaze</value>
   </data>
   <data name="Main_TsConfig" xml:space="preserve">
-    <value>konfiguracijo</value>
+    <value>konfiguracija</value>
   </data>
   <data name="Main_TsDonate" xml:space="preserve">
-    <value>darovati</value>
+    <value>doniraj</value>
   </data>
   <data name="Main_TsExit" xml:space="preserve">
     <value>izhod</value>
@@ -1516,19 +1659,31 @@ Prosimo, preverite dnevnike in naredite poročilo o napakah na githubu.</value>
     <value>pomoč &amp;&amp; kontakt</value>
   </data>
   <data name="Main_TsLocalSensors" xml:space="preserve">
-    <value>upravljati lokalne senzorje</value>
+    <value>upravljaj lokalne senzorje</value>
   </data>
   <data name="Main_TsQuickItemsConfig" xml:space="preserve">
-    <value>upravljati hitre akcije</value>
+    <value>upravljaj hitre akcije</value>
   </data>
   <data name="Main_TsSatelliteService" xml:space="preserve">
-    <value>manage satellite service</value>
+    <value>uredi satelitsko storitev</value>
   </data>
   <data name="Main_TsShow" xml:space="preserve">
-    <value>show hass.agent</value>
+    <value>prikaži hass.agent</value>
   </data>
   <data name="Main_TsShowQuickActions" xml:space="preserve">
     <value>pokaži hitra dejanja</value>
+  </data>
+  <data name="MonitorPowerEvent_Dimmed" xml:space="preserve">
+    <value>Zasenčeno</value>
+  </data>
+  <data name="MonitorPowerEvent_PowerOff" xml:space="preserve">
+    <value>Izklop</value>
+  </data>
+  <data name="MonitorPowerEvent_PowerOn" xml:space="preserve">
+    <value>Vklop</value>
+  </data>
+  <data name="MonitorPowerEvent_Unknown" xml:space="preserve">
+    <value>Neznano</value>
   </data>
   <data name="MqttManager_ToolTip_ConnectionError" xml:space="preserve">
     <value>mqtt: napaka pri povezovanju</value>
@@ -1545,15 +1700,15 @@ Prosimo, preverite dnevnike in naredite poročilo o napakah na githubu.</value>
 Prepričajte se, da se noben drug primerek HASS.Agent ne izvaja in da so vrata na voljo in registrirana.</value>
   </data>
   <data name="Onboarding_BtnClose" xml:space="preserve">
-    <value>blizu</value>
+    <value>&amp;zapri</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Onboarding_BtnNext" xml:space="preserve">
-    <value>Naslednji</value>
+    <value>naslednji</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Onboarding_BtnPrevious" xml:space="preserve">
-    <value>prejšnji</value>
+    <value>&amp;prejšnji</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Onboarding_Onboarding" xml:space="preserve">
@@ -1570,7 +1725,7 @@ Prepričajte se, da se noben drug primerek HASS.Agent ne izvaja in da so vrata n
     <value>Vnesite veljaven ključ API.</value>
   </data>
   <data name="OnboardingApi_BtnTest_MessageBox2" xml:space="preserve">
-    <value>Vnesite URI domačega pomočnika.</value>
+    <value>Vnesite URI naslov za Home Assistant.</value>
   </data>
   <data name="OnboardingApi_BtnTest_MessageBox3" xml:space="preserve">
     <value>Povezave ni bilo mogoče vzpostaviti, vrnjena je bila naslednja napaka:
@@ -1580,7 +1735,18 @@ Prepričajte se, da se noben drug primerek HASS.Agent ne izvaja in da so vrata n
   <data name="OnboardingApi_BtnTest_MessageBox4" xml:space="preserve">
     <value>Povezava OK!
 
-Različica domačega pomočnika: {0}</value>
+Različica Home Assistant: {0}</value>
+  </data>
+  <data name="OnboardingApi_BtnTest_MessageBox5" xml:space="preserve">
+    <value>Vaš žeton ne izgleda v redu. Prepričajte se, da ste kopirali celoten žeton (ne uporabljajte CTRL+A ali dvoklika).
+Vsebovati mora tri sekcije (ločene s pikami).
+
+Ali ste prepričani, da ga želite uporabiti takole?</value>
+  </data>
+  <data name="OnboardingApi_BtnTest_MessageBox6" xml:space="preserve">
+    <value>Vaša povezava ne izgleda v redu. Morala bi biti nekako takole: &apos;http://homeassistant.local:8123&apos; ali &apos;https://192.168.0.1:8123&apos;.
+
+Ali ste prepričani, da jo želite uporabiti takole?</value>
   </data>
   <data name="OnboardingApi_BtnTest_Testing" xml:space="preserve">
     <value>testiranje ..</value>
@@ -1591,7 +1757,7 @@ Različica domačega pomočnika: {0}</value>
   </data>
   <data name="OnboardingApi_LblInfo1" xml:space="preserve">
     <value>Če želite izvedeti, katere entitete ste konfigurirali, in za pošiljanje hitrih dejanj uporablja HASS.Agent
-API domačega pomočnika.
+API Home Assistant.
 
 Navedite dolgotrajni žeton za dostop in naslov svojega primerka Home Assistant.
 Žeton lahko dobite na strani profila. Pomaknite se do dna in kliknite &apos;USTVARI ŽETEN&apos;.</value>
@@ -1609,19 +1775,23 @@ Navedite dolgotrajni žeton za dostop in naslov svojega primerka Home Assistant.
   </data>
   <data name="OnboardingDone_LblInfo1" xml:space="preserve">
     <value>Končano!</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingDone_LblInfo2" xml:space="preserve">
-    <value>HASS.Agent se bo zdaj znova zagnal, da bo aktiviral vašo konfiguracijo.
-
-
-Če ste omogočili obvestila, se bo pojavila zahteva za dvig. To je potrebno, da se omogoči
-HASS.Agent za poslušanje na določenih vratih.</value>
+    <value>HASS.Agent se bo zdaj znova zagnal, da bo aktiviral vašo konfiguracijo.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingDone_LblInfo3" xml:space="preserve">
-    <value>Hvala, ker uporabljate HASS.Agent, upajmo, da vam bo koristil.
+    <value>Še veliko več je tega, zato ne pozabite pregledati okna s konfiguracijo!
 
-Če naletite na kakršne koli težave, ustvarite vstopnico na strani GitHub.</value>
+Hvala, ker uporabljate HASS.Agent. Upam, da vam bo koristil :-)</value>
     <comment>Fuzzy</comment>
+  </data>
+  <data name="OnboardingDone_LblInfo6" xml:space="preserve">
+    <value>Razvoj in vzdrževanje tega dodatka (in vsega, kar spada zraven, kot je podpora, navodila) vzame veliko časa. Kot večina razvijalcev tudi jaz delam na kofein - zato bi bil zelo hvaležen kake skodelice kave, če jo lahko pogrešate!</value>
+  </data>
+  <data name="OnboardingDone_LblTip2" xml:space="preserve">
+    <value>Namig: ostale možnosti donacij so na voljo v zavihku &quot;Vizitka&quot;.</value>
   </data>
   <data name="OnboardingHotKey_BtnClear" xml:space="preserve">
     <value>počisti</value>
@@ -1655,52 +1825,60 @@ informacije.</value>
   <data name="OnboardingIntegration_LblIntegration" xml:space="preserve">
     <value>HASS.Agent-Notifier GitHub stran</value>
   </data>
+  <data name="OnboardingIntegrations_CbEnableMediaPlayer" xml:space="preserve">
+    <value>omogoči &amp;medijskipredvajalnik (vključno s tekst-v-govor)</value>
+  </data>
+  <data name="OnboardingIntegrations_CbEnableNotifications" xml:space="preserve">
+    <value>omogoči &amp;obvestila</value>
+  </data>
   <data name="OnboardingIntegrations_LblInfo1" xml:space="preserve">
-    <value>To use notifications, you need to install and configure the HASS.Agent-notifier integration in
-Home Assistant.
+    <value>Za uporabo obvestil morate namestiti in skonfigurirati HASS.Agent integracijo v Home Assistant.
 
-This is very easy using HACS, but you can also install manually.Visit the link below for more
-information.</value>
+To je zelo enostavno z uporabo HACS, lahko pa jo namestite tudi ročno. Glejte povezavo spodaj
+za več informacij.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingIntegrations_LblInfo2" xml:space="preserve">
-    <value>Make sure you follow these steps:
+    <value>Prepričajte, da ste storili tole:
 
-- Install the HASS.Agent - Notifier and / or HASS.Agent - MediaPlayer integration
-- Restart Home Assistant
--Configure a notifier and / or media_player entity
--Restart Home Assistant</value>
+- namestiti HASS.Agent-Notifirer in/ali HASS.Agent-MediaPlayer integracijo
+- restartali Home Assistant
+- skonfigurirali entiteto za obvestila in/ali medijski predvajalnik
+- restartali Home Assistant</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingIntegrations_LblInfo3" xml:space="preserve">
-    <value>The same goes for the mediaplayer. This integration allows you to control your device as a media_player entity, see what&apos;s playing and send text-to-speech.</value>
+    <value>Isto velja za medijski predvajalnik. Integracija omogoča, da nadzirate vašo napravo kot medijski predvajalnik, vidite, kaj se predvaja in pošiljate tekst-v-govor.</value>
   </data>
   <data name="OnboardingIntegrations_LblMediaPlayerIntegration" xml:space="preserve">
-    <value>HASS.Agent-MediaPlayer GitHub page</value>
+    <value>HASS.Agent-MediaPlayer GitHub stran</value>
   </data>
   <data name="OnboardingIntegrations_LblNotifierIntegration" xml:space="preserve">
-    <value>HASS.Agent-Notifier GitHub page</value>
+    <value>HASS.Agent-Notifier GitHub stran</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingLocalApi_CbEnableLocalApi" xml:space="preserve">
-    <value>yes, &amp;enable the local api on port</value>
+    <value>da, omogoči lokalni API na vratih</value>
   </data>
   <data name="OnboardingLocalApi_CbEnableMediaPlayer" xml:space="preserve">
-    <value>enable &amp;mediaplayer and text-to-speech</value>
+    <value>omogoči medijski predvajalnik in tekst-v-govor</value>
   </data>
   <data name="OnboardingLocalApi_CbEnableNotifications" xml:space="preserve">
-    <value>enable &amp;notifications</value>
+    <value>omogoči obvestila</value>
   </data>
   <data name="OnboardingLocalApi_LblInfo1" xml:space="preserve">
-    <value>HASS.Agent has its own internal API, so Home Assistant can send requests (like notifications or text-to-speech).
+    <value>HASS.Agent ima svoj lasten interni API, da Home Assistant lahko pošilja zahteve (obvestila, govor).
 
-Do you want to enable it?</value>
+Ali ga želite omogočiti?</value>
   </data>
   <data name="OnboardingLocalApi_LblInfo2" xml:space="preserve">
-    <value>You can choose what modules you want to enable. They require HA integrations, but don&apos;t worry, the next page will give you more info on how to set them up.</value>
+    <value>Lahko izberete, katere module želite omogočiti. Zahtevajo HA integracijo, a ne skrbite, naslednja stran vam bo prikazala več informacij, kako jih nastaviti.</value>
   </data>
   <data name="OnboardingLocalApi_LblTip1" xml:space="preserve">
-    <value>Note: 5115 is the default port, only change it if you changed it in Home Assistant.</value>
+    <value>Opomba: 5115 so privzeta vrata. Spremenite samo, če ste jih spremenili v Home Assisstant.</value>
   </data>
   <data name="OnboardingManager_BtnNext_Finish" xml:space="preserve">
-    <value>končati</value>
+    <value>končaj</value>
   </data>
   <data name="OnboardingManager_ConfirmBeforeClose_MessageBox1" xml:space="preserve">
     <value>Ali ste prepričani, da želite prekiniti postopek vključitve?
@@ -1734,6 +1912,9 @@ Vaš napredek ne bo shranjen in ne bo več prikazan ob naslednjem zagonu.</value
   <data name="OnboardingManager_OnboardingTitle_Updates" xml:space="preserve">
     <value>HASS.Agent Onboarding: posodobitve [{0}/{1}]</value>
   </data>
+  <data name="OnboardingMqtt_CbEnableMqtt" xml:space="preserve">
+    <value>omogoči mqtt</value>
+  </data>
   <data name="OnboardingMqtt_CbMqttTls" xml:space="preserve">
     <value>&amp;TLS</value>
   </data>
@@ -1741,10 +1922,10 @@ Vaš napredek ne bo shranjen in ne bo več prikazan ob naslednjem zagonu.</value
     <value>predpona odkritja</value>
   </data>
   <data name="OnboardingMqtt_LblInfo1" xml:space="preserve">
-    <value>Ukazi in senzorji se pošiljajo prek MQTT. Prosimo, navedite poverilnice za vaš strežnik.
-Če uporabljate dodatek HA, lahko verjetno uporabite prednastavljen naslov.
+    <value>Ukazi in senzorji se pošiljajo prek MQTT, prav tako obvestila in media.
 
-Pustite prazno, če ne boste uporabljali ukazov in senzorjev.</value>
+Namig: če uporabljate HA addon lahko gotovo uporabljate prednastavljen naslov - samo vpišite poverilnice.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingMqtt_LblIpAdress" xml:space="preserve">
     <value>IP naslov ali ime gostitelja</value>
@@ -1822,10 +2003,10 @@ Ali želite omogočiti to funkcijo?</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingUpdates_LblInfo2" xml:space="preserve">
-    <value>Ko bo posodobitev, bo HASS.Agent ponudil možnost odpiranja strani za izdajo. Ampak če ti
-hočeš, lahko HASS.Agent tudi prenese in zažene namestitveni program namesto vas - še manj dela!
+    <value>Ko bo posodobitev, bo HASS.Agent ponudil možnost odpiranja strani za izdajo. Ampak če
+želiš lahko HASS.Agent tudi prenese in zažene namestitveni program namesto vas - še manj dela!
 
-Potrdilo prenesene datoteke bo preverjeno.</value>
+Potrdilo prenesene datoteke bo preverjeno. Še vedno boste videli stran z izdajami in še vedno boste morali sami potrditi. Nič se ne zgodi brez vašega privoljenja.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingWelcome_LblDeviceName" xml:space="preserve">
@@ -1848,20 +2029,20 @@ Uporabljeno je tudi kot predlagana predpona za komande ter senzorje.
     <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingWelcome_Store_MessageBox1" xml:space="preserve">
-    <value>Your devicename contained some characters that aren&apos;t allowed by HA (only letters, digits and whitespace).
+    <value>Ime vaše naprave vsebuje znake, ki niso dovoljeni v HA (samo črke, številke in presledki).
 
-The final name is: {0}
+Končno ime je: {0}
 
-Do you want to use that version?</value>
+Ali želite uporabiti to verzijo?</value>
   </data>
   <data name="PortReservation_LblInfo1" xml:space="preserve">
-    <value>Prosim počakajte malo, dokler se naloga ne izvede.</value>
+    <value>Prosim počakajte malo, dokler se naloga ne izvede ..</value>
   </data>
   <data name="PortReservation_LblTask1" xml:space="preserve">
-    <value>Ustvarite vezavo vrat API</value>
+    <value>Ustvari vezavo vrat API</value>
   </data>
   <data name="PortReservation_LblTask2" xml:space="preserve">
-    <value>Nastavite pravilo požarnega zidu</value>
+    <value>Nastavi pravilo požarnega zidu</value>
   </data>
   <data name="PortReservation_ProcessPostUpdate_MessageBox1" xml:space="preserve">
     <value>Vsi koraki niso uspešno zaključeni. Za več informacij si oglejte dnevnike.</value>
@@ -1870,13 +2051,16 @@ Do you want to use that version?</value>
     <value>HASS.Agent Port Reservation</value>
   </data>
   <data name="PostUpdate_LblInfo1" xml:space="preserve">
-    <value>Počakajte malo, dokler se ne izvedejo nekatera opravila po posodobitvi.</value>
+    <value>Počakajte malo, dokler se ne izvedejo nekatera opravila po posodobitvi ..</value>
   </data>
   <data name="PostUpdate_LblTask1" xml:space="preserve">
     <value>Konfiguriranje satelitske storitve</value>
   </data>
   <data name="PostUpdate_LblTask2" xml:space="preserve">
     <value>Ustvarite vezavo vrat API</value>
+  </data>
+  <data name="PostUpdate_PostUpdate" xml:space="preserve">
+    <value>HASS.Agent Post Update</value>
   </data>
   <data name="PostUpdate_ProcessPostUpdate_MessageBox1" xml:space="preserve">
     <value>Vsi koraki niso uspešno zaključeni. Za več informacij si oglejte dnevnike.</value>
@@ -1901,7 +2085,7 @@ Do you want to use that version?</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="QuickActionsConfig_BtnModify" xml:space="preserve">
-    <value>spremeniti</value>
+    <value>spremeni</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="QuickActionsConfig_BtnPreview" xml:space="preserve">
@@ -1909,7 +2093,7 @@ Do you want to use that version?</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="QuickActionsConfig_BtnRemove" xml:space="preserve">
-    <value>Odstrani</value>
+    <value>odstrani</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="QuickActionsConfig_BtnStore" xml:space="preserve">
@@ -1973,7 +2157,7 @@ Do you want to use that version?</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="QuickActionsMod_LblHotkey" xml:space="preserve">
-    <value>kombinacija bližnjic:</value>
+    <value>kombinacija bližnjic</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="QuickActionsMod_LblLoading" xml:space="preserve">
@@ -1995,7 +2179,7 @@ Do you want to use that version?</value>
     <value>Nova hitra akcija</value>
   </data>
   <data name="Restart_LblInfo1" xml:space="preserve">
-    <value>Prosim počakajte malo, da se HASS.Agent ponovno zažene.</value>
+    <value>Prosim počakajte malo, da se HASS.Agent ponovno zažene ..</value>
   </data>
   <data name="Restart_LblTask1" xml:space="preserve">
     <value>Čakanje, da se prejšnji primer zapre</value>
@@ -2012,19 +2196,19 @@ Preverite dnevnike za več informacij in po želji obvestite razvijalce.</value>
     <value>HASS.Agent Restarter</value>
   </data>
   <data name="SensorsConfig_BtnAdd" xml:space="preserve">
-    <value>Dodaj novo</value>
+    <value>dodaj novo</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="SensorsConfig_BtnModify" xml:space="preserve">
-    <value>spremeniti</value>
+    <value>spremeni</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="SensorsConfig_BtnRemove" xml:space="preserve">
-    <value>Odstrani</value>
+    <value>odstrani</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="SensorsConfig_BtnStore" xml:space="preserve">
-    <value>shraniti in aktivirati senzorje</value>
+    <value>shrani in aktiviraj senzorje</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="SensorsConfig_BtnStore_MessageBox1" xml:space="preserve">
@@ -2040,7 +2224,7 @@ Preverite dnevnike za več informacij in po želji obvestite razvijalce.</value>
     <value>tip</value>
   </data>
   <data name="SensorsConfig_ClmValue" xml:space="preserve">
-    <value>last known value</value>
+    <value>zadnja znana vrednost</value>
   </data>
   <data name="SensorsConfig_LblRefresh" xml:space="preserve">
     <value>osveži</value>
@@ -2062,6 +2246,19 @@ Povzetek vaših zvočnih sej: ime aplikacije, stanje utišanja, glasnost in tren
   </data>
   <data name="SensorsManager_BatterySensorsDescription" xml:space="preserve">
     <value>Zagotavlja senzor s trenutnim stanjem polnjenja, ocenjeno količino minut pri polni napolnjenosti, preostalo napolnjenost v odstotkih, preostalo napolnjenost v minutah in stanje električnega omrežja.</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="SensorsManager_BluetoothDevicesSensorDescription" xml:space="preserve">
+    <value>To je senzor s številom najdenih bluetooth naprav.
+
+Naprave in njihovo stanje so dodani kot atributi.</value>
+  </data>
+  <data name="SensorsManager_BluetoothLeDevicesSensorDescription" xml:space="preserve">
+    <value>To je senzor s številom najdenih bluetooth LE naprav.
+
+Naprave in njihovo stanje so dodani kot atributi.
+
+Prikaže samo naprave, ki so bile videne od zadnjega javljanja, npr. ko senzor podatke objavi se seznam izbriše.</value>
   </data>
   <data name="SensorsManager_CpuLoadSensorDescription" xml:space="preserve">
     <value>Zagotavlja trenutno obremenitev prvega CPE v odstotkih.</value>
@@ -2079,6 +2276,13 @@ Trenutno zavzame glasnost vaše privzete naprave.</value>
   </data>
   <data name="SensorsManager_DummySensorDescription" xml:space="preserve">
     <value>Lažni senzor za namene testiranja pošlje naključno celo število med 0 in 100.</value>
+  </data>
+  <data name="SensorsManager_GeoLocationSensorDescription" xml:space="preserve">
+    <value>Vrne trenutno dolžino, širino in višino kot vrednosti, ločene z vejico.
+
+Prepričajte se, da so lokacijske storitve w Windows omogočene!
+
+Glede na verzijo Windows-ov se to lahko nahaja v Nadzorna plošča --&gt; Sistem in varnost --&gt; lokacija</value>
   </data>
   <data name="SensorsManager_GpuLoadSensorDescription" xml:space="preserve">
     <value>Zagotavlja trenutno obremenitev prvega GPU-ja v odstotkih.</value>
@@ -2098,6 +2302,7 @@ Pomembno: možnost FastBoot v sistemu Windows lahko to vrednost izključi, ker j
     <value>Zagotavlja zadnjo spremembo stanja sistema:
 
 HassAgentStarted, Odjava, SystemShutdown, Resume, Suspend, ConsoleConnect, ConsoleDisconnect, RemoteConnect, RemoteDisconnect, SessionLock, SessionLogoff, SessionLogon, SessionRemoteControl in SessionUnlock.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_LoggedUserSensorDescription" xml:space="preserve">
     <value>Vrne ime trenutno prijavljenega uporabnika.</value>
@@ -2110,6 +2315,17 @@ HassAgentStarted, Odjava, SystemShutdown, Resume, Suspend, ConsoleConnect, Conso
   </data>
   <data name="SensorsManager_MicrophoneActiveSensorDescription" xml:space="preserve">
     <value>Zagotavlja bool vrednost glede na to, ali se mikrofon trenutno uporablja.</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="SensorsManager_MicrophoneProcessSensorDescription" xml:space="preserve">
+    <value>Vrne ime procesa, ki trenutno uporablja mikrofon.
+
+Opomba: če se uporablja v satelitski storitvi</value>
+  </data>
+  <data name="SensorsManager_MonitorPowerStateSensorDescription" xml:space="preserve">
+    <value>Vrne zadnjo spremembo načina monitorja:
+
+Zatemnjen, Izključen, Vključen in Neznano</value>
   </data>
   <data name="SensorsManager_NamedWindowSensorDescription" xml:space="preserve">
     <value>Zagotavlja vrednost ON/OFF glede na to, ali je okno trenutno odprto (ni nujno, da je aktivno).</value>
@@ -2129,6 +2345,14 @@ Kategorija: Procesor
 Primer: _Skupaj
 
 Številke lahko raziščete z orodjem Windows &apos;perfmon.exe&apos;.</value>
+  </data>
+  <data name="SensorsManager_PowershellSensorDescription" xml:space="preserve">
+    <value>Vrne rezultat Powershell ukaza ali skripta.
+
+Pretvori rezultat v tekst.</value>
+  </data>
+  <data name="SensorsManager_PrintersSensorsDescription" xml:space="preserve">
+    <value>Vrne informacijo o nameščenih tiskalnikih in čakalni vrsti za njih.</value>
   </data>
   <data name="SensorsManager_ProcessActiveSensorDescription" xml:space="preserve">
     <value>Zagotavlja število aktivnih primerov procesa.</value>
@@ -2157,11 +2381,23 @@ Lahko se na primer uporablja za določanje, ali želite poslati obvestila ali sp
   </data>
   <data name="SensorsManager_WebcamActiveSensorDescription" xml:space="preserve">
     <value>Zagotavlja bool vrednost glede na to, ali se spletna kamera trenutno uporablja.</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="SensorsManager_WebcamProcessSensorDescription" xml:space="preserve">
+    <value>Vrne ime procesa, ki trenutno uporablja kamero.
+
+Opomba: če jo uporablja satelitska storitev, potem &apos;userspace&apos; aplikacije ne bodo zaznane.</value>
+  </data>
+  <data name="SensorsManager_WindowStateSensorDescription" xml:space="preserve">
+    <value>Vrne trenutno stanje okna procesa:
+
+Skrito, Maksimirano, minimirano, normalno in neznano.</value>
   </data>
   <data name="SensorsManager_WindowsUpdatesSensorsDescription" xml:space="preserve">
     <value>Zagotavlja senzor s količino čakajočih posodobitev gonilnika in senzor s količino čakajočih posodobitev programske opreme.
 
 To je draga zahteva, zato je priporočeni interval 15 minut (900 sekund). Vendar je omejeno na 10 minut, če vnesete nižjo vrednost, boste dobili zadnji znani seznam.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_WmiQuerySensorDescription" xml:space="preserve">
     <value>Zagotavlja rezultat poizvedbe WMI.</value>
@@ -2170,7 +2406,7 @@ To je draga zahteva, zato je priporočeni interval 15 minut (900 sekund). Vendar
     <value>vse</value>
   </data>
   <data name="SensorsMod_BtnStore" xml:space="preserve">
-    <value>senzor za shranjevanje</value>
+    <value>&amp;shrani senzor</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="SensorsMod_BtnStore_MessageBox1" xml:space="preserve">
@@ -2233,7 +2469,7 @@ To je draga zahteva, zato je priporočeni interval 15 minut (900 sekund). Vendar
     <comment>Fuzzy</comment>
   </data>
   <data name="SensorsMod_LblSeconds" xml:space="preserve">
-    <value>sekundah</value>
+    <value>sekund</value>
   </data>
   <data name="SensorsMod_LblService" xml:space="preserve">
     <value>storitev</value>
@@ -2242,10 +2478,13 @@ To je draga zahteva, zato je priporočeni interval 15 minut (900 sekund). Vendar
     <value>nastavitev 1</value>
   </data>
   <data name="SensorsMod_LblSetting1_Category" xml:space="preserve">
-    <value>kategorijo</value>
+    <value>kategorija</value>
   </data>
   <data name="SensorsMod_LblSetting1_Network" xml:space="preserve">
     <value>omrežno kartico</value>
+  </data>
+  <data name="SensorsMod_LblSetting1_Powershell" xml:space="preserve">
+    <value>powershell ukaz ali skript</value>
   </data>
   <data name="SensorsMod_LblSetting1_Process" xml:space="preserve">
     <value>proces</value>
@@ -2275,14 +2514,24 @@ To je draga zahteva, zato je priporočeni interval 15 minut (900 sekund). Vendar
     <value>primer (izbirno)</value>
   </data>
   <data name="SensorsMod_LblSpecificClient" xml:space="preserve">
-    <value>hass.agent samo!</value>
+    <value>samo hass.agent!</value>
   </data>
   <data name="SensorsMod_LblType" xml:space="preserve">
-    <value>izbrana vrsta</value>
+    <value>izbran tip</value>
   </data>
   <data name="SensorsMod_LblUpdate" xml:space="preserve">
     <value>posodobi vsako</value>
     <comment>Fuzzy</comment>
+  </data>
+  <data name="SensorsMod_MessageBox_Sanitize" xml:space="preserve">
+    <value>Ime, ki ste ga navedli vsebuje nepodprte znake in ne bo delovalo. Predlagana verzija je:
+
+{0}
+
+Ali želite uporabiti predlagano?</value>
+  </data>
+  <data name="SensorsMod_SensorsMod_BtnTest_Powershell" xml:space="preserve">
+    <value>testni ukaz ali skript</value>
   </data>
   <data name="SensorsMod_SpecificClient" xml:space="preserve">
     <value>Samo {0}!</value>
@@ -2301,6 +2550,21 @@ To je draga zahteva, zato je priporočeni interval 15 minut (900 sekund). Vendar
 {0}
 
 Ali želite odpreti mapo dnevnikov?</value>
+  </data>
+  <data name="SensorsMod_TestPowershell_MessageBox1" xml:space="preserve">
+    <value>Najprej vpišite ukaz ali skript</value>
+  </data>
+  <data name="SensorsMod_TestPowershell_MessageBox2" xml:space="preserve">
+    <value>Test je bil uspešno izveden, rezultat je:
+
+{0}</value>
+  </data>
+  <data name="SensorsMod_TestPowershell_MessageBox3" xml:space="preserve">
+    <value>Test ni bil uspešen:
+
+{0}
+
+Ali želite odpreti mapo z dnevniki?</value>
   </data>
   <data name="SensorsMod_TestWmi_MessageBox1" xml:space="preserve">
     <value>Najprej vnesite poizvedbo WMI.</value>
@@ -2321,7 +2585,7 @@ Ali želite odpreti mapo dnevnikov?</value>
     <value>Senzor</value>
   </data>
   <data name="SensorsMod_Title_Mod" xml:space="preserve">
-    <value>Modni senzor</value>
+    <value>Mod senzor</value>
   </data>
   <data name="SensorsMod_Title_New" xml:space="preserve">
     <value>Nov senzor</value>
@@ -2346,7 +2610,13 @@ Ali še vedno želite uporabiti trenutne vrednosti?</value>
     <value>Zvok</value>
   </data>
   <data name="SensorType_BatterySensors" xml:space="preserve">
-    <value>baterija</value>
+    <value>Baterija</value>
+  </data>
+  <data name="SensorType_BluetoothDevicesSensor" xml:space="preserve">
+    <value>BluetoothNaprave</value>
+  </data>
+  <data name="SensorType_BluetoothLeDevicesSensor" xml:space="preserve">
+    <value>BluetoothLeNaprave</value>
   </data>
   <data name="SensorType_CpuLoadSensor" xml:space="preserve">
     <value>CpuLoad</value>
@@ -2355,13 +2625,13 @@ Ali še vedno želite uporabiti trenutne vrednosti?</value>
     <value>CurrentClockSpeed</value>
   </data>
   <data name="SensorType_CurrentVolumeSensor" xml:space="preserve">
-    <value>Trenutni obseg</value>
+    <value>CurrentVolume</value>
   </data>
   <data name="SensorType_DisplaySensors" xml:space="preserve">
     <value>Zaslon</value>
   </data>
   <data name="SensorType_DummySensor" xml:space="preserve">
-    <value>lutka</value>
+    <value>Dummy</value>
   </data>
   <data name="SensorType_GeoLocationSensor" xml:space="preserve">
     <value>Geolokacija</value>
@@ -2388,19 +2658,31 @@ Ali še vedno želite uporabiti trenutne vrednosti?</value>
     <value>LoggedUsers</value>
   </data>
   <data name="SensorType_MemoryUsageSensor" xml:space="preserve">
-    <value>Uporaba pomnilnika</value>
+    <value>MemoryUsage</value>
   </data>
   <data name="SensorType_MicrophoneActiveSensor" xml:space="preserve">
-    <value>Mikrofon Aktiven</value>
+    <value>MicrophoneActive</value>
+  </data>
+  <data name="SensorType_MicrophoneProcessSensor" xml:space="preserve">
+    <value>MicrophoneProcess</value>
+  </data>
+  <data name="SensorType_MonitorPowerStateSensor" xml:space="preserve">
+    <value>MonitorPowerState</value>
   </data>
   <data name="SensorType_NamedWindowSensor" xml:space="preserve">
-    <value>Imeno okno</value>
+    <value>NamedWindow</value>
   </data>
   <data name="SensorType_NetworkSensors" xml:space="preserve">
     <value>omrežje</value>
   </data>
   <data name="SensorType_PerformanceCounterSensor" xml:space="preserve">
     <value>PerformanceCounter</value>
+  </data>
+  <data name="SensorType_PowershellSensor" xml:space="preserve">
+    <value>PowershellSensor</value>
+  </data>
+  <data name="SensorType_PrintersSensors" xml:space="preserve">
+    <value>Tiskalniki</value>
   </data>
   <data name="SensorType_ProcessActiveSensor" xml:space="preserve">
     <value>ProcessActive</value>
@@ -2412,16 +2694,22 @@ Ali še vedno želite uporabiti trenutne vrednosti?</value>
     <value>SessionState</value>
   </data>
   <data name="SensorType_StorageSensors" xml:space="preserve">
-    <value>Skladiščenje</value>
+    <value>Shramba</value>
   </data>
   <data name="SensorType_UserNotificationStateSensor" xml:space="preserve">
-    <value>Obvestilo uporabnika</value>
+    <value>UserNotification</value>
   </data>
   <data name="SensorType_WebcamActiveSensor" xml:space="preserve">
     <value>WebcamActive</value>
   </data>
+  <data name="SensorType_WebcamProcessSensor" xml:space="preserve">
+    <value>WebcamProcess</value>
+  </data>
+  <data name="SensorType_WindowStateSensor" xml:space="preserve">
+    <value>WindowState</value>
+  </data>
   <data name="SensorType_WindowsUpdatesSensors" xml:space="preserve">
-    <value>Windows Updates</value>
+    <value>WindowsUpdates</value>
   </data>
   <data name="SensorType_WmiQuerySensor" xml:space="preserve">
     <value>WmiQuery</value>
@@ -2431,7 +2719,7 @@ Ali še vedno želite uporabiti trenutne vrednosti?</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ServiceCommands_BtnModify" xml:space="preserve">
-    <value>spremeniti</value>
+    <value>spremeni</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ServiceCommands_BtnRemove" xml:space="preserve">
@@ -2439,7 +2727,7 @@ Ali še vedno želite uporabiti trenutne vrednosti?</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ServiceCommands_BtnStore" xml:space="preserve">
-    <value>pošiljanje in aktiviranje ukazov</value>
+    <value>pošlji in aktiviraj ukaze</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ServiceCommands_BtnStore_MessageBox1" xml:space="preserve">
@@ -2476,7 +2764,7 @@ Ali še vedno želite uporabiti trenutne vrednosti?</value>
     <value>Konfiguracija satelitske storitve</value>
   </data>
   <data name="ServiceConnect_BtnRetryAuthId" xml:space="preserve">
-    <value>uporabite</value>
+    <value>uporabi</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ServiceConnect_CommandsFailed" xml:space="preserve">
@@ -2510,7 +2798,7 @@ Ko je zagnan in deluje, se vrnite sem, da konfigurirate ukaze in senzorje.</valu
     <value>Preveri pristnost</value>
   </data>
   <data name="ServiceConnect_LblConnect" xml:space="preserve">
-    <value>Povežite se s storitvijo</value>
+    <value>Poveži se s storitvijo</value>
   </data>
   <data name="ServiceConnect_LblFetchConfig" xml:space="preserve">
     <value>Pridobi konfiguracijo</value>
@@ -2554,6 +2842,15 @@ Dnevnike lahko odprete in upravljate storitev na konfiguracijski plošči.</valu
 
 Če imate pravilen ID za potrditev, ga lahko nastavite zdaj in poskusite znova.</value>
   </data>
+  <data name="ServiceControllerManager_Error_Fatal" xml:space="preserve">
+    <value>kritična napaka, preveri dnevnik</value>
+  </data>
+  <data name="ServiceControllerManager_Error_Timeout" xml:space="preserve">
+    <value>čas je potekel</value>
+  </data>
+  <data name="ServiceControllerManager_Error_Unknown" xml:space="preserve">
+    <value>neznan vzrok</value>
+  </data>
   <data name="ServiceGeneral_Apply" xml:space="preserve">
     <value>uporabite</value>
   </data>
@@ -2568,6 +2865,7 @@ Dnevnike lahko odprete in upravljate storitev na konfiguracijski plošči.</valu
   </data>
   <data name="ServiceGeneral_LblAuthId" xml:space="preserve">
     <value>id</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ServiceGeneral_LblAuthIdInfo_MessageBox1" xml:space="preserve">
     <value>Nastavite ID za potrditev, če ne želite, da se vsak primerek HASS.Agent na tem računalniku poveže s satelitsko storitvijo.
@@ -2577,7 +2875,7 @@ Povezujejo se lahko samo primerki, ki imajo pravilen ID.
 Pustite prazno, da se vsi povežejo.</value>
   </data>
   <data name="ServiceGeneral_LblAuthStored" xml:space="preserve">
-    <value>stored!</value>
+    <value>shranjeno!</value>
   </data>
   <data name="ServiceGeneral_LblCustomExecBinary" xml:space="preserve">
     <value>binarni izvajalec po meri</value>
@@ -2607,7 +2905,7 @@ Privzeto je to ime vašega računalnika in &apos;-satellite&apos;.</value>
     <value>Ta stran vsebuje splošne konfiguracijske elemente. Za nastavitve, senzorje in ukaze MQTT brskajte po zavihkih na vrhu.</value>
   </data>
   <data name="ServiceGeneral_LblInfo2" xml:space="preserve">
-    <value>You can use the satellite service to run sensors and commands without having to be logged in. Not all types are available, for instance the &apos;LaunchUrl&apos; command can only be added as a regular command.</value>
+    <value>Lahko uporabite satelitsko storitev za senzorje in ukaze brez, da ste prijavljeni. Vsi tipi niso na voljo, npr. &apos;LaunchUrl&apos; ukaz se lahko doda samo kot klasičen ukaz.</value>
   </data>
   <data name="ServiceGeneral_LblSeconds" xml:space="preserve">
     <value>sekundah</value>
@@ -2631,13 +2929,26 @@ Privzeto je to ime vašega računalnika in &apos;-satellite&apos;.</value>
     <value>Shranjevanje praznega ID-ja pristnosti bo vsem HASS.Agentom omogočilo dostop do strežnika.
 
 Ste prepričani, da želite to?</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="ServiceHelper_ChangeStartMode_Error1" xml:space="preserve">
+    <value>ne morem odpreti servicemanager-ja</value>
+  </data>
+  <data name="ServiceHelper_ChangeStartMode_Error2" xml:space="preserve">
+    <value>ne morem odpreti storitve</value>
+  </data>
+  <data name="ServiceHelper_ChangeStartMode_Error3" xml:space="preserve">
+    <value>napaka pri konfiguraciji zagonskega načina, preveri dnevnik</value>
+  </data>
+  <data name="ServiceHelper_ChangeStartMode_Error4" xml:space="preserve">
+    <value>napaka pri nastavljanju zagonskega načuna, preveri dnevnik</value>
   </data>
   <data name="ServiceMqtt_BtnCopy" xml:space="preserve">
     <value>kopija iz hass.agent</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ServiceMqtt_BtnMqttClearConfig" xml:space="preserve">
-    <value>jasno konfiguracijo</value>
+    <value>&amp;izbriši konfiguracijo</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ServiceMqtt_BtnStore" xml:space="preserve">
@@ -2668,7 +2979,7 @@ Ste prepričani, da želite to?</value>
     <value>geslo</value>
   </data>
   <data name="ServiceMqtt_LblBrokerPort" xml:space="preserve">
-    <value>pristanišče</value>
+    <value>vrata</value>
   </data>
   <data name="ServiceMqtt_LblBrokerUsername" xml:space="preserve">
     <value>uporabniško ime</value>
@@ -2711,13 +3022,13 @@ verjetno lahko uporabite prednastavljen naslov.</value>
     <value>manjka konfiguracija</value>
   </data>
   <data name="ServiceMqtt_SetMqttStatus_Connected" xml:space="preserve">
-    <value>povezani</value>
+    <value>povezan</value>
   </data>
   <data name="ServiceMqtt_SetMqttStatus_Connecting" xml:space="preserve">
     <value>povezovanje ..</value>
   </data>
   <data name="ServiceMqtt_SetMqttStatus_Disconnected" xml:space="preserve">
-    <value>odklopljen</value>
+    <value>izključen</value>
   </data>
   <data name="ServiceMqtt_SetMqttStatus_Error" xml:space="preserve">
     <value>napaka</value>
@@ -2726,7 +3037,7 @@ verjetno lahko uporabite prednastavljen naslov.</value>
     <value>stanje pridobivanja napake, preverite dnevnike</value>
   </data>
   <data name="ServiceReinstall_LblInfo1" xml:space="preserve">
-    <value>Počakajte, da se satelitska storitev znova namesti.</value>
+    <value>Počakajte, da se satelitska storitev znova namesti ..</value>
   </data>
   <data name="ServiceReinstall_LblTask1" xml:space="preserve">
     <value>Odstranite satelitsko storitev</value>
@@ -2745,7 +3056,7 @@ verjetno lahko uporabite prednastavljen naslov.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ServiceSensors_BtnModify" xml:space="preserve">
-    <value>spremeniti</value>
+    <value>spremeni</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ServiceSensors_BtnRemove" xml:space="preserve">
@@ -2753,7 +3064,7 @@ verjetno lahko uporabite prednastavljen naslov.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ServiceSensors_BtnStore" xml:space="preserve">
-    <value>pošiljanje in aktiviranje senzorjev</value>
+    <value>pošlji in aktiviraj senzorje</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ServiceSensors_BtnStore_MessageBox1" xml:space="preserve">
@@ -2781,7 +3092,7 @@ verjetno lahko uporabite prednastavljen naslov.</value>
     <value>Omogoči satelitsko storitev</value>
   </data>
   <data name="ServiceSetState_LblInfo1" xml:space="preserve">
-    <value>Počakajte, da je satelitska storitev konfigurirana.</value>
+    <value>Počakajte, da je satelitska storitev konfigurirana ..</value>
   </data>
   <data name="ServiceSetState_LblTask1" xml:space="preserve">
     <value>Omogoči satelitsko storitev</value>
@@ -2858,7 +3169,7 @@ Za več informacij si oglejte dnevnike.</value>
     <value>HassAgentSatelliteService je zagnan</value>
   </data>
   <data name="SystemStateEvent_HassAgentStarted" xml:space="preserve">
-    <value>HassAgent Started</value>
+    <value>HassAgentStarted</value>
   </data>
   <data name="SystemStateEvent_Logoff" xml:space="preserve">
     <value>Odjava</value>
@@ -2891,7 +3202,7 @@ Za več informacij si oglejte dnevnike.</value>
     <value>Zaustavi</value>
   </data>
   <data name="SystemStateEvent_SystemShutdown" xml:space="preserve">
-    <value>Zaustavitev sistema</value>
+    <value>SystemShutdown</value>
   </data>
   <data name="UpdateManager_DownloadAndExecuteUpdate_MessageBox1" xml:space="preserve">
     <value>Ni mogoče pripraviti prenosa posodobitve, za več informacij preverite dnevnike.
@@ -2922,14 +3233,14 @@ Namesto tega se bo odprla stran za izdajo.</value>
     <value>eno sekundo, pridobivanje informacij ..</value>
   </data>
   <data name="UpdatePending_BtnDownload_Processing" xml:space="preserve">
-    <value>obravnavati ..</value>
+    <value>obdelava ..</value>
   </data>
   <data name="UpdatePending_BtnIgnore" xml:space="preserve">
     <value>prezrite to posodobitev</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="UpdatePending_InstallBetaRelease" xml:space="preserve">
-    <value>namestite izdajo BETA</value>
+    <value>namestite BETA izdajo</value>
   </data>
   <data name="UpdatePending_InstallUpdate" xml:space="preserve">
     <value>namestite posodobitev</value>
@@ -2941,7 +3252,7 @@ Namesto tega se bo odprla stran za izdajo.</value>
     <value>Na voljo je nova izdaja:</value>
   </data>
   <data name="UpdatePending_LblRelease" xml:space="preserve">
-    <value>stran za izdajo</value>
+    <value>stran z izdajami</value>
   </data>
   <data name="UpdatePending_LblUpdateQuestion_Download" xml:space="preserve">
     <value>Ali želite prenesti in zagnati namestitveni program?</value>
@@ -2955,10 +3266,10 @@ Namesto tega se bo odprla stran za izdajo.</value>
     <value>Počakajte, obdelava vaše zahteve..</value>
   </data>
   <data name="UpdatePending_NewBetaRelease" xml:space="preserve">
-    <value>Na voljo je nova izdaja BETA:</value>
+    <value>Na voljo je nova BETA izdaja:</value>
   </data>
   <data name="UpdatePending_OpenBetaReleasePage" xml:space="preserve">
-    <value>odprite stran za izdajo BETA</value>
+    <value>odprite stran za BETA izdaje</value>
   </data>
   <data name="UpdatePending_OpenReleasePage" xml:space="preserve">
     <value>odprite stran za izdajo</value>
@@ -2970,7 +3281,7 @@ Namesto tega se bo odprla stran za izdajo.</value>
     <value>HASS.Agent BETA posodobitev</value>
   </data>
   <data name="UserNotificationState_AcceptsNotifications" xml:space="preserve">
-    <value>Sprejema obvestila</value>
+    <value>AcceptsNotifications</value>
   </data>
   <data name="UserNotificationState_Busy" xml:space="preserve">
     <value>Zaseden</value>
@@ -2979,7 +3290,7 @@ Namesto tega se bo odprla stran za izdajo.</value>
     <value>Ni prisoten</value>
   </data>
   <data name="UserNotificationState_PresentationMode" xml:space="preserve">
-    <value>Način predstavitve</value>
+    <value>PresentationMode</value>
   </data>
   <data name="UserNotificationState_QuietTime" xml:space="preserve">
     <value>QuietTime</value>
@@ -2990,40 +3301,63 @@ Namesto tega se bo odprla stran za izdajo.</value>
   <data name="UserNotificationState_RunningWindowsStoreApp" xml:space="preserve">
     <value>Zagon aplikacije WindowsStore</value>
   </data>
+  <data name="WebView_InitializeAsync_MessageBox1" xml:space="preserve">
+    <value>Microsoftov WebView2 ni nameščen v vaši napravi. To ponavadi ureja installer, lahko pa ga namestite sami.
+
+Ali želite prenesti runtime installer?</value>
+  </data>
+  <data name="WebView_InitializeAsync_MessageBox2" xml:space="preserve">
+    <value>Nekaj je šlo narobe pri inicializaciji WebView. Preverite dnevnike in odprite GitHub &apos;ticket&apos; za pomoč.</value>
+  </data>
   <data name="WebView_Title" xml:space="preserve">
     <value>WebView</value>
   </data>
   <data name="WebViewCommandConfig_BtnSave" xml:space="preserve">
-    <value>&amp;save</value>
+    <value>&amp;shrani</value>
   </data>
   <data name="WebViewCommandConfig_CbCenterScreen" xml:space="preserve">
-    <value>&amp;always show centered in screen</value>
+    <value>&amp;vedno prikaži na sredini ekrana</value>
   </data>
   <data name="WebViewCommandConfig_CbShowTitleBar" xml:space="preserve">
-    <value>show the window&apos;s &amp;title bar</value>
+    <value>prikaži naslovno vrstico okna</value>
   </data>
   <data name="WebViewCommandConfig_CbTopMost" xml:space="preserve">
-    <value>set window as always on &amp;top</value>
+    <value>nastavi okno, da je vedno na vrhu</value>
   </data>
   <data name="WebViewCommandConfig_LblInfo1" xml:space="preserve">
-    <value>Drag and resize this window to set the size and location of your webview command.</value>
+    <value>Povleci in spremeni okno, da nastavite velikost in lokacijo za vaš webview ukaz.</value>
   </data>
   <data name="WebViewCommandConfig_LblLocation" xml:space="preserve">
-    <value>location</value>
+    <value>lokacija</value>
   </data>
   <data name="WebViewCommandConfig_LblSize" xml:space="preserve">
-    <value>size</value>
+    <value>velikost</value>
   </data>
   <data name="WebViewCommandConfig_LblTip1" xml:space="preserve">
-    <value>tip: press &apos;esc&apos; to close a webview</value>
+    <value>namig: pritisni &apos;esc&apos; da zapreš webview</value>
   </data>
   <data name="WebViewCommandConfig_LblUrl" xml:space="preserve">
     <value>&amp;URL</value>
   </data>
   <data name="WebViewCommandConfig_SetStoredVariables_MessageBox1" xml:space="preserve">
-    <value>Unable to load the stored command settings, resetting to default.</value>
+    <value>Ne morem naložiti shranjenih nastavitev ukaza, ponastavljam na privzeto.</value>
   </data>
   <data name="WebViewCommandConfig_Title" xml:space="preserve">
-    <value>WebView Configuration</value>
+    <value>WebView konfiguracija</value>
+  </data>
+  <data name="WindowState_Hidden" xml:space="preserve">
+    <value>Skrito</value>
+  </data>
+  <data name="WindowState_Maximized" xml:space="preserve">
+    <value>Maksimirano</value>
+  </data>
+  <data name="WindowState_Minimized" xml:space="preserve">
+    <value>Minimirano</value>
+  </data>
+  <data name="WindowState_Normal" xml:space="preserve">
+    <value>Normalno</value>
+  </data>
+  <data name="WindowState_Unknown" xml:space="preserve">
+    <value>Neznano</value>
   </data>
 </root>

@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.IO;
 using HASS.Agent.Resources.Localization;
 using Serilog;
 using Syncfusion.Windows.Forms;

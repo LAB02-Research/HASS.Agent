@@ -20,6 +20,7 @@ namespace HASS.Agent.Models.Internal
         public bool TopMost { get; set; } = true;
 
         public bool IsTrayIconWebView { get; set; } = false;
+        public bool IsTrayIconPreview { get; set; } = false;
 
         public int X { get; set; } = -1;
         public int Y { get; set; } = -1;

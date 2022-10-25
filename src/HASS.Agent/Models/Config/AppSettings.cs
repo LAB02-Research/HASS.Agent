@@ -14,7 +14,9 @@ namespace HASS.Agent.Models.Config
         public OnboardingStatus OnboardingStatus { get; set; } = OnboardingStatus.NeverDone;
 
         public string DeviceName { get; set; } = SharedHelperFunctions.GetSafeDeviceName();
+        public bool SanitizeName { get; set; } = true;
         public string InterfaceLanguage { get; set; } = string.Empty;
+        public bool EnableStateNotifications { get; set; } = true;
 
         public bool CheckForUpdates { get; set; } = true;
         public string LastUpdateNotificationShown { get; set; } = string.Empty;
@@ -34,6 +36,7 @@ namespace HASS.Agent.Models.Config
         public int TrayIconWebViewHeight { get; set; } = 560;
         public string TrayIconWebViewUrl { get; set; } = string.Empty;
         public bool TrayIconWebViewBackgroundLoading { get; set; } = false;
+        public bool TrayIconWebViewShowMenuOnLeftClick { get; set; } = false;
 
         public string ServiceAuthId { get; set; } = string.Empty;
 
@@ -44,25 +47,24 @@ namespace HASS.Agent.Models.Config
         public string CustomExecutorName { get; set; } = string.Empty;
         public string CustomExecutorBinary { get; set; } = string.Empty;
 
-        public bool LocalApiEnabled { get; set; } = true;
+        public bool LocalApiEnabled { get; set; } = false;
         public int LocalApiPort { get; set; } = 5115;
 
         public bool NotificationsEnabled { get; set; } = true;
         public bool NotificationsIgnoreImageCertificateErrors { get; set; } = false;
-
-        // to be removed in next release
-        public int NotifierApiPort { get; set; } = 5115;
-
+        
         public bool MediaPlayerEnabled { get; set; } = true;
 
         public string HassUri { get; set; } = "http://homeassistant.local:8123";
         public string HassToken { get; set; } = string.Empty;
         public bool HassAutoClientCertificate { get; set; } = false;
+        public bool HassAllowUntrustedCertificates { get; set; } = true;
         public string HassClientCertificate { get; set; } = string.Empty;
 
         public bool QuickActionsHotKeyEnabled { get; set; } = true;
         public string QuickActionsHotKey { get; set; } = string.Empty;
 
+        public bool MqttEnabled { get; set; } = true;
         public string MqttAddress { get; set; } = "homeassistant.local";
         public int MqttPort { get; set; } = 1883;
         public bool MqttUseTls { get; set; }

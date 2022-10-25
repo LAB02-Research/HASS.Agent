@@ -8,6 +8,7 @@ namespace HASS.Agent.Forms
     public partial class Onboarding : MetroForm
     {
         private readonly OnboardingManager _onboardingManager;
+        private bool _forceClose = false;
 
         public Onboarding()
         {
@@ -18,7 +19,13 @@ namespace HASS.Agent.Forms
         private void Onboarding_Load(object sender, EventArgs e)
         {
             // load the current onboarding control
-            _onboardingManager.ShowCurrentOnboardingStatus();
+            var statusLoaded = _onboardingManager.ShowCurrentOnboardingStatus();
+            if (!statusLoaded)
+            {
+                _forceClose = true;
+                DialogResult = DialogResult.OK;
+                return;
+            }
 
             // remove topmost after half a sec
             Task.Run(async delegate
@@ -42,9 +49,13 @@ namespace HASS.Agent.Forms
         /// <param name="e"></param>
         private void BtnPrevious_Click(object sender, EventArgs e) => _onboardingManager.ShowPrevious();
 
-        private void BtnClose_Click(object sender, EventArgs e)
+        private async void BtnClose_Click(object sender, EventArgs e)
         {
-            if (!_onboardingManager.ConfirmBeforeClose()) return;
+            if (!_forceClose)
+            {
+                if (!await _onboardingManager.ConfirmBeforeCloseAsync()) return;
+            }
+
             DialogResult = DialogResult.OK;
         }
 
@@ -58,9 +69,10 @@ namespace HASS.Agent.Forms
             BtnPrevious.Text = Languages.Onboarding_BtnPrevious;
         }
 
-        private void Onboarding_FormClosing(object sender, FormClosingEventArgs e)
+        private async void Onboarding_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!_onboardingManager.ConfirmBeforeClose()) e.Cancel = true;
+            if (_forceClose) return;
+            if (!await _onboardingManager.ConfirmBeforeCloseAsync()) e.Cancel = true;
         }
 
         private void Onboarding_ResizeEnd(object sender, EventArgs e)

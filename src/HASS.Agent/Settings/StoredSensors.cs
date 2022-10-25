@@ -1,5 +1,7 @@
-﻿using HASS.Agent.Enums;
+﻿using System.IO;
+using HASS.Agent.Enums;
 using HASS.Agent.Extensions;
+using HASS.Agent.HomeAssistant.Sensors.GeneralSensors.MultiValue;
 using HASS.Agent.HomeAssistant.Sensors.GeneralSensors.SingleValue;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Shared.Enums;
@@ -13,6 +15,7 @@ using HASS.Agent.Shared.Models.Config;
 using HASS.Agent.Shared.Models.HomeAssistant;
 using Newtonsoft.Json;
 using Serilog;
+using WindowState = System.Windows.WindowState;
 
 namespace HASS.Agent.Settings
 {
@@ -167,6 +170,27 @@ namespace HASS.Agent.Settings
                 case SensorType.GeoLocationSensor:
                     abstractSensor = new GeoLocationSensor(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
                     break;
+                case SensorType.MonitorPowerStateSensor:
+                    abstractSensor = new MonitorPowerStateSensor(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    break;
+                case SensorType.PowershellSensor:
+                    abstractSensor = new PowershellSensor(sensor.Query, sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    break;
+                case SensorType.WindowStateSensor:
+                    abstractSensor = new WindowStateSensor(sensor.Query, sensor.Name, sensor.UpdateInterval, sensor.Id.ToString());
+                    break;
+                case SensorType.MicrophoneProcessSensor:
+                    abstractSensor = new MicrophoneProcessSensor(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    break;
+                case SensorType.WebcamProcessSensor:
+                    abstractSensor = new WebcamProcessSensor(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    break;
+                case SensorType.BluetoothDevicesSensor:
+                    abstractSensor = new BluetoothDevicesSensor(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    break;
+                case SensorType.BluetoothLeDevicesSensor:
+                    abstractSensor = new BluetoothLeDevicesSensor(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    break;
                 default:
                     Log.Error("[SETTINGS_SENSORS] [{name}] Unknown configured single-value sensor type: {type}", sensor.Name, sensor.Type.ToString());
                     break;
@@ -203,6 +227,9 @@ namespace HASS.Agent.Settings
                     break;
                 case SensorType.AudioSensors:
                     abstractSensor = new AudioSensors(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
+                    break;
+                case SensorType.PrintersSensors:
+                    abstractSensor = new PrintersSensors(sensor.UpdateInterval, sensor.Name, sensor.Id.ToString());
                     break;
                 default:
                     Log.Error("[SETTINGS_SENSORS] [{name}] Unknown configured multi-value sensor type: {type}", sensor.Name, sensor.Type.ToString());
@@ -289,6 +316,32 @@ namespace HASS.Agent.Settings
                     };
                 }
 
+                case PowershellSensor powershellSensor:
+                {
+                    _ = Enum.TryParse<SensorType>(powershellSensor.GetType().Name, out var type);
+                    return new ConfiguredSensor
+                    {
+                        Id = Guid.Parse(powershellSensor.Id),
+                        Name = powershellSensor.Name,
+                        Type = type,
+                        UpdateInterval = powershellSensor.UpdateIntervalSeconds,
+                        Query = powershellSensor.Command
+                    };
+                }
+
+                case WindowStateSensor windowStateSensor:
+                {
+                    _ = Enum.TryParse<SensorType>(windowStateSensor.GetType().Name, out var type);
+                    return new ConfiguredSensor
+                    {
+                        Id = Guid.Parse(windowStateSensor.Id),
+                        Name = windowStateSensor.Name,
+                        Type = type,
+                        UpdateInterval = windowStateSensor.UpdateIntervalSeconds,
+                        Query = windowStateSensor.ProcessName
+                    };
+                }
+
                 default:
                 {
                     _ = Enum.TryParse<SensorType>(sensor.GetType().Name, out var type);
@@ -313,16 +366,17 @@ namespace HASS.Agent.Settings
             switch (sensor)
             {
                 case StorageSensors storageSensors:
+                {
+                    _ = Enum.TryParse<SensorType>(storageSensors.GetType().Name, out var type);
+                    return new ConfiguredSensor
                     {
-                        _ = Enum.TryParse<SensorType>(storageSensors.GetType().Name, out var type);
-                        return new ConfiguredSensor
-                        {
-                            Id = Guid.Parse(sensor.Id),
-                            Name = sensor.Name,
-                            Type = type,
-                            UpdateInterval = sensor.UpdateIntervalSeconds
-                        };
-                    }
+                        Id = Guid.Parse(sensor.Id),
+                        Name = sensor.Name,
+                        Type = type,
+                        UpdateInterval = sensor.UpdateIntervalSeconds
+                    };
+                }
+
                 case NetworkSensors networkSensors:
                 {
                     _ = Enum.TryParse<SensorType>(networkSensors.GetType().Name, out var type);
@@ -335,6 +389,7 @@ namespace HASS.Agent.Settings
                         UpdateInterval = sensor.UpdateIntervalSeconds
                     };
                 }
+
                 case WindowsUpdatesSensors windowsUpdatesSensors:
                 {
                     _ = Enum.TryParse<SensorType>(windowsUpdatesSensors.GetType().Name, out var type);
@@ -346,6 +401,7 @@ namespace HASS.Agent.Settings
                         UpdateInterval = sensor.UpdateIntervalSeconds
                     };
                 }
+
                 case BatterySensors batterySensors:
                 {
                     _ = Enum.TryParse<SensorType>(batterySensors.GetType().Name, out var type);
@@ -357,6 +413,7 @@ namespace HASS.Agent.Settings
                         UpdateInterval = sensor.UpdateIntervalSeconds
                     };
                 }
+
                 case DisplaySensors displaySensors:
                 {
                     _ = Enum.TryParse<SensorType>(displaySensors.GetType().Name, out var type);
@@ -368,9 +425,22 @@ namespace HASS.Agent.Settings
                         UpdateInterval = sensor.UpdateIntervalSeconds
                     };
                 }
+
                 case AudioSensors audioSensors:
                 {
                     _ = Enum.TryParse<SensorType>(audioSensors.GetType().Name, out var type);
+                    return new ConfiguredSensor
+                    {
+                        Id = Guid.Parse(sensor.Id),
+                        Name = sensor.Name,
+                        Type = type,
+                        UpdateInterval = sensor.UpdateIntervalSeconds
+                    };
+                }
+
+                case PrintersSensors printersSensors:
+                {
+                    _ = Enum.TryParse<SensorType>(printersSensors.GetType().Name, out var type);
                     return new ConfiguredSensor
                     {
                         Id = Guid.Parse(sensor.Id),

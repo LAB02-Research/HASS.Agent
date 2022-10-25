@@ -1,15 +1,19 @@
 ﻿using System.Diagnostics;
+using System.IO;
+using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using HASS.Agent.API;
 using HASS.Agent.Enums;
 using HASS.Agent.Functions;
+using HASS.Agent.Managers;
+using HASS.Agent.Media;
+using HASS.Agent.Models.HomeAssistant;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Settings;
 using HASS.Agent.Shared.Enums;
-using HASS.Agent.Shared.HomeAssistant;
-using HASS.Agent.Shared.HomeAssistant.Commands;
 using HASS.Agent.Shared.Models.HomeAssistant;
 using HASS.Agent.Shared.Mqtt;
 using MQTTnet;
@@ -20,7 +24,6 @@ using MQTTnet.Client.Options;
 using MQTTnet.Exceptions;
 using MQTTnet.Extensions.ManagedClient;
 using Serilog;
-using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace HASS.Agent.MQTT
 {
@@ -42,6 +45,12 @@ namespace HASS.Agent.MQTT
         public bool IsConnected() => _mqttClient is { IsConnected: true };
 
         /// <summary>
+        /// Returns whether the user wants the retain flag raised
+        /// </summary>
+        /// <returns></returns>
+        public bool UseRetainFlag() => Variables.AppSettings?.MqttUseRetainFlag ?? true;
+
+        /// <summary>
         /// Returns the default or configured discovery prefix
         /// </summary>
         /// <returns></returns>
@@ -60,6 +69,16 @@ namespace HASS.Agent.MQTT
         {
             try
             {
+                // mqtt enabled?
+                if (!Variables.AppSettings.MqttEnabled)
+                {
+                    _status = MqttStatus.Disconnected;
+                    Variables.MainForm?.SetMqttStatus(ComponentStatus.Stopped);
+                    Log.Information("[MQTT] Disabled through settings");
+
+                    return;
+                }
+
                 // create our device's config model
                 if (Variables.DeviceConfig == null) CreateDeviceConfigModel();
             
@@ -120,6 +139,8 @@ namespace HASS.Agent.MQTT
         {
             try
             {
+                if (!Variables.AppSettings.MqttEnabled) return;
+
                 Log.Information("[MQTT] Reloading configuration ..");
 
                 // already connected?
@@ -160,6 +181,7 @@ namespace HASS.Agent.MQTT
         /// <param name="options"></param>
         private async void StartClient(IManagedMqttClientOptions options)
         {
+            if (!Variables.AppSettings.MqttEnabled) return;
             if (_mqttClient == null) return;
 
             try
@@ -221,6 +243,7 @@ namespace HASS.Agent.MQTT
             var excMsg = ex.Exception.ToString();
             if (excMsg.Contains("SocketException")) Log.Error("[MQTT] Error while connecting: {err}", ex.Exception.Message);
             else if (excMsg.Contains("MqttCommunicationTimedOutException")) Log.Error("[MQTT] Error while connecting: {err}", "Connection timed out");
+            else if (excMsg.Contains("NotAuthorized")) Log.Error("[MQTT] Error while connecting: {err}", "Not authorized, check your credentials.");
             else Log.Fatal(ex.Exception, "[MQTT] Error while connecting: {err}", ex.Exception.Message);
 
             Variables.MainForm?.ShowToolTip(Languages.MqttManager_ToolTip_ConnectionFailed, true);
@@ -269,11 +292,12 @@ namespace HASS.Agent.MQTT
         }
 
         /// <summary>
-        /// Announce our availability
-        /// <para>Deprecated: used to announce sensors/commands, now left to their managers</para>
+        /// Announce our general availability
         /// </summary>
         private async void InitialRegistration()
         {
+            if (!Variables.AppSettings.MqttEnabled) return;
+
             if (_mqttClient == null) return;
             while (!_mqttClient.IsConnected) await Task.Delay(2000);
 
@@ -289,6 +313,8 @@ namespace HASS.Agent.MQTT
         /// </summary>
         public void CreateDeviceConfigModel()
         {
+            if (!Variables.AppSettings.MqttEnabled) return;
+
             var name = HelperFunctions.GetConfiguredDeviceName();
             Log.Information("[MQTT] Identifying as device: {name}", name);
 
@@ -308,6 +334,8 @@ namespace HASS.Agent.MQTT
         private DateTime _lastPublishFailedLogged = DateTime.MinValue;
         public async Task PublishAsync(MqttApplicationMessage message)
         {
+            if (!Variables.AppSettings.MqttEnabled) return;
+
             if (_mqttClient.IsConnected) await _mqttClient.PublishAsync(message);
             else
             {
@@ -328,17 +356,11 @@ namespace HASS.Agent.MQTT
         /// <returns></returns>
         public async Task AnnounceAutoDiscoveryConfigAsync(AbstractDiscoverable discoverable, string domain, bool clearConfig = false)
         {
+            if (!Variables.AppSettings.MqttEnabled) return;
             if (_mqttClient is not { IsConnected: true }) return;
 
             try
             {
-                var options = new JsonSerializerOptions
-                {
-                    PropertyNamingPolicy = new CamelCaseJsonNamingpolicy(),
-                    PropertyNameCaseInsensitive = true,
-                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-                };
-
                 // prepare prefix
                 if (string.IsNullOrEmpty(Variables.AppSettings.MqttDiscoveryPrefix)) Variables.AppSettings.MqttDiscoveryPrefix = "homeassistant";
 
@@ -347,14 +369,12 @@ namespace HASS.Agent.MQTT
                 
                 // build config message
                 var messageBuilder = new MqttApplicationMessageBuilder()
-                    .WithTopic(topic);
-
-                // set retain flag
-                if (Variables.AppSettings.MqttUseRetainFlag) messageBuilder.WithRetainFlag();
-
+                    .WithTopic(topic)
+                    .WithRetainFlag(Variables.AppSettings.MqttUseRetainFlag);
+                
                 // add payload
                 if (clearConfig) messageBuilder.WithPayload(Array.Empty<byte>());
-                else messageBuilder.WithPayload(JsonSerializer.Serialize(discoverable.GetAutoDiscoveryConfig(), discoverable.GetAutoDiscoveryConfig().GetType(), options));
+                else messageBuilder.WithPayload(JsonSerializer.Serialize(discoverable.GetAutoDiscoveryConfig(), discoverable.GetAutoDiscoveryConfig().GetType(), JsonSerializerOptions));
 
                 // publish disco config
                 await PublishAsync(messageBuilder.Build());
@@ -376,8 +396,21 @@ namespace HASS.Agent.MQTT
         /// </summary>
         private DateTime _lastAvailableAnnouncement = DateTime.MinValue;
         private DateTime _lastAvailableAnnouncementFailedLogged = DateTime.MinValue;
+        
+        /// <summary>
+        /// JSON serializer options (camelcase, casing, ignore condition, converters)
+        /// </summary>
+        public static readonly JsonSerializerOptions JsonSerializerOptions = new()
+        {
+            PropertyNamingPolicy = new CamelCaseJsonNamingpolicy(),
+            PropertyNameCaseInsensitive = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+            Converters = { new JsonStringEnumConverter() }
+        };
+
         public async Task AnnounceAvailabilityAsync(bool offline = false)
         {
+            if (!Variables.AppSettings.MqttEnabled) return;
             if (_mqttClient is not { IsConnected: true }) return;
 
             try
@@ -396,13 +429,29 @@ namespace HASS.Agent.MQTT
                     // prepare message
                     var messageBuilder = new MqttApplicationMessageBuilder()
                         .WithTopic($"{Variables.AppSettings.MqttDiscoveryPrefix}/sensor/{Variables.DeviceConfig.Name}/availability")
-                        .WithPayload(offline ? "offline" : "online");
-
-                    // set retain flag
-                    if (Variables.AppSettings.MqttUseRetainFlag) messageBuilder.WithRetainFlag();
+                        .WithPayload(offline ? "offline" : "online")
+                        .WithRetainFlag(Variables.AppSettings.MqttUseRetainFlag);
 
                     // publish
                     await _mqttClient.PublishAsync(messageBuilder.Build());
+
+                    // prepare integration message
+                    var integrationMsgBuilder = new MqttApplicationMessageBuilder()
+                        .WithTopic($"hass.agent/devices/{Variables.DeviceConfig.Name}")
+                        .WithPayload(JsonSerializer.Serialize(new
+                        {
+                            serial_number = Variables.SerialNumber,
+                            device = Variables.DeviceConfig,
+                            apis = new
+                            {
+                                notifications = Variables.AppSettings.NotificationsEnabled,
+                                media_player = Variables.AppSettings.MediaPlayerEnabled
+                            }
+                        }, JsonSerializerOptions))
+                        .WithRetainFlag(Variables.AppSettings.MqttUseRetainFlag);
+
+                    // publish
+                    await _mqttClient.PublishAsync(integrationMsgBuilder.Build());
                 }
                 else
                 {
@@ -425,6 +474,7 @@ namespace HASS.Agent.MQTT
         /// <returns></returns>
         public async Task ClearDeviceConfigAsync()
         {
+            if (!Variables.AppSettings.MqttEnabled) return;
             if (_mqttClient is not { IsConnected: true })
             {
                 Log.Warning("[MQTT] Not connected, clearing device config failed");
@@ -440,10 +490,8 @@ namespace HASS.Agent.MQTT
                     // prepare message
                     var messageBuilder = new MqttApplicationMessageBuilder()
                         .WithTopic($"{Variables.AppSettings.MqttDiscoveryPrefix}/sensor/{Variables.DeviceConfig.Name}/availability")
-                        .WithPayload(Array.Empty<byte>());
-
-                    // set retain flag
-                    if (Variables.AppSettings.MqttUseRetainFlag) messageBuilder.WithRetainFlag();
+                        .WithPayload(Array.Empty<byte>())
+                        .WithRetainFlag(Variables.AppSettings.MqttUseRetainFlag);
                     
                     // publish
                     await _mqttClient.PublishAsync(messageBuilder.Build());
@@ -461,6 +509,7 @@ namespace HASS.Agent.MQTT
         /// </summary>
         public void Disconnect()
         {
+            if (!Variables.AppSettings.MqttEnabled) return;
             if (_mqttClient is { IsConnected: true })
             {
                 _mqttClient.InternalClient.DisconnectAsync();
@@ -477,10 +526,33 @@ namespace HASS.Agent.MQTT
         /// <returns></returns>
         public async Task SubscribeAsync(AbstractCommand command)
         {
+            if (!Variables.AppSettings.MqttEnabled) return;
             if (!IsConnected()) while (IsConnected() == false) await Task.Delay(250);
 
             await _mqttClient.SubscribeAsync(((CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig()).Command_topic);
             await _mqttClient.SubscribeAsync(((CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig()).Action_topic);
+        }
+
+        /// <summary>
+        /// Subscribe to the integration's notification topic
+        /// </summary>
+        /// <returns></returns>
+        public async Task SubscribeNotificationsAsync()
+        {
+            if (!Variables.AppSettings.MqttEnabled) return;
+            if (!IsConnected()) while (IsConnected() == false) await Task.Delay(250);
+            await _mqttClient.SubscribeAsync($"hass.agent/notifications/{HelperFunctions.GetConfiguredDeviceName()}");
+        }
+
+        /// <summary>
+        /// Subscribe to the integration's mediaplayer topic
+        /// </summary>
+        /// <returns></returns>
+        public async Task SubscribeMediaCommandsAsync()
+        {
+            if (!Variables.AppSettings.MqttEnabled) return;
+            if (!IsConnected()) while (IsConnected() == false) await Task.Delay(250);
+            await _mqttClient.SubscribeAsync($"hass.agent/media_player/{HelperFunctions.GetConfiguredDeviceName()}/cmd");
         }
 
         /// <summary>
@@ -490,6 +562,7 @@ namespace HASS.Agent.MQTT
         /// <returns></returns>
         public async Task UnubscribeAsync(AbstractCommand command)
         {
+            if (!Variables.AppSettings.MqttEnabled) return;
             if (!IsConnected()) while (IsConnected() == false) await Task.Delay(250);
 
             await _mqttClient.UnsubscribeAsync(((CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig()).Command_topic);
@@ -514,11 +587,9 @@ namespace HASS.Agent.MQTT
             // configure last will message
             var lastWillMessageBuilder = new MqttApplicationMessageBuilder()
                 .WithTopic($"{Variables.AppSettings.MqttDiscoveryPrefix}/sensor/{Variables.DeviceConfig.Name}/availability")
-                .WithPayload("offline");
-
-            // set retain flag
-            if (Variables.AppSettings.MqttUseRetainFlag) lastWillMessageBuilder.WithRetainFlag();
-
+                .WithPayload("offline")
+                .WithRetainFlag(Variables.AppSettings.MqttUseRetainFlag);
+            
             // prepare message
             var lastWillMessage = lastWillMessageBuilder.Build();
 
@@ -538,7 +609,7 @@ namespace HASS.Agent.MQTT
             {
                 UseTls = Variables.AppSettings.MqttUseTls,
                 AllowUntrustedCertificates = Variables.AppSettings.MqttAllowUntrustedCertificates,
-                SslProtocol = Variables.AppSettings.MqttUseTls ? System.Security.Authentication.SslProtocols.Tls12 : System.Security.Authentication.SslProtocols.None
+                SslProtocol = Variables.AppSettings.MqttUseTls ? SslProtocols.Tls12 : SslProtocols.None
             };
 
             // configure certificates
@@ -555,7 +626,18 @@ namespace HASS.Agent.MQTT
                 certificates.Add(new X509Certificate2(Variables.AppSettings.MqttClientCertificate));
             }
 
+            // optionally loosen security
+            if (Variables.AppSettings.MqttAllowUntrustedCertificates)
+            {
+                tlsParameters.IgnoreCertificateChainErrors = true;
+                tlsParameters.IgnoreCertificateRevocationErrors = true;
+                tlsParameters.CertificateValidationHandler += _ => true;
+            }
+
+            // add the certs
             if (certificates.Count > 0) tlsParameters.Certificates = certificates;
+
+            // finalise tls params
             clientOptionsBuilder.WithTls(tlsParameters);
 
             // build the client options
@@ -573,7 +655,37 @@ namespace HASS.Agent.MQTT
         /// <param name="applicationMessage"></param>
         private static void HandleMessageReceived(MqttApplicationMessage applicationMessage)
         {
+            if (applicationMessage.Topic == $"hass.agent/notifications/{HelperFunctions.GetConfiguredDeviceName()}")
+            {
+                // process as a notification
+                var notification = JsonSerializer.Deserialize<Notification>(applicationMessage.Payload, JsonSerializerOptions)!;
+                _ = Task.Run(() => NotificationManager.ShowNotification(notification));
+                return;
+            } 
+
+            if (applicationMessage.Topic == $"hass.agent/media_player/{HelperFunctions.GetConfiguredDeviceName()}/cmd")
+            {
+                // process as a mediaplyer command
+                var command = JsonSerializer.Deserialize<MqttMediaPlayerCommand>(applicationMessage.Payload, JsonSerializerOptions)!;
+
+                switch (command.Command)
+                {
+                    case MediaPlayerCommand.PlayMedia:
+                        MediaManager.ProcessMedia(command.Data.GetString());
+                        break;
+                    case MediaPlayerCommand.Seek:
+                        MediaManager.ProcessSeekCommand(TimeSpan.FromSeconds(command.Data.GetDouble()).Ticks);
+                        break;
+                    default:
+                        MediaManager.ProcessCommand(command.Command);
+                        break;
+                }
+                return;
+            }
+
             if (!Variables.Commands.Any()) return;
+
+            // process as a hass.agent command
             foreach (var command in Variables.Commands)
             {
                 var commandConfig = (CommandDiscoveryConfigModel)command.GetAutoDiscoveryConfig();

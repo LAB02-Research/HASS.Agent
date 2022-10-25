@@ -66,6 +66,7 @@ namespace HASS.Agent.Forms.Commands
             this.LblActionInfo = new System.Windows.Forms.Label();
             this.PbActionInfo = new System.Windows.Forms.PictureBox();
             this.BtnConfigureCommand = new Syncfusion.WinForms.Controls.SfButton();
+            this.TbKeyCode = new System.Windows.Forms.TextBox();
             this.PnlDescription.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbService)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbAgent)).BeginInit();
@@ -92,7 +93,7 @@ namespace HASS.Agent.Forms.Commands
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnStore.TabIndex = 7;
-            this.BtnStore.Text = Languages.CommandsMod_BtnStore;
+            this.BtnStore.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsMod_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
@@ -208,7 +209,7 @@ namespace HASS.Agent.Forms.Commands
             this.CbRunAsLowIntegrity.Name = "CbRunAsLowIntegrity";
             this.CbRunAsLowIntegrity.Size = new System.Drawing.Size(152, 23);
             this.CbRunAsLowIntegrity.TabIndex = 4;
-            this.CbRunAsLowIntegrity.Text = Languages.CommandsMod_CbRunAsLowIntegrity;
+            this.CbRunAsLowIntegrity.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsMod_CbRunAsLowIntegrity;
             this.CbRunAsLowIntegrity.UseVisualStyleBackColor = true;
             this.CbRunAsLowIntegrity.Visible = false;
             // 
@@ -517,10 +518,26 @@ namespace HASS.Agent.Forms.Commands
             this.BtnConfigureCommand.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnConfigureCommand.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnConfigureCommand.TabIndex = 6;
-            this.BtnConfigureCommand.Text = Languages.CommandsMod_BtnConfigureCommand;
+            this.BtnConfigureCommand.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsMod_BtnConfigureCommand;
             this.BtnConfigureCommand.UseVisualStyleBackColor = false;
             this.BtnConfigureCommand.Visible = false;
             this.BtnConfigureCommand.Click += new System.EventHandler(this.BtnConfigureCommand_Click);
+            // 
+            // TbKeyCode
+            // 
+            this.TbKeyCode.AccessibleDescription = "Captures what key is pressed, and converts it to its integer value.";
+            this.TbKeyCode.AccessibleName = "Keycode";
+            this.TbKeyCode.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
+            this.TbKeyCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.TbKeyCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbKeyCode.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TbKeyCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.TbKeyCode.Location = new System.Drawing.Point(566, 239);
+            this.TbKeyCode.Name = "TbKeyCode";
+            this.TbKeyCode.ReadOnly = true;
+            this.TbKeyCode.Size = new System.Drawing.Size(328, 25);
+            this.TbKeyCode.TabIndex = 44;
+            this.TbKeyCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbKeyCode_KeyDown);
             // 
             // CommandsMod
             // 
@@ -534,6 +551,7 @@ namespace HASS.Agent.Forms.Commands
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(1319, 488);
+            this.Controls.Add(this.TbKeyCode);
             this.Controls.Add(this.BtnConfigureCommand);
             this.Controls.Add(this.LblActionInfo);
             this.Controls.Add(this.PbActionInfo);
@@ -569,7 +587,7 @@ namespace HASS.Agent.Forms.Commands
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = Languages.CommandsMod_Title;
+            this.Text = Languages.CommandsMod_CommandsMod;
             this.Load += new System.EventHandler(this.CommandsMod_Load);
             this.ResizeEnd += new System.EventHandler(this.CommandsMod_ResizeEnd);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CommandsMod_KeyUp);
@@ -618,6 +636,7 @@ namespace HASS.Agent.Forms.Commands
         private PictureBox PbActionInfo;
         private ColumnHeader ClmSensorId;
         private Syncfusion.WinForms.Controls.SfButton BtnConfigureCommand;
+        private TextBox TbKeyCode;
     }
 }
 

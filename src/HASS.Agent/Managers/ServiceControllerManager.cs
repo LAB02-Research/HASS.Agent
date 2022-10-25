@@ -1,6 +1,8 @@
-﻿using System.ServiceProcess;
+﻿using System.IO;
+using System.ServiceProcess;
 using HASS.Agent.Functions;
-using HASS.Agent.Shared.Functions;
+using HASS.Agent.Resources.Localization;
+using HASS.Agent.Shared.Managers;
 using Microsoft.Win32;
 using Serilog;
 using TimeoutException = System.ServiceProcess.TimeoutException;
@@ -61,12 +63,12 @@ namespace HASS.Agent.Managers
                     catch (TimeoutException ex)
                     {
                         Log.Error("[SERVICE] Timeout trying to start: {err}", ex.Message);
-                        return (false, "timeout expired");
+                        return (false, Languages.ServiceControllerManager_Error_Timeout);
                     }
                     catch (Exception ex)
                     {
                         Log.Fatal(ex, "[SERVICE] Unable to start: {err}", ex.Message);
-                        return (false, "fatal error, check logs");
+                        return (false, Languages.ServiceControllerManager_Error_Fatal);
                     }
                 }
 
@@ -88,12 +90,12 @@ namespace HASS.Agent.Managers
 
                 // failed
                 Log.Error("[SERVICE] Service still hasn't started after 5 seconds, unknown reason");
-                return (false, "unknown reason");
+                return (false, Languages.ServiceControllerManager_Error_Unknown);
             }
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SERVICE] Error while starting: {err}", ex.Message);
-                return (false, "fatal error, check logs");
+                return (false, Languages.ServiceControllerManager_Error_Fatal);
             }
         }
 
@@ -131,12 +133,12 @@ namespace HASS.Agent.Managers
                     catch (TimeoutException ex)
                     {
                         Log.Error("[SERVICE] Timeout trying to stop: {err}", ex.Message);
-                        return (false, "timeout expired");
+                        return (false, Languages.ServiceControllerManager_Error_Timeout);
                     }
                     catch (Exception ex)
                     {
                         Log.Fatal(ex, "[SERVICE] Unable to stop: {err}", ex.Message);
-                        return (false, "fatal error, check logs");
+                        return (false, Languages.ServiceControllerManager_Error_Fatal);
                     }
                 }
 
@@ -158,12 +160,12 @@ namespace HASS.Agent.Managers
 
                 // failed
                 Log.Error("[SERVICE] Service still hasn't stopped after 5 seconds, unknown reason");
-                return (false, "unknown reason");
+                return (false, Languages.ServiceControllerManager_Error_Unknown);
             }
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SERVICE] Error while stopping: {err}", ex.Message);
-                return (false, "fatal error, check logs");
+                return (false, Languages.ServiceControllerManager_Error_Fatal);
             }
         }
 
@@ -250,7 +252,7 @@ namespace HASS.Agent.Managers
                 }
 
                 // try to install
-                var result = await CommandLineManager.ExecuteCommandAsync("sc.exe", $"create \"{Variables.SatelliteServiceName}\" binpath=\"{Variables.SatelliteServiceBinary}\"");
+                var result = await CommandLineManager.ExecuteCommandAsync("sc.exe", $"create \"{Variables.SatelliteServiceName}\" binpath= \"{Variables.SatelliteServiceBinary}\"");
                 if (!result.Error)
                 {
                     // all good

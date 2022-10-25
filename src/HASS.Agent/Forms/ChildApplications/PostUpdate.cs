@@ -35,13 +35,9 @@ namespace HASS.Agent.Forms.ChildApplications
             // install/configure satellite service
             var serviceDone = await ConfigureSatelliteServiceAsync();
             PbStep1InstallSatelliteService.Image = serviceDone ? Properties.Resources.done_32 : Properties.Resources.failed_32;
-
-            // execute port reservation
-            var portDone = await ProcessPortReservationAsync();
-            PbStep2PortBinding.Image = portDone ? Properties.Resources.done_32 : Properties.Resources.failed_32;
-
+            
             // notify the user if something went wrong
-            if (!serviceDone || !portDone) MessageBoxAdv.Show(Languages.PostUpdate_ProcessPostUpdate_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!serviceDone) MessageBoxAdv.Show(Languages.PostUpdate_ProcessPostUpdate_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
                 // wait a bit to show the 'completed' checks
@@ -111,35 +107,6 @@ namespace HASS.Agent.Forms.ChildApplications
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[POSTUPDATE] Error configuring satellite service: {err}", ex.Message);
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Processes port reservation for the notifier API
-        /// </summary>
-        /// <returns></returns>
-        private async Task<bool> ProcessPortReservationAsync()
-        {
-            try
-            {
-                // set busy indicator
-                PbStep2PortBinding.Image = Properties.Resources.small_loader_32;
-
-                // is the notifier enabled?
-                if (!Variables.AppSettings.NotificationsEnabled) return true;
-
-                // yep, set it at the configured port
-                var portReserved = await Task.Run(async () => await ApiManager.ExecutePortReservationAsync(Variables.AppSettings.NotifierApiPort));
-                if (!portReserved) Log.Error("[POSTUPDATE] Unable to execute port reservation, notifier api might fail");
-                else Log.Information("[POSTUPDATE] Port reservation completed");
-
-                // done
-                return portReserved;
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal(ex, "[POSTUPDATE] Error processing port reservation: {err}", ex.Message);
                 return false;
             }
         }

@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.IO;
 using HASS.Agent.Functions;
 using HASS.Agent.Managers;
 using HASS.Agent.Resources.Localization;

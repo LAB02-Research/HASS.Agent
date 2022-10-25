@@ -6,6 +6,7 @@ using HASS.Agent.Functions;
 using HASS.Agent.Models.Config;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Settings;
+using Serilog;
 using Syncfusion.Windows.Forms;
 
 namespace HASS.Agent.Managers
@@ -15,7 +16,7 @@ namespace HASS.Agent.Managers
         private readonly Onboarding _onboarding;
         private Control _currentControl;
 
-        private const int TOTAL_ONBOARDING_STEPS = 9;
+        private const int TOTAL_ONBOARDING_STEPS = 8;
 
         internal OnboardingManager(Onboarding onboarding)
         {
@@ -25,7 +26,7 @@ namespace HASS.Agent.Managers
         /// <summary>
         /// Loads the control corresponding to the current status
         /// </summary>
-        internal void ShowCurrentOnboardingStatus()
+        internal bool ShowCurrentOnboardingStatus()
         {
             switch (Variables.AppSettings.OnboardingStatus)
             {
@@ -37,21 +38,17 @@ namespace HASS.Agent.Managers
                 case OnboardingStatus.Startup:
                     ShowStartup();
                     break;
-
-                case OnboardingStatus.LocalApi:
-                    ShowLocalApi();
-                    break;
-
-                case OnboardingStatus.Integrations:
-                    ShowIntegrations();
-                    break;
-
+                    
                 case OnboardingStatus.API:
                     ShowAPI();
                     break;
 
                 case OnboardingStatus.MQTT:
                     ShowMQTT();
+                    break;
+
+                case OnboardingStatus.Integrations:
+                    ShowIntegrations();
                     break;
 
                 case OnboardingStatus.HotKey:
@@ -65,7 +62,15 @@ namespace HASS.Agent.Managers
                 case OnboardingStatus.Completed:
                     ShowDone();
                     break;
+
+                default:
+                    Log.Warning("[ONBOARDING] Unknown state detected, ignoring, setting as done: {state}", Variables.AppSettings.OnboardingStatus);
+                    Variables.AppSettings.OnboardingStatus = OnboardingStatus.Completed;
+                    SettingsManager.StoreAppSettings();
+                    return false;
             }
+
+            return true;
         }
 
         /// <summary>
@@ -84,27 +89,21 @@ namespace HASS.Agent.Managers
                 case OnboardingStatus.Startup:
                     ShowWelcome();
                     break;
-
-                case OnboardingStatus.LocalApi:
-                    ShowStartup();
-                    break;
-
-                case OnboardingStatus.Integrations:
-                    ShowLocalApi();
-                    break;
-
+                    
                 case OnboardingStatus.API:
-                    // only show integrations info if local api is enabled
-                    if (Variables.AppSettings.LocalApiEnabled) ShowIntegrations();
-                    else ShowLocalApi();
+                    ShowStartup();
                     break;
 
                 case OnboardingStatus.MQTT:
                     ShowAPI();
                     break;
 
-                case OnboardingStatus.HotKey:
+                case OnboardingStatus.Integrations:
                     ShowMQTT();
+                    break;
+
+                case OnboardingStatus.HotKey:
+                    ShowIntegrations();
                     break;
 
                 case OnboardingStatus.Updates:
@@ -136,16 +135,6 @@ namespace HASS.Agent.Managers
                     break;
 
                 case OnboardingStatus.Startup:
-                    ShowLocalApi();
-                    break;
-
-                case OnboardingStatus.LocalApi:
-                    // only show integrations info if local api is enabled
-                    if (Variables.AppSettings.LocalApiEnabled) ShowIntegrations();
-                    else ShowAPI();
-                    break;
-
-                case OnboardingStatus.Integrations:
                     ShowAPI();
                     break;
 
@@ -154,6 +143,10 @@ namespace HASS.Agent.Managers
                     break;
 
                 case OnboardingStatus.MQTT:
+                    ShowIntegrations();
+                    break;
+
+                case OnboardingStatus.Integrations:
                     ShowHotKey();
                     break;
 
@@ -192,12 +185,6 @@ namespace HASS.Agent.Managers
                         return true;
                     }
 
-                case OnboardingStatus.LocalApi:
-                    {
-                        var obj = (OnboardingLocalApi)_currentControl;
-                        return obj.Store();
-                    }
-
                 case OnboardingStatus.API:
                     {
                         var obj = (OnboardingApi)_currentControl;
@@ -209,6 +196,12 @@ namespace HASS.Agent.Managers
                         var obj = (OnboardingMqtt)_currentControl;
                         return obj.Store();
                     }
+
+                case OnboardingStatus.Integrations:
+                {
+                    var obj = (OnboardingIntegrations)_currentControl;
+                    return obj.Store();
+                }
 
                 case OnboardingStatus.HotKey:
                     {
@@ -292,47 +285,7 @@ namespace HASS.Agent.Managers
             LoadCurrentControl();
         }
 
-        /// <summary>
-        /// Show Notifications page
-        /// </summary>
-        private void ShowLocalApi()
-        {
-            CloseCurrentControl();
-
-            const int onboardingStep = 3;
-
-            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Notifications, onboardingStep, TOTAL_ONBOARDING_STEPS);
-            Variables.AppSettings.OnboardingStatus = OnboardingStatus.LocalApi;
-
-            _currentControl = new OnboardingLocalApi();
-
-            _onboarding.BtnPrevious.Visible = true;
-            _onboarding.BtnNext.Text = Languages.Onboarding_BtnNext;
-
-            LoadCurrentControl();
-        }
-
-        /// <summary>
-        /// Show Integration page
-        /// </summary>
-        private void ShowIntegrations()
-        {
-            CloseCurrentControl();
-
-            const int onboardingStep = 4;
-
-            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Integration, onboardingStep, TOTAL_ONBOARDING_STEPS);
-            Variables.AppSettings.OnboardingStatus = OnboardingStatus.Integrations;
-
-            _currentControl = new OnboardingIntegrations();
-
-            _onboarding.BtnPrevious.Visible = true;
-            _onboarding.BtnNext.Text = Languages.Onboarding_BtnNext;
-
-            LoadCurrentControl();
-        }
-
-        /// <summary>
+       /// <summary>
         /// Show API page
         /// </summary>
         // ReSharper disable once InconsistentNaming
@@ -340,7 +293,7 @@ namespace HASS.Agent.Managers
         {
             CloseCurrentControl();
 
-            const int onboardingStep = 5;
+            const int onboardingStep = 3;
 
             _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Api, onboardingStep, TOTAL_ONBOARDING_STEPS);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.API;
@@ -361,12 +314,32 @@ namespace HASS.Agent.Managers
         {
             CloseCurrentControl();
 
-            const int onboardingStep = 6;
+            const int onboardingStep = 4;
 
             _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Mqtt, onboardingStep, TOTAL_ONBOARDING_STEPS);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.MQTT;
 
             _currentControl = new OnboardingMqtt();
+
+            _onboarding.BtnPrevious.Visible = true;
+            _onboarding.BtnNext.Text = Languages.Onboarding_BtnNext;
+
+            LoadCurrentControl();
+        }
+
+        /// <summary>
+        /// Show Integration page
+        /// </summary>
+        private void ShowIntegrations()
+        {
+            CloseCurrentControl();
+
+            const int onboardingStep = 5;
+
+            _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Integration, onboardingStep, TOTAL_ONBOARDING_STEPS);
+            Variables.AppSettings.OnboardingStatus = OnboardingStatus.Integrations;
+
+            _currentControl = new OnboardingIntegrations();
 
             _onboarding.BtnPrevious.Visible = true;
             _onboarding.BtnNext.Text = Languages.Onboarding_BtnNext;
@@ -381,7 +354,7 @@ namespace HASS.Agent.Managers
         {
             CloseCurrentControl();
 
-            const int onboardingStep = 7;
+            const int onboardingStep = 6;
 
             _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_HotKey, onboardingStep, TOTAL_ONBOARDING_STEPS);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.HotKey;
@@ -401,7 +374,7 @@ namespace HASS.Agent.Managers
         {
             CloseCurrentControl();
 
-            const int onboardingStep = 8;
+            const int onboardingStep = 7;
 
             _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Updates, onboardingStep, TOTAL_ONBOARDING_STEPS);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.Updates;
@@ -423,7 +396,7 @@ namespace HASS.Agent.Managers
         {
             CloseCurrentControl();
 
-            const int onboardingStep = 9;
+            const int onboardingStep = 8;
 
             _onboarding.Text = string.Format(Languages.OnboardingManager_OnboardingTitle_Completed, onboardingStep, TOTAL_ONBOARDING_STEPS);
             Variables.AppSettings.OnboardingStatus = OnboardingStatus.Completed;
@@ -442,12 +415,12 @@ namespace HASS.Agent.Managers
         /// Checks to see if we need confirmation (and get it)
         /// </summary>
         /// <returns></returns>
-        internal bool ConfirmBeforeClose()
+        internal async Task<bool> ConfirmBeforeCloseAsync()
         {
             // if we're completed, finalize and close
             if (Variables.AppSettings.OnboardingStatus == OnboardingStatus.Completed)
             {
-                FinalizeOnboarding();
+                await FinalizeOnboardingAsync();
                 return true;
             }
 
@@ -465,14 +438,16 @@ namespace HASS.Agent.Managers
                 OnboardingStatus = OnboardingStatus.Aborted,
                 LocalApiEnabled = false
             };
+
             SettingsManager.StoreAppSettings();
+
             return true;
         }
 
         /// <summary>
         /// Finalizes the onboarding process
         /// </summary>
-        private void FinalizeOnboarding()
+        private async Task FinalizeOnboardingAsync()
         {
             // lock interface
             _onboarding.BtnClose.Enabled = false;
@@ -482,9 +457,9 @@ namespace HASS.Agent.Managers
             // write all settings to disk
             SettingsManager.StoreAppSettings();
 
-            // if the local api's activated, execute port binding
-            if (Variables.AppSettings.LocalApiEnabled) ApiManager.ExecuteElevatedPortReservation();
-
+            // send mqtt config to the service
+            await SettingsManager.SendMqttSettingsToServiceAsync(true);
+            
             // done, restart
             HelperFunctions.Restart(true);
         }

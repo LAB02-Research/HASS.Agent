@@ -45,6 +45,10 @@ namespace HASS.Agent.Controls.Configuration
             this.PbLine1 = new System.Windows.Forms.PictureBox();
             this.PbLine2 = new System.Windows.Forms.PictureBox();
             this.PbLine3 = new System.Windows.Forms.PictureBox();
+            this.LblInfo5 = new System.Windows.Forms.Label();
+            this.CbEnableDeviceNameSanitation = new System.Windows.Forms.CheckBox();
+            this.CbEnableStateNotifications = new System.Windows.Forms.CheckBox();
+            this.LblInfo6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.NumDisconnectGrace)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbLine1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbLine2)).BeginInit();
@@ -57,7 +61,7 @@ namespace HASS.Agent.Controls.Configuration
             this.LblInfo4.AccessibleName = "Disconnected grace period introduction";
             this.LblInfo4.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblInfo4.Location = new System.Drawing.Point(73, 436);
+            this.LblInfo4.Location = new System.Drawing.Point(73, 554);
             this.LblInfo4.Name = "LblInfo4";
             this.LblInfo4.Size = new System.Drawing.Size(580, 38);
             this.LblInfo4.TabIndex = 63;
@@ -70,7 +74,7 @@ namespace HASS.Agent.Controls.Configuration
             this.LblDisconGraceSeconds.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblDisconGraceSeconds.AutoSize = true;
             this.LblDisconGraceSeconds.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblDisconGraceSeconds.Location = new System.Drawing.Point(171, 514);
+            this.LblDisconGraceSeconds.Location = new System.Drawing.Point(171, 632);
             this.LblDisconGraceSeconds.Name = "LblDisconGraceSeconds";
             this.LblDisconGraceSeconds.Size = new System.Drawing.Size(58, 19);
             this.LblDisconGraceSeconds.TabIndex = 62;
@@ -83,7 +87,7 @@ namespace HASS.Agent.Controls.Configuration
             this.LblDisconGracePeriod.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblDisconGracePeriod.AutoSize = true;
             this.LblDisconGracePeriod.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblDisconGracePeriod.Location = new System.Drawing.Point(70, 490);
+            this.LblDisconGracePeriod.Location = new System.Drawing.Point(70, 608);
             this.LblDisconGracePeriod.Name = "LblDisconGracePeriod";
             this.LblDisconGracePeriod.Size = new System.Drawing.Size(169, 19);
             this.LblDisconGracePeriod.TabIndex = 61;
@@ -167,7 +171,7 @@ namespace HASS.Agent.Controls.Configuration
             this.NumDisconnectGrace.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NumDisconnectGrace.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.NumDisconnectGrace.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.NumDisconnectGrace.Location = new System.Drawing.Point(73, 512);
+            this.NumDisconnectGrace.Location = new System.Drawing.Point(73, 630);
             this.NumDisconnectGrace.Maximum = new decimal(new int[] {
             86400,
             0,
@@ -250,12 +254,70 @@ namespace HASS.Agent.Controls.Configuration
             this.PbLine3.AccessibleName = "Seperator";
             this.PbLine3.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbLine3.Image = global::HASS.Agent.Properties.Resources.line;
-            this.PbLine3.Location = new System.Drawing.Point(73, 403);
+            this.PbLine3.Location = new System.Drawing.Point(73, 521);
             this.PbLine3.Name = "PbLine3";
             this.PbLine3.Size = new System.Drawing.Size(576, 1);
             this.PbLine3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.PbLine3.TabIndex = 69;
             this.PbLine3.TabStop = false;
+            // 
+            // LblInfo5
+            // 
+            this.LblInfo5.AccessibleDescription = "Information about the sanitation of the devicename, and how to disable it.";
+            this.LblInfo5.AccessibleName = "Sanitation information";
+            this.LblInfo5.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
+            this.LblInfo5.AutoEllipsis = true;
+            this.LblInfo5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblInfo5.Location = new System.Drawing.Point(73, 403);
+            this.LblInfo5.Name = "LblInfo5";
+            this.LblInfo5.Size = new System.Drawing.Size(583, 45);
+            this.LblInfo5.TabIndex = 70;
+            this.LblInfo5.Text = Languages.ConfigGeneral_LblInfo5;
+            // 
+            // CbEnableDeviceNameSanitation
+            // 
+            this.CbEnableDeviceNameSanitation.AccessibleDescription = "Enable device name sanitation.";
+            this.CbEnableDeviceNameSanitation.AccessibleName = "Enable sanitation";
+            this.CbEnableDeviceNameSanitation.AccessibleRole = System.Windows.Forms.AccessibleRole.CheckButton;
+            this.CbEnableDeviceNameSanitation.AutoSize = true;
+            this.CbEnableDeviceNameSanitation.Checked = true;
+            this.CbEnableDeviceNameSanitation.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CbEnableDeviceNameSanitation.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CbEnableDeviceNameSanitation.Location = new System.Drawing.Point(73, 468);
+            this.CbEnableDeviceNameSanitation.Name = "CbEnableDeviceNameSanitation";
+            this.CbEnableDeviceNameSanitation.Size = new System.Drawing.Size(212, 23);
+            this.CbEnableDeviceNameSanitation.TabIndex = 71;
+            this.CbEnableDeviceNameSanitation.Text = global::HASS.Agent.Resources.Localization.Languages.ConfigGeneral_CbEnableDeviceNameSanitation;
+            this.CbEnableDeviceNameSanitation.UseVisualStyleBackColor = true;
+            // 
+            // CbEnableStateNotifications
+            // 
+            this.CbEnableStateNotifications.AccessibleDescription = "Enable state notifications.";
+            this.CbEnableStateNotifications.AccessibleName = "Enable state notifications";
+            this.CbEnableStateNotifications.AccessibleRole = System.Windows.Forms.AccessibleRole.CheckButton;
+            this.CbEnableStateNotifications.AutoSize = true;
+            this.CbEnableStateNotifications.Checked = true;
+            this.CbEnableStateNotifications.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CbEnableStateNotifications.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CbEnableStateNotifications.Location = new System.Drawing.Point(73, 748);
+            this.CbEnableStateNotifications.Name = "CbEnableStateNotifications";
+            this.CbEnableStateNotifications.Size = new System.Drawing.Size(180, 23);
+            this.CbEnableStateNotifications.TabIndex = 73;
+            this.CbEnableStateNotifications.Text = Languages.ConfigGeneral_CbEnableStateNotifications;
+            this.CbEnableStateNotifications.UseVisualStyleBackColor = true;
+            // 
+            // LblInfo6
+            // 
+            this.LblInfo6.AccessibleDescription = "Information about disabling state notifications all together.";
+            this.LblInfo6.AccessibleName = "State notification information";
+            this.LblInfo6.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
+            this.LblInfo6.AutoEllipsis = true;
+            this.LblInfo6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblInfo6.Location = new System.Drawing.Point(73, 683);
+            this.LblInfo6.Name = "LblInfo6";
+            this.LblInfo6.Size = new System.Drawing.Size(583, 45);
+            this.LblInfo6.TabIndex = 72;
+            this.LblInfo6.Text = Languages.ConfigGeneral_LblInfo6;
             // 
             // ConfigGeneral
             // 
@@ -265,6 +327,10 @@ namespace HASS.Agent.Controls.Configuration
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.Controls.Add(this.CbEnableStateNotifications);
+            this.Controls.Add(this.LblInfo6);
+            this.Controls.Add(this.CbEnableDeviceNameSanitation);
+            this.Controls.Add(this.LblInfo5);
             this.Controls.Add(this.PbLine3);
             this.Controls.Add(this.PbLine2);
             this.Controls.Add(this.PbLine1);
@@ -282,7 +348,7 @@ namespace HASS.Agent.Controls.Configuration
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ConfigGeneral";
-            this.Size = new System.Drawing.Size(700, 592);
+            this.Size = new System.Drawing.Size(700, 815);
             this.Load += new System.EventHandler(this.ConfigGeneral_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NumDisconnectGrace)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbLine1)).EndInit();
@@ -309,5 +375,9 @@ namespace HASS.Agent.Controls.Configuration
         private PictureBox PbLine1;
         private PictureBox PbLine2;
         private PictureBox PbLine3;
+        private Label LblInfo5;
+        internal CheckBox CbEnableDeviceNameSanitation;
+        internal CheckBox CbEnableStateNotifications;
+        private Label LblInfo6;
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using HASS.Agent.Properties;
 using HASS.Agent.Resources.Localization;
-using HASS.Agent.Shared.Functions;
+using HASS.Agent.Shared.Managers;
 using Syncfusion.Windows.Forms;
 using HelperFunctions = HASS.Agent.Functions.HelperFunctions;
 using Task = System.Threading.Tasks.Task;

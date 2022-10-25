@@ -26,6 +26,13 @@ namespace HASS.Agent.Sensors
         /// </summary>
         internal static async void Initialize()
         {
+            // is mqtt enabled?
+            if (!Variables.AppSettings.MqttEnabled)
+            {
+                Variables.MainForm?.SetSensorsStatus(ComponentStatus.Stopped);
+                return;
+            }
+
             // wait while mqtt's connecting
             while (Variables.MqttManager.GetStatus() == MqttStatus.Connecting) await Task.Delay(250);
 
@@ -355,6 +362,22 @@ namespace HASS.Agent.Sensors
 
             // =================================
 
+            sensorInfoCard = new SensorInfoCard(SensorType.BluetoothDevicesSensor,
+                Languages.SensorsManager_BluetoothDevicesSensorDescription,
+                30, false, true, false);
+
+            SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
+
+            // =================================
+
+            sensorInfoCard = new SensorInfoCard(SensorType.BluetoothLeDevicesSensor,
+                Languages.SensorsManager_BluetoothLeDevicesSensorDescription,
+                30, false, true, false);
+
+            SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
+
+            // =================================
+
             sensorInfoCard = new SensorInfoCard(SensorType.CpuLoadSensor,
                 Languages.SensorsManager_CpuLoadSensorDescription,
                 30, false, true, true);
@@ -396,7 +419,7 @@ namespace HASS.Agent.Sensors
             // =================================
 
             sensorInfoCard = new SensorInfoCard(SensorType.GeoLocationSensor,
-                "Returns your current latitude, longitude and altitude as a comma-seperated value.\r\n\r\nMake sure Windows' location services are enabled!\r\n\r\nDepending on your Windows version, this can be found in the new control panel -> 'privacy and security' -> 'location'.",
+                Languages.SensorsManager_GeoLocationSensorDescription,
                 30, false, true, false);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
@@ -469,7 +492,23 @@ namespace HASS.Agent.Sensors
 
             sensorInfoCard = new SensorInfoCard(SensorType.MicrophoneActiveSensor,
                 Languages.SensorsManager_MicrophoneActiveSensorDescription,
-                10, false, true, false);
+                10, false, true, true);
+
+            SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
+
+            // =================================
+
+            sensorInfoCard = new SensorInfoCard(SensorType.MicrophoneProcessSensor,
+                Languages.SensorsManager_MicrophoneProcessSensorDescription,
+                10, false, true, true);
+
+            SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
+
+            // =================================
+
+            sensorInfoCard = new SensorInfoCard(SensorType.MonitorPowerStateSensor,
+                Languages.SensorsManager_MonitorPowerStateSensorDescription,
+                3, false, true, false);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
 
@@ -494,6 +533,22 @@ namespace HASS.Agent.Sensors
             sensorInfoCard = new SensorInfoCard(SensorType.PerformanceCounterSensor,
                 Languages.SensorsManager_PerformanceCounterSensorDescription,
                 30, false, true, true);
+
+            SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
+
+            // =================================
+
+            sensorInfoCard = new SensorInfoCard(SensorType.PowershellSensor,
+                Languages.SensorsManager_PowershellSensorDescription,
+                30, false, true, true);
+
+            SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
+
+            // =================================
+
+            sensorInfoCard = new SensorInfoCard(SensorType.PrintersSensors,
+                Languages.SensorsManager_PrintersSensorsDescription,
+                5, true, true, false);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
 
@@ -541,13 +596,28 @@ namespace HASS.Agent.Sensors
 
             sensorInfoCard = new SensorInfoCard(SensorType.WebcamActiveSensor,
                 Languages.SensorsManager_WebcamActiveSensorDescription,
+                10, false, true, true);
+
+            SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
+
+            // =================================
+
+            sensorInfoCard = new SensorInfoCard(SensorType.WebcamProcessSensor,
+                Languages.SensorsManager_WebcamProcessSensorDescription,
+                10, false, true, true);
+
+            SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
+
+            // =================================
+
+            sensorInfoCard = new SensorInfoCard(SensorType.WindowStateSensor,
+                Languages.SensorsManager_WindowStateSensorDescription,
                 10, false, true, false);
 
             SensorInfoCards.Add(sensorInfoCard.SensorType, sensorInfoCard);
 
             // =================================
 
-            // Provides a sensor with the amount of pending driver updates, a sensor with the amount of pending software updates, a sensor containing all pending driver updates information (title, kb article id's, hidden, type and categories) and a sensor containing the same for pending software updates.\r\n\r\nThis is a costly request, so the recommended interval is 15 minutes (900 seconds). But it's capped at 10 minutes, if you provide a lower value, you'll get the last known list.
             sensorInfoCard = new SensorInfoCard(SensorType.WindowsUpdatesSensors,
                 Languages.SensorsManager_WindowsUpdatesSensorsDescription,
                 900, true, true, true);

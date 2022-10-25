@@ -24,6 +24,13 @@ namespace HASS.Agent.Commands
         /// </summary>
         internal static async void Initialize()
         {
+            // is mqtt enabled?
+            if (!Variables.AppSettings.MqttEnabled)
+            {
+                Variables.MainForm?.SetCommandsStatus(ComponentStatus.Stopped);
+                return;
+            }
+
             // wait while mqtt's connecting
             while (Variables.MqttManager.GetStatus() == MqttStatus.Connecting) await Task.Delay(250);
 
@@ -390,6 +397,22 @@ namespace HASS.Agent.Commands
 
             // =================================
 
+            commandInfoCard = new CommandInfoCard(CommandType.MonitorSleepCommand,
+                Languages.CommandsManager_MonitorSleepCommandDescription,
+                true, false, false);
+
+            CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
+
+            // =================================
+
+            commandInfoCard = new CommandInfoCard(CommandType.MonitorWakeCommand,
+                Languages.CommandsManager_MonitorWakeCommandDescription,
+                true, false, false);
+
+            CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
+
+            // =================================
+
             commandInfoCard = new CommandInfoCard(CommandType.MultipleKeysCommand,
                 Languages.CommandsManager_MultipleKeysCommandDescription,
                 true, false, false);
@@ -425,6 +448,14 @@ namespace HASS.Agent.Commands
             commandInfoCard = new CommandInfoCard(CommandType.SendWindowToFrontCommand,
                 Languages.CommandsManager_CommandsManager_SendWindowToFrontCommandDescription,
                 true, false, true);
+
+            CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
+
+            // =================================
+
+            commandInfoCard = new CommandInfoCard(CommandType.SetVolumeCommand,
+                Languages.CommandsManager_SetVolumeCommandDescription,
+                true, true, true);
 
             CommandInfoCards.Add(commandInfoCard.CommandType, commandInfoCard);
 

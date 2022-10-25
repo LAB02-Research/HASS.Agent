@@ -1,4 +1,4 @@
-﻿using HASS.Agent.Shared.Functions;
+﻿using HASS.Agent.Shared.Managers;
 using Newtonsoft.Json;
 using Serilog;
 
@@ -14,7 +14,7 @@ namespace HASS.Agent.Managers
         {
             try
             {
-                await CommandLineManager.ExecuteCommandAsync("netsh", "advfirewall firewall delete rule name=\"HASS.Agent Notifier\"");
+                await CommandLineManager.ExecuteCommandAsync("netsh", "advfirewall firewall delete rule name=\"HASS.Agent Local API\"");
                 return true;
             }
             catch (Exception ex)
@@ -34,7 +34,7 @@ namespace HASS.Agent.Managers
             try
             {
                 // add the rule
-                var consoleResult = await CommandLineManager.ExecuteCommandAsync("netsh", $"advfirewall firewall add rule name=\"HASS.Agent Notifier\" dir=in action=allow protocol=TCP localport={port}");
+                var consoleResult = await CommandLineManager.ExecuteCommandAsync("netsh", $"advfirewall firewall add rule name=\"HASS.Agent Local API\" dir=in action=allow protocol=TCP localport={port}");
 
                 // error'd?
                 if (consoleResult.Error)

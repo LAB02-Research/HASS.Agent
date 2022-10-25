@@ -1,9 +1,11 @@
-﻿using Grapevine;
+﻿using System.Text.Json;
+using Grapevine;
 using HASS.Agent.Enums;
 using HASS.Agent.Extensions;
 using HASS.Agent.Managers;
 using HASS.Agent.Media;
 using HASS.Agent.Models.HomeAssistant;
+using HASS.Agent.MQTT;
 using Serilog;
 using HttpMethod = System.Net.Http.HttpMethod;
 
@@ -14,6 +16,26 @@ namespace HASS.Agent.API
     /// </summary>
     public class ApiEndpoints : ApiDeserialization
     {
+        /// <summary>
+        /// Info routes, provides device info on /info
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static async Task DeviceInfoRoute(IHttpContext context)
+        {
+            context.Response.ContentType = "application/json";
+            await context.Response.SendResponseAsync(JsonSerializer.Serialize(new
+            {
+                serial_number = Variables.SerialNumber,
+                device = Variables.DeviceConfig,
+                apis = new
+                {
+                    notifications = Variables.AppSettings.NotificationsEnabled,
+                    media_player = Variables.AppSettings.MediaPlayerEnabled
+                }
+            }, MqttManager.JsonSerializerOptions));
+        }
+        
         /// <summary>
         /// Notification route, handles all incoming notifications on '/notify'
         /// </summary>

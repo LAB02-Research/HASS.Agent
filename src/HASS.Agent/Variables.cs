@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.IO;
+using System.Net.Http;
 using System.Reflection;
 using Windows.Media.Playback;
 using CoreAudio;
@@ -11,11 +13,13 @@ using HASS.Agent.Models.Config;
 using HASS.Agent.Models.Internal;
 using HASS.Agent.MQTT;
 using HASS.Agent.Service;
+using HASS.Agent.Settings;
 using HASS.Agent.Shared.HomeAssistant;
 using HASS.Agent.Shared.HomeAssistant.Commands;
 using HASS.Agent.Shared.HomeAssistant.Sensors;
 using HASS.Agent.Shared.Models.HomeAssistant;
 using HASS.Agent.Shared.Mqtt;
+using Microsoft.Win32;
 using MQTTnet;
 using WK.Libraries.HotkeyListenerNS;
 
@@ -34,9 +38,14 @@ namespace HASS.Agent
         public static bool Beta { get; } = Version.Contains('b');
 
         /// <summary>
+        /// Device info
+        /// </summary>
+        public static string SerialNumber { get; } = SettingsManager.DeviceSerialNumber();
+
+        /// <summary>
         /// Constants
         /// </summary>
-        internal const string SyncfusionLicense = "NjMwOTQxQDMyMzAyZTMxMmUzMEdCeXVEL2FGOUZvTHdTOTRTakxMbHZoRm9iRFBVMGNpZVBYOFlwdEhIVnc9";
+        internal const string SyncfusionLicense = "Njk2MzAzQDMyMzAyZTMyMmUzMG4ybzIwL0FOZEtkSk5sQXRQS0tLeWdmQWY2TUJRRjgvSFlhREkvdXk5c3M9";
         internal const string RootRegKey = @"HKEY_CURRENT_USER\SOFTWARE\LAB02Research\HASSAgent";
         internal const string CertificateHash = "E4C76406BD0AC3937014764596B1697E4EB4A953";
         
@@ -108,8 +117,8 @@ namespace HASS.Agent
         /// <summary>
         /// Media
         /// </summary>
-        internal static MMDeviceEnumerator AudioDeviceEnumerator { get; } = new();
-        internal static MediaPlayer MediaPlayer { get; } = new();
+        internal static MMDeviceEnumerator AudioDeviceEnumerator { get; set; }
+        internal static MediaPlayer MediaPlayer { get; set; }
 
         /// <summary>
         /// Config

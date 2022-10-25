@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.IO;
 using HASS.Agent.Enums;
 using HASS.Agent.Functions;
 using HASS.Agent.Models.Internal;

@@ -48,6 +48,12 @@ namespace HASS.Agent.Controls.Service
         }
 
         /// <summary>
+        /// Sets a new devicename
+        /// </summary>
+        /// <param name="deviceName"></param>
+        public void SetDeviceName(string deviceName) => _deviceName = deviceName;
+
+        /// <summary>
         /// Reload the commands
         /// </summary>
         private void UpdateCommandsList()

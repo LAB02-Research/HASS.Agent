@@ -29,7 +29,7 @@ namespace HASS.Agent.HomeAssistant.Commands.InternalCommands
 
             if (string.IsNullOrWhiteSpace(_webViewInfo.Url))
             {
-                Log.Warning("[COMMAND] Unable to launch webview '{name}', it's configured as action-only", Name);
+                Log.Error("[WEBVIEW] [{name}] Unable to launch webview, it's configured as action-only", Name);
 
                 State = "OFF";
                 return;
@@ -44,8 +44,16 @@ namespace HASS.Agent.HomeAssistant.Commands.InternalCommands
         {
             State = "ON";
 
+            if (string.IsNullOrWhiteSpace(action) && string.IsNullOrWhiteSpace(_webViewInfo.Url))
+            {
+                Log.Error("[WEBVIEW] [{name}] Unable to launch URL, it's configured as action-only but no URL is provided", Name);
+
+                State = "OFF";
+                return;
+            }
+
             // prepare url
-            var url = string.IsNullOrWhiteSpace(_webViewInfo.Url) ? _webViewInfo.Url : $"{_webViewInfo.Url} {action}";
+            var url = string.IsNullOrWhiteSpace(_webViewInfo.Url) ? action : $"{_webViewInfo.Url} {action}";
 
             HelperFunctions.LaunchWebView(_webViewInfo, url);
 

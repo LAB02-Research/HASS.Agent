@@ -1,15 +1,24 @@
 ﻿namespace HASS.Agent.Models.HomeAssistant
 {
+    public class NotificationAction
+    {
+        public string Action { get; set; }
+        public string Title { get; set; }
+    }
+
+    public class NotificationData
+    {
+        public int Duration { get; set; } = 0;
+        public string Image { get; set; }
+
+        public List<NotificationAction> Actions { get; set; } = new();
+    }
+    
     public class Notification
     {
-        public Notification()
-        {
-            //
-        }
-
         public string Message { get; set; }
         public string Title { get; set; }
-        public string Image { get; set; }
-        public int Duration { get; set; } = 0;
+
+        public NotificationData Data { get; set; }
     }
 }

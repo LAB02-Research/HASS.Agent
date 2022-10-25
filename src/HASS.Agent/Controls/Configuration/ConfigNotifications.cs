@@ -43,7 +43,7 @@ namespace HASS.Agent.Controls.Configuration
 
         private void ConfigNotifications_Load(object sender, EventArgs e)
         {
-            LblLocalApiDisabled.Visible = !Variables.AppSettings.LocalApiEnabled;
+            LblConnectivityDisabled.Visible = !Variables.AppSettings.LocalApiEnabled && !Variables.AppSettings.MqttEnabled;
         }
     }
 }

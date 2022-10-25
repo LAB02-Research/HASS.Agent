@@ -4,8 +4,7 @@ using HASS.Agent.Shared.Models.HomeAssistant;
 namespace HASS.Agent.HomeAssistant.Sensors.GeneralSensors.SingleValue
 {
     /// <summary>
-    /// Sensor containing the moment the system last booted
-    /// <para>Note: value can be incorrect when fastboot is enabled</para>
+    /// Sensor containing the coördinates of the device
     /// </summary>
     public class GeoLocationSensor : AbstractSingleValueSensor
     {
@@ -41,5 +40,7 @@ namespace HASS.Agent.HomeAssistant.Sensors.GeneralSensors.SingleValue
 
             return $"{lat},{lon},{alt}";
         }
+
+        public override string GetAttributes() => string.Empty;
     }
 }

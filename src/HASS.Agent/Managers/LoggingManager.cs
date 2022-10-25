@@ -1,4 +1,6 @@
-﻿using System.Net;
+﻿using System.IO;
+using System.Net;
+using System.Net.Http;
 using System.Net.Sockets;
 using System.Runtime.ExceptionServices;
 using MQTTnet.Exceptions;
@@ -30,6 +32,8 @@ namespace HASS.Agent.Managers
                         buffered: true,
                         flushToDiskInterval: TimeSpan.FromMilliseconds(150)))
                 .CreateLogger();
+
+            Log.Information("[MAIN] HASS.Agent version: {version}", Variables.Version);
         }
 
         /// <summary>

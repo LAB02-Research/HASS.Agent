@@ -19,7 +19,7 @@ namespace HASS.Agent.Media
             try
             {
                 // get the default audio device
-                using var audioDevice = Variables.AudioDeviceEnumerator.GetDefaultAudioEndpoint(EDataFlow.eRender, ERole.eMultimedia);
+                using var audioDevice = Variables.AudioDeviceEnumerator.GetDefaultAudioEndpoint(DataFlow.eRender, Role.Multimedia);
 
                 // get default device volume
                 var volume = (int)(audioDevice.AudioEndpointVolume?.MasterVolumeLevelScalar * 100 ?? 0);
@@ -45,7 +45,7 @@ namespace HASS.Agent.Media
             try
             {
                 // get the default audio device
-                using var audioDevice = Variables.AudioDeviceEnumerator.GetDefaultAudioEndpoint(EDataFlow.eRender, ERole.eMultimedia);
+                using var audioDevice = Variables.AudioDeviceEnumerator.GetDefaultAudioEndpoint(DataFlow.eRender, Role.Multimedia);
 
                 // get mute state
                 var muted = audioDevice.AudioEndpointVolume?.Mute ?? false;

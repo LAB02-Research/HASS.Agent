@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 using Windows.Foundation.Metadata;
 
 namespace HASS.Agent.Enums
@@ -37,5 +32,11 @@ namespace HASS.Agent.Enums
 
         [EnumMember(Value = "previous")]
         Previous,
+        
+        [EnumMember(Value = "play_media")]
+        PlayMedia,
+        
+        [EnumMember(Value = "seek")]
+        Seek
     }
 }

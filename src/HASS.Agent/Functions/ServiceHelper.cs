@@ -7,12 +7,16 @@ using System.Runtime.InteropServices;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Shared.Functions;
 using Serilog;
+#pragma warning disable CS0169
 
 namespace HASS.Agent.Functions
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
+    [SuppressMessage("ReSharper", "UnusedMember.Local")]
+    [SuppressMessage("ReSharper", "FieldCanBeMadeReadOnly.Local")]
     internal static class ServiceHelper
     {
         private const uint SERVICE_NO_CHANGE = 0xFFFFFFFF;
@@ -116,7 +120,7 @@ namespace HASS.Agent.Functions
                 if (hManager == IntPtr.Zero)
                 {
                     Log.Error("[SERVICE] Error while setting startup mode: opening servicemanager returned a zero pointer");
-                    error = "unable to open servicemanager";
+                    error = Languages.ServiceHelper_ChangeStartMode_Error1;
                     return false;
                 }
 
@@ -125,7 +129,7 @@ namespace HASS.Agent.Functions
                 if (hService == IntPtr.Zero)
                 {
                     Log.Error("[SERVICE] Error while setting startup mode: opening service returned a zero pointer");
-                    error = "unable to open service";
+                    error = Languages.ServiceHelper_ChangeStartMode_Error2;
                     return false;
                 }
 
@@ -140,7 +144,7 @@ namespace HASS.Agent.Functions
                     var win32Exception = new Win32Exception(nError);
 
                     Log.Fatal(win32Exception, "[SERVICE] Win32 error while setting startup mode: {err}", win32Exception.Message);
-                    error = "error configuring startup mode, check logs";
+                    error = Languages.ServiceHelper_ChangeStartMode_Error3;
                     return false;
                 }
 
@@ -150,7 +154,7 @@ namespace HASS.Agent.Functions
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SERVICE] Error while setting startup mode: {err}", ex.Message);
-                error = "error setting startup mode, check logs";
+                error = Languages.ServiceHelper_ChangeStartMode_Error4;
                 return false;
             }
             finally

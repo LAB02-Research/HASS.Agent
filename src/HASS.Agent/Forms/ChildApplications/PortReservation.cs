@@ -29,7 +29,7 @@ namespace HASS.Agent.Forms.ChildApplications
 
             // give the ui time to load
             await Task.Delay(TimeSpan.FromSeconds(2));
-            
+
             // execute port reservation
             var portDone = await ProcessPortReservationAsync();
             PbStep1PortBinding.Image = portDone ? Properties.Resources.done_32 : Properties.Resources.failed_32;
@@ -53,9 +53,9 @@ namespace HASS.Agent.Forms.ChildApplications
             // done, close
             Environment.Exit(portDone ? 0 : -1);
         }
-        
+
         /// <summary>
-        /// Processes port reservation for the notifier API
+        /// Processes port reservation for the local API
         /// </summary>
         /// <returns></returns>
         private async Task<bool> ProcessPortReservationAsync()
@@ -65,12 +65,16 @@ namespace HASS.Agent.Forms.ChildApplications
                 // set busy indicator
                 PbStep1PortBinding.Image = Properties.Resources.small_loader_32;
 
-                // is the notifier enabled?
-                if (!Variables.AppSettings.NotificationsEnabled) return true;
+                // is the local api enabled?
+                if (!Variables.AppSettings.LocalApiEnabled) return true;
 
-                // yep, set it at the configured port
-                var portReserved = await Task.Run(async () => await ApiManager.ExecutePortReservationAsync(Variables.AppSettings.NotifierApiPort));
-                if (!portReserved) Log.Error("[PORTRESERVATION] Unable to execute port reservation, notifier api might fail");
+                // yep, first remove the current reservation
+                // note: we're not handling failed, it'll be logged for reference if reservation fails as well
+                await Task.Run(async () => await ApiManager.RemovePortReservationAsync(Variables.AppSettings.LocalApiPort));
+
+                // set the configured port
+                var portReserved = await Task.Run(async () => await ApiManager.ExecutePortReservationAsync(Variables.AppSettings.LocalApiPort));
+                if (!portReserved) Log.Error("[PORTRESERVATION] Unable to execute port reservation, local api might fail");
                 else Log.Information("[PORTRESERVATION] Port reservation completed");
 
                 // done
@@ -97,12 +101,12 @@ namespace HASS.Agent.Forms.ChildApplications
                 // remove any existing rules (ignore result)
                 await FirewallManager.RemoveRule();
 
-                // is the notifier enabled?
-                if (!Variables.AppSettings.NotificationsEnabled) return true;
+                // is the local api enabled?
+                if (!Variables.AppSettings.LocalApiEnabled) return true;
 
                 // yep, add a rule for the port
-                var portReserved = await Task.Run(async () => await FirewallManager.CreateRule(Variables.AppSettings.NotifierApiPort));
-                if (!portReserved) Log.Error("[PORTRESERVATION] Unable to create firewall rule, notifier api might not receive connections");
+                var portReserved = await Task.Run(async () => await FirewallManager.CreateRule(Variables.AppSettings.LocalApiPort));
+                if (!portReserved) Log.Error("[PORTRESERVATION] Unable to create firewall rule, local api might not receive connections");
                 else Log.Information("[PORTRESERVATION] Firewall rule created");
 
                 // done

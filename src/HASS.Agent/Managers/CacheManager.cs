@@ -1,4 +1,5 @@
-﻿using HASS.Agent.Settings;
+﻿using System.IO;
+using HASS.Agent.Settings;
 using Serilog;
 
 namespace HASS.Agent.Managers

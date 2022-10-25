@@ -34,10 +34,7 @@ namespace HASS.Agent.Forms.ChildApplications
             this.LblInfo1 = new System.Windows.Forms.Label();
             this.PbStep1InstallSatelliteService = new System.Windows.Forms.PictureBox();
             this.LblTask1 = new System.Windows.Forms.Label();
-            this.LblTask2 = new System.Windows.Forms.Label();
-            this.PbStep2PortBinding = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PbStep1InstallSatelliteService)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PbStep2PortBinding)).BeginInit();
             this.SuspendLayout();
             // 
             // LblInfo1
@@ -58,8 +55,8 @@ namespace HASS.Agent.Forms.ChildApplications
             this.PbStep1InstallSatelliteService.AccessibleDescription = "Step one status visualisation.";
             this.PbStep1InstallSatelliteService.AccessibleName = "Step one status";
             this.PbStep1InstallSatelliteService.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
-            this.PbStep1InstallSatelliteService.Image = global::HASS.Agent.Properties.Resources.todo_32;
-            this.PbStep1InstallSatelliteService.Location = new System.Drawing.Point(195, 121);
+            this.PbStep1InstallSatelliteService.Image = ((System.Drawing.Image)(resources.GetObject("PbStep1InstallSatelliteService.Image")));
+            this.PbStep1InstallSatelliteService.Location = new System.Drawing.Point(195, 140);
             this.PbStep1InstallSatelliteService.Name = "PbStep1InstallSatelliteService";
             this.PbStep1InstallSatelliteService.Size = new System.Drawing.Size(32, 32);
             this.PbStep1InstallSatelliteService.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -73,37 +70,11 @@ namespace HASS.Agent.Forms.ChildApplications
             this.LblTask1.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblTask1.AutoSize = true;
             this.LblTask1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblTask1.Location = new System.Drawing.Point(245, 127);
+            this.LblTask1.Location = new System.Drawing.Point(245, 146);
             this.LblTask1.Name = "LblTask1";
             this.LblTask1.Size = new System.Drawing.Size(178, 19);
             this.LblTask1.TabIndex = 55;
             this.LblTask1.Text = Languages.PostUpdate_LblTask1;
-            // 
-            // LblTask2
-            // 
-            this.LblTask2.AccessibleDescription = "Step two description.";
-            this.LblTask2.AccessibleName = "Step two description";
-            this.LblTask2.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
-            this.LblTask2.AutoSize = true;
-            this.LblTask2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblTask2.Location = new System.Drawing.Point(245, 194);
-            this.LblTask2.Name = "LblTask2";
-            this.LblTask2.Size = new System.Drawing.Size(154, 19);
-            this.LblTask2.TabIndex = 57;
-            this.LblTask2.Text = Languages.PostUpdate_LblTask2;
-            // 
-            // PbStep2PortBinding
-            // 
-            this.PbStep2PortBinding.AccessibleDescription = "Step two status visualisation.";
-            this.PbStep2PortBinding.AccessibleName = "Step one status";
-            this.PbStep2PortBinding.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
-            this.PbStep2PortBinding.Image = global::HASS.Agent.Properties.Resources.todo_32;
-            this.PbStep2PortBinding.Location = new System.Drawing.Point(195, 187);
-            this.PbStep2PortBinding.Name = "PbStep2PortBinding";
-            this.PbStep2PortBinding.Size = new System.Drawing.Size(32, 32);
-            this.PbStep2PortBinding.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.PbStep2PortBinding.TabIndex = 56;
-            this.PbStep2PortBinding.TabStop = false;
             // 
             // PostUpdate
             // 
@@ -117,8 +88,6 @@ namespace HASS.Agent.Forms.ChildApplications
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(619, 284);
-            this.Controls.Add(this.LblTask2);
-            this.Controls.Add(this.PbStep2PortBinding);
             this.Controls.Add(this.LblTask1);
             this.Controls.Add(this.PbStep1InstallSatelliteService);
             this.Controls.Add(this.LblInfo1);
@@ -132,11 +101,10 @@ namespace HASS.Agent.Forms.ChildApplications
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = Languages.PostUpdate_Title;
+            this.Text = Languages.PostUpdate_PostUpdate;
             this.Load += new System.EventHandler(this.PostUpdate_Load);
             this.ResizeEnd += new System.EventHandler(this.PostUpdate_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.PbStep1InstallSatelliteService)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PbStep2PortBinding)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,8 +114,6 @@ namespace HASS.Agent.Forms.ChildApplications
         private System.Windows.Forms.Label LblInfo1;
         private System.Windows.Forms.PictureBox PbStep1InstallSatelliteService;
         private System.Windows.Forms.Label LblTask1;
-        private System.Windows.Forms.Label LblTask2;
-        private System.Windows.Forms.PictureBox PbStep2PortBinding;
     }
 }
 

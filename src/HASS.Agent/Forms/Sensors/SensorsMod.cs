@@ -8,6 +8,7 @@ using HASS.Agent.Shared.Enums;
 using HASS.Agent.Shared.Extensions;
 using HASS.Agent.Shared.Models.Config;
 using Serilog;
+using HASS.Agent.Shared.Functions;
 
 namespace HASS.Agent.Forms.Sensors
 {
@@ -166,8 +167,16 @@ namespace HASS.Agent.Forms.Sensors
                     TbSetting1.Text = Sensor.Query;
                     break;
 
+                case SensorType.PowershellSensor:
+                    TbSetting1.Text = Sensor.Query;
+                    break;
+
                 case SensorType.NetworkSensors:
                     if (_networkCards.ContainsKey(Sensor.Query)) CbNetworkCard.SelectedItem = new KeyValuePair<string, string>(Sensor.Query, _networkCards[Sensor.Query]);
+                    break;
+
+                case SensorType.WindowStateSensor:
+                    TbSetting1.Text = Sensor.Query;
                     break;
             }
         }
@@ -234,7 +243,7 @@ namespace HASS.Agent.Forms.Sensors
                     break;
 
                 case SensorType.ProcessActiveSensor:
-                    SetProcessActiveGui();
+                    SetProcessGui();
                     break;
 
                 case SensorType.ServiceStateSensor:
@@ -243,6 +252,14 @@ namespace HASS.Agent.Forms.Sensors
 
                 case SensorType.NetworkSensors:
                     SetNetworkGui();
+                    break;
+
+                case SensorType.PowershellSensor:
+                    SetPowershellGui();
+                    break;
+
+                case SensorType.WindowStateSensor:
+                    SetProcessGui();
                     break;
 
                 default:
@@ -293,6 +310,24 @@ namespace HASS.Agent.Forms.Sensors
         }
 
         /// <summary>
+        /// Change the UI to a 'powershell command' type
+        /// </summary>
+        private void SetPowershellGui()
+        {
+            Invoke(new MethodInvoker(delegate
+            {
+                SetEmptyGui();
+
+                LblSetting1.Text = Languages.SensorsMod_LblSetting1_Powershell;
+                LblSetting1.Visible = true;
+                TbSetting1.Visible = true;
+
+                BtnTest.Text = Languages.SensorsMod_SensorsMod_BtnTest_Powershell;
+                BtnTest.Visible = true;
+            }));
+        }
+
+        /// <summary>
         /// Change the UI to a 'performance counter' type
         /// </summary>
         private void SetPerformanceCounterGui()
@@ -324,7 +359,7 @@ namespace HASS.Agent.Forms.Sensors
         /// <summary>
         /// Change the UI to a 'process active' type
         /// </summary>
-        private void SetProcessActiveGui()
+        private void SetProcessGui()
         {
             Invoke(new MethodInvoker(delegate
             {
@@ -436,6 +471,21 @@ namespace HASS.Agent.Forms.Sensors
                 MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = TbName;
                 return;
+            }
+
+            // name contains illegal chars?
+            var sanitized = SharedHelperFunctions.GetSafeValue(name);
+            if (sanitized != name)
+            {
+                var confirmSanitize = MessageBoxAdv.Show(string.Format(Languages.SensorsMod_MessageBox_Sanitize, sanitized), Variables.MessageBoxTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (confirmSanitize != DialogResult.OK)
+                {
+                    ActiveControl = TbName;
+                    return;
+                }
+
+                TbName.Text = sanitized;
+                name = sanitized;
             }
 
             // name already used?
@@ -555,6 +605,21 @@ namespace HASS.Agent.Forms.Sensors
                         Sensor.Query = item.Key;
                     }
                     break;
+
+                case SensorType.PowershellSensor:
+                    Sensor.Query = TbSetting1.Text.Trim();
+                    break;
+
+                case SensorType.WindowStateSensor:
+                    var windowprocess = TbSetting1.Text.Trim();
+                    if (string.IsNullOrEmpty(windowprocess))
+                    {
+                        MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox10, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ActiveControl = TbSetting1;
+                        return;
+                    }
+                    Sensor.Query = windowprocess;
+                    break;
             }
 
             // set values
@@ -661,6 +726,10 @@ namespace HASS.Agent.Forms.Sensors
                 case SensorType.PerformanceCounterSensor:
                     TestPerformanceCounter();
                     break;
+
+                case SensorType.PowershellSensor:
+                    TestPowershell();
+                    break;
             }
         }
 
@@ -738,6 +807,38 @@ namespace HASS.Agent.Forms.Sensors
 
             // failed
             var q = MessageBoxAdv.Show(string.Format(Languages.SensorsMod_TestPerformanceCounter_MessageBox3, result.ErrorReason), Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            if (q != DialogResult.Yes) return;
+
+            // open logs
+            HelperFunctions.OpenLocalFolder(Variables.LogPath);
+        }
+
+        private async void TestPowershell()
+        {
+            // prepare values
+            var command = TbSetting1.Text.Trim();
+
+            if (string.IsNullOrEmpty(command))
+            {
+                MessageBoxAdv.Show(Languages.SensorsMod_TestPowershell_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            BtnTest.Enabled = false;
+
+            // execute the test
+            var result = await Task.Run((() => SensorTester.TestPowershell(command)));
+
+            BtnTest.Enabled = true;
+
+            if (result.Succesful)
+            {
+                MessageBoxAdv.Show(string.Format(Languages.SensorsMod_TestPowershell_MessageBox2, result.ReturnValue), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // failed
+            var q = MessageBoxAdv.Show(string.Format(Languages.SensorsMod_TestPowershell_MessageBox3, result.ErrorReason), Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             if (q != DialogResult.Yes) return;
 
             // open logs

@@ -43,6 +43,7 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnWebViewReset = new Syncfusion.WinForms.Controls.SfButton();
             this.CbWebViewKeepLoaded = new System.Windows.Forms.CheckBox();
             this.LblInfo2 = new System.Windows.Forms.Label();
+            this.CbWebViewShowMenuOnLeftClick = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.NumWebViewWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumWebViewHeight)).BeginInit();
             this.SuspendLayout();
@@ -240,6 +241,7 @@ namespace HASS.Agent.Controls.Configuration
             this.BtnWebViewReset.AccessibleName = "Reset webview";
             this.BtnWebViewReset.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnWebViewReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BtnWebViewReset.Enabled = false;
             this.BtnWebViewReset.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnWebViewReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnWebViewReset.ImageSize = new System.Drawing.Size(24, 24);
@@ -268,6 +270,7 @@ namespace HASS.Agent.Controls.Configuration
             this.CbWebViewKeepLoaded.AutoSize = true;
             this.CbWebViewKeepLoaded.Checked = true;
             this.CbWebViewKeepLoaded.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CbWebViewKeepLoaded.Enabled = false;
             this.CbWebViewKeepLoaded.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CbWebViewKeepLoaded.Location = new System.Drawing.Point(90, 405);
             this.CbWebViewKeepLoaded.Name = "CbWebViewKeepLoaded";
@@ -282,12 +285,28 @@ namespace HASS.Agent.Controls.Configuration
             this.LblInfo2.AccessibleName = "Background loading info";
             this.LblInfo2.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblInfo2.AutoSize = true;
+            this.LblInfo2.Enabled = false;
             this.LblInfo2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblInfo2.Location = new System.Drawing.Point(107, 435);
             this.LblInfo2.Name = "LblInfo2";
             this.LblInfo2.Size = new System.Drawing.Size(320, 19);
             this.LblInfo2.TabIndex = 76;
             this.LblInfo2.Text = Languages.ConfigTrayIcon_LblInfo2;
+            // 
+            // CbWebViewShowMenuOnLeftClick
+            // 
+            this.CbWebViewShowMenuOnLeftClick.AccessibleDescription = "If enabled, left clicking the system tray icon will show the default menu.";
+            this.CbWebViewShowMenuOnLeftClick.AccessibleName = "Show default menu on left click";
+            this.CbWebViewShowMenuOnLeftClick.AccessibleRole = System.Windows.Forms.AccessibleRole.CheckButton;
+            this.CbWebViewShowMenuOnLeftClick.AutoSize = true;
+            this.CbWebViewShowMenuOnLeftClick.Enabled = false;
+            this.CbWebViewShowMenuOnLeftClick.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CbWebViewShowMenuOnLeftClick.Location = new System.Drawing.Point(90, 487);
+            this.CbWebViewShowMenuOnLeftClick.Name = "CbWebViewShowMenuOnLeftClick";
+            this.CbWebViewShowMenuOnLeftClick.Size = new System.Drawing.Size(304, 23);
+            this.CbWebViewShowMenuOnLeftClick.TabIndex = 77;
+            this.CbWebViewShowMenuOnLeftClick.Text = Languages.ConfigTrayIcon_CbWebViewShowMenuOnLeftClick;
+            this.CbWebViewShowMenuOnLeftClick.UseVisualStyleBackColor = true;
             // 
             // ConfigTrayIcon
             // 
@@ -297,6 +316,7 @@ namespace HASS.Agent.Controls.Configuration
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.Controls.Add(this.CbWebViewShowMenuOnLeftClick);
             this.Controls.Add(this.LblInfo2);
             this.Controls.Add(this.CbWebViewKeepLoaded);
             this.Controls.Add(this.BtnWebViewReset);
@@ -336,5 +356,6 @@ namespace HASS.Agent.Controls.Configuration
         internal Syncfusion.WinForms.Controls.SfButton BtnWebViewReset;
         internal CheckBox CbWebViewKeepLoaded;
         internal Label LblInfo2;
+        internal CheckBox CbWebViewShowMenuOnLeftClick;
     }
 }

@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
@@ -13,55 +14,22 @@ using HASS.Agent.API;
 using HASS.Agent.Commands;
 using HASS.Agent.Enums;
 using HASS.Agent.Forms;
+using HASS.Agent.Managers;
 using HASS.Agent.Models.Internal;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Sensors;
+using HASS.Agent.Shared;
 using HASS.Agent.Shared.Functions;
 using Serilog;
 using Syncfusion.Windows.Forms;
 using Task = System.Threading.Tasks.Task;
 using MediaManager = HASS.Agent.Media.MediaManager;
+using HASS.Agent.Shared.Managers;
 
 namespace HASS.Agent.Functions
 {
     internal static class HelperFunctions
     {
-        [DllImport("advapi32.dll", SetLastError = true)]
-        private static extern bool OpenProcessToken(IntPtr processHandle, uint desiredAccess, out IntPtr tokenHandle);
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool CloseHandle(IntPtr hObject);
-
-        private delegate bool EnumWindowsProc(IntPtr hWnd, int lParam);
-
-        [DllImport("USER32.DLL")]
-        private static extern bool EnumWindows(EnumWindowsProc enumFunc, int lParam);
-
-        [DllImport("USER32.DLL")]
-        private static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
-
-        [DllImport("USER32.DLL")]
-        private static extern int GetWindowTextLength(IntPtr hWnd);
-
-        [DllImport("USER32.DLL")]
-        private static extern bool IsWindowVisible(IntPtr hWnd);
-
-        [DllImport("USER32.DLL")]
-        private static extern IntPtr GetShellWindow();
-
-        [DllImport("gdi32.dll")]
-        private static extern int GetDeviceCaps(IntPtr hdc, int nIndex);
-        [SuppressMessage("ReSharper", "InconsistentNaming")]
-        private enum DeviceCap
-        {
-            VERTRES = 10,
-            DESKTOPVERTRES = 117,
-            LOGPIXELSY = 90
-
-            // http://pinvoke.net/default.aspx/gdi32/GetDeviceCaps.html
-        }
-
         private static bool _shutdownCalled = false;
 
         /// <summary>
@@ -105,9 +73,9 @@ namespace HASS.Agent.Functions
                 var desktop = g.GetHdc();
 
                 // get size variables
-                var logicalScreenHeight = GetDeviceCaps(desktop, (int)DeviceCap.VERTRES);
-                var physicalScreenHeight = GetDeviceCaps(desktop, (int)DeviceCap.DESKTOPVERTRES);
-                var logpixelsy = GetDeviceCaps(desktop, (int)DeviceCap.LOGPIXELSY);
+                var logicalScreenHeight = NativeMethods.GetDeviceCaps(desktop, (int)NativeMethods.DeviceCap.VERTRES);
+                var physicalScreenHeight = NativeMethods.GetDeviceCaps(desktop, (int)NativeMethods.DeviceCap.DESKTOPVERTRES);
+                var logpixelsy = NativeMethods.GetDeviceCaps(desktop, (int)NativeMethods.DeviceCap.LOGPIXELSY);
 
                 // determine the scaling factors
                 var screenScalingFactor = (float)physicalScreenHeight / (float)logicalScreenHeight;
@@ -207,6 +175,9 @@ namespace HASS.Agent.Functions
                         Variables.HotKeyListener?.Dispose();
                     }));
 
+                    // stop bt listener
+                    BluetoothManager.StopLeScan();
+
                     // stop notifier api
                     ApiManager.Stop();
 
@@ -219,6 +190,12 @@ namespace HASS.Agent.Functions
                     // stop entity managers
                     CommandsManager.Stop();
                     SensorsManager.Stop();
+
+                    // dismantle the systemstate manager
+                    SystemStateManager.Stop();
+
+                    // dismantle the shared library
+                    AgentSharedBase.Dispose();
                 }
 
                 // flush the log
@@ -443,7 +420,7 @@ namespace HASS.Agent.Functions
         }
 
         /// <summary>
-        /// Prepares and loadsthe tray icon's webview
+        /// Prepares and loads the tray icon's webview
         /// </summary>
         internal static void PrepareTrayIconWebView()
         {
@@ -453,6 +430,7 @@ namespace HASS.Agent.Functions
                 Url = Variables.AppSettings.TrayIconWebViewUrl,
                 Height = Variables.AppSettings.TrayIconWebViewHeight,
                 Width = Variables.AppSettings.TrayIconWebViewWidth,
+                IsTrayIconWebView = true
             };
 
             var x = Screen.PrimaryScreen.WorkingArea.Width - webViewInfo.Width;
@@ -469,6 +447,10 @@ namespace HASS.Agent.Functions
             // prepare the webview
             Variables.MainForm.Invoke(new MethodInvoker(delegate
             {
+                // optionally close an existing one
+                if (Variables.TrayIconWebView != null) Variables.TrayIconWebView.ForceClose();
+
+                // bind the new one
                 Variables.TrayIconWebView = new WebView(webViewInfo);
                 Variables.TrayIconWebView.Opacity = 0;
                 Variables.TrayIconWebView.Show();
@@ -481,24 +463,44 @@ namespace HASS.Agent.Functions
         /// <param name="webViewInfo"></param>
         internal static void LaunchTrayIconWebView(WebViewInfo webViewInfo)
         {
+            // are we previewing?
+            if (webViewInfo.IsTrayIconPreview)
+            {
+                // yep, show as configured
+                LaunchTrayIconCustomWebView(webViewInfo);
+
+                // done
+                return;
+            }
+
             // is background loading enabled?
             if (Variables.AppSettings.TrayIconWebViewBackgroundLoading)
             {
                 // yep
-                Variables.MainForm.Invoke(new MethodInvoker(delegate
-                {
-                    // make sure it's ready
-                    if (Variables.TrayIconWebView == null) PrepareTrayIconWebView();
-
-                    // show it
-                    Variables.TrayIconWebView?.MakeVisible();
-                }));
+                LaunchTrayIconBackgroundLoadedWebView();
 
                 // done
                 return;
             }
 
             // show a new webview from within the UI thread
+            LaunchTrayIconCustomWebView(webViewInfo);
+        }
+        
+        private static void LaunchTrayIconBackgroundLoadedWebView()
+        {
+            Variables.MainForm.Invoke(new MethodInvoker(delegate
+            {
+                // make sure it's ready
+                if (Variables.TrayIconWebView == null || Variables.TrayIconWebView.IsDisposed) PrepareTrayIconWebView();
+
+                // show it
+                Variables.TrayIconWebView?.MakeVisible();
+            }));
+        }
+
+        private static void LaunchTrayIconCustomWebView(WebViewInfo webViewInfo)
+        {
             Variables.MainForm.Invoke(new MethodInvoker(delegate
             {
                 var x = Screen.PrimaryScreen.WorkingArea.Width - webViewInfo.Width;
@@ -510,7 +512,6 @@ namespace HASS.Agent.Functions
                 webViewInfo.TopMost = true;
                 webViewInfo.ShowTitleBar = false;
                 webViewInfo.CenterScreen = false;
-                webViewInfo.IsTrayIconWebView = true;
 
                 var webView = new WebView(webViewInfo);
                 webView.Opacity = 0;
@@ -702,6 +703,26 @@ namespace HASS.Agent.Functions
         /// <param name="scope"></param>
         /// <returns></returns>
         internal static bool CheckWmiScope(string scope) => scope.StartsWith(@"\\");
+
+        /// <summary>
+        /// Determine whether the current OS is at least Windows 8
+        /// </summary>
+        /// <returns></returns>
+        internal static bool IsWindows8Plus()
+        {
+            var version = Environment.OSVersion.Version;
+            switch (version.Major)
+            {
+                // Windows 8+
+                case > 6:
+                // Windows 10+
+                case 6 when version.Minor > 1:
+                    return true;
+                // Windows 7 or less
+                default:
+                    return false;
+            }
+        }
     }
 
     public class CamelCaseJsonNamingpolicy : JsonNamingPolicy

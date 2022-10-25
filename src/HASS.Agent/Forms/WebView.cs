@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using Syncfusion.Windows.Forms;
 using HASS.Agent.Functions;
 using HASS.Agent.Models.Internal;
+using HASS.Agent.Resources.Localization;
 using HASS.Agent.Settings;
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.Core.Raw;
@@ -14,6 +15,7 @@ namespace HASS.Agent.Forms
     public partial class WebView : MetroForm
     {
         private readonly WebViewInfo _webViewInfo;
+        private bool _forceClose = false;
 
         public WebView(WebViewInfo webViewInfo)
         {
@@ -42,8 +44,8 @@ namespace HASS.Agent.Forms
             // set the stored variables
             SetStoredVariables();
 
-            // are we background loading for the tray icon?
-            if (_webViewInfo.IsTrayIconWebView && Variables.AppSettings.TrayIconWebViewBackgroundLoading)
+            // are we background loading for the tray icon, and not in preview mode?
+            if (_webViewInfo.IsTrayIconWebView && !_webViewInfo.IsTrayIconPreview && Variables.AppSettings.TrayIconWebViewBackgroundLoading)
             {
                 // just load the uri
                 WebViewControl.Source = new Uri(_webViewInfo.Url);
@@ -82,7 +84,7 @@ namespace HASS.Agent.Forms
             {
                 Log.Fatal(ex, "[WEBVIEW] WebView2 runtime not found, unable to initialize: {err}", ex.Message);
 
-                var q = MessageBoxAdv.Show("Microsoft's WebView2 runtime isn't found on your machine. Usually this is handled by the installer, but you can install it manually.\r\n\r\nDo you want to download the runtime installer?",
+                var q = MessageBoxAdv.Show(Languages.WebView_InitializeAsync_MessageBox1,
                     Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
 
                 if (q != DialogResult.Yes) return false;
@@ -94,7 +96,7 @@ namespace HASS.Agent.Forms
             {
                 Log.Fatal(ex, "[WEBVIEW] WebView2 initialization failed: {err}", ex.Message);
 
-                MessageBoxAdv.Show("Something went wrong while initializing the WebView. Please check your logs and open a GitHub ticket to get help.", Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(Languages.WebView_InitializeAsync_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -187,12 +189,21 @@ namespace HASS.Agent.Forms
             if (e.CloseReason == CloseReason.WindowsShutDown || Variables.ShuttingDown)
             {
                 // always exit on windows shutdown, or application-wide shutdown
+                WebViewControl?.Dispose();
+                e.Cancel = false;
+                return;
+            }
+
+            if (_forceClose)
+            {
+                // we're being forced
+                WebViewControl?.Dispose();
                 e.Cancel = false;
                 return;
             }
 
             // do we need to stay open?
-            if (Variables.AppSettings.TrayIconWebViewBackgroundLoading)
+            if (_webViewInfo.IsTrayIconWebView && !_webViewInfo.IsTrayIconPreview && Variables.AppSettings.TrayIconWebViewBackgroundLoading)
             {
                 Opacity = 0;
                 e.Cancel = true;
@@ -204,6 +215,12 @@ namespace HASS.Agent.Forms
         }
 
         private void WebView_Deactivate(object sender, EventArgs e) => Close();
+
+        internal void ForceClose()
+        {
+            _forceClose = true;
+            Close();
+        }
 
         /// <summary>
         /// Hook deactivation message

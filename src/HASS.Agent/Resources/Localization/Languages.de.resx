@@ -176,8 +176,7 @@ Er wird auch als Präfix für deine Befehls-/Sensornamen verwendet (kann pro Ent
     <value>Diese Seite enthält allgemeine Konfigurationselemente. Für weitere Einstellungen durchsuche die Registerkarten auf der linken Seite.</value>
   </data>
   <data name="ConfigGeneral_LblDeviceName" xml:space="preserve">
-    <value>Geräte&amp;Name</value>
-    <comment>Fuzzy</comment>
+    <value>Geräte &amp;name</value>
   </data>
   <data name="ConfigHomeAssistantApi_LblTip1" xml:space="preserve">
     <value>Tipp: doppelklicke dieses Feld zum Durchsuchen</value>
@@ -216,7 +215,7 @@ Du kannst einen Token über deine Profilseite erhalten. Scrolle einfach nach unt
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigHotKey_LblInfo1" xml:space="preserve">
-    <value>Ein einfacher Weg, deine quick actions aufzurufen, ist die Verwendung eines globalen Hotkeys.
+    <value>Ein einfacher Weg, deine Quick Actions aufzurufen, ist die Verwendung eines globalen Hotkeys.
 
 Auf diese Weise kannst du immer mit Home Assistant interagieren, egal was du gerade auf deinem Computer machst.</value>
   </data>
@@ -288,6 +287,7 @@ Entwickler darum gebeten wurdest.</value>
   <data name="ConfigMqtt_LblInfo1" xml:space="preserve">
     <value>Befehle und Sensoren werden über MQTT gesendet. Bitte gebe die Anmeldedaten für deinen Server an. Wenn
 du das HA-Addon verwendest, kannst du wahrscheinlich die voreingestellte Adresse verwenden.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigMqtt_LblDiscoPrefix" xml:space="preserve">
     <value>Entdeckungspräfix</value>
@@ -317,10 +317,11 @@ du das HA-Addon verwendest, kannst du wahrscheinlich die voreingestellte Adresse
 - Starte Home Assistant neu
 - Konfiguriere eine Benachrichtigungsentität
 - Starte Home Assistant neu</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigNotifications_LblInfo1" xml:space="preserve">
     <value>HASS.Agent kann Benachrichtigungen von Home Assistant in Form von Text und/oder Bildern empfangen.
-Die lokale API muss aktiviert sein</value>
+Die lokale API muss aktiviert sein, damit dies funktioniert.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigNotifications_BtnNotificationsReadme" xml:space="preserve">
@@ -519,6 +520,7 @@ Du kannst einen Token über die Profilseite erhalten. Scrolle nach unten und kli
 Wenn du das HA Addon verwendest, kannst du wahrscheinlich die vorgegebene Adresse verwenden.
 
 Lass das Feld leer, wenn du keine Befehle und Sensoren verwenden willst.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingMqtt_LblDiscoveryPrefix" xml:space="preserve">
     <value>Entdeckungspräfix</value>
@@ -542,7 +544,7 @@ Auf diese Weise kannst du immer mit Home Assistant interagieren, was auch immer 
     <value>Löschen</value>
   </data>
   <data name="OnboardingUpdates_LblInfo1" xml:space="preserve">
-    <value>Auf Wunsch kann HASS.Agent im Hintergrund nach Updates suchen.
+    <value>Wenn du willst, kann HASS.Agent im Hintergrund nach Updates suchen.
 
 Du erhältst eine Benachrichtigung (einmal pro Update), die dich darüber informiert, dass eine neue Version installiert werden kann.
 
@@ -581,9 +583,11 @@ Und wenn du auf Probleme stößt, erstelle bitte ein Ticket auf der GitHub-Seite
 
 
 Wenn du Benachrichtigungen aktiviert hast, wird ein PopUp angezeigt. Dies ist erforderlich, um HASS.Agent zuzulassen um den angegebenen Port zu nutzen.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingDone_LblInfo1" xml:space="preserve">
     <value>Alles fertig!</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ServiceCommands_LblLowIntegrity" xml:space="preserve">
     <value>geringe Integrität</value>
@@ -638,9 +642,10 @@ Wenn du Benachrichtigungen aktiviert hast, wird ein PopUp angezeigt. Dies ist er
   </data>
   <data name="ServiceGeneral_LblAuthId" xml:space="preserve">
     <value>Auth ID</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ServiceGeneral_LblDeviceName" xml:space="preserve">
-    <value>Gerät &amp;Name</value>
+    <value>Geräte &amp;Name</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ServiceGeneral_LblTip1" xml:space="preserve">
@@ -1077,7 +1082,7 @@ Wenn du Benachrichtigungen aktiviert hast, wird ein PopUp angezeigt. Dies ist er
     <value>     Sensoren     </value>
   </data>
   <data name="ServiceConfig_Title" xml:space="preserve">
-    <value>Satelitenservice</value>
+    <value>Satelitenservice Konfig</value>
   </data>
   <data name="About_BtnClose" xml:space="preserve">
     <value>schließen</value>
@@ -1254,6 +1259,7 @@ melde Fehler oder rede einfach über irgendwas.</value>
   </data>
   <data name="Main_BtnServiceManager" xml:space="preserve">
     <value>S&amp;atelitenservice</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnAppSettings" xml:space="preserve">
     <value>Einstellungen</value>
@@ -1261,12 +1267,15 @@ melde Fehler oder rede einfach über irgendwas.</value>
   </data>
   <data name="Main_BtnActionsManager" xml:space="preserve">
     <value>&amp;Quick Actions</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnCommandsManager" xml:space="preserve">
     <value>lädt</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnSensorsManager" xml:space="preserve">
     <value>lädt</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="Main_GpStatus" xml:space="preserve">
     <value>System Status</value>
@@ -1344,6 +1353,7 @@ Dein Befehl wird als Argument so wie er ist bereitgestellt, sodass du selbst Anf
 Du kannst jeden dieser werte wählen: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes 
 
 Falls du weitere Tasten benötigst und/oder Modifizierungen wie STRG benötigst, dann benutze den MultipleTasten Befehl.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="CommandsManager_LaunchUrlCommandDescription" xml:space="preserve">
     <value>Öffnet die bereitgestellte URL, standardmäßig in deinem Standardbrowser.
@@ -1410,7 +1420,7 @@ Nützlich zum Beispiel, wenn du HASS.Agent zwingen willst, alle Sensoren nach ei
 Tipp: versehentlich ausgelöst? Führe „shutdown /a“ aus, um abzubrechen.</value>
   </data>
   <data name="CommandsManager_ShutdownCommandDescription" xml:space="preserve">
-    <value>Startet die Maschine nach einer Minute neu.
+    <value>Fährt die Maschine nach einer Minute herunter.
 
 Tipp: versehentlich ausgelöst? Führe „shutdown /a“ aus, um abzubrechen.</value>
   </data>
@@ -1653,6 +1663,7 @@ Du kannst die Logs öffnen und den Dienst über das Konfigurationsfenster verwal
     <value>Das Speichern einer leeren Authentifizierungs-ID ermöglicht allen HASS.Agents den Zugriff auf den Server.
 
 Bist du sicher, dass du das willst?</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ServiceGeneral_SavingFailedMessageBox" xml:space="preserve">
     <value>Beim Speichern ist ein Fehler aufgetreten, weitere Informationen in den Protokollen.</value>
@@ -1797,6 +1808,7 @@ Bist du sicher, dass du das willst?</value>
     <value>Browser: Standart
 
 Bitte einen Browser eintragen, um den Inkognito Modus einzuschalten</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="CommandsMod_LblSetting_Url" xml:space="preserve">
     <value>URL</value>
@@ -1832,6 +1844,7 @@ konfiguriere bitte einen Exekutor oder dein Befehl wird nicht ausgeführt</value
   </data>
   <data name="CommandsMod_LblMqttTopic_MessageBox1" xml:space="preserve">
     <value>Der MQTT Manager wurde nicht richtig eingestellt. Stelle sicher, dass du MQTT richtig konfiguriert hast und starte danach neu.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="QuickActions_CheckHassManager_MessageBox1" xml:space="preserve">
     <value>Deine Entitäten können aufgrund fehlender Konfiguration nicht abgerufen werden. Bitte gebe die erforderlichen Werte im Konfigurationsbildschirm ein.</value>
@@ -1945,6 +1958,7 @@ Hinweis: Der Name wird „bereinigt“, das heißt alles außer Buchstaben, Ziff
     <value>Du hast den Port der Benachrichtigungs-API geändert. Dieser neue Port muss reserviert werden.
 
 Du erhältst dazu eine UAC-Anfrage, bitte bestätige diese.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="Configuration_ProcessChanges_MessageBox3" xml:space="preserve">
     <value>Etwas ist schiefgelaufen!
@@ -1971,10 +1985,12 @@ Möchtest du jetzt neu starten?</value>
     <value>Beim Laden deiner Einstellungen ist ein Fehler aufgetreten.
 
 Überprüfe die Datei appsettings.json im Unterordner „Config“ oder lösche sie einfach, um neu zu beginnen.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="Main_Load_MessageBox2" xml:space="preserve">
     <value>Es gab einen Fehler beim Starten von HASS.Agent.
 Bitte prüfe die Protokolle und erstelle einen Fehlerbericht auf Github.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnSensorsManage_Ready" xml:space="preserve">
     <value>Lokale &amp;Sensoren</value>
@@ -1982,6 +1998,7 @@ Bitte prüfe die Protokolle und erstelle einen Fehlerbericht auf Github.</value>
   </data>
   <data name="Main_BtnCommandsManager_Ready" xml:space="preserve">
     <value>Befehle</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="Main_Checking" xml:space="preserve">
     <value>Überprüft ..</value>
@@ -2132,6 +2149,7 @@ Zusammenfassung deiner Audiositzungen: Anwendungsname, Stummschaltung, Lautstär
   </data>
   <data name="SensorsManager_BatterySensorsDescription" xml:space="preserve">
     <value>Bietet einen Sensor mit dem aktuellen Ladestatus, der geschätzten Dauer einer vollen Ladung in Minuten, der verbleibenden Ladung in Prozent, der verbleibenden Ladung in Minuten und dem Powerline-Status.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_CpuLoadSensorDescription" xml:space="preserve">
     <value>Liefert die aktuelle Auslastung der ersten CPU in Prozent.</value>
@@ -2168,6 +2186,7 @@ Wichtig: Die FastBoot-Option von Windows kann diesen Wert verwerfen, da dies ein
     <value>Stellt die letzte Änderung des Systemstatus bereit:
 
 HassAgentStarted, Logoff, SystemShutdown, Resume, Suspend, ConsoleConnect, ConsoleDisconnect, RemoteConnect, RemoteDisconnect, SessionLock, SessionLogoff, SessionLogon, SessionRemoteControl und SessionUnlock.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_LoggedUserSensorDescription" xml:space="preserve">
     <value>Gibt den Namen des aktuell angemeldeten Benutzers zurück.</value>
@@ -2180,6 +2199,7 @@ HassAgentStarted, Logoff, SystemShutdown, Resume, Suspend, ConsoleConnect, Conso
   </data>
   <data name="SensorsManager_MicrophoneActiveSensorDescription" xml:space="preserve">
     <value>Stellt einen booleschen Wert basierend darauf bereit, ob das Mikrofon derzeit verwendet wird.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_NamedWindowSensorDescription" xml:space="preserve">
     <value>Liefert einen EIN/AUS-Wert basierend darauf, ob das Fenster gerade geöffnet ist (muss nicht aktiv sein).</value>
@@ -2227,11 +2247,13 @@ Kann zum Beispiel genutzt werden, um zu entscheiden, ob eine Benachrichtigung od
   </data>
   <data name="SensorsManager_WebcamActiveSensorDescription" xml:space="preserve">
     <value>Stellt einen booleschen Wert basierend darauf bereit, ob die Webcam derzeit verwendet wird.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_WindowsUpdatesSensorsDescription" xml:space="preserve">
     <value>Stellt einen Sensor mit der Anzahl anstehender Treiberaktualisierungen und einen Sensor mit der Anzahl ausstehender Softwareaktualisierungen bereit.
 
 Dies ist eine ressourcenbelastende Aufgabe, daher beträgt das empfohlene Intervall 15 Minuten (900 Sekunden). Aber es ist auf 10 Minuten begrenzt, wenn du einen niedrigeren Wert angibst, erhältst du die letzte bekannte Liste.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_WmiQuerySensorDescription" xml:space="preserve">
     <value>Liefert das Ergebnis der WMI-Abfrage.</value>
@@ -2763,9 +2785,11 @@ Hinweis: Diese Meldung wird nur einmal angezeigt.</value>
   </data>
   <data name="ConfigLocalApi_LblInfo1" xml:space="preserve">
     <value>HASS.Agent verfügt über eine eigene lokale API, sodass Home Assistant Anfragen senden kann (z. B. um eine Benachrichtigung zu senden). Du kannst es hier global konfigurieren und anschließend die abhängigen Abschnitte (derzeit Benachrichtigungen und Mediaplayer) konfigurieren.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigLocalApi_LblInfo2" xml:space="preserve">
     <value>Um auf Anfragen reagieren zu können, muss HASS.Agent&apos;s Port in deiner Firewall reserviert und geöffnet werden. Du kannst diese Schaltfläche verwenden, um dies für dich zu erledigen.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigLocalApi_LblPort" xml:space="preserve">
     <value>&amp;Port</value>
@@ -2799,6 +2823,7 @@ Hinweis: Diese Meldung wird nur einmal angezeigt.</value>
   </data>
   <data name="ConfigMediaPlayer_LblInfo1" xml:space="preserve">
     <value>HASS.Agent kann als Mediaplayer für Home Assistant fungieren, sodass Du alle wiedergegebenen Medien steuerst und Text-zu-Sprache senden kannst. Damit dies funktioniert, muss die lokale API aktiviert sein.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigMediaPlayer_LblInfo2" xml:space="preserve">
     <value>Wenn etwas nicht funktioniert, stelle sicher, dass du diese Schritte befolgt hast:
@@ -2807,15 +2832,18 @@ Hinweis: Diese Meldung wird nur einmal angezeigt.</value>
 - Home Assistant neustarten
 - Media_Player Entität konfigurieren
 - Home Assistant neustarten</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigMediaPlayer_LblLocalApiDisabled" xml:space="preserve">
     <value>die lokale API ist deaktiviert, der Medien Player benötigt sie jedoch.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigMqtt_CbMqttTls" xml:space="preserve">
     <value>&amp;TLS</value>
   </data>
   <data name="ConfigNotifications_LblLocalApiDisabled" xml:space="preserve">
     <value>die lokale API ist deaktiviert, der Medien Player benötigt sie jedoch.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigTrayIcon_BtnShowWebViewPreview" xml:space="preserve">
     <value>zeige Vorschau</value>
@@ -2889,6 +2917,7 @@ Home Assistant.
 
 Dies ist mit HACS sehr einfach, aber du kannst es auch manuell installieren. Nutze den folgenden Link für mehr
 Informationen.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingIntegrations_LblInfo2" xml:space="preserve">
     <value>Stelle sicher, dass du diese Schritte befolgst:
@@ -2897,6 +2926,7 @@ Informationen.</value>
 - Starte Home-Assistant neu
 - Konfiguriere eine Notifier- und / oder Media_Player-Entität
 - Starte Home-Assistant neu</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingIntegrations_LblInfo3" xml:space="preserve">
     <value>Das Gleiche gilt für den Mediaplayer. Diese Integration ermöglicht es dir, dein Gerät als media_player-Entität zu steuern, zu sehen, was abgespielt wird und Text-to-Speech zu senden.</value>
@@ -2906,6 +2936,7 @@ Informationen.</value>
   </data>
   <data name="OnboardingIntegrations_LblNotifierIntegration" xml:space="preserve">
     <value>HASS.Agent-Notifier GitHub-Seite</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingLocalApi_CbEnableLocalApi" xml:space="preserve">
     <value>ja, aktivi&amp;ere die lokale API auf Port </value>
@@ -2980,29 +3011,328 @@ Möchtest du diese Version verwenden?</value>
     <value>WebView</value>
   </data>
   <data name="CommandsMod_BtnStore_MessageBox9" xml:space="preserve">
-    <value>Your keycode doesn&apos;t seem to be a valid number.
+    <value>Dein Keycode scheint keine gültige Nummer zu sein.
 
-Please make sure the keycode field has focus, then press the key you want simulated. The keycode should then be generated for you.</value>
+Bitte vergewissere dich, dass das Keycode-Feld den Fokus hat, und drücke dann die Taste, die Du simulieren möchtest. Der Schlüsselcode sollte dann für Dich generiert werden.</value>
   </data>
   <data name="ConfigGeneral_CbEnableDeviceNameSanitation" xml:space="preserve">
-    <value>enable device name &amp;sanitation</value>
+    <value>Gerätename aktivieren &amp;bereinigen</value>
   </data>
   <data name="ConfigGeneral_CbEnableStateNotifications" xml:space="preserve">
-    <value>enable state notifications</value>
+    <value>Statusbenachrichtigungen aktivieren</value>
   </data>
   <data name="ConfigGeneral_LblInfo5" xml:space="preserve">
-    <value>HASS.Agent will sanitize your device name, to make sure HA will accept it. You can overrule this if you&apos;re sure that your name will be accepted as-is.</value>
+    <value>HASS.Agent wird den Gerätenamen bereinigen, um sicherzustellen, dass HA ihn akzeptiert. Du kannst dies überschreiben, wenn Du sicher sind, dass der Name unverändert akzeptiert wird.</value>
   </data>
   <data name="ConfigGeneral_LblInfo6" xml:space="preserve">
-    <value>If you want, you can disable the state notifications all together. HASS.Agent won&apos;t show you when a connection was lost or restored.</value>
+    <value>Wenn du willst, kannst du alle Status Benachrichtigungen auf einmal deaktivieren.
+HASS.Agent wird dann nicht mehr benachrichtigen, wenn die Verbindung verloren ging oder wiederhergestellt wurde.</value>
   </data>
   <data name="Configuration_ProcessChanges_MessageBox6" xml:space="preserve">
-    <value>You&apos;ve changed your device&apos;s name.
+    <value>Du hast den Namen Deines Geräts geändert.
 
-All your sensors and commands will now be unpublished, and HASS.Agent will restart afterwards to republish them.
+Alle Deine Sensoren und Befehle werden nun unveröffentlicht und HASS.Agent wird anschließend neu gestartet, um sie erneut zu veröffentlichen.
 
-Don&apos;t worry, they&apos;ll keep their current names, so your automations or scripts will keep working.
+Keine Sorge, Du behältst Deine aktuellen Namen, sodass Deine Automatisierungen oder Skripte weiterhin funktionieren.
 
-Note: you disabled sanitation, so make sure your device name is accepted by Home Assistant.</value>
+Hinweis: Du hast die Bereinigung deaktiviert, stelle also sicher, dass Dein Gerätename von Home Assistant akzeptiert wird.</value>
+  </data>
+  <data name="SensorType_PrintersSensors" xml:space="preserve">
+    <value>Drucker</value>
+  </data>
+  <data name="CommandType_MonitorSleepCommand" xml:space="preserve">
+    <value>MonitorSleep</value>
+  </data>
+  <data name="CommandType_MonitorWakeCommand" xml:space="preserve">
+    <value>MonitorWake</value>
+  </data>
+  <data name="MonitorPowerEvent_PowerOn" xml:space="preserve">
+    <value>Einschalten</value>
+  </data>
+  <data name="MonitorPowerEvent_PowerOff" xml:space="preserve">
+    <value>Ausschalten</value>
+  </data>
+  <data name="MonitorPowerEvent_Dimmed" xml:space="preserve">
+    <value>Dimmen</value>
+  </data>
+  <data name="MonitorPowerEvent_Unknown" xml:space="preserve">
+    <value>Unbekannt</value>
+  </data>
+  <data name="SensorType_MonitorPowerStateSensor" xml:space="preserve">
+    <value>MonitorStromStatus</value>
+  </data>
+  <data name="SensorType_PowershellSensor" xml:space="preserve">
+    <value>PowershellSensor</value>
+  </data>
+  <data name="CommandType_SetVolumeCommand" xml:space="preserve">
+    <value>SetzVolumen</value>
+  </data>
+  <data name="WindowState_Maximized" xml:space="preserve">
+    <value>Maximiert</value>
+  </data>
+  <data name="WindowState_Minimized" xml:space="preserve">
+    <value>Minimiert</value>
+  </data>
+  <data name="WindowState_Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="WindowState_Unknown" xml:space="preserve">
+    <value>Unbekannt</value>
+  </data>
+  <data name="WindowState_Hidden" xml:space="preserve">
+    <value>Versteckt</value>
+  </data>
+  <data name="SensorType_WindowStateSensor" xml:space="preserve">
+    <value>FensterStatus</value>
+  </data>
+  <data name="SensorType_WebcamProcessSensor" xml:space="preserve">
+    <value>WebcamProgramm</value>
+  </data>
+  <data name="SensorType_MicrophoneProcessSensor" xml:space="preserve">
+    <value>MikrofonProgramm</value>
+  </data>
+  <data name="CommandsManager_MonitorSleepCommandDescription" xml:space="preserve">
+    <value>Versetzt alle Monitore in den Schlaf (Energiesparmodus).</value>
+  </data>
+  <data name="CommandsManager_MonitorWakeCommandDescription" xml:space="preserve">
+    <value>Versucht, alle Monitore aufzuwecken, indem ein „Pfeil nach oben“-Tastendruck simuliert wird</value>
+  </data>
+  <data name="CommandsManager_SetVolumeCommandDescription" xml:space="preserve">
+    <value>Stellt die Lautstärke des aktuellen Standard-Audiogeräts auf den angegebenen Wert ein.</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox10" xml:space="preserve">
+    <value>Bitte gib als gewünschte Lautstärke einen Wert zwischen 0 und 100 ein.</value>
+  </data>
+  <data name="CommandsMod_CommandsMod" xml:space="preserve">
+    <value>Befehl</value>
+  </data>
+  <data name="CommandsMod_MessageBox_Action2" xml:space="preserve">
+    <value>Wenn Du keinen Volumenwert eingibst, kannst Du diese Entität nur mit einem Aktionswert über Home Assistant verwenden. Es so laufen zu lassen, wie es ist, bringt nichts.
+
+Bist Du sicher, dass Du das willst?</value>
+  </data>
+  <data name="CommandsMod_MessageBox_Sanitize" xml:space="preserve">
+    <value>Der angegebene Name enthält nicht unterstützte Zeichen und funktioniert nicht. Die vorgeschlagene Version ist:
+
+{0}
+
+Möchtest Du diese Version verwenden?</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox5" xml:space="preserve">
+    <value>Ihr API-Token sieht nicht richtig aus. Stelle sicher, dass der gesamte Token ausgewählt ist (verwende nicht STRG+A oder Doppelklick).
+Es sollte drei Abschnitte enthalten (getrennt durch zwei Punkte).
+
+Bist Du sicher, dass Du es so verwenden möchtest?</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox6" xml:space="preserve">
+    <value>Deine URI sieht nicht richtig aus. Es sollte in etwa so aussehen „http://homeassistant.local:8123“ oder „http://192.168.0.1:8123“.
+
+Bist Du sicher, dass Du es so verwenden möchtest?</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi_Testing" xml:space="preserve">
+    <value>testen ..</value>
+  </data>
+  <data name="ConfigMediaPlayer_LblConnectivityDisabled" xml:space="preserve">
+    <value>Sowohl die lokale API als auch MQTT sind deaktiviert, aber die Integration benötigt mindestens eine, damit sie funktioniert</value>
+  </data>
+  <data name="ConfigMqtt_CbEnableMqtt" xml:space="preserve">
+    <value>MQTT einschalten</value>
+  </data>
+  <data name="ConfigMqtt_LblMqttDisabledWarning" xml:space="preserve">
+    <value>Ohne MQTT funktionieren Befehle und Sensoren nicht!</value>
+  </data>
+  <data name="ConfigNotifications_LblConnectivityDisabled" xml:space="preserve">
+    <value>Sowohl die lokale API als auch MQTT sind deaktiviert, aber die Integration benötigt mindestens eine, damit sie funktioniert</value>
+  </data>
+  <data name="ConfigService_BtnManageService" xml:space="preserve">
+    <value>&amp;Manage Service</value>
+  </data>
+  <data name="ConfigService_BtnManageService_MessageBox1" xml:space="preserve">
+    <value>Der Dienst befindet sich derzeit im angehaltenen Zustand, sodass Du  ihn nicht konfigurieren kannst.
+
+Stelle sicher, dass Du es zuerst zum Laufen gebracht hast.</value>
+  </data>
+  <data name="ConfigService_LblInfo5" xml:space="preserve">
+    <value>Wenn Du den Dienst verwalten möchtest (Befehle und Sensoren hinzufügen, Einstellungen ändern), kannst Du das hier oder über die Schaltfläche „Satelliten Service“ im Hauptfenster tun.</value>
+  </data>
+  <data name="ConfigTrayIcon_CbWebViewShowMenuOnLeftClick" xml:space="preserve">
+    <value>Standardmenü bei Klick der linken Maustaste anzeigen</value>
+  </data>
+  <data name="Configuration_CheckValues_MessageBox1" xml:space="preserve">
+    <value>Your Home Assistant API token doesn&apos;t look right. Make sure you selected the entire token (don&apos;t use CTRL+A or doubleclick).
+It should contain three sections (seperated by two dots).
+
+Are you sure you want to use it like this?</value>
+  </data>
+  <data name="Configuration_CheckValues_MessageBox2" xml:space="preserve">
+    <value>Your Home Assistant URI doesn&apos;t look right. It should look something like &apos;http://homeassistant.local:8123&apos; or &apos;https://192.168.0.1:8123&apos;.
+
+Are you sure you want to use it like this?</value>
+  </data>
+  <data name="Configuration_CheckValues_MessageBox3" xml:space="preserve">
+    <value>Deine MQTT Broker URI sieht nicht richtig aus. So sollte es aussehen
+&quot;homeassistant.local&quot; oder &quot;192.168.0.1&quot;
+
+Bist Du sicher, es so zu verwenden?</value>
+  </data>
+  <data name="Donate_BtnClose" xml:space="preserve">
+    <value>&amp;schliessen</value>
+  </data>
+  <data name="Donate_CbHideDonateButton" xml:space="preserve">
+    <value>Ich habe bereits gespendet, blende die Schaltfläche im Hauptfenster aus.</value>
+  </data>
+  <data name="Donate_LblInfo" xml:space="preserve">
+    <value>HASS.Agent ist komplett kostenlos und wird es auch immer ohne Einschränkungen bleiben!
+
+Die Entwicklung und Wartung dieses Tools (und alles, was es umgibt, wie Support und die Dokumentation) nimmt jedoch viel Zeit in Anspruch.
+
+Wie die meisten Entwickler verwende ich Koffein – wenn Du es also entbehren kannst, ist eine Tasse Kaffee immer sehr willkommen!</value>
+  </data>
+  <data name="Donate_Title" xml:space="preserve">
+    <value>Spenden</value>
+  </data>
+  <data name="Main_NotifyIcon_MouseClick_MessageBox1" xml:space="preserve">
+    <value>Es wurde keine URL festgelegt! Bitte konfiguriere die Webansicht über Konfiguration -&gt; Tray Icon.</value>
+  </data>
+  <data name="Main_TsCheckForUpdates" xml:space="preserve">
+    <value>Auf Updates überprüfen</value>
+  </data>
+  <data name="OnboardingApi_BtnTest_MessageBox5" xml:space="preserve">
+    <value>The API token you have provided doesn&apos;t appear to be valid, please ensure you selected the entire token (Don&apos;t use CTRL + A or double-click). A valid API key contains three sections, separated by two dots.
+
+Are you sure you want to use this key anyway?</value>
+  </data>
+  <data name="OnboardingApi_BtnTest_MessageBox6" xml:space="preserve">
+    <value>Deine URI sieht nicht richtig aus. Es sollte in etwa so aussehen: „http://homeassistant.local:8123“ oder „http://192.168.0.1:8123“.
+
+Bist Du sicher, dass Du es so verwenden möchtest?</value>
+  </data>
+  <data name="OnboardingDone_LblInfo6" xml:space="preserve">
+    <value>Die Entwicklung und Wartung dieses Tools (und alles, was es umgibt) nimmt viel Zeit in Anspruch. Wie die meisten Entwickler verwende ich Koffein – wenn Du es also entbehren kannst, ist eine Tasse Kaffee immer sehr willkommen!</value>
+  </data>
+  <data name="OnboardingDone_LblTip2" xml:space="preserve">
+    <value>Tipp: Andere Spendenmethoden sind im Über-Fenster verfügbar.</value>
+  </data>
+  <data name="OnboardingIntegrations_CbEnableMediaPlayer" xml:space="preserve">
+    <value>Aktiviere &amp;mediaplayer (mit Text-Zu-Sprache)</value>
+  </data>
+  <data name="OnboardingIntegrations_CbEnableNotifications" xml:space="preserve">
+    <value>Aktiviere &amp;Benachrichtigungen</value>
+  </data>
+  <data name="OnboardingMqtt_CbEnableMqtt" xml:space="preserve">
+    <value>Aktiviere MQTT</value>
+  </data>
+  <data name="PostUpdate_PostUpdate" xml:space="preserve">
+    <value>HASS.Agent Post-Update</value>
+  </data>
+  <data name="SensorsManager_BluetoothDevicesSensorDescription" xml:space="preserve">
+    <value>Bietet einen Sensor mit der Anzahl der gefundenen Bluetooth-Geräte.
+
+Die Geräte und ihr Verbindungsstatus werden als Attribute hinzugefügt.</value>
+  </data>
+  <data name="SensorsManager_BluetoothLeDevicesSensorDescription" xml:space="preserve">
+    <value>Stellt einen Sensor mit der Anzahl der gefundenen Bluetooth-LE Geräte zur Verfügung.
+
+Die Geräte und deren Verbindungsstatus werden als Attribute hinzugefügt.
+
+Zeigt nur Geräte an, die seit dem letzten Bericht gesehen wurden, d. h. Wenn der Sensor veröffentlicht, wird die Liste gelöscht.</value>
+  </data>
+  <data name="SensorsManager_GeoLocationSensorDescription" xml:space="preserve">
+    <value>Gibt Ihre aktuelle Breite, Länge und Höhe als kommaseparierten Wert zurück.
+
+Stelle sicher, dass die Ortungsdienste von Windows aktiviert sind!
+
+Je nach Windows-Version finden Sie diese in der neuen Systemsteuerung -&gt; „Datenschutz und Sicherheit“ -&gt; „Standort“.</value>
+  </data>
+  <data name="SensorsManager_MicrophoneProcessSensorDescription" xml:space="preserve">
+    <value>Stellt den Namen des Prozesses bereit, der das Mikrofon derzeit verwendet.
+
+Hinweis: Bei Verwendung im Satellitenservice werden keine Userspace-Anwendungen erkannt.</value>
+  </data>
+  <data name="SensorsManager_MonitorPowerStateSensorDescription" xml:space="preserve">
+    <value>Zeigt die letzte Änderung des Monitor-Energiezustands:
+
+Gedimmt, PowerOff, PowerOn und Unbekannt.</value>
+  </data>
+  <data name="SensorsManager_PowershellSensorDescription" xml:space="preserve">
+    <value>Gibt das Ergebnis des bereitgestellten Powershell-Befehls oder -Skripts zurück.
+
+Konvertiert das Ergebnis in Text.</value>
+  </data>
+  <data name="SensorsManager_PrintersSensorsDescription" xml:space="preserve">
+    <value>Stellt Informationen zu allen installierten Druckern und ihren Warteschlangen bereit.</value>
+  </data>
+  <data name="SensorsManager_WebcamProcessSensorDescription" xml:space="preserve">
+    <value>Stellt den Namen des Prozesses bereit, der derzeit die Webcam verwendet.
+
+Hinweis: Bei Verwendung im Satellitendienst werden keine Userspace-Anwendungen erkannt.</value>
+  </data>
+  <data name="SensorsManager_WindowStateSensorDescription" xml:space="preserve">
+    <value>Stellt den aktuellen Status des Prozessfensters bereit:
+
+Versteckt, Maximiert, Minimiert, Normal und Unbekannt.</value>
+  </data>
+  <data name="SensorsMod_LblSetting1_Powershell" xml:space="preserve">
+    <value>Powershell Befehl oder Skript</value>
+  </data>
+  <data name="SensorsMod_MessageBox_Sanitize" xml:space="preserve">
+    <value>Der angegebene Name enthält ungültige Charaktere und funktioniert nicht. Die vorgeschlagene Version ist:
+
+{0}
+
+Willst du diese Version nutzen?</value>
+  </data>
+  <data name="SensorsMod_SensorsMod_BtnTest_Powershell" xml:space="preserve">
+    <value>Teste Befehl oder Skript</value>
+  </data>
+  <data name="SensorsMod_TestPowershell_MessageBox1" xml:space="preserve">
+    <value>Gebe zuerst einen Befehl oder ein Skript ein</value>
+  </data>
+  <data name="SensorsMod_TestPowershell_MessageBox2" xml:space="preserve">
+    <value>Test erfolgreich ausgeführt, Ergebniswert:
+
+{0}</value>
+  </data>
+  <data name="SensorsMod_TestPowershell_MessageBox3" xml:space="preserve">
+    <value>Der Test konnte nicht ausgeführt werden:
+
+{0}
+
+Möchtest Du den Protokollordner öffnen?</value>
+  </data>
+  <data name="SensorType_BluetoothDevicesSensor" xml:space="preserve">
+    <value>BluetoothGeräte</value>
+  </data>
+  <data name="SensorType_BluetoothLeDevicesSensor" xml:space="preserve">
+    <value>BluetoothLeGeräte</value>
+  </data>
+  <data name="ServiceControllerManager_Error_Fatal" xml:space="preserve">
+    <value>schwerer Fehler, überprüfe die Protokolle</value>
+  </data>
+  <data name="ServiceControllerManager_Error_Timeout" xml:space="preserve">
+    <value>Zeitüberschreitung</value>
+  </data>
+  <data name="ServiceControllerManager_Error_Unknown" xml:space="preserve">
+    <value>Unbekannter Grund</value>
+  </data>
+  <data name="ServiceHelper_ChangeStartMode_Error1" xml:space="preserve">
+    <value>servicemanager kann nicht geöffnet werden</value>
+  </data>
+  <data name="ServiceHelper_ChangeStartMode_Error2" xml:space="preserve">
+    <value>Dienst kann nicht geöffnet werden</value>
+  </data>
+  <data name="ServiceHelper_ChangeStartMode_Error3" xml:space="preserve">
+    <value>Fehler beim Konfigurieren des Startmodus, überprüfe die Protokolle</value>
+  </data>
+  <data name="ServiceHelper_ChangeStartMode_Error4" xml:space="preserve">
+    <value>Fehler beim Einstellen des Startmodus, überprüfe die Protokolle</value>
+  </data>
+  <data name="WebView_InitializeAsync_MessageBox1" xml:space="preserve">
+    <value>Microsoft&apos;s WebView2 Runtime wurde nicht auf diesem Gerät gefunden. Normalerweise wird dies vom Installer ausgeführt, Du kannst es auch manuell installieren.
+
+Willst Du den Runtime Installer herunterladen?</value>
+  </data>
+  <data name="WebView_InitializeAsync_MessageBox2" xml:space="preserve">
+    <value>Beim Initialisieren von WebView ist etwas schief gelaufen. Bitte überprüfe die Protokolle und öffne ein GitHub-Ticket, um Hilfe zu erhalten.</value>
   </data>
 </root>

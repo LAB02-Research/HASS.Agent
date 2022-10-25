@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using HASS.Agent.Forms.Service;
 using HASS.Agent.Properties;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Service;
@@ -19,6 +20,7 @@ namespace HASS.Agent.Controls.Service
             CustomExecutor
         }
 
+        private ServiceConfig _serviceConfig;
         private ServiceSettings _serviceSettings = null;
         
         public ServiceGeneral()
@@ -38,7 +40,7 @@ namespace HASS.Agent.Controls.Service
         /// <param name="version"></param>
         /// <param name="deviceName"></param>
         /// <param name="settings"></param>
-        public void SetConfig(string version, string deviceName, ServiceSettings settings)
+        public void SetConfig(string version, string deviceName, ServiceSettings settings, ServiceConfig serviceConfig)
         {
             // show version
             LblVersion.Text = version;
@@ -49,6 +51,9 @@ namespace HASS.Agent.Controls.Service
 
             // bind the settings
             _serviceSettings = settings;
+
+            // bind the config window
+            _serviceConfig = serviceConfig;
 
             // show them
             NumDisconnectGrace.Value = _serviceSettings.DisconnectedGracePeriodSeconds;
@@ -138,6 +143,9 @@ namespace HASS.Agent.Controls.Service
                 // done
                 return;
             }
+
+            // propagate the new name
+            _serviceConfig?.SetDeviceName(deviceName);
 
             // show 'stored'
             await ShowSuccess(ConfigSection.DeviceName);

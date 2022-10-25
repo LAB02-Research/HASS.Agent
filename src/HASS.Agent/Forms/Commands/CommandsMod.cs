@@ -1,4 +1,5 @@
-﻿using Syncfusion.Windows.Forms;
+﻿using System.IO;
+using Syncfusion.Windows.Forms;
 using System.Text;
 using HASS.Agent.Commands;
 using HASS.Agent.Forms.Commands.CommandConfig;
@@ -156,7 +157,7 @@ namespace HASS.Agent.Forms.Commands
                     break;
 
                 case CommandType.KeyCommand:
-                    TbSetting.Text = Command.KeyCode.ToString();
+                    TbKeyCode.Text = Command.KeyCode.ToString();
                     break;
 
                 case CommandType.MultipleKeysCommand:
@@ -184,6 +185,10 @@ namespace HASS.Agent.Forms.Commands
                     break;
 
                 case CommandType.WebViewCommand:
+                    TbSetting.Text = Command.Command;
+                    break;
+
+                case CommandType.SetVolumeCommand:
                     TbSetting.Text = Command.Command;
                     break;
             }
@@ -234,6 +239,21 @@ namespace HASS.Agent.Forms.Commands
                 return;
             }
 
+            // name contains illegal chars?
+            var sanitized = SharedHelperFunctions.GetSafeValue(name);
+            if (sanitized != name)
+            {
+                var confirmSanitize = MessageBoxAdv.Show(string.Format(Languages.CommandsMod_MessageBox_Sanitize, sanitized), Variables.MessageBoxTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (confirmSanitize != DialogResult.OK)
+                {
+                    ActiveControl = TbName;
+                    return;
+                }
+
+                TbName.Text = sanitized;
+                name = sanitized;
+            }
+
             // name already used?
             if (!_serviceMode && Variables.Commands.Any(x => string.Equals(x.Name, name, StringComparison.InvariantCultureIgnoreCase) && x.Id != Command.Id.ToString()))
             {
@@ -276,14 +296,21 @@ namespace HASS.Agent.Forms.Commands
                     break;
 
                 case CommandType.KeyCommand:
-                    var keycode = TbSetting.Text.Trim();
-                    if (string.IsNullOrEmpty(keycode))
+                    var keycodeStr = TbKeyCode.Text.Trim();
+                    if (string.IsNullOrEmpty(keycodeStr))
                     {
                         MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox5, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        ActiveControl = TbSetting;
+                        ActiveControl = TbKeyCode;
                         return;
                     }
-                    Command.KeyCode = Encoding.ASCII.GetBytes(keycode).First();
+                    var parsed = int.TryParse(keycodeStr, out var keycode);
+                    if (!parsed)
+                    {
+                        MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox9, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ActiveControl = TbKeyCode;
+                        return;
+                    }
+                    Command.KeyCode = (byte)keycode;
                     break;
 
                 case CommandType.MultipleKeysCommand:
@@ -348,6 +375,31 @@ namespace HASS.Agent.Forms.Commands
                         }
                     }
                     Command.Command = procName;
+                    break;
+
+                case CommandType.SetVolumeCommand:
+                    var volume = TbSetting.Text.Trim();
+                    if (string.IsNullOrEmpty(volume))
+                    {
+                        var q = MessageBoxAdv.Show(Languages.CommandsMod_MessageBox_Action2, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (q != DialogResult.Yes)
+                        {
+                            ActiveControl = TbSetting;
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        var volParsed = int.TryParse(volume, out var vol);
+                        if (!volParsed || vol is < 0 or > 100)
+                        {
+                            MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox10, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            ActiveControl = TbSetting;
+                            return;
+                        }
+                        volume = vol.ToString();
+                    }
+                    Command.Command = volume;
                     break;
 
                 case CommandType.WebViewCommand:
@@ -474,6 +526,10 @@ namespace HASS.Agent.Forms.Commands
                     SetWebViewUi();
                     break;
 
+                case CommandType.SetVolumeCommand:
+                    SetVolumeUi();
+                    break;
+
                 default:
                     SetEmptyGui();
                     break;
@@ -531,8 +587,8 @@ namespace HASS.Agent.Forms.Commands
                 LblSetting.Text = Languages.CommandsMod_LblSetting_KeyCode;
                 LblSetting.Visible = true;
 
-                TbSetting.Text = string.Empty;
-                TbSetting.Visible = true;
+                TbKeyCode.Text = string.Empty;
+                TbKeyCode.Visible = true;
             }));
         }
 
@@ -640,6 +696,23 @@ namespace HASS.Agent.Forms.Commands
         }
 
         /// <summary>
+        /// Change the UI to a 'setvolume' type
+        /// </summary>
+        private void SetVolumeUi()
+        {
+            Invoke(new MethodInvoker(delegate
+            {
+                SetEmptyGui();
+
+                LblSetting.Text = "volume (between 0 and 100)";
+                LblSetting.Visible = true;
+
+                TbSetting.Text = string.Empty;
+                TbSetting.Visible = true;
+            }));
+        }
+
+        /// <summary>
         /// Change the UI to a 'webview' type
         /// </summary>
         private void SetWebViewUi()
@@ -663,6 +736,9 @@ namespace HASS.Agent.Forms.Commands
 
                 TbSetting.Text = string.Empty;
                 TbSetting.Visible = false;
+
+                TbKeyCode.Text = string.Empty;
+                TbKeyCode.Visible = false;
 
                 CbRunAsLowIntegrity.CheckState = CheckState.Unchecked;
                 CbRunAsLowIntegrity.Visible = false;
@@ -844,6 +920,11 @@ namespace HASS.Agent.Forms.Commands
                     }
                     break;
             }
+        }
+
+        private void TbKeyCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            TbKeyCode.Text = e.KeyValue.ToString();
         }
     }
 }

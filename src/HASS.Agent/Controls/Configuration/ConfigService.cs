@@ -1,11 +1,12 @@
 ﻿using System.ServiceProcess;
 using HASS.Agent.Enums;
+using HASS.Agent.Forms.Service;
 using HASS.Agent.Functions;
 using HASS.Agent.Managers;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Service;
 using HASS.Agent.Shared.Enums;
-using HASS.Agent.Shared.Functions;
+using HASS.Agent.Shared.Managers;
 using Serilog;
 using Syncfusion.Windows.Forms;
 
@@ -212,6 +213,21 @@ namespace HASS.Agent.Controls.Configuration
             if (!done) MessageBoxAdv.Show(Languages.ConfigService_BtnShowLogs_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             // done
+        }
+
+        private async void BtnManageService_Click(object sender, EventArgs e)
+        {
+            if (ServiceControllerManager.GetServiceState() == ServiceControllerStatus.Stopped)
+            {
+                MessageBoxAdv.Show(Languages.ConfigService_BtnManageService_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (await HelperFunctions.TryBringToFront("ServiceConfig")) return;
+
+            var form = new ServiceConfig();
+            form.FormClosed += delegate { form.Dispose(); };
+            form.Show(this);
         }
     }
 }

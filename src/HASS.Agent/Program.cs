@@ -58,7 +58,7 @@ namespace HASS.Agent
                 LocalizationManager.Initialize();
 
                 // set scaling
-                Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
+                Application.SetHighDpiMode(HighDpiMode.DpiUnaware);
 
                 // set default font
                 Application.SetDefaultFont(Variables.DefaultFont);

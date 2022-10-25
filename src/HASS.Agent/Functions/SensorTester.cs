@@ -71,5 +71,30 @@ namespace HASS.Agent.Functions
                 return new TestResult().SetFailed(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Creates a Powershell sensor with the provided command and gets the result of its execution
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        internal static TestResult TestPowershell(string command)
+        {
+            try
+            {
+                // create a new sensor
+                var powershellSensor = new PowershellSensor(command);
+
+                // get the state
+                var value = powershellSensor.GetState();
+                
+                // done
+                return new TestResult().SetSuccesful(value);
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[SENSORTESTER] Error while testing Powershell\r\nCommand: {command}\r\nError: {err}", command, ex.Message);
+                return new TestResult().SetFailed(ex.Message);
+            }
+        }
     }
 }

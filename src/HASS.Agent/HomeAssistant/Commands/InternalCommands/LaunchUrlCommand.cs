@@ -31,7 +31,7 @@ namespace HASS.Agent.HomeAssistant.Commands.InternalCommands
 
             if (string.IsNullOrWhiteSpace(_url))
             {
-                Log.Warning("[COMMAND] Unable to launch URL '{name}', it's configured as action-only", Name);
+                Log.Error("[LAUNCHURL] [{name}] Unable to launch URL, it's configured as action-only", Name);
 
                 State = "OFF";
                 return;
@@ -46,8 +46,16 @@ namespace HASS.Agent.HomeAssistant.Commands.InternalCommands
         {
             State = "ON";
 
+            if (string.IsNullOrWhiteSpace(action) && string.IsNullOrWhiteSpace(_url))
+            {
+                Log.Error("[LAUNCHURL] [{name}] Unable to launch URL, it's configured as action-only but no URL is provided.", Name);
+
+                State = "OFF";
+                return;
+            }
+
             // prepare command
-            var command = string.IsNullOrWhiteSpace(_url) ? _url : $"{_url} {action}";
+            var command = string.IsNullOrWhiteSpace(_url) ? action : $"{_url} {action}";
 
             HelperFunctions.LaunchUrl(command, _incognito);
 

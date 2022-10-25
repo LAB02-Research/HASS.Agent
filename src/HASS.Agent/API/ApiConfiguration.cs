@@ -31,7 +31,7 @@ namespace HASS.Agent.API
 
         public void ConfigureServer(IRestServer server)
         {
-            server.Prefixes.Add($"http://+:{Variables.AppSettings.NotifierApiPort}/");
+            server.Prefixes.Add($"http://+:{Variables.AppSettings.LocalApiPort}/");
             server.Router.Options.SendExceptionMessages = true;
         }
     }

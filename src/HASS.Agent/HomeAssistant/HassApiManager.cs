@@ -1,4 +1,7 @@
 ﻿using System.Diagnostics;
+using System.IO;
+using System.Net.Http;
+using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using HADotNet.Core;
 using HADotNet.Core.Clients;
@@ -24,6 +27,7 @@ namespace HASS.Agent.HomeAssistant
         private static ServiceClient _serviceClient;
         private static EntityClient _entityClient;
         private static StatesClient _statesClient;
+        private static EventClient _eventClient;
 
         internal static HassManagerStatus ManagerStatus = HassManagerStatus.Initialising;
         private static string _haVersion = string.Empty;
@@ -98,6 +102,7 @@ namespace HASS.Agent.HomeAssistant
                 _serviceClient = ClientFactory.GetClient<ServiceClient>();
                 _entityClient = ClientFactory.GetClient<EntityClient>();
                 _statesClient = ClientFactory.GetClient<StatesClient>();
+                _eventClient = ClientFactory.GetClient<EventClient>();
 
                 // load entities
                 ManagerStatus = HassManagerStatus.LoadingData;
@@ -138,23 +143,19 @@ namespace HASS.Agent.HomeAssistant
             {
                 var hassUri = new Uri(Variables.AppSettings.HassUri);
 
-                // automatic certificate selection
+                // prepare an handler
+                var handler = new HttpClientHandler();
+
+                // check if we need to configure our handler's certificates
                 if (Variables.AppSettings.HassAutoClientCertificate)
                 {
+                    // automatic certificate selection
                     Log.Information("[HASS_API] Connecting using automatic client certificate selection");
-
-                    var handler = new HttpClientHandler
-                    {
-                        ClientCertificateOptions = ClientCertificateOption.Automatic
-                    };
-
-                    ClientFactory.Initialize(hassUri, Variables.AppSettings.HassToken, handler);
-                    return true;
+                    handler.ClientCertificateOptions = ClientCertificateOption.Automatic;
                 }
-
-                // manual certificate selection
-                if (!string.IsNullOrEmpty(Variables.AppSettings.HassClientCertificate))
+                else if (!string.IsNullOrEmpty(Variables.AppSettings.HassClientCertificate))
                 {
+                    // manual certificate selection
                     if (!File.Exists(Variables.AppSettings.HassClientCertificate))
                     {
                         Log.Error("[HASS_API] The specified certificate isn't found: {cert}", Variables.AppSettings.HassClientCertificate);
@@ -164,19 +165,19 @@ namespace HASS.Agent.HomeAssistant
                     var certFile = Path.GetFileName(Variables.AppSettings.HassClientCertificate);
                     Log.Information("[HASS_API] Connecting using client certificate: {cert}", certFile);
 
-                    var handler = new HttpClientHandler
-                    {
-                        ClientCertificateOptions = ClientCertificateOption.Manual
-                    };
-
+                    handler.ClientCertificateOptions = ClientCertificateOption.Manual;
                     handler.ClientCertificates.Add(new X509Certificate2(Variables.AppSettings.HassClientCertificate!));
-
-                    ClientFactory.Initialize(hassUri, Variables.AppSettings.HassToken, handler);
-                    return true;
                 }
 
-                // default connection
-                ClientFactory.Initialize(hassUri, Variables.AppSettings.HassToken);
+                // optionally loosen cert security
+                if (Variables.AppSettings.HassAllowUntrustedCertificates)
+                {
+                    handler.CheckCertificateRevocationList = false;
+                    handler.ServerCertificateCustomValidationCallback += (_, _, _, _) => true;
+                }
+
+                // initialize connection
+                ClientFactory.Initialize(hassUri, Variables.AppSettings.HassToken, handler);
                 return true;
             }
             catch (Exception ex)
@@ -306,38 +307,45 @@ namespace HASS.Agent.HomeAssistant
         /// <param name="uri"></param>
         /// <param name="apiKey"></param>
         /// <param name="automaticClientCertificate"></param>
+        /// <param name="allowUntrustedCertificates"></param>
         /// <param name="clientCertificate"></param>
         /// <returns></returns>
-        internal static async Task<(bool success, string message)> CheckHassConfigAsync(string uri, string apiKey, bool automaticClientCertificate = false, string clientCertificate = "")
+        internal static async Task<(bool success, string message)> CheckHassConfigAsync(string uri, string apiKey, bool automaticClientCertificate = false, bool allowUntrustedCertificates = true, string clientCertificate = "")
         {
             try
             {
                 // optionally reset the client
                 if (ClientFactory.IsInitialized) ClientFactory.Reset();
 
-                // initialize hass client, optionally using certificate
+                // prepare an handler
+                var handler = new HttpClientHandler();
+
+                // check if we need to configure our handler's certificates
                 if (automaticClientCertificate)
                 {
                     // automatic certificate selection
-                    var handler = new HttpClientHandler();
                     handler.ClientCertificateOptions = ClientCertificateOption.Automatic;
-
-                    ClientFactory.Initialize(uri, apiKey, handler);
                 }
                 else if (!string.IsNullOrEmpty(clientCertificate))
                 {
                     // manual certificate selection
                     if (!File.Exists(clientCertificate)) return (false, Languages.HassApiManager_CheckHassConfig_CertNotFound);
-
-                    var handler = new HttpClientHandler();
+                    
                     handler.ClientCertificateOptions = ClientCertificateOption.Manual;
                     handler.ClientCertificates.Add(new X509Certificate2(clientCertificate));
-
-                    ClientFactory.Initialize(uri, apiKey, handler);
                 }
-                else ClientFactory.Initialize(uri, apiKey);
 
-                // check if we're initialized
+                // optionally loosen cert security
+                if (allowUntrustedCertificates)
+                {
+                    handler.CheckCertificateRevocationList = false;
+                    handler.ServerCertificateCustomValidationCallback += (_, _, _, _) => true;
+                }
+
+                // initialize our client
+                ClientFactory.Initialize(uri, apiKey, handler);
+
+                // check if it's initialized
                 if (!ClientFactory.IsInitialized) return (false, Languages.HassApiManager_CheckHassConfig_UnableToConnect);
 
                 // check if we can fetch config
@@ -680,6 +688,16 @@ namespace HASS.Agent.HomeAssistant
 
             var actionValue = action.GetCategory();
             return $"{domainValue}.{actionValue}";
+        }
+
+        /// <summary>
+        /// Fires an event for the specified type and payload
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="payload"></param>
+        public static async Task FireEvent(string type, object payload)
+        {
+            await _eventClient.FireEvent(type, payload);
         }
     }
 }

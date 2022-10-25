@@ -55,5 +55,10 @@
         }
 
         private void PbShow_Click(object sender, EventArgs e) => TbMqttPassword.UseSystemPasswordChar = !TbMqttPassword.UseSystemPasswordChar;
+
+        private void CbEnableMqtt_CheckedChanged(object sender, EventArgs e)
+        {
+            LblMqttDisabledWarning.Visible = CbEnableMqtt.CheckState != CheckState.Checked;
+        }
     }
 }

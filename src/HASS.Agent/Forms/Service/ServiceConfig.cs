@@ -46,7 +46,7 @@ namespace HASS.Agent.Forms.Service
                 TabGeneral.Controls.Add(_general);
 
                 // set version, devicename and settings
-                _general?.SetConfig(version, deviceName, settings);
+                _general?.SetConfig(version, deviceName, settings, this);
 
                 // set mqtt settings
                 _mqtt?.SetConfig(mqttSettings);
@@ -71,6 +71,19 @@ namespace HASS.Agent.Forms.Service
                 Log.Fatal(ex, "[SERVICECONFIG] Error while launching: {err}", ex.Message);
                 Close();
             }
+        }
+
+        /// <summary>
+        /// Propagates the provided devicename
+        /// </summary>
+        /// <param name="deviceName"></param>
+        public void SetDeviceName(string deviceName)
+        {
+            // set for commands
+            _commands?.SetDeviceName(deviceName);
+
+            // set for sensors
+            _sensors?.SetDeviceName(deviceName);
         }
 
         private void SensorsConfig_KeyUp(object sender, KeyEventArgs e)

@@ -1,10 +1,12 @@
 ﻿using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Net.Http;
 using System.Text;
 using Grapevine;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Shared.Enums;
 using HASS.Agent.Shared.Functions;
+using HASS.Agent.Shared.Managers;
 using Serilog;
 
 #pragma warning disable CA1416 // Validate platform compatibility
@@ -57,6 +59,10 @@ namespace HASS.Agent.API
                         {
                             await ctx.Response.SendResponseAsync("HASS.Agent Active");
                         }, "Get", "/", true, "RootEndpoint"));
+
+                        // info route
+                        var deviceInfoRoute = new Route(ApiEndpoints.DeviceInfoRoute, "Get", "/info", true, "DeviceInfoRoute");
+                        s.Router.Register(deviceInfoRoute);
 
                         // notification route
                         var notifyRoute = new Route(ApiEndpoints.NotifyRoute, "Post", "/notify", true, "NotifyRoute");
@@ -169,7 +175,7 @@ namespace HASS.Agent.API
             {
                 Log.Information("[LOCALAPI] Executing port reservation for port: {port}", port);
 
-                var args = $"http add urlacl url=http://+:{port}/ user=\"{Environment.UserDomainName}\\{Environment.UserName}\"";
+                var args = $"http add urlacl url=http://+:{port}/ user=\"{SharedHelperFunctions.EveryoneLocalizedAccountName()}\"";
                 var executionResult = await CommandLineManager.ExecuteCommandAsync("netsh", args, TimeSpan.FromMinutes(2));
 
                 // capture normal and error output
@@ -183,7 +189,7 @@ namespace HASS.Agent.API
                     Log.Information("[LOCALAPI] Port reservation succesfully added");
                     return true;
                 }
-                
+
                 // check for known errors
                 if (output.Contains(": 183") || errOutput.Contains(": 183"))
                 {
@@ -236,6 +242,88 @@ namespace HASS.Agent.API
             catch (Exception ex)
             {
                 Log.Fatal("[LOCALAPI] Error while executing port reservation: {msg}", ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Attempt to remove HTTP port reservation (requires elevation!)
+        /// </summary>
+        /// <returns></returns>
+        [SuppressMessage("ReSharper", "InvertIf")]
+        internal static async Task<bool> RemovePortReservationAsync(int port)
+        {
+            try
+            {
+                Log.Information("[LOCALAPI] Removing port reservation for port: {port}", port);
+
+                var args = $"http delete urlacl url=http://+:{port}/";
+                var executionResult = await CommandLineManager.ExecuteCommandAsync("netsh", args, TimeSpan.FromMinutes(2));
+
+                // capture normal and error output
+                var output = executionResult.Output.Trim();
+                var errOutput = executionResult.ErrorOutput.Trim();
+                var exitCode = executionResult.ExitCode;
+
+                // all good?
+                if (exitCode == 0)
+                {
+                    Log.Information("[LOCALAPI] Port reservation succesfully removed");
+                    return true;
+                }
+
+                // check for known errors
+                if (output.Contains(": 2") || errOutput.Contains(": 2"))
+                {
+                    Log.Information("[LOCALAPI] Port reservation already removed, nothing to do");
+                    return true;
+                }
+                if (output.Contains(": 5") || errOutput.Contains(": 5"))
+                {
+                    Log.Error("[LOCALAPI] Port reservation failed, requires elevation");
+                    return false;
+                }
+                if (output.Contains(": 1332") || errOutput.Contains(": 1332"))
+                {
+                    Log.Error("[LOCALAPI] Port reservation failed, incorrect parameters provided: {param}", args);
+                    return false;
+                }
+
+                // nope, something went wrong
+                Log.Error("[LOCALAPI] Execution failed, port reservation removal probably failed - exitcode: {code}", exitCode);
+
+                // process & print normal output
+                if (!string.IsNullOrEmpty(output))
+                {
+                    var consoleLog = new StringBuilder();
+
+                    consoleLog.AppendLine("[LOCALAPI] Console output:");
+                    consoleLog.AppendLine("");
+                    consoleLog.AppendLine(output);
+                    consoleLog.AppendLine("");
+
+                    Log.Information(consoleLog.ToString());
+                }
+
+                // process & print error output
+                if (!string.IsNullOrEmpty(errOutput))
+                {
+                    var consoleErrLog = new StringBuilder();
+
+                    consoleErrLog.AppendLine("[LOCALAPI] Error output:");
+                    consoleErrLog.AppendLine("");
+                    consoleErrLog.AppendLine(errOutput);
+                    consoleErrLog.AppendLine("");
+
+                    Log.Error(consoleErrLog.ToString());
+                }
+
+                // done
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal("[LOCALAPI] Error while removing port reservation: {msg}", ex.Message);
                 return false;
             }
         }

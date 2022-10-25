@@ -1,10 +1,17 @@
-﻿using Windows.Media.Control;
+﻿using System.IO;
+using System.Text.Json;
+using Windows.Media.Control;
+using Windows.Media.Playback;
+using CoreAudio;
 using HASS.Agent.Enums;
 using HASS.Agent.Extensions;
 using HASS.Agent.Managers;
-using HASS.Agent.Shared.Enums;
+using HASS.Agent.Models.HomeAssistant;
+using HASS.Agent.MQTT;
 using HASS.Agent.Shared.Extensions;
+using MQTTnet;
 using Serilog;
+using MediaPlayerState = HASS.Agent.Enums.MediaPlayerState;
 
 namespace HASS.Agent.Media
 {
@@ -12,32 +19,63 @@ namespace HASS.Agent.Media
     {
         private static bool _monitoring = true;
 
+        private static GlobalSystemMediaTransportControlsSessionManager _sessionManager;
+
         internal static MediaPlayerState State { get; private set; } = MediaPlayerState.Idle;
         internal static string Playing { get; private set; } = string.Empty;
 
         /// <summary>
         /// Initializes the media manager
         /// </summary>
-        internal static void Initialize()
+        internal static async Task InitializeAsync()
         {
             if (!Variables.AppSettings.MediaPlayerEnabled)
             {
                 Log.Information("[MEDIA] Disabled");
                 return;
             }
-
-            if (!Variables.AppSettings.LocalApiEnabled)
+            
+            if (!Variables.AppSettings.LocalApiEnabled && !Variables.AppSettings.MqttEnabled)
             {
-                Log.Warning("[MEDIA] Local API is disabled, unable to receive media requests");
+                Log.Warning("[MEDIA] Both local API and MQTT are disabled, unable to receive media requests");
                 return;
             }
 
-            // prepare the mediaplayer
-            Variables.MediaPlayer.IsLoopingEnabled = false;
-            Variables.MediaPlayer.AutoPlay = false;
+            // try to initialize and prepare Windows' mediaplayer platform
+            // todo: optional, but add an OS check - not all OSs support this
+            try
+            {
+                // create the objects
+                Variables.AudioDeviceEnumerator = new MMDeviceEnumerator();
+                Variables.MediaPlayer = new MediaPlayer();
+
+                _sessionManager = await GlobalSystemMediaTransportControlsSessionManager.RequestAsync();
+
+                // prepare the mediaplayer
+                Variables.MediaPlayer.IsLoopingEnabled = false;
+                Variables.MediaPlayer.AutoPlay = false;
+            }
+            catch (TypeInitializationException ex)
+            {
+                Log.Error("[MEDIA] Unable to initialize, your OS doesn't seem to be supported or isn't fully updated:\r\n{err}", ex.Message);
+                Variables.AppSettings.MediaPlayerEnabled = false;
+
+                Log.Warning("[MEDIA] Failed, disabled");
+                return;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[MEDIA] Unable to initialize: {err}" , ex.Message);
+                Variables.AppSettings.MediaPlayerEnabled = false;
+
+                Log.Warning("[MEDIA] Failed, disabled");
+                return;
+            }
 
             // start monitoring playing media
-            Task.Run(MediaMonitor);
+            _ = Task.Run(MediaMonitor);
+
+            _ = Task.Run(Variables.MqttManager.SubscribeMediaCommandsAsync);
 
             // ready
             Log.Information("[MEDIA] Ready");
@@ -45,33 +83,28 @@ namespace HASS.Agent.Media
 
         private static async void MediaMonitor()
         {
-            var sessionManager = await GlobalSystemMediaTransportControlsSessionManager.RequestAsync();
-
             while (_monitoring)
             {
+                var message = new MqttMediaPlayerMessage();
+
                 try
                 {
-                    // get the current sessions
-                    var sessions = sessionManager.GetSessions();
-                    if (!sessions.Any()) continue;
-
-                    GlobalSystemMediaTransportControlsSession session = null;
-
-                    // if there's one session: pick that one
-                    // if there are multiple: pick the first playing
-                    // if none are playing: pick the first
-
-                    if (sessions.Count == 1) session = sessions[0];
-                    else if (sessions.Any(x =>
-                                 x.GetPlaybackInfo().PlaybackStatus == GlobalSystemMediaTransportControlsSessionPlaybackStatus.Playing))
+                    var session = GetCurrentMediaSession();
+                    if (session == null)
                     {
-                        session = sessions.First(x =>
-                            x.GetPlaybackInfo().PlaybackStatus == GlobalSystemMediaTransportControlsSessionPlaybackStatus.Playing);
+                        // no session found
+                        if (Variables.ExtendedLogging) Log.Warning("[MEDIA] Null object received when requesting CurrentMediaSession");
+                        continue;
                     }
-                    else session = sessions[0];
 
                     // get the media properties
                     var mediaProperties = await session.TryGetMediaPropertiesAsync();
+                    if (mediaProperties == null)
+                    {
+                        // nothing to do
+                        if (Variables.ExtendedLogging) Log.Warning("[MEDIA] Null object received when requesting MediaProperties");
+                        continue;
+                    }
 
                     // create and set the playing title
                     var title = $"{mediaProperties.Artist} - {mediaProperties.Title}";
@@ -79,14 +112,53 @@ namespace HASS.Agent.Media
                     {
                         Playing = title;
                         if (Variables.ExtendedLogging) Log.Information("[MEDIA] Now playing: {playing}", Playing);
+
+                        // publish the thumbnail
+                        using var reference = await mediaProperties.Thumbnail.OpenReadAsync();
+                        await using var stream = reference.AsStreamForRead();
+
+                        var haMessageBuilder = new MqttApplicationMessageBuilder()
+                            .WithTopic($"hass.agent/media_player/{Variables.DeviceConfig.Name}/thumbnail")
+                            .WithPayload(stream)
+                            .WithRetainFlag();
+                    
+                        await Variables.MqttManager.PublishAsync(haMessageBuilder.Build());
                     }
 
                     // get and set the playback state
-                    var state = session.GetPlaybackInfo().PlaybackStatus.ConvertToMediaPlayerState();
-                    if (state != State)
+                    var state = MediaPlayerState.Idle;
+                    var playbackInfo = session.GetPlaybackInfo();
+                    if (playbackInfo != null)
                     {
-                        State = state;
-                        if (Variables.ExtendedLogging) Log.Information("[MEDIA] New state: {state}", State.ToString());
+                        state = playbackInfo.PlaybackStatus.ConvertToMediaPlayerState();
+                        if (state != State)
+                        {
+                            State = state;
+                            if (Variables.ExtendedLogging) Log.Information("[MEDIA] New state: {state}", State.ToString());
+                        }
+                    }
+                    else
+                    {
+                        if (Variables.ExtendedLogging) Log.Warning("[MEDIA] Null object received when requesting PlaybackInfo");
+                    }
+
+                    // set info
+                    message.State = state;
+                    message.Title = mediaProperties.Title;
+                    message.Artist = mediaProperties.Artist;
+                    message.AlbumArtist = mediaProperties.AlbumArtist;
+                    message.AlbumTitle = mediaProperties.AlbumTitle;
+                    
+                    // get timeline info
+                    var timeline = session.GetTimelineProperties();
+                    if (timeline != null)
+                    {
+                        message.Duration = timeline.StartTime.Add(timeline.EndTime).TotalSeconds;
+                        message.CurrentPosition = timeline.Position.TotalSeconds;
+                    }
+                    else
+                    {
+                        if (Variables.ExtendedLogging) Log.Warning("[MEDIA] Null object received when requesting TimeLineProperties");
                     }
 
                     // done
@@ -97,9 +169,33 @@ namespace HASS.Agent.Media
                 }
                 finally
                 {
+                    // publish our state
+                    var haMessageBuilder = new MqttApplicationMessageBuilder()
+                        .WithTopic($"hass.agent/media_player/{Variables.DeviceConfig.Name}/state")
+                        .WithPayload(JsonSerializer.Serialize(message, MqttManager.JsonSerializerOptions));
+                    await Variables.MqttManager.PublishAsync(haMessageBuilder.Build());
+
+                    // wait a bit
                     await Task.Delay(TimeSpan.FromSeconds(2));
                 }
             }
+        }
+
+        private static GlobalSystemMediaTransportControlsSession GetCurrentMediaSession()
+        {
+            // get the current sessions
+            var sessions = _sessionManager.GetSessions();
+            if (!sessions.Any()) return null;
+
+            // if there's one session: pick that one
+            // if there are multiple: pick the first playing
+            // if none are playing: pick the first
+
+            if (sessions.Count == 1) return sessions[0];
+            
+            return sessions.Any(x => x.GetPlaybackInfo().PlaybackStatus == GlobalSystemMediaTransportControlsSessionPlaybackStatus.Playing) 
+                ? sessions.First(x => x.GetPlaybackInfo().PlaybackStatus == GlobalSystemMediaTransportControlsSessionPlaybackStatus.Playing) 
+                : sessions[0];
         }
 
         /// <summary>
@@ -108,6 +204,9 @@ namespace HASS.Agent.Media
         internal static void Stop()
         {
             _monitoring = false;
+            Variables.AppSettings.MediaPlayerEnabled = false;
+
+            if (Variables.MediaPlayer == null) return;
 
             if (Variables.MediaPlayer.CurrentState == Windows.Media.Playback.MediaPlayerState.Playing) Variables.MediaPlayer.Pause();
             Variables.MediaPlayer.Dispose();
@@ -255,6 +354,16 @@ namespace HASS.Agent.Media
             {
                 Log.Fatal(ex, "[MEDIA] Error playing media: {err}", ex.Message);
             }
+        }
+
+        /// <summary>
+        /// Attempt to change playback position to the requested value
+        /// </summary>
+        /// <param name="position"></param>
+        internal static async void ProcessSeekCommand(long position)
+        {
+            var session = GetCurrentMediaSession();
+            await session.TryChangePlaybackPositionAsync(position);
         }
     }
 }

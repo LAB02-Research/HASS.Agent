@@ -1,4 +1,5 @@
-﻿using HASS.Agent.Commands;
+﻿using System.IO;
+using HASS.Agent.Commands;
 using HASS.Agent.Enums;
 using HASS.Agent.Models.Config;
 using HASS.Agent.Models.Internal;
@@ -7,10 +8,12 @@ using HASS.Agent.Sensors;
 using HASS.Agent.Shared;
 using HASS.Agent.Shared.HomeAssistant.Commands;
 using HASS.Agent.Shared.HomeAssistant.Sensors;
+using HASS.Agent.Shared.Models.Config.Service;
 using HASS.Agent.Shared.Models.HomeAssistant;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using Serilog;
+using Syncfusion.Windows.Forms;
 using WK.Libraries.HotkeyListenerNS;
 
 namespace HASS.Agent.Settings
@@ -314,6 +317,105 @@ namespace HASS.Agent.Settings
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[SETTINGS] Error storing dpi-warning-shown setting: {err}", ex.Message);
+            }
+        }
+        
+        /// <summary>
+        /// Sends the current MQTT appsettings to the satellite service, optionally with a new client ID
+        /// </summary>
+        /// <returns></returns>
+        internal static async Task<bool> SendMqttSettingsToServiceAsync(bool sendNewClientId = false)
+        {
+            try
+            {
+                // create settings obj
+                var config = new ServiceMqttSettings
+                {
+                    MqttAddress = Variables.AppSettings.MqttAddress,
+                    MqttPort = Variables.AppSettings.MqttPort,
+                    MqttUseTls = Variables.AppSettings.MqttUseTls,
+                    MqttUsername = Variables.AppSettings.MqttUsername,
+                    MqttPassword = Variables.AppSettings.MqttPassword,
+                    MqttDiscoveryPrefix = Variables.AppSettings.MqttDiscoveryPrefix,
+                    MqttClientId = sendNewClientId ? Guid.NewGuid().ToString()[..8] : string.Empty,
+                    MqttRootCertificate = Variables.AppSettings.MqttRootCertificate,
+                    MqttClientCertificate = Variables.AppSettings.MqttClientCertificate,
+                    MqttAllowUntrustedCertificates = Variables.AppSettings.MqttAllowUntrustedCertificates,
+                    MqttUseRetainFlag = Variables.AppSettings.MqttUseRetainFlag
+                };
+
+                // store
+                var (storedOk, _) = await Task.Run(async () => await Variables.RpcClient.SetServiceMqttSettingsAsync(config).WaitAsync(Variables.RpcConnectionTimeout));
+                if (!storedOk)
+                {
+                    Log.Error("[SETTINGS] Sending MQTT settings to service failed");
+                    return false;
+                }
+
+                // done
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[SETTINGS] Error sending MQTT settings to service: {err}", ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Gets the device's serial number (unique, generated, stored)
+        /// </summary>
+        /// <returns></returns>
+        internal static string DeviceSerialNumber()
+        {
+            var guid = (string)Registry.GetValue(Variables.RootRegKey, "DeviceSerialNumber", string.Empty);
+            if (string.IsNullOrEmpty(guid))
+            {
+                guid = Guid.NewGuid().ToString();
+                StoreDeviceSerialNumber(guid);
+            }
+
+            return guid;
+        }
+        
+        private static void StoreDeviceSerialNumber(string guid)
+        {
+            Registry.SetValue(Variables.RootRegKey, "DeviceSerialNumber", guid, RegistryValueKind.String);
+        }
+
+        /// <summary>
+        /// Gets the 'hide donate button from the main window' setting from registry
+        /// </summary>
+        /// <returns></returns>
+        internal static bool GetHideDonateButton()
+        {
+            try
+            {
+                var setting = (string)Registry.GetValue(Variables.RootRegKey, "HideDonateButton", "0");
+                if (string.IsNullOrEmpty(setting)) return false;
+
+                return setting == "1";
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[SETTINGS] Error retrieving 'hide donate button from the main window' setting: {err}", ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Stores the 'hide donate button from the main window' setting in registry
+        /// </summary>
+        /// <param name="hide"></param>
+        internal static void SetHideDonateButton(bool hide)
+        {
+            try
+            {
+                Registry.SetValue(Variables.RootRegKey, "HideDonateButton", hide ? "1" : "0", RegistryValueKind.String);
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[SETTINGS] Error storing 'hide donate button from the main window' setting: {err}", ex.Message);
             }
         }
     }

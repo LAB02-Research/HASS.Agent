@@ -29,6 +29,10 @@ namespace HASS.Agent.Controls.Configuration
             NumWebViewWidth.Enabled = CbShowWebView.Checked;
             NumWebViewHeight.Enabled = CbShowWebView.Checked;
             BtnShowWebViewPreview.Enabled = CbShowWebView.Checked;
+            BtnWebViewReset.Enabled = CbShowWebView.Checked;
+            CbWebViewKeepLoaded.Enabled = CbShowWebView.Checked;
+            CbWebViewShowMenuOnLeftClick.Enabled = CbShowWebView.Checked;
+            LblInfo2.Enabled = CbShowWebView.Checked;
         }
 
         private void BtnShowWebViewPreview_Click(object sender, EventArgs e)
@@ -38,6 +42,8 @@ namespace HASS.Agent.Controls.Configuration
                 Url = TbWebViewUrl.Text,
                 Height = (int)NumWebViewHeight.Value,
                 Width = (int)NumWebViewWidth.Value,
+                IsTrayIconWebView = true,
+                IsTrayIconPreview = true
             };
 
             HelperFunctions.LaunchTrayIconWebView(webView);
