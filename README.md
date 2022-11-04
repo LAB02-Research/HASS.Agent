@@ -99,7 +99,8 @@ Summary of the core functions:
 
 Notification examples:
 
-![Image-based toast notification](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_toast_image.png)  ![Text-based toast notification](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_toast_text.png)  ![image](https://user-images.githubusercontent.com/81011038/190643738-724dac45-4d03-4a19-a0e6-3a59b5de0aad.png)
+![image](https://user-images.githubusercontent.com/81011038/199956334-642def7d-4cb4-46f3-a73b-25c76e5bd02c.png)  ![Text-based toast notification](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_toast_text.png)  
+
 
 WebView example, showing a dashboard when right-clicking the tray icon:
 
