@@ -124,7 +124,7 @@
     <value>Browser Name</value>
   </data>
   <data name="ConfigExternalTools_LblInfo2" xml:space="preserve">
-    <value>By default HASS.Agent will launch URLs using your default browser. You can also configure
+	  <value>By default HASS.Agent will launch URLs using your default browser. You can also configure
 a specific browser to be used instead along with launch arguments to run in private mode.</value>
   </data>
   <data name="ConfigExternalTools_LblBrowserBinary" xml:space="preserve">
@@ -137,8 +137,8 @@ a specific browser to be used instead along with launch arguments to run in priv
     <value>Custom Executor Binary</value>
   </data>
   <data name="ConfigExternalTools_LblInfo3" xml:space="preserve">
-    <value>You can configure the HASS.Agent to use a specific interpreter such as Perl or Python.
-Use the &apos;custom executor&apos; command to launch this executor.</value>
+	  <value>You can configure the HASS.Agent to use a specific interpreter such as Perl or Python.
+Use the 'custom executor' command to launch this executor.</value>
   </data>
   <data name="ConfigExternalTools_LblCustomExecutorName" xml:space="preserve">
     <value>Custom Executor Name</value>
@@ -150,7 +150,7 @@ Use the &apos;custom executor&apos; command to launch this executor.</value>
     <value>&amp;Test</value>
   </data>
   <data name="ConfigGeneral_LblInfo4" xml:space="preserve">
-    <value>HASS.Agent will wait a grace period before notifying you of disconnects from MQTT or HA&apos;s API.
+	  <value>HASS.Agent will wait a grace period before notifying you of disconnects from MQTT or HA's API.
 You can set the amount of seconds to wait in this grace period below.</value>
   </data>
   <data name="ConfigGeneral_LblDisconGraceSeconds" xml:space="preserve">
@@ -160,11 +160,11 @@ You can set the amount of seconds to wait in this grace period below.</value>
     <value>Disconnected Grace &amp;Period</value>
   </data>
   <data name="ConfigGeneral_LblInfo3" xml:space="preserve">
-    <value>IMPORTANT: if you change this value, HASS.Agent will unpublish all your sensors, commands and force a restart of itself so they can be republished under the new device name.
+	  <value>IMPORTANT: if you change this value, HASS.Agent will unpublish all your sensors, commands and force a restart of itself so they can be republished under the new device name.
 Your automations and scripts will keep working.</value>
   </data>
   <data name="ConfigGeneral_LblInfo2" xml:space="preserve">
-    <value>The device name is used to identify your machine on Home Assistant.
+	  <value>The device name is used to identify your machine on Home Assistant.
 It is also used as a prefix for your command/sensor names (this can be changed per entity).</value>
   </data>
   <data name="ConfigGeneral_LblInfo1" xml:space="preserve">
@@ -186,12 +186,12 @@ It is also used as a prefix for your command/sensor names (this can be changed p
     <value>&amp;Test Connection</value>
   </data>
   <data name="ConfigHomeAssistantApi_LblInfo1" xml:space="preserve">
-    <value>To learn which entities you have configured and to send quick actions, HASS.Agent uses
-Home Assistant&apos;s API.
+	  <value>To learn which entities you have configured and to send quick actions, HASS.Agent uses
+Home Assistant's API.
 
 Please provide a long-lived access token and the address of your Home Assistant instance.
 You can get a token in Home Assistant by clicking your profile picture at the bottom-left
-and navigating to the bottom of the page until you see the &apos;CREATE TOKEN&apos; button.</value>
+and navigating to the bottom of the page until you see the 'CREATE TOKEN' button.</value>
   </data>
   <data name="ConfigHomeAssistantApi_LblApiToken" xml:space="preserve">
     <value>&amp;API Token</value>
@@ -203,9 +203,9 @@ and navigating to the bottom of the page until you see the &apos;CREATE TOKEN&ap
     <value>&amp;Clear</value>
   </data>
   <data name="ConfigHotKey_LblInfo1" xml:space="preserve">
-    <value>An easy way to pull up your quick actions is to use a global hotkey.
+	  <value>An easy way to pull up your quick actions is to use a global hotkey.
 
-This way, whatever you&apos;re doing on your machine, you can always interact with Home Assistant.</value>
+This way, whatever you're doing on your machine, you can always interact with Home Assistant.</value>
   </data>
   <data name="ConfigHotKey_CbEnableQuickActionsHotkey" xml:space="preserve">
     <value>&amp;Enable Quick Actions Hotkey</value>
@@ -226,15 +226,15 @@ This way, whatever you&apos;re doing on your machine, you can always interact wi
     <value>days</value>
   </data>
   <data name="ConfigLocalStorage_LblInfo1" xml:space="preserve">
-    <value>Some items like images shown in notifications have to be temporarily stored locally. You can
+	  <value>Some items like images shown in notifications have to be temporarily stored locally. You can
 configure the amount of days they should be kept before HASS.Agent deletes them.
 
-Enter &apos;0&apos; to keep them permanently.</value>
+Enter '0' to keep them permanently.</value>
   </data>
   <data name="ConfigLogging_LblInfo1" xml:space="preserve">
-    <value>Extended logging provides more verbose and in-depth logging, in case the default logging isn&apos;t
+	  <value>Extended logging provides more verbose and in-depth logging, in case the default logging isn't
 sufficient. Please note that enabling this can cause the logfiles to grow large, and should only be
-used when you suspect something&apos;s wrong with HASS.Agent itself or when asked by the
+used when you suspect something's wrong with HASS.Agent itself or when asked by the
 developers.</value>
   </data>
   <data name="ConfigLogging_CbExtendedLogging" xml:space="preserve">
@@ -265,9 +265,9 @@ developers.</value>
     <value>(leave default if unsure)</value>
   </data>
   <data name="ConfigMqtt_LblInfo1" xml:space="preserve">
-    <value>Commands and sensors use MQTT, as well as notifications and media player functions when using the new integration. 
+	  <value>Commands and sensors use MQTT, as well as notifications and media player functions when using the new integration. 
 
-Please provide credentials for your broker, if you&apos;re using the HA Mosquitto addon, you can probably use the preset address.
+Please provide credentials for your broker, if you're using the HA Mosquitto addon, you can probably use the preset address.
 
 Note: these settings (excluding the Client ID) will also be applied to the satellite service.</value>
   </data>
@@ -293,7 +293,7 @@ Note: these settings (excluding the Client ID) will also be applied to the satel
     <value>Client ID</value>
   </data>
   <data name="ConfigNotifications_LblInfo2" xml:space="preserve">
-    <value>If something is not working, make sure you try the following steps:
+	  <value>If something is not working, make sure you try the following steps:
 
 - Install the HASS.Agent integration
 - Restart Home Assistant
@@ -323,8 +323,8 @@ Note: these settings (excluding the Client ID) will also be applied to the satel
     <value>&amp;Ignore certificate errors for images</value>
   </data>
   <data name="ConfigService_LblInfo1" xml:space="preserve">
-    <value>The satellite service allows you to run sensors and commands even when no user&apos;s logged in. 
-Use the &apos;satellite service&apos; button on the main window to manage it.</value>
+	  <value>The satellite service allows you to run sensors and commands even when no user's logged in. 
+Use the 'satellite service' button on the main window to manage it.</value>
   </data>
   <data name="ConfigService_LblServiceStatusInfo" xml:space="preserve">
     <value>Service Status:</value>
@@ -345,12 +345,12 @@ Use the &apos;satellite service&apos; button on the main window to manage it.</v
     <value>&amp;Reinstall Service</value>
   </data>
   <data name="ConfigService_LblInfo2" xml:space="preserve">
-    <value>If you do not configure the service, it won&apos;t do anything. However, you can still decide to disable it as well.
+	  <value>If you do not configure the service, it won't do anything. However, you can still decide to disable it as well.
 The installer will leave the disabled service alone(if you remove the service, the installer will reinstall it).</value>
   </data>
   <data name="ConfigService_LblInfo3" xml:space="preserve">
-    <value>You can try reinstalling the service if it&apos;s not working correctly.
-Your configuration and entities won&apos;t be removed.</value>
+	  <value>You can try reinstalling the service if it's not working correctly.
+Your configuration and entities won't be removed.</value>
   </data>
   <data name="ConfigService_BtnShowLogs" xml:space="preserve">
     <value>Open Service &amp;Logs Folder</value>
@@ -359,7 +359,7 @@ Your configuration and entities won&apos;t be removed.</value>
     <value>If the service still fails after reinstalling, please open a ticket and send the content of the latest log.</value>
   </data>
   <data name="ConfigStartup_LblInfo1" xml:space="preserve">
-    <value>HASS.Agent can start when you login by creating an entry in your user profile&apos;s registry.
+	  <value>HASS.Agent can start when you login by creating an entry in your user profile's registry.
 
 Since HASS.Agent is user based, if you want to launch for another user, just install and config
 HASS.Agent there.</value>
@@ -374,7 +374,7 @@ HASS.Agent there.</value>
     <value>Notify me of &amp;beta releases</value>
   </data>
   <data name="ConfigUpdates_LblInfo2" xml:space="preserve">
-    <value>When a new update is available, HASS.Agent can download the installer and launch it for you.
+	  <value>When a new update is available, HASS.Agent can download the installer and launch it for you.
 
 The certificate of the downloaded file will get checked before running,you will still get to review the release notes and manually approve the update.</value>
   </data>
@@ -382,7 +382,7 @@ The certificate of the downloaded file will get checked before running,you will 
     <value>Automatically &amp;download future updates</value>
   </data>
   <data name="ConfigUpdates_LblInfo1" xml:space="preserve">
-    <value>HASS.Agent checks for updates in the background if enabled.
+	  <value>HASS.Agent checks for updates in the background if enabled.
 
 You will be sent a push notification if a new update is discovered, letting you know a
 new version is ready to be installed.</value>
@@ -391,10 +391,10 @@ new version is ready to be installed.</value>
     <value>Notify me when a new &amp;release is available</value>
   </data>
   <data name="OnboardingWelcome_LblInfo1" xml:space="preserve">
-    <value>Welcome to the HASS.Agent! It looks like this is the first time you are launching the agent.
+	  <value>Welcome to the HASS.Agent! It looks like this is the first time you are launching the agent.
 
 To assist you with a first time setup, proceed with the configuration steps below
-or alternatively, click &apos;Close&apos;.</value>
+or alternatively, click 'Close'.</value>
   </data>
   <data name="OnboardingWelcome_LblInfo2" xml:space="preserve">
     <value>The device name is used to identify your machine on Home Assistant, it is also used as a suggested prefix for your commands and sensors.</value>
@@ -406,7 +406,7 @@ or alternatively, click &apos;Close&apos;.</value>
     <value>Yes, &amp;start HASS.Agent on System Login</value>
   </data>
   <data name="OnboardingStartup_LblInfo1" xml:space="preserve">
-    <value>HASS.Agent can start with your system, this allows for any sensors and data transmission between your device and Home Assistant to begin as soon as you login.
+	  <value>HASS.Agent can start with your system, this allows for any sensors and data transmission between your device and Home Assistant to begin as soon as you login.
 
 This setting can be changed any time later in the HASS.Agent configuration window.</value>
   </data>
@@ -420,7 +420,7 @@ This setting can be changed any time later in the HASS.Agent configuration windo
     <value>Yes, accept notifications on port</value>
   </data>
   <data name="OnboardingNotifications_LblInfo1" xml:space="preserve">
-    <value>HASS.Agent can receive notifications from Home Assistant, using text and/or images.
+	  <value>HASS.Agent can receive notifications from Home Assistant, using text and/or images.
 
 Do you want to enable this function?</value>
   </data>
@@ -428,7 +428,7 @@ Do you want to enable this function?</value>
     <value>HASS.Agent-Notifier GitHub Page</value>
   </data>
   <data name="OnboardingIntegration_LblInfo2" xml:space="preserve">
-    <value>Make sure you follow these steps:
+	  <value>Make sure you follow these steps:
 
 - Install HASS.Agent-Notifier integration
 - Restart Home Assistant
@@ -436,7 +436,7 @@ Do you want to enable this function?</value>
 - Restart Home Assistant</value>
   </data>
   <data name="OnboardingIntegration_LblInfo1" xml:space="preserve">
-    <value>To use notifications, you need to install and configure the HASS.Agent-notifier integration in
+	  <value>To use notifications, you need to install and configure the HASS.Agent-notifier integration in
 Home Assistant.
 
 This is very easy using HACS but may also be installed manually, visit the link below for more
@@ -449,12 +449,12 @@ information.</value>
     <value>Server &amp;URI (should be ok like this)</value>
   </data>
   <data name="OnboardingApi_LblInfo1" xml:space="preserve">
-    <value>To learn which entities you have configured and to send quick actions, HASS.Agent uses
-Home Assistant&apos;s API.
+	  <value>To learn which entities you have configured and to send quick actions, HASS.Agent uses
+Home Assistant's API.
 
 Please provide a long-lived access token and the address of your Home Assistant instance.
 You can get a token in Home Assistant by clicking your profile picture at the bottom-left
-and navigating to the bottom of the page until you see the &apos;CREATE TOKEN&apos; button.</value>
+and navigating to the bottom of the page until you see the 'CREATE TOKEN' button.</value>
   </data>
   <data name="OnboardingApi_BtnTest" xml:space="preserve">
     <value>Test &amp;Connection</value>
@@ -475,9 +475,9 @@ and navigating to the bottom of the page until you see the &apos;CREATE TOKEN&ap
     <value>IP Address or Hostname</value>
   </data>
   <data name="OnboardingMqtt_LblInfo1" xml:space="preserve">
-    <value>Commands and sensors are sent through MQTT. The notifications- and media player integration also make use of them.
+	  <value>Commands and sensors are sent through MQTT. The notifications- and media player integration also make use of them.
 
-Tip: if you&apos;re using the HA addon, you can probably use the preset address - just provide credentials.
+Tip: if you're using the HA addon, you can probably use the preset address - just provide credentials.
 </value>
   </data>
   <data name="OnboardingMqtt_LblDiscoveryPrefix" xml:space="preserve">
@@ -493,16 +493,16 @@ Tip: if you&apos;re using the HA addon, you can probably use the preset address 
     <value>&amp;Hotkey Combination</value>
   </data>
   <data name="OnboardingHotKey_LblInfo1" xml:space="preserve">
-    <value>An easy way to pull up your quick actions is to use a global hotkey.
+	  <value>An easy way to pull up your quick actions is to use a global hotkey.
 
-This way, whatever you&apos;re doing on your machine, you can always interact with Home Assistant.
+This way, whatever you're doing on your machine, you can always interact with Home Assistant.
 </value>
   </data>
   <data name="OnboardingHotKey_BtnClear" xml:space="preserve">
     <value>&amp;Clear</value>
   </data>
   <data name="OnboardingUpdates_LblInfo1" xml:space="preserve">
-    <value>HASS.Agent checks for updates in the background if enabled.
+	  <value>HASS.Agent checks for updates in the background if enabled.
 
 You will be sent a push notification if a new update is discovered, letting you know a
 new version is ready to be installed.
@@ -516,7 +516,7 @@ Do you want to enable this automatic update checks?</value>
     <value>Yes, &amp;download and launch the installer for me</value>
   </data>
   <data name="OnboardingUpdates_LblInfo2" xml:space="preserve">
-    <value>When a new update is available, HASS.Agent can download the installer and launch it for you.
+	  <value>When a new update is available, HASS.Agent can download the installer and launch it for you.
 
 The certificate of the downloaded file will get checked before running,you will still get to review the release notes and manually approve the update.</value>
   </data>
@@ -524,10 +524,10 @@ The certificate of the downloaded file will get checked before running,you will 
     <value>HASS.Agent GitHub page</value>
   </data>
   <data name="OnboardingDone_LblInfo3" xml:space="preserve">
-    <value>There&apos;s a lot more to tinker with, so make sure you take a look at the Configuration Wwindow!
+	  <value>There's a lot more to tinker with, so make sure you take a look at the Configuration Wwindow!
 
 
-Thank you for using HASS.Agent, hopefully it&apos;ll be useful for you :-)
+Thank you for using HASS.Agent, hopefully it'll be useful for you :-)
 </value>
   </data>
   <data name="OnboardingDone_LblInfo2" xml:space="preserve">
@@ -642,7 +642,7 @@ Thank you for using HASS.Agent, hopefully it&apos;ll be useful for you :-)
     <value>(leave default if not sure)</value>
   </data>
   <data name="ServiceMqtt_LblInfo1" xml:space="preserve">
-    <value>Commands and sensors are sent through MQTT. Please provide credentials for your server. If you&apos;re using the HA addon,
+	  <value>Commands and sensors are sent through MQTT. Please provide credentials for your server. If you're using the HA addon,
 you can probably use the preset address.</value>
   </data>
   <data name="ServiceMqtt_LblDiscoPrefix" xml:space="preserve">
@@ -880,7 +880,7 @@ you can probably use the preset address.</value>
     <value>Description</value>
   </data>
   <data name="QuickActionsConfig_LblHotkey" xml:space="preserve">
-    <value>Enabled</value>
+	  <value>Hotkey Enabled</value>
   </data>
   <data name="QuickActionsConfig_Title" xml:space="preserve">
     <value>Quick Actions Configuration</value>
@@ -970,7 +970,7 @@ you can probably use the preset address.</value>
     <value>  Type</value>
   </data>
   <data name="SensorsMod_LblMultiValue" xml:space="preserve">
-    <value>multivalue</value>
+	  <value>Multivalue</value>
   </data>
   <data name="SensorsMod_LblAgent" xml:space="preserve">
     <value>Agent</value>
@@ -1006,15 +1006,15 @@ you can probably use the preset address.</value>
     <value>A Windows-based client for the Home Assistant platform.</value>
   </data>
   <data name="About_LblInfo3" xml:space="preserve">
-    <value>This application is open source and completely free, please check the project pages of 
+	  <value>This application is open source and completely free, please check the project pages of 
 the used components for their individual licenses:</value>
   </data>
   <data name="About_LblInfo4" xml:space="preserve">
-    <value>A big &apos;thank you&apos; to the developers of these projects, who were kind enough to share
+	  <value>A big 'thank you' to the developers of these projects, who were kind enough to share
 their hard work with the rest of us mere mortals. </value>
   </data>
   <data name="About_LblInfo5" xml:space="preserve">
-    <value>And of course; thanks to Paulus Shoutsen and the entire team of developers that 
+	  <value>And of course; thanks to Paulus Shoutsen and the entire team of developers that 
 created and maintain Home Assistant :-)</value>
   </data>
   <data name="About_LblInfo2" xml:space="preserve">
@@ -1093,7 +1093,7 @@ created and maintain Home Assistant :-)</value>
     <value>&amp;Close</value>
   </data>
   <data name="Help_LblInfo1" xml:space="preserve">
-    <value>If you are having trouble with HASS.Agent and require support
+	  <value>If you are having trouble with HASS.Agent and require support
 with any sensors, commands, or for general support and feedback,
 there are few ways you can reach us:</value>
   </data>
@@ -1107,14 +1107,14 @@ there are few ways you can reach us:</value>
     <value>GitHub Issues</value>
   </data>
   <data name="Help_LblHAInfo" xml:space="preserve">
-    <value>Bit of everything, with the addition that other
+	  <value>Bit of everything, with the addition that other
 HA users can help you out too!</value>
   </data>
   <data name="Help_LblGitHubInfo" xml:space="preserve">
     <value>Report bugs, post feature requests, see latest changes, etc.</value>
   </data>
   <data name="Help_LblDiscordInfo" xml:space="preserve">
-    <value>Get help with setting up and using HASS.Agent, 
+	  <value>Get help with setting up and using HASS.Agent, 
 report bugs or get involved in general chit-chat!</value>
   </data>
   <data name="Help_LblWikiInfo" xml:space="preserve">
@@ -1229,33 +1229,33 @@ report bugs or get involved in general chit-chat!</value>
     <value>HASS.Agent Update</value>
   </data>
   <data name="CommandsManager_CustomCommandDescription" xml:space="preserve">
-    <value>Execute a custom command.
+	  <value>Execute a custom command.
 
-These commands run without special elevation. To run elevated, create a Scheduled Task, and use &apos;schtasks /Run /TN &quot;TaskName&quot;&apos; as the command to execute your task.
+These commands run without special elevation. To run elevated, create a Scheduled Task, and use 'schtasks /Run /TN "TaskName"' as the command to execute your task.
 
-Or enable &apos;run as low integrity&apos; for even stricter execution.</value>
+Or enable 'run as low integrity' for even stricter execution.</value>
   </data>
   <data name="CommandsManager_CustomExecutorCommandDescription" xml:space="preserve">
-    <value>Executes the command through the configured custom executor (in Configuration -&gt; External Tools).
+	  <value>Executes the command through the configured custom executor (in Configuration -&gt; External Tools).
 
-Your command is provided as an argument &apos;as is&apos;, so you have to supply your own quotes etc. if necessary.</value>
+Your command is provided as an argument 'as is', so you have to supply your own quotes etc. if necessary.</value>
   </data>
   <data name="CommandsManager_HibernateCommandDescription" xml:space="preserve">
     <value>Sets the machine in hibernation.</value>
   </data>
   <data name="CommandsManager_KeyCommandDescription" xml:space="preserve">
-    <value>Simulates a single keypress.
+	  <value>Simulates a single keypress.
 
-Click on the &apos;keycode&apos; textbox and press the key you want simulated. The corresponding keycode will be entered for you.
+Click on the 'keycode' textbox and press the key you want simulated. The corresponding keycode will be entered for you.
 
 If you need more keys and/or modifiers like CTRL, use the MultipleKeys command.</value>
   </data>
   <data name="CommandsManager_LaunchUrlCommandDescription" xml:space="preserve">
-    <value>Launches the provided URL, by default in your default browser.
+	  <value>Launches the provided URL, by default in your default browser.
 
-To use &apos;incognito&apos;, provide a specific browser in Configuration -&gt; External Tools.
+To use 'incognito', provide a specific browser in Configuration -&gt; External Tools.
 
-If you just want a window with a specific URL (not an entire browser), use a &apos;WebView&apos; command.</value>
+If you just want a window with a specific URL (not an entire browser), use a 'WebView' command.</value>
   </data>
   <data name="CommandsManager_LockCommandDescription" xml:space="preserve">
     <value>Locks the current session.</value>
@@ -1282,9 +1282,9 @@ If you just want a window with a specific URL (not an entire browser), use a &ap
     <value>Simulates &apos;Volume Up&apos; key.</value>
   </data>
   <data name="CommandsManager_MultipleKeysCommandDescription" xml:space="preserve">
-    <value>Simulates pressing mulitple keys.
+	  <value>Simulates pressing mulitple keys.
 
-You need to put [ ] between every key, otherwise HASS.Agent can&apos;t tell them apart. So say you want to press X TAB Y SHIFT-Z, it&apos;d be [X] [{TAB}] [Y] [+Z].
+You need to put [ ] between every key, otherwise HASS.Agent can't tell them apart. So say you want to press X TAB Y SHIFT-Z, it'd be [X] [{TAB}] [Y] [+Z].
 
 There are a few tricks you can use:
 
@@ -1299,29 +1299,29 @@ There are a few tricks you can use:
 More info: https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys</value>
   </data>
   <data name="CommandsManager_PowershellCommandDescription" xml:space="preserve">
-    <value>Execute a Powershell command or script.
+	  <value>Execute a Powershell command or script.
 
 You can either provide the location of a script (*.ps1), or a single-line command.
 
 This will run without special elevation.</value>
   </data>
   <data name="CommandsManager_PublishAllSensorsCommandDescription" xml:space="preserve">
-    <value>Resets all sensor checks, forcing all sensors to process and send their value.
+	  <value>Resets all sensor checks, forcing all sensors to process and send their value.
 
 Useful for example if you want to force HASS.Agent to update all your sensors after a HA reboot.</value>
   </data>
   <data name="CommandsManager_RestartCommandDescription" xml:space="preserve">
-    <value>Restarts the machine after one minute.
+	  <value>Restarts the machine after one minute.
 
-Tip: Accidentally triggered? Run &apos;shutdown /a&apos; to abort shutdown.</value>
+Tip: Accidentally triggered? Run 'shutdown /a' to abort shutdown.</value>
   </data>
   <data name="CommandsManager_ShutdownCommandDescription" xml:space="preserve">
-    <value>Shuts down the machine after one minute.
+	  <value>Shuts down the machine after one minute.
 
-Tip: Accidentally triggered? Run &apos;shutdown /a&apos; to abort shutdown.</value>
+Tip: Accidentally triggered? Run 'shutdown /a' to abort shutdown.</value>
   </data>
   <data name="CommandsManager_SleepCommandDescription" xml:space="preserve">
-    <value>Puts the machine to sleep.
+	  <value>Puts the machine to sleep.
 
 Note: due to a limitation in Windows, this only works if hibernation is disabled, otherwise it will just hibernate.
 
@@ -1334,12 +1334,12 @@ You can use something like NirCmd (http://www.nirsoft.net/utils/nircmd.html) to 
     <value>The browser binary provided could not be found, please ensure the path is correct and try again.</value>
   </data>
   <data name="ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox3" xml:space="preserve">
-    <value>No incognito arguments were provided so the browser will likely launch normally.
+	  <value>No incognito arguments were provided so the browser will likely launch normally.
 
 Do you want to continue?</value>
   </data>
   <data name="ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox4" xml:space="preserve">
-    <value>Something went wrong while launching your browser in incognito mode!
+	  <value>Something went wrong while launching your browser in incognito mode!
 
 Please check the logs for more information.</value>
   </data>
@@ -1350,12 +1350,12 @@ Please check the logs for more information.</value>
     <value>Please enter a value for your Home Assistant&apos;s URI.</value>
   </data>
   <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox3" xml:space="preserve">
-    <value>Unable to connect, the following error was returned:
+	  <value>Unable to connect, the following error was returned:
 
 {0}</value>
   </data>
   <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox4" xml:space="preserve">
-    <value>Connection OK!
+	  <value>Connection OK!
 
 Home Assistant version: {0}</value>
   </data>
@@ -1369,7 +1369,7 @@ Home Assistant version: {0}</value>
     <value>Notifications are currently disabled, please enable them and restart the HASS.Agent, then try again.</value>
   </data>
   <data name="ConfigNotifications_BtnSendTestNotification_MessageBox2" xml:space="preserve">
-    <value>The test notification should have appeared, if you did not receive it please check the logs or consult the documentation for troubleshooting tips.
+	  <value>The test notification should have appeared, if you did not receive it please check the logs or consult the documentation for troubleshooting tips.
 
 Note: This only tests locally whether notifications can be shown!</value>
   </data>
@@ -1380,7 +1380,7 @@ Note: This only tests locally whether notifications can be shown!</value>
     <value>Executing, please wait..</value>
   </data>
   <data name="ConfigNotifications_BtnExecutePortReservation_MessageBox1" xml:space="preserve">
-    <value>Something went wrong whilst reserving the port!
+	  <value>Something went wrong whilst reserving the port!
 
 Manual execution is required and a command has been copied to your clipboard, please open an elevated terminal and paste the command.
 
@@ -1402,32 +1402,32 @@ Additionally, remember to change your Firewall Rules port!</value>
     <value>Failed</value>
   </data>
   <data name="ConfigService_BtnStopService_MessageBox1" xml:space="preserve">
-    <value>Something went wrong whilst stopping the service, did you allow the UAC prompt?
+	  <value>Something went wrong whilst stopping the service, did you allow the UAC prompt?
 
 Check the HASS.Agent (not the service) logs for more information.</value>
   </data>
   <data name="ConfigService_BtnStartService_MessageBox1" xml:space="preserve">
-    <value>The service is set to &apos;disabled&apos;, so it cannot be started.
+	  <value>The service is set to 'disabled', so it cannot be started.
 
 Please enable the service first and try again.</value>
   </data>
   <data name="ConfigService_BtnStartService_MessageBox2" xml:space="preserve">
-    <value>Something went wrong whilst starting the service, did you allow the UAC prompt?
+	  <value>Something went wrong whilst starting the service, did you allow the UAC prompt?
 
 Check the HASS.Agent (not the service) logs for more information.</value>
   </data>
   <data name="ConfigService_BtnDisableService_MessageBox1" xml:space="preserve">
-    <value>Something went wrong whilst disabling the service, did you allow the UAC prompt?
+	  <value>Something went wrong whilst disabling the service, did you allow the UAC prompt?
 
 Check the HASS.Agent (not the service) logs for more information.</value>
   </data>
   <data name="ConfigService_BtnEnableService_MessageBox1" xml:space="preserve">
-    <value>Something went wrong whilst enabling the service, did you allow the UAC prompt?
+	  <value>Something went wrong whilst enabling the service, did you allow the UAC prompt?
 
 Check the HASS.Agent (not the service) logs for more information.</value>
   </data>
   <data name="ConfigService_BtnShowLogs_MessageBox1" xml:space="preserve">
-    <value>Something went wrong whilst reinstalling the service, did you allow the UAC prompt?
+	  <value>Something went wrong whilst reinstalling the service, did you allow the UAC prompt?
 
 Check the HASS.Agent (not the service) logs for more information.</value>
   </data>
@@ -1474,12 +1474,12 @@ Check the HASS.Agent (not the service) logs for more information.</value>
     <value>Please enter your Home Assistant&apos;s URI.</value>
   </data>
   <data name="OnboardingApi_BtnTest_MessageBox3" xml:space="preserve">
-    <value>Unable to connect, the following error was returned:
+	  <value>Unable to connect, the following error was returned:
 
 {0}</value>
   </data>
   <data name="OnboardingApi_BtnTest_MessageBox4" xml:space="preserve">
-    <value>Connection OK!
+	  <value>Connection OK!
 
 Home Assistant version: {0}</value>
   </data>
@@ -1499,15 +1499,15 @@ Home Assistant version: {0}</value>
     <value>Connecting to the service has failed!</value>
   </data>
   <data name="ServiceConnect_FailedMessage" xml:space="preserve">
-    <value>The service hasn&apos;t been found! You can install and manage it from the configuration panel.
+	  <value>The service hasn't been found! You can install and manage it from the configuration panel.
 
-When it&apos;s up and running, come back here to configure the commands and sensors.</value>
+When it's up and running, come back here to configure the commands and sensors.</value>
   </data>
   <data name="ServiceConnect_CommunicationFailed" xml:space="preserve">
     <value>Communicating with the service has failed!</value>
   </data>
   <data name="ServiceConnect_CommunicationFailedMessage" xml:space="preserve">
-    <value>Unable to communicate with the service. Check the logs for more info.
+	  <value>Unable to communicate with the service. Check the logs for more info.
 
 You can open the logs and manage the service from the configuration panel.</value>
   </data>
@@ -1515,7 +1515,7 @@ You can open the logs and manage the service from the configuration panel.</valu
     <value>Unauthorized</value>
   </data>
   <data name="ServiceConnect_UnauthorizedMessage" xml:space="preserve">
-    <value>You are not authorized to contact the service.
+	  <value>You are not authorized to contact the service.
 
 If you have the correct auth ID, you can set it now and try again.</value>
   </data>
@@ -1523,7 +1523,7 @@ If you have the correct auth ID, you can set it now and try again.</value>
     <value>Fetching settings failed!</value>
   </data>
   <data name="ServiceConnect_SettingsFailedMessage" xml:space="preserve">
-    <value>The service returned an error while requesting its settings. Check the logs for more info.
+	  <value>The service returned an error while requesting its settings. Check the logs for more info.
 
 You can open the logs and manage the service from the configuration panel.</value>
   </data>
@@ -1531,7 +1531,7 @@ You can open the logs and manage the service from the configuration panel.</valu
     <value>Fetching MQTT settings failed!</value>
   </data>
   <data name="ServiceConnect_MqttFailedMessage" xml:space="preserve">
-    <value>The service returned an error while requesting its MQTT settings. Check the logs for more info.
+	  <value>The service returned an error while requesting its MQTT settings. Check the logs for more info.
 
 You can open the logs and manage the service from the configuration panel.</value>
   </data>
@@ -1539,7 +1539,7 @@ You can open the logs and manage the service from the configuration panel.</valu
     <value>Fetching configured commands failed!</value>
   </data>
   <data name="ServiceConnect_CommandsFailedMessage" xml:space="preserve">
-    <value>The service returned an error while requesting its configured commands. Check the logs for more info.
+	  <value>The service returned an error while requesting its configured commands. Check the logs for more info.
 
 You can open the logs and manage the service from the configuration panel.</value>
   </data>
@@ -1547,12 +1547,12 @@ You can open the logs and manage the service from the configuration panel.</valu
     <value>Fetching configured sensors failed!</value>
   </data>
   <data name="ServiceConnect_SensorsFailedMessage" xml:space="preserve">
-    <value>The service returned an error while requesting its configured sensors. Check the logs for more info.
+	  <value>The service returned an error while requesting its configured sensors. Check the logs for more info.
 
 You can open the logs and manage the service from the configuration panel.</value>
   </data>
   <data name="ServiceGeneral_TbAuthId_MessageBox1" xml:space="preserve">
-    <value>Storing an empty auth ID will allow all HASS.Agent to access the service.
+	  <value>Storing an empty auth ID will allow all HASS.Agent to access the service.
 
 Are you sure you want this?</value>
   </data>
@@ -1569,16 +1569,16 @@ Are you sure you want this?</value>
     <value>The selected executor could not be found, please ensure the path provided is correct and try again.</value>
   </data>
   <data name="ServiceGeneral_LblAuthIdInfo_MessageBox1" xml:space="preserve">
-    <value>Set an auth ID if you don&apos;t want every instance of HASS.Agent on this PC to connect with the satellite service.
+	  <value>Set an auth ID if you don't want every instance of HASS.Agent on this PC to connect with the satellite service.
 
 Only the instances that have the correct ID, can connect.
 
 Leave empty to allow all to connect.</value>
   </data>
   <data name="ServiceGeneral_LblDeviceNameInfo_MessageBox1" xml:space="preserve">
-    <value>This is the name with which the satellite service registers itself on Home Assistant.
+	  <value>This is the name with which the satellite service registers itself on Home Assistant.
 
-By default, it&apos;s your PC&apos;s name plus &apos;-satellite&apos;.</value>
+By default, it's your PC's name plus '-satellite'.</value>
   </data>
   <data name="ServiceGeneral_LblDisconGraceInfo_MessageBox1" xml:space="preserve">
     <value>The amount of time the satellite service will wait before reporting a lost connection to the MQTT broker.</value>
@@ -1605,7 +1605,7 @@ By default, it&apos;s your PC&apos;s name plus &apos;-satellite&apos;.</value>
     <value>Not all steps completed succesfully. Please consult the logs for more information.</value>
   </data>
   <data name="Restart_ProcessRestart_MessageBox1" xml:space="preserve">
-    <value>HASS.Agent is still active after {0} seconds. Please close all instances and restart manually.
+	  <value>HASS.Agent is still active after {0} seconds. Please close all instances and restart manually.
 
 Check the logs for more info, and optionally inform the developers.</value>
   </data>
@@ -1625,7 +1625,7 @@ Check the logs for more info, and optionally inform the developers.</value>
     <value>Stop Satellite Service</value>
   </data>
   <data name="ServiceSetState_ProcessState_MessageBox1" xml:space="preserve">
-    <value>Something went wrong while processing the desired service state.
+	  <value>Something went wrong while processing the desired service state.
 
 Please consult the logs for more information.</value>
   </data>
@@ -1660,12 +1660,12 @@ Please consult the logs for more information.</value>
     <value>A command with that name already exists, are you sure you want to continue?</value>
   </data>
   <data name="CommandsMod_BtnStore_MessageBox4" xml:space="preserve">
-    <value>If a command is not provided, you may only use this entity with an &apos;action&apos; value via Home Assistant, running it as-is will have no action.
+	  <value>If a command is not provided, you may only use this entity with an 'action' value via Home Assistant, running it as-is will have no action.
 
 Are you sure you want to proceed?</value>
   </data>
   <data name="CommandsMod_MessageBox_Action" xml:space="preserve">
-    <value>If you don&apos;t enter a command or script, you can only use this entity with an &apos;action&apos; value through Home Assistant. Running it as-is won&apos;t do anything.
+	  <value>If you don't enter a command or script, you can only use this entity with an 'action' value through Home Assistant. Running it as-is won't do anything.
 
 Are you sure you want this?</value>
   </data>
@@ -1676,7 +1676,7 @@ Are you sure you want this?</value>
     <value>Checking keys failed: {0}</value>
   </data>
   <data name="CommandsMod_BtnStore_MessageBox7" xml:space="preserve">
-    <value>If a URL is not provided, you may only use this entity with an &apos;action&apos; value via Home Assistant, running it as-is will have no action.
+	  <value>If a URL is not provided, you may only use this entity with an 'action' value via Home Assistant, running it as-is will have no action.
 
 Are you sure you want to proceed?</value>
   </data>
@@ -1696,7 +1696,7 @@ Are you sure you want to proceed?</value>
     <value>Launch in Incognito Mode</value>
   </data>
   <data name="CommandsMod_LblInfo_Browser" xml:space="preserve">
-    <value>Browser: Default
+	  <value>Browser: Default
 
 Please configure a custom browser to enable incognito mode.</value>
   </data>
@@ -1707,7 +1707,7 @@ Please configure a custom browser to enable incognito mode.</value>
     <value>Browser: {0}</value>
   </data>
   <data name="CommandsMod_LblInfo_Executor" xml:space="preserve">
-    <value>Executor: None
+	  <value>Executor: None
 
 Please configure an executor or your command will not run.</value>
   </data>
@@ -1835,51 +1835,51 @@ Please configure an executor or your command will not run.</value>
     <value>{0} only!</value>
   </data>
   <data name="Configuration_ProcessChanges_MessageBox1" xml:space="preserve">
-    <value>You&apos;ve changed your device&apos;s name.
+	  <value>You've changed your device's name.
 
 All your sensors and commands will now be unpublished, and HASS.Agent will restart afterwards to republish them.
 
-Don&apos;t worry, they&apos;ll keep their current names, so your automations or scripts will keep working.
+Don't worry, they'll keep their current names, so your automations or scripts will keep working.
 
-Note: the name will get &apos;sanitized&apos;, which means everything except letters, digits and whitespace get replaced by an underscore. This is required by HA.</value>
+Note: the name will get 'sanitized', which means everything except letters, digits and whitespace get replaced by an underscore. This is required by HA.</value>
   </data>
   <data name="Configuration_ProcessChanges_MessageBox2" xml:space="preserve">
-    <value>You&apos;ve changed the local API&apos;s port. This new port needs to be reserved.
+	  <value>You've changed the local API's port. This new port needs to be reserved.
 
-You&apos;ll get an UAC request to do so, please approve.</value>
+You'll get an UAC request to do so, please approve.</value>
   </data>
   <data name="Configuration_ProcessChanges_MessageBox3" xml:space="preserve">
-    <value>Something went wrong!
+	  <value>Something went wrong!
 
 Please manually execute the required command. It has been copied onto your clipboard, you just need to paste it into an elevated command prompt.
 
-Remember to change your firewall rule&apos;s port as well.</value>
+Remember to change your firewall rule's port as well.</value>
   </data>
   <data name="Configuration_ProcessChanges_MessageBox4" xml:space="preserve">
-    <value>The port has succesfully been reserved!
+	  <value>The port has succesfully been reserved!
 
 HASS.Agent will now restart to activate the new configuration.</value>
   </data>
   <data name="Configuration_MessageBox_RestartManually" xml:space="preserve">
-    <value>Something went wrong while preparing to restart.
+	  <value>Something went wrong while preparing to restart.
 Please restart manually.</value>
   </data>
   <data name="Configuration_ProcessChanges_MessageBox5" xml:space="preserve">
-    <value>Your configuration has been saved. Most changes require HASS.Agent to restart before they take effect.
+	  <value>Your configuration has been saved. Most changes require HASS.Agent to restart before they take effect.
 
 Do you want to restart now?</value>
   </data>
   <data name="Main_Load_MessageBox1" xml:space="preserve">
-    <value>Something went wrong while loading your settings.
+	  <value>Something went wrong while loading your settings.
 
-Check appsettings.json in the &apos;config&apos; subfolder, or just delete it to start fresh.</value>
+Check appsettings.json in the 'config' subfolder, or just delete it to start fresh.</value>
   </data>
   <data name="Main_Load_MessageBox2" xml:space="preserve">
-    <value>There was an error launching HASS.Agent.
+	  <value>There was an error launching HASS.Agent.
 Please check the logs and make a bug report on GitHub.</value>
   </data>
   <data name="Main_BtnSensorsManage_Ready" xml:space="preserve">
-    <value>Local &amp;Sensors</value>
+	  <value>&amp;Sensors</value>
   </data>
   <data name="Main_BtnCommandsManager_Ready" xml:space="preserve">
     <value>&amp;Commands</value>
@@ -1948,7 +1948,7 @@ Please check the logs and make a bug report on GitHub.</value>
     <value>HASS.Agent Onboarding: Completed [{0}/{1}]</value>
   </data>
   <data name="OnboardingManager_ConfirmBeforeClose_MessageBox1" xml:space="preserve">
-    <value>Are you sure you want to abort the onboarding process?
+	  <value>Are you sure you want to abort the onboarding process?
 
 Your progress will not be saved, and it will not be shown again on next launch.</value>
   </data>
@@ -1956,24 +1956,24 @@ Your progress will not be saved, and it will not be shown again on next launch.<
     <value>Error fetching info, please check logs for more information.</value>
   </data>
   <data name="UpdateManager_DownloadAndExecuteUpdate_MessageBox1" xml:space="preserve">
-    <value>Unable to prepare downloading the update, check the logs for more info.
+	  <value>Unable to prepare downloading the update, check the logs for more info.
 
 The release page will now open instead.</value>
   </data>
   <data name="UpdateManager_DownloadAndExecuteUpdate_MessageBox2" xml:space="preserve">
-    <value>Unable to download the update, check the logs for more info.
+	  <value>Unable to download the update, check the logs for more info.
 
 The release page will now open instead.</value>
   </data>
   <data name="UpdateManager_DownloadAndExecuteUpdate_MessageBox3" xml:space="preserve">
-    <value>The downloaded file FAILED the certificate check.
+	  <value>The downloaded file FAILED the certificate check.
 
 This could be a technical error, but also a tampered file!
 
 Please check the logs, and post a ticket with the findings.</value>
   </data>
   <data name="UpdateManager_DownloadAndExecuteUpdate_MessageBox4" xml:space="preserve">
-    <value>Unable to launch the installer (did you approve the UAC prompt?), check the logs for more info.
+	  <value>Unable to launch the installer (did you approve the UAC prompt?), check the logs for more info.
 
 The release page will now open instead.</value>
   </data>
@@ -2014,7 +2014,7 @@ The release page will now open instead.</value>
     <value>MQTT: Disconnected</value>
   </data>
   <data name="NotifierManager_Initialize_MessageBox1" xml:space="preserve">
-    <value>Error trying to bind the API to port {0}.
+	  <value>Error trying to bind the API to port {0}.
 
 Make sure no other instance of HASS.Agent is running and the port is available and registered.</value>
   </data>
@@ -2022,9 +2022,9 @@ Make sure no other instance of HASS.Agent is running and the port is available a
     <value>Provides the title of the current active window.</value>
   </data>
   <data name="SensorsManager_AudioSensorsDescription" xml:space="preserve">
-    <value>Provides information various aspects of your device&apos;s audio:
+	  <value>Provides information various aspects of your device's audio:
 
-Current peak volume level (can be used as a simple &apos;is something playing&apos; value).
+Current peak volume level (can be used as a simple 'is something playing' value).
 
 Default audio device: name, state and volume.
 
@@ -2040,7 +2040,7 @@ Summary of your audio sessions: application name, muted state, volume and curren
     <value>Provides the current clockspeed of the first CPU.</value>
   </data>
   <data name="SensorsManager_CurrentVolumeSensorDescription" xml:space="preserve">
-    <value>Provides the current volume level as a percentage.
+	  <value>Provides the current volume level as a percentage.
 
 Currently takes the volume of your default device.</value>
   </data>
@@ -2060,39 +2060,43 @@ Currently takes the volume of your default device.</value>
     <value>Provides a datetime value containing the last moment the user provided any input.</value>
   </data>
   <data name="SensorsManager_LastBootSensorDescription" xml:space="preserve">
-    <value>Provides a datetime value containing the last moment the system (re)booted.
+	  <value>Provides a datetime value containing the last moment the system (re)booted.
 
-Important: Windows&apos; FastBoot option can throw this value off, because that&apos;s a form of hibernation. You can disable it through Power Options -&gt; &apos;Choose what the power buttons do&apos; -&gt; uncheck &apos;Turn on fast start-up&apos;. It doesn&apos;t make much difference for modern machines with SSDs, but disabling makes sure you get a clean state after rebooting.</value>
+Important: Windows' FastBoot option can throw this value off, because that's a form of hibernation. You can disable it through Power Options -&gt; 'Choose what the power buttons do' -&gt; uncheck 'Turn on fast start-up'. It doesn't make much difference for modern machines with SSDs, but disabling makes sure you get a clean state after rebooting.</value>
   </data>
   <data name="SensorsManager_LastSystemStateChangeSensorDescription" xml:space="preserve">
-    <value>Provides the last system state change:
+	  <value>Provides the last system state change:
 
 ApplicationStarted, Logoff, SystemShutdown, Resume, Suspend, ConsoleConnect, ConsoleDisconnect, RemoteConnect, RemoteDisconnect, SessionLock, SessionLogoff, SessionLogon, SessionRemoteControl and SessionUnlock.</value>
   </data>
   <data name="SensorsManager_LoggedUserSensorDescription" xml:space="preserve">
-    <value>Returns the name of the currently logged user.</value>
+	  <value>Returns the name of the currently logged user.
+
+This will only show active users, and falls back to 'Empty' if there are none. If there are multiple, the first will be used.</value>
   </data>
   <data name="SensorsManager_LoggedUsersSensorDescription" xml:space="preserve">
-    <value>Returns a json-formatted list of currently logged users.</value>
+	  <value>Returns a json-formatted list of currently logged users.
+
+This will also contain users that aren't active. If you only want the current active user, use the LoggedUser sensor instead.</value>
   </data>
   <data name="SensorsManager_MemoryUsageSensorDescription" xml:space="preserve">
     <value>Provides the amount of used memory as a percentage.</value>
   </data>
   <data name="SensorsManager_MicrophoneActiveSensorDescription" xml:space="preserve">
-    <value>Provides a bool value based on whether the microphone is currently being used.
+	  <value>Provides a bool value based on whether the microphone is currently being used.
 
-Note: if used in the satellite service, it won&apos;t detect userspace applications.</value>
+Note: if used in the satellite service, it won't detect userspace applications.</value>
   </data>
   <data name="SensorsManager_NamedWindowSensorDescription" xml:space="preserve">
     <value>Provides an ON/OFF value based on whether the window is currently open (doesn&apos;t have to be active).</value>
   </data>
   <data name="SensorsManager_NetworkSensorsDescription" xml:space="preserve">
-    <value>Provides card info, configuration, transfer- &amp; package statistics and addresses (ip, mac, dhcp, dns) of the selected network card(s).
+	  <value>Provides card info, configuration, transfer- &amp; package statistics and addresses (ip, mac, dhcp, dns) of the selected network card(s).
 
 This is a multi-value sensor.</value>
   </data>
   <data name="SensorsManager_PerformanceCounterSensorDescription" xml:space="preserve">
-    <value>Provides the values of a performance counter.
+	  <value>Provides the values of a performance counter.
 
 For example, the built-in CPU load sensor uses these values:
 
@@ -2100,18 +2104,20 @@ Category: Processor
 Counter: % Processor Time
 Instance: _Total
 
-You can explore the counters through Windows&apos; &apos;perfmon.exe&apos; tool.</value>
+You can explore the counters through Windows' 'perfmon.exe' tool.</value>
   </data>
   <data name="SensorsManager_ProcessActiveSensorDescription" xml:space="preserve">
-    <value>Provides the number of active instances of the process.</value>
+	  <value>Provides the number of active instances of the process.
+
+Note: don't add the extension (eg. notepad.exe becomes notepad).</value>
   </data>
   <data name="SensorsManager_ServiceStateSensorDescription" xml:space="preserve">
-    <value>Returns the state of the provided service: NotFound, Stopped, StartPending, StopPending, Running, ContinuePending, PausePending or Paused.
+	  <value>Returns the state of the provided service: NotFound, Stopped, StartPending, StopPending, Running, ContinuePending, PausePending or Paused.
 
-Make sure to provide the &apos;Service name&apos;, not the &apos;Display name&apos;.</value>
+Make sure to provide the 'Service name', not the 'Display name'.</value>
   </data>
   <data name="SensorsManager_SessionStateSensorDescription" xml:space="preserve">
-    <value>Provides the current session state:
+	  <value>Provides the current session state:
 
 Locked, Unlocked or Unknown.
 
@@ -2121,67 +2127,67 @@ Use a LastSystemStateChangeSensor to monitor session state changes.</value>
     <value>Provides the labels, total size (MB), available space (MB), used space (MB) and file system of all present non-removable disks.</value>
   </data>
   <data name="SensorsManager_UserNotificationStateSensorDescription" xml:space="preserve">
-    <value>Provides the current user state:
+	  <value>Provides the current user state:
 
 NotPresent, Busy, RunningDirect3dFullScreen, PresentationMode, AcceptsNotifications, QuietTime or RunningWindowsStoreApp.
 
 Can for instance be used to determine whether to send notifications or TTS messages.</value>
   </data>
   <data name="SensorsManager_WebcamActiveSensorDescription" xml:space="preserve">
-    <value>Provides a bool value based on whether the webcam is currently being used.
+	  <value>Provides a bool value based on whether the webcam is currently being used.
 
-Note: if used in the satellite service, it won&apos;t detect userspace applications.</value>
+Note: if used in the satellite service, it won't detect userspace applications.</value>
   </data>
   <data name="SensorsManager_WindowsUpdatesSensorsDescription" xml:space="preserve">
-    <value>Provides a sensor with the amount of pending driver updates, a sensor with the amount of pending software updates, a sensor containing all pending driver updates information (title, kb article id&apos;s, hidden, type and categories) and a sensor containing the same for pending software updates.
+	  <value>Provides a sensor with the amount of pending driver updates, a sensor with the amount of pending software updates, a sensor containing all pending driver updates information (title, kb article id's, hidden, type and categories) and a sensor containing the same for pending software updates.
 
-This is a costly request, so the recommended interval is 15 minutes (900 seconds). But it&apos;s capped at 10 minutes, if you provide a lower value, you&apos;ll get the last known list.</value>
+This is a costly request, so the recommended interval is 15 minutes (900 seconds). But it's capped at 10 minutes, if you provide a lower value, you'll get the last known list.</value>
   </data>
   <data name="SensorsManager_WmiQuerySensorDescription" xml:space="preserve">
     <value>Provides the result of the WMI query.</value>
   </data>
   <data name="SettingsManager_LoadAppSettings_MessageBox1" xml:space="preserve">
-    <value>Error loading settings:
+	  <value>Error loading settings:
 
 {0}</value>
   </data>
   <data name="SettingsManager_StoreInitialSettings_MessageBox1" xml:space="preserve">
-    <value>Error storing initial settings:
+	  <value>Error storing initial settings:
 
 {0}</value>
   </data>
   <data name="SettingsManager_StoreAppSettings_MessageBox1" xml:space="preserve">
-    <value>Error storing settings:
+	  <value>Error storing settings:
 
 {0}</value>
   </data>
   <data name="StoredCommands_Load_MessageBox1" xml:space="preserve">
-    <value>Error loading commands:
+	  <value>Error loading commands:
 
 {0}</value>
   </data>
   <data name="StoredCommands_Store_MessageBox1" xml:space="preserve">
-    <value>Error storing commands:
+	  <value>Error storing commands:
 
 {0}</value>
   </data>
   <data name="StoredQuickActions_Load_MessageBox1" xml:space="preserve">
-    <value>Error loading quick actions:
+	  <value>Error loading quick actions:
 
 {0}</value>
   </data>
   <data name="StoredQuickActions_Store_MessageBox1" xml:space="preserve">
-    <value>Error storing quick actions:
+	  <value>Error storing quick actions:
 
 {0}</value>
   </data>
   <data name="StoredSensors_Load_MessageBox1" xml:space="preserve">
-    <value>Error loading sensors:
+	  <value>Error loading sensors:
 
 {0}</value>
   </data>
   <data name="StoredSensors_Store_MessageBox1" xml:space="preserve">
-    <value>Error storing sensors:
+	  <value>Error storing sensors:
 
 {0}</value>
   </data>
@@ -2507,7 +2513,7 @@ This is a costly request, so the recommended interval is 15 minutes (900 seconds
     <value>Loading..</value>
   </data>
   <data name="ComponentStatus_Ok" xml:space="preserve">
-    <value>Running</value>
+	  <value>Running</value>
   </data>
   <data name="ComponentStatus_Stopped" xml:space="preserve">
     <value>Stopped</value>
@@ -2543,12 +2549,12 @@ This is a costly request, so the recommended interval is 15 minutes (900 seconds
     <value>Enter a category and counter first.</value>
   </data>
   <data name="SensorsMod_TestPerformanceCounter_MessageBox2" xml:space="preserve">
-    <value>Test succesfully executed, result value:
+	  <value>Test succesfully executed, result value:
 
 {0}</value>
   </data>
   <data name="SensorsMod_TestPerformanceCounter_MessageBox3" xml:space="preserve">
-    <value>The test failed to execute:
+	  <value>The test failed to execute:
 
 {0}
 
@@ -2558,19 +2564,19 @@ Do you want to open the logs folder?</value>
     <value>Enter a WMI query first.</value>
   </data>
   <data name="SensorsMod_TestWmi_MessageBox2" xml:space="preserve">
-    <value>Query succesfully executed, result value:
+	  <value>Query succesfully executed, result value:
 
 {0}</value>
   </data>
   <data name="SensorsMod_TestWmi_MessageBox3" xml:space="preserve">
-    <value>The query failed to execute:
+	  <value>The query failed to execute:
 
 {0}
 
 Do you want to open the logs folder?</value>
   </data>
   <data name="SensorsMod_WmiTestFailed" xml:space="preserve">
-    <value>It looks like your scope is malformed, it should probably start like this:
+	  <value>It looks like your scope is malformed, it should probably start like this:
 
 \\.\ROOT\
 
@@ -2578,7 +2584,7 @@ The scope you entered:
 
 {0}
 
-Tip: make sure you haven&apos;t switched the scope and query fields around.
+Tip: make sure you haven't switched the scope and query fields around.
 
 Do you still want to use the current values?</value>
   </data>
@@ -2592,7 +2598,7 @@ Do you still want to use the current values?</value>
     <value>Last Known Value</value>
   </data>
   <data name="LocalApiManager_Initialize_MessageBox1" xml:space="preserve">
-    <value>Error trying to bind the API to port {0}.
+	  <value>Error trying to bind the API to port {0}.
 
 Make sure no other instance of HASS.Agent is running and the port is available and registered.</value>
   </data>
@@ -2603,11 +2609,11 @@ Make sure no other instance of HASS.Agent is running and the port is available a
     <value>WebView</value>
   </data>
   <data name="CommandsManager_WebViewCommandDescription" xml:space="preserve">
-    <value>Shows a window with the provided URL.
+	  <value>Shows a window with the provided URL.
 
-This differs from the &apos;LaunchUrl&apos; command in that it doesn&apos;t load a full-fledged browser, just the provided URL in its own window.
+This differs from the 'LaunchUrl' command in that it doesn't load a full-fledged browser, just the provided URL in its own window.
 
-You can use this to for instance quickly show Home Assistant&apos;s dashboard.
+You can use this to for instance quickly show Home Assistant's dashboard.
 
 By default, it stores cookies indefinitely so you only have to log in once.</value>
   </data>
@@ -2615,14 +2621,14 @@ By default, it stores cookies indefinitely so you only have to log in once.</val
     <value>HASS.Agent Commands</value>
   </data>
   <data name="CommandsManager_CommandsManager_SendWindowToFrontCommandDescription" xml:space="preserve">
-    <value>Looks for the specified process, and tries to send its main window to the front.
+	  <value>Looks for the specified process, and tries to send its main window to the front.
 
-If the application is minimized, it&apos;ll get restored.
+If the application is minimized, it'll get restored.
 
-Example: if you want to send VLC to the foreground, use &apos;vlc&apos;.</value>
+Example: if you want to send VLC to the foreground, use 'vlc'.</value>
   </data>
   <data name="CommandsMod_BtnStore_MessageBox8" xml:space="preserve">
-    <value>If you do not configure the command, you may only use this entity with an &apos;action&apos; value via Home Assistant and it will appear using the default settings, running it as-is will have no action.
+	  <value>If you do not configure the command, you may only use this entity with an 'action' value via Home Assistant and it will appear using the default settings, running it as-is will have no action.
 
 Are you sure you want to do this?</value>
   </data>
@@ -2645,7 +2651,7 @@ Are you sure you want to do this?</value>
     <value>The WebView cache has been cleared!</value>
   </data>
   <data name="Main_CheckDpiScalingFactor_MessageBox1" xml:space="preserve">
-    <value>It looks like you&apos;re using an alternative scaling. This may result in some parts of HASS.Agent not looking as intended.
+	  <value>It looks like you're using an alternative scaling. This may result in some parts of HASS.Agent not looking as intended.
 
 Please report any unusable aspects on GitHub. Thanks!
 
@@ -2664,9 +2670,9 @@ Note: this message only shows once.</value>
     <value>&amp;Enable Local API</value>
   </data>
   <data name="ConfigLocalApi_LblInfo1" xml:space="preserve">
-    <value>HASS.Agent has its own local API, so Home Assistant can send requests (for instance to send a notification). You can configure it globally here, and afterwards you can configure the dependent sections (currently notifications and mediaplayer).
+	  <value>HASS.Agent has its own local API, so Home Assistant can send requests (for instance to send a notification). You can configure it globally here, and afterwards you can configure the dependent sections (currently notifications and mediaplayer).
 
-Note: this is not required for the new integration to function. Only enable and use it if you don&apos;t use MQTT.</value>
+Note: this is not required for the new integration to function. Only enable and use it if you don't use MQTT.</value>
   </data>
   <data name="ConfigLocalApi_LblInfo2" xml:space="preserve">
     <value>To be able to listen to the requests, HASS.Agent needs to have its port reserved and opened in your firewall. You can use this button to have it done for you.</value>
@@ -2705,7 +2711,7 @@ Note: this is not required for the new integration to function. Only enable and 
     <value>HASS.Agent can act as a media player for Home Assistant, so you&apos;ll be able to see and control any media that&apos;s playing, and send text-to-speech. If you have MQTT enabled, your device will automatically get added. Otherwise, manually configure the integration to use the local API.</value>
   </data>
   <data name="ConfigMediaPlayer_LblInfo2" xml:space="preserve">
-    <value>If something is not working, make sure you try the following steps:
+	  <value>If something is not working, make sure you try the following steps:
 
 - Install the HASS.Agent integration
 - Restart Home Assistant
@@ -2789,14 +2795,14 @@ Note: this is not required for the new integration to function. Only enable and 
     <value>Manage Satellite Service</value>
   </data>
   <data name="OnboardingIntegrations_LblInfo1" xml:space="preserve">
-    <value>To use notifications, you need to install and configure the HASS.Agent-notifier integration in
+	  <value>To use notifications, you need to install and configure the HASS.Agent-notifier integration in
 Home Assistant.
 
 This is very easy using HACS, but you can also install manually. Visit the link below for more
 information.</value>
   </data>
   <data name="OnboardingIntegrations_LblInfo2" xml:space="preserve">
-    <value>Make sure you follow these steps:
+	  <value>Make sure you follow these steps:
 
 - Install the HASS.Agent-Notifier and / or HASS.Agent-MediaPlayer integration
 - Restart Home Assistant
@@ -2822,7 +2828,7 @@ information.</value>
     <value>Enable &amp;Notifications</value>
   </data>
   <data name="OnboardingLocalApi_LblInfo1" xml:space="preserve">
-    <value>HASS.Agent has its own internal API, so Home Assistant can send requests (like notifications or text-to-speech).
+	  <value>HASS.Agent has its own internal API, so Home Assistant can send requests (like notifications or text-to-speech).
 
 Do you want to enable it?</value>
   </data>
@@ -2836,7 +2842,7 @@ Do you want to enable it?</value>
     <value>&amp;TLS</value>
   </data>
   <data name="OnboardingWelcome_Store_MessageBox1" xml:space="preserve">
-    <value>Your device name contained some characters that are not allowed by HA (only letters, digits and whitespace).
+	  <value>Your device name contained some characters that are not allowed by HA (only letters, digits and whitespace).
 
 The final name is: {0}
 
@@ -2885,7 +2891,7 @@ Do you want to use that version?</value>
     <value>WebView</value>
   </data>
   <data name="CommandsMod_BtnStore_MessageBox9" xml:space="preserve">
-    <value>The keycode you have provided is not a valid number!
+	  <value>The keycode you have provided is not a valid number!
 
 Please ensure the keycode field is in focus and press the key you want simulated, the keycode should then be generated for you.</value>
   </data>
@@ -2902,11 +2908,11 @@ Please ensure the keycode field is in focus and press the key you want simulated
     <value>HASS.Agent sends notifications when the state of a module changes, you can adjust whether or not you want to receive these notifications below.</value>
   </data>
   <data name="Configuration_ProcessChanges_MessageBox6" xml:space="preserve">
-    <value>You&apos;ve changed your device&apos;s name.
+	  <value>You've changed your device's name.
 
 All your sensors and commands will now be unpublished and published again after the HASS.Agent restarts.
 
-Don&apos;t worry! they&apos;ll keep their current names so your automations and scripts will continue to work.
+Don't worry! they'll keep their current names so your automations and scripts will continue to work.
 
 Note: You disabled sanitation, so make sure your device name is accepted by Home Assistant.</value>
   </data>
@@ -2980,24 +2986,24 @@ Note: You disabled sanitation, so make sure your device name is accepted by Home
     <value>Command</value>
   </data>
   <data name="CommandsMod_MessageBox_Action2" xml:space="preserve">
-    <value>If you don&apos;t enter a volume value, you can only use this entity with an &apos;action&apos; value through Home Assistant. Running it as-is won&apos;t do anything.
+	  <value>If you don't enter a volume value, you can only use this entity with an 'action' value through Home Assistant. Running it as-is won't do anything.
 
 Are you sure you want this?</value>
   </data>
   <data name="CommandsMod_MessageBox_Sanitize" xml:space="preserve">
-    <value>The name you provided contains unsupported characters and won&apos;t work. The suggested version is:
+	  <value>The name you provided contains unsupported characters and won't work. The suggested version is:
 
 {0}
 
 Do you want to use this version?</value>
   </data>
   <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox5" xml:space="preserve">
-    <value>The API token you have provided doesn&apos;t appear to be valid, please ensure you selected the entire token (Don&apos;t use CTRL + A or double-click). A valid API key contains three sections, separated by two dots.
+	  <value>The API token you have provided doesn't appear to be valid, please ensure you selected the entire token (Don't use CTRL + A or double-click). A valid API key contains three sections, separated by two dots.
 
 Are you sure you want to use this key anyway?</value>
   </data>
   <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox6" xml:space="preserve">
-    <value>The URI you have provided does not appear to be valid, a valid URI may look like either of the following:
+	  <value>The URI you have provided does not appear to be valid, a valid URI may look like either of the following:
 - http://homeassistant.local:8123
 - http://192.168.0.1:8123
 
@@ -3022,7 +3028,7 @@ Are you sure you want to use this URI anyway?</value>
     <value>&amp;Manage Service</value>
   </data>
   <data name="ConfigService_BtnManageService_MessageBox1" xml:space="preserve">
-    <value>The service is currently stopped and cannot be configured.
+	  <value>The service is currently stopped and cannot be configured.
 
 Please start the service first in order to configure it.</value>
   </data>
@@ -3033,18 +3039,18 @@ Please start the service first in order to configure it.</value>
     <value>Show default menu on mouse left-click</value>
   </data>
   <data name="Configuration_CheckValues_MessageBox1" xml:space="preserve">
-    <value>Your Home Assistant API token doesn&apos;t look right. Make sure you selected the entire token (don&apos;t use CTRL+A or doubleclick).
+	  <value>Your Home Assistant API token doesn't look right. Make sure you selected the entire token (don't use CTRL+A or doubleclick).
 It should contain three sections (seperated by two dots).
 
 Are you sure you want to use it like this?</value>
   </data>
   <data name="Configuration_CheckValues_MessageBox2" xml:space="preserve">
-    <value>Your Home Assistant URI doesn&apos;t look right. It should look something like &apos;http://homeassistant.local:8123&apos; or &apos;https://192.168.0.1:8123&apos;.
+	  <value>Your Home Assistant URI doesn't look right. It should look something like 'http://homeassistant.local:8123' or 'https://192.168.0.1:8123'.
 
 Are you sure you want to use it like this?</value>
   </data>
   <data name="Configuration_CheckValues_MessageBox3" xml:space="preserve">
-    <value>Your MQTT broker URI doesn&apos;t look right. It should look something like &apos;homeassistant.local&apos; or &apos;192.168.0.1&apos;.
+	  <value>Your MQTT broker URI doesn't look right. It should look something like 'homeassistant.local' or '192.168.0.1'.
 
 Are you sure you want to use it like this?</value>
   </data>
@@ -3055,7 +3061,7 @@ Are you sure you want to use it like this?</value>
     <value>I already donated, hide the button on the main window.</value>
   </data>
   <data name="Donate_LblInfo" xml:space="preserve">
-    <value>HASS.Agent is completely free, and will always stay that way without restrictions!
+	  <value>HASS.Agent is completely free, and will always stay that way without restrictions!
 
 However, developing and maintaining this tool (and everything that surrounds it, like support and the docs) takes up a lot of time. 
 
@@ -3071,12 +3077,12 @@ Like most developers, I run on caffeïne - so if you can spare it, a cup of coff
     <value>Check for Updates</value>
   </data>
   <data name="OnboardingApi_BtnTest_MessageBox5" xml:space="preserve">
-    <value>The API token you have provided doesn&apos;t appear to be valid, please ensure you selected the entire token (Don&apos;t use CTRL + A or double-click). A valid API key contains three sections, separated by two dots.
+	  <value>The API token you have provided doesn't appear to be valid, please ensure you selected the entire token (Don't use CTRL + A or double-click). A valid API key contains three sections, separated by two dots.
 
 Are you sure you want to use this key anyway?</value>
   </data>
   <data name="OnboardingApi_BtnTest_MessageBox6" xml:space="preserve">
-    <value>The URI you have provided does not appear to be valid, a valid URI may look like either of the following:
+	  <value>The URI you have provided does not appear to be valid, a valid URI may look like either of the following:
 - http://homeassistant.local:8123
 - http://192.168.0.1:8123
 
@@ -3101,36 +3107,36 @@ Are you sure you want to use this URI anyway?</value>
     <value>HASS.Agent Post Update</value>
   </data>
   <data name="SensorsManager_BluetoothDevicesSensorDescription" xml:space="preserve">
-    <value>Provides a sensor with the amount of bluetooth devices found.
+	  <value>Provides a sensor with the amount of bluetooth devices found.
 
 The devices and their connected state are added as attributes.</value>
   </data>
   <data name="SensorsManager_BluetoothLeDevicesSensorDescription" xml:space="preserve">
-    <value>Provides a sensors with the amount of bluetooth LE devices found.
+	  <value>Provides a sensors with the amount of bluetooth LE devices found.
 
 The devices and their connected state are added as attributes.
 
 Only shows devices that were seen since the last report, ie. when the sensor publishes, the list clears.</value>
   </data>
   <data name="SensorsManager_GeoLocationSensorDescription" xml:space="preserve">
-    <value>Returns your current latitude, longitude and altitude as a comma-seperated value.
+	  <value>Returns your current latitude, longitude and altitude as a comma-seperated value.
 
-Make sure Windows&apos; location services are enabled!
+Make sure Windows' location services are enabled!
 
-Depending on your Windows version, this can be found in the new control panel -&gt; &apos;privacy and security&apos; -&gt; &apos;location&apos;.</value>
+Depending on your Windows version, this can be found in the new control panel -&gt; 'privacy and security' -&gt; 'location'.</value>
   </data>
   <data name="SensorsManager_MicrophoneProcessSensorDescription" xml:space="preserve">
-    <value>Provides the name of the process that&apos;s currently using the microphone.
+	  <value>Provides the name of the process that's currently using the microphone.
 
-Note: if used in the satellite service, it won&apos;t detect userspace applications.</value>
+Note: if used in the satellite service, it won't detect userspace applications.</value>
   </data>
   <data name="SensorsManager_MonitorPowerStateSensorDescription" xml:space="preserve">
-    <value>Provides the last monitor power state change:
+	  <value>Provides the last monitor power state change:
 
 Dimmed, PowerOff, PowerOn and Unkown.</value>
   </data>
   <data name="SensorsManager_PowershellSensorDescription" xml:space="preserve">
-    <value>Returns the result of the provided Powershell command or script.
+	  <value>Returns the result of the provided Powershell command or script.
 
 Converts the outcome to text.</value>
   </data>
@@ -3138,12 +3144,12 @@ Converts the outcome to text.</value>
     <value>Provides information about all installed printers and their queues.</value>
   </data>
   <data name="SensorsManager_WebcamProcessSensorDescription" xml:space="preserve">
-    <value>Provides the name of the process that&apos;s currently using the webcam.
+	  <value>Provides the name of the process that's currently using the webcam.
 
-Note: if used in the satellite service, it won&apos;t detect userspace applications.</value>
+Note: if used in the satellite service, it won't detect userspace applications.</value>
   </data>
   <data name="SensorsManager_WindowStateSensorDescription" xml:space="preserve">
-    <value>Provides the current state of the process&apos; window:
+	  <value>Provides the current state of the process' window:
 
 Hidden, Maximized, Minimized, Normal and Unknown.</value>
   </data>
@@ -3151,7 +3157,7 @@ Hidden, Maximized, Minimized, Normal and Unknown.</value>
     <value>powershell command or script</value>
   </data>
   <data name="SensorsMod_MessageBox_Sanitize" xml:space="preserve">
-    <value>The name you provided contains unsupported characters and won&apos;t work. The suggested version is:
+	  <value>The name you provided contains unsupported characters and won't work. The suggested version is:
 
 {0}
 
@@ -3164,12 +3170,12 @@ Do you want to use this version?</value>
     <value>Please enter a command or script!</value>
   </data>
   <data name="SensorsMod_TestPowershell_MessageBox2" xml:space="preserve">
-    <value>Test succesfully executed, result value:
+	  <value>Test succesfully executed, result value:
 
 {0}</value>
   </data>
   <data name="SensorsMod_TestPowershell_MessageBox3" xml:space="preserve">
-    <value>The test failed to execute:
+	  <value>The test failed to execute:
 
 {0}
 
@@ -3203,11 +3209,14 @@ Do you want to open the logs folder?</value>
     <value>Error setting startup mode, please check the logs for more information.</value>
   </data>
   <data name="WebView_InitializeAsync_MessageBox1" xml:space="preserve">
-    <value>Microsoft&apos;s WebView2 runtime isn&apos;t found on your machine. Usually this is handled by the installer, but you can install it manually.
+	  <value>Microsoft's WebView2 runtime isn't found on your machine. Usually this is handled by the installer, but you can install it manually.
 
 Do you want to download the runtime installer?</value>
   </data>
   <data name="WebView_InitializeAsync_MessageBox2" xml:space="preserve">
     <value>Something went wrong while initializing the WebView! Please check your logs and open a GitHub issue for further assistance.</value>
+  </data>
+  <data name="QuickActionsMod_ClmDomain" xml:space="preserve">
+	  <value>domain</value>
   </data>
 </root>
