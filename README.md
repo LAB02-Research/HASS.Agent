@@ -73,17 +73,17 @@ The main reason I built this is that I wanted to receive notifications on my PC,
 
 Summary of the core functions:
 
-* **Notifications**: receive notifications, show them using Windows builtin toast popups, and optionally attach images. 
-  - *This requires the installation of the [HASS.Agent Notifier integration](https://github.com/LAB02-Research/HASS.Agent-Notifier)*.
+* **Notifications**: receive notifications, show them using Windows builtin toast popups, and optionally attach images. Supports *actions*: add buttons so you can easily interact with Home Assistant, without having to open anything.
+  - *This requires the installation of the [HASS.Agent integration](https://github.com/LAB02-Research/HASS.Agent-Integration)*.
 
 * **Media Player**: use HASS.Agent as a mediaplayer device: see and control what's playing and send text-to-speech.
-  - *This requires the installation of the [HASS.Agent MediaPlayer integration](https://github.com/LAB02-Research/HASS.Agent-MediaPlayer)*.
+  - *This requires the installation of the [HASS.Agent integration](https://github.com/LAB02-Research/HASS.Agent-Integration)*.
 
 * **Quick Actions**: use a keyboard shortcut to quickly pull up a command interface, through which you can control Home Assistant entities - or, assign a keyboard shortcut to individual Quick Actions for even faster triggering.
 
-* **Commands** (currently **21**): control your PC (or other Windows based device) through Home Assistant using custom- or built-in commands.
+* **Commands** (currently **24**): control your PC (or other Windows based device) through Home Assistant using custom- or built-in commands.
 
-* **Sensors** (currently **29**): send your PC's sensors to Home Assistant to monitor every aspect of your device.
+* **Sensors** (currently **37**): send your PC's sensors to Home Assistant to monitor every aspect of your device.
 
 * **WebView**: quickly show any website, anywhere - no browser required, for instance a HA dashboard.
 
@@ -99,7 +99,8 @@ Summary of the core functions:
 
 Notification examples:
 
-![Image-based toast notification](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_toast_image.png)  ![Text-based toast notification](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_toast_text.png)
+![image](https://user-images.githubusercontent.com/81011038/199956334-642def7d-4cb4-46f3-a73b-25c76e5bd02c.png)  ![Text-based toast notification](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_toast_text.png)  
+
 
 WebView example, showing a dashboard when right-clicking the tray icon:
 
@@ -127,7 +128,7 @@ Easily manage the satellite service through HASS.Agent:
 
 You'll be guided through the configuration options during onboarding:
 
-![Onboarding Task](https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/hass_agent_onboarding_startup.png)
+![Onboarding](https://user-images.githubusercontent.com/81011038/198251220-d15b4b3b-264e-44bc-b52f-5c404f9efb1f.png)
     
 ----
 
