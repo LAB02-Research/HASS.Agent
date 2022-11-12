@@ -74,7 +74,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnStore.TabIndex = 4;
-            this.BtnStore.Text = Languages.QuickActionsConfig_BtnStore;
+            this.BtnStore.Text = global::HASS.Agent.Resources.Localization.Languages.QuickActionsConfig_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
@@ -98,7 +98,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.BtnAdd.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnAdd.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnAdd.TabIndex = 0;
-            this.BtnAdd.Text = Languages.QuickActionsConfig_BtnAdd;
+            this.BtnAdd.Text = global::HASS.Agent.Resources.Localization.Languages.QuickActionsConfig_BtnAdd;
             this.BtnAdd.UseVisualStyleBackColor = false;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
@@ -122,7 +122,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.BtnModify.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnModify.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnModify.TabIndex = 1;
-            this.BtnModify.Text = Languages.QuickActionsConfig_BtnModify;
+            this.BtnModify.Text = global::HASS.Agent.Resources.Localization.Languages.QuickActionsConfig_BtnModify;
             this.BtnModify.UseVisualStyleBackColor = false;
             this.BtnModify.Click += new System.EventHandler(this.BtnModify_Click);
             // 
@@ -146,7 +146,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.BtnRemove.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnRemove.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnRemove.TabIndex = 2;
-            this.BtnRemove.Text = Languages.QuickActionsConfig_BtnRemove;
+            this.BtnRemove.Text = global::HASS.Agent.Resources.Localization.Languages.QuickActionsConfig_BtnRemove;
             this.BtnRemove.UseVisualStyleBackColor = false;
             this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
@@ -170,7 +170,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.BtnPreview.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnPreview.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnPreview.TabIndex = 3;
-            this.BtnPreview.Text = Languages.QuickActionsConfig_BtnPreview;
+            this.BtnPreview.Text = global::HASS.Agent.Resources.Localization.Languages.QuickActionsConfig_BtnPreview;
             this.BtnPreview.UseVisualStyleBackColor = false;
             this.BtnPreview.Click += new System.EventHandler(this.BtnPreview_Click);
             // 
@@ -230,7 +230,8 @@ namespace HASS.Agent.Forms.QuickActions
             // 
             // ClmHotKeyEnabled
             // 
-            this.ClmHotKeyEnabled.Text = Languages.QuickActionsConfig_LblHotkey;
+            this.ClmHotKeyEnabled.Tag = "hide";
+            this.ClmHotKeyEnabled.Text = "Enabled";
             this.ClmHotKeyEnabled.Width = 40;
             // 
             // ClmHotKey
@@ -245,6 +246,7 @@ namespace HASS.Agent.Forms.QuickActions
             // 
             // ClmEmpty
             // 
+            this.ClmEmpty.Tag = "hide";
             this.ClmEmpty.Text = "filler column";
             this.ClmEmpty.Width = 10000;
             // 
@@ -263,9 +265,9 @@ namespace HASS.Agent.Forms.QuickActions
             this.LblHotkey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LblHotkey.AutoSize = true;
             this.LblHotkey.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblHotkey.Location = new System.Drawing.Point(831, 449);
+            this.LblHotkey.Location = new System.Drawing.Point(715, 452);
             this.LblHotkey.Name = "LblHotkey";
-            this.LblHotkey.Size = new System.Drawing.Size(88, 15);
+            this.LblHotkey.Size = new System.Drawing.Size(49, 15);
             this.LblHotkey.TabIndex = 43;
             this.LblHotkey.Text = Languages.QuickActionsConfig_LblHotkey;
             // 
@@ -276,7 +278,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.PbHotKey.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbHotKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PbHotKey.Image = global::HASS.Agent.Properties.Resources.hotkey_16;
-            this.PbHotKey.Location = new System.Drawing.Point(809, 448);
+            this.PbHotKey.Location = new System.Drawing.Point(693, 451);
             this.PbHotKey.Name = "PbHotKey";
             this.PbHotKey.Size = new System.Drawing.Size(16, 16);
             this.PbHotKey.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;

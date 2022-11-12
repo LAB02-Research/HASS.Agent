@@ -22,7 +22,7 @@ namespace HASS.Agent.Media
                 using var audioDevice = Variables.AudioDeviceEnumerator.GetDefaultAudioEndpoint(DataFlow.eRender, Role.Multimedia);
 
                 // get default device volume
-                var volume = (int)(audioDevice.AudioEndpointVolume?.MasterVolumeLevelScalar * 100 ?? 0);
+                var volume = Convert.ToInt32(Math.Round(audioDevice.AudioEndpointVolume?.MasterVolumeLevelScalar * 100 ?? 0, 0));
 
                 // Log.Debug("[MEDIA] Current volume: {vol}", volume);
 

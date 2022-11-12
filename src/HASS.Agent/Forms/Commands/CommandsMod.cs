@@ -205,7 +205,7 @@ namespace HASS.Agent.Forms.Commands
         {
             if (LvCommands.SelectedItems.Count == 0)
             {
-                MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.CommandsMod_BtnStore_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -216,14 +216,14 @@ namespace HASS.Agent.Forms.Commands
 
             if (commandCard == null)
             {
-                MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.CommandsMod_BtnStore_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             // get and check entity type
             if (CbEntityType.SelectedItem == null)
             {
-                MessageBoxAdv.Show(Languages.CommandsMod_MessageBox_EntityType, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.CommandsMod_MessageBox_EntityType, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -234,7 +234,7 @@ namespace HASS.Agent.Forms.Commands
             var name = TbName.Text.Trim();
             if (string.IsNullOrEmpty(name))
             {
-                MessageBoxAdv.Show(Languages.CommandsMod_MessageBox_Name, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.CommandsMod_MessageBox_Name, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = TbName;
                 return;
             }
@@ -243,7 +243,7 @@ namespace HASS.Agent.Forms.Commands
             var sanitized = SharedHelperFunctions.GetSafeValue(name);
             if (sanitized != name)
             {
-                var confirmSanitize = MessageBoxAdv.Show(string.Format(Languages.CommandsMod_MessageBox_Sanitize, sanitized), Variables.MessageBoxTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                var confirmSanitize = MessageBoxAdv.Show(this, string.Format(Languages.CommandsMod_MessageBox_Sanitize, sanitized), Variables.MessageBoxTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (confirmSanitize != DialogResult.OK)
                 {
                     ActiveControl = TbName;
@@ -257,7 +257,7 @@ namespace HASS.Agent.Forms.Commands
             // name already used?
             if (!_serviceMode && Variables.Commands.Any(x => string.Equals(x.Name, name, StringComparison.InvariantCultureIgnoreCase) && x.Id != Command.Id.ToString()))
             {
-                var confirm = MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var confirm = MessageBoxAdv.Show(this, Languages.CommandsMod_BtnStore_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (confirm != DialogResult.Yes)
                 {
                     ActiveControl = TbName;
@@ -271,7 +271,7 @@ namespace HASS.Agent.Forms.Commands
                     var command = TbSetting.Text.Trim();
                     if (string.IsNullOrEmpty(command))
                     {
-                        var q = MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox4, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        var q = MessageBoxAdv.Show(this, Languages.CommandsMod_BtnStore_MessageBox4, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (q != DialogResult.Yes)
                         {
                             ActiveControl = TbSetting;
@@ -285,7 +285,7 @@ namespace HASS.Agent.Forms.Commands
                     var script = TbSetting.Text.Trim();
                     if (string.IsNullOrEmpty(script))
                     {
-                        var q = MessageBoxAdv.Show(Languages.CommandsMod_MessageBox_Action, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        var q = MessageBoxAdv.Show(this, Languages.CommandsMod_MessageBox_Action, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (q != DialogResult.Yes)
                         {
                             ActiveControl = TbSetting;
@@ -299,14 +299,14 @@ namespace HASS.Agent.Forms.Commands
                     var keycodeStr = TbKeyCode.Text.Trim();
                     if (string.IsNullOrEmpty(keycodeStr))
                     {
-                        MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox5, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show(this, Languages.CommandsMod_BtnStore_MessageBox5, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbKeyCode;
                         return;
                     }
                     var parsed = int.TryParse(keycodeStr, out var keycode);
                     if (!parsed)
                     {
-                        MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox9, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show(this, Languages.CommandsMod_BtnStore_MessageBox9, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbKeyCode;
                         return;
                     }
@@ -317,7 +317,7 @@ namespace HASS.Agent.Forms.Commands
                     var keysParsed = HelperFunctions.ParseMultipleKeys(TbSetting.Text.Trim(), out var keys, out var errorMsg);
                     if (!keysParsed)
                     {
-                        MessageBoxAdv.Show(string.Format(Languages.CommandsMod_BtnStore_MessageBox6, errorMsg), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBoxAdv.Show(this, string.Format(Languages.CommandsMod_BtnStore_MessageBox6, errorMsg), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         ActiveControl = TbSetting;
                         return;
                     }
@@ -328,7 +328,7 @@ namespace HASS.Agent.Forms.Commands
                     var url = TbSetting.Text.Trim();
                     if (string.IsNullOrEmpty(url))
                     {
-                        var q = MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox7, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        var q = MessageBoxAdv.Show(this, Languages.CommandsMod_BtnStore_MessageBox7, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (q != DialogResult.Yes)
                         {
                             ActiveControl = TbSetting;
@@ -353,7 +353,7 @@ namespace HASS.Agent.Forms.Commands
                     var executorCommand = TbSetting.Text.Trim();
                     if (string.IsNullOrEmpty(executorCommand))
                     {
-                        var q = MessageBoxAdv.Show(Languages.CommandsMod_MessageBox_Action, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        var q = MessageBoxAdv.Show(this, Languages.CommandsMod_MessageBox_Action, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (q != DialogResult.Yes)
                         {
                             ActiveControl = TbSetting;
@@ -367,7 +367,7 @@ namespace HASS.Agent.Forms.Commands
                     var procName = TbSetting.Text.Trim();
                     if (string.IsNullOrEmpty(procName))
                     {
-                        var q = MessageBoxAdv.Show(Languages.CommandsMod_MessageBox_Action, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        var q = MessageBoxAdv.Show(this, Languages.CommandsMod_MessageBox_Action, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (q != DialogResult.Yes)
                         {
                             ActiveControl = TbSetting;
@@ -381,7 +381,7 @@ namespace HASS.Agent.Forms.Commands
                     var volume = TbSetting.Text.Trim();
                     if (string.IsNullOrEmpty(volume))
                     {
-                        var q = MessageBoxAdv.Show(Languages.CommandsMod_MessageBox_Action2, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        var q = MessageBoxAdv.Show(this, Languages.CommandsMod_MessageBox_Action2, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (q != DialogResult.Yes)
                         {
                             ActiveControl = TbSetting;
@@ -393,7 +393,7 @@ namespace HASS.Agent.Forms.Commands
                         var volParsed = int.TryParse(volume, out var vol);
                         if (!volParsed || vol is < 0 or > 100)
                         {
-                            MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox10, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBoxAdv.Show(this, Languages.CommandsMod_BtnStore_MessageBox10, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             ActiveControl = TbSetting;
                             return;
                         }
@@ -406,7 +406,7 @@ namespace HASS.Agent.Forms.Commands
                     var webview = TbSetting.Text.Trim();
                     if (string.IsNullOrEmpty(webview))
                     {
-                        var q = MessageBoxAdv.Show(Languages.CommandsMod_BtnStore_MessageBox8, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        var q = MessageBoxAdv.Show(this, Languages.CommandsMod_BtnStore_MessageBox8, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (q != DialogResult.Yes)
                         {
                             ActiveControl = BtnConfigureCommand;
@@ -792,7 +792,7 @@ namespace HASS.Agent.Forms.Commands
             infoMsg.AppendLine(string.Empty);
             infoMsg.AppendLine(Languages.CommandsMod_LblIntegrityInfo_InfoMsg5);
 
-            MessageBoxAdv.Show(infoMsg.ToString(), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBoxAdv.Show(this, infoMsg.ToString(), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void CommandsMod_KeyUp(object sender, KeyEventArgs e)
@@ -863,7 +863,7 @@ namespace HASS.Agent.Forms.Commands
         {
             if (CbEntityType.SelectedItem == null)
             {
-                MessageBoxAdv.Show(Languages.CommandsMod_MessageBox_EntityType, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(this, Languages.CommandsMod_MessageBox_EntityType, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 ActiveControl = CbEntityType;
                 return;
             }
@@ -874,14 +874,14 @@ namespace HASS.Agent.Forms.Commands
             var deviceConfig = Variables.MqttManager?.GetDeviceConfigModel();
             if (deviceConfig == null)
             {
-                MessageBoxAdv.Show(Languages.CommandsMod_LblMqttTopic_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(this, Languages.CommandsMod_LblMqttTopic_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
             var name = TbName.Text.Trim();
             if (string.IsNullOrEmpty(name))
             {
-                MessageBoxAdv.Show(Languages.CommandsMod_MessageBox_Name, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(this, Languages.CommandsMod_MessageBox_Name, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 ActiveControl = TbName;
                 return;
             }

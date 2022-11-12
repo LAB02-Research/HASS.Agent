@@ -36,21 +36,21 @@ namespace HASS.Agent.Controls.Onboarding
 
             if (string.IsNullOrEmpty(apiKey))
             {
-                MessageBoxAdv.Show(Languages.OnboardingApi_BtnTest_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(this, Languages.OnboardingApi_BtnTest_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 ActiveControl = TbHassApiToken;
                 return;
             }
 
             if (string.IsNullOrEmpty(hassUri))
             {
-                MessageBoxAdv.Show(Languages.OnboardingApi_BtnTest_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(this, Languages.OnboardingApi_BtnTest_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 ActiveControl = TbHassIp;
                 return;
             }
 
             if (!SharedHelperFunctions.CheckHomeAssistantApiToken(apiKey))
             {
-                var q = MessageBoxAdv.Show(Languages.OnboardingApi_BtnTest_MessageBox5, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                var q = MessageBoxAdv.Show(this, Languages.OnboardingApi_BtnTest_MessageBox5, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (q != DialogResult.Yes)
                 {
                     ActiveControl = TbHassApiToken;
@@ -60,7 +60,7 @@ namespace HASS.Agent.Controls.Onboarding
 
             if (!SharedHelperFunctions.CheckHomeAssistantUri(hassUri))
             {
-                var q = MessageBoxAdv.Show(Languages.OnboardingApi_BtnTest_MessageBox6, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                var q = MessageBoxAdv.Show(this, Languages.OnboardingApi_BtnTest_MessageBox6, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (q != DialogResult.Yes)
                 {
                     ActiveControl = TbHassIp;
@@ -76,8 +76,8 @@ namespace HASS.Agent.Controls.Onboarding
             
             // perform test
             var (success, message) = await HassApiManager.CheckHassConfigAsync(hassUri, apiKey);
-            if (!success) MessageBoxAdv.Show(string.Format(Languages.OnboardingApi_BtnTest_MessageBox3, message), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else MessageBoxAdv.Show(string.Format(Languages.OnboardingApi_BtnTest_MessageBox4, message), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (!success) MessageBoxAdv.Show(this, string.Format(Languages.OnboardingApi_BtnTest_MessageBox3, message), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else MessageBoxAdv.Show(this, string.Format(Languages.OnboardingApi_BtnTest_MessageBox4, message), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // unlock gui
             TbHassIp.Enabled = true;

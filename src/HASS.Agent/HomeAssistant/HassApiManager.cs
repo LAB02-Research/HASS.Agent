@@ -392,6 +392,9 @@ namespace HASS.Agent.HomeAssistant
                 SceneList.Clear();
                 SwitchList.Clear();
                 LightList.Clear();
+                CoverList.Clear();
+                ClimateList.Clear();
+                MediaPlayerList.Clear();
             }
 
             try
@@ -681,6 +684,7 @@ namespace HASS.Agent.HomeAssistant
             {
                 HassDomain.Cover when action == HassAction.On => HassAction.Open,
                 HassDomain.Cover when action == HassAction.Off => HassAction.Close,
+                HassDomain.Cover when action == HassAction.Stop => HassAction.Close,
                 HassDomain.MediaPlayer when action == HassAction.On => HassAction.Play,
                 HassDomain.MediaPlayer when action == HassAction.Off => HassAction.Stop,
                 _ => action

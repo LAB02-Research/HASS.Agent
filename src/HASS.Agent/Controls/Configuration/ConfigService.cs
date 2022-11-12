@@ -125,7 +125,7 @@ namespace HASS.Agent.Controls.Configuration
             _ = Task.Run(DetermineServiceStatus);
 
             // check if went ok
-            if (!done) MessageBoxAdv.Show(Languages.ConfigService_BtnStopService_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!done) MessageBoxAdv.Show(this, Languages.ConfigService_BtnStopService_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             // done
         }
@@ -141,7 +141,7 @@ namespace HASS.Agent.Controls.Configuration
 
             if (ServiceControllerManager.GetServiceStartMode() == ServiceStartMode.Disabled)
             {
-                MessageBoxAdv.Show(Languages.ConfigService_BtnStartService_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(this, Languages.ConfigService_BtnStartService_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
@@ -152,7 +152,7 @@ namespace HASS.Agent.Controls.Configuration
             _ = Task.Run(DetermineServiceStatus);
 
             // check if went ok
-            if (!done) MessageBoxAdv.Show(Languages.ConfigService_BtnStartService_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!done) MessageBoxAdv.Show(this, Languages.ConfigService_BtnStartService_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             // done
         }
@@ -173,7 +173,7 @@ namespace HASS.Agent.Controls.Configuration
             _ = Task.Run(DetermineServiceStatus);
 
             // check if went ok
-            if (!done) MessageBoxAdv.Show(Languages.ConfigService_BtnDisableService_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!done) MessageBoxAdv.Show(this, Languages.ConfigService_BtnDisableService_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             
             // done
         }
@@ -194,7 +194,7 @@ namespace HASS.Agent.Controls.Configuration
             _ = Task.Run(DetermineServiceStatus);
 
             // check if went ok
-            if (!done) MessageBoxAdv.Show(Languages.ConfigService_BtnEnableService_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!done) MessageBoxAdv.Show(this, Languages.ConfigService_BtnEnableService_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             
             // done
         }
@@ -210,7 +210,7 @@ namespace HASS.Agent.Controls.Configuration
             _ = Task.Run(DetermineServiceStatus);
 
             // check if went ok
-            if (!done) MessageBoxAdv.Show(Languages.ConfigService_BtnShowLogs_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!done) MessageBoxAdv.Show(this, Languages.ConfigService_BtnShowLogs_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             // done
         }
@@ -219,7 +219,7 @@ namespace HASS.Agent.Controls.Configuration
         {
             if (ServiceControllerManager.GetServiceState() == ServiceControllerStatus.Stopped)
             {
-                MessageBoxAdv.Show(Languages.ConfigService_BtnManageService_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.ConfigService_BtnManageService_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

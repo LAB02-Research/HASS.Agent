@@ -71,7 +71,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnStore.TabIndex = 4;
-            this.BtnStore.Text = Languages.QuickActionsMod_BtnStore;
+            this.BtnStore.Text = global::HASS.Agent.Resources.Localization.Languages.QuickActionsMod_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
@@ -111,7 +111,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.LblAction.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblAction.Location = new System.Drawing.Point(398, 79);
             this.LblAction.Name = "LblAction";
-            this.LblAction.Size = new System.Drawing.Size(94, 19);
+            this.LblAction.Size = new System.Drawing.Size(98, 19);
             this.LblAction.TabIndex = 8;
             this.LblAction.Text = Languages.QuickActionsMod_LblAction;
             // 
@@ -124,7 +124,7 @@ namespace HASS.Agent.Forms.QuickActions
             this.LblDescription.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblDescription.Location = new System.Drawing.Point(398, 152);
             this.LblDescription.Name = "LblDescription";
-            this.LblDescription.Size = new System.Drawing.Size(76, 19);
+            this.LblDescription.Size = new System.Drawing.Size(78, 19);
             this.LblDescription.TabIndex = 10;
             this.LblDescription.Text = Languages.QuickActionsMod_LblDescription;
             // 
@@ -269,11 +269,12 @@ namespace HASS.Agent.Forms.QuickActions
             // 
             // ClmDomain
             // 
-            this.ClmDomain.Text = "domain";
+            this.ClmDomain.Text = Languages.QuickActionsMod_ClmDomain;
             this.ClmDomain.Width = 300;
             // 
             // ClmEmpty
             // 
+            this.ClmEmpty.Tag = "hide";
             this.ClmEmpty.Text = "filler column";
             this.ClmEmpty.Width = 500;
             // 

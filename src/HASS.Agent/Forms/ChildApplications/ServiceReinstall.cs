@@ -44,7 +44,7 @@ namespace HASS.Agent.Forms.ChildApplications
             PbStep2Install.Image = installDone ? Properties.Resources.done_32 : Properties.Resources.failed_32;
 
             // notify the user if something went wrong
-            if (!uninstallDone || !installDone) MessageBoxAdv.Show(Languages.ServiceReinstall_ProcessReinstall_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!uninstallDone || !installDone) MessageBoxAdv.Show(this, Languages.ServiceReinstall_ProcessReinstall_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
                 // wait a bit to show the 'completed' checks

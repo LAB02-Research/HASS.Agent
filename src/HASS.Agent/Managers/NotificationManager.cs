@@ -1,61 +1,65 @@
-﻿using HASS.Agent.API;
+﻿using Windows.UI.Notifications;
+using HASS.Agent.API;
 using HASS.Agent.Functions;
 using HASS.Agent.HomeAssistant;
-using HASS.Agent.Models.HomeAssistant;
 using Microsoft.Toolkit.Uwp.Notifications;
 using MQTTnet;
 using Newtonsoft.Json;
 using Serilog;
 using JsonSerializer = System.Text.Json.JsonSerializer;
+using Notification = HASS.Agent.Models.HomeAssistant.Notification;
 
 namespace HASS.Agent.Managers
 {
     internal static class NotificationManager
     {
+        private static ToastNotifierCompat _toastNotifier = null;
+
         /// <summary>
         /// Initializes the notification manager
         /// </summary>
         internal static void Initialize()
         {
-            if (!Variables.AppSettings.NotificationsEnabled)
+            try
             {
-                Log.Information("[NOTIFIER] Disabled");
-                return;
-            }
-
-            if (!Variables.AppSettings.LocalApiEnabled && !Variables.AppSettings.MqttEnabled)
-            {
-                Log.Warning("[NOTIFIER] Both local API and MQTT are disabled, unable to receive notifications");
-                return;
-            }
-
-            _ = Task.Run(Variables.MqttManager.SubscribeNotificationsAsync);
-
-            ToastNotificationManagerCompat.OnActivated += OnNotificationButtonPressed;
-
-            // no task other than logging
-            Log.Information("[NOTIFIER] Ready");
-        }
-
-        private static async void OnNotificationButtonPressed(ToastNotificationActivatedEventArgsCompat e)
-        {
-            var haEventTask = HassApiManager.FireEvent("hass_agent_notifications", new
-            {
-                device_name = HelperFunctions.GetConfiguredDeviceName(),
-                action = e.Argument
-            });
-
-            var haMessageBuilder = new MqttApplicationMessageBuilder()
-                .WithTopic($"hass.agent/notifications/{Variables.DeviceConfig.Name}/actions")
-                .WithPayload(JsonSerializer.Serialize(new
+                if (!Variables.AppSettings.NotificationsEnabled)
                 {
-                    action = e.Argument,
-                    input = e.UserInput.ContainsKey("input") ? e.UserInput["input"] : null
-                }, ApiDeserialization.SerializerOptions));
-            
-            var mqttTask = Variables.MqttManager.PublishAsync(haMessageBuilder.Build());
+                    Log.Information("[NOTIFIER] Disabled");
+                    return;
+                }
 
-            await Task.WhenAny(haEventTask, mqttTask);
+                if (!Variables.AppSettings.LocalApiEnabled && !Variables.AppSettings.MqttEnabled)
+                {
+                    Log.Warning("[NOTIFIER] Both local API and MQTT are disabled, unable to receive notifications");
+                    return;
+                }
+
+                if (!Variables.AppSettings.MqttEnabled) Log.Warning("[NOTIFIER] MQTT is disabled, not all aspects of actions might work as expected");
+                else
+                {
+                    // subscribe to mqtt notifications
+                    _ = Task.Run(Variables.MqttManager.SubscribeNotificationsAsync);
+                }
+
+                // create a toast notifier
+                _toastNotifier = ToastNotificationManagerCompat.CreateToastNotifier();
+
+                // check if we're allowed
+                if (_toastNotifier.Setting != NotificationSetting.Enabled)
+                {
+                    Log.Warning("[NOTIFIER] Showing notifications might fail, reason: {r}", _toastNotifier.Setting.ToString());
+                }
+
+                // bind notification buttons
+                ToastNotificationManagerCompat.OnActivated += OnNotificationButtonPressed;
+
+                // no task other than logging
+                Log.Information("[NOTIFIER] Ready");
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[NOTIFIER] Error while initializing: {err}", ex.Message);
+            }
         }
 
         /// <summary>
@@ -67,9 +71,9 @@ namespace HASS.Agent.Managers
             try
             {
                 // are notifications enabled?
-                if (!Variables.AppSettings.NotificationsEnabled) return;
+                if (!Variables.AppSettings.NotificationsEnabled || _toastNotifier == null) return;
 
-                // prepare new toast
+                // prepare new toastbuilder
                 var toastBuilder = new ToastContentBuilder();
 
                 // prepare title
@@ -86,6 +90,7 @@ namespace HASS.Agent.Managers
                 // prepare message
                 toastBuilder.AddText(notification.Message);
 
+                // prepare actions
                 if (notification.Data?.Actions.Count > 0)
                 {
                     foreach (var action in notification.Data.Actions)
@@ -95,25 +100,64 @@ namespace HASS.Agent.Managers
                     }
                 }
 
+                // prepare the toast
+                var toast = new ToastNotification(toastBuilder.GetXml());
+                toast.Failed += delegate(ToastNotification _, ToastFailedEventArgs args)
+                {
+                    Log.Error("[NOTIFIER] Notification failed to show: {err}", args.ErrorCode?.Message ?? "[unknown]");
+                };
+
                 // check for duration limit
                 if (notification.Data?.Duration > 0)
                 {
                     // there's a duration added, so show for x seconds
                     // todo: unreliable
-                    toastBuilder.Show(toast =>
-                    {
-                        toast.ExpirationTime = DateTime.Now.AddSeconds(notification.Data.Duration);
-                    });
-
-                    return;
+                    toast.ExpirationTime = DateTime.Now.AddSeconds(notification.Data.Duration);
                 }
-
-                // show indefinitely, but clear on reboot
-                toastBuilder.Show();
+                
+                // show indefinitely
+                _toastNotifier.Show(toast);
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "[NOTIFICATIONS] Error while showing notification:\r\n{json}", JsonConvert.SerializeObject(notification, Formatting.Indented));
+                if (Variables.ExtendedLogging) Log.Fatal(ex, "[NOTIFIER] Error while showing notification: {err}\r\n{json}", ex.Message, JsonConvert.SerializeObject(notification, Formatting.Indented));
+                else Log.Fatal(ex, "[NOTIFIER] Error while showing notification: {err}", ex.Message);
+            }
+        }
+
+        private static async void OnNotificationButtonPressed(ToastNotificationActivatedEventArgsCompat e)
+        {
+            try
+            {
+                var haEventTask = HassApiManager.FireEvent("hass_agent_notifications", new
+                {
+                    device_name = HelperFunctions.GetConfiguredDeviceName(),
+                    action = e.Argument
+                });
+
+                if (Variables.AppSettings.MqttEnabled)
+                {
+                    var haMessageBuilder = new MqttApplicationMessageBuilder()
+                        .WithTopic($"hass.agent/notifications/{Variables.DeviceConfig.Name}/actions")
+                        .WithPayload(JsonSerializer.Serialize(new
+                        {
+                            action = e.Argument,
+                            input = e.UserInput.ContainsKey("input") ? e.UserInput["input"] : null
+                        }, ApiDeserialization.SerializerOptions));
+
+                    var mqttTask = Variables.MqttManager.PublishAsync(haMessageBuilder.Build());
+
+                    await Task.WhenAny(haEventTask, mqttTask);
+                }
+                else
+                {
+                    // just the API task
+                    await haEventTask;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[NOTIFIER] Unable to process button: {err}", ex.Message);
             }
         }
     }

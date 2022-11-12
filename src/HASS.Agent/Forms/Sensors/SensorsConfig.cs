@@ -237,7 +237,7 @@ namespace HASS.Agent.Forms.Sensors
 
             // store
             var stored = await Task.Run(async () => await SensorsManager.StoreAsync(_sensors, _toBeDeletedSensors));
-            if (!stored) MessageBoxAdv.Show(Languages.SensorsConfig_BtnStore_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!stored) MessageBoxAdv.Show(this, Languages.SensorsConfig_BtnStore_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             // done
             Close();

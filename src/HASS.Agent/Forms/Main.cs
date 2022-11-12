@@ -85,7 +85,7 @@ namespace HASS.Agent.Forms
                 var loaded = await SettingsManager.LoadEntitiesAsync();
                 if (!loaded)
                 {
-                    MessageBoxAdv.Show(Languages.Main_Load_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxAdv.Show(this, Languages.Main_Load_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     // abort
                     Variables.ShuttingDown = true;
@@ -125,7 +125,7 @@ namespace HASS.Agent.Forms
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[MAIN] Main_Load: {err}", ex.Message);
-                MessageBoxAdv.Show(Languages.Main_Load_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.Main_Load_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 // we're done
                 Application.Exit();
@@ -191,7 +191,7 @@ namespace HASS.Agent.Forms
         /// Checks whether the user has a non-default DPI scaling
         /// </summary>
         [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
-        private static void CheckDpiScalingFactor()
+        private void CheckDpiScalingFactor()
         {
             var (scalingFactor, dpiScalingFactor) = HelperFunctions.GetScalingFactors();
             if (scalingFactor == 1 && dpiScalingFactor == 1) return;
@@ -203,8 +203,7 @@ namespace HASS.Agent.Forms
             SettingsManager.SetDpiWarningShown(true);
 
             // and show it
-            MessageBoxAdv.Show(Languages.Main_CheckDpiScalingFactor_MessageBox1,
-                Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBoxAdv.Show(this, Languages.Main_CheckDpiScalingFactor_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private static void ProcessTrayIcon()
@@ -319,7 +318,7 @@ namespace HASS.Agent.Forms
             Invoke(new MethodInvoker(delegate
             {
                 var icon = error ? MessageBoxIcon.Error : MessageBoxIcon.Information;
-                MessageBoxAdv.Show(msg, Variables.MessageBoxTitle, MessageBoxButtons.OK, icon);
+                MessageBoxAdv.Show(this, msg, Variables.MessageBoxTitle, MessageBoxButtons.OK, icon);
             }));
         }
 
@@ -685,7 +684,7 @@ namespace HASS.Agent.Forms
                 if (!isAvailable)
                 {
                     var beta = Variables.Beta ? " [BETA]" : string.Empty;
-                    MessageBoxAdv.Show(string.Format(Languages.Main_CheckForUpdate_MessageBox1, Variables.Version, beta), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxAdv.Show(this, string.Format(Languages.Main_CheckForUpdate_MessageBox1, Variables.Version, beta), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
@@ -791,7 +790,7 @@ namespace HASS.Agent.Forms
             // check the url
             if (string.IsNullOrEmpty(Variables.AppSettings.TrayIconWebViewUrl))
             {
-                MessageBoxAdv.Show(Languages.Main_NotifyIcon_MouseClick_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(this, Languages.Main_NotifyIcon_MouseClick_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 

@@ -19,9 +19,11 @@ using HASS.Agent.Shared.HomeAssistant.Commands;
 using HASS.Agent.Shared.HomeAssistant.Sensors;
 using HASS.Agent.Shared.Models.HomeAssistant;
 using HASS.Agent.Shared.Mqtt;
+using Microsoft.Web.WebView2.Core;
 using Microsoft.Win32;
 using MQTTnet;
 using WK.Libraries.HotkeyListenerNS;
+using Serilog.Core;
 
 namespace HASS.Agent
 {
@@ -60,6 +62,7 @@ namespace HASS.Agent
         internal static Random Rnd { get; } = new();
         internal static Font DefaultFont { get; } = new("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
         internal static WebView TrayIconWebView { get; set; } = null;
+        internal static CoreWebView2Environment WebViewEnvironment { get; set; } = null;
 
         /// <summary>
         /// Localization
@@ -93,6 +96,7 @@ namespace HASS.Agent
         internal static bool ShuttingDown { get; set; } = false;
         internal static bool OnboardingLaunchOnLoginKeyCreated { get; set; } = false;
         internal static bool ExtendedLogging { get; set; } = false;
+        internal static LoggingLevelSwitch LevelSwitch { get; } = new();
 
         /// <summary>
         /// Local IO

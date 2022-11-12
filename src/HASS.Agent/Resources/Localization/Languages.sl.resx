@@ -535,7 +535,7 @@ Ali želite uporabiti to verzijo?</value>
     <value>Hibernacija</value>
   </data>
   <data name="CommandType_KeyCommand" xml:space="preserve">
-    <value>Ključ</value>
+    <value>Tipka</value>
   </data>
   <data name="CommandType_LaunchUrlCommand" xml:space="preserve">
     <value>LaunchUrl</value>
@@ -931,7 +931,7 @@ razvijalcev.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigMqtt_LblBrokerIp" xml:space="preserve">
-    <value>IP naslov ali ime gostitelja brokerja</value>
+    <value>IP naslov ali ime brokerja</value>
   </data>
   <data name="ConfigMqtt_LblBrokerPassword" xml:space="preserve">
     <value>geslo</value>
@@ -1181,7 +1181,7 @@ HASS. Agent tam.</value>
     <value>prikaži webview</value>
   </data>
   <data name="ConfigTrayIcon_CbWebViewKeepLoaded" xml:space="preserve">
-    <value>ohrani stran naložena v ozadju</value>
+    <value>ohrani stran naloženo v ozadju</value>
   </data>
   <data name="ConfigTrayIcon_CbWebViewShowMenuOnLeftClick" xml:space="preserve">
     <value>ob levem kliku miške prikaži privzeti meni</value>
@@ -1324,7 +1324,7 @@ Opomba: onemogočili ste sanitarije, zato poskrbite, da Home Assistant sprejme i
     <value>Lokalna shramba</value>
   </data>
   <data name="Configuration_TabLogging" xml:space="preserve">
-    <value>Logiranje</value>
+    <value>Dnevnik</value>
   </data>
   <data name="Configuration_TabMediaPlayer" xml:space="preserve">
     <value>Media Predvajalnik</value>
@@ -1342,7 +1342,7 @@ Opomba: onemogočili ste sanitarije, zato poskrbite, da Home Assistant sprejme i
     <value>Zagon</value>
   </data>
   <data name="Configuration_TabTrayIcon" xml:space="preserve">
-    <value>ikona tray-u</value>
+    <value>Tray ikona</value>
   </data>
   <data name="Configuration_TabUpdates" xml:space="preserve">
     <value>Posodobitve</value>
@@ -1928,7 +1928,7 @@ Namig: če uporabljate HA addon lahko gotovo uporabljate prednastavljen naslov -
     <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingMqtt_LblIpAdress" xml:space="preserve">
-    <value>IP naslov ali ime gostitelja</value>
+    <value>IP naslov ali ime</value>
   </data>
   <data name="OnboardingMqtt_LblPassword" xml:space="preserve">
     <value>geslo</value>
@@ -2117,6 +2117,7 @@ Ali želite uporabiti to verzijo?</value>
   </data>
   <data name="QuickActionsConfig_LblHotkey" xml:space="preserve">
     <value>bližnjica omogočena</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="QuickActionsConfig_Title" xml:space="preserve">
     <value>Konfiguracija hitrih dejanj</value>
@@ -2140,6 +2141,9 @@ Ali želite uporabiti to verzijo?</value>
   </data>
   <data name="QuickActionsMod_CheckHassManager_MessageBox1" xml:space="preserve">
     <value>Vaših entitet ni mogoče pridobiti zaradi manjkajoče konfiguracije, vnesite zahtevane vrednosti na zaslon konfiguracije.</value>
+  </data>
+  <data name="QuickActionsMod_ClmDomain" xml:space="preserve">
+    <value>domain</value>
   </data>
   <data name="QuickActionsMod_LblAction" xml:space="preserve">
     <value>dejanje</value>
@@ -2306,9 +2310,11 @@ HassAgentStarted, Odjava, SystemShutdown, Resume, Suspend, ConsoleConnect, Conso
   </data>
   <data name="SensorsManager_LoggedUserSensorDescription" xml:space="preserve">
     <value>Vrne ime trenutno prijavljenega uporabnika.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_LoggedUsersSensorDescription" xml:space="preserve">
     <value>Vrne seznam trenutno prijavljenih uporabnikov v formatu json.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_MemoryUsageSensorDescription" xml:space="preserve">
     <value>Zagotavlja količino uporabljenega pomnilnika v odstotkih.</value>
@@ -2356,6 +2362,7 @@ Pretvori rezultat v tekst.</value>
   </data>
   <data name="SensorsManager_ProcessActiveSensorDescription" xml:space="preserve">
     <value>Zagotavlja število aktivnih primerov procesa.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_ServiceStateSensorDescription" xml:space="preserve">
     <value>Vrne stanje zagotovljene storitve: NotFound, Stopped, StartPending, StopPending, Running, ContinuePending, PausePending ali Paused.
@@ -2463,6 +2470,7 @@ To je draga zahteva, zato je priporočeni interval 15 minut (900 sekund). Vendar
   </data>
   <data name="SensorsMod_LblMultiValue" xml:space="preserve">
     <value>večvrednost</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsMod_LblName" xml:space="preserve">
     <value>ime</value>
@@ -2973,7 +2981,7 @@ Ste prepričani, da želite to?</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ServiceMqtt_LblBrokerIp" xml:space="preserve">
-    <value>ip naslov ali ime gostitelja posrednika</value>
+    <value>ip naslov ali ime brokerja</value>
   </data>
   <data name="ServiceMqtt_LblBrokerPassword" xml:space="preserve">
     <value>geslo</value>

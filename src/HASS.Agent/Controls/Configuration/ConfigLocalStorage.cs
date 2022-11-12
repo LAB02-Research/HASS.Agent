@@ -21,7 +21,7 @@ namespace HASS.Agent.Controls.Configuration
 
             await CacheManager.ClearImageCacheAsync();
 
-            MessageBoxAdv.Show(Languages.ConfigLocalStorage_BtnClearImageCache_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBoxAdv.Show(this, Languages.ConfigLocalStorage_BtnClearImageCache_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             BtnClearImageCache.Enabled = true;
             BtnClearImageCache.Text = Languages.ConfigLocalStorage_BtnClearImageCache;
@@ -47,7 +47,7 @@ namespace HASS.Agent.Controls.Configuration
 
             await CacheManager.ClearAudioCacheAsync();
 
-            MessageBoxAdv.Show(Languages.ConfigLocalStorage_BtnClearAudioCache_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBoxAdv.Show(this, Languages.ConfigLocalStorage_BtnClearAudioCache_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             BtnClearAudioCache.Enabled = true;
             BtnClearAudioCache.Text = Languages.ConfigLocalStorage_BtnClearAudioCache;
@@ -68,7 +68,7 @@ namespace HASS.Agent.Controls.Configuration
 
             await CacheManager.ClearWebViewCacheAsync();
 
-            MessageBoxAdv.Show(Languages.ConfigLocalStorage_BtnClearWebViewCache_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBoxAdv.Show(this, Languages.ConfigLocalStorage_BtnClearWebViewCache_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             BtnClearWebViewCache.Enabled = true;
             BtnClearWebViewCache.Text = Languages.ConfigLocalStorage_BtnClearWebViewCache;

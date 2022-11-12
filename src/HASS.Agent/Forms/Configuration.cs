@@ -155,7 +155,7 @@ namespace HASS.Agent.Forms
             if (_general.TbDeviceName.Text != _previousDeviceName)
             {
                 // show the corresponding warning message (either with or without sanitation)
-                MessageBoxAdv.Show(_general.CbEnableDeviceNameSanitation.Checked
+                MessageBoxAdv.Show(this, _general.CbEnableDeviceNameSanitation.Checked
                         ? Languages.Configuration_ProcessChanges_MessageBox1
                         : Languages.Configuration_ProcessChanges_MessageBox6, Variables.MessageBoxTitle,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -186,7 +186,7 @@ namespace HASS.Agent.Forms
             // reserve the new local api's port if it's changed
             if (Variables.AppSettings.LocalApiPort != _previousLocalApiPort)
             {
-                MessageBoxAdv.Show(Languages.Configuration_ProcessChanges_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBoxAdv.Show(this, Languages.Configuration_ProcessChanges_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // try to reserve elevated
                 if (!ApiManager.ExecuteElevatedPortReservation())
@@ -195,12 +195,12 @@ namespace HASS.Agent.Forms
                     Clipboard.SetText($"netsh http add urlacl url=http://+:{Variables.AppSettings.LocalApiPort}/ user=\"{SharedHelperFunctions.EveryoneLocalizedAccountName()}\"");
 
                     // notify the user
-                    MessageBoxAdv.Show(Languages.Configuration_ProcessChanges_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxAdv.Show(this, Languages.Configuration_ProcessChanges_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     // notify the user
-                    MessageBoxAdv.Show(Languages.Configuration_ProcessChanges_MessageBox4, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxAdv.Show(this, Languages.Configuration_ProcessChanges_MessageBox4, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // we need to restart, so go ahead, otherwise it's starting to look like popup-spam ..
                     forceRestart = true;
@@ -211,17 +211,17 @@ namespace HASS.Agent.Forms
             {
                 // prepare the restart without asking
                 var restartPrepared = HelperFunctions.Restart();
-                if (!restartPrepared) MessageBoxAdv.Show(Languages.Configuration_MessageBox_RestartManually, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (!restartPrepared) MessageBoxAdv.Show(this, Languages.Configuration_MessageBox_RestartManually, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 // ask the user if they want to restart
-                var question = MessageBoxAdv.Show(Languages.Configuration_ProcessChanges_MessageBox5, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var question = MessageBoxAdv.Show(this, Languages.Configuration_ProcessChanges_MessageBox5, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (question == DialogResult.Yes)
                 {
                     // prepare the restart
                     var restartPrepared = HelperFunctions.Restart();
-                    if (!restartPrepared) MessageBoxAdv.Show(Languages.Configuration_MessageBox_RestartManually, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (!restartPrepared) MessageBoxAdv.Show(this, Languages.Configuration_MessageBox_RestartManually, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -241,7 +241,7 @@ namespace HASS.Agent.Forms
             {
                 if (!SharedHelperFunctions.CheckHomeAssistantApiToken(hassApi))
                 {
-                    var q = MessageBoxAdv.Show(Languages.Configuration_CheckValues_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    var q = MessageBoxAdv.Show(this, Languages.Configuration_CheckValues_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (q != DialogResult.Yes) return false;
                 }
             }
@@ -252,7 +252,7 @@ namespace HASS.Agent.Forms
             {
                 if (!SharedHelperFunctions.CheckHomeAssistantUri(hassUri))
                 {
-                    var q = MessageBoxAdv.Show(Languages.Configuration_CheckValues_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    var q = MessageBoxAdv.Show(this, Languages.Configuration_CheckValues_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (q != DialogResult.Yes) return false;
                 }
             }
@@ -263,7 +263,7 @@ namespace HASS.Agent.Forms
             {
                 if (!SharedHelperFunctions.CheckMqttBrokerUri(mqttUri))
                 {
-                    var q = MessageBoxAdv.Show(Languages.Configuration_CheckValues_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    var q = MessageBoxAdv.Show(this, Languages.Configuration_CheckValues_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (q != DialogResult.Yes) return false;
                 }
             }

@@ -90,21 +90,21 @@ namespace HASS.Agent.Controls.Configuration
 
             if (string.IsNullOrEmpty(browserBin))
             {
-                MessageBoxAdv.Show(Languages.ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(this, Languages.ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 ActiveControl = TbExternalBrowserBinary;
                 return;
             }
 
             if (!File.Exists(browserBin))
             {
-                MessageBoxAdv.Show(Languages.ConfigExternalTools_ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(this, Languages.ConfigExternalTools_ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 ActiveControl = TbExternalBrowserBinary;
                 return;
             }
 
             if (string.IsNullOrEmpty(incognitoArg))
             {
-                var q = MessageBoxAdv.Show(Languages.ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var q = MessageBoxAdv.Show(this, Languages.ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (q != DialogResult.Yes)
                 {
                     ActiveControl = TbExternalBrowserBinary;
@@ -131,7 +131,7 @@ namespace HASS.Agent.Controls.Configuration
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[BROWSER] Error testing for browser incognito mode: {err}", ex.Message);
-                MessageBoxAdv.Show(Languages.ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox4, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox4, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             // unlock ui

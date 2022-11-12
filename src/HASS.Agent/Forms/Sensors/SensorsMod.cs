@@ -259,7 +259,7 @@ namespace HASS.Agent.Forms.Sensors
                     break;
 
                 case SensorType.WindowStateSensor:
-                    SetProcessGui();
+                    SetWindowGui();
                     break;
 
                 default:
@@ -449,7 +449,7 @@ namespace HASS.Agent.Forms.Sensors
         {
             if (LvSensors.SelectedItems.Count == 0)
             {
-                MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.SensorsMod_BtnStore_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -460,7 +460,7 @@ namespace HASS.Agent.Forms.Sensors
 
             if (sensorCard == null)
             {
-                MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.SensorsMod_BtnStore_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -468,7 +468,7 @@ namespace HASS.Agent.Forms.Sensors
             var name = TbName.Text.Trim();
             if (string.IsNullOrEmpty(name))
             {
-                MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.SensorsMod_BtnStore_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = TbName;
                 return;
             }
@@ -477,7 +477,7 @@ namespace HASS.Agent.Forms.Sensors
             var sanitized = SharedHelperFunctions.GetSafeValue(name);
             if (sanitized != name)
             {
-                var confirmSanitize = MessageBoxAdv.Show(string.Format(Languages.SensorsMod_MessageBox_Sanitize, sanitized), Variables.MessageBoxTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                var confirmSanitize = MessageBoxAdv.Show(this, string.Format(Languages.SensorsMod_MessageBox_Sanitize, sanitized), Variables.MessageBoxTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (confirmSanitize != DialogResult.OK)
                 {
                     ActiveControl = TbName;
@@ -491,7 +491,7 @@ namespace HASS.Agent.Forms.Sensors
             // name already used?
             if (!_serviceMode && Variables.SingleValueSensors.Any(x => string.Equals(x.Name, name, StringComparison.InvariantCultureIgnoreCase) && x.Id != Sensor.Id.ToString()))
             {
-                var confirm = MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox4, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var confirm = MessageBoxAdv.Show(this, Languages.SensorsMod_BtnStore_MessageBox4, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (confirm != DialogResult.Yes)
                 {
                     ActiveControl = TbName;
@@ -501,7 +501,7 @@ namespace HASS.Agent.Forms.Sensors
 
             if (!_serviceMode && Variables.MultiValueSensors.Any(x => string.Equals(x.Name, name, StringComparison.InvariantCultureIgnoreCase) && x.Id != Sensor.Id.ToString()))
             {
-                var confirm = MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox5, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var confirm = MessageBoxAdv.Show(this, Languages.SensorsMod_BtnStore_MessageBox5, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (confirm != DialogResult.Yes)
                 {
                     ActiveControl = TbName;
@@ -513,7 +513,7 @@ namespace HASS.Agent.Forms.Sensors
             var interval = (int)NumInterval.Value;
             if (interval is < 1 or > 43200)
             {
-                MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox6, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.SensorsMod_BtnStore_MessageBox6, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = NumInterval;
                 return;
             }
@@ -525,7 +525,7 @@ namespace HASS.Agent.Forms.Sensors
                     var window = TbSetting1.Text.Trim();
                     if (string.IsNullOrEmpty(window))
                     {
-                        MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox7, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show(this, Languages.SensorsMod_BtnStore_MessageBox7, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting1;
                         return;
                     }
@@ -539,7 +539,7 @@ namespace HASS.Agent.Forms.Sensors
                     // test the query
                     if (string.IsNullOrEmpty(query))
                     {
-                        MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox8, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show(this, Languages.SensorsMod_BtnStore_MessageBox8, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting1;
                         return;
                     }
@@ -549,7 +549,7 @@ namespace HASS.Agent.Forms.Sensors
                     {
                         if (!HelperFunctions.CheckWmiScope(scope))
                         {
-                            var scopeQ = MessageBoxAdv.Show(string.Format(Languages.SensorsMod_WmiTestFailed, scope),
+                            var scopeQ = MessageBoxAdv.Show(this, string.Format(Languages.SensorsMod_WmiTestFailed, scope),
                                 Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
                             if (scopeQ != DialogResult.Yes) return;
@@ -566,7 +566,7 @@ namespace HASS.Agent.Forms.Sensors
                     var instance = TbSetting3.Text.Trim();
                     if (string.IsNullOrEmpty(category) || string.IsNullOrEmpty(counter))
                     {
-                        MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox9, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show(this, Languages.SensorsMod_BtnStore_MessageBox9, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting1;
                         return;
                     }
@@ -579,7 +579,7 @@ namespace HASS.Agent.Forms.Sensors
                     var process = TbSetting1.Text.Trim();
                     if (string.IsNullOrEmpty(process))
                     {
-                        MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox10, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show(this, Languages.SensorsMod_BtnStore_MessageBox10, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting1;
                         return;
                     }
@@ -590,7 +590,7 @@ namespace HASS.Agent.Forms.Sensors
                     var service = TbSetting1.Text.Trim();
                     if (string.IsNullOrEmpty(service))
                     {
-                        MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox11, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show(this, Languages.SensorsMod_BtnStore_MessageBox11, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting1;
                         return;
                     }
@@ -614,7 +614,7 @@ namespace HASS.Agent.Forms.Sensors
                     var windowprocess = TbSetting1.Text.Trim();
                     if (string.IsNullOrEmpty(windowprocess))
                     {
-                        MessageBoxAdv.Show(Languages.SensorsMod_BtnStore_MessageBox10, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxAdv.Show(this, Languages.SensorsMod_BtnStore_MessageBox10, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         ActiveControl = TbSetting1;
                         return;
                     }
@@ -741,7 +741,7 @@ namespace HASS.Agent.Forms.Sensors
 
             if (string.IsNullOrEmpty(query))
             {
-                MessageBoxAdv.Show(Languages.SensorsMod_TestWmi_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(this, Languages.SensorsMod_TestWmi_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 ActiveControl = TbSetting1;
                 return;
             }
@@ -751,7 +751,7 @@ namespace HASS.Agent.Forms.Sensors
             {
                 if (!HelperFunctions.CheckWmiScope(scope))
                 {
-                    var scopeQ = MessageBoxAdv.Show(string.Format(Languages.SensorsMod_WmiTestFailed, scope),
+                    var scopeQ = MessageBoxAdv.Show(this, string.Format(Languages.SensorsMod_WmiTestFailed, scope),
                         Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
                     if (scopeQ != DialogResult.Yes) return;
@@ -767,12 +767,12 @@ namespace HASS.Agent.Forms.Sensors
 
             if (result.Succesful)
             {
-                MessageBoxAdv.Show(string.Format(Languages.SensorsMod_TestWmi_MessageBox2, result.ReturnValue), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBoxAdv.Show(this, string.Format(Languages.SensorsMod_TestWmi_MessageBox2, result.ReturnValue), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             // failed
-            var q = MessageBoxAdv.Show(string.Format(Languages.SensorsMod_TestWmi_MessageBox3, result.ErrorReason), Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            var q = MessageBoxAdv.Show(this, string.Format(Languages.SensorsMod_TestWmi_MessageBox3, result.ErrorReason), Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             if (q != DialogResult.Yes) return;
 
             // open logs
@@ -788,7 +788,7 @@ namespace HASS.Agent.Forms.Sensors
 
             if (string.IsNullOrEmpty(category) || string.IsNullOrEmpty(counter))
             {
-                MessageBoxAdv.Show(Languages.SensorsMod_TestPerformanceCounter_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(this, Languages.SensorsMod_TestPerformanceCounter_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
@@ -801,12 +801,12 @@ namespace HASS.Agent.Forms.Sensors
 
             if (result.Succesful)
             {
-                MessageBoxAdv.Show(string.Format(Languages.SensorsMod_TestPerformanceCounter_MessageBox2, result.ReturnValue), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBoxAdv.Show(this, string.Format(Languages.SensorsMod_TestPerformanceCounter_MessageBox2, result.ReturnValue), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             // failed
-            var q = MessageBoxAdv.Show(string.Format(Languages.SensorsMod_TestPerformanceCounter_MessageBox3, result.ErrorReason), Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            var q = MessageBoxAdv.Show(this, string.Format(Languages.SensorsMod_TestPerformanceCounter_MessageBox3, result.ErrorReason), Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             if (q != DialogResult.Yes) return;
 
             // open logs
@@ -820,7 +820,7 @@ namespace HASS.Agent.Forms.Sensors
 
             if (string.IsNullOrEmpty(command))
             {
-                MessageBoxAdv.Show(Languages.SensorsMod_TestPowershell_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(this, Languages.SensorsMod_TestPowershell_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
@@ -833,12 +833,12 @@ namespace HASS.Agent.Forms.Sensors
 
             if (result.Succesful)
             {
-                MessageBoxAdv.Show(string.Format(Languages.SensorsMod_TestPowershell_MessageBox2, result.ReturnValue), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBoxAdv.Show(this, string.Format(Languages.SensorsMod_TestPowershell_MessageBox2, result.ReturnValue), Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             // failed
-            var q = MessageBoxAdv.Show(string.Format(Languages.SensorsMod_TestPowershell_MessageBox3, result.ErrorReason), Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            var q = MessageBoxAdv.Show(this, string.Format(Languages.SensorsMod_TestPowershell_MessageBox3, result.ErrorReason), Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             if (q != DialogResult.Yes) return;
 
             // open logs

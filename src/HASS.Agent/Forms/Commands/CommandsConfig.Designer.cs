@@ -73,7 +73,7 @@ namespace HASS.Agent.Forms.Commands
             this.BtnRemove.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnRemove.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnRemove.TabIndex = 2;
-            this.BtnRemove.Text = Languages.CommandsConfig_BtnRemove;
+            this.BtnRemove.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsConfig_BtnRemove;
             this.BtnRemove.UseVisualStyleBackColor = false;
             this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
@@ -97,7 +97,7 @@ namespace HASS.Agent.Forms.Commands
             this.BtnModify.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnModify.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnModify.TabIndex = 1;
-            this.BtnModify.Text = Languages.CommandsConfig_BtnModify;
+            this.BtnModify.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsConfig_BtnModify;
             this.BtnModify.UseVisualStyleBackColor = false;
             this.BtnModify.Click += new System.EventHandler(this.BtnModify_Click);
             // 
@@ -121,7 +121,7 @@ namespace HASS.Agent.Forms.Commands
             this.BtnAdd.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnAdd.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnAdd.TabIndex = 0;
-            this.BtnAdd.Text = Languages.CommandsConfig_BtnAdd;
+            this.BtnAdd.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsConfig_BtnAdd;
             this.BtnAdd.UseVisualStyleBackColor = false;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
@@ -146,7 +146,7 @@ namespace HASS.Agent.Forms.Commands
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnStore.TabIndex = 3;
-            this.BtnStore.Text = Languages.CommandsConfig_BtnStore;
+            this.BtnStore.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsConfig_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
@@ -199,14 +199,17 @@ namespace HASS.Agent.Forms.Commands
             // 
             // ClmLowIntegrity
             // 
-            this.ClmLowIntegrity.Text = Languages.CommandsConfig_LblLowIntegrity;
+            this.ClmLowIntegrity.Tag = "hide";
+            this.ClmLowIntegrity.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsConfig_LblLowIntegrity;
             // 
             // ClmAction
             // 
-            this.ClmAction.Text = Languages.CommandsConfig_LblActionInfo;
+            this.ClmAction.Tag = "hide";
+            this.ClmAction.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsConfig_LblActionInfo;
             // 
             // ClmEmpty
             // 
+            this.ClmEmpty.Tag = "hide";
             this.ClmEmpty.Text = "filler column";
             this.ClmEmpty.Width = 10000;
             // 
@@ -228,9 +231,9 @@ namespace HASS.Agent.Forms.Commands
             this.LblLowIntegrity.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblLowIntegrity.Location = new System.Drawing.Point(99, 527);
             this.LblLowIntegrity.Name = "LblLowIntegrity";
-            this.LblLowIntegrity.Size = new System.Drawing.Size(73, 15);
+            this.LblLowIntegrity.Size = new System.Drawing.Size(76, 15);
             this.LblLowIntegrity.TabIndex = 39;
-            this.LblLowIntegrity.Text = Languages.CommandsConfig_LblLowIntegrity;
+            this.LblLowIntegrity.Text = "Low Integrity";
             // 
             // PbLowIntegrity
             // 
@@ -257,9 +260,9 @@ namespace HASS.Agent.Forms.Commands
             this.LblActionInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.LblActionInfo.Location = new System.Drawing.Point(23, 527);
             this.LblActionInfo.Name = "LblActionInfo";
-            this.LblActionInfo.Size = new System.Drawing.Size(40, 15);
+            this.LblActionInfo.Size = new System.Drawing.Size(42, 15);
             this.LblActionInfo.TabIndex = 45;
-            this.LblActionInfo.Text = Languages.CommandsConfig_LblActionInfo;
+            this.LblActionInfo.Text = "Action";
             this.LblActionInfo.Click += new System.EventHandler(this.LblActionInfo_Click);
             // 
             // PbActionInfo

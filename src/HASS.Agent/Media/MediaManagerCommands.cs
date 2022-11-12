@@ -1,10 +1,14 @@
-﻿using System;
+﻿using CoreAudio;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using Serilog;
+using Google.Protobuf.WellKnownTypes;
 
 namespace HASS.Agent.Media
 {
@@ -39,5 +43,35 @@ namespace HASS.Agent.Media
         internal static void Next() => keybd_event(VK_MEDIA_NEXT_TRACK, 0, KEYEVENTF_EXTENTEDKEY, IntPtr.Zero);
 
         internal static void Previous() => keybd_event(VK_MEDIA_PREV_TRACK, 0, KEYEVENTF_EXTENTEDKEY, IntPtr.Zero);
+
+        /// <summary>
+        /// Sets the volume to the provided value (0-100)
+        /// </summary>
+        /// <param name="volume"></param>
+        internal static void SetVolume(int volume)
+        {
+            try
+            {
+                if (volume < 0) volume = 0;
+                if (volume > 100) volume = 100;
+
+                var fVolume = volume / 100.0f;
+
+                // get the current default endpoint
+                using var audioDevice = Variables.AudioDeviceEnumerator?.GetDefaultAudioEndpoint(DataFlow.eRender, Role.Multimedia);
+                if (audioDevice?.AudioEndpointVolume == null)
+                {
+                    Log.Warning("[MEDIA] Unable to set volume, no default audio endpoint found");
+                    return;
+                }
+
+                // all good, set the volume
+                audioDevice.AudioEndpointVolume.MasterVolumeLevelScalar = fVolume;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[MEDIA] Error while trying to set volume to {val}: {err}", volume, ex.Message);
+            }
+        }
     }
 }

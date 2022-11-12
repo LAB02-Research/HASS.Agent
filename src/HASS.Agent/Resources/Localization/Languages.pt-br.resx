@@ -2049,6 +2049,7 @@ Você quer usar essa versão?</value>
   </data>
   <data name="QuickActionsConfig_LblHotkey" xml:space="preserve">
     <value>atalho ativado</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="QuickActionsConfig_Title" xml:space="preserve">
     <value>Atalhos Rápidos Config</value>
@@ -2071,6 +2072,9 @@ Você quer usar essa versão?</value>
   </data>
   <data name="QuickActionsMod_CheckHassManager_MessageBox1" xml:space="preserve">
     <value>Não foi possível buscar suas entidades devido à configuração ausente. Insira os valores necessários na tela de configuração.</value>
+  </data>
+  <data name="QuickActionsMod_ClmDomain" xml:space="preserve">
+    <value>domain</value>
   </data>
   <data name="QuickActionsMod_LblAction" xml:space="preserve">
     <value>&amp;ação desejada</value>
@@ -2229,9 +2233,11 @@ HassAgentStarted, Logoff, SystemShutdown, Resume, Suspend, ConsoleConnect, Conso
   </data>
   <data name="SensorsManager_LoggedUserSensorDescription" xml:space="preserve">
     <value>Retorna o nome do usuário conectado no momento.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_LoggedUsersSensorDescription" xml:space="preserve">
     <value>Retorna uma lista formatada em json de usuários registrados no momento.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_MemoryUsageSensorDescription" xml:space="preserve">
     <value>Fornece a quantidade de memória usada como uma porcentagem.</value>
@@ -2279,6 +2285,7 @@ Converte o resultado em texto.</value>
   </data>
   <data name="SensorsManager_ProcessActiveSensorDescription" xml:space="preserve">
     <value>Fornece o número de instâncias ativas do processo.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_ServiceStateSensorDescription" xml:space="preserve">
     <value>Retorna o estado do serviço fornecido: NotFound, Stopped, StartPending, StopPending, Running, ContinuePending, PausePending ou Paused.
@@ -2384,6 +2391,7 @@ Essa é uma solicitação cara, portanto, o intervalo recomendado é de 15 minut
   </data>
   <data name="SensorsMod_LblMultiValue" xml:space="preserve">
     <value>multivalor</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsMod_LblName" xml:space="preserve">
     <value>&amp;nome</value>

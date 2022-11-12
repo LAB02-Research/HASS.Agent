@@ -9,6 +9,9 @@ namespace HASS.Agent.Enums
         [EnumMember(Value = "unknown")]
         Unknown,
 
+        [EnumMember(Value = "setvolume")]
+        SetVolume,
+
         [EnumMember(Value = "volumeup")]
         VolumeUp,
 

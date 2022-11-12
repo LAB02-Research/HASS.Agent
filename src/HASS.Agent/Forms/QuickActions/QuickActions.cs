@@ -153,11 +153,11 @@ namespace HASS.Agent.Forms.QuickActions
                     return true;
 
                 case HassManagerStatus.ConfigMissing:
-                    MessageBoxAdv.Show(Languages.QuickActions_CheckHassManager_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBoxAdv.Show(this, Languages.QuickActions_CheckHassManager_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
 
                 case HassManagerStatus.Failed:
-                    MessageBoxAdv.Show(Languages.QuickActions_MessageBox_EntityFailed, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBoxAdv.Show(this, Languages.QuickActions_MessageBox_EntityFailed, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
 
                 case HassManagerStatus.Initialising:
@@ -168,7 +168,7 @@ namespace HASS.Agent.Forms.QuickActions
                         await Task.Delay(150);
                         if (HassApiManager.ManagerStatus != HassManagerStatus.Failed) continue;
 
-                        MessageBoxAdv.Show(Languages.QuickActions_MessageBox_EntityFailed, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBoxAdv.Show(this, Languages.QuickActions_MessageBox_EntityFailed, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return false;
                     }
                     SetGuiLoading(false);

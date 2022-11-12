@@ -145,7 +145,7 @@ namespace HASS.Agent.Managers
         /// </summary>
         private static void LoadSupportedUILanguages()
         {
-            var supportedCultureList = new List<string> { "en", "pt-BR", "sl", "es", "nl", "de", "ru", "fr" };
+            var supportedCultureList = new List<string> { "en", "pt-BR", "sl", "es", "nl", "de", "ru", "fr", "pl", "tr" };
 
             foreach (var supportedUILanguage in supportedCultureList.Select(supportedCulture => new CultureInfo(supportedCulture)).Select(culture => new SupportedUILanguage(culture)))
             {

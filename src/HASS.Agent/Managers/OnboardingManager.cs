@@ -428,7 +428,7 @@ namespace HASS.Agent.Managers
             if (Variables.AppSettings.OnboardingStatus == OnboardingStatus.Aborted) return true;
 
             // ask the user
-            var q = MessageBoxAdv.Show(Languages.OnboardingManager_ConfirmBeforeClose_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var q = MessageBoxAdv.Show(_onboarding, Languages.OnboardingManager_ConfirmBeforeClose_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (q != DialogResult.Yes) return false;
 
             // abort, we're done - load blanco settings and store

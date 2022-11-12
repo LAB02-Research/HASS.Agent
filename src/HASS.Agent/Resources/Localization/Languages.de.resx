@@ -958,6 +958,7 @@ Wenn du Benachrichtigungen aktiviert hast, wird ein PopUp angezeigt. Dies ist er
   </data>
   <data name="QuickActionsConfig_LblHotkey" xml:space="preserve">
     <value>Hotkey an</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="QuickActionsConfig_Title" xml:space="preserve">
     <value>Quick Actions Einstellungen</value>
@@ -1056,6 +1057,7 @@ Wenn du Benachrichtigungen aktiviert hast, wird ein PopUp angezeigt. Dies ist er
   </data>
   <data name="SensorsMod_LblMultiValue" xml:space="preserve">
     <value>Multiwert</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsMod_LblAgent" xml:space="preserve">
     <value>Agent</value>
@@ -2190,9 +2192,11 @@ HassAgentStarted, Logoff, SystemShutdown, Resume, Suspend, ConsoleConnect, Conso
   </data>
   <data name="SensorsManager_LoggedUserSensorDescription" xml:space="preserve">
     <value>Gibt den Namen des aktuell angemeldeten Benutzers zurück.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_LoggedUsersSensorDescription" xml:space="preserve">
     <value>Gibt eine JSON-formatierte Liste der aktuell angemeldeten Benutzer zurück.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_MemoryUsageSensorDescription" xml:space="preserve">
     <value>Gibt die Menge des belegten Arbeitsspeichers in Prozent an.</value>
@@ -2222,6 +2226,7 @@ Du kannst die Zähler mit dem Windows-Tool „perfmon.exe“ untersuchen.</value
   </data>
   <data name="SensorsManager_ProcessActiveSensorDescription" xml:space="preserve">
     <value>Stellt die Anzahl der aktiven Instanzen des Prozesses bereit.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_ServiceStateSensorDescription" xml:space="preserve">
     <value>Gibt den Status des bereitgestellten Dienstes zurück: NotFound, Stopped, StartPending, StopPending, Running, ContinuePending, PausePending oder Paused.
@@ -2435,10 +2440,10 @@ Dies ist eine ressourcenbelastende Aufgabe, daher beträgt das empfohlene Interv
     <value>Abmeldung</value>
   </data>
   <data name="SystemStateEvent_RemoteConnect" xml:space="preserve">
-    <value>RemoteConnect</value>
+    <value>Fernverbindung</value>
   </data>
   <data name="SystemStateEvent_RemoteDisconnect" xml:space="preserve">
-    <value>RemoteDisconnect</value>
+    <value>RemoteTrennung</value>
   </data>
   <data name="SystemStateEvent_Resume" xml:space="preserve">
     <value>Fortsetzen</value>
@@ -2627,7 +2632,7 @@ Dies ist eine ressourcenbelastende Aufgabe, daher beträgt das empfohlene Interv
     <value>Laden</value>
   </data>
   <data name="ComponentStatus_Ok" xml:space="preserve">
-    <value>Ok</value>
+    <value>Durchführung</value>
   </data>
   <data name="ComponentStatus_Stopped" xml:space="preserve">
     <value>Gestoppt</value>
@@ -2717,7 +2722,7 @@ Möchtest du immer noch die aktuellen Werte verwenden?</value>
 Stelle sicher, dass keine andere Instanz von HASS.Agent läuft und der Port verfügbar und registriert ist.</value>
   </data>
   <data name="CommandType_SendWindowToFrontCommand" xml:space="preserve">
-    <value>SendWindowToFront</value>
+    <value>ProgrammfensterNachVorneSenden</value>
   </data>
   <data name="CommandType_WebViewCommand" xml:space="preserve">
     <value>WebView</value>
@@ -3041,10 +3046,10 @@ Hinweis: Du hast die Bereinigung deaktiviert, stelle also sicher, dass Dein Ger�
     <value>Drucker</value>
   </data>
   <data name="CommandType_MonitorSleepCommand" xml:space="preserve">
-    <value>MonitorSleep</value>
+    <value>MonitorSchlafen</value>
   </data>
   <data name="CommandType_MonitorWakeCommand" xml:space="preserve">
-    <value>MonitorWake</value>
+    <value>MonitorAufwachen</value>
   </data>
   <data name="MonitorPowerEvent_PowerOn" xml:space="preserve">
     <value>Einschalten</value>
@@ -3145,7 +3150,7 @@ Bist Du sicher, dass Du es so verwenden möchtest?</value>
     <value>Sowohl die lokale API als auch MQTT sind deaktiviert, aber die Integration benötigt mindestens eine, damit sie funktioniert</value>
   </data>
   <data name="ConfigService_BtnManageService" xml:space="preserve">
-    <value>&amp;Manage Service</value>
+    <value>&amp;Dienstleistung verwalten</value>
   </data>
   <data name="ConfigService_BtnManageService_MessageBox1" xml:space="preserve">
     <value>Der Dienst befindet sich derzeit im angehaltenen Zustand, sodass Du  ihn nicht konfigurieren kannst.
@@ -3159,15 +3164,15 @@ Stelle sicher, dass Du es zuerst zum Laufen gebracht hast.</value>
     <value>Standardmenü bei Klick der linken Maustaste anzeigen</value>
   </data>
   <data name="Configuration_CheckValues_MessageBox1" xml:space="preserve">
-    <value>Your Home Assistant API token doesn&apos;t look right. Make sure you selected the entire token (don&apos;t use CTRL+A or doubleclick).
-It should contain three sections (seperated by two dots).
+    <value>Ihr Home Assistant API-Token sieht nicht richtig aus. Vergewissern Sie sich, dass Sie das gesamte Token ausgewählt haben (verwenden Sie nicht CTRL+A oder Doppelklick).
+Es sollte drei Abschnitte enthalten (getrennt durch zwei Punkte).
 
-Are you sure you want to use it like this?</value>
+Sind Sie sicher, dass Sie es so verwenden wollen?</value>
   </data>
   <data name="Configuration_CheckValues_MessageBox2" xml:space="preserve">
-    <value>Your Home Assistant URI doesn&apos;t look right. It should look something like &apos;http://homeassistant.local:8123&apos; or &apos;https://192.168.0.1:8123&apos;.
+    <value>Die URI Ihres Home-Assistenten sieht nicht richtig aus. Sie sollte etwa so aussehen: &quot;http://homeassistant.local:8123&quot; oder &quot;https://192.168.0.1:8123&quot;.
 
-Are you sure you want to use it like this?</value>
+Sind Sie sicher, dass Sie ihn so verwenden wollen?</value>
   </data>
   <data name="Configuration_CheckValues_MessageBox3" xml:space="preserve">
     <value>Deine MQTT Broker URI sieht nicht richtig aus. So sollte es aussehen
@@ -3198,9 +3203,9 @@ Wie die meisten Entwickler verwende ich Koffein – wenn Du es also entbehren ka
     <value>Auf Updates überprüfen</value>
   </data>
   <data name="OnboardingApi_BtnTest_MessageBox5" xml:space="preserve">
-    <value>The API token you have provided doesn&apos;t appear to be valid, please ensure you selected the entire token (Don&apos;t use CTRL + A or double-click). A valid API key contains three sections, separated by two dots.
+    <value>Der von Ihnen angegebene API-Schlüssel scheint nicht gültig zu sein. Bitte stellen Sie sicher, dass Sie den gesamten Schlüssel ausgewählt haben (verwenden Sie nicht die Tastenkombination CTRL + A oder einen Doppelklick). Ein gültiger API-Schlüssel besteht aus drei Abschnitten, die durch zwei Punkte getrennt sind.
 
-Are you sure you want to use this key anyway?</value>
+Sind Sie sicher, dass Sie diesen Schlüssel trotzdem verwenden möchten?</value>
   </data>
   <data name="OnboardingApi_BtnTest_MessageBox6" xml:space="preserve">
     <value>Deine URI sieht nicht richtig aus. Es sollte in etwa so aussehen: „http://homeassistant.local:8123“ oder „http://192.168.0.1:8123“.
@@ -3334,5 +3339,8 @@ Willst Du den Runtime Installer herunterladen?</value>
   </data>
   <data name="WebView_InitializeAsync_MessageBox2" xml:space="preserve">
     <value>Beim Initialisieren von WebView ist etwas schief gelaufen. Bitte überprüfe die Protokolle und öffne ein GitHub-Ticket, um Hilfe zu erhalten.</value>
+  </data>
+  <data name="QuickActionsMod_ClmDomain" xml:space="preserve">
+    <value>domain</value>
   </data>
 </root>

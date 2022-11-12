@@ -94,7 +94,7 @@ namespace HASS.Agent.Forms
             }
 
             // yep, go for it
-            await UpdateManager.DownloadAndExecuteUpdate(_pendingUpdate);
+            await UpdateManager.DownloadAndExecuteUpdate(_pendingUpdate, this);
         }
 
         private void BtnIgnore_Click(object sender, EventArgs e) => Close();

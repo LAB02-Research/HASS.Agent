@@ -29,7 +29,7 @@ namespace HASS.Agent.Controls.Configuration
                 Clipboard.SetText($"netsh http add urlacl url=http://+:{Variables.AppSettings.LocalApiPort}/ user=\"{SharedHelperFunctions.EveryoneLocalizedAccountName()}\"");
 
                 // notify the user
-                MessageBoxAdv.Show(Languages.ConfigNotifications_BtnExecutePortReservation_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.ConfigNotifications_BtnExecutePortReservation_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             BtnExecutePortReservation.Text = Languages.ConfigNotifications_BtnExecutePortReservation;

@@ -69,7 +69,7 @@ namespace HASS.Agent.Controls.Service
             var authId = TbAuthId.Text.Trim();
             if (string.IsNullOrEmpty(authId))
             {
-                var q = MessageBoxAdv.Show(Languages.ServiceGeneral_TbAuthId_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                var q = MessageBoxAdv.Show(this, Languages.ServiceGeneral_TbAuthId_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (q != DialogResult.Yes)
                 {
                     ActiveControl = TbAuthId;
@@ -88,7 +88,7 @@ namespace HASS.Agent.Controls.Service
             if (!storedOk)
             {
                 // failed
-                MessageBoxAdv.Show(Languages.ServiceGeneral_SavingFailedMessageBox, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.ServiceGeneral_SavingFailedMessageBox, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 // restore previous ID
                 _serviceSettings.AuthId = previousId;
@@ -116,7 +116,7 @@ namespace HASS.Agent.Controls.Service
             var deviceName = TbDeviceName.Text.Trim();
             if (string.IsNullOrEmpty(deviceName))
             {
-                MessageBoxAdv.Show(Languages.ServiceGeneral_BtnStoreDeviceName_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(this, Languages.ServiceGeneral_BtnStoreDeviceName_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 ActiveControl = TbDeviceName;
                 return;
             }
@@ -132,7 +132,7 @@ namespace HASS.Agent.Controls.Service
             if (!storedOk)
             {
                 // failed
-                MessageBoxAdv.Show(Languages.ServiceGeneral_SavingFailedMessageBox, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.ServiceGeneral_SavingFailedMessageBox, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 // restore previous ID
                 _serviceSettings.DeviceName = previousName;
@@ -169,7 +169,7 @@ namespace HASS.Agent.Controls.Service
             if (!storedOk)
             {
                 // failed
-                MessageBoxAdv.Show(Languages.ServiceGeneral_SavingFailedMessageBox, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.ServiceGeneral_SavingFailedMessageBox, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 // restore previous ID
                 _serviceSettings.DisconnectedGracePeriodSeconds = previousValue;
@@ -193,7 +193,7 @@ namespace HASS.Agent.Controls.Service
             var executorBinary = TbExternalExecutorBinary.Text.Trim();
             if (string.IsNullOrEmpty(executorBinary))
             {
-                MessageBoxAdv.Show(Languages.ServiceGeneral_BtnStoreCustomExecutor_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(this, Languages.ServiceGeneral_BtnStoreCustomExecutor_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 ActiveControl = TbExternalExecutorBinary;
                 return;
             }
@@ -201,7 +201,7 @@ namespace HASS.Agent.Controls.Service
             // check if the binary exists
             if (!File.Exists(executorBinary))
             {
-                MessageBoxAdv.Show(Languages.ServiceGeneral_BtnStoreCustomExecutor_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(this, Languages.ServiceGeneral_BtnStoreCustomExecutor_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 ActiveControl = TbExternalExecutorBinary;
                 return;
             }
@@ -228,7 +228,7 @@ namespace HASS.Agent.Controls.Service
             if (!storedOk)
             {
                 // failed
-                MessageBoxAdv.Show(Languages.ServiceGeneral_SavingFailedMessageBox, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.ServiceGeneral_SavingFailedMessageBox, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 // restore previous ID
                 _serviceSettings.CustomExecutorBinary = previousExecutorBinary;
@@ -406,12 +406,12 @@ namespace HASS.Agent.Controls.Service
         }
         
         private void LblAuthIdInfo_Click(object sender, EventArgs e) =>
-            MessageBoxAdv.Show(Languages.ServiceGeneral_LblAuthIdInfo_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBoxAdv.Show(this, Languages.ServiceGeneral_LblAuthIdInfo_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         private void LblDeviceNameInfo_Click(object sender, EventArgs e) =>
-            MessageBoxAdv.Show(Languages.ServiceGeneral_LblDeviceNameInfo_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBoxAdv.Show(this, Languages.ServiceGeneral_LblDeviceNameInfo_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         private void LblDisconGraceInfo_Click(object sender, EventArgs e) =>
-            MessageBoxAdv.Show(Languages.ServiceGeneral_LblDisconGraceInfo_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBoxAdv.Show(this, Languages.ServiceGeneral_LblDisconGraceInfo_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 }

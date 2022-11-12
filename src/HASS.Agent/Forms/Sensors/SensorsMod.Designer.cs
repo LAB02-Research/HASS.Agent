@@ -94,7 +94,7 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnStore.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnStore.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnStore.TabIndex = 7;
-            this.BtnStore.Text = Languages.SensorsMod_BtnStore;
+            this.BtnStore.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsMod_BtnStore;
             this.BtnStore.UseVisualStyleBackColor = false;
             this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
@@ -136,7 +136,7 @@ namespace HASS.Agent.Forms.Sensors
             this.LblType.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblType.Location = new System.Drawing.Point(566, 18);
             this.LblType.Name = "LblType";
-            this.LblType.Size = new System.Drawing.Size(89, 19);
+            this.LblType.Size = new System.Drawing.Size(91, 19);
             this.LblType.TabIndex = 3;
             this.LblType.Text = Languages.SensorsMod_LblType;
             // 
@@ -149,7 +149,7 @@ namespace HASS.Agent.Forms.Sensors
             this.LblName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblName.Location = new System.Drawing.Point(566, 91);
             this.LblName.Name = "LblName";
-            this.LblName.Size = new System.Drawing.Size(43, 19);
+            this.LblName.Size = new System.Drawing.Size(45, 19);
             this.LblName.TabIndex = 10;
             this.LblName.Text = Languages.SensorsMod_LblName;
             // 
@@ -177,7 +177,7 @@ namespace HASS.Agent.Forms.Sensors
             this.LblUpdate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblUpdate.Location = new System.Drawing.Point(566, 174);
             this.LblUpdate.Name = "LblUpdate";
-            this.LblUpdate.Size = new System.Drawing.Size(89, 19);
+            this.LblUpdate.Size = new System.Drawing.Size(91, 19);
             this.LblUpdate.TabIndex = 13;
             this.LblUpdate.Text = Languages.SensorsMod_LblUpdate;
             // 
@@ -203,7 +203,7 @@ namespace HASS.Agent.Forms.Sensors
             this.LblDescription.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblDescription.Location = new System.Drawing.Point(955, 17);
             this.LblDescription.Name = "LblDescription";
-            this.LblDescription.Size = new System.Drawing.Size(76, 19);
+            this.LblDescription.Size = new System.Drawing.Size(78, 19);
             this.LblDescription.TabIndex = 17;
             this.LblDescription.Text = Languages.SensorsMod_LblDescription;
             // 
@@ -370,18 +370,22 @@ namespace HASS.Agent.Forms.Sensors
             // 
             // ClmMultiValue
             // 
-            this.ClmMultiValue.Text = Languages.SensorsMod_LblMultiValue;
+            this.ClmMultiValue.Tag = "hide";
+            this.ClmMultiValue.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsMod_LblMultiValue;
             // 
             // ClmAgentCompatible
             // 
+            this.ClmAgentCompatible.Tag = "hide";
             this.ClmAgentCompatible.Text = "agent compatible";
             // 
             // ClmSatelliteCompatible
             // 
+            this.ClmSatelliteCompatible.Tag = "hide";
             this.ClmSatelliteCompatible.Text = "satellite compatible";
             // 
             // ClmEmpty
             // 
+            this.ClmEmpty.Tag = "hide";
             this.ClmEmpty.Text = "filler column";
             this.ClmEmpty.Width = 500;
             // 
@@ -415,7 +419,7 @@ namespace HASS.Agent.Forms.Sensors
             this.PbMultiValue.AccessibleName = "Multivalue icon";
             this.PbMultiValue.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbMultiValue.Image = global::HASS.Agent.Properties.Resources.multivalue_16;
-            this.PbMultiValue.Location = new System.Drawing.Point(273, 392);
+            this.PbMultiValue.Location = new System.Drawing.Point(182, 394);
             this.PbMultiValue.Name = "PbMultiValue";
             this.PbMultiValue.Size = new System.Drawing.Size(16, 16);
             this.PbMultiValue.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -429,7 +433,7 @@ namespace HASS.Agent.Forms.Sensors
             this.LblMultiValue.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblMultiValue.AutoSize = true;
             this.LblMultiValue.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblMultiValue.Location = new System.Drawing.Point(295, 393);
+            this.LblMultiValue.Location = new System.Drawing.Point(204, 395);
             this.LblMultiValue.Name = "LblMultiValue";
             this.LblMultiValue.Size = new System.Drawing.Size(63, 15);
             this.LblMultiValue.TabIndex = 29;
@@ -442,11 +446,11 @@ namespace HASS.Agent.Forms.Sensors
             this.LblAgent.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblAgent.AutoSize = true;
             this.LblAgent.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblAgent.Location = new System.Drawing.Point(403, 393);
+            this.LblAgent.Location = new System.Drawing.Point(34, 395);
             this.LblAgent.Name = "LblAgent";
-            this.LblAgent.Size = new System.Drawing.Size(37, 15);
+            this.LblAgent.Size = new System.Drawing.Size(39, 15);
             this.LblAgent.TabIndex = 31;
-            this.LblAgent.Text = Languages.SensorsMod_LblAgent;
+            this.LblAgent.Text = "Agent";
             // 
             // PbAgent
             // 
@@ -454,7 +458,7 @@ namespace HASS.Agent.Forms.Sensors
             this.PbAgent.AccessibleName = "Agent icon";
             this.PbAgent.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbAgent.Image = global::HASS.Agent.Properties.Resources.agent_16;
-            this.PbAgent.Location = new System.Drawing.Point(381, 392);
+            this.PbAgent.Location = new System.Drawing.Point(12, 394);
             this.PbAgent.Name = "PbAgent";
             this.PbAgent.Size = new System.Drawing.Size(16, 16);
             this.PbAgent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -468,11 +472,11 @@ namespace HASS.Agent.Forms.Sensors
             this.LblService.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblService.AutoSize = true;
             this.LblService.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblService.Location = new System.Drawing.Point(485, 393);
+            this.LblService.Location = new System.Drawing.Point(116, 395);
             this.LblService.Name = "LblService";
-            this.LblService.Size = new System.Drawing.Size(43, 15);
+            this.LblService.Size = new System.Drawing.Size(44, 15);
             this.LblService.TabIndex = 33;
-            this.LblService.Text = Languages.SensorsMod_LblService;
+            this.LblService.Text = "Service";
             // 
             // PbService
             // 
@@ -480,7 +484,7 @@ namespace HASS.Agent.Forms.Sensors
             this.PbService.AccessibleName = "Service icon";
             this.PbService.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbService.Image = global::HASS.Agent.Properties.Resources.service_16;
-            this.PbService.Location = new System.Drawing.Point(463, 392);
+            this.PbService.Location = new System.Drawing.Point(94, 394);
             this.PbService.Name = "PbService";
             this.PbService.Size = new System.Drawing.Size(16, 16);
             this.PbService.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -523,7 +527,7 @@ namespace HASS.Agent.Forms.Sensors
             this.BtnTest.Style.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BtnTest.Style.PressedForeColor = System.Drawing.Color.Black;
             this.BtnTest.TabIndex = 6;
-            this.BtnTest.Text = Languages.SensorsMod_BtnTest;
+            this.BtnTest.Text = global::HASS.Agent.Resources.Localization.Languages.SensorsMod_BtnTest;
             this.BtnTest.UseVisualStyleBackColor = false;
             this.BtnTest.Visible = false;
             this.BtnTest.Click += new System.EventHandler(this.BtnTest_Click);

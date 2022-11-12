@@ -216,15 +216,15 @@ namespace HASS.Agent.Managers
         /// Downloads the latest installer to a local temp file, and executes it
         /// </summary>
         /// <param name="pendingUpdate"></param>
+        /// <param name="owner"></param>
         /// <returns></returns>
-        internal static async Task DownloadAndExecuteUpdate(PendingUpdate pendingUpdate)
+        internal static async Task DownloadAndExecuteUpdate(PendingUpdate pendingUpdate, IWin32Window owner)
         {
             // yep, prepare a temporary filename
             var tempFile = await StorageManager.PrepareTempInstallerFilename();
             if (string.IsNullOrEmpty(tempFile))
             {
-                MessageBoxAdv.Show(Languages.UpdateManager_DownloadAndExecuteUpdate_MessageBox1,
-                    Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(owner, Languages.UpdateManager_DownloadAndExecuteUpdate_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 LaunchReleaseUrl(pendingUpdate);
                 return;
             }
@@ -233,8 +233,7 @@ namespace HASS.Agent.Managers
             var downloaded = await StorageManager.DownloadFileAsync(pendingUpdate.InstallerUrl, tempFile);
             if (!downloaded || !File.Exists(tempFile))
             {
-                MessageBoxAdv.Show(Languages.UpdateManager_DownloadAndExecuteUpdate_MessageBox2,
-                    Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(owner, Languages.UpdateManager_DownloadAndExecuteUpdate_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 LaunchReleaseUrl(pendingUpdate);
                 return;
             }
@@ -243,7 +242,7 @@ namespace HASS.Agent.Managers
             var certCheck = HelperFunctions.ConfirmCertificate(tempFile);
             if (!certCheck)
             {
-                MessageBoxAdv.Show(Languages.UpdateManager_DownloadAndExecuteUpdate_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBoxAdv.Show(owner, Languages.UpdateManager_DownloadAndExecuteUpdate_MessageBox3, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 LaunchReleaseUrl(pendingUpdate);
                 return;
             }
@@ -256,7 +255,7 @@ namespace HASS.Agent.Managers
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[UPDATER] Error while launching the installer: {err}", ex.Message);
-                MessageBoxAdv.Show(Languages.UpdateManager_DownloadAndExecuteUpdate_MessageBox4, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(owner, Languages.UpdateManager_DownloadAndExecuteUpdate_MessageBox4, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 LaunchReleaseUrl(pendingUpdate);
             }
         }

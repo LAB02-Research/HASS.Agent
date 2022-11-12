@@ -148,7 +148,7 @@
     <value>совет: дважды щелкните для просмотра</value>
   </data>
   <data name="ConfigExternalTools_BtnExternalBrowserIncognitoTest" xml:space="preserve">
-    <value>&amp;тест</value>
+    <value>&amp;Тест</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigGeneral_LblInfo4" xml:space="preserve">
@@ -174,22 +174,22 @@
     <value>Эта страница содержит общие элементы конфигурации. Для получения дополнительных настроек перейдите на вкладки слева.</value>
   </data>
   <data name="ConfigGeneral_LblDeviceName" xml:space="preserve">
-    <value>&amp;имя устройства</value>
+    <value>&amp;Имя устройства</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigHomeAssistantApi_LblTip1" xml:space="preserve">
     <value>совет: дважды щелкните это поле, чтобы просмотреть</value>
   </data>
   <data name="ConfigHomeAssistantApi_LblClientCertificate" xml:space="preserve">
-    <value>сертификат клиента</value>
+    <value>Сертификат $Клиента</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigHomeAssistantApi_CbHassAutoClientCertificate" xml:space="preserve">
-    <value>использование автоматического выбор сертификата клиента</value>
+    <value>Использование $автоматического выбор сертификата клиента</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigHomeAssistantApi_BtnTestApi" xml:space="preserve">
-    <value>тестовое соединение</value>
+    <value>Тестовое соединение</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigHomeAssistantApi_LblInfo1" xml:space="preserve">
@@ -202,15 +202,15 @@ API домашнего помощника.
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigHomeAssistantApi_LblApiToken" xml:space="preserve">
-    <value>&amp;api токен</value>
+    <value>&amp;API токен</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigHomeAssistantApi_LblServerUri" xml:space="preserve">
-    <value>&amp;url сервера</value>
+    <value>&amp;URL Сервер</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigHotKey_BtnClearHotKey" xml:space="preserve">
-    <value>&amp;очистить</value>
+    <value>&amp;Очистить</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigHotKey_LblInfo1" xml:space="preserve">
@@ -222,7 +222,7 @@ API домашнего помощника.
     <value>&amp;включить горячую клавишу быстрого действия</value>
   </data>
   <data name="ConfigHotKey_LblHotkeyCombo" xml:space="preserve">
-    <value>&amp;горячие клавиши</value>
+    <value>&amp;Горячие клавиши</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigLocalStorage_BtnClearImageCache" xml:space="preserve">
@@ -244,16 +244,17 @@ API домашнего помощника.
 Введите &apos;0&apos;, чтобы сохранить их навсегда.</value>
   </data>
   <data name="ConfigLogging_LblInfo1" xml:space="preserve">
-    <value>Расширенное ведение журнала обеспечивает более подробное и углубленное ведение журнала, в случае, если ведение журнала по умолчанию не недостаточно. 
-Пожалуйста, обратите внимание, что включение этого параметра может привести к увеличению размера файлов журнала, и его следует использовать только в том случае, 
-если вы подозреваете, что с HASS.Agent что-то не так, сам по себе или по просьбе разработчиков.</value>
+    <value>Расширенное ведение журнала обеспечивает более подробное ведение журнала в случае, если ведение журнала по умолчанию недостаточно
+. Пожалуйста, обратите внимание, что включение этого параметра может привести к увеличению размера файлов журнала, и его следует
+использовать только в том случае, если вы подозреваете, что с HASS.Agent что-то не так или по запросу
+разработчиков.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigLogging_CbExtendedLogging" xml:space="preserve">
     <value>&amp;включить расширенное ведение журнала</value>
   </data>
   <data name="ConfigLogging_BtnShowLogs" xml:space="preserve">
-    <value>&amp;открыть папку логов</value>
+    <value>&amp;Открыть папку логов</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigMqtt_LblTip3" xml:space="preserve">
@@ -278,8 +279,11 @@ API домашнего помощника.
     <value>(оставьте значение по умолчанию, если не уверены)</value>
   </data>
   <data name="ConfigMqtt_LblInfo1" xml:space="preserve">
-    <value>Команды и датчики передаются через MQTT. Пожалуйста, предоставьте учетные данные для вашего сервера. Если
-вы используете аддон HA, вы, вероятно, можете использовать предустановленный адрес.</value>
+    <value>Команды и датчики используют MQTT, а также уведомления и функции медиаплеера при использовании новой интеграции. 
+
+Пожалуйста, предоставьте учетные данные для вашего брокера, если вы используете дополнение HA Mosquitto, вы, вероятно, можете использовать предустановленный адрес.
+
+Примечание: эти настройки (за исключением идентификатора клиента) также будут применены к спутниковой службе.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigMqtt_LblDiscoPrefix" xml:space="preserve">
@@ -304,16 +308,17 @@ API домашнего помощника.
     <value>идентификатор клиента</value>
   </data>
   <data name="ConfigNotifications_LblInfo2" xml:space="preserve">
-    <value>Если что-то не работает, убедитесь, что вы выполнили следующие действия:
+    <value>Если что-то не работает, обязательно попробуйте выполнить следующие действия:
 
-- Установите HASS.Agent-Notifier integration
+- Установите HASS.Agent integration
 - Перезагрузите Home Assistant
-- Конфигурация объекта-уведомителя
-- Перезагрузите Home Assistant</value>
+- Убедись, что HASS.Agent активен с включенным MQTT!
+- Ваше устройство должно быть обнаружено и добавлено как объект автоматически
+- Необязательно: добавьте его вручную, используя локальный API</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigNotifications_LblInfo1" xml:space="preserve">
-    <value>HASS.Agent может получать уведомления от домашнего помощника, используя текст и/или изображения. Для этого необходимо включить локальный API.</value>
+    <value>HASS.Agent может получать уведомления от домашнего помощника, используя текст, изображения и действия. Если у вас включен MQTT, ваше устройство будет добавлено автоматически. В противном случае вручную настройте интеграцию на использование локального API.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigNotifications_BtnNotificationsReadme" xml:space="preserve">
@@ -323,7 +328,7 @@ API домашнего помощника.
     <value>порт</value>
   </data>
   <data name="ConfigNotifications_CbAcceptNotifications" xml:space="preserve">
-    <value>&amp;разрешить уведомления</value>
+    <value>&amp;Разрешить уведомления</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigNotifications_BtnSendTestNotification" xml:space="preserve">
@@ -343,23 +348,23 @@ API домашнего помощника.
     <value>статус сервиса:</value>
   </data>
   <data name="ConfigService_BtnStartService" xml:space="preserve">
-    <value>&amp;запустить сервис</value>
+    <value>&amp;Запустить сервис</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigService_BtnDisableService" xml:space="preserve">
-    <value>&amp;отключить сервис</value>
+    <value>&amp;Отключить сервис</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigService_BtnStopService" xml:space="preserve">
-    <value>&amp;остановить сервис</value>
+    <value>&amp;Остановить сервис</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigService_BtnEnableService" xml:space="preserve">
-    <value>&amp;включить сервис</value>
+    <value>&amp;Включить сервис</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigService_BtnReinstallService" xml:space="preserve">
-    <value>&amp;переустановить сервис</value>
+    <value>&amp;Переустановить сервис</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigService_LblInfo2" xml:space="preserve">
@@ -420,7 +425,7 @@ HASS.Agent там.</value>
 </value>
   </data>
   <data name="OnboardingWelcome_LblDeviceName" xml:space="preserve">
-    <value>&amp;имя устройства</value>
+    <value>&amp;Имя Устройства</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingStartup_BtnSetLaunchOnLogin" xml:space="preserve">
@@ -564,7 +569,7 @@ HASS.Agent для прослушивания на указанном порту.
     <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingDone_LblInfo1" xml:space="preserve">
-    <value>Все готово!</value>
+    <value>Ура, готово!</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ServiceCommands_LblLowIntegrity" xml:space="preserve">
@@ -613,7 +618,7 @@ HASS.Agent для прослушивания на указанном порту.
     <value>Эта страница содержит общие элементы конфигурации. Для получения информации о настройках MQTT, датчиках и командах перейдите на вкладки вверху.</value>
   </data>
   <data name="ServiceGeneral_LblAuthId" xml:space="preserve">
-    <value>идентификатор авторизации</value>
+    <value>$Идентификатор Авторизации</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ServiceGeneral_LblDeviceName" xml:space="preserve">
@@ -913,6 +918,7 @@ HASS.Agent для прослушивания на указанном порту.
   </data>
   <data name="QuickActionsConfig_LblHotkey" xml:space="preserve">
     <value>горячая клавиша включена</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="QuickActionsConfig_Title" xml:space="preserve">
     <value>Настройка быстрых действий</value>
@@ -1003,6 +1009,7 @@ HASS.Agent для прослушивания на указанном порту.
   </data>
   <data name="SensorsMod_LblMultiValue" xml:space="preserve">
     <value>многозначный</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsMod_LblAgent" xml:space="preserve">
     <value>агент</value>
@@ -1196,23 +1203,23 @@ HASS.Agent для прослушивания на указанном порту.
     <value>управление</value>
   </data>
   <data name="Main_BtnServiceManager" xml:space="preserve">
-    <value>спутниковая служба</value>
+    <value>$Спутниковая служба</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnAppSettings" xml:space="preserve">
-    <value>настройка</value>
+    <value>$Настройка</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnActionsManager" xml:space="preserve">
-    <value>&amp;быстрые действия</value>
+    <value>&amp;Быстрые действия</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnCommandsManager" xml:space="preserve">
-    <value>загрузка</value>
+    <value>Загрузка..</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnSensorsManager" xml:space="preserve">
-    <value>загрузка</value>
+    <value>Загрузка..</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_GpStatus" xml:space="preserve">
@@ -1284,9 +1291,9 @@ HASS.Agent для прослушивания на указанном порту.
   <data name="CommandsManager_KeyCommandDescription" xml:space="preserve">
     <value>Имитирует одно нажатие клавиши.
 
-Вы можете выбрать любое из этих значений: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+Нажмите на текстовое поле &apos;код ключа&apos; и нажмите клавишу, которую вы хотите смоделировать. Для вас будет введен соответствующий код ключа.
 
-Если вам нужно больше клавиш и/или модификаторов, таких как CTRL, используйте команду MultipleKeys.</value>
+Если вам нужно больше клавиш и/или модификаторов, таких как CTRL, используйте команду Multiple Keys.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="CommandsManager_LaunchUrlCommandDescription" xml:space="preserve">
@@ -1740,9 +1747,9 @@ Home Assistant version: {0}</value>
     <value>запуск в режиме инкогнито</value>
   </data>
   <data name="CommandsMod_LblInfo_Browser" xml:space="preserve">
-    <value>браузер: по умолчанию
+    <value>Браузер: По умолчанию
 
-пожалуйста, настройте браузер, чтобы включить режим инкогнито</value>
+Пожалуйста настройте браузер чтобы включить режим инкогнито.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="CommandsMod_LblSetting_Url" xml:space="preserve">
@@ -1778,7 +1785,7 @@ Home Assistant version: {0}</value>
     <value>{0} only!</value>
   </data>
   <data name="CommandsMod_LblMqttTopic_MessageBox1" xml:space="preserve">
-    <value>Менеджер MQTT настроен неправильно, убедитесь, что вы настроили MQTT и после этого перезапустили его.</value>
+    <value>Менеджер MQTT не был настроен должным образом или еще не завершил свой запуск.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="QuickActions_CheckHassManager_MessageBox1" xml:space="preserve">
@@ -1890,7 +1897,7 @@ Home Assistant version: {0}</value>
 Примечание: имя будет &apos;очищено&apos;, что означает, что все, кроме букв, цифр и пробелов, будет заменено символом подчеркивания. Этого требует HA.</value>
   </data>
   <data name="Configuration_ProcessChanges_MessageBox2" xml:space="preserve">
-    <value>Вы изменили порт API уведомлений. Этот новый порт должен быть зарезервирован.
+    <value>Вы изменили порт локального API. Этот новый порт должен быть зарезервирован.
 
 Вы получите запрос UAC на это, пожалуйста, одобрите.</value>
     <comment>Fuzzy</comment>
@@ -1919,20 +1926,20 @@ Home Assistant version: {0}</value>
   <data name="Main_Load_MessageBox1" xml:space="preserve">
     <value>Что-то пошло не так при загрузке ваших настроек.
 
-Проверьте appsettings.json во вложенной папке &apos;Config&apos; или просто удалите его, чтобы начать все сначала.</value>
+Проверьте appsettings.json во вложенной папке &apos;config&apos; или просто удалите его, чтобы начать все сначала.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_Load_MessageBox2" xml:space="preserve">
     <value>Произошла ошибка при запуске HASS.Agent.
-Пожалуйста, проверьте журналы и отправьте сообщение об ошибке на github.</value>
+Пожалуйста, проверьте журналы и отправьте сообщение об ошибке на GitHub.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnSensorsManage_Ready" xml:space="preserve">
-    <value>локальные &amp;датчики</value>
+    <value>Локальные &amp;Датчики</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnCommandsManager_Ready" xml:space="preserve">
-    <value>&amp;команды</value>
+    <value>&amp;Команды</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_Checking" xml:space="preserve">
@@ -2124,15 +2131,19 @@ HassAgentStarted, Logoff, SystemShutdown, Resume, Suspend, ConsoleConnect, Conso
   </data>
   <data name="SensorsManager_LoggedUserSensorDescription" xml:space="preserve">
     <value>Возвращает имя текущего пользователя, вошедшего в систему.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_LoggedUsersSensorDescription" xml:space="preserve">
     <value>Возвращает список зарегистрированных пользователей в формате json.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_MemoryUsageSensorDescription" xml:space="preserve">
     <value>Показывает объем используемой памяти в процентах.</value>
   </data>
   <data name="SensorsManager_MicrophoneActiveSensorDescription" xml:space="preserve">
-    <value>Предоставляет значение bool в зависимости от того, используется ли микрофон в данный момент.</value>
+    <value>Предоставляет значение bool в зависимости от того, используется ли микрофон в данный момент.
+
+Примечание: если он используется в спутниковой службе, он не будет обнаруживать приложения пользовательского пространства.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_NamedWindowSensorDescription" xml:space="preserve">
@@ -2156,6 +2167,7 @@ Instance: _Total
   </data>
   <data name="SensorsManager_ProcessActiveSensorDescription" xml:space="preserve">
     <value>Указывает количество активных экземпляров процесса.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_ServiceStateSensorDescription" xml:space="preserve">
     <value>Возвращает состояние предоставленной службы: NotFound, Stopped, StartPending, StopPending, Running, ContinuePending, PausePending or Paused.
@@ -2180,13 +2192,15 @@ NotPresent, Busy, RunningDirect3dFullScreen, PresentationMode, AcceptsNotificati
 Может, например, использоваться для определения того, следует ли отправлять уведомления или сообщения TTS.</value>
   </data>
   <data name="SensorsManager_WebcamActiveSensorDescription" xml:space="preserve">
-    <value>Предоставляет значение bool в зависимости от того, используется ли веб-камера в данный момент.</value>
+    <value>Предоставляет значение bool в зависимости от того, используется ли веб-камера в данный момент.
+
+Примечание: если он используется в спутниковой службе, он не будет обнаруживать приложения пользовательского пространства.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_WindowsUpdatesSensorsDescription" xml:space="preserve">
-    <value>Предоставляет датчик с количеством ожидающих обновлений драйверов и датчик с количеством ожидающих обновлений программного обеспечения.
+    <value>Предоставляет датчик с количеством ожидающих обновлений драйверов, датчик с количеством ожидающих обновлений программного обеспечения, датчик, содержащий всю информацию о ожидающих обновлениях драйверов (название, идентификатор статьи кб, скрытый, тип и категории) и датчик, содержащий то же самое для ожидающих обновлений программного обеспечения.
 
-Это ресурсоемкий запрос, поэтому рекомендуемый интервал составляет 15 минут (900 секунд). Но он ограничен 10 минутами, если вы укажете меньшее значение, вы получите последний известный список.</value>
+Это дорогостоящий запрос, поэтому рекомендуемый интервал составляет 15 минут (900 секунд). Но он ограничен 10 минутами, если вы укажете меньшее значение, вы получите последний известный список</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_WmiQuerySensorDescription" xml:space="preserve">
@@ -2716,7 +2730,9 @@ NotPresent, Busy, RunningDirect3dFullScreen, PresentationMode, AcceptsNotificati
     <value>&amp;включить локальный api</value>
   </data>
   <data name="ConfigLocalApi_LblInfo1" xml:space="preserve">
-    <value>HASS.Agent имеет свой собственный локальный API, поэтому Home Assistant может отправлять запросы (например, для отправки уведомления). Вы можете настроить его глобально здесь, а затем вы можете настроить зависимые разделы (в настоящее время уведомления и медиаплеер).</value>
+    <value>HASS.Agent имеет свой собственный локальный API, поэтому Home Assistant может отправлять запросы (например, для отправки уведомления). Вы можете настроить его глобально здесь, а затем настроить зависимые разделы (в настоящее время уведомления и медиаплеер).
+
+Примечание: это не требуется для функционирования новой интеграции. Включайте и используйте его только в том случае, если вы не используете MQTT.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigLocalApi_LblInfo2" xml:space="preserve">
@@ -2754,27 +2770,28 @@ NotPresent, Busy, RunningDirect3dFullScreen, PresentationMode, AcceptsNotificati
     <value>&amp;включить функциональность медиаплеера</value>
   </data>
   <data name="ConfigMediaPlayer_LblInfo1" xml:space="preserve">
-    <value>HASS.Agent может выступать в качестве медиаплеера для Home Assistant, так что вы сможете управлять любым воспроизводимым носителем и отправлять текст в речь. Для этого необходимо включить локальный API.</value>
+    <value>HASS.Agent может выступать в качестве медиаплеера для Home Assistant, так что вы сможете просматривать любые воспроизводимые носители и управлять ими, а также отправлять текст в речь. Если у вас включен MQTT, ваше устройство будет добавлено автоматически. В противном случае вручную настройте интеграцию на использование локального API.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigMediaPlayer_LblInfo2" xml:space="preserve">
-    <value>Если что-то не работает, убедитесь, что вы выполнили следующие действия:
+    <value>Если что-то не работает, обязательно попробуйте выполнить следующие действия:
 
-- Установите HASS.Agent-MediaPlayer integration
+- Установите HASS.Agent integration
 - Перезагрузите Home Assistant
-- Настройте объект media_player
-- Перезагрузите Home Assistant</value>
+- Убедись, что  HASS.Agent активен с включенным MQTT!
+- Ваше устройство должно быть обнаружено и добавлено как объект автоматически
+- Необязательно: добавьте его вручную, используя локальный API</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigMediaPlayer_LblLocalApiDisabled" xml:space="preserve">
-    <value>локальный API отключен, но медиаплеер нуждается в нем для работы </value>
+    <value>Локальный API отключен, однако для работы медиаплеера он необходим.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigMqtt_CbMqttTls" xml:space="preserve">
     <value>&amp;TLS</value>
   </data>
   <data name="ConfigNotifications_LblLocalApiDisabled" xml:space="preserve">
-    <value>локальный API отключен, но медиаплеер нуждается в нем для работы </value>
+    <value>Локальный API отключен, однако для работы медиаплеера он необходим.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigTrayIcon_BtnShowWebViewPreview" xml:space="preserve">
@@ -2847,8 +2864,7 @@ NotPresent, Busy, RunningDirect3dFullScreen, PresentationMode, AcceptsNotificati
     <value>Чтобы использовать уведомления, вам необходимо установить и настроить HASS.Agent-notifier integration в
 Home Assistant.
 
-Это очень просто сделать с помощью HACS, но вы также можете установить его вручную.Для получения дополнительной 
-информации перейдите по ссылке ниже.</value>
+Это очень просто сделать с помощью HACS, но вы также можете установить их вручную. Для получения дополнительной информации перейдите по ссылке ниже.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingIntegrations_LblInfo2" xml:space="preserve">
@@ -3023,215 +3039,215 @@ Home Assistant.
     <value>MicrophoneProcess</value>
   </data>
   <data name="CommandsManager_MonitorSleepCommandDescription" xml:space="preserve">
-    <value>Puts all monitors in sleep (low power) mode.</value>
+    <value>Переводит все мониторы в спящий режим (низкое энергопотребление).</value>
   </data>
   <data name="CommandsManager_MonitorWakeCommandDescription" xml:space="preserve">
-    <value>Tries to wake up all monitors by simulating a &apos;arrow up&apos; keypress.</value>
+    <value>Пытается разбудить все мониторы, имитируя нажатие клавиши со стрелкой вверх.</value>
   </data>
   <data name="CommandsManager_SetVolumeCommandDescription" xml:space="preserve">
-    <value>Sets the volume of the current default audiodevice to the specified level.</value>
+    <value>Устанавливает громкость текущего аудиоустройства по умолчанию на указанный уровень.</value>
   </data>
   <data name="CommandsMod_BtnStore_MessageBox10" xml:space="preserve">
-    <value>Please enter a value between 0-100 as the desired volume level!</value>
+    <value>Пожалуйста, введите значение от 0 до 100 в качестве желаемого уровня громкости!</value>
   </data>
   <data name="CommandsMod_CommandsMod" xml:space="preserve">
     <value>Command</value>
   </data>
   <data name="CommandsMod_MessageBox_Action2" xml:space="preserve">
-    <value>If you don&apos;t enter a volume value, you can only use this entity with an &apos;action&apos; value through Home Assistant. Running it as-is won&apos;t do anything.
+    <value>Если вы не вводите значение громкости, вы можете использовать этот объект только со значением &quot;действие&quot; через Home Assistant. Запуск его как есть ничего не даст.
 
-Are you sure you want this?</value>
+Ты уверен, что хочешь этого?</value>
   </data>
   <data name="CommandsMod_MessageBox_Sanitize" xml:space="preserve">
-    <value>The name you provided contains unsupported characters and won&apos;t work. The suggested version is:
+    <value>Указанное вами имя содержит неподдерживаемые символы и не будет работать. Предлагаемая версия такова:
 
 {0}
 
-Do you want to use this version?</value>
+Вы хотите использовать эту версию?</value>
   </data>
   <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox5" xml:space="preserve">
-    <value>The API token you have provided doesn&apos;t appear to be valid, please ensure you selected the entire token (Don&apos;t use CTRL + A or double-click). A valid API key contains three sections, separated by two dots.
+    <value>Предоставленный вами токен API, по-видимому, недействителен, пожалуйста, убедитесь, что вы выбрали весь токен (не используйте CTRL + A или двойной щелчок). Допустимый ключ API содержит три раздела, разделенные двумя точками.
 
-Are you sure you want to use this key anyway?</value>
+Вы уверены, что все равно хотите использовать этот ключ?</value>
   </data>
   <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox6" xml:space="preserve">
-    <value>The URI you have provided does not appear to be valid, a valid URI may look like either of the following:
+    <value>Указанный вами URI, по-видимому, недействителен, допустимый URI может выглядеть следующим образом:
 - http://homeassistant.local:8123
 - http://192.168.0.1:8123
 
-Are you sure you want to use this URI anyway?</value>
+Вы уверены, что все равно хотите использовать этот URI?</value>
   </data>
   <data name="ConfigHomeAssistantApi_BtnTestApi_Testing" xml:space="preserve">
-    <value>Testing..</value>
+    <value>Тестирование..</value>
   </data>
   <data name="ConfigMediaPlayer_LblConnectivityDisabled" xml:space="preserve">
-    <value>both the local API and MQTT are disabled, but the integration needs at least one for it to work</value>
+    <value>как локальный API, так и MQTT отключены, но для работы интеграции необходим хотя бы один из них</value>
   </data>
   <data name="ConfigMqtt_CbEnableMqtt" xml:space="preserve">
-    <value>Enable MQTT</value>
+    <value>Включить MQTT</value>
   </data>
   <data name="ConfigMqtt_LblMqttDisabledWarning" xml:space="preserve">
-    <value>If MQTT is not enabled, commands and sensors will not work!</value>
+    <value>Если MQTT не включен, команды и датчики работать не будут!</value>
   </data>
   <data name="ConfigNotifications_LblConnectivityDisabled" xml:space="preserve">
-    <value>both the local API and MQTT are disabled, but the integration needs at least one for it to work</value>
+    <value>как локальный API, так и MQTT отключены, но для работы интеграции необходим хотя бы один из них</value>
   </data>
   <data name="ConfigService_BtnManageService" xml:space="preserve">
-    <value>&amp;Manage Service</value>
+    <value>$Управление сервисом</value>
   </data>
   <data name="ConfigService_BtnManageService_MessageBox1" xml:space="preserve">
-    <value>The service is currently stopped and cannot be configured.
+    <value>В настоящее время служба остановлена и не может быть настроена.
 
-Please start the service first in order to configure it.</value>
+Пожалуйста, сначала запустите службу, чтобы настроить ее.</value>
   </data>
   <data name="ConfigService_LblInfo5" xml:space="preserve">
-    <value>If you want to manage the service (add commands and sensor, change settings) you can do so here, or by using the &apos;satellite service&apos; button on the main window.</value>
+    <value>Если вы хотите управлять сервисом (добавьте команды и датчики, измените настройки), вы можете сделать это здесь или с помощью кнопки &apos;спутниковая служба&apos; в главном окне.</value>
   </data>
   <data name="ConfigTrayIcon_CbWebViewShowMenuOnLeftClick" xml:space="preserve">
-    <value>Show default menu on mouse left-click</value>
+    <value>Показать меню по умолчанию при щелчке левой кнопкой мыши</value>
   </data>
   <data name="Configuration_CheckValues_MessageBox1" xml:space="preserve">
-    <value>Your Home Assistant API token doesn&apos;t look right. Make sure you selected the entire token (don&apos;t use CTRL+A or doubleclick).
-It should contain three sections (seperated by two dots).
+    <value>Ваш токен API Home Assistant выглядит неправильно. Убедитесь, что вы выбрали весь токен (не используйте CTRL+A или двойной щелчок).
+Он должен содержать три раздела (разделенных двумя точками).
 
-Are you sure you want to use it like this?</value>
+Вы уверены, что хотите использовать его именно так?</value>
   </data>
   <data name="Configuration_CheckValues_MessageBox2" xml:space="preserve">
-    <value>Your Home Assistant URI doesn&apos;t look right. It should look something like &apos;http://homeassistant.local:8123&apos; or &apos;https://192.168.0.1:8123&apos;.
+    <value>Ваш  Home Assistant URI выглядит неправильно. Это должно выглядеть примерно так &apos;http://homeassistant.local:8123&apos; или &apos;https://192.168.0.1:8123&apos;.
 
-Are you sure you want to use it like this?</value>
+Вы уверены, что хотите использовать его именно так?</value>
   </data>
   <data name="Configuration_CheckValues_MessageBox3" xml:space="preserve">
-    <value>Your MQTT broker URI doesn&apos;t look right. It should look something like &apos;homeassistant.local&apos; or &apos;192.168.0.1&apos;.
+    <value>Ваш URI брокера MQTT выглядит неправильно. Это должно выглядеть примерно как &apos;homeassistant.local&apos; или &apos;192.168.0.1&apos;.
 
-Are you sure you want to use it like this?</value>
+Вы уверены, что хотите использовать его именно так?</value>
   </data>
   <data name="Donate_BtnClose" xml:space="preserve">
-    <value>&amp;Close</value>
+    <value>$Закрыть</value>
   </data>
   <data name="Donate_CbHideDonateButton" xml:space="preserve">
-    <value>I already donated, hide the button on the main window.</value>
+    <value>Я уже пожертвовал, скрыть кнопку в главном окне.</value>
   </data>
   <data name="Donate_LblInfo" xml:space="preserve">
-    <value>HASS.Agent is completely free, and will always stay that way without restrictions!
+    <value>HASS.Agent полностью бесплатен и всегда будет оставаться таким без ограничений!
 
-However, developing and maintaining this tool (and everything that surrounds it, like support and the docs) takes up a lot of time. 
+Однако разработка и обслуживание этого инструмента (и всего, что его окружает, например, службы поддержки и документации) отнимает много времени. 
 
-Like most developers, I run on caffeïne - so if you can spare it, a cup of coffee is always very much appreciated!</value>
+Как и большинство разработчиков, я работаю на кофеине - так что, если вы можете поделиться им, чашка кофе всегда очень ценится!</value>
   </data>
   <data name="Donate_Title" xml:space="preserve">
-    <value>Donate</value>
+    <value>Донат</value>
   </data>
   <data name="Main_NotifyIcon_MouseClick_MessageBox1" xml:space="preserve">
-    <value>No URL has been set! Please configure the webview through Configuration -&gt; Tray Icon.</value>
+    <value>URL-адрес не был установлен! Пожалуйста, настройте веб-просмотр с помощью меню Конфигурация -&gt; Значок в трее.</value>
   </data>
   <data name="Main_TsCheckForUpdates" xml:space="preserve">
-    <value>Check for Updates</value>
+    <value>Проверить наличие обновлений</value>
   </data>
   <data name="OnboardingApi_BtnTest_MessageBox5" xml:space="preserve">
-    <value>The API token you have provided doesn&apos;t appear to be valid, please ensure you selected the entire token (Don&apos;t use CTRL + A or double-click). A valid API key contains three sections, separated by two dots.
+    <value>Предоставленный вами токен API, по-видимому, недействителен, пожалуйста, убедитесь, что вы выбрали весь токен (не используйте CTRL + A или двойной щелчок). Допустимый ключ API содержит три раздела, разделенные двумя точками.
 
-Are you sure you want to use this key anyway?</value>
+Вы уверены, что все равно хотите использовать этот ключ?</value>
   </data>
   <data name="OnboardingApi_BtnTest_MessageBox6" xml:space="preserve">
-    <value>The URI you have provided does not appear to be valid, a valid URI may look like either of the following:
+    <value>Указанный вами URI, по-видимому, недействителен, допустимый URI может выглядеть следующим образом:
 - http://homeassistant.local:8123
 - http://192.168.0.1:8123
 
-Are you sure you want to use this URI anyway?</value>
+Вы уверены, что все равно хотите использовать этот URI?</value>
   </data>
   <data name="OnboardingDone_LblInfo6" xml:space="preserve">
-    <value>Developing and maintaining this tool (and everything that surrounds it) takes up a lot of time. Like most developers, I run on caffeïne - so if you can spare it, a cup of coffee is always very much appreciated!</value>
+    <value>Разработка и обслуживание этого инструмента (и всего, что его окружает) отнимает много времени. Как и большинство разработчиков, я работаю на кофеине - так что, если вы можете поделиться им, чашка кофе всегда очень ценится!</value>
   </data>
   <data name="OnboardingDone_LblTip2" xml:space="preserve">
-    <value>Tip: Other donation methods are available on the About Window.</value>
+    <value>Совет: Другие способы пожертвования доступны в окне &apos;О программе&apos;.</value>
   </data>
   <data name="OnboardingIntegrations_CbEnableMediaPlayer" xml:space="preserve">
-    <value>Enable &amp;Media Player (including text-to-speech)</value>
+    <value>Включить &amp;медиаплеер (включая преобразование текста в речь)</value>
   </data>
   <data name="OnboardingIntegrations_CbEnableNotifications" xml:space="preserve">
-    <value>Enable &amp;Notifications</value>
+    <value>Включить $уведомления</value>
   </data>
   <data name="OnboardingMqtt_CbEnableMqtt" xml:space="preserve">
-    <value>Enable MQTT</value>
+    <value>Включить MQTT</value>
   </data>
   <data name="PostUpdate_PostUpdate" xml:space="preserve">
-    <value>HASS.Agent Post Update</value>
+    <value>HASS.Agent Сообщение об обновлении</value>
   </data>
   <data name="SensorsManager_BluetoothDevicesSensorDescription" xml:space="preserve">
-    <value>Provides a sensor with the amount of bluetooth devices found.
+    <value>Предоставляет датчик с количеством обнаруженных устройств Bluetooth.
 
-The devices and their connected state are added as attributes.</value>
+Устройства и их подключенное состояние добавляются в качестве атрибутов.</value>
   </data>
   <data name="SensorsManager_BluetoothLeDevicesSensorDescription" xml:space="preserve">
-    <value>Provides a sensors with the amount of bluetooth LE devices found.
+    <value>Предоставляет информацию о количестве найденных устройств Bluetooth LE.
 
-The devices and their connected state are added as attributes.
+Устройства и их подключенное состояние добавляются в качестве атрибутов.
 
-Only shows devices that were seen since the last report, ie. when the sensor publishes, the list clears.</value>
+Отображаются только те устройства, которые были замечены с момента последнего отчета, т.е при публикации датчика список очищается.</value>
   </data>
   <data name="SensorsManager_GeoLocationSensorDescription" xml:space="preserve">
-    <value>Returns your current latitude, longitude and altitude as a comma-seperated value.
+    <value>Возвращает текущую широту, долготу и высоту в виде значений, разделенных запятыми.
 
-Make sure Windows&apos; location services are enabled!
+Убедитесь, что службы определения местоположения Windows включены!
 
-Depending on your Windows version, this can be found in the new control panel -&gt; &apos;privacy and security&apos; -&gt; &apos;location&apos;.</value>
+В зависимости от вашей версии Windows, это можно найти в новой панели управления -&gt; &apos;конфиденциальность и безопасность&apos; -&gt; &apos;местоположение&apos;.</value>
   </data>
   <data name="SensorsManager_MicrophoneProcessSensorDescription" xml:space="preserve">
-    <value>Provides the name of the process that&apos;s currently using the microphone.
+    <value>Указывает имя процесса, который в данный момент использует микрофон.
 
-Note: if used in the satellite service, it won&apos;t detect userspace applications.</value>
+Примечание: если он используется в спутниковой службе, он не будет обнаруживать приложения пользовательского пространства.</value>
   </data>
   <data name="SensorsManager_MonitorPowerStateSensorDescription" xml:space="preserve">
-    <value>Provides the last monitor power state change:
+    <value>Обеспечивает последнее изменение состояния питания монитора:
 
-Dimmed, PowerOff, PowerOn and Unkown.</value>
+Затемненный, Выключенный, Включенный и Неизвестный.</value>
   </data>
   <data name="SensorsManager_PowershellSensorDescription" xml:space="preserve">
-    <value>Returns the result of the provided Powershell command or script.
+    <value>Возвращает результат предоставленной команды Powershell или сценария.
 
-Converts the outcome to text.</value>
+Преобразует результат в текст.</value>
   </data>
   <data name="SensorsManager_PrintersSensorsDescription" xml:space="preserve">
-    <value>Provides information about all installed printers and their queues.</value>
+    <value>Предоставляет информацию обо всех установленных принтерах и их очередях.</value>
   </data>
   <data name="SensorsManager_WebcamProcessSensorDescription" xml:space="preserve">
-    <value>Provides the name of the process that&apos;s currently using the webcam.
+    <value>Указывает имя процесса, который в данный момент использует веб-камеру.
 
-Note: if used in the satellite service, it won&apos;t detect userspace applications.</value>
+Примечание: если он используется в спутниковой службе, он не будет обнаруживать приложения пользовательского пространства.</value>
   </data>
   <data name="SensorsManager_WindowStateSensorDescription" xml:space="preserve">
-    <value>Provides the current state of the process&apos; window:
+    <value>Предоставляет текущее состояние окна процесса:
 
-Hidden, Maximized, Minimized, Normal and Unknown.</value>
+Скрытый, Развернутый, Свернутый, Обычный и Неизвестный.</value>
   </data>
   <data name="SensorsMod_LblSetting1_Powershell" xml:space="preserve">
-    <value>powershell command or script</value>
+    <value>команда или сценарий powershell</value>
   </data>
   <data name="SensorsMod_MessageBox_Sanitize" xml:space="preserve">
-    <value>The name you provided contains unsupported characters and won&apos;t work. The suggested version is:
+    <value>Указанное вами имя содержит неподдерживаемые символы и не будет работать. Предлагаемая версия такова:
 
 {0}
 
-Do you want to use this version?</value>
+Вы хотите использовать эту версию?</value>
   </data>
   <data name="SensorsMod_SensorsMod_BtnTest_Powershell" xml:space="preserve">
-    <value>Test Command/Script</value>
+    <value>Тест команды/сценария</value>
   </data>
   <data name="SensorsMod_TestPowershell_MessageBox1" xml:space="preserve">
-    <value>Please enter a command or script!</value>
+    <value>Пожалуйста, введите команду или скрипт!</value>
   </data>
   <data name="SensorsMod_TestPowershell_MessageBox2" xml:space="preserve">
-    <value>Test succesfully executed, result value:
+    <value>Тест успешно выполнен, значение результата:
 
 {0}</value>
   </data>
   <data name="SensorsMod_TestPowershell_MessageBox3" xml:space="preserve">
-    <value>The test failed to execute:
+    <value>Тест не удалось выполнить:
 
 {0}
 
-Do you want to open the logs folder?</value>
+Вы хотите открыть папку журналов?</value>
   </data>
   <data name="SensorType_BluetoothDevicesSensor" xml:space="preserve">
     <value>BluetoothDevices</value>
@@ -3240,32 +3256,35 @@ Do you want to open the logs folder?</value>
     <value>BluetoothLeDevices</value>
   </data>
   <data name="ServiceControllerManager_Error_Fatal" xml:space="preserve">
-    <value>Fatal error, please check logs for information!</value>
+    <value>Фатальная ошибка, пожалуйста, проверьте журналы для получения информации!</value>
   </data>
   <data name="ServiceControllerManager_Error_Timeout" xml:space="preserve">
-    <value>Timeout expired</value>
+    <value>Истек тайм-аут</value>
   </data>
   <data name="ServiceControllerManager_Error_Unknown" xml:space="preserve">
-    <value>unknown reason</value>
+    <value>неизвестная причина</value>
   </data>
   <data name="ServiceHelper_ChangeStartMode_Error1" xml:space="preserve">
-    <value>unable to open Service Manager</value>
+    <value>не удается открыть диспетчер служб</value>
   </data>
   <data name="ServiceHelper_ChangeStartMode_Error2" xml:space="preserve">
-    <value>unable to open service</value>
+    <value>не удается открыть службу</value>
   </data>
   <data name="ServiceHelper_ChangeStartMode_Error3" xml:space="preserve">
-    <value>Error configuring startup mode, please check the logs for more information.</value>
+    <value>Ошибка при настройке режима запуска, пожалуйста, проверьте журналы для получения дополнительной информации.</value>
   </data>
   <data name="ServiceHelper_ChangeStartMode_Error4" xml:space="preserve">
-    <value>Error setting startup mode, please check the logs for more information.</value>
+    <value>Ошибка настройки режима запуска, пожалуйста, проверьте журналы для получения дополнительной информации.</value>
   </data>
   <data name="WebView_InitializeAsync_MessageBox1" xml:space="preserve">
-    <value>Microsoft&apos;s WebView2 runtime isn&apos;t found on your machine. Usually this is handled by the installer, but you can install it manually.
+    <value>Среда выполнения Microsoft WebView2 не найдена на вашем компьютере. Обычно это делается установщиком, но вы можете установить его вручную.
 
-Do you want to download the runtime installer?</value>
+Вы хотите загрузить установщик среды выполнения?</value>
   </data>
   <data name="WebView_InitializeAsync_MessageBox2" xml:space="preserve">
-    <value>Something went wrong while initializing the WebView! Please check your logs and open a GitHub issue for further assistance.</value>
+    <value>Что-то пошло не так при инициализации WebView! Пожалуйста, проверьте свои журналы и откройте вопрос на GitHub для получения дополнительной помощи.</value>
+  </data>
+  <data name="QuickActionsMod_ClmDomain" xml:space="preserve">
+    <value>domain</value>
   </data>
 </root>

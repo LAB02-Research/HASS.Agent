@@ -24,7 +24,15 @@ namespace HASS.Agent.Functions
             if (sender is not ComboBox comboBox) return;
 
             // only if there are items
-            if (comboBox.Items.Count <= 0) return;
+            if (comboBox.Items.Count <= 0)
+            {
+                // limit the dropdown's height
+                comboBox.DropDownHeight = 20;
+                return;
+            }
+
+            // reset the dropdown's height
+            comboBox.DropDownHeight = 300;
 
             // fetch the index
             var index = e.Index >= 0 ? e.Index : 0;

@@ -21,7 +21,7 @@ namespace HASS.Agent.Controls.Configuration
         {
             if (!Variables.AppSettings.NotificationsEnabled)
             {
-                MessageBoxAdv.Show(Languages.ConfigNotifications_BtnSendTestNotification_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(this, Languages.ConfigNotifications_BtnSendTestNotification_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
@@ -37,7 +37,7 @@ namespace HASS.Agent.Controls.Configuration
 
             Log.Information("[NOTIFIER] Test notification attempt completed");
 
-            MessageBoxAdv.Show(Languages.ConfigNotifications_BtnSendTestNotification_MessageBox2,
+            MessageBoxAdv.Show(this, Languages.ConfigNotifications_BtnSendTestNotification_MessageBox2,
                 Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

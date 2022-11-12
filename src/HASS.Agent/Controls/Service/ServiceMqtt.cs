@@ -193,7 +193,7 @@ namespace HASS.Agent.Controls.Service
 
             // store
             var (storedOk, _) = await Task.Run(async () => await Variables.RpcClient.SetServiceMqttSettingsAsync(config).WaitAsync(Variables.RpcConnectionTimeout));
-            if (!storedOk) MessageBoxAdv.Show(Languages.ServiceMqtt_BtnStore_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!storedOk) MessageBoxAdv.Show(this, Languages.ServiceMqtt_BtnStore_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             else await ShowStored();
 
             // done, unlock ui

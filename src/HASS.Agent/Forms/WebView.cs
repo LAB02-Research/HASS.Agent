@@ -1,14 +1,13 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Runtime.InteropServices;
 using Syncfusion.Windows.Forms;
 using HASS.Agent.Functions;
 using HASS.Agent.Models.Internal;
 using HASS.Agent.Resources.Localization;
 using HASS.Agent.Settings;
 using Microsoft.Web.WebView2.Core;
-using Microsoft.Web.WebView2.Core.Raw;
 using Serilog;
-using Action = System.Action;
+using System.Runtime.InteropServices;
+using Windows.Web.UI.Interop;
 
 namespace HASS.Agent.Forms
 {
@@ -16,6 +15,7 @@ namespace HASS.Agent.Forms
     {
         private readonly WebViewInfo _webViewInfo;
         private bool _forceClose = false;
+        private bool _isTrayIcon = false;
 
         public WebView(WebViewInfo webViewInfo)
         {
@@ -26,42 +26,51 @@ namespace HASS.Agent.Forms
 
         private async void WebView_Load(object sender, EventArgs e)
         {
-            // catch all key presses
-            KeyPreview = true;
-
-            // initialize webview
-            var initialized = await InitializeAsync();
-            if (!initialized)
+            try
             {
-                // failed, abort
+                // catch all key presses
+                KeyPreview = true;
+
+                // set the stored variables
+                SetStoredVariables();
+
+                // initialize webview
+                var initialized = await InitializeAsync();
+                if (!initialized)
+                {
+                    // failed, abort
+                    Close();
+                    return;
+                }
+
+                // are we background loading for the tray icon, and not in preview mode?
+                if (_webViewInfo.IsTrayIconWebView && !_webViewInfo.IsTrayIconPreview && Variables.AppSettings.TrayIconWebViewBackgroundLoading)
+                {
+                    _isTrayIcon = true;
+                    
+                    // done
+                    return;
+                }
+
+                // nope, show ourselves
+                Opacity = 100;
+
+                // optionally force topmost
+                if (_webViewInfo.TopMost)
+                {
+                    TopMost = true;
+                    BringToFront();
+                }
+
+                // reload ui
+                Refresh();
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "[WEBVIEW] Error on loading: {err}", ex.Message);
+                _forceClose = true;
                 Close();
-                return;
             }
-
-            // bind events (drag, title change, ..)
-            BindWebViewEvents();
-
-            // set the stored variables
-            SetStoredVariables();
-
-            // are we background loading for the tray icon, and not in preview mode?
-            if (_webViewInfo.IsTrayIconWebView && !_webViewInfo.IsTrayIconPreview && Variables.AppSettings.TrayIconWebViewBackgroundLoading)
-            {
-                // just load the uri
-                WebViewControl.Source = new Uri(_webViewInfo.Url);
-
-                // done
-                return;
-            }
-
-            // nope, show ourselves
-            Opacity = 100;
-
-            // reload ui
-            Refresh();
-
-            // load the uri
-            WebViewControl.Source = new Uri(_webViewInfo.Url);
         }
 
         private async Task<bool> InitializeAsync()
@@ -69,10 +78,17 @@ namespace HASS.Agent.Forms
             try
             {
                 // prepare an environment
-                var webViewEnv = await CoreWebView2Environment.CreateAsync(null, Variables.WebViewCachePath, null);
+                if (Variables.WebViewEnvironment == null)
+                {
+                    Log.Debug("[WEBVIEW] Creating new CoreWebView2Environment");
+                    Variables.WebViewEnvironment = await CoreWebView2Environment.CreateAsync(null, Variables.WebViewCachePath, null);
+                }
 
+                // bind initialization completed event
+                WebViewControl.CoreWebView2InitializationCompleted += WebViewControlOnCoreWebView2InitializationCompleted;
+                
                 // initialize
-                await WebViewControl.EnsureCoreWebView2Async(webViewEnv);
+                await WebViewControl.EnsureCoreWebView2Async(Variables.WebViewEnvironment);
 
                 // scale
                 WebViewControl.Scale(new SizeF(Width, Height));
@@ -84,40 +100,71 @@ namespace HASS.Agent.Forms
             {
                 Log.Fatal(ex, "[WEBVIEW] WebView2 runtime not found, unable to initialize: {err}", ex.Message);
 
-                var q = MessageBoxAdv.Show(Languages.WebView_InitializeAsync_MessageBox1,
+                var q = MessageBoxAdv.Show(this, Languages.WebView_InitializeAsync_MessageBox1,
                     Variables.MessageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
 
                 if (q != DialogResult.Yes) return false;
-                
+
                 HelperFunctions.LaunchUrl("https://go.microsoft.com/fwlink/p/?LinkId=2124703");
+                return false;
+            }
+            catch (COMException ex)
+            {
+                if (ex.Message.Contains("E_ABORT"))
+                {
+                    // aborted, closing
+                    return true;
+                }
+
+                Log.Fatal(ex, "[WEBVIEW] WebView2 initialization failed: {err}", ex.Message);
+
+                MessageBoxAdv.Show(this, Languages.WebView_InitializeAsync_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             catch (Exception ex)
             {
                 Log.Fatal(ex, "[WEBVIEW] WebView2 initialization failed: {err}", ex.Message);
 
-                MessageBoxAdv.Show(Languages.WebView_InitializeAsync_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.WebView_InitializeAsync_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        private void BindWebViewEvents()
+        private void WebViewControlOnCoreWebView2InitializationCompleted(object sender, CoreWebView2InitializationCompletedEventArgs e)
         {
-            // bind title change event
-            WebViewControl.CoreWebView2.DocumentTitleChanged += delegate
+            try
             {
-                BeginInvoke(() =>
+                // make sure the corewebview 2 got loaded
+                if (WebViewControl.CoreWebView2 == null)
                 {
-                    Text = WebViewControl.CoreWebView2.DocumentTitle;
-                });
-            };
+                    Log.Debug("[WEBVIEW] WebViewControl.CoreWebView2 null, skipping initialization");
+                    return;
+                }
 
-            // bind keyup event
-            WebViewControl.KeyUp += delegate (object _, KeyEventArgs e)
+                // bind title change event
+                WebViewControl.CoreWebView2.DocumentTitleChanged += delegate
+                {
+                    if (IsClosingOrClosed()) return;
+                    BeginInvoke(() =>
+                    {
+                        Text = WebViewControl.CoreWebView2?.DocumentTitle ?? string.Empty;
+                    });
+                };
+
+                // bind keyup event
+                WebViewControl.KeyUp += delegate (object _, KeyEventArgs e)
+                {
+                    if (e.KeyCode != Keys.Escape) return;
+                    Close();
+                };
+
+                // load the uri
+                WebViewControl.Source = new Uri(_webViewInfo.Url);
+            }
+            catch (Exception ex)
             {
-                if (e.KeyCode != Keys.Escape) return;
-                Close();
-            };
+                Log.Fatal(ex, "[WEBVIEW] Error completing webview initialization: {err}", ex.Message);
+            }
         }
 
         private void SetStoredVariables()
@@ -148,21 +195,50 @@ namespace HASS.Agent.Forms
         /// </summary>
         internal void MakeVisible()
         {
-            // show ourselves
-            Opacity = 100;
+            if (IsClosingOrClosed()) return;
 
-            // reload ui
-            Refresh();
+            try
+            {
+                // show ourselves
+                Opacity = 100;
+
+                // check if we need to move
+                var x = Screen.PrimaryScreen.WorkingArea.Width - Width;
+                var y = Screen.PrimaryScreen.WorkingArea.Height - Height;
+
+                if (x != _webViewInfo.X || y != _webViewInfo.Y)
+                {
+                    // yep
+                    _webViewInfo.X = x;
+                    _webViewInfo.Y = y;
+                    Location = new Point(_webViewInfo.X, _webViewInfo.Y);
+                }
+
+                // optionally force topmost
+                if (_isTrayIcon || _webViewInfo.TopMost)
+                {
+                    TopMost = true;
+                    BringToFront();
+                }
+
+                // reload ui
+                Refresh();
+            }
+            catch (Exception ex)
+            {
+                if (IsClosingOrClosed()) return;
+                Log.Error("[WEBVIEW] Error while showing: {err}", ex.Message);
+                _forceClose = true;
+                Close();
+            }
         }
 
         private void WebView_ResizeEnd(object sender, EventArgs e)
         {
-            if (Variables.ShuttingDown) return;
-            if (!IsHandleCreated) return;
-            if (IsDisposed) return;
-
             try
             {
+                if (IsClosingOrClosed()) return;
+
                 Refresh();
 
                 if (!_webViewInfo.IsTrayIconWebView) return;
@@ -186,35 +262,44 @@ namespace HASS.Agent.Forms
 
         private void WebView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (e.CloseReason == CloseReason.WindowsShutDown || Variables.ShuttingDown)
+            try
             {
-                // always exit on windows shutdown, or application-wide shutdown
+                // always exit on windows shutdown, application-wide shutdown or when forced
+                if (e.CloseReason == CloseReason.WindowsShutDown || Variables.ShuttingDown || _forceClose)
+                {
+                    WebViewControl.CoreWebView2InitializationCompleted -= WebViewControlOnCoreWebView2InitializationCompleted;
+                    WebViewControl?.Dispose();
+                    e.Cancel = false;
+                    return;
+                }
+
+                // do we need to stay open?
+                if (_isTrayIcon)
+                {
+                    Opacity = 0;
+                    e.Cancel = true;
+                    return;
+                }
+
+                // nope, dispose
+                WebViewControl.CoreWebView2InitializationCompleted -= WebViewControlOnCoreWebView2InitializationCompleted;
                 WebViewControl?.Dispose();
-                e.Cancel = false;
-                return;
             }
-
-            if (_forceClose)
+            catch (Exception ex)
             {
-                // we're being forced
-                WebViewControl?.Dispose();
-                e.Cancel = false;
-                return;
+                Log.Fatal(ex, ex.Message);
             }
-
-            // do we need to stay open?
-            if (_webViewInfo.IsTrayIconWebView && !_webViewInfo.IsTrayIconPreview && Variables.AppSettings.TrayIconWebViewBackgroundLoading)
-            {
-                Opacity = 0;
-                e.Cancel = true;
-                return;
-            }
-
-            // nope, dispose
-            WebViewControl?.Dispose();
         }
 
         private void WebView_Deactivate(object sender, EventArgs e) => Close();
+
+        private bool IsClosingOrClosed()
+        {
+            if (Variables.ShuttingDown) return true;
+            if (!IsHandleCreated) return true;
+            if (IsDisposed) return true;
+            return false;
+        }
 
         internal void ForceClose()
         {

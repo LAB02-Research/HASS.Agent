@@ -136,7 +136,7 @@ namespace HASS.Agent.Forms.Commands
             this.LblSetting.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblSetting.Location = new System.Drawing.Point(566, 217);
             this.LblSetting.Name = "LblSetting";
-            this.LblSetting.Size = new System.Drawing.Size(46, 19);
+            this.LblSetting.Size = new System.Drawing.Size(93, 19);
             this.LblSetting.TabIndex = 12;
             this.LblSetting.Text = Languages.CommandsMod_LblSetting;
             this.LblSetting.Visible = false;
@@ -150,7 +150,7 @@ namespace HASS.Agent.Forms.Commands
             this.LblName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblName.Location = new System.Drawing.Point(566, 151);
             this.LblName.Name = "LblName";
-            this.LblName.Size = new System.Drawing.Size(43, 19);
+            this.LblName.Size = new System.Drawing.Size(45, 19);
             this.LblName.TabIndex = 10;
             this.LblName.Text = Languages.CommandsMod_LblName;
             // 
@@ -194,7 +194,7 @@ namespace HASS.Agent.Forms.Commands
             this.LblDescription.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblDescription.Location = new System.Drawing.Point(955, 19);
             this.LblDescription.Name = "LblDescription";
-            this.LblDescription.Size = new System.Drawing.Size(76, 19);
+            this.LblDescription.Size = new System.Drawing.Size(78, 19);
             this.LblDescription.TabIndex = 20;
             this.LblDescription.Text = Languages.CommandsMod_LblDescription;
             // 
@@ -207,7 +207,7 @@ namespace HASS.Agent.Forms.Commands
             this.CbRunAsLowIntegrity.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CbRunAsLowIntegrity.Location = new System.Drawing.Point(566, 292);
             this.CbRunAsLowIntegrity.Name = "CbRunAsLowIntegrity";
-            this.CbRunAsLowIntegrity.Size = new System.Drawing.Size(152, 23);
+            this.CbRunAsLowIntegrity.Size = new System.Drawing.Size(160, 23);
             this.CbRunAsLowIntegrity.TabIndex = 4;
             this.CbRunAsLowIntegrity.Text = global::HASS.Agent.Resources.Localization.Languages.CommandsMod_CbRunAsLowIntegrity;
             this.CbRunAsLowIntegrity.UseVisualStyleBackColor = true;
@@ -299,18 +299,22 @@ namespace HASS.Agent.Forms.Commands
             // 
             // ClmAgentCompatible
             // 
+            this.ClmAgentCompatible.Tag = "hide";
             this.ClmAgentCompatible.Text = "agent compatible";
             // 
             // ClmSatelliteCompatible
             // 
+            this.ClmSatelliteCompatible.Tag = "hide";
             this.ClmSatelliteCompatible.Text = "satellite compatible";
             // 
             // ClmActionCompatible
             // 
+            this.ClmActionCompatible.Tag = "hide";
             this.ClmActionCompatible.Text = "action compatible";
             // 
             // ClmEmpty
             // 
+            this.ClmEmpty.Tag = "hide";
             this.ClmEmpty.Text = "filler column";
             this.ClmEmpty.Width = 500;
             // 
@@ -348,7 +352,7 @@ namespace HASS.Agent.Forms.Commands
             this.LblSelectedType.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblSelectedType.Location = new System.Drawing.Point(566, 18);
             this.LblSelectedType.Name = "LblSelectedType";
-            this.LblSelectedType.Size = new System.Drawing.Size(89, 19);
+            this.LblSelectedType.Size = new System.Drawing.Size(91, 19);
             this.LblSelectedType.TabIndex = 31;
             this.LblSelectedType.Text = Languages.CommandsMod_LblSelectedType;
             // 
@@ -359,11 +363,11 @@ namespace HASS.Agent.Forms.Commands
             this.LblService.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblService.AutoSize = true;
             this.LblService.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblService.Location = new System.Drawing.Point(409, 421);
+            this.LblService.Location = new System.Drawing.Point(116, 421);
             this.LblService.Name = "LblService";
-            this.LblService.Size = new System.Drawing.Size(43, 15);
+            this.LblService.Size = new System.Drawing.Size(44, 15);
             this.LblService.TabIndex = 37;
-            this.LblService.Text = Languages.CommandsMod_LblService;
+            this.LblService.Text = "Service";
             // 
             // PbService
             // 
@@ -371,7 +375,7 @@ namespace HASS.Agent.Forms.Commands
             this.PbService.AccessibleName = "Service icon";
             this.PbService.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbService.Image = global::HASS.Agent.Properties.Resources.service_16;
-            this.PbService.Location = new System.Drawing.Point(387, 420);
+            this.PbService.Location = new System.Drawing.Point(94, 420);
             this.PbService.Name = "PbService";
             this.PbService.Size = new System.Drawing.Size(16, 16);
             this.PbService.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -385,11 +389,11 @@ namespace HASS.Agent.Forms.Commands
             this.LblAgent.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.LblAgent.AutoSize = true;
             this.LblAgent.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblAgent.Location = new System.Drawing.Point(327, 421);
+            this.LblAgent.Location = new System.Drawing.Point(34, 421);
             this.LblAgent.Name = "LblAgent";
-            this.LblAgent.Size = new System.Drawing.Size(37, 15);
+            this.LblAgent.Size = new System.Drawing.Size(39, 15);
             this.LblAgent.TabIndex = 35;
-            this.LblAgent.Text = Languages.CommandsMod_LblAgent;
+            this.LblAgent.Text = "Agent";
             // 
             // PbAgent
             // 
@@ -397,7 +401,7 @@ namespace HASS.Agent.Forms.Commands
             this.PbAgent.AccessibleName = "Agent icon";
             this.PbAgent.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbAgent.Image = global::HASS.Agent.Properties.Resources.agent_16;
-            this.PbAgent.Location = new System.Drawing.Point(305, 420);
+            this.PbAgent.Location = new System.Drawing.Point(12, 420);
             this.PbAgent.Name = "PbAgent";
             this.PbAgent.Size = new System.Drawing.Size(16, 16);
             this.PbAgent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -449,7 +453,7 @@ namespace HASS.Agent.Forms.Commands
             this.LblEntityType.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblEntityType.Location = new System.Drawing.Point(566, 84);
             this.LblEntityType.Name = "LblEntityType";
-            this.LblEntityType.Size = new System.Drawing.Size(75, 19);
+            this.LblEntityType.Size = new System.Drawing.Size(76, 19);
             this.LblEntityType.TabIndex = 40;
             this.LblEntityType.Text = Languages.CommandsMod_LblEntityType;
             // 
@@ -463,7 +467,7 @@ namespace HASS.Agent.Forms.Commands
             this.LblMqttTopic.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.LblMqttTopic.Location = new System.Drawing.Point(955, 421);
             this.LblMqttTopic.Name = "LblMqttTopic";
-            this.LblMqttTopic.Size = new System.Drawing.Size(150, 19);
+            this.LblMqttTopic.Size = new System.Drawing.Size(161, 19);
             this.LblMqttTopic.TabIndex = 41;
             this.LblMqttTopic.Text = Languages.CommandsMod_LblMqttTopic;
             this.LblMqttTopic.Visible = false;
@@ -477,9 +481,9 @@ namespace HASS.Agent.Forms.Commands
             this.LblActionInfo.AutoSize = true;
             this.LblActionInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblActionInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.LblActionInfo.Location = new System.Drawing.Point(490, 421);
+            this.LblActionInfo.Location = new System.Drawing.Point(197, 421);
             this.LblActionInfo.Name = "LblActionInfo";
-            this.LblActionInfo.Size = new System.Drawing.Size(40, 15);
+            this.LblActionInfo.Size = new System.Drawing.Size(42, 15);
             this.LblActionInfo.TabIndex = 43;
             this.LblActionInfo.Text = Languages.CommandsMod_LblActionInfo;
             this.LblActionInfo.Click += new System.EventHandler(this.LblActionInfo_Click);
@@ -491,7 +495,7 @@ namespace HASS.Agent.Forms.Commands
             this.PbActionInfo.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
             this.PbActionInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbActionInfo.Image = global::HASS.Agent.Properties.Resources.action_16;
-            this.PbActionInfo.Location = new System.Drawing.Point(468, 420);
+            this.PbActionInfo.Location = new System.Drawing.Point(175, 420);
             this.PbActionInfo.Name = "PbActionInfo";
             this.PbActionInfo.Size = new System.Drawing.Size(16, 16);
             this.PbActionInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -538,6 +542,7 @@ namespace HASS.Agent.Forms.Commands
             this.TbKeyCode.Size = new System.Drawing.Size(328, 25);
             this.TbKeyCode.TabIndex = 44;
             this.TbKeyCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbKeyCode_KeyDown);
+            this.TbKeyCode.Visible = false;
             // 
             // CommandsMod
             // 
@@ -587,7 +592,7 @@ namespace HASS.Agent.Forms.Commands
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = Languages.CommandsMod_CommandsMod;
+            this.Text = Languages.CommandsMod_Title;
             this.Load += new System.EventHandler(this.CommandsMod_Load);
             this.ResizeEnd += new System.EventHandler(this.CommandsMod_ResizeEnd);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CommandsMod_KeyUp);

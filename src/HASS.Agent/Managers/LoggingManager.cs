@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Runtime.ExceptionServices;
 using MQTTnet.Exceptions;
 using Serilog;
+using Serilog.Events;
 
 namespace HASS.Agent.Managers
 {
@@ -21,8 +22,11 @@ namespace HASS.Agent.Managers
             var logName = string.Empty;
             if (args.Any()) logName = $"{args.First(x => !string.IsNullOrEmpty(x))}_";
 
+            Variables.LevelSwitch.MinimumLevel = LogEventLevel.Information;
+
             // prepare a serilog logger
             Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.ControlledBy(Variables.LevelSwitch)
                 .WriteTo.Async(a =>
                     a.File(Path.Combine(Variables.LogPath, $"[{DateTime.Now:yyyy-MM-dd}] {Variables.ApplicationName}_{logName}.log"),
                         rollingInterval: RollingInterval.Day,

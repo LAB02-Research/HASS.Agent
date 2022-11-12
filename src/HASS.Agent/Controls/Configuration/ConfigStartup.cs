@@ -25,7 +25,7 @@ namespace HASS.Agent.Controls.Configuration
                 var disabled = LaunchManager.DisableLaunchOnUserLogin();
                 if (!disabled)
                 {
-                    MessageBoxAdv.Show(Languages.ConfigStartup_BtnSetStartOnLogin_MessageBox1,
+                    MessageBoxAdv.Show(this, Languages.ConfigStartup_BtnSetStartOnLogin_MessageBox1,
                         Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -35,7 +35,7 @@ namespace HASS.Agent.Controls.Configuration
                 var enabled = LaunchManager.EnableLaunchOnUserLogin();
                 if (!enabled)
                 {
-                    MessageBoxAdv.Show(Languages.ConfigStartup_BtnSetStartOnLogin_MessageBox2,
+                    MessageBoxAdv.Show(this, Languages.ConfigStartup_BtnSetStartOnLogin_MessageBox2,
                         Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

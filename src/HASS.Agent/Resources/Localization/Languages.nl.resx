@@ -881,6 +881,7 @@ Bedankt voor het gebruiken van HASS.Agent, hopelijk heb je er wat aan :-)</value
   </data>
   <data name="QuickActionsConfig_LblHotkey" xml:space="preserve">
     <value>sneltoets ingeschakeld</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="QuickActionsConfig_Title" xml:space="preserve">
     <value>Snelle Acties Config</value>
@@ -971,6 +972,7 @@ Bedankt voor het gebruiken van HASS.Agent, hopelijk heb je er wat aan :-)</value
   </data>
   <data name="SensorsMod_LblMultiValue" xml:space="preserve">
     <value>multiwaarde</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsMod_LblAgent" xml:space="preserve">
     <value>agent</value>
@@ -1890,7 +1892,7 @@ Controleer de logs en rapporteer eventuele bugs op GitHub.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnSensorsManage_Ready" xml:space="preserve">
-    <value>lokale &amp;sensoren</value>
+    <value>&amp;sensoren</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnCommandsManager_Ready" xml:space="preserve">
@@ -2086,9 +2088,11 @@ ApplicatieGestart, Afmelden, SysteemAfsluiten, Hervatten, Opschorten, ConsoleVer
   </data>
   <data name="SensorsManager_LoggedUserSensorDescription" xml:space="preserve">
     <value>Geeft de naam van de huidige ingelogde gebruiker.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_LoggedUsersSensorDescription" xml:space="preserve">
     <value>Geeft een json-geformatteerde lijst van momenteel ingelogde gebruikers.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_MemoryUsageSensorDescription" xml:space="preserve">
     <value>Geeft de hoeveelheid gebruikte geheugen als een percentage.</value>
@@ -2120,6 +2124,7 @@ Je kunt de tellers verkennen via Windows&apos; &apos;perfmon.exe&apos; applicati
   </data>
   <data name="SensorsManager_ProcessActiveSensorDescription" xml:space="preserve">
     <value>Geeft het aantal actieve instanties van het proces.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_ServiceStateSensorDescription" xml:space="preserve">
     <value>Geeft de staat van de opgegeven service: NotFound, Stopped, StartPending, StopPending, Running, ContinuePending, PausePending or Paused.
@@ -2249,7 +2254,7 @@ Dit is een duur verzoek, dus de aanbevolen interval is 15 minuten (900 seconden)
     <value>Hibernate</value>
   </data>
   <data name="CommandType_KeyCommand" xml:space="preserve">
-    <value>Sleutel</value>
+    <value>Toets</value>
   </data>
   <data name="CommandType_LaunchUrlCommand" xml:space="preserve">
     <value>LanceerUrl</value>
@@ -3232,5 +3237,8 @@ Wil je de runtime installatie downloaden?</value>
   </data>
   <data name="WebView_InitializeAsync_MessageBox2" xml:space="preserve">
     <value>Er is iets mis gegaan bij het initialiseren van de WebView. Controleer je logs en open een GitHub tickets om hulp te krijgen.</value>
+  </data>
+  <data name="QuickActionsMod_ClmDomain" xml:space="preserve">
+    <value>domein</value>
   </data>
 </root>

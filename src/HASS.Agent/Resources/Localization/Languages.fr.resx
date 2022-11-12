@@ -134,7 +134,7 @@ en mode privé.</value>
     <value>Lancer avec l&apos;argument incognito</value>
   </data>
   <data name="ConfigExternalTools_LblCustomExecutorBinary" xml:space="preserve">
-    <value>binaire de l&apos;exécuteur personnalisé</value>
+    <value>Binaire de l&apos;exécuteur personnalisé</value>
   </data>
   <data name="ConfigExternalTools_LblInfo3" xml:space="preserve">
     <value>Vous pouvez configurer HASS.Agent pour utiliser un exécuteur spécifique, comme perl ou python.
@@ -154,7 +154,7 @@ Utilisez la commande &apos;exécuteur personnalisé&apos; pour lancer cet exécu
 Vous pouvez définir le nombre de secondes ici.</value>
   </data>
   <data name="ConfigGeneral_LblDisconGraceSeconds" xml:space="preserve">
-    <value>secondes</value>
+    <value>Secondes</value>
   </data>
   <data name="ConfigGeneral_LblDisconGracePeriod" xml:space="preserve">
     <value>Délai avant déconnection</value>
@@ -168,7 +168,7 @@ Vos automatisations et scripts continueront de fonctionner.</value>
 Il est également utilisé comme préfixe pour vos noms de commande/capteur (peut être modifié par entité).</value>
   </data>
   <data name="ConfigGeneral_LblInfo1" xml:space="preserve">
-    <value>Cette page contient les éléments de configuration générale. Pour plus de paramètres, parcourez les onglets sur la gauche.</value>
+    <value>Cette page contient les paramètres généraux. Plus de paramètres dans les onglets sur la gauche.</value>
   </data>
   <data name="ConfigGeneral_LblDeviceName" xml:space="preserve">
     <value>Nom de l&apos;appareil</value>
@@ -184,7 +184,6 @@ Il est également utilisé comme préfixe pour vos noms de commande/capteur (peu
   </data>
   <data name="ConfigHomeAssistantApi_BtnTestApi" xml:space="preserve">
     <value>Tester la connexion</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigHomeAssistantApi_LblInfo1" xml:space="preserve">
     <value>Pour connaître les entités que vous avez configurées et envoyer des actions rapides, HASS.Agent utilise l&apos;API de Home Assistant.
@@ -196,15 +195,12 @@ Vous pouvez obtenir un jeton via votre page de profil. Faites défiler vers le b
   </data>
   <data name="ConfigHomeAssistantApi_LblApiToken" xml:space="preserve">
     <value>Jeton API</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigHomeAssistantApi_LblServerUri" xml:space="preserve">
     <value>URL du serveur</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigHotKey_BtnClearHotKey" xml:space="preserve">
     <value>Effacer</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigHotKey_LblInfo1" xml:space="preserve">
     <value>Un moyen simple d&apos;afficher vos actions rapides consiste à utiliser un raccourci clavier global.
@@ -213,11 +209,9 @@ De cette façon, quoi que vous fassiez sur votre machine, vous pouvez toujours i
   </data>
   <data name="ConfigHotKey_CbEnableQuickActionsHotkey" xml:space="preserve">
     <value>Activer le raccourci clavier des actions rapides</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigHotKey_LblHotkeyCombo" xml:space="preserve">
     <value>Combinaison du raccourcis clavier</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigLocalStorage_BtnClearImageCache" xml:space="preserve">
     <value>Effacer le cache d&apos;image</value>
@@ -237,16 +231,14 @@ jours de conservation avant que HASS.Agent ne les supprimes. Entrez &apos;0&apos
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigLogging_LblInfo1" xml:space="preserve">
-    <value>La journalisation étendue fournit une journalisation plus détaillée et plus approfondie, au cas où celle par défaut ne serait pas suffisante. Veuillez noter que l&apos;activation de cette option peut entraîner une augmentation de la taille des fichiers journaux et doit être utilisé seulement lorsque vous soupçonnez que quelque chose ne va pas avec HASS.Agent lui-même ou lorsque demandé par le développeurs.</value>
+    <value>Les logs étendus fournit un log plus détaillée et plus approfondie, au cas où celle par défaut ne serait pas suffisante. Veuillez noter que l&apos;activation de cette option peut entraîner une augmentation de la taille des fichiers journaux et doit être utilisé seulement lorsque vous soupçonnez que quelque chose ne va pas avec HASS.Agent lui-même ou lorsque demandé par le développeurs.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigLogging_CbExtendedLogging" xml:space="preserve">
-    <value>Activer la journalisation étendue</value>
-    <comment>Fuzzy</comment>
+    <value>Activer les logs étendus</value>
   </data>
   <data name="ConfigLogging_BtnShowLogs" xml:space="preserve">
     <value>Ouvrir le dossier des logs</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigMqtt_LblTip3" xml:space="preserve">
     <value>Conseil : double-cliquez sur ces champs pour parcourir</value>
@@ -258,16 +250,13 @@ jours de conservation avant que HASS.Agent ne les supprimes. Entrez &apos;0&apos
     <value>Certificat admin (root)</value>
   </data>
   <data name="ConfigMqtt_CbUseRetainFlag" xml:space="preserve">
-    <value>Utiliser l&apos;indicateur de conservation</value>
-    <comment>Fuzzy</comment>
+    <value>Utiliser le retain flag</value>
   </data>
   <data name="ConfigMqtt_CbAllowUntrustedCertificates" xml:space="preserve">
     <value>Autoriser les certificats non approuvés</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigMqtt_BtnMqttClearConfig" xml:space="preserve">
-    <value>Effacer la config</value>
-    <comment>Fuzzy</comment>
+    <value>Effacer les paramètres</value>
   </data>
   <data name="ConfigMqtt_LblTip1" xml:space="preserve">
     <value>(Laisser vide si vous n&apos;êtes pas sûr)</value>
@@ -312,15 +301,13 @@ vous utilisez l&apos;addon HA, vous pouvez probablement utiliser l&apos;adresse 
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigNotifications_BtnNotificationsReadme" xml:space="preserve">
-    <value>Documentation des notifications</value>
-    <comment>Fuzzy</comment>
+    <value>Documentation</value>
   </data>
   <data name="ConfigNotifications_LblPort" xml:space="preserve">
     <value>Port</value>
   </data>
   <data name="ConfigNotifications_CbAcceptNotifications" xml:space="preserve">
-    <value>Accepter les notifications</value>
-    <comment>Fuzzy</comment>
+    <value>Autoriser les notifications</value>
   </data>
   <data name="ConfigNotifications_BtnSendTestNotification" xml:space="preserve">
     <value>Montrer une notification de test</value>
@@ -330,7 +317,6 @@ vous utilisez l&apos;addon HA, vous pouvez probablement utiliser l&apos;adresse 
   </data>
   <data name="ConfigNotifications_CbNotificationsIgnoreImageCertErrors" xml:space="preserve">
     <value>Ignorer les erreurs de certificats pour les images</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigService_LblInfo1" xml:space="preserve">
     <value>Le Service Windows vous permet de lancer capteurs et commandes même sans utilisateur connecté.
@@ -341,7 +327,6 @@ Utiliser le bouton &apos;Service Windows&apos; sur la fenêtre principale pour l
   </data>
   <data name="ConfigService_BtnStartService" xml:space="preserve">
     <value>Démarrer le service</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="ConfigService_BtnDisableService" xml:space="preserve">
     <value>Désactiver le service</value>
@@ -360,20 +345,21 @@ Utiliser le bouton &apos;Service Windows&apos; sur la fenêtre principale pour l
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigService_LblInfo2" xml:space="preserve">
-    <value>Si vous ne configurez pas le service, il ne fera rien. Cependant, vous pouvez décider le désactiver quand même.
+    <value>Si vous ne le configurez pas, il ne fera rien. Cependant, vous pouvez le désactiver quand même.
 L&apos;installateur laissera le service désactivé seul (si vous désinstallez le service, l&apos;installateur le réinstallera).</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigService_LblInfo3" xml:space="preserve">
     <value>Vous pouvez essayer de réinstaller le service s&apos;il ne fonctionne pas correctement.
-Votre configuration et vos entités ne seront pas supprimées.</value>
+Vos paramètres et vos entités ne seront pas supprimées.</value>
   </data>
   <data name="ConfigService_BtnShowLogs" xml:space="preserve">
-    <value>Ouvrir le dossier de journalisation</value>
+    <value>Ouvrir le dossier des logs</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ConfigService_LblInfo4" xml:space="preserve">
-    <value>Si le service continue d&apos;échouer après réinstallation, veuillez ouvrir un ticket et envoyer le contenu du dernier journal.</value>
+    <value>Si le service continue d&apos;échouer après réinstallation, 
+veuillez ouvrir un ticket et envoyer le contenu du dernier journal.</value>
   </data>
   <data name="ConfigStartup_LblInfo1" xml:space="preserve">
     <value>HASS.Agent peut redémarrer à la connexion en créant une entrée dans le registre du profil utilisateur.
@@ -384,7 +370,7 @@ HASS.Agent étant basé sur un utilisateur, si vous voulez le lancer pour un aut
     <value>Activer le démarrage à l&apos;ouverture de session</value>
   </data>
   <data name="ConfigStartup_LblStartOnLoginStatusInfo" xml:space="preserve">
-    <value>Statut du démarrage à l&apos;ouverture de session:</value>
+    <value>Statut du démarrage auto :</value>
   </data>
   <data name="ConfigUpdates_CbBetaUpdates" xml:space="preserve">
     <value>Me notifier de mise à jour de beta également</value>
@@ -410,9 +396,10 @@ Vous recevrez une notification (une fois par mise à jour), vous informant qu&ap
     <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingWelcome_LblInfo1" xml:space="preserve">
-    <value>Il semble que ce soit la première fois que vous lancez HASS.Agent.
+    <value>Il semble que ce soit la première fois que vous lanciez HASS.Agent.
 
-Si vous le souhaitez, nous pouvons passer la configuration. Si ce n&apos;est pas le cas, cliquez simplement sur &quot;fermer&quot;.</value>
+Pour vous aider lors de la première configuration, suivez les étapes de configuration ci-dessous
+ou bien, cliquez sur &apos;Fermer&apos;.</value>
   </data>
   <data name="OnboardingWelcome_LblInfo2" xml:space="preserve">
     <value>Le nom de l&apos;appareil est utilisé pour identifier votre machine sur HA.
@@ -423,12 +410,12 @@ Il est également utilisé comme préfixe suggéré pour vos commandes et capteu
     <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingStartup_BtnSetLaunchOnLogin" xml:space="preserve">
-    <value>oui, &amp; activer le lancement à la connexion</value>
+    <value>Oui, et activer le lancement à la connexion</value>
   </data>
   <data name="OnboardingStartup_LblInfo1" xml:space="preserve">
     <value>HASS.Agent peut se lancer lorsque vous vous connectez à Windows, en créant une clé dans le registre de votre profil utilisateur.
 
-Vous pouvez toujours supprimer (ou recréer) cette clé via la fenêtre de configuration.</value>
+Vous pouvez toujours supprimer (ou recréer) cette clé via la fenêtre de Paramètres.</value>
   </data>
   <data name="OnboardingStartup_LblCreateInfo" xml:space="preserve">
     <value>Une seconde, détermination de l&apos;état actuel ..</value>
@@ -466,7 +453,7 @@ informations.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingApi_LblServerUri" xml:space="preserve">
-    <value>serveur &amp;uri (devrait être ok comme ça)</value>
+    <value>Serveur &amp;uri (devrait être ok comme ça)</value>
   </data>
   <data name="OnboardingApi_LblInfo1" xml:space="preserve">
     <value>Pour connaître les entités que vous avez configurées et envoyer des actions rapides, HASS.Agent utilise
@@ -481,7 +468,7 @@ Vous pouvez obtenir un jeton via votre page de profil. Faites défiler vers le b
     <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingApi_LblTip1" xml:space="preserve">
-    <value>Astuce : des paramètres spécialisés peuvent être trouvés dans la fenêtre Configuration.</value>
+    <value>Astuce : des paramètres plus précis peuvent être trouvés dans la fenêtre Paramètres.</value>
   </data>
   <data name="OnboardingMqtt_LblPassword" xml:space="preserve">
     <value>Mot de passe</value>
@@ -503,17 +490,16 @@ Laissez vide si vous n&apos;utilisez pas de commandes et de capteurs.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingMqtt_LblDiscoveryPrefix" xml:space="preserve">
-    <value>préfixe de découverte</value>
+    <value>Préfixe de découverte</value>
   </data>
   <data name="OnboardingMqtt_LblTip1" xml:space="preserve">
     <value>(laisser par défaut si vous n&apos;êtes pas sûr)</value>
   </data>
   <data name="OnboardingMqtt_LblTip2" xml:space="preserve">
-    <value>Astuce : des paramètres spécialisés peuvent être trouvés dans la fenêtre Configuration.</value>
+    <value>Astuce : des paramètres spécialisés peuvent être trouvés dans la fenêtre Paramètres.</value>
   </data>
   <data name="OnboardingHotKey_LblHotkeyCombo" xml:space="preserve">
-    <value>Combinaison de raccourci</value>
-    <comment>Fuzzy</comment>
+    <value>Combinaison de touches</value>
   </data>
   <data name="OnboardingHotKey_LblInfo1" xml:space="preserve">
     <value>Un moyen simple d&apos;afficher vos actions rapides consiste à utiliser un raccourci clavier global.
@@ -522,7 +508,6 @@ De cette façon, quoi que vous fassiez sur votre machine, vous pouvez toujours i
   </data>
   <data name="OnboardingHotKey_BtnClear" xml:space="preserve">
     <value>Effacer</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingUpdates_LblInfo1" xml:space="preserve">
     <value>Si vous le souhaitez, HASS.Agent peut vérifier les mises à jour en arrière-plan.
@@ -533,12 +518,10 @@ Voulez-vous activer cette fonctionnalité ?</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingUpdates_CbNofityOnUpdate" xml:space="preserve">
-    <value>oui, informez-moi des nouvelles mises à jour</value>
-    <comment>Fuzzy</comment>
+    <value>Oui, informez moi des nouvelles mises à jour</value>
   </data>
   <data name="OnboardingUpdates_CbExecuteUpdater" xml:space="preserve">
-    <value>oui, téléchargez et lancez le programme d&apos;installation pour moi</value>
-    <comment>Fuzzy</comment>
+    <value>Oui, téléchargez et lancez l&apos;installation pour moi</value>
   </data>
   <data name="OnboardingUpdates_LblInfo2" xml:space="preserve">
     <value>Lorsqu&apos;il y a une mise à jour, HASS.Agent offre la possibilité d&apos;ouvrir la page de publication. Mais si vous
@@ -551,28 +534,20 @@ Le certificat du fichier téléchargé sera vérifié. Vous verrez toujours une 
     <value>Page GitHub HASS.Agent</value>
   </data>
   <data name="OnboardingDone_LblInfo3" xml:space="preserve">
-    <value>Astuce : il y a beaucoup plus à tripatouiller, alors assurez-vous de jeter un coup d&apos;œil à la fenêtre de configuration !
+    <value>Astuce : il y a beaucoup plus à tripatouiller, alors assurez-vous de jeter un coup d&apos;œil à la fenêtre de Paramètres !
 
 
-Merci d&apos;utiliser HASS.Agent, j&apos;espère que cela vous sera utile :-)
-
-Et si vous rencontrez des problèmes, merci de créer un ticket sur la page GitHub.</value>
+Merci d&apos;utiliser HASS.Agent, j&apos;espère que cela vous sera utile :-)</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="OnboardingDone_LblInfo2" xml:space="preserve">
-    <value>HASS.Agent va maintenant redémarrer pour activer votre configuration.
-
-
-Si vous avez activé les notifications, une demande d&apos;élévation apparaîtra. Ceci est nécessaire pour permettre à
-HASS.Agent d&apos;écouter sur le port spécifié.</value>
-    <comment>Fuzzy</comment>
+    <value>HASS.Agent va maintenant redémarrer pour activer vos paramètres.</value>
   </data>
   <data name="OnboardingDone_LblInfo1" xml:space="preserve">
     <value>Terminé !</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="ServiceCommands_LblLowIntegrity" xml:space="preserve">
-    <value>faible intégrité</value>
+    <value>Faible intégrité</value>
   </data>
   <data name="ServiceCommands_ClmName" xml:space="preserve">
     <value>Nom</value>
@@ -582,11 +557,9 @@ HASS.Agent d&apos;écouter sur le port spécifié.</value>
   </data>
   <data name="ServiceCommands_BtnRemove" xml:space="preserve">
     <value>Supprimer</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="ServiceCommands_BtnModify" xml:space="preserve">
     <value>Modifier</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="ServiceCommands_BtnAdd" xml:space="preserve">
     <value>&amp;Ajouter nouveau</value>
@@ -599,7 +572,6 @@ HASS.Agent d&apos;écouter sur le port spécifié.</value>
   </data>
   <data name="ServiceConnect_BtnRetryAuthId" xml:space="preserve">
     <value>Appliquer</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="ServiceConnect_LblRetryAuthId" xml:space="preserve">
     <value>Identifiant de connexion</value>
@@ -611,23 +583,23 @@ HASS.Agent d&apos;écouter sur le port spécifié.</value>
     <value>Se connectez au service</value>
   </data>
   <data name="ServiceConnect_LblLoading" xml:space="preserve">
-    <value>connexion avec le Service Windows, un instant s&apos;il vous plaît ..</value>
+    <value>Connexion avec le Service Windows, un instant s&apos;il vous plaît ..</value>
   </data>
   <data name="ServiceConnect_LblFetchConfig" xml:space="preserve">
-    <value>Récupérer la configuration</value>
+    <value>Récupérer les paramètres</value>
   </data>
   <data name="ServiceGeneral_LblInfo1" xml:space="preserve">
     <value>Cette page contient des éléments de configuration généraux. Pour les paramètres, capteurs et commandes MQTT, parcourez les onglets en haut.</value>
   </data>
   <data name="ServiceGeneral_LblAuthId" xml:space="preserve">
-    <value>auth id</value>
+    <value>Auth id</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="ServiceGeneral_LblDeviceName" xml:space="preserve">
-    <value>nom de l&apos;appareil</value>
+    <value>Nom de l&apos;appareil</value>
   </data>
   <data name="ServiceGeneral_LblTip1" xml:space="preserve">
-    <value>astuce : double-cliquez pour parcourir</value>
+    <value>Astuce : double-cliquez pour parcourir</value>
   </data>
   <data name="ServiceGeneral_LblCustomExecBinary" xml:space="preserve">
     <value>CLI personnalisé</value>
@@ -648,16 +620,16 @@ HASS.Agent d&apos;écouter sur le port spécifié.</value>
     <value>Version</value>
   </data>
   <data name="ServiceGeneral_LblTip2" xml:space="preserve">
-    <value>astuce : double-cliquez pour générer aléatoirement</value>
+    <value>Astuce : double-cliquez pour générer aléatoirement</value>
   </data>
   <data name="ServiceGeneral_Stored" xml:space="preserve">
-    <value>stocké!</value>
+    <value>Stocké!</value>
   </data>
   <data name="ServiceMqtt_LblTip2" xml:space="preserve">
     <value>(laisser vide pour aléatoire)</value>
   </data>
   <data name="ServiceMqtt_LblClientId" xml:space="preserve">
-    <value>client id</value>
+    <value>Client id</value>
   </data>
   <data name="ServiceMqtt_LblTip3" xml:space="preserve">
     <value>conseil : double-cliquez sur ces champs pour parcourir</value>
@@ -669,14 +641,13 @@ HASS.Agent d&apos;écouter sur le port spécifié.</value>
     <value>Certificat root</value>
   </data>
   <data name="ServiceMqtt_CbUseRetainFlag" xml:space="preserve">
-    <value>Use &amp;Retain Flag</value>
+    <value>Utiliser un retain flag</value>
   </data>
   <data name="ServiceMqtt_CbAllowUntrustedCertificates" xml:space="preserve">
     <value>Autoriser les certificats non signés</value>
   </data>
   <data name="ServiceMqtt_BtnMqttClearConfig" xml:space="preserve">
-    <value>Effacer la conf</value>
-    <comment>Fuzzy</comment>
+    <value>Effacer les paramètres</value>
   </data>
   <data name="ServiceMqtt_LblTip1" xml:space="preserve">
     <value>(laisser par défaut si vous n&apos;êtes pas sûr)</value>
@@ -686,7 +657,7 @@ HASS.Agent d&apos;écouter sur le port spécifié.</value>
 vous pouvez probablement utiliser l&apos;adresse prédéfinie.</value>
   </data>
   <data name="ServiceMqtt_LblDiscoPrefix" xml:space="preserve">
-    <value>préfixe de découverte</value>
+    <value>Préfixe de découverte</value>
   </data>
   <data name="ServiceMqtt_LblBrokerPassword" xml:space="preserve">
     <value>Mot de passe</value>
@@ -698,22 +669,22 @@ vous pouvez probablement utiliser l&apos;adresse prédéfinie.</value>
     <value>Port</value>
   </data>
   <data name="ServiceMqtt_LblBrokerIp" xml:space="preserve">
-    <value>adresse IP ou nom d&apos;hôte du broker</value>
+    <value>Adresse IP ou nom d&apos;hôte du broker</value>
   </data>
   <data name="ServiceMqtt_BtnStore" xml:space="preserve">
-    <value>envoyer et activer la configuration</value>
+    <value>Envoyer et activer la configuration</value>
   </data>
   <data name="ServiceMqtt_BtnCopy" xml:space="preserve">
     <value>Copier depuis HASS.Agent</value>
   </data>
   <data name="ServiceMqtt_LblStored" xml:space="preserve">
-    <value>configuration enregistrée !</value>
+    <value>Paramètres enregistrés !</value>
   </data>
   <data name="ServiceMqtt_LblStatusInfo" xml:space="preserve">
-    <value>status</value>
+    <value>Status</value>
   </data>
   <data name="ServiceMqtt_LblStatus" xml:space="preserve">
-    <value>interrogation ..</value>
+    <value>Interrogation ..</value>
   </data>
   <data name="ServiceSensors_ClmName" xml:space="preserve">
     <value>Nom</value>
@@ -726,21 +697,18 @@ vous pouvez probablement utiliser l&apos;adresse prédéfinie.</value>
   </data>
   <data name="ServiceSensors_BtnRemove" xml:space="preserve">
     <value>Enlever</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="ServiceSensors_BtnAdd" xml:space="preserve">
-    <value>Ajouter nouveau</value>
-    <comment>Fuzzy</comment>
+    <value>Ajouter</value>
   </data>
   <data name="ServiceSensors_BtnModify" xml:space="preserve">
     <value>Modifier</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="ServiceSensors_BtnStore" xml:space="preserve">
-    <value>envoyer et activer les capteurs</value>
+    <value>Envoyer et activer les capteurs</value>
   </data>
   <data name="ServiceSensors_LblStored" xml:space="preserve">
-    <value>capteurs stockés !</value>
+    <value>Capteurs enregistrés !</value>
   </data>
   <data name="PortReservation_LblInfo1" xml:space="preserve">
     <value>Veuillez patienter un peu pendant que la tâche est effectuée ..</value>
@@ -801,14 +769,12 @@ vous pouvez probablement utiliser l&apos;adresse prédéfinie.</value>
   </data>
   <data name="CommandMqttTopic_BtnClose" xml:space="preserve">
     <value>Fermer</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="CommandMqttTopic_LblInfo1" xml:space="preserve">
     <value>Voici le topic MQTT sur lequel vous pouvez publier des commandes d&apos;action :</value>
   </data>
   <data name="CommandMqttTopic_BtnCopyClipboard" xml:space="preserve">
     <value>Copier dans le presse papier</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="CommandMqttTopic_LblHelp" xml:space="preserve">
     <value>Aide et exemples</value>
@@ -817,16 +783,13 @@ vous pouvez probablement utiliser l&apos;adresse prédéfinie.</value>
     <value>Topic d&apos;Action MQTT</value>
   </data>
   <data name="CommandsConfig_BtnRemove" xml:space="preserve">
-    <value>Enlever</value>
-    <comment>Fuzzy</comment>
+    <value>Supprimer</value>
   </data>
   <data name="CommandsConfig_BtnModify" xml:space="preserve">
     <value>Modifier</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="CommandsConfig_BtnAdd" xml:space="preserve">
-    <value>Ajouter nouveau</value>
-    <comment>Fuzzy</comment>
+    <value>Ajouter</value>
   </data>
   <data name="CommandsConfig_BtnStore" xml:space="preserve">
     <value>Enregistrer et activer les commandes</value>
@@ -835,10 +798,10 @@ vous pouvez probablement utiliser l&apos;adresse prédéfinie.</value>
     <value>Nom</value>
   </data>
   <data name="CommandsConfig_ClmType" xml:space="preserve">
-    <value>type</value>
+    <value>Type</value>
   </data>
   <data name="CommandsConfig_LblLowIntegrity" xml:space="preserve">
-    <value>faible intégrité</value>
+    <value>Faible intégrité</value>
   </data>
   <data name="CommandsConfig_LblActionInfo" xml:space="preserve">
     <value>Action</value>
@@ -855,13 +818,12 @@ vous pouvez probablement utiliser l&apos;adresse prédéfinie.</value>
   </data>
   <data name="CommandsMod_LblName" xml:space="preserve">
     <value>Nom</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="CommandsMod_LblDescription" xml:space="preserve">
     <value>Description</value>
   </data>
   <data name="CommandsMod_CbRunAsLowIntegrity" xml:space="preserve">
-    <value>exécuter en &apos;faible intégrité&apos;</value>
+    <value>Exécuter en &apos;faible intégrité&apos;</value>
   </data>
   <data name="CommandsMod_LblIntegrityInfo" xml:space="preserve">
     <value>Qu&apos;est ce que c&apos;est ?</value>
@@ -870,10 +832,10 @@ vous pouvez probablement utiliser l&apos;adresse prédéfinie.</value>
     <value>  type</value>
   </data>
   <data name="CommandsMod_LblSelectedType" xml:space="preserve">
-    <value>type sélectionné</value>
+    <value>Type sélectionné</value>
   </data>
   <data name="CommandsMod_LblService" xml:space="preserve">
-    <value>service</value>
+    <value>Service</value>
   </data>
   <data name="CommandsMod_LblAgent" xml:space="preserve">
     <value>agent</value>
@@ -888,7 +850,7 @@ vous pouvez probablement utiliser l&apos;adresse prédéfinie.</value>
     <value>Afficher le topic d&apos;action MQTT</value>
   </data>
   <data name="CommandsMod_LblActionInfo" xml:space="preserve">
-    <value>action</value>
+    <value>Action</value>
   </data>
   <data name="CommandsMod_Title" xml:space="preserve">
     <value>Commande</value>
@@ -903,20 +865,16 @@ vous pouvez probablement utiliser l&apos;adresse prédéfinie.</value>
     <value>Enregistrer les actions rapides</value>
   </data>
   <data name="QuickActionsConfig_BtnAdd" xml:space="preserve">
-    <value>Ajouter nouveau</value>
-    <comment>Fuzzy</comment>
+    <value>Ajouter</value>
   </data>
   <data name="QuickActionsConfig_BtnModify" xml:space="preserve">
     <value>Modifier</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="QuickActionsConfig_BtnRemove" xml:space="preserve">
-    <value>Enlever</value>
-    <comment>Fuzzy</comment>
+    <value>Supprimer</value>
   </data>
   <data name="QuickActionsConfig_BtnPreview" xml:space="preserve">
     <value>Aperçu</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="QuickActionsConfig_ClmDomain" xml:space="preserve">
     <value>Domaine</value>
@@ -934,7 +892,8 @@ vous pouvez probablement utiliser l&apos;adresse prédéfinie.</value>
     <value>Description</value>
   </data>
   <data name="QuickActionsConfig_LblHotkey" xml:space="preserve">
-    <value>raccourcis activé</value>
+    <value>Activé</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="QuickActionsConfig_Title" xml:space="preserve">
     <value>Configuration des actions rapides</value>
@@ -947,7 +906,6 @@ vous pouvez probablement utiliser l&apos;adresse prédéfinie.</value>
   </data>
   <data name="QuickActionsMod_LblEntityInfo" xml:space="preserve">
     <value>Entité</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="QuickActionsMod_LblAction" xml:space="preserve">
     <value>Action</value>
@@ -955,7 +913,6 @@ vous pouvez probablement utiliser l&apos;adresse prédéfinie.</value>
   </data>
   <data name="QuickActionsMod_LblDescription" xml:space="preserve">
     <value>Description</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="QuickActionsMod_LblLoading" xml:space="preserve">
     <value>Patienter pendant que vos entités sont récupérées ...</value>
@@ -977,8 +934,7 @@ vous pouvez probablement utiliser l&apos;adresse prédéfinie.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="SensorsConfig_BtnModify" xml:space="preserve">
-    <value>Modifié</value>
-    <comment>Fuzzy</comment>
+    <value>Modifier</value>
   </data>
   <data name="SensorsConfig_BtnAdd" xml:space="preserve">
     <value>Ajouter nouveau</value>
@@ -1000,7 +956,7 @@ vous pouvez probablement utiliser l&apos;adresse prédéfinie.</value>
     <value>Configuration des capteurs</value>
   </data>
   <data name="SensorsMod_BtnStore" xml:space="preserve">
-    <value>Sauvegarder le capteur</value>
+    <value>Enregistrer le capteur</value>
   </data>
   <data name="SensorsMod_LblSetting1" xml:space="preserve">
     <value>paramètre 1</value>
@@ -1010,7 +966,6 @@ vous pouvez probablement utiliser l&apos;adresse prédéfinie.</value>
   </data>
   <data name="SensorsMod_LblName" xml:space="preserve">
     <value>Nom</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsMod_LblUpdate" xml:space="preserve">
     <value>mettre à jour chaque</value>
@@ -1032,6 +987,7 @@ vous pouvez probablement utiliser l&apos;adresse prédéfinie.</value>
   </data>
   <data name="SensorsMod_LblMultiValue" xml:space="preserve">
     <value>valeur multiple</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsMod_LblAgent" xml:space="preserve">
     <value>Agent</value>
@@ -1062,7 +1018,6 @@ vous pouvez probablement utiliser l&apos;adresse prédéfinie.</value>
   </data>
   <data name="About_BtnClose" xml:space="preserve">
     <value>Fermer</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="About_LblInfo1" xml:space="preserve">
     <value>Un client Windows pour la plate-forme Home Assistant.</value>
@@ -1086,7 +1041,7 @@ ont créé et maintiennent Home Assistant :-)</value>
     <value>Vous aimez ce projet ? Soutenez nous (lire : gardez nous en vie) en nous payant un café :</value>
   </data>
   <data name="About_Title" xml:space="preserve">
-    <value>à propos</value>
+    <value>A propos</value>
   </data>
   <data name="Configuration_TabGeneral" xml:space="preserve">
     <value>Général</value>
@@ -1122,30 +1077,28 @@ ont créé et maintiennent Home Assistant :-)</value>
     <value>Mises à jour</value>
   </data>
   <data name="Configuration_BtnAbout" xml:space="preserve">
-    <value>à propos</value>
+    <value>A propos</value>
   </data>
   <data name="Configuration_BtnHelp" xml:space="preserve">
     <value>Aide et contact</value>
   </data>
   <data name="Configuration_BtnStore" xml:space="preserve">
-    <value>enregistrer la configuration</value>
+    <value>Enregistrer les paramètres</value>
   </data>
   <data name="Configuration_BtnClose" xml:space="preserve">
-    <value>fermer sans enregistrer</value>
+    <value>Fermer sans enregistrer</value>
   </data>
   <data name="Configuration_Title" xml:space="preserve">
-    <value>Configuration</value>
+    <value>Paramètres</value>
   </data>
   <data name="ExitDialog_LblInfo1" xml:space="preserve">
     <value>Que voulez vous faire ?</value>
   </data>
   <data name="ExitDialog_BtnRestart" xml:space="preserve">
     <value>Relancer</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="ExitDialog_BtnHide" xml:space="preserve">
     <value>Cacher</value>
-    <comment>Fuzzy</comment>
   </data>
   <data name="ExitDialog_BtnExit" xml:space="preserve">
     <value>Quitter</value>
@@ -1190,16 +1143,16 @@ Il existe plusieurs canaux par lesquels vous pouvez nous joindre :</value>
     <value>afficher hass.agent</value>
   </data>
   <data name="Main_TsShowQuickActions" xml:space="preserve">
-    <value>afficher les actions rapides</value>
+    <value>Afficher les actions rapides</value>
   </data>
   <data name="Main_TsConfig" xml:space="preserve">
-    <value>Configuration</value>
+    <value>Paramètres</value>
   </data>
   <data name="Main_TsQuickItemsConfig" xml:space="preserve">
-    <value>gérer les actions rapides</value>
+    <value>Gérer les actions rapides</value>
   </data>
   <data name="Main_TsLocalSensors" xml:space="preserve">
-    <value>gérer les capteurs locaux</value>
+    <value>Gérer les capteurs</value>
   </data>
   <data name="Main_TsCommands" xml:space="preserve">
     <value>gérer les commandes</value>
@@ -1224,15 +1177,14 @@ Il existe plusieurs canaux par lesquels vous pouvez nous joindre :</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_GpControls" xml:space="preserve">
-    <value>contrôles</value>
+    <value>Contrôles</value>
   </data>
   <data name="Main_BtnServiceManager" xml:space="preserve">
     <value>Service Windows</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnAppSettings" xml:space="preserve">
-    <value>Configuration</value>
-    <comment>Fuzzy</comment>
+    <value>Paramètres</value>
   </data>
   <data name="Main_BtnActionsManager" xml:space="preserve">
     <value>Actions rapides</value>
@@ -1259,7 +1211,7 @@ Il existe plusieurs canaux par lesquels vous pouvez nous joindre :</value>
     <value>Capteurs :</value>
   </data>
   <data name="Main_LblQuickActions" xml:space="preserve">
-    <value>actions rapides :</value>
+    <value>Actions rapides :</value>
   </data>
   <data name="Main_LblHomeAssistantApi" xml:space="preserve">
     <value>API d&apos;home assistant :</value>
@@ -1308,7 +1260,7 @@ Ces commandes s&apos;exécutent sans droits spéciaux. Pour exécuter en temps q
 Ou utilisez &apos;Exécuter avec une faible intégrité&apos; pour une exécution encore plus stricte.</value>
   </data>
   <data name="CommandsManager_CustomExecutorCommandDescription" xml:space="preserve">
-    <value>Lancer la commande via le programme personnalisé défini (dans Configuration -&gt; Outils Externes).
+    <value>Lancer la commande via le programme personnalisé défini (dans Paramètres -&gt; Outils Externes).
 
 Votre commande est passée en tant qu&apos;argument &apos;tel quel&apos;, vous devez donc fournir vos propres guillemets, etc. si nécessaire.</value>
   </data>
@@ -1316,18 +1268,18 @@ Votre commande est passée en tant qu&apos;argument &apos;tel quel&apos;, vous d
     <value>Mettre Windows en veille prolongée</value>
   </data>
   <data name="CommandsManager_KeyCommandDescription" xml:space="preserve">
-    <value>Simulates a single keypress.
+    <value>Simule un appui sur une touche de clavier.
 
-Click on the &apos;keycode&apos; textbox and press the key you want simulated. The corresponding keycode will be entered for you.
+Cliquez sur la zone de texte &quot;Code de touche&quot; et appuyez sur la touche que vous souhaitez simuler. Le code touche correspondant sera saisi pour vous.
 
-If you need more keys and/or modifiers like CTRL, use the MultipleKeys command.</value>
+Si vous avez besoin de plus de touches et/ou de combinaison tel que CTRL, utilisez la commande &quot;Séries de touche et combinaisons&quot;.</value>
   </data>
   <data name="CommandsManager_LaunchUrlCommandDescription" xml:space="preserve">
-    <value>Launches the provided URL, by default in your default browser.
+    <value>Ouvre l&apos;URL fournie, par défaut dans votre navigateur par défaut.
 
-To use &apos;incognito&apos;, provide a specific browser in Configuration -&gt; External Tools.
+Pour utiliser le mode &apos;incognito&apos;, fournissez un navigateur spécifique dans Paramètres -&gt; Outils externes.
 
-If you just want a window with a specific URL (not an entire browser), use a &apos;WebView&apos; command.</value>
+Si vous voulez juste une fenêtre avec une URL spécifique (pas le navigateur entier), utilisez une commande &apos;WebView&apos;.</value>
   </data>
   <data name="CommandsManager_LockCommandDescription" xml:space="preserve">
     <value>Verrouiller la session.</value>
@@ -1354,21 +1306,21 @@ If you just want a window with a specific URL (not an entire browser), use a &ap
     <value>Simuler la touche &apos;Augmenter le volume&apos;.</value>
   </data>
   <data name="CommandsManager_MultipleKeysCommandDescription" xml:space="preserve">
-    <value>Simulates pressing mulitple keys.
+    <value>Simule l&apos;appui de plusieurs touches.
 
-You need to put [ ] between every key, otherwise HASS.Agent can&apos;t tell them apart. So say you want to press X TAB Y SHIFT-Z, it&apos;d be [X] [{TAB}] [Y] [+Z].
+Vous devez encadrer chaque touche ou combinaison de touches par des crochets [ ], sinon HASS.Agent ne peut pas les distinguer. Supposons que vous souhaitiez appuyer sur X, TAB, Y, et SHIFT-Z, ça s&apos;écrirai [X] [{TAB}] [Y] [+Z].
 
-There are a few tricks you can use:
+Il y a quelques astuces que vous pouvez utiliser :
 
-- If you want a bracket pressed, escape it, so [ is [\[] and ] is [\]] 
+- Si vous voulez simuler une touche crochet, échappez-le avec un antislash, donc [ se note [\[] et ] se note [\]]
 
-- Special keys go between { }, like {TAB} or {UP}
+- Les touches spéciales sont entre { }, comme {TAB} ou {UP}
 
-- Put a + in front of a key to add SHIFT, ^ for CTRL and % for ALT. So, +C is SHIFT-C. Or, +(CD) is SHIFT-C and SHIFT-D, while +CD is SHIFT-C and D
+- Mettre un + devant une touche pour activer SHIFT, ^ pour CTRL et % pour ALT. Ainsi, +C est SHIFT-C. Ou, +(CD) est SHIFT-C et SHIFT-D, tandis que +CD est SHIFT-C et D
 
-- For multiple presses, use {z 15}, which means Z will get pressed 15 times.
+- Pour plusieurs appuis, utilisez {z 15}, ce qui signifie que Z sera appuyé 15 fois.
 
-More info: https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys</value>
+Plus d&apos;informations : https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys</value>
   </data>
   <data name="CommandsManager_PowershellCommandDescription" xml:space="preserve">
     <value>Exécutez une commande ou un script Powershell.
@@ -1517,13 +1469,13 @@ Consultez les journaux pour plus d&apos;informations.</value>
     <value>Activé</value>
   </data>
   <data name="ConfigStartup_Disable" xml:space="preserve">
-    <value>Désactiver le démarrage à l&apos;ouverture de session</value>
+    <value>Désactiver</value>
   </data>
   <data name="ConfigStartup_Disabled" xml:space="preserve">
     <value>Désactivé</value>
   </data>
   <data name="ConfigStartup_Enable" xml:space="preserve">
-    <value>Activer le démarrage à l&apos;ouverture de session</value>
+    <value>Activer</value>
   </data>
   <data name="OnboardingStartup_Activated" xml:space="preserve">
     <value>Démarrage à l&apos;ouverture de session activé !</value>
@@ -1585,7 +1537,7 @@ Lorsqu&apos;il est opérationnel, revenez ici pour configurer les commandes et l
   <data name="ServiceConnect_CommunicationFailedMessage" xml:space="preserve">
     <value>Impossible de communiquer avec le service. Consultez les journaux pour plus d&apos;informations.
 
-Vous pouvez ouvrir les journaux et gérer le service à partir du panneau de configuration.</value>
+Vous pouvez ouvrir les journaux et gérer le service à partir de la fenêtre de paramètres.</value>
   </data>
   <data name="ServiceConnect_Unauthorized" xml:space="preserve">
     <value>Non autorisé</value>
@@ -1601,7 +1553,7 @@ Si vous disposez d&apos;un identifiant de connexion valide, vous pouvez le saisi
   <data name="ServiceConnect_SettingsFailedMessage" xml:space="preserve">
     <value>Le service a renvoyé une erreur lors de la récupération de ses paramètres. Consultez les journaux pour plus d&apos;informations.
 
-Vous pouvez ouvrir les journaux et gérer le service à partir du panneau de configuration.</value>
+Vous pouvez ouvrir les journaux et gérer le service à partir de la fenêtre de paramètres.</value>
   </data>
   <data name="ServiceConnect_MqttFailed" xml:space="preserve">
     <value>La récupération des paramètres MQTT a échoué</value>
@@ -1609,7 +1561,7 @@ Vous pouvez ouvrir les journaux et gérer le service à partir du panneau de con
   <data name="ServiceConnect_MqttFailedMessage" xml:space="preserve">
     <value>Le service a renvoyé une erreur lors de la récupération des paramètres MQTT. Consultez les journaux pour plus d&apos;informations.
 
-Vous pouvez ouvrir les journaux et gérer le service à partir du panneau de configuration.</value>
+Vous pouvez ouvrir les journaux et gérer le service à partir de la fenêtre de paramètres.</value>
   </data>
   <data name="ServiceConnect_CommandsFailed" xml:space="preserve">
     <value>La récupération des commandes configurées a échoué</value>
@@ -1617,7 +1569,7 @@ Vous pouvez ouvrir les journaux et gérer le service à partir du panneau de con
   <data name="ServiceConnect_CommandsFailedMessage" xml:space="preserve">
     <value>Le service a renvoyé une erreur lors de la récupération des commandes configurées. Consultez les journaux pour plus d&apos;informations.
 
-Vous pouvez ouvrir les journaux et gérer le service à partir du panneau de configuration.</value>
+Vous pouvez ouvrir les journaux et gérer le service à partir de la fenêtre de paramètres.</value>
   </data>
   <data name="ServiceConnect_SensorsFailed" xml:space="preserve">
     <value>La récupération des capteurs configurés a échoué</value>
@@ -1625,7 +1577,7 @@ Vous pouvez ouvrir les journaux et gérer le service à partir du panneau de con
   <data name="ServiceConnect_SensorsFailedMessage" xml:space="preserve">
     <value>Le service a renvoyé une erreur lors de la récupération des capteurs configurés. Consultez les journaux pour plus d&apos;informations.
 
-Vous pouvez ouvrir les journaux et gérer le service à partir du panneau de configuration.</value>
+Vous pouvez ouvrir les journaux et gérer le service à partir de la fenêtre de paramètres.</value>
   </data>
   <data name="ServiceGeneral_TbAuthId_MessageBox1" xml:space="preserve">
     <value>La sauvegarde d&apos;identifiant d&apos;authentification vide permettra à tous les HASS.Agents d&apos;accéder au serveur.
@@ -1682,9 +1634,9 @@ Par défaut, c&apos;est le nom de votre PC suivi de &apos;-satellite&apos;.</val
     <value>Les étapes n&apos;ont pas toutes été terminées avec succès. Veuillez consulter les journaux pour plus d&apos;informations.</value>
   </data>
   <data name="Restart_ProcessRestart_MessageBox1" xml:space="preserve">
-    <value>HASS.Agent is still active after {0} seconds. Please close all instances and restart manually.
+    <value>HASS.Agent est toujours actif après {0} secondes. Veuillez fermer toutes les instances et redémarrer manuellement.
 
-Check the logs for more info, and optionally inform the developers.</value>
+Consultez les journaux pour plus d&apos;informations et informez éventuellement les développeurs.</value>
   </data>
   <data name="ServiceReinstall_ProcessReinstall_MessageBox1" xml:space="preserve">
     <value>Toutes les étapes ne sont pas terminées avec succès. Veuillez consulter les logs pour plus d&apos;informations.</value>
@@ -1719,7 +1671,7 @@ Veuillez consulter les journaux pour plus d&apos;informations.</value>
     <value>Nouvelle commande</value>
   </data>
   <data name="CommandsMod_Title_ModCommand" xml:space="preserve">
-    <value>Mod Command</value>
+    <value>Modification de la commande</value>
   </data>
   <data name="CommandsMod_BtnStore_MessageBox1" xml:space="preserve">
     <value>Sélectionner un type de commande.</value>
@@ -1747,7 +1699,7 @@ Veuillez consulter les journaux pour plus d&apos;informations.</value>
 Êtes-vous sûr de vouloir cela ?</value>
   </data>
   <data name="CommandsMod_BtnStore_MessageBox5" xml:space="preserve">
-    <value>Please enter a key code!</value>
+    <value>Veuillez entrer un code de touche !</value>
   </data>
   <data name="CommandsMod_BtnStore_MessageBox6" xml:space="preserve">
     <value>La vérification des clés a échoué : {0}</value>
@@ -1764,10 +1716,10 @@ Veuillez consulter les journaux pour plus d&apos;informations.</value>
     <value>commande ou script</value>
   </data>
   <data name="CommandsMod_LblSetting_KeyCode" xml:space="preserve">
-    <value>Keycode</value>
+    <value>Code de touche</value>
   </data>
   <data name="CommandsMod_LblSetting_KeyCodes" xml:space="preserve">
-    <value>Keycodes</value>
+    <value>Codes de touche</value>
   </data>
   <data name="CommandsMod_CbCommandSpecific_Incognito" xml:space="preserve">
     <value>Lancer en mode incognito</value>
@@ -1823,7 +1775,7 @@ veuillez configurer un interpréteur de commandes ou votre commande ne fonctionn
     <value>Nouvelle Action Rapide</value>
   </data>
   <data name="QuickActionsMod_Title_Mod" xml:space="preserve">
-    <value>Mod Quick Action</value>
+    <value>Modification de l&apos;action rapide</value>
   </data>
   <data name="QuickActionsMod_CheckHassManager_MessageBox1" xml:space="preserve">
     <value>Impossible de récupérer vos entités en raison d&apos;une configuration manquante, veuillez saisir les valeurs requises dans l&apos;écran de configuration.</value>
@@ -1850,7 +1802,7 @@ veuillez configurer un interpréteur de commandes ou votre commande ne fonctionn
     <value>Nouveau capteur</value>
   </data>
   <data name="SensorsMod_Title_Mod" xml:space="preserve">
-    <value>Mod Sensor</value>
+    <value>Modification du capteur</value>
   </data>
   <data name="SensorsMod_LblSetting1_WindowName" xml:space="preserve">
     <value>Nom de la fenêtre</value>
@@ -1960,7 +1912,8 @@ Veuillez vérifier les journaux et faire un rapport de bug sur github.</value>
     <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnSensorsManage_Ready" xml:space="preserve">
-    <value>Capteurs locaux</value>
+    <value>Capteurs</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="Main_BtnCommandsManager_Ready" xml:space="preserve">
     <value>Commandes</value>
@@ -2092,7 +2045,7 @@ La page de mise à jour s&apos;ouvrira maintenant à la place.</value>
     <value>MQTT : échec de la connexion</value>
   </data>
   <data name="MqttManager_ToolTip_Disconnected" xml:space="preserve">
-    <value>mqtt: déconnecté</value>
+    <value>MQTT: déconnecté</value>
   </data>
   <data name="NotifierManager_Initialize_MessageBox1" xml:space="preserve">
     <value>Erreur lors de la tentative d&apos;appairage de l&apos;API au port {0}.
@@ -2153,9 +2106,11 @@ ApplicationStarted, Logoff, SystemShutdown, Resume, Suspend, ConsoleConnect, Con
   </data>
   <data name="SensorsManager_LoggedUserSensorDescription" xml:space="preserve">
     <value>Renvoie le nom de l&apos;utilisateur actuellement connecté.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_LoggedUsersSensorDescription" xml:space="preserve">
     <value>Renvoie une liste au format JSON des utilisateurs actuellement connectés.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_MemoryUsageSensorDescription" xml:space="preserve">
     <value>Fournit la quantité de mémoire utilisée sous forme de pourcentage.</value>
@@ -2168,23 +2123,24 @@ ApplicationStarted, Logoff, SystemShutdown, Resume, Suspend, ConsoleConnect, Con
     <value>Fournit une valeur ON/OFF selon si la fenêtre est actuellement ouverte (elle n&apos;a pas besoin d&apos;être active).</value>
   </data>
   <data name="SensorsManager_NetworkSensorsDescription" xml:space="preserve">
-    <value>Provides card info, configuration, transfer- &amp; package statistics and addresses (ip, mac, dhcp, dns) of the selected network card(s).
+    <value>Fournit des informations sur la carte, la configuration, les statistiques de transfert et les adresses (ip, mac, dhcp, dns) de la ou des cartes réseau sélectionnées.
 
-This is a multi-value sensor.</value>
+Il s&apos;agit d&apos;un capteur multi-valeur.</value>
   </data>
   <data name="SensorsManager_PerformanceCounterSensorDescription" xml:space="preserve">
-    <value>Provides the values of a performance counter.
+    <value>Fournit les valeurs d&apos;un compteur de performance.
 
-For example, the built-in CPU load sensor uses these values:
+Par exemple, le capteur de charge du processeur utilise ces valeurs :
 
-Category: Processor
-Counter: % Processor Time
-Instance: _Total
+Catégorie : Processeur
+Compteur : % du temps processeur
+Instance : _Total
 
-You can explore the counters through Windows&apos; &apos;perfmon.exe&apos; tool.</value>
+Vous pouvez explorer les compteurs via l&apos;outil &apos;perfmon.exe&apos; de Windows.</value>
   </data>
   <data name="SensorsManager_ProcessActiveSensorDescription" xml:space="preserve">
     <value>Fournit le nombre d&apos;instances actives du processus.</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="SensorsManager_ServiceStateSensorDescription" xml:space="preserve">
     <value>Returns the state of the provided service: NotFound, Stopped, StartPending, StopPending, Running, ContinuePending, PausePending or Paused.
@@ -2267,7 +2223,7 @@ This is a costly request, so the recommended interval is 15 minutes (900 seconds
 {0}</value>
   </data>
   <data name="Main_LblMqtt" xml:space="preserve">
-    <value>mqtt:</value>
+    <value>MQTT:</value>
   </data>
   <data name="Help_LblWiki" xml:space="preserve">
     <value>Wiki</value>
@@ -2306,7 +2262,7 @@ This is a costly request, so the recommended interval is 15 minutes (900 seconds
     <value>Personnalisé</value>
   </data>
   <data name="CommandType_CustomExecutorCommand" xml:space="preserve">
-    <value>CustomExecutor</value>
+    <value>Exécuteur personnalisé</value>
   </data>
   <data name="CommandType_HibernateCommand" xml:space="preserve">
     <value>Mettre en veille prolongée</value>
@@ -2315,7 +2271,7 @@ This is a costly request, so the recommended interval is 15 minutes (900 seconds
     <value>Touche</value>
   </data>
   <data name="CommandType_LaunchUrlCommand" xml:space="preserve">
-    <value>LaunchUrl</value>
+    <value>URL à ouvrir</value>
   </data>
   <data name="CommandType_LockCommand" xml:space="preserve">
     <value>Verrouiller</value>
@@ -2342,13 +2298,13 @@ This is a costly request, so the recommended interval is 15 minutes (900 seconds
     <value>Augmenter le volume</value>
   </data>
   <data name="CommandType_MultipleKeysCommand" xml:space="preserve">
-    <value>MultipleKeys</value>
+    <value>Séries de touche et combinaisons</value>
   </data>
   <data name="CommandType_PowershellCommand" xml:space="preserve">
     <value>Powershell</value>
   </data>
   <data name="CommandType_PublishAllSensorsCommand" xml:space="preserve">
-    <value>PublishAllSensors</value>
+    <value>Publier tout les capteurs</value>
   </data>
   <data name="CommandType_RestartCommand" xml:space="preserve">
     <value>Redémarrer</value>
@@ -2384,13 +2340,13 @@ This is a costly request, so the recommended interval is 15 minutes (900 seconds
     <value>ConsoleConnect</value>
   </data>
   <data name="SystemStateEvent_ConsoleDisconnect" xml:space="preserve">
-    <value>ConsoleDisconnect</value>
+    <value>Déconnexion de la console</value>
   </data>
   <data name="SystemStateEvent_HassAgentSatelliteServiceStarted" xml:space="preserve">
     <value>HASS.Agent Service Windows démarré</value>
   </data>
   <data name="SystemStateEvent_HassAgentStarted" xml:space="preserve">
-    <value>HassAgentStarted</value>
+    <value>Hass.Agent démarré</value>
   </data>
   <data name="SystemStateEvent_Logoff" xml:space="preserve">
     <value>Déconnexion</value>
@@ -2414,7 +2370,7 @@ This is a costly request, so the recommended interval is 15 minutes (900 seconds
     <value>Ouverture de session</value>
   </data>
   <data name="SystemStateEvent_SessionRemoteControl" xml:space="preserve">
-    <value>SessionRemoteControl</value>
+    <value> Sessions de Contrôle à distance</value>
   </data>
   <data name="SystemStateEvent_SessionUnlock" xml:space="preserve">
     <value>Déverrouillage de la session</value>
@@ -2462,7 +2418,7 @@ This is a costly request, so the recommended interval is 15 minutes (900 seconds
     <value>Dernier démarrage</value>
   </data>
   <data name="SensorType_LastSystemStateChangeSensor" xml:space="preserve">
-    <value>LastSystemStateChange</value>
+    <value>Dernier changement d&apos;état du système</value>
   </data>
   <data name="SensorType_LoggedUserSensor" xml:space="preserve">
     <value>Utilisateur connecté</value>
@@ -2483,7 +2439,7 @@ This is a costly request, so the recommended interval is 15 minutes (900 seconds
     <value>Réseau</value>
   </data>
   <data name="SensorType_PerformanceCounterSensor" xml:space="preserve">
-    <value>PerformanceCounter</value>
+    <value>Compteur de performances</value>
   </data>
   <data name="SensorType_ProcessActiveSensor" xml:space="preserve">
     <value>Process actif</value>
@@ -2498,7 +2454,7 @@ This is a costly request, so the recommended interval is 15 minutes (900 seconds
     <value>Stockage</value>
   </data>
   <data name="SensorType_UserNotificationStateSensor" xml:space="preserve">
-    <value>UserNotification</value>
+    <value>Notification utilisateur</value>
   </data>
   <data name="SensorType_WebcamActiveSensor" xml:space="preserve">
     <value>Etat de la webcam</value>
@@ -2516,7 +2472,7 @@ This is a costly request, so the recommended interval is 15 minutes (900 seconds
     <value>Environnement</value>
   </data>
   <data name="HassDomain_Cover" xml:space="preserve">
-    <value>Cover</value>
+    <value>Volet roulant</value>
   </data>
   <data name="HassDomain_InputBoolean" xml:space="preserve">
     <value>Champ binaire</value>
@@ -2612,10 +2568,10 @@ This is a costly request, so the recommended interval is 15 minutes (900 seconds
     <value>&amp;test</value>
   </data>
   <data name="SensorsMod_BtnTest_PerformanceCounter" xml:space="preserve">
-    <value>Test Performance Counter</value>
+    <value>Tester le compteur de performances</value>
   </data>
   <data name="SensorsMod_BtnTest_Wmi" xml:space="preserve">
-    <value>Test WMI Query</value>
+    <value>Requête test WMI</value>
   </data>
   <data name="SensorsMod_LblSetting1_Network" xml:space="preserve">
     <value>Carte du reseau</value>
@@ -2678,19 +2634,19 @@ Do you still want to use the current values?</value>
 Assurez vous qu&apos;aucune autre instance de HASS.Agent n&apos;est en cours d&apos;exécution et que le port est disponible et enregistré.</value>
   </data>
   <data name="CommandType_SendWindowToFrontCommand" xml:space="preserve">
-    <value>SendWindowToFront</value>
+    <value>Afficher la fenêtre au premier plan</value>
   </data>
   <data name="CommandType_WebViewCommand" xml:space="preserve">
     <value>WebView</value>
   </data>
   <data name="CommandsManager_WebViewCommandDescription" xml:space="preserve">
-    <value>Shows a window with the provided URL.
+    <value>Affiche une fenêtre avec l&apos;URL fournie.
 
-This differs from the &apos;LaunchUrl&apos; command in that it doesn&apos;t load a full-fledged browser, just the provided URL in its own window.
+Cela diffère de la commande &apos;LaunchUrl&apos; en ce qu&apos;elle ne charge pas un navigateur à part entière, juste l&apos;URL fournie dans sa propre fenêtre.
 
-You can use this to for instance quickly show Home Assistant&apos;s dashboard.
+Vous pouvez l&apos;utiliser par exemple pour afficher rapidement le tableau de bord de Home Assistant.
 
-By default, it stores cookies indefinitely so you only have to log in once.</value>
+Par défaut, il stocke les cookies indéfiniment, vous n&apos;avez donc qu&apos;à vous connecter une seule fois.</value>
   </data>
   <data name="HassDomain_HASSAgentCommands" xml:space="preserve">
     <value>Commandes HASS.Agent</value>
@@ -2778,7 +2734,7 @@ Remarque : ceci n&apos;est pas nécessaire pour que la nouvelle intégration fon
     <value>Emplacement du cache webview</value>
   </data>
   <data name="ConfigMediaPlayer_BtnMediaPlayerReadme" xml:space="preserve">
-    <value>Documentation du lecteur multimédia</value>
+    <value>Documentation</value>
   </data>
   <data name="ConfigMediaPlayer_CbEnableMediaPlayer" xml:space="preserve">
     <value>Activer la fonctionnalité lecteur multimédia</value>
@@ -2826,7 +2782,7 @@ Remarque : ceci n&apos;est pas nécessaire pour que la nouvelle intégration fon
     <value>Cela utilise plus de ressource, mais réduit le temps de chargement</value>
   </data>
   <data name="ConfigTrayIcon_LblWebViewSize" xml:space="preserve">
-    <value>taille</value>
+    <value>Taille (px)</value>
   </data>
   <data name="ConfigTrayIcon_LblWebViewUrl" xml:space="preserve">
     <value>URL à afficher (par exemple un tableau de bord Home Assistant)</value>
@@ -2847,16 +2803,16 @@ Remarque : ceci n&apos;est pas nécessaire pour que la nouvelle intégration fon
     <value>Your input language &apos;{0}&apos; is unknown, and might collide with the default CTRL-ALT-Q hotkey. Please check to be sure. If it does, consider opening a ticket on GitHub so it can be added to the list.</value>
   </data>
   <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg1" xml:space="preserve">
-    <value>aucunes clefs trouvées</value>
+    <value>Aucune touche trouvée</value>
   </data>
   <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg2" xml:space="preserve">
-    <value>crochets manquants, démarrez et terminez toutes les clefs avec [ ]</value>
+    <value>Crochets manquants, démarrez et terminez toutes les combinaisons de touche avec [ ]</value>
   </data>
   <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg3" xml:space="preserve">
-    <value>erreur sur une clef, vérifier le journal pour plus d&apos;informations</value>
+    <value>Erreur sur une touche, vérifier le journal pour plus d&apos;informations</value>
   </data>
   <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg4" xml:space="preserve">
-    <value>The number of open brackets (&apos;[&apos;) does not correspond to the number of closed brackets. (&apos;]&apos;)! ({0} to {1})</value>
+    <value>Le nombre de crochets ouverts [ ne correspond pas au nombre de crochets fermés ] ! ({0} contre {1})</value>
   </data>
   <data name="Help_LblDocumentation" xml:space="preserve">
     <value>Documentation</value>
@@ -2895,7 +2851,7 @@ informations.</value>
     <value>Page GitHub HASS.Agent-MediaPlayer</value>
   </data>
   <data name="OnboardingIntegrations_LblNotifierIntegration" xml:space="preserve">
-    <value>HASS.Agent-Integration GitHub Page</value>
+    <value>Github de l&apos;integration HASS.Agent</value>
   </data>
   <data name="OnboardingLocalApi_CbEnableLocalApi" xml:space="preserve">
     <value>Oui, activez l&apos;API locale sur le port</value>
@@ -2907,9 +2863,9 @@ informations.</value>
     <value>Activer les notifications</value>
   </data>
   <data name="OnboardingLocalApi_LblInfo1" xml:space="preserve">
-    <value>HASS.Agent has its own internal API, so Home Assistant can send requests (like notifications or text-to-speech).
+    <value>HASS.Agent a sa propre API interne, donc Home Assistant peut envoyer des requêtes (comme des notifications ou une synthèse vocale).
 
-Do you want to enable it?</value>
+Voulez-vous l&apos;activer ?</value>
   </data>
   <data name="OnboardingLocalApi_LblInfo2" xml:space="preserve">
     <value>Vous pouvez choisir les modules que vous souhaitez activer. Ils nécessitent des intégrations HA, mais ne vous inquiétez pas, la page suivante vous donnera plus d&apos;informations sur la façon de les configurer.</value>
@@ -2970,9 +2926,9 @@ Do you want to use that version?</value>
     <value>WebView</value>
   </data>
   <data name="CommandsMod_BtnStore_MessageBox9" xml:space="preserve">
-    <value>The keycode you have provided is not a valid number!
+    <value>Le code de touche que vous avez entré n&apos;est pas valide !
 
-Please ensure the keycode field is in focus and press the key you want simulated, the keycode should then be generated for you.</value>
+Assurez vous que le champ du code de touche est sélectionné et appuyez sur la touche que vous souhaitez simuler, le code de touche devrait alors être rempli pour vous.</value>
   </data>
   <data name="ConfigGeneral_CbEnableDeviceNameSanitation" xml:space="preserve">
     <value>Activer le nettoyage du nom de l&apos;appareil</value>
@@ -2981,19 +2937,19 @@ Please ensure the keycode field is in focus and press the key you want simulated
     <value>Activer les notifications d&apos;état</value>
   </data>
   <data name="ConfigGeneral_LblInfo5" xml:space="preserve">
-    <value>HASS.Agent will sanitize your device name to make sure HA will accept it, you can overrule this rule below if you&apos;re sure that your name will be accepted as-is.</value>
+    <value>HASS.Agent va nettoyer le nom de votre appareil pour s&apos;assurer que HA l&apos;acceptera, vous pouvez annuler cette règle ci-dessous si vous êtes sûr que votre nom sera accepté tel quel.</value>
   </data>
   <data name="ConfigGeneral_LblInfo6" xml:space="preserve">
-    <value>HASS.Agent sends notifications when the state of a module changes, you can adjust whether or not you want to receive these notifications below.</value>
+    <value>HASS.Agent envoie des notifications lorsque l&apos;état d&apos;un module change, vous pouvez définir si vous souhaitez ou non recevoir ces notifications ci-dessous.</value>
   </data>
   <data name="Configuration_ProcessChanges_MessageBox6" xml:space="preserve">
-    <value>You&apos;ve changed your device&apos;s name.
+    <value>Vous avez changé le nom de votre appareil.
 
-All your sensors and commands will now be unpublished and published again after the HASS.Agent restarts.
+Tous vos capteurs et commandes seront désormais dépubliés et publiés à nouveau après le redémarrage de HASS.Agent.
 
-Don&apos;t worry! they&apos;ll keep their current names so your automations and scripts will continue to work.
+Ne vous inquiétez pas! ils conserveront leurs noms actuels afin que vos automatisations et scripts continuent de fonctionner.
 
-Note: You disabled sanitation, so make sure your device name is accepted by Home Assistant.</value>
+Remarque : vous avez désactivé le nettoyage du nom, assurez vous donc que le nom de votre appareil est accepté par Home Assistant.</value>
   </data>
   <data name="SensorType_PrintersSensors" xml:space="preserve">
     <value>Imprimantes</value>
@@ -3053,7 +3009,7 @@ Note: You disabled sanitation, so make sure your device name is accepted by Home
     <value>Met tous les moniteurs en mode veille.</value>
   </data>
   <data name="CommandsManager_MonitorWakeCommandDescription" xml:space="preserve">
-    <value>Essaie de réveiller tous les moniteurs en simulant une pression sur la touche &quot;flèche vers le haut&quot;.</value>
+    <value>Essaie de réveiller tous les écrans en simulant une pression sur la touche &quot;flèche vers le haut&quot;.</value>
   </data>
   <data name="CommandsManager_SetVolumeCommandDescription" xml:space="preserve">
     <value>Régler le volume du périphérique audio par défaut actuel au niveau spécifié.</value>
@@ -3111,7 +3067,7 @@ Etes-vous sûr de vouloir l&apos;utiliser comme ça ?</value>
 Assurez vous d&apos;abord qu&apos;il soit opérationnel.</value>
   </data>
   <data name="ConfigService_LblInfo5" xml:space="preserve">
-    <value>Si vous souhaitez gérer le service (ajouter des commandes et capteurs, modifier les paramètres), vous pouvez le faire ici ou en utilisant le bouton &quot;service satellite&quot; de la fenêtre principale.</value>
+    <value>Si vous souhaitez gérer le service (ajouter des commandes et capteurs, modifier les paramètres), vous pouvez le faire ici ou en utilisant le bouton &quot;Service Windows&quot; de la fenêtre principale.</value>
   </data>
   <data name="ConfigTrayIcon_CbWebViewShowMenuOnLeftClick" xml:space="preserve">
     <value>Afficher le menu par défaut en cliquant avec le bouton gauche de la souris</value>
@@ -3218,12 +3174,12 @@ Dimmed, PowerOff, PowerOn and Unkown.</value>
 Converts the outcome to text.</value>
   </data>
   <data name="SensorsManager_PrintersSensorsDescription" xml:space="preserve">
-    <value>Provides information about all installed printers and their queues.</value>
+    <value>Fournit des informations sur toutes les imprimantes installées et leurs files d&apos;attente.</value>
   </data>
   <data name="SensorsManager_WebcamProcessSensorDescription" xml:space="preserve">
-    <value>Provides the name of the process that&apos;s currently using the webcam.
+    <value>Fournit le nom du processus qui utilise actuellement la webcam.
 
-Note: if used in the satellite service, it won&apos;t detect userspace applications.</value>
+Remarque : s&apos;il est utilisé dans le Service Windows, il ne détectera pas les applications de l&apos;espace utilisateur.</value>
   </data>
   <data name="SensorsManager_WindowStateSensorDescription" xml:space="preserve">
     <value>Provides the current state of the process&apos; window:
@@ -3234,11 +3190,11 @@ Hidden, Maximized, Minimized, Normal and Unknown.</value>
     <value>Script ou commande powershell</value>
   </data>
   <data name="SensorsMod_MessageBox_Sanitize" xml:space="preserve">
-    <value>The name you provided contains unsupported characters and won&apos;t work. The suggested version is:
+    <value>Le nom que vous avez fourni contient des caractères non pris en charge et ne fonctionnera pas. La version suggérée est :
 
 {0}
 
-Do you want to use this version?</value>
+Voulez-vous utiliser cette version ?</value>
   </data>
   <data name="SensorsMod_SensorsMod_BtnTest_Powershell" xml:space="preserve">
     <value>Tester la commande ou le script</value>
@@ -3291,6 +3247,9 @@ Voulez-vous ouvrir le dossier des logs ?</value>
 Do you want to download the runtime installer?</value>
   </data>
   <data name="WebView_InitializeAsync_MessageBox2" xml:space="preserve">
-    <value>Something went wrong while initializing the WebView! Please check your logs and open a GitHub issue for further assistance.</value>
+    <value>Une erreur s&apos;est produite lors de l&apos;initialisation de WebView ! Veuillez vérifier vos journaux et ouvrir un ticket GitHub pour obtenir de l&apos;aide.</value>
+  </data>
+  <data name="QuickActionsMod_ClmDomain" xml:space="preserve">
+    <value>domain</value>
   </data>
 </root>

@@ -80,7 +80,7 @@ namespace HASS.Agent.Managers
                 // check for extension
                 // this fails for hass proxy urls, so add an extra length check
                 var ext = Path.GetExtension(uri);
-                if (string.IsNullOrEmpty(ext) || ext.Length > 5) ext = ".png";
+                if (string.IsNullOrEmpty(ext) || ext.Length > 5) ext = ".mp3";
 
                 // create a random local filename
                 var localFile = $"{DateTime.Now:yyyyMMddHHmmss}_{Guid.NewGuid().ToString()[..8]}";

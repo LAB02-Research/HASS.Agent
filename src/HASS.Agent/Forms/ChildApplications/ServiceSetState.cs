@@ -73,7 +73,7 @@ namespace HASS.Agent.Forms.ChildApplications
             PbStep1Configure.Image = stateDone ? Properties.Resources.done_32 : Properties.Resources.failed_32;
             
             // notify the user if something went wrong
-            if (!stateDone) MessageBoxAdv.Show(Languages.ServiceSetState_ProcessState_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!stateDone) MessageBoxAdv.Show(this, Languages.ServiceSetState_ProcessState_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
                 // wait a bit to show the 'completed' checks

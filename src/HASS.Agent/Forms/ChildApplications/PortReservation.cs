@@ -39,7 +39,7 @@ namespace HASS.Agent.Forms.ChildApplications
             PbStep2Firewall.Image = firewallDone ? Properties.Resources.done_32 : Properties.Resources.failed_32;
 
             // notify the user if something went wrong
-            if (!portDone || !firewallDone) MessageBoxAdv.Show(Languages.PortReservation_ProcessPostUpdate_MessageBox1,
+            if (!portDone || !firewallDone) MessageBoxAdv.Show(this, Languages.PortReservation_ProcessPostUpdate_MessageBox1,
                     Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {

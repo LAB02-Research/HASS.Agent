@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HASS.Agent.Properties;
+using Serilog;
 
 namespace HASS.Agent.Functions
 {
@@ -39,12 +40,6 @@ namespace HASS.Agent.Functions
         private static readonly Color BackgroundColor = Color.FromArgb(63, 63, 70);
         private static readonly Color ForeColor = Color.FromArgb(241, 241, 241);
         private static readonly Color HeaderColor = Color.FromArgb(45, 45, 48);
-
-        private static readonly List<string> IgnorableHeaders = new List<string>
-        {
-            "low integrity", "filler column", "action", "refresh", "hotkey enabled", "multivalue",
-            "agent compatible", "satellite compatible"
-        };
 
         internal static void DrawItem(object sender, DrawListViewItemEventArgs e)
         {
@@ -124,7 +119,8 @@ namespace HASS.Agent.Functions
             }
             
             // draw the text in the right color
-            if (!IgnorableHeaders.Contains(e.Header.Text.ToLower()))
+            var tag = (string)e.Header.Tag ?? string.Empty;
+            if (tag != "hide")
             {
                 // regular
                 using var foreBrush = new SolidBrush(ForeColor);

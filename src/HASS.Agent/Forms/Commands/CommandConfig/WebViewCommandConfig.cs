@@ -81,7 +81,7 @@ namespace HASS.Agent.Forms.Commands.CommandConfig
             {
                 Log.Error("[WEBVIEWCONFIG] Unable to set stored settings: {err}", ex.Message);
 
-                MessageBoxAdv.Show(Languages.WebViewCommandConfig_SetStoredVariables_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxAdv.Show(this, Languages.WebViewCommandConfig_SetStoredVariables_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 SetCurrentVariables();
             }
         }

@@ -168,7 +168,7 @@ namespace HASS.Agent.Forms.Commands
 
             // store
             var stored = await Task.Run(async () => await CommandsManager.StoreAsync(_commands, _toBeDeletedCommands));
-            if (!stored) MessageBoxAdv.Show(Languages.CommandsConfig_BtnStore_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!stored) MessageBoxAdv.Show(this, Languages.CommandsConfig_BtnStore_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             // done
             Close();

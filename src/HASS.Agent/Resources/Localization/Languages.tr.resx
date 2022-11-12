@@ -1,0 +1,2829 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ConfigExternalTools_LblInfo1" xml:space="preserve">
+    <value>Bu sayfa, dış araçlarla bağlantı kurmanızı sağlar.</value>
+  </data>
+  <data name="ConfigExternalTools_LblBrowserName" xml:space="preserve">
+    <value>Tarayıcı adı</value>
+  </data>
+  <data name="ConfigExternalTools_LblInfo2" xml:space="preserve">
+    <value>Varsayılan olarak HASS.Agent, varsayılan tarayıcınızı kullanarak URL&apos;leri başlatır. 
+Ayrıca, 
+özel modda çalışacak başlatma argümanlarıyla birlikte kullanılacak belirli bir tarayıcıyı da yapılandırabilirsiniz.</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="ConfigExternalTools_LblBrowserBinary" xml:space="preserve">
+    <value>Tarayıcı İkili</value>
+  </data>
+  <data name="ConfigExternalTools_LblLaunchIncogArg" xml:space="preserve">
+    <value>Ek Başlatma Argümanları</value>
+  </data>
+  <data name="ConfigExternalTools_LblCustomExecutorBinary" xml:space="preserve">
+    <value>Özel Yürütücü İkili Dosyası</value>
+  </data>
+  <data name="ConfigExternalTools_LblInfo3" xml:space="preserve">
+    <value>HASS.Agent&apos;ı Perl veya Python gibi belirli bir yorumlayıcı kullanacak şekilde yapılandırabilirsiniz.
+Bu yürütücüyü başlatmak için &apos;özel yürütücü&apos; komutunu kullanın.</value>
+  </data>
+  <data name="ConfigExternalTools_LblCustomExecutorName" xml:space="preserve">
+    <value>Özel Yürütücü Adı</value>
+  </data>
+  <data name="ConfigExternalTools_LblTip1" xml:space="preserve">
+    <value>İpucu: Göz atmak için çift tıklayın</value>
+  </data>
+  <data name="ConfigExternalTools_BtnExternalBrowserIncognitoTest" xml:space="preserve">
+    <value>&amp;Ölçek</value>
+  </data>
+  <data name="ConfigGeneral_LblInfo4" xml:space="preserve">
+    <value>HASS.Agent, MQTT veya HA&apos;nın API&apos;si ile olan bağlantı kesintilerini size bildirmeden önce bir ek süre bekleyecektir. 
+Aşağıda bu ek süre içinde beklenecek saniye miktarını ayarlayabilirsiniz.</value>
+  </data>
+  <data name="ConfigGeneral_LblDisconGraceSeconds" xml:space="preserve">
+    <value>saniye</value>
+  </data>
+  <data name="ConfigGeneral_LblDisconGracePeriod" xml:space="preserve">
+    <value>Bağlantı Kesildi İzin ve Süresi</value>
+  </data>
+  <data name="ConfigGeneral_LblInfo3" xml:space="preserve">
+    <value>ÖNEMLİ: Bu değeri değiştirirseniz, HASS.Agent tüm sensörlerinizi, komutlarınızı yayından kaldıracak ve yeni cihaz adı altında yeniden yayınlanabilmeleri için kendini yeniden başlatmaya zorlayacaktır. 
+Otomasyonlarınız ve komut dosyalarınız çalışmaya devam edecek.</value>
+  </data>
+  <data name="ConfigGeneral_LblInfo2" xml:space="preserve">
+    <value>Cihaz adı, Home Assistant&apos;ta makinenizi tanımlamak için kullanılır. Ayrıca komut/sensör adlarınız için bir önek olarak kullanılır (bu, varlık başına değiştirilebilir).</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="ConfigGeneral_LblInfo1" xml:space="preserve">
+    <value>Bu sayfa genel yapılandırma ayarlarını içerir, daha fazla ayar için soldaki sekmelere göz atabilirsiniz.</value>
+  </data>
+  <data name="ConfigGeneral_LblDeviceName" xml:space="preserve">
+    <value>Cihaz adı</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_LblTip1" xml:space="preserve">
+    <value>İpucu: Göz atmak için bu alana çift tıklayın</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_LblClientCertificate" xml:space="preserve">
+    <value>Müşteri ve Sertifika</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_CbHassAutoClientCertificate" xml:space="preserve">
+    <value>&amp;Otomatik istemci sertifikası seçimini kullan</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi" xml:space="preserve">
+    <value>&amp;Test bağlantısı</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_LblInfo1" xml:space="preserve">
+    <value>Hangi varlıkları yapılandırdığınızı öğrenmek ve hızlı eylemler göndermek için HASS.Agent, 
+Home Assistant&apos;ın API&apos;sini kullanır. 
+
+Lütfen uzun ömürlü bir erişim belirteci ve Home Assistant örneğinizin adresini sağlayın. 
+Home Assistant&apos;ta sol alttaki profil resminize tıklayarak 
+ve &apos;TOKEN OLUŞTUR&apos; düğmesini görene kadar sayfanın en altına giderek bir token alabilirsiniz.</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_LblApiToken" xml:space="preserve">
+    <value>&amp;API Simgesi</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_LblServerUri" xml:space="preserve">
+    <value>Sunucu &amp;URI</value>
+  </data>
+  <data name="ConfigHotKey_BtnClearHotKey" xml:space="preserve">
+    <value>&amp;Temizlemek</value>
+  </data>
+  <data name="ConfigHotKey_LblInfo1" xml:space="preserve">
+    <value>Hızlı işlemlerinizi almanın kolay bir yolu, genel bir global hotkey kullanmaktır. 
+
+Bu şekilde, makinenizde ne yapıyorsanız yapın, Home Assistant ile her zaman etkileşimde bulunabilirsiniz.</value>
+  </data>
+  <data name="ConfigHotKey_CbEnableQuickActionsHotkey" xml:space="preserve">
+    <value>&amp;Hızlı İşlemler Kısayol Tuşunu Etkinleştir</value>
+  </data>
+  <data name="ConfigHotKey_LblHotkeyCombo" xml:space="preserve">
+    <value>&amp;Kısayol Kombinasyonu</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnClearImageCache" xml:space="preserve">
+    <value>Görüntü Önbelleğini Temizle</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnOpenImageCache" xml:space="preserve">
+    <value>Açık dosya</value>
+  </data>
+  <data name="ConfigLocalStorage_LblCacheLocations" xml:space="preserve">
+    <value>Görüntü Önbelleği Konumu</value>
+  </data>
+  <data name="ConfigLocalStorage_LblCacheDays" xml:space="preserve">
+    <value>günler</value>
+  </data>
+  <data name="ConfigLocalStorage_LblInfo1" xml:space="preserve">
+    <value>Bildirimlerde gösterilen resimler gibi bazı öğelerin geçici olarak yerel olarak depolanması gerekir. HASS.Agent 
+bunları silmeden önce tutulması gereken gün miktarını yapılandırabilirsiniz. 
+
+Bunları kalıcı olarak tutmak için &apos;0&apos; girin.</value>
+  </data>
+  <data name="ConfigLogging_LblInfo1" xml:space="preserve">
+    <value>Genişletilmiş günlük kaydı, varsayılan günlük kaydının yeterli olmaması durumunda daha ayrıntılı ve derinlemesine günlük 
+kaydı sağlar. Lütfen bunun etkinleştirilmesinin günlük dosyalarının büyümesine neden olabileceğini 
+ve yalnızca HASS.Agent&apos;ın kendisinde bir sorun olduğundan şüphelendiğinizde veya 
+geliştiriciler tarafından istendiğinde kullanılması gerektiğini unutmayın.</value>
+  </data>
+  <data name="ConfigLogging_CbExtendedLogging" xml:space="preserve">
+    <value>&amp;Genişletilmiş Günlüğe Kaydetmeyi Etkinleştir</value>
+  </data>
+  <data name="ConfigLogging_BtnShowLogs" xml:space="preserve">
+    <value>&amp;Günlükler Klasörünü Aç</value>
+  </data>
+  <data name="ConfigMqtt_LblTip3" xml:space="preserve">
+    <value>İpucu: Göz atmak için bu alanları çift tıklayın</value>
+  </data>
+  <data name="ConfigMqtt_LblClientCert" xml:space="preserve">
+    <value>Müşteri Sertifikası</value>
+  </data>
+  <data name="ConfigMqtt_LblRootCert" xml:space="preserve">
+    <value>Kök Sertifikası</value>
+  </data>
+  <data name="ConfigMqtt_CbUseRetainFlag" xml:space="preserve">
+    <value>Bayrağı &amp;Kaldır Kullan</value>
+  </data>
+  <data name="ConfigMqtt_CbAllowUntrustedCertificates" xml:space="preserve">
+    <value>&amp;Güvenilmeyen Sertifikalara İzin Ver</value>
+  </data>
+  <data name="ConfigMqtt_BtnMqttClearConfig" xml:space="preserve">
+    <value>&amp;Yapılandırmayı Temizle</value>
+  </data>
+  <data name="ConfigMqtt_LblTip1" xml:space="preserve">
+    <value>(emin değilseniz varsayılanı bırakın)</value>
+  </data>
+  <data name="ConfigMqtt_LblInfo1" xml:space="preserve">
+    <value>Komutlar ve sensörler, yeni entegrasyonu kullanırken bildirimler ve medya oynatıcı işlevlerinin yanı sıra MQTT&apos;yi kullanır. 
+
+Lütfen aracınız için credentialları sağlayın, HA Mosquitto eklentisini kullanıyorsanız, muhtemelen önceden ayarlanmış adresi kullanabilirsiniz.
+
+ Not: Bu ayarlar (Client ID hariç) uydu hizmetine de uygulanacaktır.</value>
+  </data>
+  <data name="ConfigMqtt_LblDiscoPrefix" xml:space="preserve">
+    <value>Keşif Öneki</value>
+  </data>
+  <data name="ConfigMqtt_LblBrokerPassword" xml:space="preserve">
+    <value>Şifre</value>
+  </data>
+  <data name="ConfigMqtt_LblBrokerUsername" xml:space="preserve">
+    <value>Kullanıcı adı</value>
+  </data>
+  <data name="ConfigMqtt_LblBrokerPort" xml:space="preserve">
+    <value>Liman</value>
+  </data>
+  <data name="ConfigMqtt_LblBrokerIp" xml:space="preserve">
+    <value>Aracı IP Adresi veya Ana Bilgisayar Adı</value>
+  </data>
+  <data name="ConfigMqtt_LblTip2" xml:space="preserve">
+    <value>(otomatik oluşturmak için boş bırakın)</value>
+  </data>
+  <data name="ConfigMqtt_LblClientId" xml:space="preserve">
+    <value>Müşteri Kimliği</value>
+  </data>
+  <data name="ConfigNotifications_LblInfo2" xml:space="preserve">
+    <value>Bir şey çalışmıyorsa, aşağıdaki adımları denediğinizden emin olun: - HASS.Agent entegrasyonunu kurun - Home Assistant&apos;ı yeniden başlatın - MQTT etkinken HASS.Agent&apos;ın etkin olduğundan emin olun! - Cihazınız otomatik olarak bir varlık olarak algılanmalı ve eklenmelidir - İsteğe bağlı olarak: yerel API&apos;yi kullanarak manuel olarak ekleyin</value>
+  </data>
+  <data name="ConfigNotifications_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent metin, resim ve eylemleri kullanarak Home Assistant&apos;tan bildirimler alabilir. MQTT&apos;yi etkinleştirdiyseniz, cihazınız otomatik olarak eklenir. Aksi takdirde, yerel API&apos;yi kullanmak için entegrasyonu manuel olarak yapılandırın.</value>
+  </data>
+  <data name="ConfigNotifications_BtnNotificationsReadme" xml:space="preserve">
+    <value>Bildirimler ve Belgeler</value>
+  </data>
+  <data name="ConfigNotifications_LblPort" xml:space="preserve">
+    <value>Liman</value>
+  </data>
+  <data name="ConfigNotifications_CbAcceptNotifications" xml:space="preserve">
+    <value>&amp;Bildirimleri Kabul Et</value>
+  </data>
+  <data name="ConfigNotifications_BtnSendTestNotification" xml:space="preserve">
+    <value>Test Bildirimini Göster</value>
+  </data>
+  <data name="ConfigNotifications_BtnExecutePortReservation" xml:space="preserve">
+    <value>Liman Rezervasyonunu Yürüt</value>
+  </data>
+  <data name="ConfigNotifications_CbNotificationsIgnoreImageCertErrors" xml:space="preserve">
+    <value>&amp;Görüntüler için sertifika hatalarını yoksay</value>
+  </data>
+  <data name="ConfigService_LblInfo1" xml:space="preserve">
+    <value>Uydu hizmeti, hiçbir kullanıcı oturum açmadığında bile sensörleri ve komutları çalıştırmanıza izin verir. Yönetmek için ana penceredeki &apos;uydu hizmeti&apos; düğmesini kullanın.</value>
+  </data>
+  <data name="ConfigService_LblServiceStatusInfo" xml:space="preserve">
+    <value>Servis durumu:</value>
+  </data>
+  <data name="ConfigService_BtnStartService" xml:space="preserve">
+    <value>Hizmeti&amp;başlat</value>
+  </data>
+  <data name="ConfigService_BtnDisableService" xml:space="preserve">
+    <value>&amp;Hizmeti Devre Dışı Bırak</value>
+  </data>
+  <data name="ConfigService_BtnStopService" xml:space="preserve">
+    <value>&amp;Hizmeti durdur</value>
+  </data>
+  <data name="ConfigService_BtnEnableService" xml:space="preserve">
+    <value>&amp;Hizmeti Etkinleştir</value>
+  </data>
+  <data name="ConfigService_BtnReinstallService" xml:space="preserve">
+    <value>&amp;Hizmeti Yeniden Yükle</value>
+  </data>
+  <data name="ConfigService_LblInfo2" xml:space="preserve">
+    <value>Hizmeti yapılandırmazsanız, hiçbir şey yapmaz. Ancak, yine de devre dışı bırakmaya karar verebilirsiniz. Yükleyici, devre dışı bırakılan hizmeti kendi başına bırakacaktır (hizmeti kaldırırsanız, yükleyici yeniden yükleyecektir).</value>
+  </data>
+  <data name="ConfigService_LblInfo3" xml:space="preserve">
+    <value>Düzgün çalışmıyorsa hizmeti yeniden yüklemeyi deneyebilirsiniz. Yapılandırmanız ve varlıklarınız kaldırılmayacak.</value>
+  </data>
+  <data name="ConfigService_BtnShowLogs" xml:space="preserve">
+    <value>Hizmet ve Günlükler Klasörünü Aç</value>
+  </data>
+  <data name="ConfigService_LblInfo4" xml:space="preserve">
+    <value>Yeniden yüklemeden sonra hizmet hala başarısız olursa, lütfen bir bilet açın ve en son günlüğün içeriğini gönderin.</value>
+  </data>
+  <data name="ConfigStartup_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent, kullanıcı profilinizin kayıt defterinde bir giriş oluşturarak oturum açtığınızda başlayabilir. HASS.Agent kullanıcı tabanlı olduğundan, başka bir kullanıcı için başlatmak istiyorsanız, HASS.Agent&apos;ı orada kurun ve yapılandırın.</value>
+  </data>
+  <data name="ConfigStartup_BtnSetStartOnLogin" xml:space="preserve">
+    <value>&amp;Oturum Açıldığında Başlatmayı Etkinleştir</value>
+  </data>
+  <data name="ConfigStartup_LblStartOnLoginStatusInfo" xml:space="preserve">
+    <value>Girişte Başlama Durumu:</value>
+  </data>
+  <data name="ConfigUpdates_CbBetaUpdates" xml:space="preserve">
+    <value>Beni &amp;beta sürümlerinden haberdar et</value>
+  </data>
+  <data name="ConfigUpdates_LblInfo2" xml:space="preserve">
+    <value>Yeni bir güncelleme mevcut olduğunda, HASS.Agent yükleyiciyi indirebilir ve sizin için başlatabilir. İndirilen dosyanın sertifikası çalıştırmadan önce kontrol edilecek, yine de sürüm notlarını gözden geçirecek ve güncellemeyi manuel olarak onaylayacaksınız.</value>
+  </data>
+  <data name="ConfigUpdates_CbExecuteUpdater" xml:space="preserve">
+    <value>Gelecekteki güncellemeleri otomatik olarak &amp;indir</value>
+  </data>
+  <data name="ConfigUpdates_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent, etkinleştirilirse arka planda güncellemeleri kontrol eder. Yeni bir güncelleme keşfedilirse, yeni bir sürümün yüklenmeye hazır olduğunu bildiren bir anında iletme bildirimi gönderilecektir.</value>
+  </data>
+  <data name="ConfigUpdates_CbUpdates" xml:space="preserve">
+    <value>Yeni bir &amp;sürüm çıktığında bana haber ver</value>
+  </data>
+  <data name="OnboardingWelcome_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent&apos;a hoş geldiniz! Aracıyı ilk kez başlatıyorsunuz gibi görünüyor. İlk kurulumda size yardımcı olmak için aşağıdaki yapılandırma adımlarını uygulayın veya alternatif olarak &apos;Kapat&apos;ı tıklayın.</value>
+  </data>
+  <data name="OnboardingWelcome_LblInfo2" xml:space="preserve">
+    <value>Cihaz adı, Home Assistant&apos;ta makinenizi tanımlamak için kullanılır, ayrıca komutlarınız ve sensörleriniz için önerilen bir önek olarak kullanılır.</value>
+  </data>
+  <data name="OnboardingWelcome_LblDeviceName" xml:space="preserve">
+    <value>Cihaz adı</value>
+  </data>
+  <data name="OnboardingStartup_BtnSetLaunchOnLogin" xml:space="preserve">
+    <value>Evet, Sistem Girişinde HASS.Agent&apos;ı &amp;başlatın</value>
+  </data>
+  <data name="OnboardingStartup_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent, sisteminizle başlayabilir, bu, oturum açar açmaz cihazınız ve Home Assistant arasındaki tüm sensörlerin ve veri aktarımının başlamasına olanak tanır. Bu ayar, daha sonra HASS.Agent yapılandırma penceresinde herhangi bir zamanda değiştirilebilir.</value>
+  </data>
+  <data name="OnboardingStartup_LblCreateInfo" xml:space="preserve">
+    <value>Mevcut durum getiriliyor, lütfen bekleyin..</value>
+  </data>
+  <data name="OnboardingNotifications_LblTip1" xml:space="preserve">
+    <value>Not: 5115 varsayılan bağlantı noktasıdır, yalnızca Home Assistant&apos;ta değiştirdiyseniz değiştirin.</value>
+  </data>
+  <data name="OnboardingNotifications_CbAcceptNotifications" xml:space="preserve">
+    <value>Evet, bağlantı noktasındaki bildirimleri kabul et</value>
+  </data>
+  <data name="OnboardingNotifications_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent, metin ve/veya resimler kullanarak Home Assistant&apos;tan bildirimler alabilir. Bu işlevi etkinleştirmek istiyor musunuz?</value>
+  </data>
+  <data name="OnboardingIntegration_LblIntegration" xml:space="preserve">
+    <value>HASS.Agent-Notifier GitHub Sayfası</value>
+  </data>
+  <data name="OnboardingIntegration_LblInfo2" xml:space="preserve">
+    <value>Şu adımları uyguladığınızdan emin olun: - HASS.Agent-Notifier entegrasyonunu kurun - Home Assistant&apos;ı yeniden başlatın - Bir bildirim varlığı yapılandırın - Home Assistant&apos;ı yeniden başlatın</value>
+  </data>
+  <data name="OnboardingIntegration_LblInfo1" xml:space="preserve">
+    <value>Bildirimleri kullanmak için Home Assistant&apos;ta HASS.Agent-notifier entegrasyonunu kurmanız ve yapılandırmanız gerekir. Bu, HACS&apos;yi kullanmak çok kolaydır, ancak manuel olarak da kurulabilir, daha fazla bilgi için aşağıdaki bağlantıyı ziyaret edin.</value>
+  </data>
+  <data name="OnboardingApi_LblApiToken" xml:space="preserve">
+    <value>API &amp; Jeton</value>
+  </data>
+  <data name="OnboardingApi_LblServerUri" xml:space="preserve">
+    <value>Sunucu &amp;URI (böyle olması gerekir)</value>
+  </data>
+  <data name="OnboardingApi_LblInfo1" xml:space="preserve">
+    <value>Hangi varlıkları yapılandırdığınızı öğrenmek ve hızlı eylemler göndermek için HASS.Agent, Home Assistant&apos;ın API&apos;sini kullanır. Lütfen uzun ömürlü bir erişim belirteci ve Home Assistant örneğinizin adresini sağlayın. Home Assistant&apos;ta sol alttaki profil resminize tıklayarak ve &apos;TOKEN OLUŞTUR&apos; düğmesini görene kadar sayfanın en altına giderek bir jeton alabilirsiniz.</value>
+  </data>
+  <data name="OnboardingApi_BtnTest" xml:space="preserve">
+    <value>Test bağlantısı</value>
+  </data>
+  <data name="OnboardingApi_LblTip1" xml:space="preserve">
+    <value>İpucu: Özel ayarlar, Yapılandırma Penceresinde bulunabilir.</value>
+  </data>
+  <data name="OnboardingMqtt_LblPassword" xml:space="preserve">
+    <value>Şifre</value>
+  </data>
+  <data name="OnboardingMqtt_LblUsername" xml:space="preserve">
+    <value>Kullanıcı adı</value>
+  </data>
+  <data name="OnboardingMqtt_LblPort" xml:space="preserve">
+    <value>Liman</value>
+  </data>
+  <data name="OnboardingMqtt_LblIpAdress" xml:space="preserve">
+    <value>IP Adresi veya Ana Bilgisayar Adı</value>
+  </data>
+  <data name="OnboardingMqtt_LblInfo1" xml:space="preserve">
+    <value>Komutlar ve sensörler MQTT aracılığıyla gönderilir. Bildirimler ve medya oynatıcı entegrasyonu da bunlardan yararlanır. İpucu: HA eklentisini kullanıyorsanız, muhtemelen önceden ayarlanmış adresi kullanabilirsiniz - sadece kimlik bilgilerini sağlayın.</value>
+  </data>
+  <data name="OnboardingMqtt_LblDiscoveryPrefix" xml:space="preserve">
+    <value>Keşif Öneki</value>
+  </data>
+  <data name="OnboardingMqtt_LblTip1" xml:space="preserve">
+    <value>(emin değilseniz varsayılanı bırakın)</value>
+  </data>
+  <data name="OnboardingMqtt_LblTip2" xml:space="preserve">
+    <value>İpucu: Özel ayarlar, Yapılandırma Penceresinde bulunabilir.</value>
+  </data>
+  <data name="OnboardingHotKey_LblHotkeyCombo" xml:space="preserve">
+    <value>&amp;Kısayol Kombinasyonu</value>
+  </data>
+  <data name="OnboardingHotKey_LblInfo1" xml:space="preserve">
+    <value> Hızlı işlemlerinizi almanın kolay bir yolu, genel bir kısayol tuşu kullanmaktır. Bu şekilde, makinenizde ne yapıyorsanız yapın, Home Assistant ile her zaman etkileşimde bulunabilirsiniz.</value>
+  </data>
+  <data name="OnboardingHotKey_BtnClear" xml:space="preserve">
+    <value>&amp;Temizlemek</value>
+  </data>
+  <data name="OnboardingUpdates_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent, etkinleştirilirse arka planda güncellemeleri kontrol eder. Yeni bir güncelleme keşfedilirse, yeni bir sürümün yüklenmeye hazır olduğunu bildiren bir anında iletme bildirimi gönderilecektir. Bu otomatik güncelleme kontrollerini etkinleştirmek istiyor musunuz?</value>
+  </data>
+  <data name="OnboardingUpdates_CbNofityOnUpdate" xml:space="preserve">
+    <value>Evet, beni yeni &amp;güncellemelerden haberdar et</value>
+  </data>
+  <data name="OnboardingUpdates_CbExecuteUpdater" xml:space="preserve">
+    <value>Evet, benim için yükleyiciyi indirip başlatın</value>
+  </data>
+  <data name="OnboardingUpdates_LblInfo2" xml:space="preserve">
+    <value>Yeni bir güncelleme mevcut olduğunda, HASS.Agent yükleyiciyi indirebilir ve sizin için başlatabilir. İndirilen dosyanın sertifikası çalıştırmadan önce kontrol edilecek, yine de sürüm notlarını gözden geçirecek ve güncellemeyi manuel olarak onaylayacaksınız.</value>
+  </data>
+  <data name="OnboardingDone_LblGitHub" xml:space="preserve">
+    <value>HASS.Agent GitHub sayfası</value>
+  </data>
+  <data name="OnboardingDone_LblInfo3" xml:space="preserve">
+    <value> Kurcalanacak daha çok şey var, bu yüzden Yapılandırma Penceresine bir göz attığınızdan emin olun! HASS.Agent&apos;ı kullandığınız için teşekkür ederiz, umarım işinize yarar :-)</value>
+  </data>
+  <data name="OnboardingDone_LblInfo2" xml:space="preserve">
+    <value>HASS.Agent şimdi yapılandırma değişikliklerinizi uygulamak için yeniden başlatılacak.</value>
+  </data>
+  <data name="OnboardingDone_LblInfo1" xml:space="preserve">
+    <value>Tamam, bitti!</value>
+  </data>
+  <data name="ServiceCommands_LblLowIntegrity" xml:space="preserve">
+    <value>Düşük Bütünlük</value>
+  </data>
+  <data name="ServiceCommands_ClmName" xml:space="preserve">
+    <value>İsim</value>
+  </data>
+  <data name="ServiceCommands_ClmType" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="ServiceCommands_BtnRemove" xml:space="preserve">
+    <value>&amp;Kaldırmak</value>
+  </data>
+  <data name="ServiceCommands_BtnModify" xml:space="preserve">
+    <value>&amp;Değiştir</value>
+  </data>
+  <data name="ServiceCommands_BtnAdd" xml:space="preserve">
+    <value>&amp;Yeni ekle</value>
+  </data>
+  <data name="ServiceCommands_BtnStore" xml:space="preserve">
+    <value>&amp;Gönder &amp;&amp; Komutları Etkinleştir</value>
+  </data>
+  <data name="ServiceCommands_LblStored" xml:space="preserve">
+    <value>saklanan komutlar!</value>
+  </data>
+  <data name="ServiceConnect_BtnRetryAuthId" xml:space="preserve">
+    <value>&amp;Uygulamak</value>
+  </data>
+  <data name="ServiceConnect_LblRetryAuthId" xml:space="preserve">
+    <value>Yetki ve Kimlik</value>
+  </data>
+  <data name="ServiceConnect_LblAuthenticate" xml:space="preserve">
+    <value>kimlik doğrulama</value>
+  </data>
+  <data name="ServiceConnect_LblConnect" xml:space="preserve">
+    <value>Hizmetle bağlantı kurun</value>
+  </data>
+  <data name="ServiceConnect_LblLoading" xml:space="preserve">
+    <value>Uydu servisi bağlanıyor, lütfen bekleyin..</value>
+  </data>
+  <data name="ServiceConnect_LblFetchConfig" xml:space="preserve">
+    <value>Yapılandırmayı Getir</value>
+  </data>
+  <data name="ServiceGeneral_LblInfo1" xml:space="preserve">
+    <value>Bu sayfa, MQTT ayarları, komutları ve sensörler için genel yapılandırma ayarlarını içerir, yukarıdaki farklı sekmelere göz atın.</value>
+  </data>
+  <data name="ServiceGeneral_LblAuthId" xml:space="preserve">
+    <value>Yetki ve Kimlik</value>
+  </data>
+  <data name="ServiceGeneral_LblDeviceName" xml:space="preserve">
+    <value>Cihaz adı</value>
+  </data>
+  <data name="ServiceGeneral_LblTip1" xml:space="preserve">
+    <value>İpucu: Göz atmak için bu alanları çift tıklayın</value>
+  </data>
+  <data name="ServiceGeneral_LblCustomExecBinary" xml:space="preserve">
+    <value>Özel Yürütücü ve İkili</value>
+  </data>
+  <data name="ServiceGeneral_LblCustomExecName" xml:space="preserve">
+    <value>Özel ve Yürütücü Adı</value>
+  </data>
+  <data name="ServiceGeneral_LblSeconds" xml:space="preserve">
+    <value>saniye</value>
+  </data>
+  <data name="ServiceGeneral_LblDisconGrace" xml:space="preserve">
+    <value>Bağlantı Kesildi İzin ve Süresi</value>
+  </data>
+  <data name="ServiceGeneral_Apply" xml:space="preserve">
+    <value>Uygulamak</value>
+  </data>
+  <data name="ServiceGeneral_LblVersionInfo" xml:space="preserve">
+    <value>Sürüm</value>
+  </data>
+  <data name="ServiceGeneral_LblTip2" xml:space="preserve">
+    <value>İpucu: Rastgele oluşturmak için çift tıklayın</value>
+  </data>
+  <data name="ServiceGeneral_Stored" xml:space="preserve">
+    <value>Saklanmış!</value>
+  </data>
+  <data name="ServiceMqtt_LblTip2" xml:space="preserve">
+    <value>(otomatik oluşturmak için boş bırakın)</value>
+  </data>
+  <data name="ServiceMqtt_LblClientId" xml:space="preserve">
+    <value>Müşteri Kimliği</value>
+  </data>
+  <data name="ServiceMqtt_LblTip3" xml:space="preserve">
+    <value>İpucu: Göz atmak için bu alanları çift tıklayın</value>
+  </data>
+  <data name="ServiceMqtt_LblClientCert" xml:space="preserve">
+    <value>Müşteri Sertifikası</value>
+  </data>
+  <data name="ServiceMqtt_LblRootCert" xml:space="preserve">
+    <value>Kök Sertifikası</value>
+  </data>
+  <data name="ServiceMqtt_CbUseRetainFlag" xml:space="preserve">
+    <value>Bayrağı &amp;Kaldır Kullan</value>
+  </data>
+  <data name="ServiceMqtt_CbAllowUntrustedCertificates" xml:space="preserve">
+    <value>&amp;Güvenilmeyen Sertifikalara İzin Ver</value>
+  </data>
+  <data name="ServiceMqtt_BtnMqttClearConfig" xml:space="preserve">
+    <value>&amp;Yapılandırmayı Temizle</value>
+  </data>
+  <data name="ServiceMqtt_LblTip1" xml:space="preserve">
+    <value>(emin değilseniz varsayılanı bırakın)</value>
+  </data>
+  <data name="ServiceMqtt_LblInfo1" xml:space="preserve">
+    <value>Komutlar ve sensörler MQTT aracılığıyla gönderilir. Lütfen sunucunuz için kimlik bilgilerini sağlayın. HA eklentisini kullanıyorsanız, muhtemelen önceden ayarlanmış adresi kullanabilirsiniz.</value>
+  </data>
+  <data name="ServiceMqtt_LblDiscoPrefix" xml:space="preserve">
+    <value>Keşif Öneki</value>
+  </data>
+  <data name="ServiceMqtt_LblBrokerPassword" xml:space="preserve">
+    <value>Şifre</value>
+  </data>
+  <data name="ServiceMqtt_LblBrokerUsername" xml:space="preserve">
+    <value>Kullanıcı adı</value>
+  </data>
+  <data name="ServiceMqtt_LblBrokerPort" xml:space="preserve">
+    <value>Liman</value>
+  </data>
+  <data name="ServiceMqtt_LblBrokerIp" xml:space="preserve">
+    <value>Aracı IP Adresi veya Ana Bilgisayar Adı</value>
+  </data>
+  <data name="ServiceMqtt_BtnStore" xml:space="preserve">
+    <value>&amp;Gönder &amp;&amp; Yapılandırmayı Etkinleştir</value>
+  </data>
+  <data name="ServiceMqtt_BtnCopy" xml:space="preserve">
+    <value>&amp;HASS.Agent&apos;tan kopyala</value>
+  </data>
+  <data name="ServiceMqtt_LblStored" xml:space="preserve">
+    <value>Yapılandırma kaydedildi!</value>
+  </data>
+  <data name="ServiceMqtt_LblStatusInfo" xml:space="preserve">
+    <value>Durum</value>
+  </data>
+  <data name="ServiceMqtt_LblStatus" xml:space="preserve">
+    <value>sorgulanıyor..</value>
+  </data>
+  <data name="ServiceSensors_ClmName" xml:space="preserve">
+    <value>İsim</value>
+  </data>
+  <data name="ServiceSensors_ClmType" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="ServiceSensors_LblRefresh" xml:space="preserve">
+    <value>Yenile</value>
+  </data>
+  <data name="ServiceSensors_BtnRemove" xml:space="preserve">
+    <value>&amp;Kaldırmak</value>
+  </data>
+  <data name="ServiceSensors_BtnAdd" xml:space="preserve">
+    <value>&amp;Yeni ekle</value>
+  </data>
+  <data name="ServiceSensors_BtnModify" xml:space="preserve">
+    <value>&amp;Değiştir</value>
+  </data>
+  <data name="ServiceSensors_BtnStore" xml:space="preserve">
+    <value>&amp;Gönder &amp;&amp; Sensörleri Etkinleştir</value>
+  </data>
+  <data name="ServiceSensors_LblStored" xml:space="preserve">
+    <value>Sensörler kaydedildi!</value>
+  </data>
+  <data name="PortReservation_LblInfo1" xml:space="preserve">
+    <value>Lütfen görev yapılırken biraz bekleyin ..</value>
+  </data>
+  <data name="PortReservation_LblTask1" xml:space="preserve">
+    <value>API Bağlantı Noktası Bağlama Oluştur</value>
+  </data>
+  <data name="PortReservation_LblTask2" xml:space="preserve">
+    <value>Güvenlik Duvarı Kuralı Belirle</value>
+  </data>
+  <data name="PortReservation_Title" xml:space="preserve">
+    <value>HASS.Agent Port Rezervasyonu</value>
+  </data>
+  <data name="PostUpdate_LblInfo1" xml:space="preserve">
+    <value>Bazı güncelleme sonrası görevler yapılırken lütfen biraz bekleyin..</value>
+  </data>
+  <data name="PostUpdate_LblTask1" xml:space="preserve">
+    <value>Uydu Hizmetini Yapılandırma</value>
+  </data>
+  <data name="PostUpdate_LblTask2" xml:space="preserve">
+    <value>API Bağlantı Noktası Bağlama Oluştur</value>
+  </data>
+  <data name="PostUpdate_Title" xml:space="preserve">
+    <value>HASS.Agent Gönderi Güncellemesi</value>
+  </data>
+  <data name="Restart_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent yeniden başlatılırken lütfen bekleyin..</value>
+  </data>
+  <data name="Restart_LblTask1" xml:space="preserve">
+    <value>Önceki örneğin kapanması bekleniyor..</value>
+  </data>
+  <data name="Restart_LblTask2" xml:space="preserve">
+    <value>HASS.Agent&apos;ı Yeniden Başlatın</value>
+  </data>
+  <data name="Restart_Title" xml:space="preserve">
+    <value>HASS.Agent Yeniden Başlatıcı</value>
+  </data>
+  <data name="ServiceReinstall_LblInfo1" xml:space="preserve">
+    <value>Uydu servisi yeniden kurulurken lütfen bekleyiniz..</value>
+  </data>
+  <data name="ServiceReinstall_LblTask1" xml:space="preserve">
+    <value>Uydu Hizmetini Kaldır</value>
+  </data>
+  <data name="ServiceReinstall_LblTask2" xml:space="preserve">
+    <value>Uydu Hizmetini Yükle</value>
+  </data>
+  <data name="ServiceReinstall_Title" xml:space="preserve">
+    <value>HASS.Agent Uydu Hizmetini Yeniden Yükleme</value>
+  </data>
+  <data name="ServiceSetState_LblInfo1" xml:space="preserve">
+    <value>Uydu hizmeti yapılandırılırken lütfen bekleyin..</value>
+  </data>
+  <data name="ServiceSetState_LblTask1" xml:space="preserve">
+    <value>Uydu Hizmetini Etkinleştir</value>
+  </data>
+  <data name="ServiceSetState_Title" xml:space="preserve">
+    <value>HASS.Agent Uydu Hizmetini Yapılandırma</value>
+  </data>
+  <data name="CommandMqttTopic_BtnClose" xml:space="preserve">
+    <value>&amp;Kapat</value>
+  </data>
+  <data name="CommandMqttTopic_LblInfo1" xml:space="preserve">
+    <value>Bu, eylem komutlarını yayınlayabileceğiniz MQTT konusudur:</value>
+  </data>
+  <data name="CommandMqttTopic_BtnCopyClipboard" xml:space="preserve">
+    <value>Panoya kopyala</value>
+  </data>
+  <data name="CommandMqttTopic_LblHelp" xml:space="preserve">
+    <value>yardım ve örnekler</value>
+  </data>
+  <data name="CommandMqttTopic_Title" xml:space="preserve">
+    <value>MQTT Eylem Konusu</value>
+  </data>
+  <data name="CommandsConfig_BtnRemove" xml:space="preserve">
+    <value>&amp;Kaldırmak</value>
+  </data>
+  <data name="CommandsConfig_BtnModify" xml:space="preserve">
+    <value>&amp;Değiştir</value>
+  </data>
+  <data name="CommandsConfig_BtnAdd" xml:space="preserve">
+    <value>&amp;Yeni ekle</value>
+  </data>
+  <data name="CommandsConfig_BtnStore" xml:space="preserve">
+    <value>&amp;Komutları Sakla ve Etkinleştir</value>
+  </data>
+  <data name="CommandsConfig_ClmName" xml:space="preserve">
+    <value>İsim</value>
+  </data>
+  <data name="CommandsConfig_ClmType" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="CommandsConfig_LblLowIntegrity" xml:space="preserve">
+    <value>Düşük Bütünlük</value>
+  </data>
+  <data name="CommandsConfig_LblActionInfo" xml:space="preserve">
+    <value>Eylem</value>
+  </data>
+  <data name="CommandsConfig_Title" xml:space="preserve">
+    <value>Komut Yapılandırması</value>
+  </data>
+  <data name="CommandsMod_BtnStore" xml:space="preserve">
+    <value>&amp;Mağaza Komutu</value>
+  </data>
+  <data name="CommandsMod_LblSetting" xml:space="preserve">
+    <value>&amp;Yapılandırma</value>
+  </data>
+  <data name="CommandsMod_LblName" xml:space="preserve">
+    <value>&amp;İsim</value>
+  </data>
+  <data name="CommandsMod_LblDescription" xml:space="preserve">
+    <value>Tanım</value>
+  </data>
+  <data name="CommandsMod_CbRunAsLowIntegrity" xml:space="preserve">
+    <value>&amp;&apos;Düşük Bütünlük&apos; olarak çalıştır</value>
+  </data>
+  <data name="CommandsMod_LblIntegrityInfo" xml:space="preserve">
+    <value>Bu nedir?</value>
+  </data>
+  <data name="CommandsMod_ClmSensorName" xml:space="preserve">
+    <value> Tip</value>
+  </data>
+  <data name="CommandsMod_LblSelectedType" xml:space="preserve">
+    <value>Seçilen Tip</value>
+  </data>
+  <data name="CommandsMod_LblService" xml:space="preserve">
+    <value>Hizmet</value>
+  </data>
+  <data name="CommandsMod_LblAgent" xml:space="preserve">
+    <value>ajan</value>
+  </data>
+  <data name="CommandsMod_LblSpecificClient" xml:space="preserve">
+    <value>Yalnızca HASS.Agent!</value>
+  </data>
+  <data name="CommandsMod_LblEntityType" xml:space="preserve">
+    <value>&amp;Varlık Türü</value>
+  </data>
+  <data name="CommandsMod_LblMqttTopic" xml:space="preserve">
+    <value>MQTT Eylem Konusunu Göster</value>
+  </data>
+  <data name="CommandsMod_LblActionInfo" xml:space="preserve">
+    <value>Eylem</value>
+  </data>
+  <data name="CommandsMod_Title" xml:space="preserve">
+    <value>Emretmek</value>
+  </data>
+  <data name="QuickActions_LblLoading" xml:space="preserve">
+    <value>Varlıklar alınıyor, lütfen bekleyin..</value>
+  </data>
+  <data name="QuickActions_Title" xml:space="preserve">
+    <value>Hızlı Eylemler</value>
+  </data>
+  <data name="QuickActionsConfig_BtnStore" xml:space="preserve">
+    <value>Hızlı İşlemleri &amp;Depola</value>
+  </data>
+  <data name="QuickActionsConfig_BtnAdd" xml:space="preserve">
+    <value>&amp;Yeni ekle</value>
+  </data>
+  <data name="QuickActionsConfig_BtnModify" xml:space="preserve">
+    <value>&amp;Değiştir</value>
+  </data>
+  <data name="QuickActionsConfig_BtnRemove" xml:space="preserve">
+    <value>&amp;Kaldırmak</value>
+  </data>
+  <data name="QuickActionsConfig_BtnPreview" xml:space="preserve">
+    <value>&amp;Ön izleme</value>
+  </data>
+  <data name="QuickActionsConfig_ClmDomain" xml:space="preserve">
+    <value>Alan adı</value>
+  </data>
+  <data name="QuickActionsConfig_ClmEntity" xml:space="preserve">
+    <value>varlık</value>
+  </data>
+  <data name="QuickActionsConfig_ClmAction" xml:space="preserve">
+    <value>Eylem</value>
+  </data>
+  <data name="QuickActionsConfig_ClmHotKey" xml:space="preserve">
+    <value>Kısayol tuşu</value>
+  </data>
+  <data name="QuickActionsConfig_ClmDescription" xml:space="preserve">
+    <value>Tanım</value>
+  </data>
+  <data name="QuickActionsConfig_LblHotkey" xml:space="preserve">
+    <value>Etkinleştirilmiş</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="QuickActionsConfig_Title" xml:space="preserve">
+    <value>Hızlı Eylemler Yapılandırması</value>
+  </data>
+  <data name="QuickActionsMod_BtnStore" xml:space="preserve">
+    <value>&amp;Mağaza Hızlı İşlemi</value>
+  </data>
+  <data name="QuickActionsMod_LblDomain" xml:space="preserve">
+    <value>Alan adı</value>
+  </data>
+  <data name="QuickActionsMod_LblEntityInfo" xml:space="preserve">
+    <value>&amp;Varlık</value>
+  </data>
+  <data name="QuickActionsMod_LblAction" xml:space="preserve">
+    <value>İstenen ve Eylem</value>
+  </data>
+  <data name="QuickActionsMod_LblDescription" xml:space="preserve">
+    <value>&amp;Tanım</value>
+  </data>
+  <data name="QuickActionsMod_LblLoading" xml:space="preserve">
+    <value>Varlıklar alınıyor, lütfen bekleyin..</value>
+  </data>
+  <data name="QuickActionsMod_CbEnableHotkey" xml:space="preserve">
+    <value>kısayol tuşunu etkinleştir</value>
+  </data>
+  <data name="QuickActionsMod_LblHotkey" xml:space="preserve">
+    <value>&amp;kısayol tuşu kombinasyonu</value>
+  </data>
+  <data name="QuickActionsMod_LblTip1" xml:space="preserve">
+    <value>(isteğe bağlı, varlık adı yerine kullanılacaktır)</value>
+  </data>
+  <data name="QuickActionsMod_Title" xml:space="preserve">
+    <value>Hızlı Eylem</value>
+  </data>
+  <data name="SensorsConfig_BtnRemove" xml:space="preserve">
+    <value>&amp;Kaldırmak</value>
+  </data>
+  <data name="SensorsConfig_BtnModify" xml:space="preserve">
+    <value>&amp;Değiştir</value>
+  </data>
+  <data name="SensorsConfig_BtnAdd" xml:space="preserve">
+    <value>&amp;Yeni ekle</value>
+  </data>
+  <data name="SensorsConfig_BtnStore" xml:space="preserve">
+    <value>&amp;Depola &amp;&amp; Sensörleri Etkinleştir</value>
+  </data>
+  <data name="SensorsConfig_ClmName" xml:space="preserve">
+    <value>İsim</value>
+  </data>
+  <data name="SensorsConfig_ClmType" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="SensorsConfig_LblRefresh" xml:space="preserve">
+    <value>Yenile</value>
+  </data>
+  <data name="SensorsConfig_Title" xml:space="preserve">
+    <value>Sensör Yapılandırması</value>
+  </data>
+  <data name="SensorsMod_BtnStore" xml:space="preserve">
+    <value>&amp;Mağaza Sensörü</value>
+  </data>
+  <data name="SensorsMod_LblSetting1" xml:space="preserve">
+    <value>ayar 1</value>
+  </data>
+  <data name="SensorsMod_LblType" xml:space="preserve">
+    <value>Seçilen Tip</value>
+  </data>
+  <data name="SensorsMod_LblName" xml:space="preserve">
+    <value>&amp;İsim</value>
+  </data>
+  <data name="SensorsMod_LblUpdate" xml:space="preserve">
+    <value>&amp;Her güncelleme</value>
+  </data>
+  <data name="SensorsMod_LblSeconds" xml:space="preserve">
+    <value>saniye</value>
+  </data>
+  <data name="SensorsMod_LblDescription" xml:space="preserve">
+    <value>Tanım</value>
+  </data>
+  <data name="SensorsMod_LblSetting2" xml:space="preserve">
+    <value>Ayar 2</value>
+  </data>
+  <data name="SensorsMod_LblSetting3" xml:space="preserve">
+    <value>Ayar 3</value>
+  </data>
+  <data name="SensorsMod_ClmSensorName" xml:space="preserve">
+    <value> Tip</value>
+  </data>
+  <data name="SensorsMod_LblMultiValue" xml:space="preserve">
+    <value>çok değerli</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="SensorsMod_LblAgent" xml:space="preserve">
+    <value>Ajan</value>
+  </data>
+  <data name="SensorsMod_LblService" xml:space="preserve">
+    <value>Hizmet</value>
+  </data>
+  <data name="SensorsMod_LblSpecificClient" xml:space="preserve">
+    <value>Yalnızca HASS.Agent!</value>
+  </data>
+  <data name="SensorsMod_Title" xml:space="preserve">
+    <value>sensör</value>
+  </data>
+  <data name="ServiceConfig_TabGeneral" xml:space="preserve">
+    <value> Genel</value>
+  </data>
+  <data name="ServiceConfig_TabMqtt" xml:space="preserve">
+    <value> MQTT</value>
+  </data>
+  <data name="ServiceConfig_TabCommands" xml:space="preserve">
+    <value> Komutlar</value>
+  </data>
+  <data name="ServiceConfig_TabSensors" xml:space="preserve">
+    <value>Sensörler</value>
+  </data>
+  <data name="ServiceConfig_Title" xml:space="preserve">
+    <value>Uydu Servis Yapılandırması</value>
+  </data>
+  <data name="About_BtnClose" xml:space="preserve">
+    <value>&amp;Kapat</value>
+  </data>
+  <data name="About_LblInfo1" xml:space="preserve">
+    <value>Home Assistant platformu için Windows tabanlı bir istemci.</value>
+  </data>
+  <data name="About_LblInfo3" xml:space="preserve">
+    <value>Bu uygulama açık kaynak kodlu ve tamamen ücretsizdir, lütfen kullanılan bileşenlerin proje sayfalarını bireysel lisansları için kontrol edin:</value>
+  </data>
+  <data name="About_LblInfo4" xml:space="preserve">
+    <value> Sıkı çalışmalarını biz fanilerle paylaşma nezaketini gösteren bu projelerin geliştiricilerine büyük bir &apos;teşekkür ederim&apos;.</value>
+  </data>
+  <data name="About_LblInfo5" xml:space="preserve">
+    <value>Ve tabi ki; Paulus Shoutsen ve Home Assistant :-) yaratan ve bakımını yapan tüm geliştirici ekibine teşekkürler</value>
+  </data>
+  <data name="About_LblInfo2" xml:space="preserve">
+    <value>tarafından sevgiyle yaratıldı</value>
+  </data>
+  <data name="About_LblInfo6" xml:space="preserve">
+    <value>Bu aracı beğendiniz mi? Bir fincan kahve alarak bizi destekleyin (okuyun: bizi uyanık tutun):</value>
+  </data>
+  <data name="About_Title" xml:space="preserve">
+    <value>Hakkında</value>
+  </data>
+  <data name="Configuration_TabGeneral" xml:space="preserve">
+    <value>Genel</value>
+  </data>
+  <data name="Configuration_TabExternalTools" xml:space="preserve">
+    <value>Harici Araçlar</value>
+  </data>
+  <data name="Configuration_TabHassApi" xml:space="preserve">
+    <value>Ev Yardımcısı API&apos;sı</value>
+  </data>
+  <data name="Configuration_TabHotKey" xml:space="preserve">
+    <value>Kısayol tuşu</value>
+  </data>
+  <data name="Configuration_TabLocalStorage" xml:space="preserve">
+    <value>Yerel depolama</value>
+  </data>
+  <data name="Configuration_TabLogging" xml:space="preserve">
+    <value>Kerestecilik</value>
+  </data>
+  <data name="Configuration_TabMQTT" xml:space="preserve">
+    <value>MQTT</value>
+  </data>
+  <data name="Configuration_TabNotifications" xml:space="preserve">
+    <value>Bildirimler</value>
+  </data>
+  <data name="Configuration_TabService" xml:space="preserve">
+    <value>Uydu Hizmeti</value>
+  </data>
+  <data name="Configuration_TabStartup" xml:space="preserve">
+    <value>Başlatmak</value>
+  </data>
+  <data name="Configuration_TabUpdates" xml:space="preserve">
+    <value>Güncellemeler</value>
+  </data>
+  <data name="Configuration_BtnAbout" xml:space="preserve">
+    <value>&amp;Hakkında</value>
+  </data>
+  <data name="Configuration_BtnHelp" xml:space="preserve">
+    <value>&amp;Yardım &amp;&amp; İletişim</value>
+  </data>
+  <data name="Configuration_BtnStore" xml:space="preserve">
+    <value>&amp;Yapılandırmayı Kaydet</value>
+  </data>
+  <data name="Configuration_BtnClose" xml:space="preserve">
+    <value>Kapat &amp;Kaydetmeden</value>
+  </data>
+  <data name="Configuration_Title" xml:space="preserve">
+    <value>Yapılandırma</value>
+  </data>
+  <data name="ExitDialog_LblInfo1" xml:space="preserve">
+    <value>Ne yapmak istersin?</value>
+  </data>
+  <data name="ExitDialog_BtnRestart" xml:space="preserve">
+    <value>&amp;Tekrar başlat</value>
+  </data>
+  <data name="ExitDialog_BtnHide" xml:space="preserve">
+    <value>&amp;Saklamak</value>
+  </data>
+  <data name="ExitDialog_BtnExit" xml:space="preserve">
+    <value>&amp;Çıkış</value>
+  </data>
+  <data name="ExitDialog_Title" xml:space="preserve">
+    <value>İletişim Kutusundan Çık</value>
+  </data>
+  <data name="Help_BtnClose" xml:space="preserve">
+    <value>&amp;Kapat</value>
+  </data>
+  <data name="Help_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent ile sorun yaşıyorsanız ve herhangi bir sensör, komut veya genel destek ve geri bildirim için desteğe ihtiyacınız varsa, bize ulaşmanın birkaç yolu vardır:</value>
+  </data>
+  <data name="Help_LblAbout" xml:space="preserve">
+    <value>Hakkında</value>
+  </data>
+  <data name="Help_LblHAForum" xml:space="preserve">
+    <value>Ana Sayfa Asistan Forumu</value>
+  </data>
+  <data name="Help_LblGitHub" xml:space="preserve">
+    <value>GitHub Sorunları</value>
+  </data>
+  <data name="Help_LblHAInfo" xml:space="preserve">
+    <value>Diğer HA kullanıcılarının da size yardımcı olabileceğine ek olarak her şeyden biraz!</value>
+  </data>
+  <data name="Help_LblGitHubInfo" xml:space="preserve">
+    <value>Hataları bildirin, özellik istekleri gönderin, en son değişiklikleri görün vb.</value>
+  </data>
+  <data name="Help_LblDiscordInfo" xml:space="preserve">
+    <value>HASS.Agent&apos;ı kurma ve kullanma konusunda yardım alın, hataları bildirin veya genel sohbete katılın!</value>
+  </data>
+  <data name="Help_LblWikiInfo" xml:space="preserve">
+    <value>HASS.Agent belgelerine ve kullanım örneklerine göz atın.</value>
+  </data>
+  <data name="Help_Title" xml:space="preserve">
+    <value>Yardım</value>
+  </data>
+  <data name="Main_TsShow" xml:space="preserve">
+    <value>HASS.Agent&apos;ı göster</value>
+  </data>
+  <data name="Main_TsShowQuickActions" xml:space="preserve">
+    <value>Hızlı İşlemleri Göster</value>
+  </data>
+  <data name="Main_TsConfig" xml:space="preserve">
+    <value>Yapılandırma</value>
+  </data>
+  <data name="Main_TsQuickItemsConfig" xml:space="preserve">
+    <value>Hızlı Eylemleri Yönet</value>
+  </data>
+  <data name="Main_TsLocalSensors" xml:space="preserve">
+    <value>Yerel Sensörleri Yönetin</value>
+  </data>
+  <data name="Main_TsCommands" xml:space="preserve">
+    <value>Komutları Yönet</value>
+  </data>
+  <data name="Main_CheckForUpdates" xml:space="preserve">
+    <value>Güncellemeleri kontrol et</value>
+  </data>
+  <data name="Main_TsDonate" xml:space="preserve">
+    <value>Bağış yapmak</value>
+  </data>
+  <data name="Main_TsHelp" xml:space="preserve">
+    <value>Yardım &amp;&amp; İletişim</value>
+  </data>
+  <data name="Main_TsAbout" xml:space="preserve">
+    <value>Hakkında</value>
+  </data>
+  <data name="Main_TsExit" xml:space="preserve">
+    <value>HASS.Agent&apos;tan çıkın</value>
+  </data>
+  <data name="Main_BtnHide" xml:space="preserve">
+    <value>&amp;Saklamak</value>
+  </data>
+  <data name="Main_GpControls" xml:space="preserve">
+    <value>Kontroller</value>
+  </data>
+  <data name="Main_BtnServiceManager" xml:space="preserve">
+    <value>U&amp;uydu Hizmeti</value>
+  </data>
+  <data name="Main_BtnAppSettings" xml:space="preserve">
+    <value>&amp;yapılandırma</value>
+  </data>
+  <data name="Main_BtnActionsManager" xml:space="preserve">
+    <value>&amp;Hızlı İşlemler</value>
+  </data>
+  <data name="Main_BtnCommandsManager" xml:space="preserve">
+    <value>Yükleniyor..</value>
+  </data>
+  <data name="Main_BtnSensorsManager" xml:space="preserve">
+    <value>Yükleniyor..</value>
+  </data>
+  <data name="Main_GpStatus" xml:space="preserve">
+    <value>Sistem durumu</value>
+  </data>
+  <data name="Main_LblService" xml:space="preserve">
+    <value>Uydu Hizmeti:</value>
+  </data>
+  <data name="Main_LblCommands" xml:space="preserve">
+    <value>Komutlar:</value>
+  </data>
+  <data name="Main_LblSensors" xml:space="preserve">
+    <value>Sensörler:</value>
+  </data>
+  <data name="Main_LblQuickActions" xml:space="preserve">
+    <value>Hızlı İşlemler:</value>
+  </data>
+  <data name="Main_LblHomeAssistantApi" xml:space="preserve">
+    <value>Ev Asistanı API&apos;sı:</value>
+  </data>
+  <data name="Main_LblNotificationApi" xml:space="preserve">
+    <value>bildirim API&apos;si:</value>
+  </data>
+  <data name="Onboarding_BtnNext" xml:space="preserve">
+    <value>&amp;Sonraki</value>
+  </data>
+  <data name="Onboarding_BtnClose" xml:space="preserve">
+    <value>&amp;Kapat</value>
+  </data>
+  <data name="Onboarding_BtnPrevious" xml:space="preserve">
+    <value>&amp;Öncesi</value>
+  </data>
+  <data name="Onboarding_Onboarding" xml:space="preserve">
+    <value>HASS.Agent Katılımı</value>
+  </data>
+  <data name="UpdatePending_BtnDownload" xml:space="preserve">
+    <value>Bilgi alınıyor, lütfen bekleyin..</value>
+  </data>
+  <data name="UpdatePending_LblNewReleaseInfo" xml:space="preserve">
+    <value>Yeni bir sürüm mevcut:</value>
+  </data>
+  <data name="UpdatePending_LblInfo1" xml:space="preserve">
+    <value>Sürüm notları</value>
+  </data>
+  <data name="UpdatePending_BtnIgnore" xml:space="preserve">
+    <value>&amp;Güncellemeyi Yoksay</value>
+  </data>
+  <data name="UpdatePending_LblRelease" xml:space="preserve">
+    <value>Sürüm Sayfası</value>
+  </data>
+  <data name="UpdatePending_Title" xml:space="preserve">
+    <value>HASS.Agent Güncellemesi</value>
+  </data>
+  <data name="CommandsManager_CustomCommandDescription" xml:space="preserve">
+    <value>Özel bir komut yürütün. Bu komutlar özel yükseltme olmadan çalışır. Yükseltilmiş olarak çalıştırmak için bir Zamanlanmış Görev oluşturun ve görevinizi yürütmek için komut olarak &apos;schtasks /Run /TN &quot;TaskName&quot;&apos;i kullanın. Veya daha sıkı yürütme için &apos;düşük bütünlük olarak çalıştır&apos;ı etkinleştirin.</value>
+  </data>
+  <data name="CommandsManager_CustomExecutorCommandDescription" xml:space="preserve">
+    <value>Komutu, yapılandırılmış özel yürütücü aracılığıyla yürütür (Yapılandırma -&gt; Dış Araçlar&apos;da). Komutunuz &apos;olduğu gibi&apos; bir argüman olarak sağlanır, bu nedenle gerekirse kendi alıntılarınızı vb. sağlamanız gerekir.</value>
+  </data>
+  <data name="CommandsManager_HibernateCommandDescription" xml:space="preserve">
+    <value>Makineyi hazırda bekletme moduna geçirir.</value>
+  </data>
+  <data name="CommandsManager_KeyCommandDescription" xml:space="preserve">
+    <value>Tek bir tuşa basmayı simüle eder. &apos;Anahtar kodu&apos; metin kutusuna tıklayın ve simüle edilmesini istediğiniz tuşa basın. İlgili anahtar kodu sizin için girilecektir. CTRL gibi daha fazla tuşa ve/veya değiştiriciye ihtiyacınız varsa, MultipleKeys komutunu kullanın.</value>
+  </data>
+  <data name="CommandsManager_LaunchUrlCommandDescription" xml:space="preserve">
+    <value>Varsayılan tarayıcınızda varsayılan olarak sağlanan URL&apos;yi başlatır. &apos;Gizli&apos; kullanmak için Yapılandırma -&gt; Harici Araçlar&apos;da belirli bir tarayıcı sağlayın. Yalnızca belirli bir URL&apos;ye sahip bir pencere istiyorsanız (tam bir tarayıcı değil), bir &apos;WebView&apos; komutu kullanın.</value>
+  </data>
+  <data name="CommandsManager_LockCommandDescription" xml:space="preserve">
+    <value>Geçerli oturumu kilitler.</value>
+  </data>
+  <data name="CommandsManager_LogOffCommandDescription" xml:space="preserve">
+    <value>Geçerli oturumun oturumunu kapatır.</value>
+  </data>
+  <data name="CommandsManager_MediaMuteCommandDescription" xml:space="preserve">
+    <value>&apos;Sessiz&apos; tuşunu simüle eder.</value>
+  </data>
+  <data name="CommandsManager_MediaNextCommandDescription" xml:space="preserve">
+    <value>&apos;Sonraki Medya&apos; tuşunu simüle eder.</value>
+  </data>
+  <data name="CommandsManager_MediaPlayPauseCommandDescription" xml:space="preserve">
+    <value>&apos;Medya Duraklat/Oynat&apos; tuşunu simüle eder.</value>
+  </data>
+  <data name="CommandsManager_MediaPreviousCommandDescription" xml:space="preserve">
+    <value>&apos;Önceki Medya&apos; tuşunu simüle eder.</value>
+  </data>
+  <data name="CommandsManager_MediaVolumeDownCommandDescription" xml:space="preserve">
+    <value>&apos;Sesi Kısma&apos; tuşunu simüle eder.</value>
+  </data>
+  <data name="CommandsManager_MediaVolumeUpCommandDescription" xml:space="preserve">
+    <value>&apos;Sesi Aç&apos; tuşunu simüle eder.</value>
+  </data>
+  <data name="CommandsManager_MultipleKeysCommandDescription" xml:space="preserve">
+    <value>Birden fazla tuşa basmayı simüle eder. Her tuşun arasına [ ] koymanız gerekir, aksi takdirde HASS.Agent onları ayırt edemez. Diyelim ki X TAB Y SHIFT-Z&apos;ye basmak istiyorsunuz, bu [X] [{TAB}] [Y] [+Z] olur. Kullanabileceğiniz birkaç numara vardır: - Bir parantezin basılmasını istiyorsanız, ondan kaçının, bu nedenle [ [\[] ve ] [\]] olur - Özel tuşlar { } arasında gidip gelir, örneğin {TAB} veya {UP} - SHIFT, CTRL için ^ ve ALT için % eklemek için bir tuşun önüne + koyun. Yani +C, SHIFT-C&apos;dir. Veya +(CD), SHIFT-C ve SHIFT-D&apos;dir, +CD ise SHIFT-C ve D&apos;dir - Birden fazla basış için {z 15} kullanın, bu, Z&apos;ye 15 kez basılacağı anlamına gelir. Daha fazla bilgi: https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys</value>
+  </data>
+  <data name="CommandsManager_PowershellCommandDescription" xml:space="preserve">
+    <value>Bir Powershell komutu veya betiği yürütün. Bir komut dosyasının (*.ps1) konumunu veya tek satırlı bir komutu sağlayabilirsiniz. Bu, özel yükseklik olmadan çalışacaktır.</value>
+  </data>
+  <data name="CommandsManager_PublishAllSensorsCommandDescription" xml:space="preserve">
+    <value>Tüm sensör kontrollerini sıfırlar, tüm sensörleri değerlerini işlemeye ve göndermeye zorlar. Örneğin, bir HA yeniden başlatma sonrasında HASS.Agent&apos;ı tüm sensörlerinizi güncellemeye zorlamak istiyorsanız kullanışlıdır.</value>
+  </data>
+  <data name="CommandsManager_RestartCommandDescription" xml:space="preserve">
+    <value>Bir dakika sonra makineyi yeniden başlatır. İpucu: Yanlışlıkla mı tetiklendi? Kapatmayı iptal etmek için &apos;shutdown /a&apos; komutunu çalıştırın.</value>
+  </data>
+  <data name="CommandsManager_ShutdownCommandDescription" xml:space="preserve">
+    <value>Bir dakika sonra makineyi kapatır. İpucu: Yanlışlıkla mı tetiklendi? Kapatmayı iptal etmek için &apos;shutdown /a&apos; komutunu çalıştırın.</value>
+  </data>
+  <data name="CommandsManager_SleepCommandDescription" xml:space="preserve">
+    <value>Makineyi uyku moduna geçirir. Not: Windows&apos;taki bir sınırlama nedeniyle, bu yalnızca hazırda bekletme modu devre dışı bırakıldığında çalışır, aksi takdirde yalnızca hazırda bekletme moduna geçer. Bunu atlatmak için NirCmd (http://www.nirsoft.net/utils/nircmd.html) gibi bir şey kullanabilirsiniz.</value>
+  </data>
+  <data name="ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox1" xml:space="preserve">
+    <value>Lütfen tarayıcınızın ikili dosyasının konumunu girin! (.exe dosyası)</value>
+  </data>
+  <data name="ConfigExternalTools_ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox2" xml:space="preserve">
+    <value>Sağlanan tarayıcı ikili dosyası bulunamadı, lütfen yolun doğru olduğundan emin olun ve tekrar deneyin.</value>
+  </data>
+  <data name="ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox3" xml:space="preserve">
+    <value>Gizli bağımsız değişken sağlanmadı, bu nedenle tarayıcı muhtemelen normal şekilde başlatılacaktır. Devam etmek istiyor musun?</value>
+  </data>
+  <data name="ConfigExternalTools_BtnExternalBrowserIncognitoTest_MessageBox4" xml:space="preserve">
+    <value>Tarayıcınızı gizli modda başlatırken bir şeyler ters gitti! Daha fazla bilgi için lütfen günlükleri kontrol edin.</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox1" xml:space="preserve">
+    <value>Lütfen geçerli bir API anahtarı girin!</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox2" xml:space="preserve">
+    <value>Lütfen Ev Asistanınızın URI&apos;si için bir değer girin.</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox3" xml:space="preserve">
+    <value>Bağlanılamadı, aşağıdaki hata döndürüldü: {0}</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox4" xml:space="preserve">
+    <value>Bağlantı Tamam! Ev Asistanı sürümü: {0}</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnClearImageCache_MessageBox1" xml:space="preserve">
+    <value>Görüntü önbelleği temizlendi!</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnClearImageCache_InfoText1" xml:space="preserve">
+    <value>Temizlik..</value>
+  </data>
+  <data name="ConfigNotifications_BtnSendTestNotification_MessageBox1" xml:space="preserve">
+    <value>Bildirimler şu anda devre dışı, lütfen bunları etkinleştirin ve HASS.Agent&apos;ı yeniden başlatın, ardından tekrar deneyin.</value>
+  </data>
+  <data name="ConfigNotifications_BtnSendTestNotification_MessageBox2" xml:space="preserve">
+    <value>Test bildiriminin görünmesi gerekirdi, almadıysanız lütfen günlükleri kontrol edin veya sorun giderme ipuçları için belgelere bakın. Not: Bu, yalnızca yerel olarak bildirimlerin gösterilip gösterilmeyeceğini test eder!</value>
+  </data>
+  <data name="ConfigNotifications_TestNotification" xml:space="preserve">
+    <value>Bu bir test bildirimidir!</value>
+  </data>
+  <data name="ConfigNotifications_BtnExecutePortReservation_Busy" xml:space="preserve">
+    <value>Yürütülüyor, lütfen bekleyin..</value>
+  </data>
+  <data name="ConfigNotifications_BtnExecutePortReservation_MessageBox1" xml:space="preserve">
+    <value>Liman rezerve edilirken bir şeyler ters gitti! El ile yürütme gerekli ve panonuza bir komut kopyalandı, lütfen yükseltilmiş bir terminal açın ve komutu yapıştırın. Ayrıca Güvenlik Duvarı Kuralları bağlantı noktanızı değiştirmeyi unutmayın!</value>
+  </data>
+  <data name="ConfigService_NotInstalled" xml:space="preserve">
+    <value>Yüklü değil</value>
+  </data>
+  <data name="ConfigService_Disabled" xml:space="preserve">
+    <value>Engelli</value>
+  </data>
+  <data name="ConfigService_Running" xml:space="preserve">
+    <value>Koşma</value>
+  </data>
+  <data name="ConfigService_Stopped" xml:space="preserve">
+    <value>durduruldu</value>
+  </data>
+  <data name="ConfigService_Failed" xml:space="preserve">
+    <value>Arızalı</value>
+  </data>
+  <data name="ConfigService_BtnStopService_MessageBox1" xml:space="preserve">
+    <value>Hizmeti durdururken bir şeyler ters gitti, UAC istemine izin verdiniz mi? Daha fazla bilgi için HASS.Agent (hizmet değil) günlüklerini kontrol edin.</value>
+  </data>
+  <data name="ConfigService_BtnStartService_MessageBox1" xml:space="preserve">
+    <value>Hizmet &apos;devre dışı&apos; olarak ayarlanmıştır, bu nedenle başlatılamaz. Lütfen önce hizmeti etkinleştirin ve tekrar deneyin.</value>
+  </data>
+  <data name="ConfigService_BtnStartService_MessageBox2" xml:space="preserve">
+    <value>Hizmeti başlatırken bir şeyler ters gitti, UAC istemine izin verdiniz mi? Daha fazla bilgi için HASS.Agent (hizmet değil) günlüklerini kontrol edin.</value>
+  </data>
+  <data name="ConfigService_BtnDisableService_MessageBox1" xml:space="preserve">
+    <value>Hizmeti devre dışı bırakırken bir şeyler ters gitti, UAC istemine izin verdiniz mi? Daha fazla bilgi için HASS.Agent (hizmet değil) günlüklerini kontrol edin.</value>
+  </data>
+  <data name="ConfigService_BtnEnableService_MessageBox1" xml:space="preserve">
+    <value>Hizmeti etkinleştirirken bir şeyler ters gitti, UAC istemine izin verdiniz mi? Daha fazla bilgi için HASS.Agent (hizmet değil) günlüklerini kontrol edin.</value>
+  </data>
+  <data name="ConfigService_BtnShowLogs_MessageBox1" xml:space="preserve">
+    <value>Hizmeti yeniden yüklerken bir şeyler ters gitti, UAC istemine izin verdiniz mi? Daha fazla bilgi için HASS.Agent (hizmet değil) günlüklerini kontrol edin.</value>
+  </data>
+  <data name="ConfigStartup_BtnSetStartOnLogin_MessageBox1" xml:space="preserve">
+    <value>Girişte Başlat devre dışı bırakılırken bir şeyler ters gitti, lütfen daha fazla bilgi için günlükleri kontrol edin.</value>
+  </data>
+  <data name="ConfigStartup_BtnSetStartOnLogin_MessageBox2" xml:space="preserve">
+    <value>Girişte Başlat devre dışı bırakılırken bir şeyler ters gitti, lütfen daha fazla bilgi için günlükleri kontrol edin.</value>
+  </data>
+  <data name="ConfigStartup_Enabled" xml:space="preserve">
+    <value>Etkinleştirilmiş</value>
+  </data>
+  <data name="ConfigStartup_Disable" xml:space="preserve">
+    <value>Girişte Başlamayı Devre Dışı Bırak</value>
+  </data>
+  <data name="ConfigStartup_Disabled" xml:space="preserve">
+    <value>Engelli</value>
+  </data>
+  <data name="ConfigStartup_Enable" xml:space="preserve">
+    <value>Oturum Açıldığında Başlatmayı Etkinleştir</value>
+  </data>
+  <data name="OnboardingStartup_Activated" xml:space="preserve">
+    <value>Girişte Başlat etkinleştirildi!</value>
+  </data>
+  <data name="OnboardingStartup_EnableNow" xml:space="preserve">
+    <value>Girişte Başlat&apos;ı şimdi etkinleştirmek istiyor musunuz?</value>
+  </data>
+  <data name="OnboardingStartup_AlreadyActivated" xml:space="preserve">
+    <value>Girişte Başlat zaten etkinleştirildi, her şey hazır!</value>
+  </data>
+  <data name="OnboardingStartup_Activating" xml:space="preserve">
+    <value>Oturum Açılırken Başlat etkinleştiriliyor..</value>
+  </data>
+  <data name="OnboardingStartup_Failed" xml:space="preserve">
+    <value>Bir şeyler yanlış gitti. Tekrar deneyebilir veya sonraki sayfaya atlayıp HASS.Agent&apos;ın yeniden başlatılmasından sonra yeniden deneyebilirsiniz.</value>
+  </data>
+  <data name="OnboardingStartup_BtnSetLaunchOnLogin_2" xml:space="preserve">
+    <value>Oturum Açıldığında Başlatmayı Etkinleştir</value>
+  </data>
+  <data name="OnboardingApi_BtnTest_MessageBox1" xml:space="preserve">
+    <value>Lütfen geçerli bir API anahtarı sağlayın.</value>
+  </data>
+  <data name="OnboardingApi_BtnTest_MessageBox2" xml:space="preserve">
+    <value>Lütfen Ev Asistanınızın URI&apos;sini girin.</value>
+  </data>
+  <data name="OnboardingApi_BtnTest_MessageBox3" xml:space="preserve">
+    <value>Bağlanılamadı, aşağıdaki hata döndürüldü: {0}</value>
+  </data>
+  <data name="OnboardingApi_BtnTest_MessageBox4" xml:space="preserve">
+    <value>Bağlantı Tamam! Ev Asistanı sürümü: {0}</value>
+  </data>
+  <data name="OnboardingApi_BtnTest_Testing" xml:space="preserve">
+    <value>Test yapmak..</value>
+  </data>
+  <data name="ServiceCommands_BtnStore_MessageBox1" xml:space="preserve">
+    <value>Komutlarınız kaydedilirken bir hata oluştu, lütfen daha fazla bilgi için günlükleri kontrol edin.</value>
+  </data>
+  <data name="ServiceCommands_BtnStore_Storing" xml:space="preserve">
+    <value>Kaydetme ve kaydetme, lütfen bekleyin..</value>
+  </data>
+  <data name="ServiceConnect_Connecting" xml:space="preserve">
+    <value>Uydu servisine bağlanılıyor, lütfen bekleyin..</value>
+  </data>
+  <data name="ServiceConnect_Failed" xml:space="preserve">
+    <value>Hizmete bağlanma başarısız oldu!</value>
+  </data>
+  <data name="ServiceConnect_FailedMessage" xml:space="preserve">
+    <value>Servis bulunamadı! Yapılandırma panelinden kurabilir ve yönetebilirsiniz. Çalışmaya başladığında, komutları ve sensörleri yapılandırmak için buraya geri gelin.</value>
+  </data>
+  <data name="ServiceConnect_CommunicationFailed" xml:space="preserve">
+    <value>Hizmetle iletişim başarısız oldu!</value>
+  </data>
+  <data name="ServiceConnect_CommunicationFailedMessage" xml:space="preserve">
+    <value>Hizmetle iletişim kurulamıyor. Daha fazla bilgi için günlükleri kontrol edin. Yapılandırma panelinden günlükleri açabilir ve hizmeti yönetebilirsiniz.</value>
+  </data>
+  <data name="ServiceConnect_Unauthorized" xml:space="preserve">
+    <value>Yetkisiz</value>
+  </data>
+  <data name="ServiceConnect_UnauthorizedMessage" xml:space="preserve">
+    <value>Servisle iletişime geçme yetkiniz yok. Doğru auth ID&apos;niz varsa, şimdi ayarlayabilir ve tekrar deneyebilirsiniz.</value>
+  </data>
+  <data name="ServiceConnect_SettingsFailed" xml:space="preserve">
+    <value>Ayarlar getirilemedi!</value>
+  </data>
+  <data name="ServiceConnect_SettingsFailedMessage" xml:space="preserve">
+    <value>Hizmet, ayarlarını isterken bir hata döndürdü. Daha fazla bilgi için günlükleri kontrol edin. Yapılandırma panelinden günlükleri açabilir ve hizmeti yönetebilirsiniz.</value>
+  </data>
+  <data name="ServiceConnect_MqttFailed" xml:space="preserve">
+    <value>MQTT ayarları getirilemedi!</value>
+  </data>
+  <data name="ServiceConnect_MqttFailedMessage" xml:space="preserve">
+    <value>Hizmet, MQTT ayarlarını isterken bir hata döndürdü. Daha fazla bilgi için günlükleri kontrol edin. Yapılandırma panelinden günlükleri açabilir ve hizmeti yönetebilirsiniz.</value>
+  </data>
+  <data name="ServiceConnect_CommandsFailed" xml:space="preserve">
+    <value>Yapılandırılan komutlar getirilemedi!</value>
+  </data>
+  <data name="ServiceConnect_CommandsFailedMessage" xml:space="preserve">
+    <value>Hizmet, yapılandırılmış komutlarını isterken bir hata döndürdü. Daha fazla bilgi için günlükleri kontrol edin. Yapılandırma panelinden günlükleri açabilir ve hizmeti yönetebilirsiniz.</value>
+  </data>
+  <data name="ServiceConnect_SensorsFailed" xml:space="preserve">
+    <value>Yapılandırılmış sensörler getirilemedi!</value>
+  </data>
+  <data name="ServiceConnect_SensorsFailedMessage" xml:space="preserve">
+    <value>Hizmet, yapılandırılmış sensörlerini isterken bir hata döndürdü. Daha fazla bilgi için günlükleri kontrol edin. Yapılandırma panelinden günlükleri açabilir ve hizmeti yönetebilirsiniz.</value>
+  </data>
+  <data name="ServiceGeneral_TbAuthId_MessageBox1" xml:space="preserve">
+    <value>Boş bir kimlik doğrulama kimliğinin saklanması, tüm HASS.Agent&apos;ların hizmete erişmesine izin verecektir. Bunu istediğinden emin misin?</value>
+  </data>
+  <data name="ServiceGeneral_SavingFailedMessageBox" xml:space="preserve">
+    <value>Kaydederken bir hata oluştu, daha fazla bilgi için günlükleri kontrol edin.</value>
+  </data>
+  <data name="ServiceGeneral_BtnStoreDeviceName_MessageBox1" xml:space="preserve">
+    <value>Lütfen bir cihaz adı girin!</value>
+  </data>
+  <data name="ServiceGeneral_BtnStoreCustomExecutor_MessageBox1" xml:space="preserve">
+    <value>Lütfen önce bir yürütücü seçin. (İpucu: Gözatmak için çift tıklayın)</value>
+  </data>
+  <data name="ServiceGeneral_BtnStoreCustomExecutor_MessageBox2" xml:space="preserve">
+    <value>Seçilen yürütücü bulunamadı, lütfen sağlanan yolun doğru olduğundan emin olun ve tekrar deneyin.</value>
+  </data>
+  <data name="ServiceGeneral_LblAuthIdInfo_MessageBox1" xml:space="preserve">
+    <value>Bu bilgisayardaki her HASS.Agent örneğinin uydu hizmetine bağlanmasını istemiyorsanız bir kimlik doğrulama kimliği ayarlayın. Yalnızca doğru kimliğe sahip örnekler bağlanabilir. Herkesin bağlanmasına izin vermek için boş bırakın.</value>
+  </data>
+  <data name="ServiceGeneral_LblDeviceNameInfo_MessageBox1" xml:space="preserve">
+    <value>Bu, uydu hizmetinin kendisini Home Assistant&apos;a kaydettiği addır. Varsayılan olarak, bilgisayarınızın adı artı &apos;-uydu&apos;dur.</value>
+  </data>
+  <data name="ServiceGeneral_LblDisconGraceInfo_MessageBox1" xml:space="preserve">
+    <value>Uydu hizmetinin, MQTT aracısına bağlantının koptuğunu bildirmeden önce bekleyeceği süre.</value>
+  </data>
+  <data name="ServiceMqtt_StatusError" xml:space="preserve">
+    <value>Durum alınırken hata oluştu, lütfen bilgi için günlükleri kontrol edin.</value>
+  </data>
+  <data name="ServiceMqtt_BtnStore_MessageBox1" xml:space="preserve">
+    <value>Yapılandırma kaydedilirken bir hata oluştu, lütfen daha fazla bilgi için günlükleri kontrol edin.</value>
+  </data>
+  <data name="ServiceMqtt_BtnStore_Storing" xml:space="preserve">
+    <value>Kaydetme ve kaydetme, lütfen bekleyin..</value>
+  </data>
+  <data name="ServiceSensors_BtnStore_MessageBox1" xml:space="preserve">
+    <value>Sensörler kaydedilirken bir hata oluştu, lütfen daha fazla bilgi için günlükleri kontrol edin.</value>
+  </data>
+  <data name="ServiceSensors_BtnStore_Storing" xml:space="preserve">
+    <value>Kaydetme ve kaydetme, lütfen bekleyin..</value>
+  </data>
+  <data name="PortReservation_ProcessPostUpdate_MessageBox1" xml:space="preserve">
+    <value>Tüm adımlar başarıyla tamamlanmadı. Daha fazla bilgi için lütfen günlüklere bakın.</value>
+  </data>
+  <data name="PostUpdate_ProcessPostUpdate_MessageBox1" xml:space="preserve">
+    <value>Tüm adımlar başarıyla tamamlanmadı. Daha fazla bilgi için lütfen günlüklere bakın.</value>
+  </data>
+  <data name="Restart_ProcessRestart_MessageBox1" xml:space="preserve">
+    <value>HASS.Agent, {0} saniye sonra hala etkin. Lütfen tüm örnekleri kapatın ve manuel olarak yeniden başlatın. Daha fazla bilgi için günlükleri kontrol edin ve isteğe bağlı olarak geliştiricileri bilgilendirin.</value>
+  </data>
+  <data name="ServiceReinstall_ProcessReinstall_MessageBox1" xml:space="preserve">
+    <value>Tüm adımlar başarıyla tamamlanmadı, lütfen daha fazla bilgi için günlükleri kontrol edin.</value>
+  </data>
+  <data name="ServiceSetState_Enabled" xml:space="preserve">
+    <value>Uydu Hizmetini Etkinleştir</value>
+  </data>
+  <data name="ServiceSetState_Disabled" xml:space="preserve">
+    <value>Uydu Hizmetini Devre Dışı Bırak</value>
+  </data>
+  <data name="ServiceSetState_Started" xml:space="preserve">
+    <value>Uydu Hizmetini Başlat</value>
+  </data>
+  <data name="ServiceSetState_Stopped" xml:space="preserve">
+    <value>Uydu Hizmetini Durdur</value>
+  </data>
+  <data name="ServiceSetState_ProcessState_MessageBox1" xml:space="preserve">
+    <value>İstenen hizmet durumu işlenirken bir şeyler ters gitti. Daha fazla bilgi için lütfen günlüklere bakın.</value>
+  </data>
+  <data name="CommandMqttTopic_BtnCopyClipboard_Copied" xml:space="preserve">
+    <value>Konu panoya kopyalandı!</value>
+  </data>
+  <data name="CommandsConfig_BtnStore_Storing" xml:space="preserve">
+    <value>Kaydetme ve kaydetme, lütfen bekleyin..</value>
+  </data>
+  <data name="CommandsConfig_BtnStore_MessageBox1" xml:space="preserve">
+    <value>Komutlar kaydedilirken bir hata oluştu, lütfen daha fazla bilgi için günlükleri kontrol edin.</value>
+  </data>
+  <data name="CommandsMod_Title_NewCommand" xml:space="preserve">
+    <value>Yeni Komut</value>
+  </data>
+  <data name="CommandsMod_Title_ModCommand" xml:space="preserve">
+    <value>Mod Komutu</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox1" xml:space="preserve">
+    <value>Lütfen bir komut türü seçin!</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox2" xml:space="preserve">
+    <value>Lütfen geçerli bir komut türü seçin!</value>
+  </data>
+  <data name="CommandsMod_MessageBox_EntityType" xml:space="preserve">
+    <value>Önce geçerli bir varlık türü seçin.</value>
+  </data>
+  <data name="CommandsMod_MessageBox_Name" xml:space="preserve">
+    <value>Lütfen bir isim verin!</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox3" xml:space="preserve">
+    <value>Bu ada sahip bir komut zaten var, devam etmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox4" xml:space="preserve">
+    <value>Bir komut sağlanmazsa, bu varlığı Home Assistant aracılığıyla yalnızca bir &apos;eylem&apos; değeriyle kullanabilirsiniz, olduğu gibi çalıştırdığınızda herhangi bir işlem yapılmaz. Devam etmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="CommandsMod_MessageBox_Action" xml:space="preserve">
+    <value>Bir komut veya komut dosyası girmezseniz, bu varlığı yalnızca Home Assistant aracılığıyla bir &apos;eylem&apos; değeriyle kullanabilirsiniz. Olduğu gibi çalıştırmak hiçbir şey yapmaz. Bunu istediğinden emin misin?</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox5" xml:space="preserve">
+    <value>Lütfen bir anahtar kodu girin!</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox6" xml:space="preserve">
+    <value>Anahtarlar kontrol edilemedi: {0}</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox7" xml:space="preserve">
+    <value>Bir URL sağlanmazsa, bu varlığı Home Assistant aracılığıyla yalnızca bir &apos;eylem&apos; değeriyle kullanabilirsiniz, olduğu gibi çalıştırdığınızda herhangi bir işlem yapılmaz. Devam etmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="CommandsMod_LblSetting_Command" xml:space="preserve">
+    <value>Emretmek</value>
+  </data>
+  <data name="CommandsMod_LblSetting_CommandScript" xml:space="preserve">
+    <value>Komut veya Komut Dosyası</value>
+  </data>
+  <data name="CommandsMod_LblSetting_KeyCode" xml:space="preserve">
+    <value>Anahtar kod</value>
+  </data>
+  <data name="CommandsMod_LblSetting_KeyCodes" xml:space="preserve">
+    <value>Anahtar kodları</value>
+  </data>
+  <data name="CommandsMod_CbCommandSpecific_Incognito" xml:space="preserve">
+    <value>Gizli Modda Başlat</value>
+  </data>
+  <data name="CommandsMod_LblInfo_Browser" xml:space="preserve">
+    <value>Tarayıcı: Varsayılan Gizli modu etkinleştirmek için lütfen özel bir tarayıcı yapılandırın.</value>
+  </data>
+  <data name="CommandsMod_LblSetting_Url" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="CommandsMod_LblInfo_BrowserSpecific" xml:space="preserve">
+    <value>Tarayıcı: {0}</value>
+  </data>
+  <data name="CommandsMod_LblInfo_Executor" xml:space="preserve">
+    <value>Yürütücü: Yok Lütfen bir yürütücü yapılandırın, aksi takdirde komutunuz çalışmayacaktır.</value>
+  </data>
+  <data name="CommandsMod_LblInfo_ExecutorSpecific" xml:space="preserve">
+    <value>Yürütücü: {0}</value>
+  </data>
+  <data name="CommandsMod_LblIntegrityInfo_InfoMsg1" xml:space="preserve">
+    <value>Düşük bütünlük, komutunuzun kısıtlı ayrıcalıklarla yürütüleceği anlamına gelir.</value>
+  </data>
+  <data name="CommandsMod_LblIntegrityInfo_InfoMsg2" xml:space="preserve">
+    <value>Bu, yalnızca belirli konumlardaki dosyaları kaydedip değiştirebileceği anlamına gelir,</value>
+  </data>
+  <data name="CommandsMod_LblIntegrityInfo_InfoMsg3" xml:space="preserve">
+    <value>&apos;%USERPROFILE%\AppData\LocalLow&apos; klasörü gibi veya</value>
+  </data>
+  <data name="CommandsMod_LblIntegrityInfo_InfoMsg4" xml:space="preserve">
+    <value>&apos;HKEY_CURRENT_USER\Software\AppDataLow&apos; kayıt defteri anahtarı.</value>
+  </data>
+  <data name="CommandsMod_LblIntegrityInfo_InfoMsg5" xml:space="preserve">
+    <value>Bundan etkilenmediğinden emin olmak için komutunuzu test etmelisiniz!</value>
+  </data>
+  <data name="CommandsMod_SpecificClient" xml:space="preserve">
+    <value>yalnızca {0}!</value>
+  </data>
+  <data name="CommandsMod_LblMqttTopic_MessageBox1" xml:space="preserve">
+    <value>MQTT yöneticisi doğru şekilde yapılandırılmamış veya başlatma işlemini henüz tamamlamamıştır.</value>
+  </data>
+  <data name="QuickActions_CheckHassManager_MessageBox1" xml:space="preserve">
+    <value>Eksik yapılandırma nedeniyle varlıklarınız getirilemiyor, lütfen yapılandırma ekranında gerekli değerleri girin.</value>
+  </data>
+  <data name="QuickActions_MessageBox_EntityFailed" xml:space="preserve">
+    <value>Varlıklarınız getirilmeye çalışılırken bir hata oluştu!</value>
+  </data>
+  <data name="QuickActionsMod_Title_New" xml:space="preserve">
+    <value>Yeni Hızlı Eylem</value>
+  </data>
+  <data name="QuickActionsMod_Title_Mod" xml:space="preserve">
+    <value>Mod Hızlı Eylem</value>
+  </data>
+  <data name="QuickActionsMod_CheckHassManager_MessageBox1" xml:space="preserve">
+    <value>Eksik yapılandırma nedeniyle varlıklarınız getirilemiyor, lütfen yapılandırma ekranında gerekli değerleri girin.</value>
+  </data>
+  <data name="QuickActionsMod_MessageBox_Entities" xml:space="preserve">
+    <value>Varlıklarınız getirilmeye çalışılırken bir hata oluştu.</value>
+  </data>
+  <data name="QuickActionsMod_BtnStore_MessageBox1" xml:space="preserve">
+    <value>Lütfen bir varlık seçin!</value>
+  </data>
+  <data name="QuickActionsMod_BtnStore_MessageBox2" xml:space="preserve">
+    <value>Lütfen bir alan seçin!</value>
+  </data>
+  <data name="QuickActionsMod_BtnStore_MessageBox3" xml:space="preserve">
+    <value>Bilinmeyen işlem, lütfen geçerli bir işlem seçin.</value>
+  </data>
+  <data name="SensorsConfig_BtnStore_Storing" xml:space="preserve">
+    <value>Kaydetme ve kaydetme, lütfen bekleyin..</value>
+  </data>
+  <data name="SensorsConfig_BtnStore_MessageBox1" xml:space="preserve">
+    <value>Sensörler kaydedilirken bir hata oluştu, lütfen daha fazla bilgi için günlükleri kontrol edin.</value>
+  </data>
+  <data name="SensorsMod_Title_New" xml:space="preserve">
+    <value>Yeni Sensör</value>
+  </data>
+  <data name="SensorsMod_Title_Mod" xml:space="preserve">
+    <value>Mod Sensörü</value>
+  </data>
+  <data name="SensorsMod_LblSetting1_WindowName" xml:space="preserve">
+    <value>Pencere Adı</value>
+  </data>
+  <data name="SensorsMod_LblSetting1_Wmi" xml:space="preserve">
+    <value>WMI Sorgusu</value>
+  </data>
+  <data name="SensorsMod_LblSetting2_Wmi" xml:space="preserve">
+    <value>WMI Kapsamı (isteğe bağlı)</value>
+  </data>
+  <data name="SensorsMod_LblSetting1_Category" xml:space="preserve">
+    <value>Kategori</value>
+  </data>
+  <data name="SensorsMod_LblSetting2_Counter" xml:space="preserve">
+    <value>Tezgah</value>
+  </data>
+  <data name="SensorsMod_LblSetting3_Instance" xml:space="preserve">
+    <value>Örnek (isteğe bağlı)</value>
+  </data>
+  <data name="SensorsMod_LblSetting1_Process" xml:space="preserve">
+    <value>İşlem</value>
+  </data>
+  <data name="SensorsMod_LblSetting1_Service" xml:space="preserve">
+    <value>Hizmet</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox1" xml:space="preserve">
+    <value>Lütfen bir sensör tipi seçin!</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox2" xml:space="preserve">
+    <value>Lütfen geçerli bir sensör tipi seçin!</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox3" xml:space="preserve">
+    <value>Lütfen bir isim verin!</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox4" xml:space="preserve">
+    <value>Bu ada sahip tek değerli bir sensör zaten var, devam etmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox5" xml:space="preserve">
+    <value>Bu ada sahip çok değerli bir sensör zaten var, devam etmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox6" xml:space="preserve">
+    <value>Lütfen 1 ile 43200 (12 saat) arasında bir aralık sağlayın!</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox7" xml:space="preserve">
+    <value>Lütfen bir pencere adı girin!</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox8" xml:space="preserve">
+    <value>Lütfen bir sorgu girin!</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox9" xml:space="preserve">
+    <value>Lütfen bir kategori ve örnek girin!</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox10" xml:space="preserve">
+    <value>Lütfen bir işlemin adını girin!</value>
+  </data>
+  <data name="SensorsMod_BtnStore_MessageBox11" xml:space="preserve">
+    <value>Lütfen bir hizmetin adını girin!</value>
+  </data>
+  <data name="SensorsMod_SpecificClient" xml:space="preserve">
+    <value>yalnızca {0}!</value>
+  </data>
+  <data name="Configuration_ProcessChanges_MessageBox1" xml:space="preserve">
+    <value>Cihazınızın adını değiştirdiniz. Tüm sensörleriniz ve komutlarınız artık yayından kaldırılacak ve HASS.Agent daha sonra bunları yeniden yayınlamak için yeniden başlatılacaktır. Endişelenmeyin, mevcut adlarını koruyacaklar, böylece otomasyonlarınız veya komut dosyalarınız çalışmaya devam edecek. Not: ad &apos;temizlenecek&apos;, bu da harfler, rakamlar ve boşluklar dışındaki her şeyin bir alt çizgi ile değiştirileceği anlamına gelir. Bu, HA tarafından gereklidir.</value>
+  </data>
+  <data name="Configuration_ProcessChanges_MessageBox2" xml:space="preserve">
+    <value>Yerel API&apos;nin bağlantı noktasını değiştirdiniz. Bu yeni limanın rezerve edilmesi gerekiyor. Bunu yapmak için bir UAC isteği alacaksınız, lütfen onaylayın.</value>
+  </data>
+  <data name="Configuration_ProcessChanges_MessageBox3" xml:space="preserve">
+    <value>Bir şeyler yanlış gitti! Lütfen gerekli komutu manuel olarak yürütün. Panonuza kopyalandı, sadece yükseltilmiş bir komut istemine yapıştırmanız gerekiyor. Güvenlik duvarı kuralınızın bağlantı noktasını da değiştirmeyi unutmayın.</value>
+  </data>
+  <data name="Configuration_ProcessChanges_MessageBox4" xml:space="preserve">
+    <value>Liman başarıyla rezerve edildi! HASS.Agent şimdi yeni konfigürasyonu etkinleştirmek için yeniden başlatılacaktır.</value>
+  </data>
+  <data name="Configuration_MessageBox_RestartManually" xml:space="preserve">
+    <value>Yeniden başlatmaya hazırlanırken bir şeyler ters gitti. Lütfen manuel olarak yeniden başlatın.</value>
+  </data>
+  <data name="Configuration_ProcessChanges_MessageBox5" xml:space="preserve">
+    <value>Yapılandırmanız kaydedildi. Çoğu değişiklik, HASS.Agent&apos;ın yürürlüğe girmeden önce yeniden başlatılmasını gerektirir. Şimdi yeniden başlatmak istiyor musunuz?</value>
+  </data>
+  <data name="Main_Load_MessageBox1" xml:space="preserve">
+    <value>Ayarlarınız yüklenirken bir şeyler ters gitti. &apos;config&apos; alt klasöründeki appsettings.json dosyasını kontrol edin veya yeni bir başlangıç yapmak için silin.</value>
+  </data>
+  <data name="Main_Load_MessageBox2" xml:space="preserve">
+    <value>HASS.Agent başlatılırken bir hata oluştu. Lütfen günlükleri kontrol edin ve GitHub&apos;da bir hata raporu oluşturun.</value>
+  </data>
+  <data name="Main_BtnSensorsManage_Ready" xml:space="preserve">
+    <value>Yerel ve Sensörler</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="Main_BtnCommandsManager_Ready" xml:space="preserve">
+    <value>&amp;Komutlar</value>
+  </data>
+  <data name="Main_Checking" xml:space="preserve">
+    <value>Kontrol etme..</value>
+  </data>
+  <data name="Main_CheckForUpdate_MessageBox1" xml:space="preserve">
+    <value>En son sürümü çalıştırıyorsunuz: {0}{1}</value>
+  </data>
+  <data name="UpdatePending_NewBetaRelease" xml:space="preserve">
+    <value>Yeni bir BETA sürümü mevcut:</value>
+  </data>
+  <data name="UpdatePending_Title_Beta" xml:space="preserve">
+    <value>HASS.Agent BETA Güncellemesi</value>
+  </data>
+  <data name="UpdatePending_LblUpdateQuestion_Download" xml:space="preserve">
+    <value>Yükleyiciyi &amp;indirmek ve başlatmak istiyor musunuz?</value>
+  </data>
+  <data name="UpdatePending_LblUpdateQuestion_Navigate" xml:space="preserve">
+    <value>Sürüm sayfasına &amp;getmek istiyor musunuz?</value>
+  </data>
+  <data name="UpdatePending_InstallUpdate" xml:space="preserve">
+    <value>Güncellemeyi yükle</value>
+  </data>
+  <data name="UpdatePending_InstallBetaRelease" xml:space="preserve">
+    <value>Beta Sürümünü Yükle</value>
+  </data>
+  <data name="UpdatePending_OpenReleasePage" xml:space="preserve">
+    <value>Yayın Sayfasını Aç</value>
+  </data>
+  <data name="UpdatePending_OpenBetaReleasePage" xml:space="preserve">
+    <value>Beta Sürüm Sayfasını Aç</value>
+  </data>
+  <data name="UpdatePending_LblUpdateQuestion_Processing" xml:space="preserve">
+    <value>İstek işleniyor, lütfen bekleyin..</value>
+  </data>
+  <data name="UpdatePending_BtnDownload_Processing" xml:space="preserve">
+    <value>İşleme..</value>
+  </data>
+  <data name="OnboardingManager_OnboardingTitle_Start" xml:space="preserve">
+    <value>HASS.Agent İlk Katılımı: [{0}/{1}] öğesini başlatın</value>
+  </data>
+  <data name="OnboardingManager_OnboardingTitle_Startup" xml:space="preserve">
+    <value>HASS.Agent İlk Katılım: Başlangıç [{0}/{1}]</value>
+  </data>
+  <data name="OnboardingManager_OnboardingTitle_Notifications" xml:space="preserve">
+    <value>HASS.Agent İlk Katılım: Bildirimler [{0}/{1}]</value>
+  </data>
+  <data name="OnboardingManager_OnboardingTitle_Integration" xml:space="preserve">
+    <value>HASS.Agent İlk Katılım: Entegrasyon [{0}/{1}]</value>
+  </data>
+  <data name="OnboardingManager_OnboardingTitle_Api" xml:space="preserve">
+    <value>HASS.Agent İlk Katılım: API [{0}/{1}]</value>
+  </data>
+  <data name="OnboardingManager_OnboardingTitle_Mqtt" xml:space="preserve">
+    <value>HASS.Agent İlk Katılımı: MQTT [{0}/{1}]</value>
+  </data>
+  <data name="OnboardingManager_OnboardingTitle_HotKey" xml:space="preserve">
+    <value>HASS.Agent İlk Katılım: Kısayol Tuşu [{0}/{1}]</value>
+  </data>
+  <data name="OnboardingManager_OnboardingTitle_Updates" xml:space="preserve">
+    <value>HASS.Agent İlk Katılım: Güncellemeler [{0}/{1}]</value>
+  </data>
+  <data name="OnboardingManager_OnboardingTitle_Completed" xml:space="preserve">
+    <value>HASS.Agent İlk Katılımı: Tamamlandı [{0}/{1}]</value>
+  </data>
+  <data name="OnboardingManager_ConfirmBeforeClose_MessageBox1" xml:space="preserve">
+    <value>İlk katılım sürecini iptal etmek istediğinizden emin misiniz? İlerlemeniz kaydedilmeyecek ve bir sonraki başlatmada tekrar gösterilmeyecektir.</value>
+  </data>
+  <data name="UpdateManager_GetLatestVersionInfo_Error" xml:space="preserve">
+    <value>Bilgi alınırken hata oluştu, lütfen daha fazla bilgi için günlükleri kontrol edin.</value>
+  </data>
+  <data name="UpdateManager_DownloadAndExecuteUpdate_MessageBox1" xml:space="preserve">
+    <value>Güncellemeyi indirmeye hazırlanamıyor, daha fazla bilgi için günlükleri kontrol edin. Bunun yerine şimdi sürüm sayfası açılacaktır.</value>
+  </data>
+  <data name="UpdateManager_DownloadAndExecuteUpdate_MessageBox2" xml:space="preserve">
+    <value>Güncelleme indirilemiyor, daha fazla bilgi için günlükleri kontrol edin. Bunun yerine şimdi sürüm sayfası açılacaktır.</value>
+  </data>
+  <data name="UpdateManager_DownloadAndExecuteUpdate_MessageBox3" xml:space="preserve">
+    <value>İndirilen dosya sertifika kontrolünde BAŞARISIZ OLDU. Bu teknik bir hata olabileceği gibi tahrif edilmiş bir dosya da olabilir! Lütfen günlükleri kontrol edin ve bulguları içeren bir bilet gönderin.</value>
+  </data>
+  <data name="UpdateManager_DownloadAndExecuteUpdate_MessageBox4" xml:space="preserve">
+    <value>Yükleyici başlatılamıyor (UAC istemini onayladınız mı?), daha fazla bilgi için günlükleri kontrol edin. Bunun yerine şimdi sürüm sayfası açılacaktır.</value>
+  </data>
+  <data name="HassApiManager_ToolTip_ConnectionSetupFailed" xml:space="preserve">
+    <value>HASS API: Bağlantı kurulumu başarısız oldu.</value>
+  </data>
+  <data name="HassApiManager_ToolTip_InitialConnectionFailed" xml:space="preserve">
+    <value>HASS API: İlk bağlantı başarısız oldu.</value>
+  </data>
+  <data name="HassApiManager_ToolTip_ConnectionFailed" xml:space="preserve">
+    <value>HASS API: Bağlantı başarısız.</value>
+  </data>
+  <data name="HassApiManager_CheckHassConfig_CertNotFound" xml:space="preserve">
+    <value>İstemci sertifika dosyası bulunamadı.</value>
+  </data>
+  <data name="HassApiManager_CheckHassConfig_UnableToConnect" xml:space="preserve">
+    <value>Bağlanamıyor, URI&apos;yi kontrol edin.</value>
+  </data>
+  <data name="HassApiManager_CheckHassConfig_ConfigFailed" xml:space="preserve">
+    <value>Yapılandırma getirilemiyor, lütfen API anahtarını kontrol edin.</value>
+  </data>
+  <data name="HassApiManager_ConnectionFailed" xml:space="preserve">
+    <value>Bağlanamıyor, lütfen URI&apos;yi ve yapılandırmayı kontrol edin.</value>
+  </data>
+  <data name="HassApiManager_ToolTip_QuickActionFailed" xml:space="preserve">
+    <value>hızlı eylem: eylem başarısız oldu, bilgi için günlükleri kontrol edin</value>
+  </data>
+  <data name="HassApiManager_ToolTip_QuickActionFailedOnEntity" xml:space="preserve">
+    <value>hızlı eylem: eylem başarısız oldu, varlık bulunamadı</value>
+  </data>
+  <data name="MqttManager_ToolTip_ConnectionError" xml:space="preserve">
+    <value>MQTT: Bağlanırken hata oluştu</value>
+  </data>
+  <data name="MqttManager_ToolTip_ConnectionFailed" xml:space="preserve">
+    <value>MQTT: Bağlanılamadı</value>
+  </data>
+  <data name="MqttManager_ToolTip_Disconnected" xml:space="preserve">
+    <value>MQTT: Bağlantı kesildi</value>
+  </data>
+  <data name="NotifierManager_Initialize_MessageBox1" xml:space="preserve">
+    <value>API&apos;yi {0} bağlantı noktasına bağlamaya çalışırken hata oluştu. HASS.Agent&apos;ın başka hiçbir örneğinin çalışmadığından ve bağlantı noktasının kullanılabilir ve kayıtlı olduğundan emin olun.</value>
+  </data>
+  <data name="SensorsManager_ActiveWindowSensorDescription" xml:space="preserve">
+    <value>Geçerli etkin pencerenin başlığını sağlar.</value>
+  </data>
+  <data name="SensorsManager_AudioSensorsDescription" xml:space="preserve">
+    <value>Cihazınızın sesinin çeşitli yönleri hakkında bilgi sağlar: Mevcut en yüksek ses seviyesi (basit bir &apos;bir şey çalıyor&apos; değeri olarak kullanılabilir). Varsayılan ses aygıtı: ad, durum ve ses düzeyi. Sesli oturumlarınızın özeti: uygulama adı, sessiz durumu, ses düzeyi ve mevcut en yüksek ses düzeyi.</value>
+  </data>
+  <data name="SensorsManager_BatterySensorsDescription" xml:space="preserve">
+    <value>Mevcut şarj durumunu, tam şarjda tahmini dakika miktarını, yüzde olarak kalan şarjı, dakika cinsinden kalan şarjı ve elektrik hattı durumunu gösteren bir sensör sağlar.</value>
+  </data>
+  <data name="SensorsManager_CpuLoadSensorDescription" xml:space="preserve">
+    <value>İlk CPU&apos;nun mevcut yükünü yüzde olarak sağlar.</value>
+  </data>
+  <data name="SensorsManager_CurrentClockSpeedSensorDescription" xml:space="preserve">
+    <value>İlk CPU&apos;nun mevcut saat hızını sağlar.</value>
+  </data>
+  <data name="SensorsManager_CurrentVolumeSensorDescription" xml:space="preserve">
+    <value>Geçerli ses seviyesini yüzde olarak sağlar. Şu anda varsayılan cihazınızın hacmini alıyor.</value>
+  </data>
+  <data name="SensorsManager_DisplaySensorsDescription" xml:space="preserve">
+    <value>Ekran miktarını, birincil ekranın adını ve ekran başına adını, çözünürlüğünü ve piksel başına bit sayısını gösteren bir sensör sağlar.</value>
+  </data>
+  <data name="SensorsManager_DummySensorDescription" xml:space="preserve">
+    <value>Test amaçlı kukla sensör, 0 ile 100 arasında rastgele bir tamsayı değeri gönderir.</value>
+  </data>
+  <data name="SensorsManager_GpuLoadSensorDescription" xml:space="preserve">
+    <value>Yüzde olarak ilk GPU&apos;nun mevcut yükünü sağlar.</value>
+  </data>
+  <data name="SensorsManager_GpuTemperatureSensorDescription" xml:space="preserve">
+    <value>İlk GPU&apos;nun mevcut sıcaklığını sağlar.</value>
+  </data>
+  <data name="SensorsManager_LastActiveSensorDescription" xml:space="preserve">
+    <value>Kullanıcının herhangi bir girdi sağladığı son anı içeren bir tarih saat değeri sağlar.</value>
+  </data>
+  <data name="SensorsManager_LastBootSensorDescription" xml:space="preserve">
+    <value>Sistemin (yeniden) başlatıldığı son anı içeren bir tarih saat değeri sağlar. Önemli: Windows&apos;un FastBoot seçeneği bu değeri atabilir, çünkü bu bir hazırda bekletme modudur. Güç Seçenekleri -&gt; &apos;Güç düğmelerinin ne yapacağını seçin&apos; -&gt; &apos;Hızlı başlatmayı aç&apos; seçeneğinin işaretini kaldırarak devre dışı bırakabilirsiniz. SSD&apos;li modern makineler için pek bir fark yaratmaz, ancak devre dışı bırakmak, yeniden başlattıktan sonra temiz bir durum almanızı sağlar.</value>
+  </data>
+  <data name="SensorsManager_LastSystemStateChangeSensorDescription" xml:space="preserve">
+    <value>Son sistem durumu değişikliğini sağlar: ApplicationStarted, Logoff, SystemShutdown, Resume, Suspend, ConsoleConnect, ConsoleDisconnect, RemoteConnect, RemoteDisconnect, SessionLock, SessionLogoff, SessionLogon, SessionRemoteControl ve SessionUnlock.</value>
+  </data>
+  <data name="SensorsManager_LoggedUserSensorDescription" xml:space="preserve">
+    <value>Şu anda oturum açmış kullanıcının adını döndürür.</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="SensorsManager_LoggedUsersSensorDescription" xml:space="preserve">
+    <value>Şu anda oturum açmış kullanıcıların json biçimli bir listesini döndürür.</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="SensorsManager_MemoryUsageSensorDescription" xml:space="preserve">
+    <value>Yüzde olarak kullanılan bellek miktarını sağlar.</value>
+  </data>
+  <data name="SensorsManager_MicrophoneActiveSensorDescription" xml:space="preserve">
+    <value>Mikrofonun şu anda kullanılıp kullanılmadığına bağlı olarak bir bool değeri sağlar. Not: uydu hizmetinde kullanılırsa, kullanıcı alanı uygulamalarını algılamaz.</value>
+  </data>
+  <data name="SensorsManager_NamedWindowSensorDescription" xml:space="preserve">
+    <value>Pencerenin o anda açık olup olmamasına bağlı olarak bir AÇIK/KAPALI değeri sağlar (etkin olması gerekmez).</value>
+  </data>
+  <data name="SensorsManager_NetworkSensorsDescription" xml:space="preserve">
+    <value>Seçilen ağ kartının/kartlarının kart bilgilerini, yapılandırmasını, aktarım ve paket istatistiklerini ve adreslerini (ip, mac, dhcp, dns) sağlar. Bu çok değerli bir sensördür.</value>
+  </data>
+  <data name="SensorsManager_PerformanceCounterSensorDescription" xml:space="preserve">
+    <value>Bir performans sayacının değerlerini sağlar. Örneğin, yerleşik CPU yük sensörü şu değerleri kullanır: Kategori: İşlemci Sayacı: % İşlemci Zaman Örneği: _Toplam Sayaçları Windows&apos; &apos;perfmon.exe&apos; aracıyla keşfedebilirsiniz.</value>
+  </data>
+  <data name="SensorsManager_ProcessActiveSensorDescription" xml:space="preserve">
+    <value>İşlemin etkin örneklerinin sayısını sağlar.</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="SensorsManager_ServiceStateSensorDescription" xml:space="preserve">
+    <value>Sağlanan hizmetin durumunu döndürür: Bulunamadı, Durduruldu, StartPending, StopPending, Running, ContinuePending, PausePending veya Paused. &apos;Görünen ad&apos; değil, &apos;Hizmet adı&apos; sağladığınızdan emin olun.</value>
+  </data>
+  <data name="SensorsManager_SessionStateSensorDescription" xml:space="preserve">
+    <value>Geçerli oturum durumunu sağlar: Kilitli, Kilitli Değil veya Bilinmiyor. Oturum durumu değişikliklerini izlemek için bir LastSystemStateChangeSensor kullanın.</value>
+  </data>
+  <data name="SensorsManager_StorageSensorsDescription" xml:space="preserve">
+    <value>Mevcut tüm çıkarılabilir olmayan disklerin etiketlerini, toplam boyutunu (MB), kullanılabilir alanı (MB), kullanılan alanı (MB) ve dosya sistemini sağlar.</value>
+  </data>
+  <data name="SensorsManager_UserNotificationStateSensorDescription" xml:space="preserve">
+    <value>Geçerli kullanıcı durumunu sağlar: NotPresent, Busy, RunningDirect3dFullScreen, PresentationMode, Kabul Ediyor, QuietTime veya RunningWindowsStoreApp. Örneğin, bildirimlerin mi yoksa TTS mesajlarının mı gönderileceğini belirlemek için kullanılabilir.</value>
+  </data>
+  <data name="SensorsManager_WebcamActiveSensorDescription" xml:space="preserve">
+    <value>Web kamerasının şu anda kullanılıp kullanılmadığına bağlı olarak bir bool değeri sağlar. Not: uydu hizmetinde kullanılırsa, kullanıcı alanı uygulamalarını algılamaz.</value>
+  </data>
+  <data name="SensorsManager_WindowsUpdatesSensorsDescription" xml:space="preserve">
+    <value>Bekleyen sürücü güncellemelerinin miktarını gösteren bir sensör, bekleyen yazılım güncellemelerinin miktarını gösteren bir sensör, bekleyen tüm sürücü güncelleme bilgilerini (başlık, kb makale kimlikleri, gizli, tür ve kategoriler) içeren bir sensör ve bekleyenler için aynısını içeren bir sensör sağlar. yazılım güncellemeleri. Bu maliyetli bir istektir, bu nedenle önerilen aralık 15 dakikadır (900 saniye). Ancak 10 dakika ile sınırlandırılmıştır, daha düşük bir değer verirseniz, bilinen son listeyi alırsınız.</value>
+  </data>
+  <data name="SensorsManager_WmiQuerySensorDescription" xml:space="preserve">
+    <value>WMI sorgusunun sonucunu sağlar.</value>
+  </data>
+  <data name="SettingsManager_LoadAppSettings_MessageBox1" xml:space="preserve">
+    <value>Ayarlar yüklenirken hata oluştu: {0}</value>
+  </data>
+  <data name="SettingsManager_StoreInitialSettings_MessageBox1" xml:space="preserve">
+    <value>Başlangıç ayarları kaydedilirken hata oluştu: {0}</value>
+  </data>
+  <data name="SettingsManager_StoreAppSettings_MessageBox1" xml:space="preserve">
+    <value>Ayarlar kaydedilirken hata oluştu: {0}</value>
+  </data>
+  <data name="StoredCommands_Load_MessageBox1" xml:space="preserve">
+    <value>Komutlar yüklenirken hata oluştu: {0}</value>
+  </data>
+  <data name="StoredCommands_Store_MessageBox1" xml:space="preserve">
+    <value>Komutları depolarken hata oluştu: {0}</value>
+  </data>
+  <data name="StoredQuickActions_Load_MessageBox1" xml:space="preserve">
+    <value>Hızlı işlemler yüklenirken hata oluştu: {0}</value>
+  </data>
+  <data name="StoredQuickActions_Store_MessageBox1" xml:space="preserve">
+    <value>Hızlı işlemler kaydedilirken hata oluştu: {0}</value>
+  </data>
+  <data name="StoredSensors_Load_MessageBox1" xml:space="preserve">
+    <value>Sensör yüklenirken hata oluştu: {0}</value>
+  </data>
+  <data name="StoredSensors_Store_MessageBox1" xml:space="preserve">
+    <value>Sensörler kaydedilirken hata oluştu: {0}</value>
+  </data>
+  <data name="Main_LblMqtt" xml:space="preserve">
+    <value>MQTT:</value>
+  </data>
+  <data name="Help_LblWiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="Configuration_BtnStore_Busy" xml:space="preserve">
+    <value>Meşgul, lütfen bekleyin..</value>
+  </data>
+  <data name="ConfigGeneral_LblInterfaceLangauge" xml:space="preserve">
+    <value>Arayüz ve Dil</value>
+  </data>
+  <data name="About_LblOr" xml:space="preserve">
+    <value>veya</value>
+  </data>
+  <data name="OnboardingManager_BtnNext_Finish" xml:space="preserve">
+    <value>Bitiş</value>
+  </data>
+  <data name="OnboardingWelcome_LblInterfaceLangauge" xml:space="preserve">
+    <value>Arayüz ve Dil</value>
+  </data>
+  <data name="ServiceMqtt_SetMqttStatus_ConfigError" xml:space="preserve">
+    <value>Yapılandırma eksik</value>
+  </data>
+  <data name="ServiceMqtt_SetMqttStatus_Connected" xml:space="preserve">
+    <value>bağlı</value>
+  </data>
+  <data name="ServiceMqtt_SetMqttStatus_Connecting" xml:space="preserve">
+    <value>Bağlanıyor..</value>
+  </data>
+  <data name="ServiceMqtt_SetMqttStatus_Disconnected" xml:space="preserve">
+    <value>Bağlantı kesildi</value>
+  </data>
+  <data name="ServiceMqtt_SetMqttStatus_Error" xml:space="preserve">
+    <value>Hata</value>
+  </data>
+  <data name="CommandType_CustomCommand" xml:space="preserve">
+    <value>Gelenek</value>
+  </data>
+  <data name="CommandType_CustomExecutorCommand" xml:space="preserve">
+    <value>ÖzelYürütücü</value>
+  </data>
+  <data name="CommandType_HibernateCommand" xml:space="preserve">
+    <value>hazırda bekletme</value>
+  </data>
+  <data name="CommandType_KeyCommand" xml:space="preserve">
+    <value>Anahtar</value>
+  </data>
+  <data name="CommandType_LaunchUrlCommand" xml:space="preserve">
+    <value>LaunchUrl</value>
+  </data>
+  <data name="CommandType_LockCommand" xml:space="preserve">
+    <value>Kilit</value>
+  </data>
+  <data name="CommandType_LogOffCommand" xml:space="preserve">
+    <value>Oturumu Kapat</value>
+  </data>
+  <data name="CommandType_MediaMuteCommand" xml:space="preserve">
+    <value>MedyaSesi Kapat</value>
+  </data>
+  <data name="CommandType_MediaNextCommand" xml:space="preserve">
+    <value>MedyaSonraki</value>
+  </data>
+  <data name="CommandType_MediaPlayPauseCommand" xml:space="preserve">
+    <value>MedyaOynatDuraklat</value>
+  </data>
+  <data name="CommandType_MediaPreviousCommand" xml:space="preserve">
+    <value>MedyaÖnceki</value>
+  </data>
+  <data name="CommandType_MediaVolumeDownCommand" xml:space="preserve">
+    <value>MedyaSesi Azalt</value>
+  </data>
+  <data name="CommandType_MediaVolumeUpCommand" xml:space="preserve">
+    <value>MedyaSesi Açma</value>
+  </data>
+  <data name="CommandType_MultipleKeysCommand" xml:space="preserve">
+    <value>Çoklu Tuşlar</value>
+  </data>
+  <data name="CommandType_PowershellCommand" xml:space="preserve">
+    <value>Güç kalkanı</value>
+  </data>
+  <data name="CommandType_PublishAllSensorsCommand" xml:space="preserve">
+    <value>Tüm Sensörleri Yayınla</value>
+  </data>
+  <data name="CommandType_RestartCommand" xml:space="preserve">
+    <value>Tekrar başlat</value>
+  </data>
+  <data name="CommandType_ShutdownCommand" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="CommandType_SleepCommand" xml:space="preserve">
+    <value>Uyumak</value>
+  </data>
+  <data name="UserNotificationState_AcceptsNotifications" xml:space="preserve">
+    <value>Kabul EdiyorBildirimler</value>
+  </data>
+  <data name="UserNotificationState_Busy" xml:space="preserve">
+    <value>Meşgul</value>
+  </data>
+  <data name="UserNotificationState_NotPresent" xml:space="preserve">
+    <value>Mevcut değil</value>
+  </data>
+  <data name="UserNotificationState_PresentationMode" xml:space="preserve">
+    <value>Sunum modu</value>
+  </data>
+  <data name="UserNotificationState_QuietTime" xml:space="preserve">
+    <value>Sessiz zaman</value>
+  </data>
+  <data name="UserNotificationState_RunningDirect3dFullScreen" xml:space="preserve">
+    <value>KoşuDirect3dFullScreen</value>
+  </data>
+  <data name="UserNotificationState_RunningWindowsStoreApp" xml:space="preserve">
+    <value>ÇalışanWindowsStoreApp</value>
+  </data>
+  <data name="SystemStateEvent_ConsoleConnect" xml:space="preserve">
+    <value>KonsolBağlantısı</value>
+  </data>
+  <data name="SystemStateEvent_ConsoleDisconnect" xml:space="preserve">
+    <value>Konsol Bağlantısını Kes</value>
+  </data>
+  <data name="SystemStateEvent_HassAgentSatelliteServiceStarted" xml:space="preserve">
+    <value>HassAgentUydu HizmetiBaşladı</value>
+  </data>
+  <data name="SystemStateEvent_HassAgentStarted" xml:space="preserve">
+    <value>HassAgentBaşladı</value>
+  </data>
+  <data name="SystemStateEvent_Logoff" xml:space="preserve">
+    <value>Oturumu Kapat</value>
+  </data>
+  <data name="SystemStateEvent_RemoteConnect" xml:space="preserve">
+    <value>Uzak Bağlantı</value>
+  </data>
+  <data name="SystemStateEvent_RemoteDisconnect" xml:space="preserve">
+    <value>UzakBağlantıyı Kes</value>
+  </data>
+  <data name="SystemStateEvent_Resume" xml:space="preserve">
+    <value>Sürdürmek</value>
+  </data>
+  <data name="SystemStateEvent_SessionLock" xml:space="preserve">
+    <value>Oturum Kilidi</value>
+  </data>
+  <data name="SystemStateEvent_SessionLogoff" xml:space="preserve">
+    <value>OturumOturumu Kapatma</value>
+  </data>
+  <data name="SystemStateEvent_SessionLogon" xml:space="preserve">
+    <value>OturumOturumu</value>
+  </data>
+  <data name="SystemStateEvent_SessionRemoteControl" xml:space="preserve">
+    <value>OturumUzaktan Kontrol</value>
+  </data>
+  <data name="SystemStateEvent_SessionUnlock" xml:space="preserve">
+    <value>Oturum Kilidini Aç</value>
+  </data>
+  <data name="SystemStateEvent_Suspend" xml:space="preserve">
+    <value>Askıya almak</value>
+  </data>
+  <data name="SystemStateEvent_SystemShutdown" xml:space="preserve">
+    <value>Sistem Kapatma</value>
+  </data>
+  <data name="SensorType_ActiveWindowSensor" xml:space="preserve">
+    <value>ActiveWindow</value>
+  </data>
+  <data name="SensorType_AudioSensors" xml:space="preserve">
+    <value>Ses</value>
+  </data>
+  <data name="SensorType_BatterySensors" xml:space="preserve">
+    <value>pil</value>
+  </data>
+  <data name="SensorType_CpuLoadSensor" xml:space="preserve">
+    <value>İşlemci Yükü</value>
+  </data>
+  <data name="SensorType_CurrentClockSpeedSensor" xml:space="preserve">
+    <value>GeçerliSaatHızı</value>
+  </data>
+  <data name="SensorType_CurrentVolumeSensor" xml:space="preserve">
+    <value>Geçerli Hacim</value>
+  </data>
+  <data name="SensorType_DisplaySensors" xml:space="preserve">
+    <value>Görüntülemek</value>
+  </data>
+  <data name="SensorType_DummySensor" xml:space="preserve">
+    <value>kukla</value>
+  </data>
+  <data name="SensorType_GpuLoadSensor" xml:space="preserve">
+    <value>GpuYük</value>
+  </data>
+  <data name="SensorType_GpuTemperatureSensor" xml:space="preserve">
+    <value>GpuSıcaklığı</value>
+  </data>
+  <data name="SensorType_LastActiveSensor" xml:space="preserve">
+    <value>SonAktif</value>
+  </data>
+  <data name="SensorType_LastBootSensor" xml:space="preserve">
+    <value>Son Önyükleme</value>
+  </data>
+  <data name="SensorType_LastSystemStateChangeSensor" xml:space="preserve">
+    <value>LastSystemStateChange</value>
+  </data>
+  <data name="SensorType_LoggedUserSensor" xml:space="preserve">
+    <value>Kayıtlı Kullanıcı</value>
+  </data>
+  <data name="SensorType_LoggedUsersSensor" xml:space="preserve">
+    <value>Kayıtlı Kullanıcılar</value>
+  </data>
+  <data name="SensorType_MemoryUsageSensor" xml:space="preserve">
+    <value>Hafıza kullanımı</value>
+  </data>
+  <data name="SensorType_MicrophoneActiveSensor" xml:space="preserve">
+    <value>MikrofonAktif</value>
+  </data>
+  <data name="SensorType_NamedWindowSensor" xml:space="preserve">
+    <value>Adlandırılmış Pencere</value>
+  </data>
+  <data name="SensorType_NetworkSensors" xml:space="preserve">
+    <value>Ağ</value>
+  </data>
+  <data name="SensorType_PerformanceCounterSensor" xml:space="preserve">
+    <value>PerformansSayacı</value>
+  </data>
+  <data name="SensorType_ProcessActiveSensor" xml:space="preserve">
+    <value>SüreçAktif</value>
+  </data>
+  <data name="SensorType_ServiceStateSensor" xml:space="preserve">
+    <value>Hizmet Durumu</value>
+  </data>
+  <data name="SensorType_SessionStateSensor" xml:space="preserve">
+    <value>Oturum Durumu</value>
+  </data>
+  <data name="SensorType_StorageSensors" xml:space="preserve">
+    <value>Depolamak</value>
+  </data>
+  <data name="SensorType_UserNotificationStateSensor" xml:space="preserve">
+    <value>Kullanıcı Bildirimi</value>
+  </data>
+  <data name="SensorType_WebcamActiveSensor" xml:space="preserve">
+    <value>Web kamerasıAktif</value>
+  </data>
+  <data name="SensorType_WindowsUpdatesSensors" xml:space="preserve">
+    <value>Windows Güncellemeleri</value>
+  </data>
+  <data name="SensorType_WmiQuerySensor" xml:space="preserve">
+    <value>WmiQuery</value>
+  </data>
+  <data name="HassDomain_Automation" xml:space="preserve">
+    <value>Otomasyon</value>
+  </data>
+  <data name="HassDomain_Climate" xml:space="preserve">
+    <value>İklim</value>
+  </data>
+  <data name="HassDomain_Cover" xml:space="preserve">
+    <value>Örtmek</value>
+  </data>
+  <data name="HassDomain_InputBoolean" xml:space="preserve">
+    <value>GirişBoole</value>
+  </data>
+  <data name="HassDomain_Light" xml:space="preserve">
+    <value>Işık</value>
+  </data>
+  <data name="HassDomain_MediaPlayer" xml:space="preserve">
+    <value>Medya oynatıcı</value>
+  </data>
+  <data name="HassDomain_Scene" xml:space="preserve">
+    <value>Faliyet alani, sahne</value>
+  </data>
+  <data name="HassDomain_Script" xml:space="preserve">
+    <value>Senaryo</value>
+  </data>
+  <data name="HassDomain_Switch" xml:space="preserve">
+    <value>Değiştirmek</value>
+  </data>
+  <data name="HassAction_Close" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="HassAction_Off" xml:space="preserve">
+    <value>Kapalı</value>
+  </data>
+  <data name="HassAction_On" xml:space="preserve">
+    <value>Açık</value>
+  </data>
+  <data name="HassAction_Open" xml:space="preserve">
+    <value>Açık</value>
+  </data>
+  <data name="HassAction_Pause" xml:space="preserve">
+    <value>Duraklat</value>
+  </data>
+  <data name="HassAction_Play" xml:space="preserve">
+    <value>Oyna</value>
+  </data>
+  <data name="HassAction_Stop" xml:space="preserve">
+    <value>Durmak</value>
+  </data>
+  <data name="HassAction_Toggle" xml:space="preserve">
+    <value>Aç/Kapat</value>
+  </data>
+  <data name="CommandEntityType_Button" xml:space="preserve">
+    <value>Buton</value>
+  </data>
+  <data name="CommandEntityType_Light" xml:space="preserve">
+    <value>Işık</value>
+  </data>
+  <data name="CommandEntityType_Lock" xml:space="preserve">
+    <value>Kilit</value>
+  </data>
+  <data name="CommandEntityType_Siren" xml:space="preserve">
+    <value>Siren</value>
+  </data>
+  <data name="CommandEntityType_Switch" xml:space="preserve">
+    <value>Değiştirmek</value>
+  </data>
+  <data name="ComponentStatus_Connecting" xml:space="preserve">
+    <value>Bağlanıyor..</value>
+  </data>
+  <data name="ComponentStatus_Disabled" xml:space="preserve">
+    <value>Engelli</value>
+  </data>
+  <data name="ComponentStatus_Failed" xml:space="preserve">
+    <value>Arızalı</value>
+  </data>
+  <data name="ComponentStatus_Loading" xml:space="preserve">
+    <value>Yükleniyor..</value>
+  </data>
+  <data name="ComponentStatus_Ok" xml:space="preserve">
+    <value>Koşma</value>
+  </data>
+  <data name="ComponentStatus_Stopped" xml:space="preserve">
+    <value>durduruldu</value>
+  </data>
+  <data name="LockState_Locked" xml:space="preserve">
+    <value>Kilitli</value>
+  </data>
+  <data name="LockState_Unknown" xml:space="preserve">
+    <value>Bilinmeyen</value>
+  </data>
+  <data name="LockState_Unlocked" xml:space="preserve">
+    <value>kilidi açıldı</value>
+  </data>
+  <data name="SensorType_GeoLocationSensor" xml:space="preserve">
+    <value>Coğrafi Konum</value>
+  </data>
+  <data name="SensorsMod_All" xml:space="preserve">
+    <value>Herşey</value>
+  </data>
+  <data name="SensorsMod_BtnTest" xml:space="preserve">
+    <value>&amp;Ölçek</value>
+  </data>
+  <data name="SensorsMod_BtnTest_PerformanceCounter" xml:space="preserve">
+    <value>Test Performansı Sayacı</value>
+  </data>
+  <data name="SensorsMod_BtnTest_Wmi" xml:space="preserve">
+    <value>WMI Sorgusunu Test Et</value>
+  </data>
+  <data name="SensorsMod_LblSetting1_Network" xml:space="preserve">
+    <value>Ağ kartı</value>
+  </data>
+  <data name="SensorsMod_TestPerformanceCounter_MessageBox1" xml:space="preserve">
+    <value>Önce bir kategori ve sayaç girin.</value>
+  </data>
+  <data name="SensorsMod_TestPerformanceCounter_MessageBox2" xml:space="preserve">
+    <value>Test başarıyla yürütüldü, sonuç değeri: {0}</value>
+  </data>
+  <data name="SensorsMod_TestPerformanceCounter_MessageBox3" xml:space="preserve">
+    <value>Test yürütülemedi: {0} Günlükler klasörünü açmak istiyor musunuz?</value>
+  </data>
+  <data name="SensorsMod_TestWmi_MessageBox1" xml:space="preserve">
+    <value>Önce bir WMI sorgusu girin.</value>
+  </data>
+  <data name="SensorsMod_TestWmi_MessageBox2" xml:space="preserve">
+    <value>Sorgu başarıyla yürütüldü, sonuç değeri: {0}</value>
+  </data>
+  <data name="SensorsMod_TestWmi_MessageBox3" xml:space="preserve">
+    <value>Sorgu yürütülemedi: {0} Günlükler klasörünü açmak istiyor musunuz?</value>
+  </data>
+  <data name="SensorsMod_WmiTestFailed" xml:space="preserve">
+    <value>Kapsamınız hatalı biçimlendirilmiş gibi görünüyor, muhtemelen şöyle başlamalıdır: \\.\ROOT\ Girdiğiniz kapsam: {0} İpucu: kapsamı ve sorgu alanlarını değiştirmediğinizden emin olun. Hâlâ mevcut değerleri kullanmak istiyor musunuz?</value>
+  </data>
+  <data name="SystemStateEvent_ApplicationStarted" xml:space="preserve">
+    <value>Uygulama Başladı</value>
+  </data>
+  <data name="ServiceGeneral_LblInfo2" xml:space="preserve">
+    <value>Uydu hizmetini, oturum açmak zorunda kalmadan sensörleri ve komutları çalıştırmak için kullanabilirsiniz. Tüm türler mevcut değildir, örneğin &apos;LaunchUrl&apos; komutu yalnızca normal bir komut olarak eklenebilir.</value>
+  </data>
+  <data name="SensorsConfig_ClmValue" xml:space="preserve">
+    <value>Bilinen Son Değer</value>
+  </data>
+  <data name="LocalApiManager_Initialize_MessageBox1" xml:space="preserve">
+    <value>API&apos;yi {0} bağlantı noktasına bağlamaya çalışırken hata oluştu. HASS.Agent&apos;ın başka hiçbir örneğinin çalışmadığından ve bağlantı noktasının kullanılabilir ve kayıtlı olduğundan emin olun.</value>
+  </data>
+  <data name="CommandType_SendWindowToFrontCommand" xml:space="preserve">
+    <value>SendWindowToFront</value>
+  </data>
+  <data name="CommandType_WebViewCommand" xml:space="preserve">
+    <value>Web Görünümü</value>
+  </data>
+  <data name="CommandsManager_WebViewCommandDescription" xml:space="preserve">
+    <value>Sağlanan URL ile bir pencere gösterir. Bu, &apos;LaunchUrl&apos; komutundan farklıdır, çünkü tam teşekküllü bir tarayıcı yüklemez, yalnızca kendi penceresinde sağlanan URL&apos;yi yükler. Bunu, örneğin Home Assistant&apos;ın kontrol panelini hızlı bir şekilde göstermek için kullanabilirsiniz. Varsayılan olarak, çerezleri süresiz olarak saklar, bu nedenle yalnızca bir kez oturum açmanız gerekir.</value>
+  </data>
+  <data name="HassDomain_HASSAgentCommands" xml:space="preserve">
+    <value>HASS.Ajan Komutları</value>
+  </data>
+  <data name="CommandsManager_CommandsManager_SendWindowToFrontCommandDescription" xml:space="preserve">
+    <value>Belirtilen işlemi arar ve ana penceresini öne göndermeye çalışır. Uygulama simge durumuna küçültülürse geri yüklenir. Örnek: VLC&apos;yi ön plana göndermek istiyorsanız, &apos;vlc&apos; kullanın.</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox8" xml:space="preserve">
+    <value>Komutu yapılandırmazsanız, bu varlığı yalnızca Home Assistant aracılığıyla bir &apos;eylem&apos; değeriyle kullanabilirsiniz ve varsayılan ayarlar kullanılarak görünür, olduğu gibi çalıştırıldığında herhangi bir işlem yapılmaz. Bunu yapmak istediğinden emin misin?</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnClearAudioCache" xml:space="preserve">
+    <value>Ses Önbelleğini Temizle</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnClearAudioCache_InfoText1" xml:space="preserve">
+    <value>Temizlik..</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnClearAudioCache_MessageBox1" xml:space="preserve">
+    <value>Ses önbelleği temizlendi!</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnClearWebViewCache" xml:space="preserve">
+    <value>Web Görünümü Önbelleğini Temizle</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnClearWebViewCache_InfoText1" xml:space="preserve">
+    <value>Temizlik..</value>
+  </data>
+  <data name="ConfigLocalStorage_BtnClearWebViewCache_MessageBox1" xml:space="preserve">
+    <value>WebView önbelleği temizlendi!</value>
+  </data>
+  <data name="Main_CheckDpiScalingFactor_MessageBox1" xml:space="preserve">
+    <value>Görünüşe göre alternatif bir ölçeklendirme kullanıyorsunuz. Bu, HASS.Agent&apos;ın bazı bölümlerinin amaçlandığı gibi görünmemesine neden olabilir. Lütfen kullanılamayan yönleri GitHub&apos;da bildirin. Teşekkürler! Not: Bu mesaj yalnızca bir kez gösterilir.</value>
+  </data>
+  <data name="WebViewCommandConfig_SetStoredVariables_MessageBox1" xml:space="preserve">
+    <value>Depolanan komut ayarları yüklenemiyor, varsayılana sıfırlanıyor.</value>
+  </data>
+  <data name="CommandsMod_BtnConfigureCommand" xml:space="preserve">
+    <value>Komut ve Parametreleri Yapılandır</value>
+  </data>
+  <data name="ConfigLocalApi_BtnExecutePortReservation" xml:space="preserve">
+    <value>Bağlantı Noktası ve Rezervasyonu Yürüt</value>
+  </data>
+  <data name="ConfigLocalApi_CbLocalApiActive" xml:space="preserve">
+    <value>&amp;Yerel API&apos;yi Etkinleştir</value>
+  </data>
+  <data name="ConfigLocalApi_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent&apos;ın kendi yerel API&apos;si vardır, bu nedenle Home Assistant istek gönderebilir (örneğin bir bildirim göndermek için). Buradan global olarak yapılandırabilir ve daha sonra bağımlı bölümleri (şu anda bildirimler ve mediaplayer) yapılandırabilirsiniz. Not: Yeni entegrasyonun çalışması için bu gerekli değildir. Yalnızca MQTT kullanmıyorsanız etkinleştirin ve kullanın.</value>
+  </data>
+  <data name="ConfigLocalApi_LblInfo2" xml:space="preserve">
+    <value>İstekleri dinleyebilmek için HASS.Agent&apos;ın portunun ayrılmış ve güvenlik duvarınızda açılmış olması gerekir. Bunu sizin için yaptırmak için bu düğmeyi kullanabilirsiniz.</value>
+  </data>
+  <data name="ConfigLocalApi_LblPort" xml:space="preserve">
+    <value>&amp;Liman</value>
+  </data>
+  <data name="ConfigLocalStorage_LblAudioCacheLocation" xml:space="preserve">
+    <value>Ses Önbelleği Konumu</value>
+  </data>
+  <data name="ConfigLocalStorage_LblImageCacheDays" xml:space="preserve">
+    <value>günler</value>
+  </data>
+  <data name="ConfigLocalStorage_LblImageCacheLocation" xml:space="preserve">
+    <value>Görüntü Önbelleği Konumu</value>
+  </data>
+  <data name="ConfigLocalStorage_LblKeepAudio" xml:space="preserve">
+    <value>Sesi şunun için sakla:</value>
+  </data>
+  <data name="ConfigLocalStorage_LblKeepImages" xml:space="preserve">
+    <value>Resimleri şunun için sakla:</value>
+  </data>
+  <data name="ConfigLocalStorage_LblKeepWebView" xml:space="preserve">
+    <value>Her seferinde önbelleği temizle</value>
+  </data>
+  <data name="ConfigLocalStorage_LblWebViewCacheLocation" xml:space="preserve">
+    <value>Web Görünümü Önbellek Konumu</value>
+  </data>
+  <data name="ConfigMediaPlayer_BtnMediaPlayerReadme" xml:space="preserve">
+    <value>Medya Oynatıcı ve Belgeler</value>
+  </data>
+  <data name="ConfigMediaPlayer_CbEnableMediaPlayer" xml:space="preserve">
+    <value>&amp;Medya Oynatıcı İşlevselliğini Etkinleştir</value>
+  </data>
+  <data name="ConfigMediaPlayer_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent, Home Assistant için bir medya oynatıcı görevi görebilir, böylece çalmakta olan herhangi bir medyayı görebilir ve kontrol edebilir ve metinden konuşmaya gönderebilirsiniz. MQTT&apos;yi etkinleştirdiyseniz, cihazınız otomatik olarak eklenir. Aksi takdirde, yerel API&apos;yi kullanmak için entegrasyonu manuel olarak yapılandırın.</value>
+  </data>
+  <data name="ConfigMediaPlayer_LblInfo2" xml:space="preserve">
+    <value>Bir şey çalışmıyorsa, aşağıdaki adımları denediğinizden emin olun: - HASS.Agent entegrasyonunu kurun - Home Assistant&apos;ı yeniden başlatın - MQTT etkinken HASS.Agent&apos;ın etkin olduğundan emin olun! - Cihazınız otomatik olarak bir varlık olarak algılanmalı ve eklenmelidir - İsteğe bağlı olarak: yerel API&apos;yi kullanarak manuel olarak ekleyin</value>
+  </data>
+  <data name="ConfigMediaPlayer_LblLocalApiDisabled" xml:space="preserve">
+    <value>Yerel API devre dışıdır, ancak medya oynatıcının çalışması için buna ihtiyacı vardır.</value>
+  </data>
+  <data name="ConfigMqtt_CbMqttTls" xml:space="preserve">
+    <value>&amp;TLS</value>
+  </data>
+  <data name="ConfigNotifications_LblLocalApiDisabled" xml:space="preserve">
+    <value>Yerel API devre dışıdır, ancak medya oynatıcının çalışması için buna ihtiyacı vardır.</value>
+  </data>
+  <data name="ConfigTrayIcon_BtnShowWebViewPreview" xml:space="preserve">
+    <value>Önizlemeyi Göster</value>
+  </data>
+  <data name="ConfigTrayIcon_CbDefaultMenu" xml:space="preserve">
+    <value>&amp;Varsayılan Menüyü Göster</value>
+  </data>
+  <data name="ConfigTrayIcon_CbShowWebView" xml:space="preserve">
+    <value>&amp;Web Görünümünü Göster</value>
+  </data>
+  <data name="ConfigTrayIcon_CbWebViewKeepLoaded" xml:space="preserve">
+    <value>&amp;Sayfayı arka planda yüklü tut</value>
+  </data>
+  <data name="ConfigTrayIcon_LblInfo1" xml:space="preserve">
+    <value>Sağ tıklandığında tepsi simgesinin davranışını kontrol edin.</value>
+  </data>
+  <data name="ConfigTrayIcon_LblInfo2" xml:space="preserve">
+    <value>(Bu, ekstra kaynaklar kullanır, ancak yükleme süresini azaltır.)</value>
+  </data>
+  <data name="ConfigTrayIcon_LblWebViewSize" xml:space="preserve">
+    <value>Boyut (px)</value>
+  </data>
+  <data name="ConfigTrayIcon_LblWebViewUrl" xml:space="preserve">
+    <value>&amp;WebView URL&apos;si (Örneğin, Home Assistant Dashboard URL&apos;niz)</value>
+  </data>
+  <data name="Configuration_TablLocalApi" xml:space="preserve">
+    <value>Yerel API</value>
+  </data>
+  <data name="Configuration_TabMediaPlayer" xml:space="preserve">
+    <value>Medya oynatıcı</value>
+  </data>
+  <data name="Configuration_TabTrayIcon" xml:space="preserve">
+    <value>Tepsi ikonu</value>
+  </data>
+  <data name="HelperFunctions_InputLanguageCheckDiffers_ErrorMsg1" xml:space="preserve">
+    <value>Giriş dilinizin &apos;{0}&apos; varsayılan CTRL-ALT-Q kısayol tuşuyla çakıştığı biliniyor. Lütfen kendinizinkini ayarlayın.</value>
+  </data>
+  <data name="HelperFunctions_InputLanguageCheckDiffers_ErrorMsg2" xml:space="preserve">
+    <value>Giriş diliniz &apos;{0}&apos; bilinmiyor ve varsayılan CTRL-ALT-Q kısayol tuşuyla çakışabilir. Lütfen emin olmak için kontrol edin. Varsa, listeye eklenebilmesi için GitHub&apos;da bir bilet açmayı düşünün.</value>
+  </data>
+  <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg1" xml:space="preserve">
+    <value>Anahtar bulunamadı</value>
+  </data>
+  <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg2" xml:space="preserve">
+    <value>parantezler eksik, tüm tuşları [ ] ile başlatın ve kapatın</value>
+  </data>
+  <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg3" xml:space="preserve">
+    <value>Anahtarlar ayrıştırılırken hata oluştu, daha fazla bilgi için lütfen günlükleri kontrol edin.</value>
+  </data>
+  <data name="HelperFunctions_ParseMultipleKeys_ErrorMsg4" xml:space="preserve">
+    <value>Açık parantezlerin sayısı (&apos;[&apos;), kapalı parantezlerin sayısına karşılık gelmez. (&apos;]&apos;)! ({0} - {1})</value>
+  </data>
+  <data name="Help_LblDocumentation" xml:space="preserve">
+    <value>belgeler</value>
+  </data>
+  <data name="Help_LblDocumentationInfo" xml:space="preserve">
+    <value>Belgeler ve Kullanım Örnekleri</value>
+  </data>
+  <data name="Main_BtnCheckForUpdate" xml:space="preserve">
+    <value>Güncellemeleri kontrol et</value>
+  </data>
+  <data name="Main_LblLocalApi" xml:space="preserve">
+    <value>Yerel API:</value>
+  </data>
+  <data name="Main_TsSatelliteService" xml:space="preserve">
+    <value>Uydu Hizmetini Yönet</value>
+  </data>
+  <data name="OnboardingIntegrations_LblInfo1" xml:space="preserve">
+    <value>Bildirimleri kullanmak için Home Assistant&apos;ta HASS.Agent-notifier entegrasyonunu kurmanız ve yapılandırmanız gerekir. Bu, HACS&apos;ı kullanmak çok kolaydır, ancak manuel olarak da kurabilirsiniz. Daha fazla bilgi için aşağıdaki bağlantıyı ziyaret edin.</value>
+  </data>
+  <data name="OnboardingIntegrations_LblInfo2" xml:space="preserve">
+    <value>Aşağıdaki adımları uyguladığınızdan emin olun: - HASS.Agent-Notifier ve/veya HASS.Agent-MediaPlayer entegrasyonunu kurun - Home Assistant&apos;ı yeniden başlatın -Bir bildirim ve/veya media_player varlığı yapılandırın -Home Assistant&apos;ı yeniden başlatın</value>
+  </data>
+  <data name="OnboardingIntegrations_LblInfo3" xml:space="preserve">
+    <value>Aynı şey medya oynatıcı için de geçerlidir; bu entegrasyon, cihazınızı bir media_player varlığı olarak kontrol etmenize, neyin oynatıldığını görmenize ve metinden konuşmaya göndermenize olanak tanır.</value>
+  </data>
+  <data name="OnboardingIntegrations_LblMediaPlayerIntegration" xml:space="preserve">
+    <value>HASS.Agent-MediaPlayer GitHub Sayfası</value>
+  </data>
+  <data name="OnboardingIntegrations_LblNotifierIntegration" xml:space="preserve">
+    <value>HASS.Agent-Entegrasyon GitHub Sayfası</value>
+  </data>
+  <data name="OnboardingLocalApi_CbEnableLocalApi" xml:space="preserve">
+    <value>Evet, bağlantı noktasında yerel API&apos;yi &amp;etkinleştirin</value>
+  </data>
+  <data name="OnboardingLocalApi_CbEnableMediaPlayer" xml:space="preserve">
+    <value>&amp;Medya Oynatıcıyı ve metinden konuşmaya (TTS) etkinleştirin</value>
+  </data>
+  <data name="OnboardingLocalApi_CbEnableNotifications" xml:space="preserve">
+    <value>&amp;Bildirimleri Etkinleştir</value>
+  </data>
+  <data name="OnboardingLocalApi_LblInfo1" xml:space="preserve">
+    <value>HASS.Agent&apos;ın kendi dahili API&apos;si vardır, bu nedenle Home Assistant istek gönderebilir (bildirimler veya metinden konuşmaya gibi). Etkinleştirmek istiyor musunuz?</value>
+  </data>
+  <data name="OnboardingLocalApi_LblInfo2" xml:space="preserve">
+    <value>Hangi modülleri etkinleştirmek istediğinizi seçebilirsiniz. HA entegrasyonları gerektirirler, ancak merak etmeyin, sonraki sayfa bunları nasıl kuracağınız konusunda size daha fazla bilgi verecektir.</value>
+  </data>
+  <data name="OnboardingLocalApi_LblTip1" xml:space="preserve">
+    <value>Not: 5115 varsayılan bağlantı noktasıdır, yalnızca Home Assistant&apos;ta değiştirdiyseniz değiştirin.</value>
+  </data>
+  <data name="OnboardingMqtt_CbMqttTls" xml:space="preserve">
+    <value>&amp;TLS</value>
+  </data>
+  <data name="OnboardingWelcome_Store_MessageBox1" xml:space="preserve">
+    <value>Cihaz adınız, HA tarafından izin verilmeyen bazı karakterler içeriyordu (yalnızca harfler, rakamlar ve boşluklar). Son ad: {0} Bu sürümü kullanmak istiyor musunuz?</value>
+  </data>
+  <data name="Onboarding_Title" xml:space="preserve">
+    <value>HASS.Agent Katılımı</value>
+  </data>
+  <data name="ServiceGeneral_LblAuthStored" xml:space="preserve">
+    <value>saklanmış!</value>
+  </data>
+  <data name="ServiceMqtt_CbMqttTls" xml:space="preserve">
+    <value>&amp;TLS</value>
+  </data>
+  <data name="WebViewCommandConfig_BtnSave" xml:space="preserve">
+    <value>&amp;Kaydetmek</value>
+  </data>
+  <data name="WebViewCommandConfig_CbCenterScreen" xml:space="preserve">
+    <value>&amp;Her zaman ekranda ortalanmış olarak göster</value>
+  </data>
+  <data name="WebViewCommandConfig_CbShowTitleBar" xml:space="preserve">
+    <value>Pencerenin &amp;başlık çubuğunu göster</value>
+  </data>
+  <data name="WebViewCommandConfig_CbTopMost" xml:space="preserve">
+    <value>Pencereyi &apos;Her zaman &amp;Üstte&apos; olarak ayarla</value>
+  </data>
+  <data name="WebViewCommandConfig_LblInfo1" xml:space="preserve">
+    <value>Web görünümü komutunuzun boyutunu ve konumunu ayarlamak için bu pencereyi sürükleyip yeniden boyutlandırın.</value>
+  </data>
+  <data name="WebViewCommandConfig_LblLocation" xml:space="preserve">
+    <value>Konum</value>
+  </data>
+  <data name="WebViewCommandConfig_LblSize" xml:space="preserve">
+    <value>Boyut</value>
+  </data>
+  <data name="WebViewCommandConfig_LblTip1" xml:space="preserve">
+    <value>İpucu: Bir Web Görünümünü kapatmak için ESCAPE&apos;e basın.</value>
+  </data>
+  <data name="WebViewCommandConfig_LblUrl" xml:space="preserve">
+    <value>&amp;URL</value>
+  </data>
+  <data name="WebViewCommandConfig_Title" xml:space="preserve">
+    <value>Web Görünümü Yapılandırması</value>
+  </data>
+  <data name="WebView_Title" xml:space="preserve">
+    <value>Web Görünümü</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox9" xml:space="preserve">
+    <value>Sağladığınız anahtar kodu geçerli bir numara değil! Lütfen anahtar kodu alanının odakta olduğundan emin olun ve simüle etmek istediğiniz tuşa basın, ardından anahtar kodu sizin için oluşturulmalıdır.</value>
+  </data>
+  <data name="ConfigGeneral_CbEnableDeviceNameSanitation" xml:space="preserve">
+    <value>Cihaz Adını ve Sanitasyonunu Etkinleştir</value>
+  </data>
+  <data name="ConfigGeneral_CbEnableStateNotifications" xml:space="preserve">
+    <value>Durum Bildirimlerini Etkinleştir</value>
+  </data>
+  <data name="ConfigGeneral_LblInfo5" xml:space="preserve">
+    <value>HASS.Agent, HA&apos;nın kabul edeceğinden emin olmak için cihaz adınızı temizleyecektir, adınızın olduğu gibi kabul edileceğinden eminseniz aşağıdaki bu kuralı geçersiz kılabilirsiniz.</value>
+  </data>
+  <data name="ConfigGeneral_LblInfo6" xml:space="preserve">
+    <value>HASS.Agent, bir modülün durumu değiştiğinde bildirim gönderir, bu bildirimleri almak isteyip istemediğinizi aşağıdan ayarlayabilirsiniz.</value>
+  </data>
+  <data name="Configuration_ProcessChanges_MessageBox6" xml:space="preserve">
+    <value>Cihazınızın adını değiştirdiniz. Tüm sensörleriniz ve komutlarınız artık yayından kaldırılacak ve HASS.Agent yeniden başlatıldıktan sonra yeniden yayınlanacaktır. Merak etme! Otomasyonlarınız ve komut dosyalarınızın çalışmaya devam etmesi için mevcut adlarını koruyacaklar. Not: Temizliği devre dışı bıraktınız, bu nedenle cihaz adınızın Home Assistant tarafından kabul edildiğinden emin olun.</value>
+  </data>
+  <data name="SensorType_PrintersSensors" xml:space="preserve">
+    <value>Yazıcılar</value>
+  </data>
+  <data name="CommandType_MonitorSleepCommand" xml:space="preserve">
+    <value>MonitörUyku</value>
+  </data>
+  <data name="CommandType_MonitorWakeCommand" xml:space="preserve">
+    <value>MonitörUyandırma</value>
+  </data>
+  <data name="MonitorPowerEvent_PowerOn" xml:space="preserve">
+    <value>Açık</value>
+  </data>
+  <data name="MonitorPowerEvent_PowerOff" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="MonitorPowerEvent_Dimmed" xml:space="preserve">
+    <value>karartılmış</value>
+  </data>
+  <data name="MonitorPowerEvent_Unknown" xml:space="preserve">
+    <value>Bilinmeyen</value>
+  </data>
+  <data name="SensorType_MonitorPowerStateSensor" xml:space="preserve">
+    <value>MonitörGüç Durumu</value>
+  </data>
+  <data name="SensorType_PowershellSensor" xml:space="preserve">
+    <value>PowershellSensor</value>
+  </data>
+  <data name="CommandType_SetVolumeCommand" xml:space="preserve">
+    <value>Sesi Ayarla</value>
+  </data>
+  <data name="WindowState_Maximized" xml:space="preserve">
+    <value>Maksimize</value>
+  </data>
+  <data name="WindowState_Minimized" xml:space="preserve">
+    <value>Küçültülmüş</value>
+  </data>
+  <data name="WindowState_Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="WindowState_Unknown" xml:space="preserve">
+    <value>Bilinmeyen</value>
+  </data>
+  <data name="WindowState_Hidden" xml:space="preserve">
+    <value>Gizlenmiş</value>
+  </data>
+  <data name="SensorType_WindowStateSensor" xml:space="preserve">
+    <value>Pencere Durumu</value>
+  </data>
+  <data name="SensorType_WebcamProcessSensor" xml:space="preserve">
+    <value>Web kamerasıSüreci</value>
+  </data>
+  <data name="SensorType_MicrophoneProcessSensor" xml:space="preserve">
+    <value>MikrofonSüreci</value>
+  </data>
+  <data name="CommandsManager_MonitorSleepCommandDescription" xml:space="preserve">
+    <value>Tüm monitörleri uyku (düşük güç) moduna geçirir.</value>
+  </data>
+  <data name="CommandsManager_MonitorWakeCommandDescription" xml:space="preserve">
+    <value>&apos;Yukarı ok&apos; tuş basımını simüle ederek tüm monitörleri uyandırmaya çalışır.</value>
+  </data>
+  <data name="CommandsManager_SetVolumeCommandDescription" xml:space="preserve">
+    <value>Geçerli varsayılan ses cihazının sesini belirtilen düzeye ayarlar.</value>
+  </data>
+  <data name="CommandsMod_BtnStore_MessageBox10" xml:space="preserve">
+    <value>Lütfen istenen ses seviyesi olarak 0-100 arasında bir değer giriniz!</value>
+  </data>
+  <data name="CommandsMod_CommandsMod" xml:space="preserve">
+    <value>Emretmek</value>
+  </data>
+  <data name="CommandsMod_MessageBox_Action2" xml:space="preserve">
+    <value>Bir hacim değeri girmezseniz, bu varlığı yalnızca Home Assistant aracılığıyla bir &apos;eylem&apos; değeriyle kullanabilirsiniz. Olduğu gibi çalıştırmak hiçbir şey yapmaz. Bunu istediğinden emin misin?</value>
+  </data>
+  <data name="CommandsMod_MessageBox_Sanitize" xml:space="preserve">
+    <value>Sağladığınız ad, desteklenmeyen karakterler içeriyor ve çalışmayacak. Önerilen sürüm: {0} Bu sürümü kullanmak istiyor musunuz?</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox5" xml:space="preserve">
+    <value>Sağladığınız API jetonu geçerli görünmüyor, lütfen jetonun tamamını seçtiğinizden emin olun (CTRL + A kullanmayın veya çift tıklamayın). Geçerli bir API anahtarı, iki noktayla ayrılmış üç bölüm içerir. Yine de bu anahtarı kullanmak istediğinizden emin misiniz?</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi_MessageBox6" xml:space="preserve">
+    <value>Sağladığınız URI geçerli görünmüyor, geçerli bir URI aşağıdakilerden biri gibi görünebilir: - http://homeassistant.local:8123 - http://192.168.0.1:8123 Kullanmak istediğinizden emin misiniz? yine de bu URI?</value>
+  </data>
+  <data name="ConfigHomeAssistantApi_BtnTestApi_Testing" xml:space="preserve">
+    <value>Test yapmak..</value>
+  </data>
+  <data name="ConfigMediaPlayer_LblConnectivityDisabled" xml:space="preserve">
+    <value>hem yerel API hem de MQTT devre dışı bırakıldı, ancak entegrasyonun çalışması için en az birine ihtiyacı var</value>
+  </data>
+  <data name="ConfigMqtt_CbEnableMqtt" xml:space="preserve">
+    <value>MQTT&apos;yi etkinleştir</value>
+  </data>
+  <data name="ConfigMqtt_LblMqttDisabledWarning" xml:space="preserve">
+    <value>MQTT etkinleştirilmezse komutlar ve sensörler çalışmayacaktır!</value>
+  </data>
+  <data name="ConfigNotifications_LblConnectivityDisabled" xml:space="preserve">
+    <value>hem yerel API hem de MQTT devre dışı bırakıldı, ancak entegrasyonun çalışması için en az birine ihtiyacı var</value>
+  </data>
+  <data name="ConfigService_BtnManageService" xml:space="preserve">
+    <value>&amp;Hizmeti Yönet</value>
+  </data>
+  <data name="ConfigService_BtnManageService_MessageBox1" xml:space="preserve">
+    <value>Hizmet şu anda durduruldu ve yapılandırılamıyor. Lütfen yapılandırmak için önce hizmeti başlatın.</value>
+  </data>
+  <data name="ConfigService_LblInfo5" xml:space="preserve">
+    <value>Servisi yönetmek istiyorsanız (komut ve sensör ekleyin, ayarları değiştirin) buradan veya ana penceredeki &apos;uydu servisi&apos; butonunu kullanarak yapabilirsiniz.</value>
+  </data>
+  <data name="ConfigTrayIcon_CbWebViewShowMenuOnLeftClick" xml:space="preserve">
+    <value>Fare sol tıklamasıyla varsayılan menüyü göster</value>
+  </data>
+  <data name="Configuration_CheckValues_MessageBox1" xml:space="preserve">
+    <value>Home Assistant API jetonunuz doğru görünmüyor. Tüm belirteci seçtiğinizden emin olun (CTRL+A kullanmayın veya çift tıklamayın). Üç bölüm içermelidir (iki nokta ile ayrılmış). Bu şekilde kullanmak istediğinizden emin misiniz?</value>
+  </data>
+  <data name="Configuration_CheckValues_MessageBox2" xml:space="preserve">
+    <value>Ev Asistanı URI&apos;niz doğru görünmüyor. &apos;http://homeassistant.local:8123&apos; veya &apos;https://192.168.0.1:8123&apos; gibi görünmelidir. Bu şekilde kullanmak istediğinizden emin misiniz?</value>
+  </data>
+  <data name="Configuration_CheckValues_MessageBox3" xml:space="preserve">
+    <value>MQTT broker URI&apos;niz doğru görünmüyor. &apos;homeassistant.local&apos; veya &apos;192.168.0.1&apos; gibi görünmelidir. Bu şekilde kullanmak istediğinizden emin misiniz?</value>
+  </data>
+  <data name="Donate_BtnClose" xml:space="preserve">
+    <value>&amp;Kapat</value>
+  </data>
+  <data name="Donate_CbHideDonateButton" xml:space="preserve">
+    <value>Zaten bağış yaptım, ana penceredeki düğmeyi gizle.</value>
+  </data>
+  <data name="Donate_LblInfo" xml:space="preserve">
+    <value>HASS.Agent tamamen ücretsizdir ve her zaman kısıtlama olmaksızın bu şekilde kalacaktır! Ancak, bu aracı (ve destek ve dokümanlar gibi onu çevreleyen her şeyi) geliştirmek ve sürdürmek çok zaman alır. Çoğu geliştirici gibi, ben de kafein kullanıyorum - bu yüzden eğer onu ayırabilirseniz, bir fincan kahve her zaman çok değerlidir!</value>
+  </data>
+  <data name="Donate_Title" xml:space="preserve">
+    <value>Bağış yapmak</value>
+  </data>
+  <data name="Main_NotifyIcon_MouseClick_MessageBox1" xml:space="preserve">
+    <value>URL ayarlanmadı! Lütfen web görünümünü Yapılandırma -&gt; Tepsi Simgesi aracılığıyla yapılandırın.</value>
+  </data>
+  <data name="Main_TsCheckForUpdates" xml:space="preserve">
+    <value>Güncellemeleri kontrol et</value>
+  </data>
+  <data name="OnboardingApi_BtnTest_MessageBox5" xml:space="preserve">
+    <value>Sağladığınız API jetonu geçerli görünmüyor, lütfen jetonun tamamını seçtiğinizden emin olun (CTRL + A kullanmayın veya çift tıklamayın). Geçerli bir API anahtarı, iki noktayla ayrılmış üç bölüm içerir. Yine de bu anahtarı kullanmak istediğinizden emin misiniz?</value>
+  </data>
+  <data name="OnboardingApi_BtnTest_MessageBox6" xml:space="preserve">
+    <value>Sağladığınız URI geçerli görünmüyor, geçerli bir URI aşağıdakilerden biri gibi görünebilir: - http://homeassistant.local:8123 - http://192.168.0.1:8123 Kullanmak istediğinizden emin misiniz? yine de bu URI?</value>
+  </data>
+  <data name="OnboardingDone_LblInfo6" xml:space="preserve">
+    <value>Bu aracı (ve onu çevreleyen her şeyi) geliştirmek ve sürdürmek çok zaman alır. Çoğu geliştirici gibi, ben de kafein kullanıyorum - bu yüzden eğer onu ayırabilirseniz, bir fincan kahve her zaman çok değerlidir!</value>
+  </data>
+  <data name="OnboardingDone_LblTip2" xml:space="preserve">
+    <value>İpucu: Hakkında Penceresinde başka bağış yöntemleri de mevcuttur.</value>
+  </data>
+  <data name="OnboardingIntegrations_CbEnableMediaPlayer" xml:space="preserve">
+    <value>&amp;Media Player&apos;ı etkinleştir (metinden sese dahil)</value>
+  </data>
+  <data name="OnboardingIntegrations_CbEnableNotifications" xml:space="preserve">
+    <value>&amp;Bildirimleri Etkinleştir</value>
+  </data>
+  <data name="OnboardingMqtt_CbEnableMqtt" xml:space="preserve">
+    <value>MQTT&apos;yi etkinleştir</value>
+  </data>
+  <data name="PostUpdate_PostUpdate" xml:space="preserve">
+    <value>HASS.Agent Gönderi Güncellemesi</value>
+  </data>
+  <data name="SensorsManager_BluetoothDevicesSensorDescription" xml:space="preserve">
+    <value>Bulunan bluetooth cihazlarının miktarını gösteren bir sensör sağlar. Cihazlar ve bağlı durumları nitelik olarak eklenir.</value>
+  </data>
+  <data name="SensorsManager_BluetoothLeDevicesSensorDescription" xml:space="preserve">
+    <value>Bulunan bluetooth LE cihazlarının miktarını gösteren bir sensör sağlar. Cihazlar ve bağlı durumları nitelik olarak eklenir. Yalnızca son rapordan bu yana görülen cihazları gösterir, ör. sensör yayınlandığında liste temizlenir.</value>
+  </data>
+  <data name="SensorsManager_GeoLocationSensorDescription" xml:space="preserve">
+    <value>Geçerli enlem, boylam ve yüksekliğinizi virgülle ayrılmış bir değer olarak döndürür. Windows&apos;un konum hizmetlerinin etkinleştirildiğinden emin olun! Windows sürümünüze bağlı olarak bu, yeni kontrol panelinde -&gt; &apos;gizlilik ve güvenlik&apos; -&gt; &apos;konum&apos;da bulunabilir.</value>
+  </data>
+  <data name="SensorsManager_MicrophoneProcessSensorDescription" xml:space="preserve">
+    <value>Şu anda mikrofonu kullanan işlemin adını sağlar. Not: uydu hizmetinde kullanılırsa, kullanıcı alanı uygulamalarını algılamaz.</value>
+  </data>
+  <data name="SensorsManager_MonitorPowerStateSensorDescription" xml:space="preserve">
+    <value>Son monitör güç durumu değişikliğini sağlar: Soluk, Güç Kapalı, Güç Açık ve Bilinmiyor.</value>
+  </data>
+  <data name="SensorsManager_PowershellSensorDescription" xml:space="preserve">
+    <value>Sağlanan Powershell komutunun veya komut dosyasının sonucunu döndürür. Sonucu metne dönüştürür.</value>
+  </data>
+  <data name="SensorsManager_PrintersSensorsDescription" xml:space="preserve">
+    <value>Yüklü tüm yazıcılar ve sıraları hakkında bilgi sağlar.</value>
+  </data>
+  <data name="SensorsManager_WebcamProcessSensorDescription" xml:space="preserve">
+    <value>Şu anda web kamerasını kullanan işlemin adını sağlar. Not: uydu hizmetinde kullanılırsa, kullanıcı alanı uygulamalarını algılamaz.</value>
+  </data>
+  <data name="SensorsManager_WindowStateSensorDescription" xml:space="preserve">
+    <value>İşlem penceresinin mevcut durumunu sağlar: Gizli, Büyütülmüş, Küçültülmüş, Normal ve Bilinmeyen.</value>
+  </data>
+  <data name="SensorsMod_LblSetting1_Powershell" xml:space="preserve">
+    <value>powershell komutu veya komut dosyası</value>
+  </data>
+  <data name="SensorsMod_MessageBox_Sanitize" xml:space="preserve">
+    <value>Sağladığınız ad, desteklenmeyen karakterler içeriyor ve çalışmayacak. Önerilen sürüm: {0} Bu sürümü kullanmak istiyor musunuz?</value>
+  </data>
+  <data name="SensorsMod_SensorsMod_BtnTest_Powershell" xml:space="preserve">
+    <value>Test Komutu/Komut Dosyası</value>
+  </data>
+  <data name="SensorsMod_TestPowershell_MessageBox1" xml:space="preserve">
+    <value>Lütfen bir komut veya komut dosyası girin!</value>
+  </data>
+  <data name="SensorsMod_TestPowershell_MessageBox2" xml:space="preserve">
+    <value>Test başarıyla yürütüldü, sonuç değeri: {0}</value>
+  </data>
+  <data name="SensorsMod_TestPowershell_MessageBox3" xml:space="preserve">
+    <value>Test yürütülemedi: {0} Günlükler klasörünü açmak istiyor musunuz?</value>
+  </data>
+  <data name="SensorType_BluetoothDevicesSensor" xml:space="preserve">
+    <value>BluetoothCihazları</value>
+  </data>
+  <data name="SensorType_BluetoothLeDevicesSensor" xml:space="preserve">
+    <value>BluetoothLeCihazlar</value>
+  </data>
+  <data name="ServiceControllerManager_Error_Fatal" xml:space="preserve">
+    <value>Önemli hata, lütfen bilgi için günlükleri kontrol edin!</value>
+  </data>
+  <data name="ServiceControllerManager_Error_Timeout" xml:space="preserve">
+    <value>Zaman aşımı süresi doldu</value>
+  </data>
+  <data name="ServiceControllerManager_Error_Unknown" xml:space="preserve">
+    <value>bilinmeyen sebep</value>
+  </data>
+  <data name="ServiceHelper_ChangeStartMode_Error1" xml:space="preserve">
+    <value>Hizmet Yöneticisini açamıyor</value>
+  </data>
+  <data name="ServiceHelper_ChangeStartMode_Error2" xml:space="preserve">
+    <value>hizmeti açamıyor</value>
+  </data>
+  <data name="ServiceHelper_ChangeStartMode_Error3" xml:space="preserve">
+    <value>Başlangıç modu yapılandırılırken hata oluştu, daha fazla bilgi için lütfen günlükleri kontrol edin.</value>
+  </data>
+  <data name="ServiceHelper_ChangeStartMode_Error4" xml:space="preserve">
+    <value>Başlangıç modu ayarlanırken hata oluştu, lütfen daha fazla bilgi için günlükleri kontrol edin.</value>
+  </data>
+  <data name="WebView_InitializeAsync_MessageBox1" xml:space="preserve">
+    <value>Microsoft&apos;un WebView2 çalışma zamanı makinenizde bulunamadı. Bu genellikle yükleyici tarafından gerçekleştirilir, ancak manuel olarak yükleyebilirsiniz. Çalışma zamanı yükleyicisini indirmek istiyor musunuz?</value>
+  </data>
+  <data name="WebView_InitializeAsync_MessageBox2" xml:space="preserve">
+    <value>WebView başlatılırken bir şeyler ters gitti! Lütfen günlüklerinizi kontrol edin ve daha fazla yardım için bir GitHub sorunu açın.</value>
+  </data>
+  <data name="QuickActionsMod_ClmDomain" xml:space="preserve">
+    <value>domain</value>
+  </data>
+</root>

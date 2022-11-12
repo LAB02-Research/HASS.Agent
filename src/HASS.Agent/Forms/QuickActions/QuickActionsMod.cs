@@ -123,11 +123,11 @@ namespace HASS.Agent.Forms.QuickActions
                     return true;
 
                 case HassManagerStatus.ConfigMissing:
-                    MessageBoxAdv.Show(Languages.QuickActionsMod_CheckHassManager_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBoxAdv.Show(this, Languages.QuickActionsMod_CheckHassManager_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
 
                 case HassManagerStatus.Failed:
-                    MessageBoxAdv.Show(Languages.QuickActionsMod_MessageBox_Entities, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBoxAdv.Show(this, Languages.QuickActionsMod_MessageBox_Entities, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
 
                 case HassManagerStatus.Initialising:
@@ -142,7 +142,7 @@ namespace HASS.Agent.Forms.QuickActions
                         if (HassApiManager.ManagerStatus != HassManagerStatus.Failed) continue;
 
                         // manager failed, abort
-                        MessageBoxAdv.Show(Languages.QuickActionsMod_MessageBox_Entities, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBoxAdv.Show(this, Languages.QuickActionsMod_MessageBox_Entities, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return false;
                     }
 
@@ -230,14 +230,14 @@ namespace HASS.Agent.Forms.QuickActions
             var entity = CbEntity.SelectedItem.ToString();
             if (string.IsNullOrEmpty(entity))
             {
-                MessageBoxAdv.Show(Languages.QuickActionsMod_BtnStore_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.QuickActionsMod_BtnStore_MessageBox1, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = CbEntity;
                 return;
             }
 
             if (LvDomain.SelectedItems.Count == 0)
             {
-                MessageBoxAdv.Show(Languages.QuickActionsMod_BtnStore_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show(this, Languages.QuickActionsMod_BtnStore_MessageBox2, Variables.MessageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ActiveControl = LvDomain;
                 return;
             }
