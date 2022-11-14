@@ -130,6 +130,8 @@ You'll be guided through the configuration options during onboarding:
 
 ![Onboarding](https://user-images.githubusercontent.com/81011038/198251220-d15b4b3b-264e-44bc-b52f-5c404f9efb1f.png)
     
+For more, check [the screenshots page](https://hassagent.readthedocs.io/en/latest/screenshots/) in the docs.
+    
 ----
 
 ### Installation
