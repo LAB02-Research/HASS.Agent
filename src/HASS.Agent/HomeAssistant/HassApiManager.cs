@@ -14,7 +14,9 @@ using HASS.Agent.Resources.Localization;
 using HASS.Agent.Sensors;
 using HASS.Agent.Shared.Enums;
 using HASS.Agent.Shared.Functions;
+using Newtonsoft.Json;
 using Serilog;
+using static Grpc.Core.Metadata;
 
 namespace HASS.Agent.HomeAssistant
 {
@@ -505,6 +507,9 @@ namespace HASS.Agent.HomeAssistant
             var domainVal = entity.Domain.GetCategory();
             var entityVal = entity.Entity.ToLower();
 
+            // ugly fix until new QA system
+            if (entity.Domain == HassDomain.Cover && action == HassAction.Stop) actionVal = "stop_cover";
+            
             try
             {
                 // check if the states client is up
@@ -683,14 +688,17 @@ namespace HASS.Agent.HomeAssistant
             action = domain switch
             {
                 HassDomain.Cover when action == HassAction.On => HassAction.Open,
-                HassDomain.Cover when action == HassAction.Off => HassAction.Close,
-                HassDomain.Cover when action == HassAction.Stop => HassAction.Close,
+                HassDomain.Cover when action == HassAction.Off => HassAction.Stop,
                 HassDomain.MediaPlayer when action == HassAction.On => HassAction.Play,
                 HassDomain.MediaPlayer when action == HassAction.Off => HassAction.Stop,
                 _ => action
             };
 
             var actionValue = action.GetCategory();
+
+            // ugly fix until new QA system
+            if (domain == HassDomain.Cover && action == HassAction.Stop) actionValue = "stop_cover";
+
             return $"{domainValue}.{actionValue}";
         }
 
