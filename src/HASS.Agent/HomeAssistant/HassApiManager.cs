@@ -688,7 +688,7 @@ namespace HASS.Agent.HomeAssistant
             action = domain switch
             {
                 HassDomain.Cover when action == HassAction.On => HassAction.Open,
-                HassDomain.Cover when action == HassAction.Off => HassAction.Stop,
+                HassDomain.Cover when action == HassAction.Off => HassAction.Close,
                 HassDomain.MediaPlayer when action == HassAction.On => HassAction.Play,
                 HassDomain.MediaPlayer when action == HassAction.Off => HassAction.Stop,
                 _ => action
