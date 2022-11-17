@@ -73,7 +73,7 @@ The main reason I built this is that I wanted to receive notifications on my PC,
 
 Summary of the core functions:
 
-* **Notifications**: receive notifications, show them using Windows builtin toast popups, and optionally attach images. Supports *actions*: add buttons so you can easily interact with Home Assistant, without having to open anything.
+* **Notifications**: receive notifications, show them using Windows builtin toast popups, and optionally attach images. Supports *actionable notifications*: add buttons so you can easily interact with Home Assistant, without having to open anything.
   - *This requires the installation of the [HASS.Agent integration](https://github.com/LAB02-Research/HASS.Agent-Integration)*.
 
 * **Media Player**: use HASS.Agent as a mediaplayer device: see and control what's playing and send text-to-speech.
