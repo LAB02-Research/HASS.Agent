@@ -138,7 +138,7 @@ For more, check [the screenshots page](https://hassagent.readthedocs.io/en/lates
 
 Installing HASS.Agent is easy; just [download the latest installer](https://github.com/LAB02-Research/HASS.Agent/releases/latest/download/HASS.Agent.Installer.exe), run it and you're done! The installer is signed and won't download or do weird stuff - it just places everything where it should, and launches with the right parameter. 
 
-After installing, the onboarding process will help you get everything configured, step by step.
+After installing, the onboarding process will help you get everything configured, step by step. If you want an introduction into HASS.Agent, be sure to read the [introduction docs](https://hassagent.readthedocs.io/en/latest/introduction/).
 
 [Click here to download the latest installer](https://github.com/LAB02-Research/HASS.Agent/releases/latest/download/HASS.Agent.Installer.exe)
 
