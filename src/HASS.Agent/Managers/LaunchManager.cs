@@ -41,7 +41,7 @@ namespace HASS.Agent.Managers
                 using var localKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegView);
                 using var key = localKey.CreateSubKey(RunKey, true);
                 key.OpenSubKey("Run", true);
-                key.SetValue(Variables.ApplicationName, Variables.ApplicationExecutable, RegistryValueKind.String);
+                key.SetValue(Variables.ApplicationName, $"\"{Variables.ApplicationExecutable}\"", RegistryValueKind.String);
                 key.Flush();
 
                 return true;
