@@ -21,7 +21,7 @@ namespace HASS.Agent.Managers
                 var val = (string)key?.GetValue(Variables.ApplicationName, string.Empty);
                 if (string.IsNullOrWhiteSpace(val)) return false;
 
-                return val == Variables.ApplicationExecutable;
+                return val == $"\"{Variables.ApplicationExecutable}\"";
             }
             catch (Exception ex)
             {
