@@ -61,6 +61,7 @@ A big big thank you to the [monthly sponsors](https://github.com/sponsors/LAB02-
 <a href="https://github.com/jdiegmueller/"><img src="https://github.com/jdiegmueller.png" width="60" height="60"></a>
 <a href="https://github.com/ewonais/"><img src="https://github.com/ewonais.png" width="60" height="60"></a>
 <a href="https://github.com/thornzero/"><img src="https://github.com/thornzero.png" width="60" height="60"></a>
+<a href="https://github.com/dannytsang/"><img src="https://github.com/dannytsang.png" width="60" height="60"></a>
 
 ----
 
