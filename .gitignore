@@ -4,3 +4,7 @@
 HASSAgent/bin/
 
 HASSAgent/obj/
+
+src/HASS.Agent/bin
+
+src/HASS.Agent/obj

@@ -1,4 +1,4 @@
-﻿using Windows.UI.Notifications;
+using Windows.UI.Notifications;
 using HASS.Agent.API;
 using HASS.Agent.Functions;
 using HASS.Agent.HomeAssistant;
@@ -85,6 +85,13 @@ namespace HASS.Agent.Managers
                     var (success, localFile) = await StorageManager.DownloadImageAsync(notification.Data.Image);
                     if (success) toastBuilder.AddInlineImage(new Uri(localFile));
                     else Log.Error("[NOTIFIER] Image download failed, dropping: {img}", notification.Data.Image);
+                }
+
+                if (!string.IsNullOrWhiteSpace(notification.Data?.Icon_url))
+                {
+                    var (iconSuccess, localIconFile) = await StorageManager.DownloadImageAsync(notification.Data.Icon_url);
+                    if (iconSuccess) toastBuilder.AddAppLogoOverride(new Uri(localIconFile), ToastGenericAppLogoCrop.Default);
+                    else Log.Error("[NOTIFIER] Icon download failed, dropping: {img}", notification.Data.Icon_url);
                 }
 
                 // prepare message
