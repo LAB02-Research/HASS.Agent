@@ -10,6 +10,7 @@
     {
         public int Duration { get; set; } = 0;
         public string Image { get; set; }
+        public string Icon_url { get; set; }
 
         public List<NotificationAction> Actions { get; set; } = new();
     }
