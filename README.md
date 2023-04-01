@@ -19,6 +19,12 @@ Click [here](https://github.com/LAB02-Research/HASS.Agent/releases/latest/downlo
 
 ----
 
+### C# or Python developer? Please read this: [lab02-research.org/2023-04-01-help-wanted](https://lab02-research.org/2023-04-01-help-wanted/)
+
+### HASS.Agent is in need of help! :heart:
+
+----
+
 Agora o HASS.Agent está em português do Brasil para brasileiros e usuários de língua portuguesa!
 
 Clique [aqui](https://github.com/LAB02-Research/HASS.Agent/releases/tag/b2022.4.2) para baixar o instalador mais recente com a tradução! Obrigado [@LeandroIssa](https://github.com/LeandroIssa) :)
