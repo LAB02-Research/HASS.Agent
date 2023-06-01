@@ -332,11 +332,19 @@ namespace HASS.Agent.Media
 
                     case MediaPlayerCommand.Play:
                         if (Variables.ExtendedLogging) Log.Information("[MEDIA] Command received: Play");
+                        if (State == MeidaPlayerState.Playing) {
+                            if (Variables.ExtendedLogging) Log.Warning("[MEDIA] Media already playing");
+                            break;
+                        }
                         MediaManagerCommands.Play();
                         break;
 
                     case MediaPlayerCommand.Pause:
                         if (Variables.ExtendedLogging) Log.Information("[MEDIA] Command received: Pause");
+                        if (State == MeidaPlayerState.Paused) {
+                            if (Variables.ExtendedLogging) Log.Warning("[MEDIA] Media already paused");
+                            break;
+                        }
                         MediaManagerCommands.Pause();
                         break;
 
