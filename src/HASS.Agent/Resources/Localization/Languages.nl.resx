@@ -859,7 +859,7 @@ Bedankt voor het gebruiken van HASS.Agent, hopelijk heb je er wat aan :-)</value
     <value>aanpassen</value>
   </data>
   <data name="QuickActionsConfig_BtnRemove" xml:space="preserve">
-    <value>ve&amp;rwijderen</value>
+    <value>verwijderen</value>
   </data>
   <data name="QuickActionsConfig_BtnPreview" xml:space="preserve">
     <value>voorbeeld</value>
