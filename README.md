@@ -7,6 +7,7 @@
 ![GitHub latest](https://img.shields.io/github/downloads/LAB02-Research/HASS.Agent/latest/total?color=blue)
 [![Discord](https://img.shields.io/badge/dynamic/json?color=blue&label=Discord&logo=discord&logoColor=white&query=presence_count&suffix=%20Online&url=https://discordapp.com/api/guilds/932957721622360074/widget.json)](https://discord.gg/nMvqzwrVBU)
 [![Documentation Status](https://readthedocs.org/projects/hassagent/badge/?version=latest)](https://hassagent.readthedocs.io/en/latest/?badge=latest)
+[![CodeQL](https://github.com/LAB02-Research/HASS.Agent/actions/workflows/codeql.yml/badge.svg)](https://github.com/LAB02-Research/HASS.Agent/actions/workflows/codeql.yml)
 
 <a href="https://github.com/LAB02-Research/HASS.Agent/">
     <img src="https://raw.githubusercontent.com/LAB02-Research/HASS.Agent/main/images/logo_128.png" alt="HASS.Agent logo" title="HASS.Agent" align="right" height="128" /></a>
